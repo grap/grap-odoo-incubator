@@ -5,6 +5,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from openerp import _, api, fields, models
+from openerp.exceptions import Warning as UserError
 
 
 class InternalUseCase(models.Model):
@@ -34,21 +35,32 @@ class InternalUseCase(models.Model):
         required=True, oldname='location_to')
 
     journal_id = fields.Many2one(
-        comodel_name='account.journal', string='Journal', required=True,
+        comodel_name='account.journal', string='Journal',
         oldname='journal',
         help="Set the Accounting Journal used to generate Accounting Entries")
 
     account_id = fields.Many2one(
         comodel_name='account.account', string='Expense Account',
-        required=True, domain="[('type','=','other')]",
+        domain="[('type','=','other')]",
         oldname='expense_account',
         help="Expense account of the Use Case. The generated"
         " Entries will belong the following lines:\n\n"
         " * Debit: This Expense Account"
         " * Credit: The Default Expense Account of the Product")
 
+    # Overload Section
     @api.multi
     def copy_data(self, default=None):
         default = default and default or {}
         default['name'] = _('%s (copy)') % self.name
         return super(InternalUseCase, self).copy_data(default)
+
+    # Constrains Section
+    @api.constrains('journal_id', 'account_id')
+    def _constrains_account_journal(self):
+        for case in self:
+            if (case.journal_id and not case.account_id) or\
+                    (not case.journal_id and case.account_id):
+                raise UserError(_(
+                    "Incorrect Accounting Settings.\n"
+                    "Account and Journal should be set both or not set."))

@@ -106,8 +106,12 @@ class InternalUse(models.Model):
             # Confirm stock moves
             use.stock_move_ids.action_done()
 
-        # Mark the use as 'confirmed'
-        return self.write({'state': 'confirmed'})
+            # Mark the use as 'confirmed' or 'done'
+            if use.internal_use_case_id.journal_id:
+                use.write({'state': 'confirmed'})
+            else:
+                use.write({'state': 'done'})
+        return True
 
     @api.multi
     def action_done(self):

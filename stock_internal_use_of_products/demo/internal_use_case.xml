@@ -7,12 +7,19 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <openerp><data>
 
     <record id="internal_use_case" model="internal.use.case">
-        <field name="name">Internal Use Case</field>
+        <field name="name">Internal Use Case (With Accounting Entry)</field>
         <field name="company_id" ref="base.main_company" />
         <field name="default_location_src_id" ref="stock.stock_location_stock" />
         <field name="default_location_dest_id" ref="stock.stock_location_scrapped" />
         <field name="journal_id" ref="account.miscellaneous_journal" />
         <field name="account_id" ref="account.income_fx_expense" />
+    </record>
+
+    <record id="internal_use_case_without" model="internal.use.case">
+        <field name="name">Internal Use Case (Without Accounting Entry)</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="default_location_src_id" ref="stock.stock_location_stock" />
+        <field name="default_location_dest_id" ref="stock.stock_location_scrapped" />
     </record>
 
 </data></openerp>

@@ -19,7 +19,6 @@
         'security/ir_model_access.yml',
         'security/ir_rule.yml',
         'views/view_internal_use.xml',
-        'views/view_internal_use_line.xml',
         'views/view_internal_use_case.xml',
         'views/action.xml',
         'views/menu.xml',

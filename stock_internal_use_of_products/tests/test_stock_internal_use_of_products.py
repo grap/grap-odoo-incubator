@@ -11,13 +11,28 @@ class TestStockInternalUseOfProducts(TransactionCase):
 
     def setUp(self):
         super(TestStockInternalUseOfProducts, self).setUp()
+        self.move_line_obj = self.env['account.move.line']
+        self.product_dozen = self.env.ref('product.product_product_48')
+        self.regular_expense_account = self.env.ref('account.a_expense')
+        self.use_expense_account = self.env.ref('account.income_fx_expense')
         self.internal_use = self.env.ref(
             'stock_internal_use_of_products.internal_use')
-        self.product_dozen = self.env.ref(
-            'product.product_product_48')
+        self.internal_use_without = self.env.ref(
+            'stock_internal_use_of_products.internal_use_without')
+        self.purchase_tax_code = self.env.ref(
+            'stock_internal_use_of_products.purchase_tax_code')
 
     # Test Section
-    def test_01_stock_move_and_account_move(self):
+    def test_01_stock_move_without_account_move(self):
+        # Stock Check
+        self.internal_use_without.action_confirm()
+        self.assertEqual(
+            self.internal_use_without.state, 'done',
+            "Confirming internal use without accounting setting should set"
+            " the internal use in a 'done' state")
+
+    # Test Section
+    def test_02_stock_move_and_account_move(self):
         # Stock Check
         self.internal_use.action_confirm()
         self.assertEqual(
@@ -36,3 +51,46 @@ class TestStockInternalUseOfProducts(TransactionCase):
         self.assertEqual(
             self.internal_use.state, 'confirmed',
             "Confirming internal use should change its state")
+
+        # Accounting Check
+        self.internal_use.action_done()
+        self.assertNotEqual(
+            self.internal_use.account_move_id, False,
+            "Finish an Internal use should generate an accounting entry")
+        self.assertEqual(
+            len(self.internal_use.account_move_id.line_id), 3,
+            "Internal use with 3 lines including one with tax should generate"
+            " an accouting entry with 3 lines")
+
+        # Check Line 1 (CounterPart 1) (merged lines without tax code)
+        lines = self.move_line_obj.search([
+            ('move_id', '=', self.internal_use.account_move_id.id),
+            ('tax_code_id', '=', False),
+            ('credit', '=', (3 * 12 * 13) + 876),
+            ('account_id', '=', self.regular_expense_account.id),
+        ])
+        self.assertEqual(
+            len(lines), 1,
+            "many use lines should generate account single accounting move")
+
+        # Check Line 2 (CounterPart 2) (line with tax code)
+        lines = self.move_line_obj.search([
+            ('move_id', '=', self.internal_use.account_move_id.id),
+            ('tax_code_id', '=', self.purchase_tax_code.id),
+            ('credit', '=', 20),
+            ('account_id', '=', self.regular_expense_account.id),
+        ])
+        self.assertEqual(
+            len(lines), 1,
+            "Lines with tax code should generated separated account move line")
+
+        # Check Line 3 (Main line)
+        lines = self.move_line_obj.search([
+            ('move_id', '=', self.internal_use.account_move_id.id),
+            ('tax_code_id', '=', False),
+            ('debit', '=', (3 * 12 * 13) + 876 + 20),
+            ('account_id', '=', self.use_expense_account.id),
+        ])
+        self.assertEqual(
+            len(lines), 1,
+            "Incorrect main account move line.")

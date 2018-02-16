@@ -34,4 +34,16 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="price_unit">20</field>
     </record>
 
+    <record id="internal_use_without" model="internal.use">
+        <field name="internal_use_case_id" ref="internal_use_case_without" />
+    </record>
+
+    <record id="internal_use_without_line_1" model="internal.use.line">
+        <field name="internal_use_id" ref="internal_use_without" />
+        <field name="product_id" ref="product.product_product_48" />
+        <field name="product_uom_id" ref="product.product_uom_unit" />
+        <field name="product_qty">2</field>
+        <field name="price_unit">13</field>
+    </record>
+
 </data></openerp>

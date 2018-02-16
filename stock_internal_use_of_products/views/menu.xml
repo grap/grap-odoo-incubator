@@ -19,12 +19,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         sequence="1"
         action="action_internal_use_tree"/>
 
-    <menuitem id="menu_internal_use_lines"
-        name="Internal Use Lines"
-        parent="menu_internal_useroot"
-        sequence="2"
-        action="action_internal_use_line_tree"/>
-
     <menuitem id="menu_internal_uses_config" 
         name="Internal Use Cases" 
         parent="stock.menu_stock_configuration" 
