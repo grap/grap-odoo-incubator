@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
+@author Julien WESTE
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="view_internal_use_config_tree" model="ir.ui.view">
+        <field name="model">internal.use.case</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="default_location_src_id"/>
+                <field name="default_location_dest_id"/>
+                <field name="account_id"/>
+                <field name="journal_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_internal_use_config_form" model="ir.ui.view">
+        <field name="model">internal.use.case</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Stock Settings">
+                            <field name="default_location_src_id"/>
+                            <field name="default_location_dest_id"/>
+                        </group>
+                        <group string="Accounting Settings">
+                            <field name="journal_id"/>
+                            <field name="account_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</data></openerp>

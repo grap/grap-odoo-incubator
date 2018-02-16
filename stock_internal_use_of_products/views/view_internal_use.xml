@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
+@author Julien WESTE
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+     <record id="view_internal_use_search" model="ir.ui.view">
+        <field name="model">internal.use</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="date_done"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="state"/>
+                <filter name="to_confirm" string="To Process" domain="[('state', '=', 'draft')]"/>
+                <filter name="to_post" string="To Post" domain="[('state', '=', 'confirmed')]"/>
+                <filter string="Confirmed or Posted" name="confirmed_or_posted" domain="[('state', 'in', ('confirmed', 'done'))]"/>
+                <group expand="0" string="Group By...">
+                    <filter string="Status" context="{'group_by':'state'}"/>
+                    <filter string="Date" context="{'group_by':'date_done'}"/>
+                    <filter string="Case" context="{'group_by':'internal_use_case_id'}"/>
+                    <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                </group>
+            </search>
+
+        </field>
+    </record>
+
+    <record id="view_internal_use_tree" model="ir.ui.view">
+        <field name="model">internal.use</field>
+        <field name="arch" type="xml">
+            <tree colors="grey:state == 'cancel'; blue:state == 'draft'; brown:state == 'confirmed'">
+                <field name="date_done"/>
+                <field name="name"/>
+                <field name="internal_use_case_id"/>
+                <field name="description"/>
+                <field name="amount" sum="Total"/>
+                <field name="state"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_internal_use_form" model="ir.ui.view">
+        <field name="model">internal.use</field>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" states="draft" string="Confirm" type="object" class="oe_highlight"/>
+                    <button name="action_done" states="confirmed" string="Generate Accounting Entry" type="object" class="oe_highlight" groups="account.group_account_manager"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <label string="Internal Use"/>
+                            <field name="name" class="oe_inline" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="internal_use_case_id"/>
+                        </group>
+                        <group>
+                            <field name="date_done"/>
+                            <field name="description"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group>
+                        <separator string="Cost based on standard price" colspan="2"/>
+                        <field name="amount" sum="total"/>
+                    </group>
+                    <notebook>
+                        <page string="Products">
+                            <field name="line_ids">
+                                <tree string="Lines" editable="bottom" class="stock_internal_use_of_products__view_internal_use_form">
+                                    <field name="product_id"/>
+                                    <field name="product_qty"/>
+                                    <field name="product_uom_id" groups="product.group_uom"/>
+                                    <field name="price_unit"/>
+                                    <field name="amount"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Stock Moves" attrs="{'invisible': [('state','in', ['draft'])]}">
+                            <group>
+                                <field name="stock_move_ids" nolabel="1" colspan="4"/>
+                            </group>
+                        </page>
+                        <page string="Accounting Entry" 
+                                attrs="{'invisible': [('state','in', ['draft', 'confirmed'])]}"
+                                groups="account.group_account_manager">
+                            <group>
+                                <field name="account_move_id"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</data></openerp>

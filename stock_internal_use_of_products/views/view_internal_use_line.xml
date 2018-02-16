@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author Julien WESTE
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+     <record id="view_internal_use_line_search" model="ir.ui.view">
+        <field name="model">internal.use.line</field>
+        <field name="arch" type="xml">
+            <search string="Search Internal Use Lines">
+                <field name="name" string="Reference"/>
+                <field name="internal_use_case_id" string="Case"/>
+                <field name="product_id" string="Product"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="state"/>
+                <filter string="Done or Posted" name="done_or_posted" domain="[('state', 'in', ('done', 'posted'))]"/>
+                <group expand="0" string="Group By...">
+                    <filter name="group_by_product_id" string="Product" context="{'group_by':'product_id'}"/>
+                    <filter name="group_by_date_done" string="Date" context="{'group_by':'date_done'}"/>
+                    <filter name="group_by_state" string="Status" context="{'group_by':'state'}"/>
+                    <filter name="group_by_internal_use_case_id" string="Case" context="{'group_by':'internal_use_case_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="internal_use_line_tree" model="ir.ui.view">
+        <field name="model">internal.use.line</field>
+        <field name="arch" type="xml">
+            <tree create="false" colors="grey:state == 'cancel'; blue:state == 'draft'; brown:state == 'done'">
+                <field name="date_done"/>
+                <field name="product_id"/>
+                <field name="product_qty" sum="Total Quantity"/>
+                <field name="product_uom_id" groups="product.group_uom"/>
+                <field name="amount" sum="Total Amount (Vat Excl)"/>
+                <field name="internal_use_case_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="state" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="internal_use_line_graph" model="ir.ui.view">
+        <field name="model">internal.use.line</field>
+        <field name="arch" type="xml">
+            <graph string="Internal Use Lines" type="bar">
+                <field name="date_done"/>
+                <field name="amount" operator="+"/>
+            </graph>
+        </field>
+    </record>
+
+</data></openerp>

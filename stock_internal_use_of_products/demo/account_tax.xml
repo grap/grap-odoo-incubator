@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="purchase_tax" model="account.tax">
+        <field name="name">20% Purchase Tax</field>
+        <field name="type">percent</field>
+        <field name="amount">0.2</field>
+        <field name="base_code_id" ref="purchase_tax_code"/>
+        <field name="ref_base_code_id" ref="purchase_tax_code"/>
+    </record>
+
+</data></openerp>
