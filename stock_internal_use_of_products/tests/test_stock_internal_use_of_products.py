@@ -18,6 +18,7 @@ class TestStockInternalUseOfProducts(TransactionCase):
 
     # Test Section
     def test_01_stock_move_and_account_move(self):
+        # Stock Check
         self.internal_use.action_confirm()
         self.assertEqual(
             len(self.internal_use.stock_move_ids), 3,
@@ -31,3 +32,7 @@ class TestStockInternalUseOfProducts(TransactionCase):
         self.assertEqual(
             dozen_moves[0].product_qty, 3 * 12,
             "Stock move quantity should be expressed in the product UoM")
+
+        self.assertEqual(
+            self.internal_use.state, 'confirmed',
+            "Confirming internal use should change its state")

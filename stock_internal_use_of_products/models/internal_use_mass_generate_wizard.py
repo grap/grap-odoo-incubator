@@ -15,8 +15,8 @@ class InternalUseMassGenerateWizard(models.TransientModel):
 
     # Columns Section
     selected_use_qty = fields.Integer(
-            string='Selected Internal Uses', readonly=True,
-            default=_default_selected_use_qty)
+        string='Selected Internal Uses', readonly=True,
+        default=_default_selected_use_qty)
 
     # Action Section
     @api.multi
