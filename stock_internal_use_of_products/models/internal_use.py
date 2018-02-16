@@ -154,7 +154,6 @@ class InternalUse(models.Model):
 
             # Create Account move and validate it
             account_move_vals['line_id'] = all_account_move_line_vals
-            print account_move_vals
             account_move = account_move_obj.create(account_move_vals)
 
             # Validate Account Move

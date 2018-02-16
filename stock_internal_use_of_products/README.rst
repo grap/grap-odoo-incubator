@@ -20,14 +20,14 @@ Technical informations
 ----------------------
 
 * add a 'Internal Use Case' menu to configure the internal use
-possibilities
+  possibilities
 * for each internal_use_case, you need to define an inventory-type
-stock_location
+  stock_location
 
 * Confirming an internal_use will create
     * 1 stock.picking
     * 1 stock.move for each internal_use.line between the 2 locations
-    defined in the internal_use_case
+      defined in the internal_use_case
     * (1 account.move if your products are defined in real_time inventory)
     * 1 account.move to transfer the expense
 
