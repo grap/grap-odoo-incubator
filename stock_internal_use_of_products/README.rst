@@ -61,7 +61,10 @@ To use this module, you need to:
 Known issues / Roadmap
 ======================
 
-* ...
+* Replace by native concept: 
+    * ```internal.use.case``` by ```stock.picking.type```
+    * ```internal.use``` by ```stock.picking```
+    * ```internal.use.line``` by ```stock.move```
 
 Credits
 =======
