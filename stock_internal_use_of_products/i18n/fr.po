@@ -1,13 +1,13 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
 #	* stock_internal_use_of_products
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 7.0\n"
+"Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-17 09:21+0000\n"
-"PO-Revision-Date: 2015-12-17 09:21+0000\n"
+"POT-Creation-Date: 2018-02-16 18:51+0000\n"
+"PO-Revision-Date: 2018-02-16 18:51+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,40 +16,36 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: stock_internal_use_of_products
-#: model:ir.actions.act_window,help:stock_internal_use_of_products.action_internal_use_case_tree
-msgid "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to register a new case of internal use. \n"
-"              </p><p>\n"
-"                It will allow you to declare the stockable products you use for specific cases (such as tastings, gifts, etc.) and will automatically register the stock moves and account moves corresponding.\n"
-"              </p>\n"
-"            "
-msgstr "<p class=\"oe_view_nocontent_create\">\n"
-"                Cliquer pour déclarer un nouveau type d'utilisation interne. \n"
-"              </p><p>\n"
-"                Cela vous permettre de déclarer les produits stockables utilisés pour des cas spécifiques (dégustations, cadeaux, entretien, etc.) et enregistrera automatiquement les mouvements de stock et les écritures comptables correspondantes.\n"
-"              </p>\n"
-"            "
+#: code:addons/stock_internal_use_of_products/models/internal_use_case.py:55
+#, python-format
+msgid "%s (copy)"
+msgstr "%s (copy)"
 
 #. module: stock_internal_use_of_products
-#: model:ir.actions.act_window,help:stock_internal_use_of_products.action_internal_use_tree
-msgid "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to register a new internal use of products. \n"
-"              </p><p>\n"
-"                It will allow you to declare the stockable products you use for specific cases (such as tastings, gifts, etc.) and will automatically register the stock moves and account moves corresponding.\n"
-"              </p>\n"
-"            "
-msgstr "<p class=\"oe_view_nocontent_create\">\n"
-"                Cliquer pour enregistrer une nouvelle utilisation interne. \n"
-"              </p><p>\n"
-"                Cela vous permettre de déclarer les produits stockables utilisés pour des cas spécifiques (dégustations, cadeaux, entretien, etc.) et enregistrera automatiquement les mouvements de stock et les écritures comptables correspondantes.\n"
-"              </p>\n"
-"            "
+#: model:account.tax,name:stock_internal_use_of_products.purchase_tax
+msgid "20% Purchase Tax"
+msgstr "20% Purchase Tax"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
+#: model:account.tax.code,name:stock_internal_use_of_products.purchase_tax_code
+msgid "20% Purchase Tax Code"
+msgstr "20% Purchase Tax Code"
+
+
+#. module: stock_internal_use_of_products
 #: field:internal.use,account_move_id:0
 msgid "Account Moves"
 msgstr "Pièces Comptables"
+
+#. module: stock_internal_use_of_products
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_form
+msgid "Accounting Entry"
+msgstr "Pièce comptable"
+
+#. module: stock_internal_use_of_products
+#: view:internal.use.case:stock_internal_use_of_products.view_internal_use_config_form
+msgid "Accounting Settings"
+msgstr "Paramétrages comptables"
 
 #. module: stock_internal_use_of_products
 #: field:internal.use.case,active:0
@@ -57,39 +53,35 @@ msgid "Active"
 msgstr "Actif"
 
 #. module: stock_internal_use_of_products
+#: field:internal.use.line,amount:0
+msgid "Amount (Tax Excluded)"
+msgstr "Montant (HT)"
+
+#. module: stock_internal_use_of_products
+#: view:internal.use.mass.generate.wizard:stock_internal_use_of_products.view_internal_use_mass_generate_wizard_form
+msgid "Apply"
+msgstr "Appliquer"
+
+#. module: stock_internal_use_of_products
 #: help:internal.use.case,active:0
-msgid "By unchecking the active field, you may hide an INCOTERM without deleting it."
-msgstr "En décochant la case 'actif', vous cachez un enregistrement sans le supprimer."
+msgid "By unchecking the active field, you may hide an Use Case without deleting it."
+msgstr "En décochant cette case, vous pouvez cacher ce type d'utilisation interne sans le supprimer"
 
 #. module: stock_internal_use_of_products
-#: selection:internal.use,state:0
-msgid "Cancelled"
-msgstr "Annulée"
+#: view:internal.use.mass.generate.wizard:stock_internal_use_of_products.view_internal_use_mass_generate_wizard_form
+msgid "Cancel"
+msgstr "Annuler"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
-#: field:internal.use,internal_use_case:0
-#: view:internal.use.line:0
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_search
+#: field:internal.use,internal_use_case_id:0
 msgid "Case"
 msgstr "Type"
 
 #. module: stock_internal_use_of_products
-#: code:_description:0
-#: model:ir.model,name:stock_internal_use_of_products.model_internal_use_case
-#, python-format
-msgid "Case of Internal Uses"
-msgstr "Type d'utilisation interne"
-
-#. module: stock_internal_use_of_products
-#: sql_constraint:internal.use.case:0
-msgid "Case of Internal uses name must be unique by company!"
-msgstr "Le nom doit être unique pour une société!"
-
-#. module: stock_internal_use_of_products
-#: view:internal.use:0
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_search
 #: field:internal.use,company_id:0
 #: field:internal.use.case,company_id:0
-#: field:internal.use.line,company_id:0
 msgid "Company"
 msgstr "Société"
 
@@ -99,20 +91,44 @@ msgid "Configure Internal uses"
 msgstr "Configurer les utilisations internes"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
-msgid "Confirm Use"
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_form
+msgid "Confirm"
 msgstr "Confirmer"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
+#: selection:internal.use,state:0
+msgid "Confirmed"
+msgstr "Confirmé"
+
+#. module: stock_internal_use_of_products
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_search
+msgid "Confirmed or Posted"
+msgstr "Confirmé ou Validé"
+
+#. module: stock_internal_use_of_products
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_form
 msgid "Cost based on standard price"
 msgstr "Coût (basé sur le prix standard)"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
+#: field:internal.use,create_uid:0
+#: field:internal.use.case,create_uid:0
+#: field:internal.use.line,create_uid:0
+#: field:internal.use.mass.generate.wizard,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: stock_internal_use_of_products
+#: field:internal.use,create_date:0
+#: field:internal.use.case,create_date:0
+#: field:internal.use.line,create_date:0
+#: field:internal.use.mass.generate.wizard,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: stock_internal_use_of_products
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_search
 #: field:internal.use,date_done:0
-#: view:internal.use.line:0
-#: field:internal.use.line,date_done:0
 msgid "Date"
 msgstr "Date"
 
@@ -122,9 +138,17 @@ msgid "Description"
 msgstr "Description"
 
 #. module: stock_internal_use_of_products
-#: field:internal.use.case,location_to:0
+#: field:internal.use.case,default_location_dest_id:0
 msgid "Destination Location"
 msgstr "Emplacement de destination"
+
+#. module: stock_internal_use_of_products
+#: field:internal.use,display_name:0
+#: field:internal.use.case,display_name:0
+#: field:internal.use.line,display_name:0
+#: field:internal.use.mass.generate.wizard,display_name:0
+msgid "Display Name"
+msgstr "Nom affiché"
 
 #. module: stock_internal_use_of_products
 #: selection:internal.use,state:0
@@ -132,103 +156,121 @@ msgid "Done"
 msgstr "Terminée"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
-#: view:internal.use.line:0
-msgid "Done or Posted"
-msgstr "Validée ou terminée"
-
-#. module: stock_internal_use_of_products
-#: constraint:internal.use.case:0
-msgid "Error: Origin location and Destination Location can not be of 'view' type."
-msgstr "Erreur: les emplacements d'origine et de destination ne peuvent pas être de type 'vue'."
-
-#. module: stock_internal_use_of_products
-#: constraint:internal.use.case:0
-msgid "Error: Origin location and Destination Location must be different."
-msgstr "Erreur: les emplacements d'origine et de destination doivent être différents."
-
-#. module: stock_internal_use_of_products
-#: constraint:internal.use.case:0
-msgid "Error: Origin location and Destination Location must belong to the company."
-msgstr "Erreur: Les emplacements d'origine et de destination doivent appartenir à votre société."
-
-#. module: stock_internal_use_of_products
-#: field:internal.use.case,expense_account:0
+#: field:internal.use.case,account_id:0
 msgid "Expense Account"
-msgstr "Compte de charge"
+msgstr "Compte de dépense"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/model/internal_use.py:222
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:200
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:208
+#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:129
 #, python-format
 msgid "Expense Transfert (%s)"
 msgstr "Transfert de charge (%s)"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
-#: view:internal.use.line:0
+#: help:internal.use.case,account_id:0
+msgid "Expense account of the Use Case. The generated Entries will belong the following lines:\n"
+"\n"
+" * Debit: This Expense Account * Credit: The Default Expense Account of the Product"
+msgstr "Compte de charge de ce type d'utilisation interne. L'écriture comptable générée possèdera les lignes suivantes:\n"
+"\n"
+" * Au Débit: Ce compte de charge *\n Au Crédit: Le compte de charge par défaut du produit"
+
+#. module: stock_internal_use_of_products
+#: model:ir.actions.act_window,name:stock_internal_use_of_products.action_internal_use_mass_generate_wizard_action
+msgid "Generate Accounting Entries"
+msgstr "Générer les écritures comptables"
+
+#. module: stock_internal_use_of_products
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_form
+msgid "Generate Accounting Entry"
+msgstr "Générer l'écriture comptable"
+
+#. module: stock_internal_use_of_products
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_search
 msgid "Group By..."
 msgstr "Grouper par..."
 
 #. module: stock_internal_use_of_products
-#: field:internal.use.line,internal_use_case:0
-msgid "Internal Use Case"
-msgstr "Type d'utilisation interne"
+#: field:internal.use,id:0
+#: field:internal.use.case,id:0
+#: field:internal.use.line,id:0
+#: field:internal.use.mass.generate.wizard,id:0
+msgid "ID"
+msgstr "ID"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use.case:0
+#: code:addons/stock_internal_use_of_products/models/internal_use_case.py:64
+#, python-format
+msgid "Incorrect Accounting Settings.\n"
+"Account and Journal should be set both or not set."
+msgstr "Paramatrages comptables incorrects.\n"
+"Le compte de dépense et le journal doivent être rempli tous les deux, ou laissé vide."
+
+#. module: stock_internal_use_of_products
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_form
+#: field:stock.move,internal_use_id:0
+msgid "Internal Use"
+msgstr "Utilisation interne"
+
+#. module: stock_internal_use_of_products
 #: model:ir.ui.menu,name:stock_internal_use_of_products.menu_internal_uses_config
 msgid "Internal Use Cases"
 msgstr "Types d'utilisation interne"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use.line:0
-#: model:ir.ui.menu,name:stock_internal_use_of_products.menu_internal_use_lines
-msgid "Internal Use Lines"
-msgstr "Lignes d'utilisation interne"
-
-#. module: stock_internal_use_of_products
-#: view:internal.use:0
-#: field:internal.use.line,internal_use:0
+#: field:internal.use.line,internal_use_id:0
 #: model:ir.ui.menu,name:stock_internal_use_of_products.menu_internal_useroot
 #: model:ir.ui.menu,name:stock_internal_use_of_products.menu_internal_uses
+#: model:ir.actions.act_window,name:stock_internal_use_of_products.action_internal_use_tree
 msgid "Internal Uses"
 msgstr "Utilisation internes"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
-msgid "Internal use"
-msgstr "Utilisation interne"
-
-#. module: stock_internal_use_of_products
-#: model:ir.actions.act_window,name:stock_internal_use_of_products.action_internal_use_line_tree
-msgid "Internal use lines"
-msgstr "Lignes d'utilisation interne"
-
-#. module: stock_internal_use_of_products
-#: model:ir.actions.act_window,name:stock_internal_use_of_products.action_internal_use_tree
-msgid "Internal uses"
-msgstr "Utilisations internes"
-
-#. module: stock_internal_use_of_products
-#: field:internal.use.case,journal:0
+#: field:internal.use.case,journal_id:0
 msgid "Journal"
 msgstr "Journal"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
+#: field:internal.use,__last_update:0
+#: field:internal.use.case,__last_update:0
+#: field:internal.use.line,__last_update:0
+#: field:internal.use.mass.generate.wizard,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: stock_internal_use_of_products
+#: field:internal.use,write_uid:0
+#: field:internal.use.case,write_uid:0
+#: field:internal.use.line,write_uid:0
+#: field:internal.use.mass.generate.wizard,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: stock_internal_use_of_products
+#: field:internal.use,write_date:0
+#: field:internal.use.case,write_date:0
+#: field:internal.use.line,write_date:0
+#: field:internal.use.mass.generate.wizard,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: stock_internal_use_of_products
+#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:68
+#, python-format
+msgid "Line quantity can not be null"
+msgstr "La quantité sur la ligne ne peut pas être nulle"
+
+#. module: stock_internal_use_of_products
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_form
 #: field:internal.use,line_ids:0
 msgid "Lines"
 msgstr "Lignes"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use.case:0
-msgid "Location information"
-msgstr "Emplacements"
-
-#. module: stock_internal_use_of_products
 #: field:internal.use,name:0
 #: field:internal.use.case,name:0
-#: field:internal.use.line,name:0
 msgid "Name"
 msgstr "Nom"
 
@@ -238,33 +280,25 @@ msgid "New"
 msgstr "Brouillon"
 
 #. module: stock_internal_use_of_products
-#: field:internal.use.case,location_from:0
+#: field:internal.use.case,default_location_src_id:0
 msgid "Origin Location"
-msgstr "Emplacement d'origine"
+msgstr "Emplacement source"
 
 #. module: stock_internal_use_of_products
-#: field:internal.use,picking_id:0
-msgid "Picking"
-msgstr "Livraison"
-
-#. module: stock_internal_use_of_products
-#: view:internal.use:0
-msgid "Posted Moves"
-msgstr "Mouvements de stock"
-
-#. module: stock_internal_use_of_products
-#: code:_description:0
-#: view:internal.use.line:0
 #: field:internal.use.line,product_id:0
 #: model:ir.model,name:stock_internal_use_of_products.model_product_product
-#, python-format
 msgid "Product"
 msgstr "Article"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
+#: model:product.template,name:stock_internal_use_of_products.product_with_purchase_tax_product_template
+msgid "Product With Purchase Tax"
+msgstr "Article avec une taxe à l'achat"
+
+#. module: stock_internal_use_of_products
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_form
 msgid "Products"
-msgstr "Produits"
+msgstr "Articles"
 
 #. module: stock_internal_use_of_products
 #: field:internal.use.line,product_qty:0
@@ -272,84 +306,67 @@ msgid "Quantity"
 msgstr "Quantité"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
-#: view:internal.use.line:0
-msgid "Reference"
-msgstr "Référence"
+#: field:internal.use.mass.generate.wizard,selected_use_qty:0
+msgid "Selected Internal Uses"
+msgstr "Utilisations internes sélectionnées"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use.line:0
-msgid "Search Internal Use Lines"
-msgstr "Recherche de lignes d'utilisation interne"
+#: help:internal.use.case,journal_id:0
+msgid "Set the Accounting Journal used to generate Accounting Entries"
+msgstr "Journal comptable où seront générées les écritures comptables"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
-msgid "Search Internal Uses"
-msgstr "Recherche d'utilisations internes"
-
-#. module: stock_internal_use_of_products
-#: field:internal.use.line,state:0
-msgid "State"
-msgstr "État"
-
-#. module: stock_internal_use_of_products
-#: view:internal.use:0
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_search
 #: field:internal.use,state:0
-#: view:internal.use.line:0
 msgid "Status"
 msgstr "Statut"
 
 #. module: stock_internal_use_of_products
-#: code:_description:0
 #: model:ir.model,name:stock_internal_use_of_products.model_stock_move
-#, python-format
 msgid "Stock Move"
 msgstr "Mouvement de stock"
 
 #. module: stock_internal_use_of_products
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_form
+msgid "Stock Moves"
 #: field:internal.use,stock_move_ids:0
-msgid "Stock moves"
-msgstr "Mouvement de stock"
+msgstr "Mouvements de stock"
 
 #. module: stock_internal_use_of_products
-#: field:internal.use.line,subtotal:0
-msgid "Subtotal Tax excluded"
-msgstr "Sous-total HT"
+#: view:internal.use.case:stock_internal_use_of_products.view_internal_use_config_form
+msgid "Stock Settings"
+msgstr "Paramétrage de stock"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
+#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:78
+#, python-format
+msgid "The current unit of measure '%s' of the line %s (quantity  %s) is not compatible with the unit of measure '%s' of the product"
+msgstr "L'unité de mesure '%s' de la ligne %s (quantité  %s) n'est pas compatible avec l'unité de mesure '%s' de l'article"
+
+#. module: stock_internal_use_of_products
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_search
 msgid "To Post"
 msgstr "A valider"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_search
 msgid "To Process"
 msgstr "A traiter"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_tree
 msgid "Total"
 msgstr "Total"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use.line:0
-msgid "Total (Qty)"
-msgstr "Total (Qté)"
-
-#. module: stock_internal_use_of_products
-#: view:internal.use.line:0
-msgid "Total (Vat Excl)"
-msgstr "Total (HT)"
-
-#. module: stock_internal_use_of_products
 #: field:internal.use,amount:0
-msgid "Total Amount Tax excluded"
+msgid "Total Amount (Tax excluded)"
 msgstr "Montant Total HT"
 
 #. module: stock_internal_use_of_products
 #: field:internal.use.line,price_unit:0
-msgid "Unit Price Tax excluded"
-msgstr "Prix unitaire HT"
+msgid "Unit Price (Tax Excluded)"
+msgstr "Prix Unitaire HT"
 
 #. module: stock_internal_use_of_products
 #: field:internal.use.line,product_uom_id:0
@@ -357,19 +374,24 @@ msgid "Unit of Measure"
 msgstr "Unité de mesure"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/model/internal_use.py:116
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:99
 #, python-format
-msgid "User Error!"
-msgstr "Erreur !"
+msgid "You can not confirm an empty Internal Use."
+msgstr "Vous ne pouvez pas valider une utilisation interne sans aucune ligne"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/model/internal_use.py:116
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:89
 #, python-format
 msgid "You can only delete draft uses."
-msgstr "Vous pouvez supprimer uniquement les enregistrements en brouillon."
+msgstr "Vous pouvez seulement supprimer les utilisations internes en brouillon"
 
 #. module: stock_internal_use_of_products
-#: view:internal.use:0
+#: view:internal.use.mass.generate.wizard:stock_internal_use_of_products.view_internal_use_mass_generate_wizard_form
+msgid "or"
+msgstr "ou"
+
+#. module: stock_internal_use_of_products
+#: view:internal.use:stock_internal_use_of_products.view_internal_use_form
 msgid "total"
 msgstr "total"
 

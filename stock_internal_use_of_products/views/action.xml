@@ -27,35 +27,21 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <record id="action_internal_use_tree" model="ir.actions.act_window">
-        <field name="name">Internal uses</field>
+        <field name="name">Internal Uses</field>
         <field name="res_model">internal.use</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-          <p class="oe_view_nocontent_create">
-            Click to register a new internal use of products. 
-          </p><p>
-            It will allow you to declare the stockable products you use for specific cases (such as tastings, gifts, etc.) and will automatically register the stock moves and account moves corresponding.
-          </p>
-        </field>
-        <field name="context">{'search_default_to_process':1}</field>
+        <field name="context">{'search_default_to_confirm': 1}</field>
     </record>
 
 <!-- model: internal.use.case -->
     <record id="action_internal_use_case_tree" model="ir.actions.act_window">
-        <field name="name">Configure Internal uses</field>
+        <field name="name">Configure Internal Uses</field>
         <field name="res_model">internal.use.case</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-          <p class="oe_view_nocontent_create">
-            Click to register a new case of internal use. 
-          </p><p>
-            It will allow you to declare the stockable products you use for specific cases (such as tastings, gifts, etc.) and will automatically register the stock moves and account moves corresponding.
-          </p>
-        </field>
     </record>
 
 </data></openerp>

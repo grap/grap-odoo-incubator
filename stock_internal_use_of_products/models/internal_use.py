@@ -60,7 +60,7 @@ class InternalUse(models.Model):
     # TODO migration for old picking_id (and related stock.moves)
     stock_move_ids = fields.One2many(
         comodel_name='stock.move', inverse_name='internal_use_id',
-        string='Stock moves', copy=False)
+        string='Stock Moves', copy=False)
 
     account_move_id = fields.Many2one(
         comodel_name='account.move', string='Account Moves', readonly=True,
