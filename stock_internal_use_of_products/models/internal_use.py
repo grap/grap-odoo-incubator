@@ -57,7 +57,6 @@ class InternalUse(models.Model):
             'done': [('readonly', True)],
             'confirmed': [('readonly', True)]})
 
-    # TODO migration for old picking_id (and related stock.moves)
     stock_move_ids = fields.One2many(
         comodel_name='stock.move', inverse_name='internal_use_id',
         string='Stock Moves', copy=False)
