@@ -1,0 +1,35 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* pos_multicompany
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-17 11:11+0000\n"
+"PO-Revision-Date: 2018-02-17 11:11+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_multicompany
+#: view:pos.category:pos_multicompany.view_pos_category_search
+#: field:pos.category,company_id:0
+#: view:pos.order:pos_multicompany.view_pos_order_search
+#: view:pos.session:pos_multicompany.view_pos_session_search
+#: field:pos.session,company_id:0
+msgid "Company"
+msgstr "Société"
+
+#. module: pos_multicompany
+#: view:pos.category:pos_multicompany.view_pos_category_search
+msgid "Group by..."
+msgstr "Regrouper par ..."
+
+#. module: pos_multicompany
+#: model:ir.model,name:pos_multicompany.model_pos_category
+msgid "Public Category"
+msgstr "Catégorie publique"
