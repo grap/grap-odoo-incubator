@@ -10,7 +10,7 @@ This module extends the functionality of stock and account module
 to allow non accountant user to declare the use of stockable products for
 specific uses (eg: gifts, tastings, etc.)
 
-.. figure:: /stock_internal_use_of_products/static/description/internal_use_form.png
+.. figure:: stock_internal_use_of_products/static/description/internal_use_form.png
    :width: 800 px
 
 
@@ -21,7 +21,7 @@ To configure this module, you need to:
 
 * Go to Warehouse / Configuration / Internal Use Cases
 
-.. figure:: /stock_internal_use_of_products/static/description/internal_use_case_form.png
+.. figure:: stock_internal_use_of_products/static/description/internal_use_case_form.png
    :width: 800 px
 
 
@@ -31,7 +31,7 @@ Technical informations
 Confirming an internal_use will create:
 
 * One stock.move for each internal_use.line between the 2 locations
-    defined in the internal_use_case
+  defined in the internal_use_case
 * (One account.move per products defined in ```real_time``` inventory)
 * One account.move to transfer the expense if accounting settings are
   defined in your internal use case.
