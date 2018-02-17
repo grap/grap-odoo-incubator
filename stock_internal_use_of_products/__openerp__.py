@@ -6,6 +6,7 @@
 
 {
     'name': 'Stock - Internal Use of products',
+    'summary': "Declare the use of products for specific uses (eg: gifts,...)",
     'version': '8.0.2.0.0',
     'category': 'Stock',
     'author': 'GRAP',

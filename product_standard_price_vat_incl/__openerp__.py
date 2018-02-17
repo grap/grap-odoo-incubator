@@ -5,6 +5,7 @@
 
 {
     'name': 'Product - Standard Price VAT Included',
+    'summary': "Brings a standard Price with VAT Included on Products",
     'version': '8.0.1.0.0',
     'category': 'Product',
     'author': 'GRAP',
