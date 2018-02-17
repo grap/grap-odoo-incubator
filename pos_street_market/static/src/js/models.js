@@ -5,8 +5,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 **/
 
 function load__pos_street_market__models(instance) {
+"use strict";
 
-    module = instance.point_of_sale;
+    var module = instance.point_of_sale;
 
 /* ****************************************************************************
 Overload: point_of_sale.PosModel
@@ -17,10 +18,10 @@ Overload: point_of_sale.PosModel
 
     var _initialize_ = module.PosModel.prototype.initialize;
     module.PosModel.prototype.initialize = function(session, attributes){
-        self = this;
+        var self = this;
 
         // Load Market Place
-        model = {
+        var model = {
             model: 'market.place',
             fields: ['code', 'name'],
             loaded: function(self, market_places){

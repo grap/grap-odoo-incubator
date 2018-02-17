@@ -5,9 +5,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 **/
 
 function load__pos_street_market__widget(instance) {
+"use strict";
 
-    module = instance.point_of_sale;
-    _t = instance.web._t;
+    var module = instance.point_of_sale;
+    var _t = instance.web._t;
 
 /* ****************************************************************************
 Overload: point_of_sale.PosWidget

@@ -5,8 +5,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 **/
 
 function load__pos_street_market__db(instance) {
+"use strict";
 
-    module = instance.point_of_sale;
+    var module = instance.point_of_sale;
 
 /* ****************************************************************************
 Overload: point_of_sale.PosDB

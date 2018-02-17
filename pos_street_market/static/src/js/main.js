@@ -5,6 +5,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 **/
 
 openerp.pos_street_market = function(instance) {
+"use strict";
 
     load__pos_street_market__widget(instance);
     load__pos_street_market__db(instance);
