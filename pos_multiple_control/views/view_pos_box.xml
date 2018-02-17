@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
+@author Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<openerp><data>
+
+    <record id="view_cash_box_in_form" model="ir.ui.view">
+        <field name="model">cash.box.in</field>
+        <field name="inherit_id" ref="pos_cash_move_reason.cash_box_in_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="before">
+                <field name="journal_id" required="1" class="oe_inline"/>
+                <field name="statement_id" required="1" class="oe_inline"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_cash_box_out_form" model="ir.ui.view">
+        <field name="model">cash.box.out</field>
+        <field name="inherit_id" ref="pos_cash_move_reason.cash_box_out_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="before">
+                <field name="journal_id" required="1" class="oe_inline"/>
+                <field name="statement_id" required="1" class="oe_inline"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+</data></openerp>
