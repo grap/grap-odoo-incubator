@@ -1,21 +1,8 @@
-/******************************************************************************
-    Point Of Sale - Street Market module for Odoo
-    Copyright (C) 2015-Today GRAP (http://www.grap.coop)
-    @author Sylvain LE GAL (https://twitter.com/legalsylvain)
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as
-    published by the Free Software Foundation, either version 3 of the
-    License, or (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-******************************************************************************/
+/**
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+**/
 
 function load__pos_street_market__widget(instance) {
 
@@ -47,9 +34,13 @@ Overload: point_of_sale.PosWidget
             this.screen_selector.popup_set['select-market-place-popup'] = this.select_market_place_popup;
 
             // Add On click behaviour to display the PopUp
-            this.$('#button_select_market_place').click(function () {
-                self.screen_selector.show_popup('select-market-place-popup');
-            })
+            if (this.pos.config.iface_street_market){
+                this.$('#button_select_market_place').click(function () {
+                    self.screen_selector.show_popup('select-market-place-popup');
+                });
+            } else{
+                this.$('#button_select_market_place').hide();
+            }
         },
 
     });
@@ -83,8 +74,6 @@ Define : pos_street_market.SelectMarketPlacePopupWidget
                 self.pos_widget.screen_selector.close_popup();
             });
         },
-
-
     });
 
 /* ****************************************************************************
@@ -109,7 +98,6 @@ Define : pos_street_market.MarketPlaceListScreenWidget
                 });
                 market_place_widget.appendTo(this.$('.market-place-widget-list'));
             }
-
         },
     });
 
@@ -138,6 +126,5 @@ Define : pos_street_market.MarketPlaceWidget
             });
         },
     });
-
 
 }
