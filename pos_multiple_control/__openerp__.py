@@ -6,6 +6,7 @@
 
 {
     'name': 'Point Of Sale - Multiple Cash Control',
+    'summary': "Allow user to control each statement and add extra checks",
     'version': '8.0.3.0.0',
     'category': 'Point of Sale',
     'author': 'GRAP',
@@ -22,7 +23,7 @@
     ],
     'demo': [
         'demo/res_groups.xml',
-#        'demo/account_journal.xml',
-#        'demo/pos_config.xml',
+        'demo/account_journal.xml',
+        'demo/pos_config.xml',
     ]
 }

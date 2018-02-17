@@ -12,4 +12,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             (4, ref('base.user_root'))]" />
     </record>
 
+    <record id="point_of_sale.group_pos_user" model="res.groups">
+        <field name="users" eval="[
+            (4, ref('base.user_demo'))]" />
+    </record>
+
 </data></openerp>

@@ -4,7 +4,7 @@
 
 
 # grap-odoo-incubator
-Incubator of Odoo (formely OpenERP) modules before before they are shared to the OCA
+Incubator of Odoo (formely OpenERP) modules before they are shared to the OCA
 
 You can found here some modules developped by GRAP.
 

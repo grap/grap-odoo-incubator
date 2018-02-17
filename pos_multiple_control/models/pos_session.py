@@ -116,7 +116,7 @@ class PosSession(models.Model):
     def _check_unicity(self):
         for session in self:
             domain = [
-                ('state', '=', 'opened'),
+                ('state', 'in', ['opening_control', 'opened']),
                 ('user_id', '=', session.user_id.id)
             ]
             if self.search_count(domain) > 1:
@@ -127,7 +127,7 @@ class PosSession(models.Model):
     def _check_pos_config(self):
         for session in self:
             domain = [
-                ('state', '=', 'opened'),
+                ('state', 'in', ['opening_control', 'opened']),
                 ('config_id', '=', session.config_id.id)
             ]
             if self.search_count(domain) > 1:
