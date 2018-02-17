@@ -35,8 +35,6 @@ Contributors
 
 * Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
-Do not contact contributors directly about support or help with technical issues.
-
 Funders
 -------
 
