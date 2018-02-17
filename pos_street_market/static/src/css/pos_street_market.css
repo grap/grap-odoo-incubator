@@ -1,0 +1,67 @@
+/******************************************************************************
+    Point Of Sale - Street Market module for Odoo
+    Copyright (C) 2015-Today GRAP (http://www.grap.coop)
+    @author Sylvain LE GAL (https://twitter.com/legalsylvain)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+******************************************************************************/
+
+
+/*  ********* Market Places PopUp  ********* */
+/*FIXME : doesn't work because of bad loading of css*/
+div.popup.popup-select-market-place{
+    margin-left:0;
+    margin-top:0;
+    left:5%;
+    width: 90%;
+    top:5%;
+    height:85%;
+}
+.popup-select-market-place .market-place-header{
+    top: 0px;
+    height:65px;
+}
+
+.popup-select-market-place #market-place-empty{
+    top: 0px;
+    position: absolute;
+    right: 10px;
+}
+
+/*  ********* Market Place Item ********* */
+
+li.market-place {
+    position:relative;
+    vertical-align: top;
+    display: inline-block;
+    font-size: 15px;
+    margin: 5px !important;
+    width: 150px;
+    height:100px;
+    background:#fff;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 2px 0px #dad8e4, 0px 1px 8px #636480; 
+       -moz-box-shadow: 0px 2px 0px #dad8e4, 0px 1px 8px #636480; 
+            box-shadow: 0px 2px 0px #dad8e4, 0px 1px 8px #636480; 
+}
+
+a.market-place {
+    position:relative;
+    vertical-align: top;
+    display: inline-block;
+    width: 150px;
+    height:100px;
+}

@@ -1,0 +1,91 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* pos_street_market
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-11 16:30+0000\n"
+"PO-Revision-Date: 2015-09-11 16:30+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_street_market
+#: field:market.place,active:0
+msgid "Active"
+msgstr "Actif"
+
+#. module: pos_street_market
+#: view:market.place:pos_street_market.view_market_place_form
+#: field:market.place,code:0
+msgid "Code"
+msgstr "Code"
+
+#. module: pos_street_market
+#: field:market.place,company_id:0
+msgid "Company"
+msgstr "Société"
+
+#. module: pos_street_market
+#: model:ir.actions.act_window,help:pos_street_market.action_market_place
+msgid "Display and manage market places."
+msgstr "Afficher et gérer les lieux de marchés."
+
+#. module: pos_street_market
+#. openerp-web
+#: code:addons/pos_street_market/static/src/xml/pos_street_market.xml:19
+#, python-format
+msgid "Let Empty"
+msgstr "Laisse vide"
+
+#. module: pos_street_market
+#. openerp-web
+#: code:addons/pos_street_market/static/src/js/widget.js:81
+#: code:addons/pos_street_market/static/src/xml/pos_street_market.xml:7
+#: view:pos.order:pos_street_market.view_pos_order_search
+#: field:pos.order,market_place_id:0
+#, python-format
+msgid "Market Place"
+msgstr "Lieu de marché"
+
+#. module: pos_street_market
+#. openerp-web
+#: code:addons/pos_street_market/static/src/xml/pos_street_market.xml:16
+#: model:ir.actions.act_window,name:pos_street_market.action_market_place
+#: model:ir.ui.menu,name:pos_street_market.menu_market_place
+#, python-format
+msgid "Market Places"
+msgstr "Lieux de marchés"
+
+#. module: pos_street_market
+#: view:market.place:pos_street_market.view_market_place_form
+#: field:market.place,name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: pos_street_market
+#: model:ir.model,name:pos_street_market.model_pos_order
+msgid "Point of Sale"
+msgstr "Point de Vente"
+
+#. module: pos_street_market
+#: model:res.groups,name:pos_street_market.res_group_street_market_manager
+msgid "Point of Sale - Street Market Manager"
+msgstr "Point de Vente - Responsable de Marché"
+
+#. module: pos_street_market
+#: view:pos.order:pos_street_market.view_pos_order_search
+msgid "With Market Place"
+msgstr "Avec un lieu de marché"
+
+#. module: pos_street_market
+#: view:pos.order:pos_street_market.view_pos_order_search
+msgid "Without Market Place"
+msgstr "Sans lieu de marché"
+
+
