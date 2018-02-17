@@ -1,15 +1,13 @@
-# -*- coding: utf-8 -*-
-# © 2015 ACSONE SA/NV (<http://acsone.eu>)
+# coding: utf-8
+# Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+# @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from openerp import api, exceptions, fields, _
 from openerp.addons.point_of_sale.wizard.pos_box import PosBox
 
-from lxml import etree
-import simplejson
 
-
-class PosBoxCashMoveReason(PosBox):
+class PosBoxJournalReason(PosBox):
     _register = False
 
     journal_id = fields.Many2one(
@@ -50,8 +48,9 @@ class PosBoxCashMoveReason(PosBox):
         return statement.write({'line_ids': [(0, False, values)]})
 
 
-class PosBoxIn(PosBoxCashMoveReason):
+class PosBoxIn(PosBoxJournalReason):
     _inherit = 'cash.box.in'
 
-class PosBoxOut(PosBoxCashMoveReason):
+
+class PosBoxOut(PosBoxJournalReason):
     _inherit = 'cash.box.out'

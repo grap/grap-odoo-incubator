@@ -11,11 +11,15 @@ class PosSession(models.Model):
     _inherit = 'pos.session'
 
     # Columns Section
+    statement_ids = fields.One2many(readonly=False)
+
     control_statement_ids = fields.One2many(
         string='Statements', comodel_name='account.bank.statement',
         related='statement_ids')
 
-    statement_ids = fields.One2many(readonly=False)
+    summary_statement_ids = fields.One2many(
+        string='Statements', comodel_name='account.bank.statement',
+        related='statement_ids')
 
     control_register_balance_start = fields.Float(
         compute='_compute_control_register_balance_start',
@@ -105,7 +109,7 @@ class PosSession(models.Model):
     def wkf_action_close(self):
         for session in self:
             for statement in session.statement_ids:
-                if statement.control_difference != 0:
+                if statement.control_difference > 0.00001:
                     raise UserError(_(
                         "You can not close this session because the statement"
                         " %s has a not null difference: \n\n%f") % (
