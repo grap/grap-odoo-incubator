@@ -23,5 +23,9 @@
         'demo/account_tax.xml',
         'demo/product_template.xml',
     ],
+    'images': [
+        'static/description/pricelist_version_form.png',
+        'static/description/product_form.png',
+    ],
     'installable': True,
 }
