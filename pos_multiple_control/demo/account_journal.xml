@@ -25,6 +25,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="default_debit_account_id" ref="account.cash" />
         <field name="default_credit_account_id" ref="account.cash" />
         <field name="internal_account_id" ref="account.rsa" />
+        <field name="with_last_closing_balance" eval="False" />
         <field name="journal_user" eval="True" />
         <field name="cash_control" eval="True" />
     </record>

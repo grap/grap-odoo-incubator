@@ -72,6 +72,19 @@ class TestMultipleControl(TransactionCase):
     def test_04_check_bank_statement_control(self):
         # I create new session and open it
         session = self.session_obj.create({'config_id': self.pos_config.id})
+
+        # Make 2 Sales of 1100 and check transactions and theoritical balance
         session.open_cb()
+        self._sale(session, 100, self.check_journal)
         self._sale(session, 1000, self.check_journal)
+        self.assertEqual(
+            session.control_register_total_entry_encoding, 1100,
+            "Incorrect transactions total")
+        self.assertEqual(
+            session.control_register_balance_end, 1100,
+            "Incorrect theoritical ending balance")
+
         session.signal_workflow('cashbox_control')
+
+        with self.assertRaises(UserError):
+            session.signal_workflow('close')

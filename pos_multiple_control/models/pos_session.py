@@ -109,7 +109,7 @@ class PosSession(models.Model):
     def wkf_action_close(self):
         for session in self:
             for statement in session.statement_ids:
-                if statement.control_difference > 0.00001:
+                if abs(statement.control_difference) > 0.00001:
                     raise UserError(_(
                         "You can not close this session because the statement"
                         " %s has a not null difference: \n\n%f") % (
