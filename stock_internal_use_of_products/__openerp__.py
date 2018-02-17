@@ -18,6 +18,7 @@
         'data/ir_sequence.xml',
         'security/ir_model_access.yml',
         'security/ir_rule.yml',
+        'views/templates.xml',
         'views/view_internal_use.xml',
         'views/view_internal_use_case.xml',
         'views/action.xml',
@@ -32,8 +33,9 @@
         'demo/internal_use_case.xml',
         'demo/internal_use.xml',
     ],
-    'css': [
-        'static/src/css/css.css'
+    'images': [
+        'static/description/internal_use_form.png',
+        'static/description/internal_use_case_form.png',
     ],
     'installable': True,
 }

@@ -64,16 +64,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <group>
                         <group>
                             <field name="internal_use_case_id"/>
+                            <field name="amount" sum="total"/>
                         </group>
                         <group>
                             <field name="date_done"/>
                             <field name="description"/>
                             <field name="company_id" groups="base.group_multi_company"/>
                         </group>
-                    </group>
-                    <group>
-                        <separator string="Cost based on standard price" colspan="2"/>
-                        <field name="amount" sum="total"/>
                     </group>
                     <notebook>
                         <page string="Products">
