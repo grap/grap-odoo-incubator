@@ -4,6 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     'name': 'Point of Sale - Street Market',
+    'summary': "Set the market place of the PoS orders",
     'version': '8.0.2.0.0',
     'category': 'Point of Sale',
     'author': 'GRAP',
@@ -29,5 +30,10 @@
     'demo': [
         'demo/res_groups.xml',
         'demo/market_place.xml',
+    ],
+    'images': [
+        'static/description/pos_front_end_ui.png',
+        'static/description/pos_config_form.png',
+        'static/description/pos_order_search.png',
     ],
 }
