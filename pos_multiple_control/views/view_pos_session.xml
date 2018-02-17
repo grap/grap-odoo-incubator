@@ -30,7 +30,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <field name="is_pos_control" invisible="1"/>
                     </tree>
                     <form>
-                        <field name="state" invisible="1" />
+                        <group>
+                            <field name="name" />
+                            <field name="journal_id" />
+                            <field name="state" invisible="1" />
+                        </group>
                             <field name="details_ids" nolabel="1" colspan="2">
                             <tree string="Cashbox Lines" editable="bottom">
 
@@ -118,7 +122,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
                     </tree>
                     <form>
-                        <field name="state" invisible="1" />
+                        <group>
+                            <field name="name" />
+                            <field name="journal_id" />
+                            <field name="state" invisible="1" />
+                        </group>
                         <field name="line_ids" nolabel="1" colspan="2">
                             <tree string="Transactions">
                                 <field name="date"/>

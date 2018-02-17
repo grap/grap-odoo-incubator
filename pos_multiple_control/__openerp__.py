@@ -21,6 +21,12 @@
         'views/view_account_journal.xml',
         'views/view_pos_session.xml',
     ],
+    'images':[
+        'static/description/pos_session_closing_form.png',
+        'static/description/account_bank_statement_piece_form.png',
+        'static/description/account_bank_statement_summary_form.png',
+        'static/description/account_journal_bank_setting.png',
+    ],
     'demo': [
         'demo/res_groups.xml',
         'demo/account_journal.xml',

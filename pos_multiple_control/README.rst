@@ -12,6 +12,19 @@ improved control during the close of the session.
 * Allow user to control each statement. (not only the cash statement,
   by default)
 
+.. figure:: pos_multiple_control/static/description/pos_session_closing_form.png
+   :width: 800 px
+
+* User should set the closing balance for all the statements
+
+.. figure:: pos_multiple_control/static/description/account_bank_statement_piece_form.png
+   :width: 800 px
+
+* User can access to the summary by payment methods for each statement
+
+.. figure:: pos_multiple_control/static/description/account_bank_statement_summary_form.png
+   :width: 800 px
+
 * So that, force user to have correct balance on each statement. If not,
   user should have to set Profit or Loss reason, using the OCA module
   ``pos_cash_move_reason``
@@ -29,24 +42,13 @@ Configuration
 
 To configure this module, you need to:
 
-* Go to ...
+* Go to Invoicing / Configuration / Journals / Journals
 
-.. figure:: path/to/local/image.png
-   :alt: alternative description
-   :width: 600 px
-
-Usage
-=====
-
-To use this module, you need to:
-
-* Go to ...
-
-
-Known issues / Roadmap
-======================
-
-* ...
+* Check the box 'Bank and Checks Control' if you want to enable this feature
+  for this journal
+  
+.. figure:: pos_multiple_control/static/description/account_journal_bank_setting.png
+   :width: 800 px
 
 Credits
 =======
@@ -58,64 +60,6 @@ Contributors
 * Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
 Do not contact contributors directly about support or help with technical issues.
-
-Funders
--------
-
-The development of this module has been financially supported by:
-
-* GRAP, Groupement Régional Alimentaire de Proximité (http://www.grap.coop)
-
-
-.. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
-   :alt: License: AGPL-3
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-It's now allowed to control all the payment method when user open or close
-his session.
-
-Functionnality
---------------
-
-* Disable constrains on number of journals with cash control enabled,
-  on pos config.
-
-
-TODO : 
-rename table pos.cash.controls -> pos_cash_control
-dans pos_cash_control. 
-pos_session_id -> session_id
-cash_register_id -> statement_id
-
-
-Credits
-=======
-
-Icon
-----
-
-Icon is a merge of the Odoo Point of Sale icon and a checklist icon
-available here : https://www.iconfinder.com/icons/379508/checklist_icon
-
-Contributors
-------------
-
-* Sylvain LE GAL (https://twitter.com/legalsylvain)
 
 Funders
 -------
