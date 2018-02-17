@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="pricelist" model="product.pricelist">
+        <field name="name">Sale Price List based on Cost VAT Included</field>
+        <field name="type">sale</field>
+    </record>
+
+    <record id="pricelist_version" model="product.pricelist.version">
+        <field name="name">Sale Price List Version based on Cost VAT Included</field>
+        <field name="pricelist_id" ref="pricelist"/>
+    </record>
+
+    <record id="pricelist_item_" model="product.pricelist.item">
+        <field name="name">Sale Price List Item based on Cost VAT Included</field>
+        <field name="base" ref="standard_price_vat_incl" />
+        <field name="price_version_id" ref="pricelist_version"/>
+    </record>
+
+</data></openerp>

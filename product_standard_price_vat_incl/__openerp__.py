@@ -11,19 +11,17 @@
     'website': 'http://www.grap.coop',
     'license': 'AGPL-3',
     'depends': [
-        'sale_stock',
+        'account',
     ],
     'data': [
-        'data/product_price_type.yml',
+        'data/product_price_type.xml',
         'views/view_product_template.xml',
-        'views/view_product_product.xml',
     ],
     'demo': [
-        'demo/res_groups.yml',
-        'demo/product_pricelist.yml',
-        'demo/res_partner.yml',
-        'demo/account_tax.yml',
-        'demo/product_template.yml',
+        'demo/res_groups.xml',
+        'demo/product_pricelist.xml',
+        'demo/account_tax.xml',
+        'demo/product_template.xml',
     ],
     'installable': True,
 }
