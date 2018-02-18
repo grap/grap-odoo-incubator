@@ -18,8 +18,6 @@ Overload: point_of_sale.PosModel
 
     var _initialize_ = module.PosModel.prototype.initialize;
     module.PosModel.prototype.initialize = function(session, attributes){
-        var self = this;
-
         // Load Market Place
         var model = {
             model: 'market.place',
@@ -27,7 +25,7 @@ Overload: point_of_sale.PosModel
             loaded: function(self, market_places){
                  self.db.add_market_places(market_places);
             },
-        }
+        };
         this.models.push(model);
 
         return _initialize_.call(this, session, attributes);
@@ -41,7 +39,7 @@ Overload: point_of_sale.Order
     var _export_as_JSON_original = module.Order.prototype.export_as_JSON;
 
     module.Order.prototype.export_as_JSON = function(){
-        res = _export_as_JSON_original.call(this);
+        var res = _export_as_JSON_original.call(this);
         res.market_place_id = this.pos.current_market_place_id;
         return res;
     };

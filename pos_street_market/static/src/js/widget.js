@@ -48,7 +48,7 @@ Overload: point_of_sale.PosWidget
 
 /* ****************************************************************************
 Define : pos_street_market.SelectMarketPlacePopupWidget
-    
+
 - This widget display a pop up to select a Market Place that will be used for
   all the next PoS Orders;
 - Add the possibility to unset a selecte Market Place;
@@ -79,7 +79,7 @@ Define : pos_street_market.SelectMarketPlacePopupWidget
 
 /* ****************************************************************************
 Define : pos_street_market.MarketPlaceListScreenWidget
-    
+
 - Display a list of market places;
 **************************************************************************** */
     module.MarketPlaceListScreenWidget = module.ScreenWidget.extend({
@@ -88,11 +88,10 @@ Define : pos_street_market.MarketPlaceListScreenWidget
         /* Overload Section */
         start: function() {
             this._super();
-            var self = this;
 
             // Display Market Places list
             var market_places = this.pos.db.market_places;
-            
+
             for(var i = 0, len = market_places.length; i < len; i++){
                 var market_place_widget = new module.MarketPlaceWidget(this, {
                     model: market_places[i],
@@ -104,7 +103,7 @@ Define : pos_street_market.MarketPlaceListScreenWidget
 
 /* ****************************************************************************
 Define : pos_street_market.MarketPlaceWidget
-    
+
 - Display a market place;
 **************************************************************************** */
     module.MarketPlaceWidget = module.PosBaseWidget.extend({

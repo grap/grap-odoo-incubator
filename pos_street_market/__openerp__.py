@@ -30,6 +30,7 @@
     'demo': [
         'demo/res_groups.xml',
         'demo/market_place.xml',
+        'demo/pos_config.xml',
     ],
     'images': [
         'static/description/pos_front_end_ui.png',

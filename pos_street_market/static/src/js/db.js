@@ -24,8 +24,6 @@ Overload: point_of_sale.PosDB
 
         add_market_places: function(market_places){
             for(var i=0 ; i < market_places.length; i++){
-                var attribute_value_ids = [];
-                // store Market Places
                 this.market_places.push(market_places[i]);
             }
         },
