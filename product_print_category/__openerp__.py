@@ -24,6 +24,7 @@
         'security/ir_module_category.xml',
         'security/res_groups.xml',
         'security/ir.model.access.csv',
+        'data/report_paperformat.xml',
         'report/report_pricetag.xml',
         'report/ir_actions_report_xml.xml',
         'wizard/view_product_print_wizard.xml',

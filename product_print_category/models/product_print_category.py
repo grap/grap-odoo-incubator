@@ -52,7 +52,9 @@ class ProductPrintCategory(models.Model):
 
     # Compute Section
     @api.multi
-    @api.depends('product_ids.print_category_id')
+    @api.depends(
+        'product_ids.print_category_id',
+        'product_ids.product_tmpl_id.print_category_id')
     def _compute_product_qty(self):
         for category in self:
             category.product_qty = len(category.product_ids)

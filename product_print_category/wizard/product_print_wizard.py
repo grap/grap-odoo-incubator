@@ -23,7 +23,7 @@ class ProductPrintWizard(models.TransientModel):
 
         if context.get('active_model', False) == 'product.print.category':
             domain = [
-               ('print_category_id', '=', context.get('active_id', False)),
+                ('print_category_id', '=', context.get('active_id', False)),
             ]
             if not context.get('all_products', False):
                 domain.append(('to_print', '=', True))
@@ -60,8 +60,9 @@ class ProductPrintWizard(models.TransientModel):
     def print_report(self):
         self.ensure_one()
         data = self._prepare_data()
-        return self.env['report'].get_action(
+        res = self.env['report'].get_action(
             self, 'product_print_category.report_pricetag', data=data)
+        return res
 
     @api.multi
     def _prepare_data(self):
