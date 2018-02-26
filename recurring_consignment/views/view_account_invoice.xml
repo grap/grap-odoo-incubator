@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015-Today GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="view_account_invoice_form" model="ir.ui.view">
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form" />
+        <field name="arch" type="xml">
+            <field name="account_id" position="after">
+                <field name="is_consignment_invoice" invisible="1" />
+            </field>
+            <notebook position="inside">
+                <page string="Commissionned Lines" groups="recurring_consignment.group_consignment_user" attrs="{'invisible': [('is_consignment_invoice', '=', False)]}">
+                    <group>
+                        <button name="%(report_account_invoice_consignment)d" type="action" string="Print Commission Invoice Receipt" colspan="4"/>
+                        <field name="consignment_line_ids" nolabel="1">
+                            <tree string="Lines" editable="bottom">
+                                <field name="date" />
+                                <field name="move_id" />
+                                <field name="debit" />
+                                <field name="credit" />
+                                <field name="consignment_commission" />
+                                <field name="tax_code_id" />
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</data></openerp>

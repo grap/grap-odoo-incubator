@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="tax_group_5_vat_include" model="tax.group">
+        <field name="name">Tax Group 5% (5% VAT Incl.)</field>
+        <field name="customer_tax_ids" eval="[(4, ref('simple_tax_account.vat_5_include'))]"/>
+    </record>
+
+    <record id="tax_group_20_vat_exclude" model="tax.group">
+        <field name="name">Tax Group 20% (20% VAT Excl.)</field>
+        <field name="customer_tax_ids" eval="[(4, ref('simple_tax_account.vat_20_exclude'))]"/>
+    </record>
+
+    <record id="tax_group_5_consignor_1" model="tax.group">
+        <field name="name">Tax Group 5% (Consignor 1)</field>
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="customer_tax_ids" eval="[(4, ref('tax_5_consignor_1'))]"/>
+    </record>
+
+    <record id="tax_group_20_consignor_1" model="tax.group">
+        <field name="name">Tax Group 20% (Consignor 1)</field>
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="customer_tax_ids" eval="[(4, ref('tax_20_consignor_1'))]"/>
+    </record>
+
+</data></openerp>

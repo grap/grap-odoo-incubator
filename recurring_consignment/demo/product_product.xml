@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="consigned_product_consignor_1_vat_5" model="product.product">
+        <field name="name">My Consigned Product (with VAT 5% - Consignor 1)</field>
+        <field name="uom_id" ref="product.product_uom_unit"/>
+        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="sale_ok" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="tax_group_id" ref="tax_group_5_consignor_1"/>
+    </record>
+
+    <record id="consigned_product_consignor_1_vat_20" model="product.product">
+        <field name="name">My Consigned Product (with VAT 20% - Consignor 1)</field>
+        <field name="uom_id" ref="product.product_uom_unit"/>
+        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="sale_ok" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="tax_group_id" ref="tax_group_20_consignor_1"/>
+    </record>
+
+    <record id="commission_product_vat_5" model="product.product">
+        <field name="name">Commission (5% Price Incl.) (For Products VAT 5%)</field>
+        <field name="uom_id" ref="product.product_uom_unit"/>
+        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="sale_ok" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="tax_group_id" ref="tax_group_5_vat_include"/>
+    </record>
+
+    <record id="tax_code_base_5" model="account.tax.code">
+        <field name="consignment_product_id" ref="commission_product_vat_5"/>
+    </record>
+
+    <record id="commission_product_vat_20" model="product.product">
+        <field name="name">Commission (20% Price Excl., For Products VAT 20%)</field>
+        <field name="uom_id" ref="product.product_uom_unit"/>
+        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="sale_ok" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="tax_group_id" ref="tax_group_20_vat_exclude"/>
+    </record>
+
+    <record id="tax_code_base_20" model="account.tax.code">
+        <field name="consignment_product_id" ref="commission_product_vat_20"/>
+    </record>
+
+</data></openerp>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="tax_code_base_5" model="account.tax.code">
+        <field name="name">Tax Code (Base VAT. 5%)</field>
+        <field name="code">Amount 5%</field>
+    </record>
+
+    <record id="tax_code_base_20" model="account.tax.code">
+        <field name="name">Tax Code (Base VAT. 20%)</field>
+        <field name="code">Amount 20%</field>
+    </record>
+
+    <record id="tax_code_vat_5" model="account.tax.code">
+        <field name="name">Tax Code (VAT 5%)</field>
+        <field name="code">VAT 5%</field>
+    </record>
+
+    <record id="tax_code_vat_20" model="account.tax.code">
+        <field name="name">Tax Code (VAT 20%)</field>
+        <field name="code">VAT 20%</field>
+    </record>
+
+</data></openerp>

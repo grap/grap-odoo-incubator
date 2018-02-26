@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="tax_5_consignor_1" model="account.tax">
+        <field name="name">Tax 5% (Consignor 1)</field>
+        <field name="amount">.05</field>
+        <field name="type">percent</field>
+        <field name="price_include" eval="False" />
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="account_collected_id" ref="account_consignor_1"/>
+        <field name="account_paid_id" ref="account_consignor_1"/>
+        <field name="base_code_id" ref="tax_code_base_5"/>
+        <field name="ref_base_code_id" ref="tax_code_base_5"/>
+        <field name="tax_code_id" ref="tax_code_vat_5"/>
+        <field name="ref_tax_code_id" ref="tax_code_vat_5"/>
+    </record>
+
+    <record id="tax_20_consignor_1" model="account.tax">
+        <field name="name">Tax 20% (Consignor 1)</field>
+        <field name="amount">.2</field>
+        <field name="type">percent</field>
+        <field name="price_include" eval="False" />
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="account_collected_id" ref="account_consignor_1"/>
+        <field name="account_paid_id" ref="account_consignor_1"/>
+        <field name="base_code_id" ref="tax_code_base_20"/>
+        <field name="ref_base_code_id" ref="tax_code_base_20"/>
+        <field name="tax_code_id" ref="tax_code_vat_20"/>
+        <field name="ref_tax_code_id" ref="tax_code_vat_20"/>
+    </record>
+
+</data></openerp>
+
+
+
+

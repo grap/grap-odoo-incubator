@@ -1,0 +1,11 @@
+.consigment_label {
+  height: 20px;
+  display: inline-block;
+  background: #fae7bb none repeat scroll 0% 0%;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  padding: 3px 12px;
+  marging-left: 10px;
+  marging-right: 10px;
+  font-size: 13px;
+  text-align: center;
+}

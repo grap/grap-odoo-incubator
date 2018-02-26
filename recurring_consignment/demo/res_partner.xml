@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="consignor_1" model="res.partner">
+        <field name="name">Consignor 1 (with VAT)</field>
+        <field name="customer" eval="True" />
+        <field name="supplier" eval="False" />
+        <field name="is_consignor" eval="True" />
+        <field name="consignment_commission" eval="15.0" />
+        <field name="consignment_account_id" ref="account_consignor_1"/>
+    </record>
+
+</data></openerp>
