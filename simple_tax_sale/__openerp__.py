@@ -18,6 +18,9 @@
     'data': [
         'views/view_sale_order.xml',
     ],
+    'demo': [
+        'demo/sale_order.xml',
+    ],
     'auto_install': True,
     'installable': True,
 }

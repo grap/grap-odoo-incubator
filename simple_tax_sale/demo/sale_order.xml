@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="sale_order_1" model="sale.order">
+        <field name="partner_id" ref="simple_tax_account.partner_tax_none"/>
+        <field name="name">My SO For Simple Tax</field>
+    </record>
+
+    <record id="sale_order_1_line_1" model="sale.order.line">
+        <field name="name">My Consigned Product (VAT 5%) VAT INCL</field>
+        <field name="product_id" ref="simple_tax_account.product_tax_included"/>
+        <field name="order_id" ref="sale_order_1"/>
+        <field name="price_unit">100</field>
+        <field name="product_uom_qty">1</field>
+        <field name="tax_id" eval="[(6, 0, [ref('simple_tax_account.vat_5_include')])]"/>
+    </record>
+
+    <record id="sale_order_1_line_2" model="sale.order.line">
+        <field name="name">My Consigned Product (VAT 5%) VAT EXCL</field>
+        <field name="product_id" ref="simple_tax_account.product_tax_included"/>
+        <field name="order_id" ref="sale_order_1"/>
+        <field name="price_unit">1000</field>
+        <field name="product_uom_qty">1</field>
+        <field name="tax_id" eval="[(6, 0, [ref('simple_tax_account.vat_5_exclude')])]"/>
+    </record>
+
+</data></openerp>
