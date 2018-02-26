@@ -6,7 +6,7 @@
 from openerp import api, models
 
 
-class WizardMultiChartsAccounts(models.Model):
+class WizardMultiChartsAccounts(models.TransientModel):
     _inherit = 'wizard.multi.charts.accounts'
 
     @api.model

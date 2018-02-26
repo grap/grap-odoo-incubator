@@ -55,9 +55,9 @@ Technical Information
 Related Modules
 ---------------
 
-* This following modules provide the same behouviour:
-    * 'simple_tax_sale' for sale module;
-    * 'simple_tax_purchase' for purchase module;
+This following modules provide the same behaviour:
+* ``simple_tax_sale`` for sale module
+* ``simple_tax_purchase`` for purchase module
 
 Credits
 =======
