@@ -6,8 +6,8 @@
 {
     'name': 'Purchase - Simple Tax',
     'summary': 'Switch between VAT Excluded and VAT Included For Purchase',
-    'version': '0.1',
-    'category': 'Sale',
+    'version': '8.0.1.0.0',
+    'category': 'Purchase',
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
     'license': 'AGPL-3',
@@ -17,6 +17,9 @@
     ],
     'data': [
         'views/view_purchase_order.xml',
+    ],
+    'demo': [
+        'demo/purchase_order.xml',
     ],
     'auto_install': True,
     'installable': True,
