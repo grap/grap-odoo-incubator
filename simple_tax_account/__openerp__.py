@@ -25,6 +25,7 @@
         'demo/account_tax_template.xml',
         'demo/res_partner.xml',
         'demo/product_product.xml',
+        'demo/account_invoice.xml',
     ],
     'installable': True,
 }
