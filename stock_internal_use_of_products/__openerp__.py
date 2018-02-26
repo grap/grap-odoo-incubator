@@ -17,8 +17,8 @@
     ],
     'data': [
         'data/ir_sequence.xml',
-        'security/ir_model_access.yml',
-        'security/ir_rule.yml',
+        'security/ir.model.access.csv',
+        'security/ir_rule.xml',
         'views/templates.xml',
         'views/view_internal_use.xml',
         'views/view_internal_use_case.xml',
