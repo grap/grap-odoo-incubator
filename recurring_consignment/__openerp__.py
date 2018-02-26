@@ -46,6 +46,7 @@
         'demo/tax_group.xml',
         'demo/product_product.xml',
         'demo/account_invoice.xml',
+        'demo/sale_order.xml',
     ],
     'css': [
         'static/src/css/recurring_consignment.css',

@@ -28,4 +28,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="customer_tax_ids" eval="[(4, ref('tax_20_consignor_1'))]"/>
     </record>
 
+    <record id="tax_group_5_consignor_2" model="tax.group">
+        <field name="name">Tax Group 5% (Consignor 2) TODO</field>
+        <field name="consignor_partner_id" ref="consignor_2"/>
+    </record>
+
 </data></openerp>

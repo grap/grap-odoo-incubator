@@ -16,8 +16,28 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="tax_group_id" ref="tax_group_5_consignor_1"/>
     </record>
 
+    <record id="consigned_product_consignor_1_vat_5_2" model="product.product">
+        <field name="name">My Consigned Product #2 (with VAT 5% - Consignor 1)</field>
+        <field name="uom_id" ref="product.product_uom_unit"/>
+        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="sale_ok" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="tax_group_id" ref="tax_group_5_consignor_1"/>
+    </record>
+
     <record id="consigned_product_consignor_1_vat_20" model="product.product">
         <field name="name">My Consigned Product (with VAT 20% - Consignor 1)</field>
+        <field name="uom_id" ref="product.product_uom_unit"/>
+        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="sale_ok" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="tax_group_id" ref="tax_group_20_consignor_1"/>
+    </record>
+
+    <record id="consigned_product_consignor_1_vat_20_2" model="product.product">
+        <field name="name">My Consigned Product #2 (with VAT 20% - Consignor 1)</field>
         <field name="uom_id" ref="product.product_uom_unit"/>
         <field name="uom_po_id" ref="product.product_uom_unit"/>
         <field name="sale_ok" eval="True"/>

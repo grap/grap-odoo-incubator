@@ -12,21 +12,21 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <record id="sale_order_1_line_1" model="sale.order.line">
-        <field name="name">My Consigned Product (VAT 5%) VAT INCL</field>
-        <field name="product_id" ref="simple_tax_account.product_tax_included"/>
+        <field name="name">My Consigned Product #2 (VAT 5%) VAT INCL</field>
+        <field name="product_id" ref="consigned_product_consignor_1_vat_5_2"/>
         <field name="order_id" ref="sale_order_1"/>
         <field name="price_unit">100</field>
         <field name="product_uom_qty">1</field>
-        <field name="tax_id" eval="[(6, 0, [ref('simple_tax_account.vat_5_include')])]"/>
+        <field name="tax_id" eval="[(6, 0, [ref('tax_5_consignor_1')])]"/>
     </record>
 
     <record id="sale_order_1_line_2" model="sale.order.line">
-        <field name="name">My Consigned Product (VAT 5%) VAT EXCL</field>
-        <field name="product_id" ref="simple_tax_account.product_tax_included"/>
+        <field name="name">My Consigned Product #2 (VAT 20%) VAT EXCL</field>
+        <field name="product_id" ref="consigned_product_consignor_1_vat_20_2"/>
         <field name="order_id" ref="sale_order_1"/>
         <field name="price_unit">1000</field>
         <field name="product_uom_qty">1</field>
-        <field name="tax_id" eval="[(6, 0, [ref('simple_tax_account.vat_5_exclude')])]"/>
+        <field name="tax_id" eval="[(6, 0, [ref('tax_20_consignor_1')])]"/>
     </record>
 
 </data></openerp>
