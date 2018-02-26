@@ -25,17 +25,6 @@ when editing a Purchase Order.
 
 See simple_tax_account for more detailled information.
 
-
-Installation
-============
-
-Normal installation.
-
-Configuration
-=============
-
-No configuration is needed.
-
 Credits
 =======
 
