@@ -15,4 +15,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="consignment_account_id" ref="account_consignor_1"/>
     </record>
 
+    <record id="consignor_2" model="res.partner">
+        <field name="name">Consignor 2 (without VAT)</field>
+        <field name="customer" eval="True" />
+        <field name="supplier" eval="False" />
+        <field name="is_consignor" eval="True" />
+        <field name="consignment_commission" eval="20.0" />
+        <field name="consignment_account_id" ref="account_consignor_2"/>
+    </record>
+
+
 </data></openerp>

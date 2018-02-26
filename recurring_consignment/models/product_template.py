@@ -67,6 +67,7 @@ class ProductTemplate(models.Model):
 
     @api.multi
     def write(self, vals):
+        self._check_vals_consignor(vals)
         vals = self._update_vals_consignor(vals)
         if vals.get('is_consignment_commission', False):
             raise UserError(_(
@@ -76,6 +77,23 @@ class ProductTemplate(models.Model):
         return super(ProductTemplate, self).write(vals)
 
     # Custom Section
+    @api.multi
+    def _check_vals_consignor(self, vals):
+        stock_move_obj = self.env['stock.move']
+        if vals.get('consignor_partner_id', False):
+            for template in self:
+                product_ids = template.product_variant_ids.ids
+                if template.consignor_partner_id.id !=\
+                        vals.get('consignor_partner_id', False):
+                    moves = stock_move_obj.search([
+                        ('product_id', 'in', product_ids)])
+                    if len(moves):
+                        raise UserError(_(
+                            "You can not change the value of the field"
+                            " 'Consignor' because the product is associated"
+                            " to one or more stock Moves. You should"
+                            " disable the product and create a new one."))
+
     @api.model
     def _update_vals_consignor(self, vals):
         partner_obj = self.env['res.partner']
