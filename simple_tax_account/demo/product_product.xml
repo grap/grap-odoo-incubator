@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="product_tax_included" model="product.product">
+        <field name="name">Product (VAT 5% - Price Incl.)</field>
+        <field name="categ_id" ref="product.product_category_all"/>
+        <field name="type">consu</field>
+        <field name="list_price">200</field>
+        <field name="standard_price">150</field>
+        <field name="uom_id" ref="product.product_uom_unit"/>
+        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="taxes_id" eval="[(4, ref('vat_5_include'))]"/>
+        <field name="supplier_taxes_id" eval="[(4, ref('vat_5_include'))]"/>
+    </record>
+
+    <record id="product_tax_excluded" model="product.product">
+        <field name="name">Product (VAT 5% - Price Excl.)</field>
+        <field name="categ_id" ref="product.product_category_all"/>
+        <field name="type">consu</field>
+        <field name="list_price">100</field>
+        <field name="standard_price">80</field>
+        <field name="uom_id" ref="product.product_uom_unit"/>
+        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="taxes_id" eval="[(4, ref('vat_5_exclude'))]"/>
+        <field name="supplier_taxes_id" eval="[(4, ref('vat_5_exclude'))]"/>
+    </record>
+
+</data></openerp>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="partner_tax_excluded" model="res.partner">
+        <field name="name">Partner (TAX Excluded)</field>
+        <field name="simple_tax_type">excluded</field>
+    </record>
+
+    <record id="partner_tax_included" model="res.partner">
+        <field name="name">Partner (TAX Included)</field>
+        <field name="simple_tax_type">included</field>
+    </record>
+
+    <record id="partner_tax_none" model="res.partner">
+        <field name="name">Partner (No Tax System Defined)</field>
+    </record>
+
+</data></openerp>
