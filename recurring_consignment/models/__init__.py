@@ -5,6 +5,7 @@ from . import account_voucher
 from . import account_tax
 from . import account_tax_code
 from . import account_move_line
+from . import product_pricelist
 from . import product_product
 from . import product_template
 from . import res_partner

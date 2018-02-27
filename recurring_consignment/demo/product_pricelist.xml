@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="sale_pricelist" model="product.pricelist">
+        <field name="name">My Pricelist (-50%)</field>
+        <field name="type">sale</field>
+    </record>
+
+    <record id="sale_pricelist_version" model="product.pricelist.version">
+        <field name="name">My Pricelist Version(-50%)</field>
+        <field name="pricelist_id" ref="sale_pricelist" />
+    </record>
+
+    <record id="sale_pricelist_item" model="product.pricelist.item">
+        <field name="name">My Pricelist Item(-50%)</field>
+        <field name="price_version_id" ref="sale_pricelist_version" />
+        <field name="price_discount">-0.5</field>
+         <field name="base" ref="product.list_price"/>
+    </record>
+
+</data></openerp>

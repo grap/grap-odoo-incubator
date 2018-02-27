@@ -63,12 +63,30 @@ class ProductTemplate(models.Model):
     @api.model
     def create(self, vals):
         vals = self._update_vals_consignor(vals)
-        return super(ProductTemplate, self).create(vals)
+        res = super(ProductTemplate, self).create(vals)
+        if vals.get('consignor_partner_id', False):
+            self.env['product.pricelist'].consignmment_create([res.id])
+        return res
 
     @api.multi
     def write(self, vals):
+        pricelist_obj = self.env['product.pricelist']
         self._check_consignor_changes(vals)
         vals = self._update_vals_consignor(vals)
+        drop_template_ids = []
+        new_template_ids = []
+        if 'consignor_partner_id' in vals:
+            for template in self:
+                if (template.consignor_partner_id and
+                        not vals.get('consignor_partner_id')):
+                    drop_template_ids.append(template.id)
+                if (not template.consignor_partner_id and
+                        vals.get('consignor_partner_id')):
+                    new_template_ids.append(template.id)
+        if drop_template_ids:
+            pricelist_obj.consignmment_drop(drop_template_ids)
+        if new_template_ids:
+            pricelist_obj.consignmment_create(new_template_ids)
         if vals.get('is_consignment_commission', False):
             raise UserError(_(
                 "You can not change the value of the field"
@@ -114,3 +132,13 @@ class ProductTemplate(models.Model):
             vals['property_account_expense'] =\
                 partner.consignment_account_id.id
         return vals
+
+    @api.multi
+    def _prepare_consignment_exception(self, pricelist_version):
+        self.ensure_one()
+        return {
+            'product_tmpl_id': self.id,
+            'price_version_id': pricelist_version.id,
+            'sequence': 1,
+            'base': self.env.ref('product.list_price').id,
+        }

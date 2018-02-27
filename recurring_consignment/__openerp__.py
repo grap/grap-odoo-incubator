@@ -34,6 +34,7 @@
         'views/view_product_template.xml',
         'views/view_invoice_commission_wizard.xml',
         'views/view_res_partner.xml',
+        'views/view_product_pricelist.xml',
         'views/action.xml',
         'views/menu.xml',
     ],
@@ -46,6 +47,7 @@
         'demo/tax_group.xml',
         'demo/product_product.xml',
         'demo/account_invoice.xml',
+        'demo/product_pricelist.xml',
         'demo/sale_order.xml',
     ],
     'css': [
