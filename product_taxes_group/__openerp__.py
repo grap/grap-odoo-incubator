@@ -7,7 +7,6 @@
     'summary': 'Simplify taxes management for products with Taxes Group',
     'version': '0.1',
     'category': 'product',
-    'description': """
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
     'license': 'AGPL-3',
