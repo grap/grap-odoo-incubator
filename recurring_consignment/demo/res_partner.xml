@@ -11,7 +11,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="customer" eval="True" />
         <field name="supplier" eval="False" />
         <field name="is_consignor" eval="True" />
-        <field name="consignment_commission" eval="15.0" />
+        <field name="consignment_commission" eval="20.0" />
         <field name="consignment_account_id" ref="account_consignor_1"/>
     </record>
 
@@ -20,7 +20,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="customer" eval="True" />
         <field name="supplier" eval="False" />
         <field name="is_consignor" eval="True" />
-        <field name="consignment_commission" eval="20.0" />
+        <field name="consignment_commission" eval="30.0" />
         <field name="consignment_account_id" ref="account_consignor_2"/>
     </record>
 

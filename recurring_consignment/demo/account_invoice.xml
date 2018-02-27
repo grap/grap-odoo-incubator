@@ -23,7 +23,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="product_id" ref="consigned_product_consignor_1_vat_5"/>
         <field name="invoice_id" ref="customer_invoice_1"/>
         <field name="account_id" ref="account_consignor_1" />
-        <field name="price_unit">10</field>
+        <field name="price_unit">10000</field>
         <field name="quantity">1</field>
         <field name="invoice_line_tax_id" eval="[(6, 0, [ref('tax_5_consignor_1')])]"/>
     </record>
@@ -56,7 +56,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="invoice_id" ref="customer_invoice_2"/>
         <field name="account_id" ref="account_consignor_1" />
         <field name="price_unit">10</field>
-        <field name="quantity">35</field>
+        <field name="quantity">50</field>
         <field name="invoice_line_tax_id" eval="[(6, 0, [ref('tax_5_consignor_1')])]"/>
     </record>
 
@@ -64,10 +64,5 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <function model="account.invoice" name="button_reset_taxes">
         <value eval="[ref('customer_invoice_1'), ref('customer_invoice_2')]"/>
     </function>
-
-    <!-- Confirm Invoices-->
-<!-- TODO FIXME bug because -->
-<!--    <workflow model="account.invoice" action="invoice_open" ref="customer_invoice_1"/>-->
-<!--    <workflow model="account.invoice" action="invoice_open" ref="customer_invoice_2"/>-->
 
 </data></openerp>

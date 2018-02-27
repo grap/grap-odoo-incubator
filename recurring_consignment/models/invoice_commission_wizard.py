@@ -138,9 +138,8 @@ class InvoiceCommissionWizard(models.TransientModel):
             'invoice_line_tax_id': [(6, False, res['invoice_line_tax_id'])],
             'name':  _(
                 "Commission on Sale or Refunds\n"
-                "(Rate : %s %%; Base : %.2f € ; Period %s)") % (
-                rate, total_credit, value[0].period_id.code),
-
+                "(Rate : %.2f %%; Base : %.2f € ; Period %s)") % (
+                rate, total_credit, str(value[0].period_id.code)),
         })
         return res
 
