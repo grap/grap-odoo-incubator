@@ -20,24 +20,26 @@ This module is useful in the following case:
 Technical Information
 ---------------------
 
-* On account.tax, add a new field 'simple_tax_id' that is the according tax
-  with or without tax included. Sample:
-    * TAX A: VAT 10% included
-    * TAX B : VAT 10% excluded
-    * TAX A and TAX B will be linked together
+On account.tax, add a new field 'simple_tax_id' that is the according tax
+with or without tax included. Sample:
+
+* TAX A: VAT 10% included
+* TAX B : VAT 10% excluded
+* TAX A and TAX B will be linked together
 
 .. image:: /simple_tax_account/static/description/tax_setting.png
 
-* On res.partner, add a new field selection 'simple_tax_type' with
-  the following values:
-    * 'none' : (default) undefined, the Tax will be the tax of the product
-    * 'excluded': All price will be recomputed with Tax excluded
-    * 'included': All price will be recomputed with Tax inluded
+On res.partner, add a new field selection 'simple_tax_type' with
+the following values:
+
+* 'none' : (default) undefined, the Tax will be the tax of the product
+* 'excluded': All price will be recomputed with Tax excluded
+* 'included': All price will be recomputed with Tax inluded
 
 .. image:: /simple_tax_account/static/description/partner_setting.png
 
-* Possibility to switch between Price VAT Included and Price VAT Excluded
-  when editing a Account Invoice
+Possibility to switch between Price VAT Included and Price VAT Excluded
+when editing a Account Invoice
 
 ** Invoices with Mixed Taxes**
 
@@ -47,8 +49,8 @@ Technical Information
 
 .. image:: /simple_tax_account/static/description/invoice_mixed_taxes.png
 
-* on account.tax.template, add a new field 'simple_template_id' that is
-  the according template with of without tax included.
+On account.tax.template, add a new field 'simple_template_id' that is
+the according template with of without tax included.
 
 .. image:: /simple_tax_account/static/description/tax_template_setting.png
 
@@ -56,6 +58,7 @@ Related Modules
 ---------------
 
 This following modules provide the same behaviour:
+
 * ``simple_tax_sale`` for sale module
 * ``simple_tax_purchase`` for purchase module
 

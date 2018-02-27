@@ -3,7 +3,8 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, models, fields, exceptions, _
+from openerp import _, api, fields, models
+from openerp.exceptions import ValidationError
 
 
 class AccountTax(models.Model):
@@ -22,9 +23,9 @@ class AccountTax(models.Model):
         for tax in self:
             if tax.simple_tax_id:
                 if tax.price_include == tax.simple_tax_id.price_include:
-                    raise exceptions.ValidationError(
+                    raise ValidationError(_(
                         "The current Tax and the Related Tax have the same"
-                        " settings for the field 'Tax Included in Price'")
+                        " settings for the field 'Tax Included in Price'"))
 
     # Custom Section
     def _translate_simple_tax(self, partner, price_unit, taxes):
@@ -62,7 +63,7 @@ class AccountTax(models.Model):
         new_taxes = []
         for tax in taxes:
             if not tax.simple_tax_id:
-                raise exceptions.ValidationError(_(
+                raise ValidationError(_(
                     "Please ask to your accountant to set a Related"
                     " Tax for the tax %s.") % (tax.name))
             if tax.price_include:
