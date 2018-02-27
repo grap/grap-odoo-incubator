@@ -1,41 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ********************************************************************** -->
-<!-- Sale - Recurring Orders Duplication module for Odoo                    -->
-<!-- Copyright (C) 2015-Today GRAP (http://www.grap.coop)                   -->
-<!-- @author Sylvain LE GAL (https://twitter.com/legalsylvain)              -->
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
 
-<!--This program is free software: you can redistribute it and/or modify    -->
-<!--it under the terms of the GNU Affero General Public License as          -->
-<!--published by the Free Software Foundation, either version 3 of the      -->
-<!--License, or (at your option) any later version.                         -->
+    <record id="action_sale_order_duplication_wizard" model="ir.actions.act_window">
+        <field name="name">Duplication Wizard</field>
+        <field name="res_model">sale.order.duplication.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
 
-<!--This program is distributed in the hope that it will be useful,         -->
-<!--but WITHOUT ANY WARRANTY; without even the implied warranty of          -->
-<!--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           -->
-<!--GNU Affero General Public License for more details.                     -->
+    <record id="value_sale_order_duplication_wizard" model="ir.values">
+        <field name="model_id" ref="sale.model_sale_order" />
+        <field name="name">Duplication Wizard</field>
+        <field name="key2">client_action_multi</field>
+        <field name="value" eval="'ir.actions.act_window,' + str(ref('action_sale_order_duplication_wizard'))"/>
+        <field name="key">action</field>
+        <field name="model">sale.order</field>
+    </record>
 
-<!--You should have received a copy of the GNU Affero General Public License-->
-<!--along with this program.  If not, see <http://www.gnu.org/licenses/>.   -->
-<!-- ********************************************************************** -->
-
-<openerp>
-    <data>
-
-        <record id="action_sale_order_duplication_wizard" model="ir.actions.act_window">
-            <field name="name">Duplication Wizard</field>
-            <field name="res_model">sale.order.duplication.wizard</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">form</field>
-            <field name="target">new</field>
-        </record>
-
-        <record id="value_sale_order_duplication_wizard" model="ir.values">
-            <field name="model_id" ref="sale.model_sale_order" />
-            <field name="name">Duplication Wizard</field>
-            <field name="key2">client_action_multi</field>
-            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_sale_order_duplication_wizard'))"/>
-            <field name="key">action</field>
-            <field name="model">sale.order</field>
-        </record>
-    </data>
-</openerp>
+</data></openerp>
