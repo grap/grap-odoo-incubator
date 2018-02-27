@@ -132,6 +132,9 @@ class TestRecurringConsignment(TransactionCase):
         self.report_obj.get_action(
             commission_invoice,
             'recurring_consignment.template_account_invoice_consignment')
+        self.report_obj.get_html(
+            commission_invoice,
+            'recurring_consignment.template_account_invoice_consignment')
 
     def _test_pricelist(self, product, active):
         list_price = product.list_price
