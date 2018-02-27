@@ -1,47 +1,13 @@
-# -*- encoding: utf-8 -*-
-##############################################################################
-#
-#    Account - Recurring Invoices Duplication module for Odoo
-#    Copyright (C) 2015-Today GRAP (http://www.grap.coop)
-#    @author Sylvain LE GAL (https://twitter.com/legalsylvain)
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# coding: utf-8
+# Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+# @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    'name': 'Account - Recurring Invoices Duplication',
-    'summary': 'Duplicate Invoices with a defined frequency',
-    'version': '1.0',
+    'name': 'Account Invoice - Duplication',
+    'summary': 'Duplication Tools for Invoices with a given frequency',
+    'version': '8.0.1.0.0',
     'category': 'Account',
-    'description': """
-Duplicate Invoices with a defined frequency
-===========================================
-
-Functionality:
---------------
-
-Provide a wizard to duplicate a given Invoice. User can define a begin date
-a frequency (week, ...) and a recurring quantity.
-
-
-Copyright, Authors and Licence:
--------------------------------
-    * Copyright: 2015, GRAP: Groupement Régional Alimentaire de Proximité;
-    * Author:
-        * Sylvain LE GAL (https://twitter.com/legalsylvain);
-    * Licence: AGPL-3 (http://www.gnu.org/licenses/);""",
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
     'license': 'AGPL-3',
@@ -49,7 +15,7 @@ Copyright, Authors and Licence:
         'account',
     ],
     'data': [
-        'views/view.xml',
+        'views/view_account_invoice_duplication_wizard.xml',
         'views/action.xml',
     ],
     'installable': True,

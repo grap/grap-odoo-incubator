@@ -1,13 +1,13 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_recurring_invoice_duplication
+#	* duplication_account_invoice
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 7.0\n"
+"Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-07 10:36+0000\n"
-"PO-Revision-Date: 2015-10-07 10:36+0000\n"
+"POT-Creation-Date: 2018-02-27 18:34+0000\n"
+"PO-Revision-Date: 2018-02-27 18:34+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,106 +15,140 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: account_recurring_invoice_duplication
+#. module: duplication_account_invoice
 #: field:account.invoice.duplication.wizard,begin_date:0
 msgid "Begin Date"
 msgstr "Date de début"
 
-#. module: account_recurring_invoice_duplication
-#: view:account.invoice.duplication.wizard:0
+#. module: duplication_account_invoice
+#: view:account.invoice.duplication.wizard:duplication_account_invoice.view_account_invoice_duplication_wizard_form
 msgid "Cancel"
 msgstr "Annuler"
 
-#. module: account_recurring_invoice_duplication
-#: field:account.invoice.duplication.wizard.line,date_due:0
+#. module: duplication_account_invoice
+#: field:account.invoice.duplication.wizard,create_uid:0
+#: field:account.invoice.duplication.wizard.date.line,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: duplication_account_invoice
+#: field:account.invoice.duplication.wizard,create_date:0
+#: field:account.invoice.duplication.wizard.date.line,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: duplication_account_invoice
+#: field:account.invoice.duplication.wizard,display_name:0
+#: field:account.invoice.duplication.wizard.date.line,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: duplication_account_invoice
+#: field:account.invoice.duplication.wizard.date.line,date_due:0
 msgid "Due Date"
 msgstr "Date d'échéance"
 
-#. module: account_recurring_invoice_duplication
-#: field:account.invoice.duplication.wizard,date_due_delta:0
+#. module: duplication_account_invoice
+#: field:account.invoice.duplication.wizard,date_due_duration:0
 msgid "Due Date Duration"
 msgstr "Durée avant l'échéance"
 
-#. module: account_recurring_invoice_duplication
-#: view:account.invoice.duplication.wizard:0
+#. module: duplication_account_invoice
+#: view:account.invoice.duplication.wizard:duplication_account_invoice.view_account_invoice_duplication_wizard_form
 msgid "Duplicate"
 msgstr "Dupliquer"
 
-#. module: account_recurring_invoice_duplication
-#: view:account.invoice.duplication.wizard:0
-msgid "Duplicate Selected Invoice"
-msgstr "Dupliquer le devis ou le bon de commande sélectionné"
+#. module: duplication_account_invoice
+#: view:account.invoice.duplication.wizard:duplication_account_invoice.view_account_invoice_duplication_wizard_form
+msgid "Duplicate and Open"
+msgstr "Dupliquer et Ouvrir"
 
-#. module: account_recurring_invoice_duplication
+#. module: duplication_account_invoice
 #: field:account.invoice.duplication.wizard,duplication_duration:0
 msgid "Duplication Duration"
 msgstr "Durée de la duplication"
 
-#. module: account_recurring_invoice_duplication
+#. module: duplication_account_invoice
 #: field:account.invoice.duplication.wizard,duplication_type:0
 msgid "Duplication Type"
 msgstr "Type de duplication"
 
-#. module: account_recurring_invoice_duplication
-#: model:ir.actions.act_window,name:account_recurring_invoice_duplication.action_account_invoice_duplication_wizard
+#. module: duplication_account_invoice
+#: model:ir.actions.act_window,name:duplication_account_invoice.action_account_invoice_duplication_wizard
 msgid "Duplication Wizard"
-msgstr "Outils de duplication"
+msgstr "Assistant de duplication"
 
-#. module: account_recurring_invoice_duplication
+#. module: duplication_account_invoice
+#: field:account.invoice.duplication.wizard,id:0
+#: field:account.invoice.duplication.wizard.date.line,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: duplication_account_invoice
 #: field:account.invoice.duplication.wizard,include_current_date:0
 msgid "Include Current Date"
 msgstr "Inclure la date courante"
 
-#. module: account_recurring_invoice_duplication
+#. module: duplication_account_invoice
 #: field:account.invoice.duplication.wizard,invoice_id:0
 msgid "Invoice"
 msgstr "Facture"
 
-#. module: account_recurring_invoice_duplication
-#: field:account.invoice.duplication.wizard.line,date_invoice:0
+#. module: duplication_account_invoice
+#: field:account.invoice.duplication.wizard.date.line,date_invoice:0
 msgid "Invoice Date"
 msgstr "Date de Facture"
 
-#. module: account_recurring_invoice_duplication
+#. module: duplication_account_invoice
+#: view:account.invoice.duplication.wizard:duplication_account_invoice.view_account_invoice_duplication_wizard_form
+msgid "Item to duplicate"
+msgstr "Elément à dupliquer"
+
+#. module: duplication_account_invoice
+#: field:account.invoice.duplication.wizard,__last_update:0
+#: field:account.invoice.duplication.wizard.date.line,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: duplication_account_invoice
+#: field:account.invoice.duplication.wizard,write_uid:0
+#: field:account.invoice.duplication.wizard.date.line,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: duplication_account_invoice
+#: field:account.invoice.duplication.wizard,write_date:0
+#: field:account.invoice.duplication.wizard.date.line,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: duplication_account_invoice
 #: selection:account.invoice.duplication.wizard,duplication_type:0
 msgid "Monthly"
 msgstr "Mensuelle"
 
-#. module: account_recurring_invoice_duplication
-#: view:account.invoice.duplication.wizard:0
-#: field:account.invoice.duplication.wizard,line_ids:0
+#. module: duplication_account_invoice
+#: field:account.invoice.duplication.wizard,date_line_ids:0
 msgid "New Dates"
-msgstr "Nouvelles dates"
+msgstr "Nouvelles Dates"
 
-#. module: account_recurring_invoice_duplication
+#. module: duplication_account_invoice
 #: field:account.invoice.duplication.wizard,partner_id:0
 msgid "Partner"
 msgstr "Partenaire"
 
-#. module: account_recurring_invoice_duplication
-#: code:addons/account_recurring_invoice_duplication/models/account_invoice_duplication_wizard.py:124
-#, python-format
-msgid "The duplication type '%s' is not implemented"
-msgstr "Le type de duplication '%s' n'est pas implémenté"
+#. module: duplication_account_invoice
+#: view:account.invoice.duplication.wizard:duplication_account_invoice.view_account_invoice_duplication_wizard_form
+msgid "Settings"
+msgstr "Paramètres"
 
-#. module: account_recurring_invoice_duplication
-#: code:addons/account_recurring_invoice_duplication/models/account_invoice_duplication_wizard.py:123
-#, python-format
-msgid "Unimplemented Feature!"
-msgstr "Fonctionnalité non implémentée !"
-
-#. module: account_recurring_invoice_duplication
+#. module: duplication_account_invoice
 #: selection:account.invoice.duplication.wizard,duplication_type:0
 msgid "Weekly"
 msgstr "Hebdomadaire"
 
-#. module: account_recurring_invoice_duplication
-#: field:account.invoice.duplication.wizard.line,wizard_id:0
-msgid "Wizard"
-msgstr "Wizard"
-
-#. module: account_recurring_invoice_duplication
-#: view:account.invoice.duplication.wizard:0
-msgid "or"
-msgstr "ou"
+#. module: duplication_account_invoice
+#: field:account.invoice.duplication.wizard.date.line,wizard_id:0
+msgid "Wizard id"
+msgstr "Wizard id"
 
