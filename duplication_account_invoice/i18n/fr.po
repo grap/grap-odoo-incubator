@@ -1,0 +1,120 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* account_recurring_invoice_duplication
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-07 10:36+0000\n"
+"PO-Revision-Date: 2015-10-07 10:36+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_recurring_invoice_duplication
+#: field:account.invoice.duplication.wizard,begin_date:0
+msgid "Begin Date"
+msgstr "Date de début"
+
+#. module: account_recurring_invoice_duplication
+#: view:account.invoice.duplication.wizard:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: account_recurring_invoice_duplication
+#: field:account.invoice.duplication.wizard.line,date_due:0
+msgid "Due Date"
+msgstr "Date d'échéance"
+
+#. module: account_recurring_invoice_duplication
+#: field:account.invoice.duplication.wizard,date_due_delta:0
+msgid "Due Date Duration"
+msgstr "Durée avant l'échéance"
+
+#. module: account_recurring_invoice_duplication
+#: view:account.invoice.duplication.wizard:0
+msgid "Duplicate"
+msgstr "Dupliquer"
+
+#. module: account_recurring_invoice_duplication
+#: view:account.invoice.duplication.wizard:0
+msgid "Duplicate Selected Invoice"
+msgstr "Dupliquer le devis ou le bon de commande sélectionné"
+
+#. module: account_recurring_invoice_duplication
+#: field:account.invoice.duplication.wizard,duplication_duration:0
+msgid "Duplication Duration"
+msgstr "Durée de la duplication"
+
+#. module: account_recurring_invoice_duplication
+#: field:account.invoice.duplication.wizard,duplication_type:0
+msgid "Duplication Type"
+msgstr "Type de duplication"
+
+#. module: account_recurring_invoice_duplication
+#: model:ir.actions.act_window,name:account_recurring_invoice_duplication.action_account_invoice_duplication_wizard
+msgid "Duplication Wizard"
+msgstr "Outils de duplication"
+
+#. module: account_recurring_invoice_duplication
+#: field:account.invoice.duplication.wizard,include_current_date:0
+msgid "Include Current Date"
+msgstr "Inclure la date courante"
+
+#. module: account_recurring_invoice_duplication
+#: field:account.invoice.duplication.wizard,invoice_id:0
+msgid "Invoice"
+msgstr "Facture"
+
+#. module: account_recurring_invoice_duplication
+#: field:account.invoice.duplication.wizard.line,date_invoice:0
+msgid "Invoice Date"
+msgstr "Date de Facture"
+
+#. module: account_recurring_invoice_duplication
+#: selection:account.invoice.duplication.wizard,duplication_type:0
+msgid "Monthly"
+msgstr "Mensuelle"
+
+#. module: account_recurring_invoice_duplication
+#: view:account.invoice.duplication.wizard:0
+#: field:account.invoice.duplication.wizard,line_ids:0
+msgid "New Dates"
+msgstr "Nouvelles dates"
+
+#. module: account_recurring_invoice_duplication
+#: field:account.invoice.duplication.wizard,partner_id:0
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: account_recurring_invoice_duplication
+#: code:addons/account_recurring_invoice_duplication/models/account_invoice_duplication_wizard.py:124
+#, python-format
+msgid "The duplication type '%s' is not implemented"
+msgstr "Le type de duplication '%s' n'est pas implémenté"
+
+#. module: account_recurring_invoice_duplication
+#: code:addons/account_recurring_invoice_duplication/models/account_invoice_duplication_wizard.py:123
+#, python-format
+msgid "Unimplemented Feature!"
+msgstr "Fonctionnalité non implémentée !"
+
+#. module: account_recurring_invoice_duplication
+#: selection:account.invoice.duplication.wizard,duplication_type:0
+msgid "Weekly"
+msgstr "Hebdomadaire"
+
+#. module: account_recurring_invoice_duplication
+#: field:account.invoice.duplication.wizard.line,wizard_id:0
+msgid "Wizard"
+msgstr "Wizard"
+
+#. module: account_recurring_invoice_duplication
+#: view:account.invoice.duplication.wizard:0
+msgid "or"
+msgstr "ou"
+
