@@ -1,24 +1,7 @@
-# -*- encoding: utf-8 -*-
-##############################################################################
-#
-#    Product - Taxes Group module for Odoo
-#    Copyright (C) 2014 -Today GRAP (http://www.grap.coop)
-#    @author Sylvain LE GAL (https://twitter.com/legalsylvain)
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# coding: utf-8
+# Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
+# @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
 
@@ -30,7 +13,7 @@ from openerp.tools.translate import _
 _logger = logging.getLogger(__name__)
 
 
-class tax_group(Model):
+class TaxGroup(Model):
     """Group of customer and supplier taxes.
     This group is linked to a product to select a group of taxes in one
     time."""
@@ -191,7 +174,7 @@ class tax_group(Model):
 
     def write(self, cr, uid, ids, vals, context=None):
         pt_obj = self.pool['product.template']
-        res = super(tax_group, self).write(
+        res = super(TaxGroup, self).write(
             cr, uid, ids, vals, context=context)
         if 'supplier_tax_ids' in vals or 'customer_tax_ids' in vals:
             for tg in self.browse(cr, uid, ids, context=context):
@@ -209,4 +192,4 @@ class tax_group(Model):
                         """ it contents %s products. Please move products"""
                         """ to another Tax Group.""") % (
                         tg.name, tg.product_qty))
-        return super(tax_group, self).unlink(cr, uid, ids, context=context)
+        return super(TaxGroup, self).unlink(cr, uid, ids, context=context)
