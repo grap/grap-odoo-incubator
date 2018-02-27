@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Account - Recurring Invoices Duplication module for Odoo               -->
+<!-- Copyright (C) 2015-Today GRAP (http://www.grap.coop)                   -->
+<!-- @author Sylvain LE GAL (https://twitter.com/legalsylvain)              -->
+
+<!--This program is free software: you can redistribute it and/or modify    -->
+<!--it under the terms of the GNU Affero General Public License as          -->
+<!--published by the Free Software Foundation, either version 3 of the      -->
+<!--License, or (at your option) any later version.                         -->
+
+<!--This program is distributed in the hope that it will be useful,         -->
+<!--but WITHOUT ANY WARRANTY; without even the implied warranty of          -->
+<!--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           -->
+<!--GNU Affero General Public License for more details.                     -->
+
+<!--You should have received a copy of the GNU Affero General Public License-->
+<!--along with this program.  If not, see <http://www.gnu.org/licenses/>.   -->
+<!-- ********************************************************************** -->
+
+<openerp>
+    <data>
+<!-- Model: account.invoice.duplication.wizard -->
+        <record id="view_account_invoice_duplication_wizard_form" model="ir.ui.view">
+            <field name="model">account.invoice.duplication.wizard</field>
+            <field name="arch" type="xml">
+            <form string="Duplicate Selected Invoice" version="7.0">
+                <group col="2">
+                    <field name="invoice_id"/>
+                    <field name="partner_id"/>
+                    <field name="include_current_date" on_change="onchange_duplication_settings(begin_date, duplication_type, duplication_duration, include_current_date, date_due_duration)"/>
+                    <field name="begin_date" on_change="onchange_duplication_settings(begin_date, duplication_type, duplication_duration, include_current_date, date_due_duration)"/>
+                    <field name="duplication_type" on_change="onchange_duplication_settings(begin_date, duplication_type, duplication_duration, include_current_date, date_due_duration)"/>
+                    <field name="duplication_duration" on_change="onchange_duplication_settings(begin_date, duplication_type, duplication_duration, include_current_date, date_due_duration)"/>
+                    <field name="date_due_duration" on_change="onchange_duplication_settings(begin_date, duplication_type, duplication_duration, include_current_date, date_due_duration)"/>
+                    <field name="line_ids" nolabel="1" colspan="2">
+                        <tree string="New Dates" editable="bottom">
+                            <field name="date_invoice" />
+                            <field name="date_due" />
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button name="duplicate_button" string="Duplicate" type="object" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>
