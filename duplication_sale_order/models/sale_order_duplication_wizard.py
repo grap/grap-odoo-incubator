@@ -49,6 +49,7 @@ class SaleOrderDuplicationWizard(models.TransientModel):
     def _default_order_id(self):
         return self.env.context.get('active_id', False)
 
+    @api.model
     def _default_partner_id(self):
         order_obj = self.env['sale.order']
         order_id = self.env.context.get('active_id', False)
@@ -57,6 +58,7 @@ class SaleOrderDuplicationWizard(models.TransientModel):
         else:
             return order_obj.browse(order_id).partner_id
 
+    @api.model
     def _default_begin_date(self):
         order_obj = self.env['sale.order']
         order_id = self.env.context.get('active_id', False)

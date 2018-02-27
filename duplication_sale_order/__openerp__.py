@@ -5,7 +5,7 @@
 
 {
     'name': 'Sale Order - Duplication',
-    'summary': 'Duplication Tool for Sale Orders with a given frequency',
+    'summary': 'Duplication Tools for Sale Orders with a given frequency',
     'version': '8.0.1.0.0',
     'category': 'Sale',
     'author': 'GRAP',

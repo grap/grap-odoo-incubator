@@ -27,7 +27,7 @@ class TestDuplicationSaleOrder(TransactionCase):
             'duplication_duration': 10,
         })
         wizard.onchange_duplication_settings()
-        wizard.duplicate_button()
+        wizard.duplicate_open_button()
         new_quotation_qty = len(self.order_obj.search([]))
         self.assertEqual(
             quotation_qty + 10, new_quotation_qty,
