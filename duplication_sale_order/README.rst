@@ -24,7 +24,7 @@ To use this module, you need to
 
 * Select any sale order and click on 'More' / 'Duplication Wizard'
 
-.. figure:: /duplication_sale_order/static/description/xxx.png
+.. figure:: /duplication_sale_order/static/description/sale_order_duplication_wizard_form.png
    :width: 800 px
 
 Credits
