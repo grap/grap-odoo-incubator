@@ -60,9 +60,8 @@ class ProductPrintWizard(models.TransientModel):
     def print_report(self):
         self.ensure_one()
         data = self._prepare_data()
-        res = self.env['report'].get_action(
+        return self.env['report'].get_action(
             self, 'product_print_category.report_pricetag', data=data)
-        return res
 
     @api.multi
     def _prepare_data(self):
