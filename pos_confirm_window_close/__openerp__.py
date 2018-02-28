@@ -5,7 +5,7 @@
 
 {
     'name': 'Point Of Sale - Confirm Window Close',
-    'summary': 'Prevent undesired window close',
+    'summary': 'Prevent undesired window close in the Point of Sale',
     'version': '8.0.1.0.0',
     'category': 'Point Of Sale',
     'author': "GRAP",
