@@ -13,6 +13,8 @@ class TestProductPrintCategory(TransactionCase):
         super(TestProductPrintCategory, self).setUp()
         self.wizard_obj = self.env['product.print.wizard']
         self.report_obj = self.env['report']
+        self.custom_report_obj = self.env[
+            'report.product_print_category.report_pricetag']
         self.print_category = self.env.ref(
             'product_print_category.demo_category')
 
@@ -44,3 +46,6 @@ class TestProductPrintCategory(TransactionCase):
         self.report_obj.get_html(
             wizard,
             'product_print_category.report_pricetag', data=data)
+
+        # Run Custom Print
+        self.custom_report_obj.render_html(data)
