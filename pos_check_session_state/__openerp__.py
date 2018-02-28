@@ -24,6 +24,7 @@
     ],
     'images': [
         'static/description/error_message.png',
+        'static/description/pos_config_form.png',
     ],
     'installable': True,
 }

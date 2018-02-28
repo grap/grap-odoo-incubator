@@ -1,6 +1,10 @@
-.. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+.. image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+   :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
+
+====================================================
+Duplication Tool for Invoices with a given frequency
+====================================================
 
 ==========================================
 Check if the session state is still opened
@@ -23,19 +27,17 @@ Functionality
   session is not opened, a blocking pop up is displayed, and user has to
   reload the current page.
 
-.. image:: /pos_check_session_state/static/description/error_message.png
-
-Installation
-============
-
-Normal installation.
+.. figure:: /pos_check_session_state/static/description/error_message.png
+   :width: 800 px
 
 Configuration
 =============
 
-* Go to "Settings" / "Technicals" / "Parameters" / "System Parameters"
-* Edit the key pos_check_session_state.frequency
-* Set a value (in Second)
+* Go to Point of Sale / Configuration / Point of Sales
+* Open a PoS Config and set a frequency for the check
+
+.. figure:: /pos_check_session_state/static/description/pos_config_form.png
+   :width: 800 px
 
 Credits
 =======
@@ -43,4 +45,11 @@ Credits
 Contributors
 ------------
 
-* Sylvain LE GAL <https://twitter.com/legalsylvain>
+* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+
+Funders
+-------
+
+The development of this module has been financially supported by:
+
+* GRAP, Groupement Régional Alimentaire de Proximité (http://www.grap.coop)

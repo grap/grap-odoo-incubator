@@ -30,6 +30,7 @@ openerp.pos_check_session_state = function (instance) {
                         self.session_name = sessions[0]['name'];
                         self.renderElement();
                         self.pos_widget.screen_selector.show_popup('error-closed-session');
+                        clearInterval(self.intervalID);
                     }
                 })
                 .fail(function(error, event){
