@@ -6,14 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-22 10:02+0000\n"
-"PO-Revision-Date: 2016-06-22 10:02+0000\n"
+"POT-Creation-Date: 2018-02-28 15:18+0000\n"
+"PO-Revision-Date: 2018-02-28 15:18+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: pos_check_session_state
+#: field:pos.config,check_session_state_frequency:0
+msgid "Frequency of Checking the State of the Session"
+msgstr "Fréquence de vérification de l'état de la session"
 
 #. module: pos_check_session_state
 #. openerp-web
@@ -28,4 +33,9 @@ msgstr "Veuillez fermer la fenêtre courante du point de vente et en ouvrir une 
 #, python-format
 msgid "Sorry, the session you're working on is now closing or closed."
 msgstr "Désolé, la session sur laquelle vous travaillez est désormais en cours de clôture, ou clôturée."
+
+#. module: pos_check_session_state
+#: help:pos.config,check_session_state_frequency:0
+msgid "The value is set in seconds."
+msgstr "La valeur est définie en seconde."
 
