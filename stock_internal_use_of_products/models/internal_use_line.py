@@ -29,6 +29,10 @@ class InternalUseLine(models.Model):
     product_uom_id = fields.Many2one(
         comodel_name='product.uom', string='Unit of Measure', required=True)
 
+    company_id = fields.Many2one(
+        comodel_name='res.company', string='Company', select=True,
+        related='internal_use_id.company_id', store=True)
+
     price_unit = fields.Float(
         string='Unit Price (Tax Excluded)',
         digits_compute=dp.get_precision('Product Price'))
