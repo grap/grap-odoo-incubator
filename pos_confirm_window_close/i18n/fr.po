@@ -1,0 +1,24 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* pos_confirm_window_close
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-28 15:56+0000\n"
+"PO-Revision-Date: 2018-02-28 15:56+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_confirm_window_close
+#. openerp-web
+#: code:addons/pos_confirm_window_close/static/src/js/pos_confirm_window_close.js:21
+#, python-format
+msgid "You could have unsaved data in this window. Do you really want to leave?"
+msgstr "Vous pourriez avoir des données non sauvegardées dans la fenêtre, voulez-vous réellement quitter le point de vente ?"
+

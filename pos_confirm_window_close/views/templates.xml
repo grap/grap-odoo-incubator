@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015-Today GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<openerp><data>
+
+    <template id="assets_pos_confirm_window_close" name="pos_confirm_window_close" inherit_id="point_of_sale.index">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/pos_confirm_window_close/static/src/js/pos_confirm_window_close.js"></script>
+        </xpath>
+    </template>
+
+</data></openerp>
