@@ -8,7 +8,7 @@
     'summary': 'Check if the session state is still opened',
     'version': '8.0.1.0.0',
     'category': 'Point Of Sale',
-    'author': "GRAP,Odoo Community Association (OCA)",
+    'author': "GRAP",
     'website': 'http://www.grap.coop',
     'license': 'AGPL-3',
     'depends': [

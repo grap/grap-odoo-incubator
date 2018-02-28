@@ -4,6 +4,8 @@ Copyright (C) 2015-Today GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 */
 
+"use strict";
+
 openerp.pos_check_session_state = function (instance) {
     var module = instance.point_of_sale;
 

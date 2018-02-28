@@ -2,10 +2,6 @@
    :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-====================================================
-Duplication Tool for Invoices with a given frequency
-====================================================
-
 ==========================================
 Check if the session state is still opened
 ==========================================
