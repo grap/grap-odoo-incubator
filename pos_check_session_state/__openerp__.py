@@ -16,7 +16,6 @@
     ],
     'data': [
         'views/templates.xml',
-        'data/ir_config_parameter.xml',
         'views/view_pos_config.xml',
     ],
     'qweb': [
