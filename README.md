@@ -19,9 +19,9 @@ You could be interesting too by the following repositories:
 
 ## About GRAP
 
-.. image:: http://new.grap.coop/wp-content/uploads/2016/11/GRAP.png
-   :target: http://www.grap.coop
-   :width: 200 px
+<p align="center">
+   <img src="http://new.grap.coop/wp-content/uploads/2016/11/GRAP.png" width="200"/>
+</p>
 
 GRAP, [Groupement Régional Alimentaire de Proximité](http://www.grap.coop) is a
 french company which brings together activities that sale food products in the
