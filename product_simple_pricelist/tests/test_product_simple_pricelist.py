@@ -12,8 +12,12 @@ class TestProductSimplePricelist(TransactionCase):
     def setUp(self):
         super(TestProductSimplePricelist, self).setUp()
         self.simple_item_obj = self.env['product.simple.pricelist.item']
+        self.update_wizard_obj = self.env[
+            'product.simple.pricelist.item.update.wizard']
         self.simple_pricelist = self.env.ref(
             'product_simple_pricelist.simple_pricelist')
+        self.simple_pricelist_version = self.env.ref(
+            'product_simple_pricelist.simple_pricelist_version')
         self.service_product = self.env.ref(
             'product.product_product_consultant')
 
@@ -28,3 +32,33 @@ class TestProductSimplePricelist(TransactionCase):
         self.assertEqual(
             items[0].difference, 0,
             "Without any action, difference should be null.")
+
+        # Call Set Price button
+        res = items[0].set_price_wizard()
+        context = res.get('context', {})
+        self.assertEqual(
+            context.get('product_id', False),
+            self.service_product.id,
+            "Calling the wizard to change price should contains product ID"
+            " in the context")
+        self.assertEqual(
+            context.get('product_id', False),
+            self.service_product.id,
+            "Calling the wizard to change price should contains pricelist"
+            " version ID in the context")
+
+        # Call wizard
+        wizard = self.update_wizard_obj.with_context(
+            product_id=context['product_id'],
+            pricelist_version_id=context['pricelist_version_id']).create({
+                'specific_price': 50,
+            })
+        wizard.set_price()
+
+        # Check if the correct pricelist item has been created
+        items = self.simple_pricelist_version.mapped('items_id').filtered(
+            lambda x: x.product_id.id == self.service_product.id)
+
+        self.assertEqual(
+            len(items), 1,
+            "Setting a specific price should create a new pricelist item.")
