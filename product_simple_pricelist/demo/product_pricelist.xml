@@ -24,4 +24,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="price_version_id" ref="simple_pricelist_version"/>
     </record>
 
+    <record id="specific_pricelist_item" model="product.pricelist.item">
+        <field name="name">My Specific Item</field>
+        <field name="base" ref="product.list_price" />
+        <field name="price_discount">-1</field>
+        <field name="price_surcharge">50</field>
+        <field name="price_version_id" ref="simple_pricelist_version"/>
+        <field name="product_id" ref="product.product_product_41"/>
+    </record>
+
 </data></openerp>
