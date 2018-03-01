@@ -6,32 +6,48 @@
 Product - Simple Pricelist
 ==========================
 
-Functionality:
---------------
-    * A pricelist has now a new boolean field : simple_pricelist, that indicate
-      that user can use a wizard to edit the pricelist by product;
-      An "simple pricelist" has one and only one version;
-    * An "simple pricelist" has one item based on product;
-    * A wizard is available to edit the "simple pricelist", that allow users,
-      in an editable tree view, to set price by product;
+This module extends the functionality of Pricelist Module to provide an
+interface to easily change price per product, creating pricelist item for
+each product.
+
+It so add a boolean on pricelist "Is Simple". A wizard is available to edit
+the "simple pricelist", that allow users, in an editable tree view, to set
+price by product.
+
+A "simple pricelist" has one and only one version.
+
+Configuration
+=============
+
+To use this module, you need to go to Sale / Configuration / Pricelists
+
+* Check the box simple pricelist on your desired pricelist
+
+* click then on the edit button, available on the tree or the form view
+
+.. figure:: /product_simple_pricelist/static/description/product_pricelist_tree.png
+   :width: 800 px
+
+* you can then edit easily change the price for a given product with the
+  buttons in the end of each lines.
+
+.. figure:: /product_simple_pricelist/static/description/simple_price_list_item.png
+   :width: 800 px
+
+* In the wizard, mention the new price you want to apply for this pricelist
+
+.. figure:: /product_simple_pricelist/static/description/wizard_form.png
+   :width: 800 px
+
+* The according pricelist item will be created
+
+.. figure:: /product_simple_pricelist/static/description/pricelist_item_form.png
+   :width: 800 px
 
 Roadmad / Issue
 ---------------
 
-create a simple pricelist should be more intuitive or more documented.
-Create a simple pricelist without creating a version will fail)
-
-Configuration TODO
-=============
-
-To use this module, you need to
-
-* your user form
-
-* check the box Send Email Bcc
-
-.. figure:: /mail_send_bcc/static/description/user_form.png
-   :width: 800 px
+Create a simple pricelist without creating a version will fail.
 
 Credits
 =======
