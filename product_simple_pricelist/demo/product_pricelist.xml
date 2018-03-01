@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="simple_pricelist" model="product.pricelist">
+        <field name="name">My Simple Pricelist</field>
+        <field name="type">sale</field>
+        <field name="is_simple" eval="True"/>
+        <field name="company_id" ref="base.main_company" />
+    </record>
+
+    <record id="simple_pricelist_version" model="product.pricelist.version">
+        <field name="name">My Simple Pricelist (Version)</field>
+        <field name="pricelist_id" ref="simple_pricelist" />
+    </record>
+
+    <record id="simple_pricelist_item" model="product.pricelist.item">
+        <field name="name">My Simple Pricelist (Item)</field>
+        <field name="base" ref="product.list_price" />
+        <field name="price_version_id" ref="simple_pricelist_version"/>
+    </record>
+
+</data></openerp>

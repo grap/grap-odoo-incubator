@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="ir_rule_product_simple_pricelist_item" model="ir.rule">
+        <field name="name">Product Simple Pricelist Item Rule</field>
+        <field name="model_id" ref="model_product_simple_pricelist_item"/>
+        <field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
+    </record>
+
+</data></openerp>
+
