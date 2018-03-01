@@ -20,6 +20,8 @@ class TestProductSimplePricelist(TransactionCase):
             'product_simple_pricelist.simple_pricelist_version')
         self.service_product = self.env.ref(
             'product.product_product_consultant')
+        self.windows_product = self.env.ref(
+            'product.product_product_41')
 
     # Test Section
     def test_01_add_new_price(self):
@@ -62,3 +64,20 @@ class TestProductSimplePricelist(TransactionCase):
         self.assertEqual(
             len(items), 1,
             "Setting a specific price should create a new pricelist item.")
+
+    # Test Section
+    def test_02_delete_pricelist_item(self):
+        items = self.simple_item_obj.search([
+            ('pricelist_id', '=', self.simple_pricelist.id),
+            ('product_id', '=', self.windows_product.id)])
+        self.assertEqual(
+            len(items), 1,
+            "The simple pricelist item should display a line per product.")
+        items[0].remove_price()
+
+        # Check if the correct pricelist item has been created
+        items = self.simple_pricelist_version.mapped('items_id').filtered(
+            lambda x: x.product_id.id == self.windows_product.id)
+        self.assertEqual(
+            len(items), 0,
+            "dropping a simple item should drop the according pricelist item")
