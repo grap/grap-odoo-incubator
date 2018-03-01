@@ -7,7 +7,7 @@
 
 This repository contains Odoo modules developped by the company GRAP before
 they are shared to the
-[Odoo Community Association](https://odoo-community.org/)
+[Odoo Community Association](https://odoo-community.org/).
 
 If you're interested by some of ones, please contact GRAP IT Team to work
 together to improve the code or make a merge proposal into an OCA repository.
