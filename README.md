@@ -14,7 +14,7 @@ together to improve the code or make a merge proposal into an OCA repository.
 
 You could be interesting too by the following repositories:
 
-* [grap-odoo-business](https://github.com/grap/grap-odoo-business)
+* [grap-odoo-metier](https://github.com/grap/grap-odoo-metier)
 * [grap-odoo-custom](https://github.com/grap/grap-odoo-custom)
 
 ## About GRAP
