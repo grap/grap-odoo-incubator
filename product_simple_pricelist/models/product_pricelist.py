@@ -28,7 +28,9 @@ class ProductPricelist(models.Model):
         self.ensure_one()
         result = self.env.ref(
             'product_simple_pricelist.action_edit_simple_pricelist').read()[0]
-        result['name'] = _("Edit '%s' By Product") % (self.name)
-        result['context'] = {'pricelist_id': self.id}
-        result['domain'] = "[('pricelist_id', '=', " + str(self.id) + ")]"
+        result.update({
+            'name': _("Edit '%s' By Product") % (self.name),
+            'context': {'pricelist_id': self.id},
+            'domain': "[('pricelist_id', '=', " + str(self.id) + ")]",
+        })
         return result
