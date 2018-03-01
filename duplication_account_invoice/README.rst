@@ -7,7 +7,7 @@ Duplication Tool for Invoices with a given frequency
 ====================================================
 
 This module extends the functionality of Account Module to provide a wizard to
-duplicate a given Account Invoite.
+duplicate a given Account Invoice.
 
 User can define:
 
