@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="product_sector_1" model="product.product">
+        <field name="name">Demo Product available on sector 1</field>
+        <field name="sector_id" ref="sector_2"/>
+        <field name="categ_id" ref="product.product_category_all"/>
+        <field name="list_price">100</field>
+    </record>
+
+    <record id="product_sector_2" model="product.product">
+        <field name="name">Demo Product available on sector 2</field>
+        <field name="sector_id" ref="sector_2"/>
+        <field name="categ_id" ref="product.product_category_all"/>
+        <field name="list_price">200</field>
+    </record>
+
+</data></openerp>
