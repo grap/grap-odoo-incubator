@@ -1,1 +1,4 @@
 pos
+
+account-invoicing_account_invoice_triple_discount https://github.com/grap/account-invoicing.git 8.0-backport-account_invoice_triple_discount
+purchase-workflow_purchase_triple_discount https://github.com/grap/purchase-workflow.git 8.0-backport-purchase_triple_discount
