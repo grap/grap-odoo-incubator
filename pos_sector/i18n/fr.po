@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* pos_street_market
+#	* pos_sector
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-17 23:13+0000\n"
-"PO-Revision-Date: 2018-02-17 23:13+0000\n"
+"POT-Creation-Date: 2018-03-02 15:41+0000\n"
+"PO-Revision-Date: 2018-03-02 15:41+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,122 +15,85 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: pos_street_market
-#: field:market.place,active:0
+#. module: pos_sector
+#: field:pos.sector,active:0
 msgid "Active"
-msgstr "Actif"
+msgstr "Active"
 
-#. module: pos_street_market
-#: view:market.place:pos_street_market.view_market_place_form
-#: field:market.place,code:0
-msgid "Code"
-msgstr "Code"
-
-#. module: pos_street_market
-#: field:market.place,company_id:0
+#. module: pos_sector
+#: field:pos.sector,company_id:0
 msgid "Company"
-msgstr "Société"
+msgstr "Company"
 
-#. module: pos_street_market
-#: field:market.place,create_uid:0
+#. module: pos_sector
+#: field:pos.sector,create_uid:0
 msgid "Created by"
 msgstr "Created by"
 
-#. module: pos_street_market
-#: field:market.place,create_date:0
+#. module: pos_sector
+#: field:pos.sector,create_date:0
 msgid "Created on"
 msgstr "Created on"
 
-#. module: pos_street_market
-#: field:market.place,display_name:0
+#. module: pos_sector
+#: model:product.template,name:pos_sector.product_sector__1_product_template
+msgid "Demo Product on sector 1"
+msgstr "Produit de démonstration Secteur 1"
+
+#. module: pos_sector
+#: model:product.template,name:pos_sector.product_sector__2_product_template
+msgid "Demo Product on sector 2"
+msgstr "Produit de démonstration Secteur 2"
+
+#. module: pos_sector
+#: field:pos.sector,display_name:0
 msgid "Display Name"
 msgstr "Display Name"
 
-#. module: pos_street_market
-#: view:pos.order:pos_street_market.view_pos_order_street_market_form
-msgid "False"
-msgstr "False"
-
-#. module: pos_street_market
-#: field:market.place,id:0
+#. module: pos_sector
+#: field:pos.sector,id:0
 msgid "ID"
 msgstr "ID"
 
-#. module: pos_street_market
-#: field:market.place,__last_update:0
+#. module: pos_sector
+#: field:pos.sector,__last_update:0
 msgid "Last Modified on"
 msgstr "Last Modified on"
 
-#. module: pos_street_market
-#: field:market.place,write_uid:0
+#. module: pos_sector
+#: field:pos.sector,write_uid:0
 msgid "Last Updated by"
 msgstr "Last Updated by"
 
-#. module: pos_street_market
-#: field:market.place,write_date:0
+#. module: pos_sector
+#: field:pos.sector,write_date:0
 msgid "Last Updated on"
 msgstr "Last Updated on"
 
-#. module: pos_street_market
-#. openerp-web
-#: code:addons/pos_street_market/static/src/xml/pos_street_market.xml:25
-#, python-format
-msgid "Let Empty"
-msgstr "Laisser vide"
-
-#. module: pos_street_market
-#. openerp-web
-#: code:addons/pos_street_market/static/src/js/widget.js:72
-#: code:addons/pos_street_market/static/src/xml/pos_street_market.xml:13
-#: field:pos.config,iface_street_market:0
-#: view:pos.order:pos_street_market.view_pos_order_search
-#: field:pos.order,market_place_id:0
-#, python-format
-msgid "Market Place"
-msgstr "Lieu de marché"
-
-#. module: pos_street_market
-#. openerp-web
-#: code:addons/pos_street_market/static/src/xml/pos_street_market.xml:22
-#: model:ir.actions.act_window,name:pos_street_market.action_market_place
-#: model:ir.ui.menu,name:pos_street_market.menu_market_place
-#, python-format
-msgid "Market Places"
-msgstr "Lieux de marchés"
-
-#. module: pos_street_market
-#: view:market.place:pos_street_market.view_market_place_form
-#: field:market.place,name:0
+#. module: pos_sector
+#: view:pos.sector:pos_sector.view_pos_sector_form
+#: field:pos.sector,name:0
 msgid "Name"
 msgstr "Nom"
 
-#. module: pos_street_market
-#: model:ir.model,name:pos_street_market.model_pos_order
-msgid "Point of Sale"
-msgstr "Point de Vente"
+#. module: pos_sector
+#: model:res.groups,name:pos_sector.group_pos_sector_product_user
+msgid "PoS Sector - Product Settings"
+msgstr "Secteur Point de vente - Paramétrage des produits"
 
-#. module: pos_street_market
-#: model:res.groups,name:pos_street_market.group_street_market_manager
-msgid "Street Market Manager"
-msgstr "Gestionnaire de lieux de marchés"
+#. module: pos_sector
+#: field:product.template,sector_id:0
+msgid "Point of Sale Sector"
+msgstr "Secteur du point de vente"
 
-#. module: pos_street_market
-#: view:pos.order:pos_street_market.view_pos_order_form
-msgid "True"
-msgstr "True"
+#. module: pos_sector
+#: model:ir.model,name:pos_sector.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
 
-#. module: pos_street_market
-#: view:pos.order:pos_street_market.view_pos_order_search
-msgid "With Market Place"
-msgstr "Avec un lieu de marché"
-
-#. module: pos_street_market
-#: view:pos.order:pos_street_market.view_pos_order_search
-msgid "Without Market Place"
-msgstr "Sans lieu de marché"
-
-#. module: pos_street_market
-#: view:pos.order:pos_street_market.view_pos_order_street_market_form
-msgid "{'readonly' : [('state', 'not in', ('draft','paid',))]}"
-msgstr "{'readonly' : [('state', 'not in', ('draft','paid',))]}"
-
+#. module: pos_sector
+#: model:ir.actions.act_window,name:pos_sector.action_pos_sector
+#: model:ir.ui.menu,name:pos_sector.menu_pos_sector
+#: field:pos.config,sector_ids:0
+msgid "Sectors"
+msgstr "Secteurs"
