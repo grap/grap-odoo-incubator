@@ -20,6 +20,7 @@
         'views/view_pos_box.xml',
         'views/view_account_journal.xml',
         'views/view_pos_session.xml',
+        'views/view_pos_session_opening.xml',
     ],
     'images': [
         'static/description/pos_session_closing_form.png',

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="view_pos_session_opening_form" model="ir.ui.view">
+        <field name="model">pos.session.opening</field>
+        <field name="inherit_id" ref="point_of_sale.pos_session_opening_form_view"/>
+        <field name="arch" type="xml">
+            <button name="open_session_cb" position="attributes">
+                <attribute name="attrs">{'invisible' : [('pos_state', 'in', ['opened', 'opening_control'])]}</attribute>
+            </button>
+            <button name="open_existing_session_cb_close" string="Close Session" position="replace" />
+        </field>
+    </record>
+
+</data></openerp>
