@@ -10,16 +10,30 @@ This module extends the functionality of point of sale to support product
 sectors restricting products display in the Point of Sale, depending of the
 product sectors.
 
-Configuration TODO
+This module can be interesting if some cashiers have the right to sell
+some products, and not other cashiers.
+
+
+Configuration
 =============
 
 To configure this module, you need to:
 
-* Go to Point of Sale / Configuration / Point of Sales
+* Go to Point of Sale / Configuration / Sectors
 
-* Check the box 'Market Place'
+* Create your PoS Sectors
 
-.. figure:: /pos_street_market/static/description/pos_config_form.png
+.. figure:: /pos_sector/static/description/pos_sector_tree.png
+   :width: 800 px
+
+* Open your Point Of Sale configurations and set sectors
+
+.. figure:: /pos_sector/static/description/pos_config_form.png
+   :width: 800 px
+
+* Finally, edit your products and set a sector
+
+.. figure:: /pos_sector/static/description/product_form.png
    :width: 800 px
 
 Usage
@@ -29,24 +43,8 @@ To use this module, you need to
 
 * open the point of sale
 
-* Click on 'Market Place' Button and select the place where you are
-
-.. figure:: /pos_street_market/static/description/pos_front_end_ui.png
-   :width: 800 px
-
-You can later make some statistics, filtering your sale by market places.
-
-
-.. figure:: /pos_street_market/static/description/pos_order_search.png
-   :width: 800 px
-
-Note
-----
-
-This module Add the possibility to change the date of a pos order, for
-Street Market Manager members, because in some case, user will not have an
-odoo instance during the sale, and will tip the PoS orders a few hours later or
-a a few days later.
+the products displayed will belong to the sectors of the current PoS config.
+(Also the products without sectors will be displayed)
 
 Credits
 =======

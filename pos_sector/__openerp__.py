@@ -31,8 +31,7 @@
         'demo/product_product.xml',
     ],
     'images': [
-#        'static/description/pos_front_end_ui.png',
-#        'static/description/pos_config_form.png',
-#        'static/description/pos_order_search.png',
+        'static/description/pos_config_form.png',
+        'static/description/product_form.png',
     ],
 }

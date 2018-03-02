@@ -6,15 +6,15 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <openerp><data>
 
-    <record id="product_sector_1" model="product.product">
-        <field name="name">Demo Product available on sector 1</field>
-        <field name="sector_id" ref="sector_2"/>
+    <record id="product_sector__1" model="product.product">
+        <field name="name">Demo Product on sector 1</field>
+        <field name="sector_id" ref="sector_1"/>
         <field name="categ_id" ref="product.product_category_all"/>
         <field name="list_price">100</field>
     </record>
 
-    <record id="product_sector_2" model="product.product">
-        <field name="name">Demo Product available on sector 2</field>
+    <record id="product_sector__2" model="product.product">
+        <field name="name">Demo Product on sector 2</field>
         <field name="sector_id" ref="sector_2"/>
         <field name="categ_id" ref="product.product_category_all"/>
         <field name="list_price">200</field>

@@ -10,4 +10,4 @@ class ProductTemplate(models.Model):
 
     # Columns section
     sector_id = fields.Many2one(
-        comodel_name='pos.sector', string='PoS Sector')
+        comodel_name='pos.sector', string='Point of Sale Sector')
