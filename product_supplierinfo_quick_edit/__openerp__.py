@@ -17,11 +17,11 @@
         'product_supplierinfo_triple_discount',
     ],
     'data': [
-        'view/view_product_supplierinfo_create_purchase_order.xml',
-        'view/view_product_supplierinfo.xml',
-        'view/action.xml',
-        'view/view_res_partner.xml',
-        'view/menu.xml',
+        'views/view_product_supplierinfo_create_purchase_order.xml',
+        'views/view_product_supplierinfo.xml',
+        'views/action.xml',
+        'views/view_res_partner.xml',
+        'views/menu.xml',
     ],
     'demo': [
         'demo/res_groups.xml',
