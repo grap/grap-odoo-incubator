@@ -95,39 +95,6 @@ class ProductSupplierinfo(models.Model):
         if len(self.pricelist_ids) == 1:
             self.pricelist_ids[0].discount3 = self.simple_discount3
 
-
-#    def _set_simple_price(
-#            self, cr, uid, id, name, value, args, context=None):
-#        partnerinfo_obj = self.pool['pricelist.partnerinfo']
-#        supplierinfo = self.browse(cr, uid, id, context=context)
-#        if len(supplierinfo.pricelist_ids) == 1:
-#            return partnerinfo_obj.write(
-#                cr, uid, supplierinfo.pricelist_ids[0].id,
-#                {'price': value}, context=context)
-#        else:
-#            return True
-
-#    def _set_simple_discount(
-#            self, cr, uid, id, name, value, args, context=None):
-#        partnerinfo_obj = self.pool['pricelist.partnerinfo']
-#        supplierinfo = self.browse(cr, uid, id, context=context)
-#        if len(supplierinfo.pricelist_ids) == 1:
-#            return partnerinfo_obj.write(
-#                cr, uid, supplierinfo.pricelist_ids[0].id,
-#                {'discount': value}, context=context)
-#        else:
-#            return True
-
-#    def _get_product_supplierinfo_pricelist_partnerinfo(
-#            self, cr, uid, ids, context=None):
-#        """Return 'product.supplierinfo' Info
-#        where somes 'pricelist.partnerinfo' changes."""
-#        partnerinfo_obj = self.pool['pricelist.partnerinfo']
-#        partnerinfos = partnerinfo_obj.browse(cr, uid, ids, context=context)
-#        res = [x.suppinfo_id.id for x in partnerinfos]
-#        return res
-
-
     # View Section
     @api.multi
     def create_simple_line(self):
