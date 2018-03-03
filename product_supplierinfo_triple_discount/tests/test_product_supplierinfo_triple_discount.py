@@ -16,7 +16,7 @@ class TestProductSupplierinfoTripleDiscount(common.TransactionCase):
         self.partner_3 = self.env.ref('base.res_partner_3')
         self.product = self.env.ref(
             'product_supplierinfo_triple_discount.product').\
-                product_variant_ids[0]
+            product_variant_ids[0]
 
     def test_purchase_order_partner_3_qty_1(self):
         res = self.purchase_order_line_model.onchange_product_id(
