@@ -1,0 +1,223 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* product_supplierinfo_quick_edit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-07 18:38+0000\n"
+"PO-Revision-Date: 2018-02-07 18:38+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo.create.purchase.order:product_supplierinfo_quick_edit.view_product_supplierinfo_create_purchase_order
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo,template_cost_method:0
+#: field:product.supplierinfo,template_standard_price:0
+msgid "Cost"
+msgstr "Prix de revient"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_tree
+msgid "Create"
+msgstr "Créer"
+
+#. module: product_supplierinfo_quick_edit
+#: model:ir.actions.act_window,name:product_supplierinfo_quick_edit.action_product_supplierinfo_create_purchase_order
+#: view:product.supplierinfo.create.purchase.order:product_supplierinfo_quick_edit.view_product_supplierinfo_create_purchase_order
+msgid "Create Purchase Orders"
+msgstr "Créer des bons de commandes"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo.create.purchase.order,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo.create.purchase.order,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo.create.purchase.order,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_tree
+msgid "Edit Multiple Lines"
+msgstr "Editer plusieurs lignes"
+
+#. module: product_supplierinfo_quick_edit
+#: code:addons/product_supplierinfo_quick_edit/model/product_supplierinfo.py:156
+#, python-format
+msgid "Error!"
+msgstr "Erreur !"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_search
+msgid "Group By..."
+msgstr "Regrouper par ..."
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo.create.purchase.order,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: product_supplierinfo_quick_edit
+#: model:ir.model,name:product_supplierinfo_quick_edit.model_product_supplierinfo
+msgid "Information about a product supplier"
+msgstr "Information sur le fournisseur du produit"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo.create.purchase.order,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo.create.purchase.order,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo.create.purchase.order,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo,lines_qty:0
+msgid "Lines Quantity"
+msgstr "Nombre de lignes"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_tree
+msgid "Min. Qty"
+msgstr "Qté Min."
+
+#. module: product_supplierinfo_quick_edit
+#: model:ir.model,name:product_supplierinfo_quick_edit.model_res_partner
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_search
+msgid "Product"
+msgstr "Article"
+
+#. module: product_supplierinfo_quick_edit
+#: view:res.partner:product_supplierinfo_quick_edit.view_res_partner_form
+#: view:res.partner:product_supplierinfo_quick_edit.view_res_partner_kanban
+#: field:res.partner,template_ids:0
+msgid "Products"
+msgstr "Articles"
+
+#. module: product_supplierinfo_quick_edit
+#: field:res.partner,template_count:0
+msgid "Products Quantity"
+msgstr "Nombre d'articles"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo.create.purchase.order,purchase_disabled_products:0
+msgid "Purchase Disabled Products"
+msgstr "Acheter les produits inactifs"
+
+#. module: product_supplierinfo_quick_edit
+#: code:addons/product_supplierinfo_quick_edit/model/product_supplierinfo_create_purchase_order.py:65
+#, python-format
+msgid "Purchase Orders"
+msgstr "Bon de commandes"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo,simple_discount:0
+msgid "Simple Discount"
+msgstr "Remise % (Simple)"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo,simple_min_quantity:0
+msgid "Simple Minimum Quantity"
+msgstr "Quantité minimum (Simple)"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo,simple_price:0
+msgid "Simple Price"
+msgstr "Prix (Simple)"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_tree
+msgid "Supp. Code"
+msgstr "Code (Frs)"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_tree
+msgid "Supp. Name"
+msgstr "Nom (Frs)"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_search
+msgid "Supplier"
+msgstr "Fournisseur"
+
+#. module: product_supplierinfo_quick_edit
+#: model:ir.actions.act_window,name:product_supplierinfo_quick_edit.action_product_supplierinfo
+#: model:ir.actions.act_window,name:product_supplierinfo_quick_edit.action_res_partner_2_product_supplierinfo
+#: model:ir.ui.menu,name:product_supplierinfo_quick_edit.menu_product_supplierinfo
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_search
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_tree
+msgid "Supplier Prices"
+msgstr "Prix fournisseur"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo.create.purchase.order:product_supplierinfo_quick_edit.view_product_supplierinfo_create_purchase_order
+msgid "This will create a purchase order for each supplier concerned by your previous selection."
+msgstr "Cela va créer un bon de commande d'achat pour chaque fournisseur concerné par la précédente sélection."
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_tree
+msgid "Unlink"
+msgstr "Supprimer"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_search
+msgid "With Many Prices Defined"
+msgstr "Avec plusieurs prix définis"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_search
+msgid "With One Price Defined"
+msgstr "Avec un prix défini"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_search
+msgid "Without Prices Defined"
+msgstr "Sans prix définis"
+
+#. module: product_supplierinfo_quick_edit
+#: code:addons/product_supplierinfo_quick_edit/model/product_supplierinfo.py:159
+#, python-format
+msgid "You can not create a simple supplier line for '%s' product because it has already one (or many) lines.\n"
+"\n"
+" - %s"
+msgstr "Vous ne pouvez par créer une ligne fournisseur pour ce produit '%s' car il possède déjà une ou plusieurs ligne(s).\n"
+"\n"
+" - %s"
+
+#. module: product_supplierinfo_quick_edit
+#: view:product.supplierinfo.create.purchase.order:product_supplierinfo_quick_edit.view_product_supplierinfo_create_purchase_order
+msgid "or"
+msgstr "ou"
+
+#. module: product_supplierinfo_quick_edit
+#: code:addons/product_supplierinfo_quick_edit/model/product_supplierinfo.py:153
+#, python-format
+msgid "qty : %s - price : %s"
+msgstr "qté : %s - prix : %s"
+

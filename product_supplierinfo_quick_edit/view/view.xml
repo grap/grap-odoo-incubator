@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Product - Simple Pricelist module for Odoo                             -->
+<!-- Copyright (C) 2015-Today GRAP (http://www.grap.coop)                   -->
+<!-- @author Sylvain LE GAL (https://twitter.com/legalsylvain)              -->
+
+<!--This program is free software: you can redistribute it and/or modify    -->
+<!--it under the terms of the GNU Affero General Public License as          -->
+<!--published by the Free Software Foundation, either version 3 of the      -->
+<!--License, or (at your option) any later version.                         -->
+
+<!--This program is distributed in the hope that it will be useful,         -->
+<!--but WITHOUT ANY WARRANTY; without even the implied warranty of          -->
+<!--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           -->
+<!--GNU Affero General Public License for more details.                     -->
+
+<!--You should have received a copy of the GNU Affero General Public License-->
+<!--along with this program.  If not, see <http://www.gnu.org/licenses/>.   -->
+<!-- ********************************************************************** -->
+
+<openerp>
+    <data>
+
+<!-- Model: product.supplierinfo -->
+        <record id="view_product_supplierinfo_tree" model="ir.ui.view">
+            <field name="model">product.supplierinfo</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <tree string="Supplier Prices"
+                    editable="top" colors="blue: lines_qty == 0; black: lines_qty == 1; brown: lines_qty &gt; 1">
+                    <field name="product_tmpl_id" domain="[('purchase_ok', '=', True)]" readonly="1"/>
+                    <field name="sequence" widget="handle" invisible="context.get('search_default_name', False)"/>
+                    <field name="name" invisible="context.get('search_default_name', False)"/>
+                    <field name="product_code" string="Supp. Code"/>
+                    <field name="product_name" string="Supp. Name"/>
+                    <field name="min_qty" string="Min. Qty"/>
+                    <field name="simple_min_quantity" attrs="{'invisible': [('lines_qty', '!=', 1)]}"/>
+                    <field name="simple_price" attrs="{'invisible': [('lines_qty', '!=', 1)]}"/>
+                    <field name="simple_discount" attrs="{'invisible': [('lines_qty', '!=', 1)]}"/>
+                    <field name="template_standard_price" attrs="{
+                        'invisible': [('product_tmpl_id', '=', False)]}"/>
+                    <button name="create_simple_line" string="Create" type="object" icon="gtk-add"
+                        attrs="{'invisible': [('lines_qty', '!=', 0)]}"/>
+                    <button name="edit_multiple_lines" string="Edit Multiple Lines" type="object" icon="gtk-edit"/>
+                    <button name="unlink" string="Unlink" type="object" icon="gtk-cancel"/>
+                    <field name="company_id" groups="base.group_multi_company" />
+
+                    <field name="template_cost_method" invisible="1"/>
+                    <field name="lines_qty" invisible="1"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_product_supplierinfo_search" model="ir.ui.view">
+            <field name="model">product.supplierinfo</field>
+            <field name="arch" type="xml">
+                <search string="Supplier Prices">
+                    <field name="product_tmpl_id"/>
+                    <field name="name"/>
+                    <field name="product_code"/>
+                    <field name="product_name"/>
+                    <filter string="Without Prices Defined" name="without_line" domain="[('lines_qty', '=', 0)]"/>
+                    <filter string="With One Price Defined" name="with_one_line" domain="[('lines_qty', '=', 1)]"/>
+                    <filter string="With Many Prices Defined" name="with_many_line" domain="[('lines_qty', '&gt;', 1)]"/>
+                    <group string="Group By...">
+                        <filter string="Supplier" context="{'group_by':'name'}"/>
+                        <filter string="Product" context="{'group_by':'product_tmpl_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+<!-- Model: product.supplierinfo.create.purchase.order -->
+        <record id="view_product_supplierinfo_create_purchase_order" model="ir.ui.view">
+            <field name="name">Create Purchase Orders</field>
+            <field name="model">product.supplierinfo.create.purchase.order</field>
+            <field name="arch" type="xml">
+               <form string="Create Purchase Orders" version="7.0">
+                    <group>
+                        <label string="This will create a purchase order for each supplier concerned by your previous selection." colspan="4"/>
+                        <field name="purchase_disabled_products" />
+                    </group>
+                    
+                    <footer>
+                        <button name="create_purchase_order" string="Create Purchase Orders" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>
