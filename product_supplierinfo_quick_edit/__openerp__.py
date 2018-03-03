@@ -61,7 +61,7 @@ Copyright, Authors and Licence:
     'data': [
         'view/view.xml',
         'view/action.xml',
-        'view/view_action.xml',
+        'view/view_res_partner.xml',
         'view/menu.xml',
     ],
     'demo': [

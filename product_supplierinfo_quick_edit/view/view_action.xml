@@ -41,10 +41,14 @@
             <field name="arch" type="xml">
                 <field name="mobile" position="after">
                     <field name="template_count"/>
+                    <field name="supplierinfo_qty"/>
                 </field>
                 <xpath expr="//div[@class='oe_kanban_partner_links']" position="inside">
                     <a name="%(action_res_partner_2_product_supplierinfo)d" type="action" t-if="record.template_count.value>0">
                         <t t-esc="record.template_count.value"/> Products
+                    </a>
+                    <a name="%(action_res_partner_2_product_supplierinfo)d" type="action" t-if="record.supplierinfo_qty.value>0">
+                        <t t-esc="record.supplierinfo_qty.value"/> Products (BIS)
                     </a>
                 </xpath>
             </field>
