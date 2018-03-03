@@ -53,7 +53,8 @@ class ProductSupplierinfoCreatePurchaseOrder(models.TransientModel):
                     order_data['pricelist_id'], product_id, 1,
                     False, order_data['partner_id'],
                     fiscal_position_id=order_data['fiscal_position'])['value'])
-                line_data['taxes_id'] = [[6, False, line_data['taxes_id']]]
+                line_data['taxes_id'] = [
+                    [6, False, line_data['taxes_id'] or []]]
                 order_data['order_line'].append([0, False, line_data])
 
             order = order_obj.create(order_data)

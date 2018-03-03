@@ -59,7 +59,8 @@ Copyright, Authors and Licence:
         'product_supplierinfo_triple_discount',
     ],
     'data': [
-        'view/view.xml',
+        'view/view_product_supplierinfo_create_purchase_order.xml',
+        'view/view_product_supplierinfo.xml',
         'view/action.xml',
         'view/view_res_partner.xml',
         'view/menu.xml',

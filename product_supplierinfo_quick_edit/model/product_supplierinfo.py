@@ -3,154 +3,162 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+from openerp import _, api, fields, models
+from openerp.exceptions import Warning as UserError
 
-from openerp.osv import fields
-from openerp.osv.orm import Model
-from openerp.osv.osv import except_osv
-from openerp.tools.translate import _
 from openerp.addons import decimal_precision as dp
 
 
-class product_supplierinfo(Model):
+class ProductSupplierinfo(models.Model):
     _inherit = 'product.supplierinfo'
 
-    # Function Fields Section
-    def _get_simple_info(self, cr, uid, ids, name, args, context=None):
-        res = {}
+    # Column Section
+    template_standard_price = fields.Float(
+        related='product_tmpl_id.standard_price', string='Cost',
+        digits_compute=dp.get_precision('Purchase Price'))
 
-        for item in self.browse(cr, uid, ids, context=context):
+    simple_min_quantity = fields.Float(
+        compute='_get_simple_info', inverse='_set_simple_min_quantity',
+        string='Simple Minimum Quantity', multi='simple_info',
+        required=True)
+
+    simple_price = fields.Float(
+        compute='_get_simple_info', inverse='_set_simple_price',
+        string='Simple Price', multi='simple_info', required=True,
+        digits_compute=dp.get_precision('Purchase Price'))
+
+    simple_discount = fields.Float(
+        compute='_get_simple_info', inverse='_set_simple_discount',
+        string='Simple Discount (%)', multi='simple_info', required=True,
+        digits_compute=dp.get_precision('Discount'))
+
+    simple_discount2 = fields.Float(
+        compute='_get_simple_info', inverse='_set_simple_discount2',
+        string='Simple Discount 2 (%)', multi='simple_info', required=True,
+        digits_compute=dp.get_precision('Discount'))
+
+    simple_discount3 = fields.Float(
+        compute='_get_simple_info', inverse='_set_simple_discount3',
+        string='Simple Discount 3 (%)', multi='simple_info', required=True,
+        digits_compute=dp.get_precision('Discount'))
+
+    lines_qty = fields.Integer(
+        compute='_get_lines_qty', string='Lines Quantity', store=True)
+
+    # Compute Section
+    @api.multi
+    @api.depends('product_tmpl_id.standard_price')
+    def _get_simple_info(self):
+        for item in self:
             if len(item.pricelist_ids) == 1:
-                res[item.id] = {
+                item.write({
                     'simple_min_quantity': item.pricelist_ids[0].min_quantity,
                     'simple_price': item.pricelist_ids[0].price,
                     'simple_discount': item.pricelist_ids[0].discount,
-                }
-            else:
-                res[item.id] = {
-                    'simple_min_quantity': 0,
-                    'simple_price': 0,
-                    'simple_discount': 0,
-                }
-            res[item.id]['template_standard_price'] =\
-                item.product_tmpl_id and\
-                item.product_tmpl_id.standard_price or 0
-            res[item.id]['template_cost_method'] =\
-                item.product_tmpl_id and item.product_tmpl_id.cost_method or ''
-        return res
+                    'simple_discount2': item.pricelist_ids[0].discount2,
+                    'simple_discount3': item.pricelist_ids[0].discount3,
+                })
 
-    def _get_lines_qty(self, cr, uid, ids, name, args, context=None):
-        res = {}
-        for item in self.browse(cr, uid, ids, context=context):
-            res[item.id] = len(item.pricelist_ids)
-        return res
+    @api.multi
+    @api.depends('pricelist_ids')
+    def _get_lines_qty(self):
+        for item in self:
+            item.lines_qty = len(item.pricelist_ids)
 
-    def _set_simple_min_quantity(
-            self, cr, uid, id, name, value, args, context=None):
-        partnerinfo_obj = self.pool['pricelist.partnerinfo']
-        supplierinfo = self.browse(cr, uid, id, context=context)
-        if len(supplierinfo.pricelist_ids) == 1:
-            return partnerinfo_obj.write(
-                cr, uid, supplierinfo.pricelist_ids[0].id,
-                {'min_quantity': value}, context=context)
-        else:
-            return True
+    @api.multi
+    def _set_simple_min_quantity(self):
+        self.ensure_one()
+        if len(self.pricelist_ids) == 1:
+            self.pricelist_ids[0].min_quantity = self.simple_min_quantity
 
-    def _set_simple_price(
-            self, cr, uid, id, name, value, args, context=None):
-        partnerinfo_obj = self.pool['pricelist.partnerinfo']
-        supplierinfo = self.browse(cr, uid, id, context=context)
-        if len(supplierinfo.pricelist_ids) == 1:
-            return partnerinfo_obj.write(
-                cr, uid, supplierinfo.pricelist_ids[0].id,
-                {'price': value}, context=context)
-        else:
-            return True
+    @api.multi
+    def _set_simple_price(self):
+        self.ensure_one()
+        if len(self.pricelist_ids) == 1:
+            self.pricelist_ids[0].price = self.simple_price
 
-    def _set_simple_discount(
-            self, cr, uid, id, name, value, args, context=None):
-        partnerinfo_obj = self.pool['pricelist.partnerinfo']
-        supplierinfo = self.browse(cr, uid, id, context=context)
-        if len(supplierinfo.pricelist_ids) == 1:
-            return partnerinfo_obj.write(
-                cr, uid, supplierinfo.pricelist_ids[0].id,
-                {'discount': value}, context=context)
-        else:
-            return True
+    @api.multi
+    def _set_simple_discount(self):
+        self.ensure_one()
+        if len(self.pricelist_ids) == 1:
+            self.pricelist_ids[0].discount = self.simple_discount
 
-    def _get_product_supplierinfo_pricelist_partnerinfo(
-            self, cr, uid, ids, context=None):
-        """Return 'product.supplierinfo' Info
-        where somes 'pricelist.partnerinfo' changes."""
-        partnerinfo_obj = self.pool['pricelist.partnerinfo']
-        partnerinfos = partnerinfo_obj.browse(cr, uid, ids, context=context)
-        res = [x.suppinfo_id.id for x in partnerinfos]
-        return res
+    @api.multi
+    def _set_simple_discount2(self):
+        self.ensure_one()
+        if len(self.pricelist_ids) == 1:
+            self.pricelist_ids[0].discount2 = self.simple_discount2
 
-    # Column Section
-    _columns = {
-        'template_cost_method': fields.function(
-            _get_simple_info, type='char',
-            string='Cost', multi='simple_info', readonly=True),
-        'template_standard_price': fields.function(
-            _get_simple_info,
-            type='float', string='Cost', multi='simple_info', required=True,
-            digits_compute=dp.get_precision('Purchase Price')),
-        'simple_min_quantity': fields.function(
-            _get_simple_info, fnct_inv=_set_simple_min_quantity, type='float',
-            string='Simple Minimum Quantity', multi='simple_info',
-            required=True),
-        'simple_price': fields.function(
-            _get_simple_info, fnct_inv=_set_simple_price, type='float',
-            string='Simple Price', multi='simple_info', required=True,
-            digits_compute=dp.get_precision('Purchase Price')),
-        'simple_discount': fields.function(
-            _get_simple_info, fnct_inv=_set_simple_discount, type='float',
-            string='Simple Discount', multi='simple_info', required=True,
-            digits=(16, 2)),
-        'lines_qty': fields.function(
-            _get_lines_qty, type='integer', string='Lines Quantity',
-            store={
-                'product.supplierinfo': (
-                    lambda self, cr, uid, ids, context=None: ids, [
-                        'pricelist_ids', 'name',
-                    ], 10),
-                'pricelist.partnerinfo': (
-                    _get_product_supplierinfo_pricelist_partnerinfo, [
-                        'suppinfo_id',
-                    ], 10)
-                }),
-    }
+    @api.multi
+    def _set_simple_discount3(self):
+        self.ensure_one()
+        if len(self.pricelist_ids) == 1:
+            self.pricelist_ids[0].discount3 = self.simple_discount3
 
-    # Custom Section
-    def create_simple_line(self, cr, uid, ids, context=None):
-        partnerinfo_obj = self.pool['pricelist.partnerinfo']
+
+#    def _set_simple_price(
+#            self, cr, uid, id, name, value, args, context=None):
+#        partnerinfo_obj = self.pool['pricelist.partnerinfo']
+#        supplierinfo = self.browse(cr, uid, id, context=context)
+#        if len(supplierinfo.pricelist_ids) == 1:
+#            return partnerinfo_obj.write(
+#                cr, uid, supplierinfo.pricelist_ids[0].id,
+#                {'price': value}, context=context)
+#        else:
+#            return True
+
+#    def _set_simple_discount(
+#            self, cr, uid, id, name, value, args, context=None):
+#        partnerinfo_obj = self.pool['pricelist.partnerinfo']
+#        supplierinfo = self.browse(cr, uid, id, context=context)
+#        if len(supplierinfo.pricelist_ids) == 1:
+#            return partnerinfo_obj.write(
+#                cr, uid, supplierinfo.pricelist_ids[0].id,
+#                {'discount': value}, context=context)
+#        else:
+#            return True
+
+#    def _get_product_supplierinfo_pricelist_partnerinfo(
+#            self, cr, uid, ids, context=None):
+#        """Return 'product.supplierinfo' Info
+#        where somes 'pricelist.partnerinfo' changes."""
+#        partnerinfo_obj = self.pool['pricelist.partnerinfo']
+#        partnerinfos = partnerinfo_obj.browse(cr, uid, ids, context=context)
+#        res = [x.suppinfo_id.id for x in partnerinfos]
+#        return res
+
+
+    # View Section
+    @api.multi
+    def create_simple_line(self):
+        self.ensure_one()
+        partnerinfo_obj = self.env['pricelist.partnerinfo']
         vals = {'min_quantity': 0, 'price': 0}
-        defaults = partnerinfo_obj._add_missing_default_values(cr, uid, {})
+        defaults = partnerinfo_obj._add_missing_default_values({})
         vals.update(defaults)
-        for item in self.browse(cr, uid, ids, context=context):
-            if len(item.pricelist_ids) == 0:
-                vals['suppinfo_id'] = item.id
-                partnerinfo_obj.create(cr, uid, vals, context=context)
-            else:
-                # This case occures in the case of concurrent access
-                lines = ';\n - '.join([_(
-                    'qty : %s - price : %s') % (x.min_quantity, x.price)
-                    for x in item.pricelist_ids])
-                raise except_osv(_('Error!'), _(
-                    "You can not create a simple supplier line for '%s'"
-                    " product because it has already one (or many)"
-                    " lines.\n\n - %s" % (item.product_tmpl_id.name, lines)))
+        if len(self.pricelist_ids) == 0:
+            vals['suppinfo_id'] = self.id
+            partnerinfo_obj.create(vals)
+        else:
+            # This case occures in the case of concurrent access
+            lines = ';\n - '.join([_(
+                'qty : %s - price : %s') % (x.min_quantity, x.price)
+                for x in self.pricelist_ids])
+            raise UserError(_(
+                "You can not create a simple supplier line for '%s'"
+                " product because it has already one (or many)"
+                " lines.\n\n - %s" % (self.product_tmpl_id.name, lines)))
         return True
 
-    def edit_multiple_lines(self, cr, uid, ids, context=None):
-        assert (len(ids) == 1)
+    @api.multi
+    def edit_multiple_lines(self):
+        self.ensure_one()
         return {
             'view_type': 'form',
             'view_mode': 'form',
             'res_model': 'product.supplierinfo',
             'type': 'ir.actions.act_window',
-            'res_id': ids[0],
+            'res_id': self.id,
             'target': 'new',
-            'context': context,
             'nodestroy': True,
         }
