@@ -11,19 +11,19 @@ class WizardUpdateInvoiceSupplierinfoLine(models.TransientModel):
     _inherit = 'wizard.update.invoice.supplierinfo.line'
 
     current_discount2 = fields.Float(
-        string='Current Discount %2', readonly=True,
+        string='Current Disc. 2 (%)', readonly=True,
         digits_compute=dp.get_precision('Discount'))
 
     new_discount2 = fields.Float(
-        string='New Discount %2', required=True,
+        string='New Disc. 2 (%)', required=True,
         digits=dp.get_precision('Product Price'))
 
     current_discount3 = fields.Float(
-        string='Current Discount %3', readonly=True,
+        string='Current Disc. 3 (%)', readonly=True,
         digits_compute=dp.get_precision('Discount'))
 
     new_discount3 = fields.Float(
-        string='New Discount %3', required=True,
+        string='New Disc. 3 (%)', required=True,
         digits=dp.get_precision('Product Price'))
 
     @api.multi
