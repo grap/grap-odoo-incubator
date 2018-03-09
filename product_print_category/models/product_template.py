@@ -9,11 +9,19 @@ from openerp import api, fields, models
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
+    # Columns Section
     print_category_id = fields.Many2one(
-        string='Print Category', comodel_name='product.print.category')
+        string='Print Category', comodel_name='product.print.category',
+        default=lambda s: s._default_print_category_id())
+
     to_print = fields.Boolean(
         string='Pricetag to reprint', compute='_compute_to_print', store=True)
 
+    # Default Section
+    def _default_print_category_id(self):
+        return self.env.user.company_id.default_print_category_id.id
+
+    # Compute Section
     @api.multi
     @api.depends('product_variant_ids.to_print')
     def _compute_to_print(self):
@@ -21,6 +29,7 @@ class ProductTemplate(models.Model):
             template.to_print = any(
                 p.to_print for p in template.product_variant_ids)
 
+    # Overload Section
     @api.model
     def create(self, vals):
         if vals.get('print_category_id', False):

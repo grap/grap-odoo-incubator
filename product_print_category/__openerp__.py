@@ -30,6 +30,7 @@
         'wizard/view_product_print_wizard.xml',
         'views/view_product_product.xml',
         'views/view_product_template.xml',
+        'views/view_res_company.xml',
         'views/action.xml',
         'views/view_product_print_category.xml',
         'views/menu.xml',
