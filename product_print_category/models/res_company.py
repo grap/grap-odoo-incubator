@@ -9,5 +9,5 @@ from openerp import fields, models
 class ResCompany(models.Model):
     _inherit = 'res.company'
 
-    default_print_category_id = fields.Many2one(
+    print_category_id = fields.Many2one(
         string='Default Print Category', comodel_name='product.print.category')

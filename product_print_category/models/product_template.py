@@ -19,7 +19,7 @@ class ProductTemplate(models.Model):
 
     # Default Section
     def _default_print_category_id(self):
-        return self.env.user.company_id.default_print_category_id.id
+        return self.env.user.company_id.print_category_id
 
     # Compute Section
     @api.multi
