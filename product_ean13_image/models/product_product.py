@@ -26,31 +26,19 @@ except ImportError:
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
-    # Fields Function Section
-    def _get_ean13_image(
-            self, cr, uid, ids, field_name, arg, context=None):
-        res = {}
-        for pp in self.browse(cr, uid, ids, context):
-            if pp.ean13:
-                EAN = barcode.get_barcode_class('ean13')
-                ean = EAN(pp.ean13)
-                fullname = ean.save('/tmp/' + pp.ean13)
-                f = open(fullname, 'r')
-                output = StringIO.StringIO()
-                svg = f.read()
-                cairosvg.svg2png(
-                    bytestring=svg, write_to=output, center_text=True, dpi=300)
-                res[pp.id] = base64.b64encode(output.getvalue())
-                os.remove(fullname)
-            else:
-                res[pp.id] = False
-        return res
+    ean13_image = fields.Binary(compute='_compute_ean13_image', store=True)
 
-    _columns = {
-        'ean13_image': fields.function(
-            _get_ean13_image, string='Image of the EAN13', type='binary',
-            store={
-                'product.product': (
-                    lambda self, cr, uid, ids, context=None: ids,
-                    ['ean13'], 10)}),
-    }
+    @api.multi
+    @api.depends('ean13')
+    def _compute_ean13_image(self):
+        for product in self.filtered(lambda x: x.ean13):
+            EAN = barcode.get_barcode_class('ean13')
+            ean = EAN(product.ean13)
+            fullname = ean.save('/tmp/' + product.ean13)
+            f = open(fullname, 'r')
+            output = StringIO.StringIO()
+            svg = f.read()
+            cairosvg.svg2png(
+                bytestring=svg, write_to=output, center_text=True, dpi=300)
+            product.ean13_image = base64.b64encode(output.getvalue())
+            os.remove(fullname)
