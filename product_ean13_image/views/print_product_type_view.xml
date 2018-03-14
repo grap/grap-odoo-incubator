@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2016-Today: GRAP (<http://www.grap.coop>)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+    <record id="view_print_product_type_form" model="ir.ui.view">
+        <field name="model">print.product.type</field>
+        <field name="arch" type="xml">
+            <form string="Label" version="7.0">
+                <sheet>
+                    <field name="name"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <group col="4">
+                        <separator string="Page Information" colspan="4"/>
+                        <field name="page_margin_top"/>
+                        <field name="page_margin_left"/>
+                        <field name="row_qty"/>
+                        <field name="column_qty"/>
+                        <field name="inner_margin_top"/>
+                        <field name="inner_margin_left"/>
+                    </group>
+
+                    <group col="4">
+                        <separator string="Label Information" colspan="4"/>
+                        <field name="label_height"/>
+                        <field name="label_width"/>
+                    </group>
+
+                    <group col="4">
+                        <separator string="Product Name Information" colspan="4"/>
+                        <field name="product_name_top"/>
+                        <field name="product_name_left"/>
+                        <field name="product_name_height"/>
+                        <field name="product_name_width"/>
+                        <field name="product_name_font_size"/>
+                    </group>
+
+                    <group col="4">
+                        <separator string="Barcode Information" colspan="4"/>
+                        <field name="barcode_top"/>
+                        <field name="barcode_left"/>
+                        <field name="barcode_height"/>
+                        <field name="barcode_width"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</data></openerp>
