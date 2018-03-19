@@ -67,6 +67,7 @@ class ProductSupplierinfoCreatePurchaseOrder(models.TransientModel):
             'view_type': 'form',
             'view_mode': 'tree,form',
             'res_model': 'purchase.order',
+            'active_ids': order_ids,
             'view_id': False,
             'type': 'ir.actions.act_window',
         }
