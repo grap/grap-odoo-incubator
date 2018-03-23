@@ -12,7 +12,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
         <field name="arch" type="xml">
             <field name="config_id" position="attributes">
-                <attribute name="attrs">{'readonly': [('state', '!=', 'opening_control')]}</attribute>
+                <attribute name="readonly">1</attribute>
             </field>
             <!-- Opening and Closing Controls -->
             <xpath expr="//group[@string='Opening Cash Control']" position="before">
