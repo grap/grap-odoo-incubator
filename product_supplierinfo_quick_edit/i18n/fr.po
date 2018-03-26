@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-07 18:38+0000\n"
-"PO-Revision-Date: 2018-02-07 18:38+0000\n"
+"POT-Creation-Date: 2018-03-26 12:22+0000\n"
+"PO-Revision-Date: 2018-03-26 12:22+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,10 +21,14 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #. module: product_supplierinfo_quick_edit
-#: field:product.supplierinfo,template_cost_method:0
 #: field:product.supplierinfo,template_standard_price:0
 msgid "Cost"
 msgstr "Prix de revient"
+
+#. module: product_supplierinfo_quick_edit
+#: help:product.supplierinfo,template_standard_price:0
+msgid "Cost price of the product template used for standard stock valuation in accounting and used as a base price on purchase orders. Expressed in the default unit of measure of the product."
+msgstr "Cost price of the product template used for standard stock valuation in accounting and used as a base price on purchase orders. Expressed in the default unit of measure of the product."
 
 #. module: product_supplierinfo_quick_edit
 #: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_tree
@@ -56,12 +60,6 @@ msgstr "Display Name"
 #: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_tree
 msgid "Edit Multiple Lines"
 msgstr "Editer plusieurs lignes"
-
-#. module: product_supplierinfo_quick_edit
-#: code:addons/product_supplierinfo_quick_edit/model/product_supplierinfo.py:156
-#, python-format
-msgid "Error!"
-msgstr "Erreur !"
 
 #. module: product_supplierinfo_quick_edit
 #: view:product.supplierinfo:product_supplierinfo_quick_edit.view_product_supplierinfo_search
@@ -116,14 +114,13 @@ msgstr "Article"
 #. module: product_supplierinfo_quick_edit
 #: view:res.partner:product_supplierinfo_quick_edit.view_res_partner_form
 #: view:res.partner:product_supplierinfo_quick_edit.view_res_partner_kanban
-#: field:res.partner,template_ids:0
-msgid "Products"
-msgstr "Articles"
+msgid "Product Infos"
+msgstr "Infos Frs."
 
 #. module: product_supplierinfo_quick_edit
-#: field:res.partner,template_count:0
-msgid "Products Quantity"
-msgstr "Nombre d'articles"
+#: field:res.partner,supplierinfo_qty:0
+msgid "Product Infos Quantity"
+msgstr "Qté d'Infos Frs"
 
 #. module: product_supplierinfo_quick_edit
 #: field:product.supplierinfo.create.purchase.order,purchase_disabled_products:0
@@ -131,15 +128,25 @@ msgid "Purchase Disabled Products"
 msgstr "Acheter les produits inactifs"
 
 #. module: product_supplierinfo_quick_edit
-#: code:addons/product_supplierinfo_quick_edit/model/product_supplierinfo_create_purchase_order.py:65
+#: code:addons/product_supplierinfo_quick_edit/models/product_supplierinfo_create_purchase_order.py:66
 #, python-format
 msgid "Purchase Orders"
-msgstr "Bon de commandes"
+msgstr "Commande d'achat"
 
 #. module: product_supplierinfo_quick_edit
 #: field:product.supplierinfo,simple_discount:0
-msgid "Simple Discount"
-msgstr "Remise % (Simple)"
+msgid "Simple Discount (%)"
+msgstr "Remise simple 1 (%)"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo,simple_discount2:0
+msgid "Simple Discount 2 (%)"
+msgstr "Remise simple 2 (%)"
+
+#. module: product_supplierinfo_quick_edit
+#: field:product.supplierinfo,simple_discount3:0
+msgid "Simple Discount 3 (%)"
+msgstr "Remise simple 3 (%)"
 
 #. module: product_supplierinfo_quick_edit
 #: field:product.supplierinfo,simple_min_quantity:0
@@ -201,12 +208,12 @@ msgid "Without Prices Defined"
 msgstr "Sans prix définis"
 
 #. module: product_supplierinfo_quick_edit
-#: code:addons/product_supplierinfo_quick_edit/model/product_supplierinfo.py:159
+#: code:addons/product_supplierinfo_quick_edit/models/product_supplierinfo.py:117
 #, python-format
 msgid "You can not create a simple supplier line for '%s' product because it has already one (or many) lines.\n"
 "\n"
 " - %s"
-msgstr "Vous ne pouvez par créer une ligne fournisseur pour ce produit '%s' car il possède déjà une ou plusieurs ligne(s).\n"
+msgstr "Vous ne pouvez pas créer une ligne fournisseur pour l'article %s car il a déjà une (ou plusieurs) lignes.\n"
 "\n"
 " - %s"
 
@@ -216,7 +223,7 @@ msgid "or"
 msgstr "ou"
 
 #. module: product_supplierinfo_quick_edit
-#: code:addons/product_supplierinfo_quick_edit/model/product_supplierinfo.py:153
+#: code:addons/product_supplierinfo_quick_edit/models/product_supplierinfo.py:111
 #, python-format
 msgid "qty : %s - price : %s"
 msgstr "qté : %s - prix : %s"
