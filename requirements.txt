@@ -1,2 +1,2 @@
-pyBarcode==0.7
+viivakoodi
 cairosvg==1.0.22
