@@ -2,9 +2,9 @@
    :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-==============
+====================
 Product uom use type
-==============
+====================
 
 This module extends unities of measure (uom) by sorting them into three 
 categories :

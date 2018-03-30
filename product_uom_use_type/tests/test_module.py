@@ -14,7 +14,6 @@ class TestModule(TransactionCase):
         self.both_unit = self.env.ref('product.product_uom_unit')
         self.sale_unit = self.env.ref('product_uom_use_type.product_uom_pint')
 
-
     # Test Section
     def test_01_onchange_template(self):
         res = self.template_obj.onchange_uom(self.both_unit.id, False)
