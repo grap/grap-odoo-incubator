@@ -28,6 +28,7 @@ openerp.pos_optional_printing = function (instance) {
                     self.validate_order({without_bill: true});
                 },
             });
+            this.update_payment_summary();
         },
 
         validate_order: function(options) {
@@ -40,7 +41,7 @@ openerp.pos_optional_printing = function (instance) {
             }
             if(options && options.invoice){
                 // Disable without_bill button if invoiced is selected
-                this.pos_widget.action_bar.set_button_disabled('validation_without_bill',true);
+                this.pos_widget.action_bar.set_button_disabled('validation_without_bill', true);
             }
             this._super(options);
         },
