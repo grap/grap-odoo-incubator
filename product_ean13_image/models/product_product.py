@@ -15,11 +15,13 @@ logger = logging.getLogger(__name__)
 try:
     import cairosvg
 except ImportError:
+    cairosvg = False
     logger.debug("grap_print_product - 'cairosvg' librairy not found")
 
 try:
     import barcode
 except ImportError:
+    barcode = False
     logger.debug("grap_print_product - 'barcode' librairy not found")
 
 
@@ -31,6 +33,8 @@ class ProductProduct(models.Model):
     @api.multi
     @api.depends('ean13')
     def _compute_ean13_image(self):
+        if not (barcode and cairosvg):
+            return
         for product in self.filtered(lambda x: x.ean13):
             EAN = barcode.get_barcode_class('ean13')
             ean = EAN(product.ean13)

@@ -22,6 +22,9 @@
         'demo/product_product.xml',
     ],
     'external_dependencies': {
-        'python': ['cairosvg', 'barcode'],
+        'python': [
+            'cairosvg',
+            # 'barcode',
+        ],
     },
 }
