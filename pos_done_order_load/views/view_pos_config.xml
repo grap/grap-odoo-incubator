@@ -5,7 +5,6 @@ Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<?xml version="1.0" encoding="utf-8"?>
 <openerp><data>
 
     <record id="view_pos_config_form" model="ir.ui.view">

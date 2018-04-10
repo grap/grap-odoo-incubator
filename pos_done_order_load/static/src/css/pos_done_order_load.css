@@ -19,7 +19,6 @@
 
 .pos .doneorderlist-screen .done-order-list tbody > tr{
     background: rgb(230,230,230);
-    cursor: pointer;
 }
 
 .pos .doneorderlist-screen .done-order-list thead > tr,
@@ -29,6 +28,15 @@
 
 .pos .doneorderlist-screen .done-order-list tbody > tr:hover {
     background: rgb(220,220,220);
+}
+
+.pos .print-done-order{
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 25px;
+    background: rgb(230, 230, 230);
+    border: solid 1px rgb(209, 209, 209);
+    padding: 3px 13px;
 }
 
 .pos .doneorderlist-screen .searchbox{

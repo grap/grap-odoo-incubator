@@ -53,15 +53,13 @@ class PosOrder(models.Model):
             payment_line = self._prepare_done_order_payment_for_pos(
                 payment_line)
             payment_lines.append(payment_line)
-        res = {
+        return {
             'id': self.id,
             'name': self.name,
             'partner_id': self.partner_id.id,
             'line_ids': order_lines,
             'statement_ids': payment_lines,
         }
-        print res
-        return res
 
     @api.multi
     def _prepare_done_order_line_for_pos(self, order_line):
