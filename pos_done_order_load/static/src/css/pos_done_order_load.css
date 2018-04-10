@@ -1,0 +1,40 @@
+.pos .doneorderlist-screen .button.done-order-button {
+    width: 150px;
+}
+
+.pos .doneorderlist-screen .button.cancel {
+    margin-left: -180px;
+}
+
+.pos .doneorderlist-screen .done-order-list{
+    font-size: 16px;
+    width: 100%;
+    line-height: 40px;
+}
+
+.pos .doneorderlist-screen .done-order-list th,
+.pos .doneorderlist-screen .done-order-list td {
+    padding: 0px 8px;
+}
+
+.pos .doneorderlist-screen .done-order-list tbody > tr{
+    background: rgb(230,230,230);
+    cursor: pointer;
+}
+
+.pos .doneorderlist-screen .done-order-list thead > tr,
+.pos .doneorderlist-screen .done-order-list tr:nth-child(even) {
+    background: rgb(247,247,247);
+}
+
+.pos .doneorderlist-screen .done-order-list tbody > tr:hover {
+    background: rgb(220,220,220);
+}
+
+.pos .doneorderlist-screen .searchbox{
+    margin-top:8px;
+}
+
+.pos .doneorderlist-screen .searchbox input{
+    width: 150px;
+}
