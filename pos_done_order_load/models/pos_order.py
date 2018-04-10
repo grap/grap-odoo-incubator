@@ -3,7 +3,7 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, models, fields
+from openerp import api, models
 
 
 class PosOrder(models.Model):
@@ -15,7 +15,6 @@ class PosOrder(models.Model):
         return [
             ('state', 'in', ['paid', 'done', 'invoiced']),
         ]
-
 
     @api.model
     def _prepare_filter_query_for_pos(self, pos_session_id, query):
@@ -65,4 +64,3 @@ class PosOrder(models.Model):
 #            'partner_id': self.partner_id.id,
 #            'line_ids': pickinglines,
 #        }
-
