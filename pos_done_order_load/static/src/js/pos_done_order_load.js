@@ -4,12 +4,12 @@
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
  *****************************************************************************/
 
-console.log("pos_done_order_load");
+"use strict";
 
 openerp.pos_done_order_load = function(instance, local) {
 
 
-    module = instance.point_of_sale;
+    var module = instance.point_of_sale;
     var QWeb = instance.web.qweb;
     var _t = instance.web._t;
 
@@ -79,11 +79,6 @@ openerp.pos_done_order_load = function(instance, local) {
         show_leftpane: false,
         model: 'pos.order',
 
-////        // Base functions
-////        init: function(parent, options){
-////            this._super(parent, options);
-////        },
-
         start: function() {
             var self = this;
             this._super();
@@ -111,109 +106,114 @@ openerp.pos_done_order_load = function(instance, local) {
             this.perform_search();
         },
 
-////        prepare_order: function(order, picking) {
-////            var partner = this.pos.db.get_partner_by_id(picking.partner_id);
-////            order.set_client(partner || undefined);
-////            return order;
-////        },
-
-////        prepare_orderline: function(product, pickingline) {
-////            return {
-////                quantity: pickingline.qty,
-////                price: pickingline.price_unit || product.price,
-////                discount: pickingline.discount || 0.0,
-////            };
-////        },
-
         // User Event
         clickCancelButton: function(event) {
-//            order = this.pos.get('selectedOrder');
-//            order.set_client(undefined);
-//            order.set_origin_picking_id(undefined);
-//            order.set_origin_picking_name(undefined);
-//            order.get('orderLines').reset();
-//            this.pos_widget.order_widget.change_selected_order();
             var ss = this.pos.pos_widget.screen_selector;
             ss.set_current_screen('products');
-//            this.pos_widget.numpad.show();
-//            this.pos_widget.paypad.show();
         },
 
-////        load_picking: function(origin_picking_id) {
-////            var self = this;
-////            var pickingModel = new instance.web.Model(this.model);
-////            return pickingModel.call('load_picking_for_pos', [[origin_picking_id]])
-////            .then(function (picking) {
-////                self.current_picking_id = origin_picking_id;
-////                self.current_picking_name = picking.name;
-////                var picking_selectable = true;
-////                var order = self.pos.get('selectedOrder');
-////                order = self.prepare_order(order, picking);
-////                order.get('orderLines').reset();
-////                var pickinglines = picking.line_ids || [];
-////                var unknown_products = [];
-////                for (var i=0, len=pickinglines.length; i<len; i++) {
-////                    // check if product are available in pos
-////                    var pickingline = pickinglines[i];
-////                    var line_name = pickingline.name;
-////                    var product = self.pos.db.get_product_by_id(pickingline.product_id);
-////                    if (_.isUndefined(product)) {
-////                        unknown_products.push(line_name);
-////                        continue;
-////                    }
-////                    // Create new line and add it to the current order
-////                    orderline = self.prepare_orderline(product, pickingline);
-////                    order.addProduct(product, orderline);
-////                    last_orderline = order.getLastOrderline();
-////                    last_orderline = jQuery.extend(last_orderline, orderline);
-////                }
-////                // Forbid POS Order loading if some products are unknown
-////                if (unknown_products.length > 0){
-////                    self.pos_widget.screen_selector.show_popup(
-////                        'error-traceback', {
-////                            message: _t('Unknown Products'),
-////                            comment: _t('Unable to load some picking lines because the ' +
-////                                    'products are not available in the POS cache.\n\n' +
-////                                    'Please check that lines :\n\n  * ') + unknown_products.join("; \n  *")
-////                        });
-////                    picking_selectable = false;
-////                }
-////                // Check if the partner is unknown
-////                if (_.isUndefined(order.get_client)) {
-////                    self.pos_widget.screen_selector.show_popup(
-////                        'error-traceback', {
-////                            message: _t('Unknown Partner'),
-////                            comment: _t('Unable to load this picking because the partner' + 
-////                                    ' is not known in the Point Of Sale as a customer')
-////                        });
-////                    picking_selectable = false;
-////                }
+        on_click_print_order: function(event){
+            this.load_order(parseInt(event.target.parentNode.dataset.orderId, 10), 'print');
+        },
 
-////                if (picking_selectable){
-////                    self.$el.find('span.button.validate').show();
-////                }
-////                else{
-////                    self.$el.find('span.button.validate').hide();
-////                }
+        load_order: function(order_id, action) {
+            var self = this;
+            var posOrderModel = new instance.web.Model(this.model);
+            return posOrderModel.call('load_done_order_for_pos', [[order_id]])
+            .then(function (order_data) {
+                var correct_order_print = true;
+                var order = new module.Order({pos:self.pos});
+                // Set Generic Info
+                order.name = order_data.pos_reference;
+                order.set_client(self.pos.db.get_partner_by_id(order_data.partner_id.id));
 
-////            }).fail(function (error, event){
-////                if (parseInt(error.code) === 200) {
-////                    // Business Logic Error, not a connection problem
-////                    self.pos_widget.screen_selector.show_popup(
-////                        'error-traceback', {
-////                            message: error.data.message,
-////                            comment: error.data.debug
-////                        });
-////                }
-////                else{
-////                    self.pos_widget.screen_selector.show_popup('error',{
-////                        message: _t('Connection error'),
-////                        comment: _t('Can not execute this action because the POS is currently offline'),
-////                    });
-////                }
-////                event.preventDefault();
-////            });
-////        },
+                // set order lines
+                var orderLines = order_data.line_ids || [];
+                var unknown_products = [];
+                for (var i=0, len=orderLines.length; i<len; i++) {
+
+                    var orderLine = orderLines[i];
+                    
+                    var product = self.pos.db.get_product_by_id(orderLine.product_id);
+                    // check if product are available in pos
+                    if (_.isUndefined(product)) {
+                        unknown_products.push(line_name);
+                    }
+                    else{
+                        // create a new order line
+                        order.addProduct(product, {
+                            price: orderLine.price_unit,
+                            quantity: orderLine.quantity,
+                            discount: orderLine.discount,
+                            merge:false,
+                        })
+                    }
+                }
+
+                // Set Payment lines
+                var paymentLines = order_data.statement_ids || [];
+                _.each(paymentLines, function(paymentLine) {
+                    var payment_found = false;
+                    _.each(self.pos.cashregisters, function(cashregister) {
+                        
+                        if (cashregister.id === paymentLine.statement_id){
+                            payment_found = true;
+                            if (paymentLine.amount > 0){
+                                // if it is not change
+                                order.addPaymentline(cashregister);
+                                order.selected_paymentline.set_amount(paymentLine.amount);
+                            }
+                        }
+                    })
+                    if (!payment_found && action === 'print'){
+                        self.pos_widget.screen_selector.show_popup(
+                            'error-traceback', {
+                                message: _t('Unknown Statement'),
+                                comment: _t("Unable to print this order because it doesn't belong to the current session ")
+                            });
+                        correct_order_print = false;
+                    }
+
+                })
+
+                // Forbid POS Order loading if some products are unknown
+                if (unknown_products.length > 0){
+                    self.pos_widget.screen_selector.show_popup(
+                        'error-traceback', {
+                            message: _t('Unknown Products'),
+                            comment: _t('Unable to load some order lines because the ' +
+                                    'products are not available in the POS cache.\n\n' +
+                                    'Please check that lines :\n\n  * ') + unknown_products.join("; \n  *")
+                        });
+                    correct_order_print = false;
+                }
+
+
+                if (correct_order_print){
+                    var receipt = order.export_for_printing();
+                    self.pos.proxy.print_receipt(QWeb.render('XmlReceipt', {
+                        receipt: receipt, widget: self,
+                    }));
+                }
+
+            }).fail(function (error, event){
+                if (parseInt(error.code) === 200) {
+                    // Business Logic Error, not a connection problem
+                    self.pos_widget.screen_selector.show_popup(
+                        'error-traceback', {
+                            message: error.data.message,
+                            comment: error.data.debug
+                        });
+                }
+                else{
+                    self.pos_widget.screen_selector.show_popup('error',{
+                        message: _t('Connection error'),
+                        comment: _t('Can not execute this action because the POS is currently offline'),
+                    });
+                }
+                event.preventDefault();
+            });
+        },
 
         search_done_orders: function(query) {
             var self = this;
@@ -241,10 +241,6 @@ openerp.pos_done_order_load = function(instance, local) {
             });
         },
 
-////        on_click_picking: function(event){
-////            this.load_picking(parseInt(event.target.parentNode.dataset.pickingId, 10));
-////        },
-
         render_list: function(orders){
             var self = this;
             var contents = this.$el[0].querySelector('.done-order-list-contents');
@@ -255,14 +251,13 @@ openerp.pos_done_order_load = function(instance, local) {
                 var order_line = document.createElement('tbody');
                 order_line.innerHTML = order_line_html;
                 order_line = order_line.childNodes[1];
-                order_line.addEventListener('click', self.on_click_order);
+                order_line.querySelector('.print-done-order').addEventListener('click', self.on_click_print_order);
                 line_list.appendChild(order_line);
             });
             contents.appendChild(line_list);
         },
 
         perform_search: function(query){
-            console.log("search");
             this.search_done_orders(query);
         },
 

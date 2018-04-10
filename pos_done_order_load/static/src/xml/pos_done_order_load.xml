@@ -12,6 +12,11 @@
             <td><t t-esc="order.partner_id[1]"/></td>
             <td><t t-esc="order.date_order"/></td>
             <td><t t-esc="order.amount_total"/></td>
+            <td>
+                <span class='print-done-order'>
+                    <img src="/point_of_sale/static/src/img/search_reset.gif" />
+                </span>
+            </td>
         </tr>
     </t>
 
@@ -48,6 +53,7 @@
                                                 <th>Customer</th>
                                                 <th>Date</th>
                                                 <th>Total</th>
+                                                <th />
                                             </tr>
                                         </thead>
                                         <tbody class="done-order-list-contents">
