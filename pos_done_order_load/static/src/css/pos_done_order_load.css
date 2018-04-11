@@ -17,6 +17,9 @@
     padding: 0px 8px;
 }
 
+.pos .done-order-line .price-column {
+    text-align: right;
+}
 .pos .doneorderlist-screen .done-order-list tbody > tr{
     background: rgb(230,230,230);
 }

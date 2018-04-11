@@ -113,7 +113,7 @@ openerp.pos_done_order_load = function(instance, local) {
         },
 
         on_click_print_order: function(event){
-            this.load_order(parseInt(event.target.parentNode.dataset.orderId, 10), 'print');
+            this.load_order(parseInt(event.target.dataset.orderId, 10), 'print');
         },
 
         load_order: function(order_id, action) {
@@ -153,11 +153,9 @@ openerp.pos_done_order_load = function(instance, local) {
                 // Set Payment lines
                 var paymentLines = order_data.statement_ids || [];
                 _.each(paymentLines, function(paymentLine) {
-                    var payment_found = false;
                     _.each(self.pos.cashregisters, function(cashregister) {
                         
                         if (cashregister.id === paymentLine.statement_id){
-                            payment_found = true;
                             if (paymentLine.amount > 0){
                                 // if it is not change
                                 order.addPaymentline(cashregister);
@@ -165,15 +163,6 @@ openerp.pos_done_order_load = function(instance, local) {
                             }
                         }
                     })
-                    if (!payment_found && action === 'print'){
-                        self.pos_widget.screen_selector.show_popup(
-                            'error-traceback', {
-                                message: _t('Unknown Statement'),
-                                comment: _t("Unable to print this order because it doesn't belong to the current session ")
-                            });
-                        correct_order_print = false;
-                    }
-
                 })
 
                 // Forbid POS Order loading if some products are unknown
@@ -188,8 +177,7 @@ openerp.pos_done_order_load = function(instance, local) {
                     correct_order_print = false;
                 }
 
-
-                if (correct_order_print){
+                if (correct_order_print && action === 'print'){
                     var receipt = order.export_for_printing();
                     self.pos.proxy.print_receipt(QWeb.render('XmlReceipt', {
                         receipt: receipt, widget: self,
@@ -220,6 +208,10 @@ openerp.pos_done_order_load = function(instance, local) {
             var posOrderModel = new instance.web.Model(this.model);
             return posOrderModel.call('search_done_orders_for_pos', [query || '', this.pos.pos_session.id])
             .then(function (result) {
+                _.each(result, function(order) {
+                    order.display_print_button = (self.pos.pos_session.id === order.session_id[0]);
+                    order.amount_total_display = self.format_currency(order.amount_total);
+                })
                 self.render_list(result);
             }).fail(function (error, event){
                 if (parseInt(error.code) === 200) {
@@ -251,7 +243,10 @@ openerp.pos_done_order_load = function(instance, local) {
                 var order_line = document.createElement('tbody');
                 order_line.innerHTML = order_line_html;
                 order_line = order_line.childNodes[1];
-                order_line.querySelector('.print-done-order').addEventListener('click', self.on_click_print_order);
+                print_button = order_line.querySelector('.print-done-order');
+                if (print_button){
+                    order_line.querySelector('.print-done-order').addEventListener('click', self.on_click_print_order);
+                }
                 line_list.appendChild(order_line);
             });
             contents.appendChild(line_list);

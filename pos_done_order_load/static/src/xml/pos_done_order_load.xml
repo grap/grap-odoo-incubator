@@ -6,14 +6,14 @@
     </t>
 
     <t t-name="LoadDoneOrderLine">
-        <tr class="done-order-line" t-att-data-order-id="order.id">
+        <tr class="done-order-line">
             <td><t t-esc="order.name"/></td>
-            <td><t t-esc="order.pos_reference"/></td>
+            <td><t t-esc="order.pos_reference || ''"/></td>
             <td><t t-esc="order.partner_id[1]"/></td>
             <td><t t-esc="order.date_order"/></td>
-            <td><t t-esc="order.amount_total"/></td>
+            <td class="price-column"><t t-esc="order.amount_total_display"/></td>
             <td>
-                <span class="button print-done-order">
+                <span t-if="order.display_print_button" class="button print-done-order" t-att-data-order-id="order.id">
                     <i class="fa fa-print"></i>
                     Print
                 </span>
