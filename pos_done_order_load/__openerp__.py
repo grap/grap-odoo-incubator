@@ -6,8 +6,8 @@
 {
     'name': 'POS Load Done Orders',
     'summary': 'Point Of Sale - Load Done Orders',
-    'version': '8.0.1.1.0',
-    'author': 'GRAP,Odoo Community Association (OCA)',
+    'version': '8.0.1.2.0',
+    'author': 'GRAP',
     'category': 'Point Of Sale',
     'license': 'AGPL-3',
     'depends': [
@@ -18,9 +18,13 @@
         'views/view_pos_config.xml',
         'views/pos_done_order_load.xml',
     ],
-    'demo': [
-    ],
+
     'qweb': [
         'static/src/xml/pos_done_order_load.xml',
     ],
+    'images': [
+        'static/description/pos_config_form.png',
+        'static/description/pos_done_order_list.png',
+        'static/description/pos_load_done_order_button.png',
+    ]
 }

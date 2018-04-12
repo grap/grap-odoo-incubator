@@ -55,6 +55,7 @@ class PosOrder(models.Model):
             payment_lines.append(payment_line)
         return {
             'id': self.id,
+            'pos_reference': self.pos_reference,
             'name': self.name,
             'partner_id': self.partner_id.id,
             'line_ids': order_lines,

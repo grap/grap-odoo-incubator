@@ -18,24 +18,11 @@ Configuration
 
 To configure this module, you need to:
 
-#. Go to Point of Sale / Configuration / Types of Operation
-#. Select the picking type(s) you want to see in the point of sale
-#. Check the box 'Available in Point of Sale'
+* Go to Point of Sale / Configuration / Point of Sale
+* check the box Load Done Orders
+* Optionnaly, change the value of the max done orders to load field.
 
-.. figure:: static/description/stock_picking_type_form.png
-   :width: 800 px
-
-Note: This box is NOT enabled by default except in demo data for the type
-'Delivery Orders' of the demo company 'YourCompany'.
-
-#. Go to Point of Sale / Configuration / Point of Sales
-#. Select the Point(s) of Sales witch those you want to enable the feature
-#. Check the box 'Load Pickings'.
-
-.. figure:: static/description/pos_config_form.png
-   :width: 800 px
-
-Note: This box is enabled by default
+.. figure:: /pos_done_order_load/static/description/pos_config_form.png
 
 Usage
 =====
@@ -43,104 +30,41 @@ Usage
 To use this module, you need to:
 
 * Launch the point of sale
-* On a new order (without lines), click on the 'Load Picking' button.
 
-.. figure:: static/description/load_picking_01.png
+* Click on the new button 'Load Done Orders'
+
+.. figure:: /pos_done_order_load/static/description/pos_load_done_order_button.png
+
+* the list of the last previous done orders are displayed.
+
+* You can perform a research by name or PoS Reference field in the search box
+
+* At the end of the line, buttons are available to make extra actions
+
+.. figure:: /pos_done_order_load/static/description/pos_done_order_list.png
    :width: 800 px
 
-* Point of sale will load available pickings. (About displayed pickings, see
-  'Technical Notes' below).
-
-.. figure:: static/description/load_picking_02.png
-   :width: 800 px
-
-* Click on a picking will display the content of the moves (as PoS Order Lines)
-
-.. figure:: static/description/load_picking_03.png
-   :width: 800 px
-
-The price and the discount will be the sale price and the discount set in
-the according Sale Order Line, if it was found. Otherwise, discount will be to
-0, and unit price will be the unit price of the product when it has been
-loaded in the Point of Sale.
-
-**Related Sale Order:**
-
-.. figure:: static/description/load_picking_04.png
-   :width: 800 px
-
-**Related Picking:**
-
-.. figure:: static/description/load_picking_05.png
-   :width: 800 px
-
-* Confirm the selection, by clicking on 'Select' button.
-
-* Finally, you can add / remove products or change quantity and collect the
-  payment.
-
-When, the order is marked as paid, the original picking will be cancelled,
-because Point Of Sale generates a new picking related to the real delivered
-products and the original Sale Order will pass to the state 'Done'. (Delivery
-exception is ignored).
-(See 'Technical Notes' below).
-
-Some warning messages can appear:
-
-* if some products are not available in the Point of Sale.
-
-.. figure:: static/description/load_picking_06.png
-   :width: 800 px
-
-.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
-   :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/184/8.0
-
-Technical Notes
-===============
-
-* By default, the following filters are applied on the pickings displayed:
-    * 'State' should be 'Waiting Availability', 'Partially Available' or
-      'Ready to Transfer'.
-    * 'Invoice Control' should be 'To be invoiced'.
-  You can change this filter by overloading the ```_prepare_filter_for_pos```
-  function of the model ```stock.picking```
-
-* By default, original Picking is cancelled and the Sale order is set to the
-  state 'Done'. You can change this behaviour by overloading
-  ```_handle_orders_with_original_picking``` function of the model
-  ```pos.order```.
 
 Known issues / Roadmap
 ======================
 
-* This module will try to get original unit price from the sale order and not
-  use the Current unit price of the product. (The price at which you pledged
-  to sell the product).
-  Some VAT troubles will occure if a product is set with VAT marked as
-  'VAT included' and if in the sale order line, there are some VAT marked as
-  'VAT excluded'. **The VAT settings should be consistent**.
+* For a reason of cached data, it is only possible to reprint an order of
+  the current session. Printing older orders could be possible if we load
+  previous statements.
 
-Bug Tracker
-===========
+* It could be great to add an other button 'Refund' to create an refund order
+  directly in the Point of Sale.
 
-Bugs are tracked on `GitHub Issues
-<https://github.com/OCA/pos/issues>`_. In case of trouble, please
-check there if your issue has already been reported. If you spotted it first,
-help us smash it by providing detailed and welcomed feedback.
+* It could be great to add an other button 'Invoice' to create have the
+  possibility to reedit the invoice.
 
 Credits
 =======
 
-Images
-------
-
-* Odoo Community Association: `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`_.
-
 Contributors
 ------------
 
-* Sylvain Le Gal (https://twitter.com/legalsylvain)
+* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
 Funders
 -------
@@ -148,18 +72,3 @@ Funders
 The development of this module has been financially supported by:
 
 * GRAP, Groupement Régional Alimentaire de Proximité (http://www.grap.coop)
-
-Maintainer
-----------
-
-.. image:: https://odoo-community.org/logo.png
-   :alt: Odoo Community Association
-   :target: https://odoo-community.org
-
-This module is maintained by the OCA.
-
-OCA, or the Odoo Community Association, is a nonprofit organization whose
-mission is to support the collaborative development of Odoo features and
-promote its widespread use.
-
-To contribute to this module, please visit https://odoo-community.org.

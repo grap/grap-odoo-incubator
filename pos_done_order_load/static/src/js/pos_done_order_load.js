@@ -14,6 +14,23 @@ openerp.pos_done_order_load = function(instance, local) {
     var _t = instance.web._t;
 
     /*************************************************************************
+        Extend Model Order:
+            * Add getter and setter function for field 'origin_picking_id';
+    */
+    var moduleOrderParent = module.Order;
+    module.Order = module.Order.extend({
+
+        export_for_printing: function(attributes){
+            var order = moduleOrderParent.prototype.export_for_printing.apply(this, arguments);
+            if (this.backoffice_pos_reference){
+                order['name'] = this.backoffice_pos_reference;
+            }
+            return order;
+        },
+
+    });
+
+    /*************************************************************************
         New Widget LoadDoneOrderButtonWidget:
             * On click, display a new screen to select a Pos Order;
     */
@@ -116,100 +133,14 @@ openerp.pos_done_order_load = function(instance, local) {
             this.load_order(parseInt(event.target.dataset.orderId, 10), 'print');
         },
 
-        load_order: function(order_id, action) {
-            var self = this;
-            var posOrderModel = new instance.web.Model(this.model);
-            return posOrderModel.call('load_done_order_for_pos', [[order_id]])
-            .then(function (order_data) {
-                var correct_order_print = true;
-                var order = new module.Order({pos:self.pos});
-                // Set Generic Info
-                order.name = order_data.pos_reference;
-                order.set_client(self.pos.db.get_partner_by_id(order_data.partner_id.id));
-
-                // set order lines
-                var orderLines = order_data.line_ids || [];
-                var unknown_products = [];
-                for (var i=0, len=orderLines.length; i<len; i++) {
-
-                    var orderLine = orderLines[i];
-                    
-                    var product = self.pos.db.get_product_by_id(orderLine.product_id);
-                    // check if product are available in pos
-                    if (_.isUndefined(product)) {
-                        unknown_products.push(line_name);
-                    }
-                    else{
-                        // create a new order line
-                        order.addProduct(product, {
-                            price: orderLine.price_unit,
-                            quantity: orderLine.quantity,
-                            discount: orderLine.discount,
-                            merge:false,
-                        })
-                    }
-                }
-
-                // Set Payment lines
-                var paymentLines = order_data.statement_ids || [];
-                _.each(paymentLines, function(paymentLine) {
-                    _.each(self.pos.cashregisters, function(cashregister) {
-                        
-                        if (cashregister.id === paymentLine.statement_id){
-                            if (paymentLine.amount > 0){
-                                // if it is not change
-                                order.addPaymentline(cashregister);
-                                order.selected_paymentline.set_amount(paymentLine.amount);
-                            }
-                        }
-                    })
-                })
-
-                // Forbid POS Order loading if some products are unknown
-                if (unknown_products.length > 0){
-                    self.pos_widget.screen_selector.show_popup(
-                        'error-traceback', {
-                            message: _t('Unknown Products'),
-                            comment: _t('Unable to load some order lines because the ' +
-                                    'products are not available in the POS cache.\n\n' +
-                                    'Please check that lines :\n\n  * ') + unknown_products.join("; \n  *")
-                        });
-                    correct_order_print = false;
-                }
-
-                if (correct_order_print && action === 'print'){
-                    var receipt = order.export_for_printing();
-                    self.pos.proxy.print_receipt(QWeb.render('XmlReceipt', {
-                        receipt: receipt, widget: self,
-                    }));
-                }
-
-            }).fail(function (error, event){
-                if (parseInt(error.code) === 200) {
-                    // Business Logic Error, not a connection problem
-                    self.pos_widget.screen_selector.show_popup(
-                        'error-traceback', {
-                            message: error.data.message,
-                            comment: error.data.debug
-                        });
-                }
-                else{
-                    self.pos_widget.screen_selector.show_popup('error',{
-                        message: _t('Connection error'),
-                        comment: _t('Can not execute this action because the POS is currently offline'),
-                    });
-                }
-                event.preventDefault();
-            });
-        },
-
+        // Load Done Orders List
         search_done_orders: function(query) {
             var self = this;
             var posOrderModel = new instance.web.Model(this.model);
             return posOrderModel.call('search_done_orders_for_pos', [query || '', this.pos.pos_session.id])
             .then(function (result) {
                 _.each(result, function(order) {
-                    order.display_print_button = (self.pos.pos_session.id === order.session_id[0]);
+                    order.display_print_button = (self.pos.pos_session.id === order.session_id[0]) && self.pos.config.iface_print_via_proxy;
                     order.amount_total_display = self.format_currency(order.amount_total);
                 })
                 self.render_list(result);
@@ -252,6 +183,100 @@ openerp.pos_done_order_load = function(instance, local) {
             contents.appendChild(line_list);
         },
 
+        // Load a specific Done Order
+        load_order: function(order_id, action) {
+            this.unknown_products = [];
+            var self = this;
+            var posOrderModel = new instance.web.Model(this.model);
+            return posOrderModel.call('load_done_order_for_pos', [[order_id]])
+            .then(function (order_data) {
+                var correct_order_print = true;
+                var order = self._prepare_order_from_order_data(order_data);
+
+                // Forbid POS Order loading if some products are unknown
+                if (self.unknown_products.length > 0){
+                    self.pos_widget.screen_selector.show_popup(
+                        'error-traceback', {
+                            message: _t('Unknown Products'),
+                            comment: _t('Unable to load some order lines because the ' +
+                                    'products are not available in the POS cache.\n\n' +
+                                    'Please check that lines :\n\n  * ') + self.unknown_products.join("; \n  *")
+                        });
+                    correct_order_print = false;
+                }
+
+                if (correct_order_print && action === 'print'){
+                    var receipt = order.export_for_printing();
+                    self.pos.proxy.print_receipt(QWeb.render('XmlReceipt', {
+                        receipt: receipt, widget: self,
+                    }));
+                }
+
+            }).fail(function (error, event){
+                if (parseInt(error.code) === 200) {
+                    // Business Logic Error, not a connection problem
+                    self.pos_widget.screen_selector.show_popup(
+                        'error-traceback', {
+                            message: error.data.message,
+                            comment: error.data.debug
+                        });
+                }
+                else{
+                    self.pos_widget.screen_selector.show_popup('error',{
+                        message: _t('Connection error'),
+                        comment: _t('Can not execute this action because the POS is currently offline'),
+                    });
+                }
+                event.preventDefault();
+            });
+        },
+
+        _prepare_order_from_order_data: function(order_data){
+            var self = this;
+            var order = new module.Order({pos:this.pos});
+            // Set Generic Info
+            order.backoffice_pos_reference = order_data.pos_reference;
+            order.set_client(this.pos.db.get_partner_by_id(order_data.partner_id.id));
+
+            // set order lines
+            var orderLines = order_data.line_ids || [];
+
+            _.each(orderLines, function(orderLine) {
+                
+                var product = self.pos.db.get_product_by_id(orderLine.product_id);
+                // check if product are available in pos
+                if (_.isUndefined(product)) {
+                    self.unknown_products.push(line_name);
+                }
+                else{
+                    // create a new order line
+                    order.addProduct(product, {
+                        price: orderLine.price_unit,
+                        quantity: orderLine.quantity,
+                        discount: orderLine.discount,
+                        merge:false,
+                    })
+                }
+            })
+
+            // Set Payment lines
+            var paymentLines = order_data.statement_ids || [];
+            _.each(paymentLines, function(paymentLine) {
+                _.each(self.pos.cashregisters, function(cashregister) {
+                    
+                    if (cashregister.id === paymentLine.statement_id){
+                        if (paymentLine.amount > 0){
+                            // if it is not change
+                            order.addPaymentline(cashregister);
+                            order.selected_paymentline.set_amount(paymentLine.amount);
+                        }
+                    }
+                })
+            })
+            return order;
+        },
+
+        // Search Part
         perform_search: function(query){
             this.search_done_orders(query);
         },
