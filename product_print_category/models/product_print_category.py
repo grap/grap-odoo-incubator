@@ -29,8 +29,7 @@ class ProductPrintCategory(models.Model):
         comodel_name='product.product', inverse_name='print_category_id')
 
     product_qty = fields.Integer(
-        string='Products', compute='_compute_product_qty',
-        store=True)
+        string='Products', compute='_compute_product_qty')
 
     product_to_print_ids = fields.One2many(
         comodel_name='product.product', compute='_compute_to_print',
@@ -43,7 +42,8 @@ class ProductPrintCategory(models.Model):
     field_ids = fields.Many2many(
         comodel_name='ir.model.fields',
         column1='category_id', column2='field_id',
-        domain="[('model', '=', 'product.template')]")
+        domain="['|', ('model', '=', 'product.template'),\
+        ('model', '=', 'product.product')]")
 
     qweb_view_id = fields.Many2one(
         comodel_name='ir.ui.view', string='Qweb View',

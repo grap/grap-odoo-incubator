@@ -19,6 +19,6 @@ class ProductPrintWizardLine(models.TransientModel):
 
     print_category_id = fields.Many2one(
         comodel_name='product.print.category', string='Print Category',
-        readonly=True, related='product_id.print_category_id')
+        required=True, related='product_id.print_category_id')
 
     quantity = fields.Integer(string='Quantity', required=True, default=1)

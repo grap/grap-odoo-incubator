@@ -20,14 +20,14 @@ class ProductPrintWizard(models.TransientModel):
         lines_vals = []
         context = self.env.context
         product_obj = self.env['product.product']
-
         if context.get('active_model', False) == 'product.print.category':
             domain = [
-                ('print_category_id', '=', context.get('active_id', False)),
+                ('print_category_id.id', 'in', context.get('active_ids', [])),
             ]
             if not context.get('all_products', False):
                 domain.append(('to_print', '=', True))
             products = product_obj.search(domain)
+
         elif context.get('active_model', False) == 'product.product':
             product_ids = context.get('active_ids', [])
             products = product_obj.browse(product_ids)
