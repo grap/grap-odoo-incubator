@@ -252,7 +252,7 @@ openerp.pos_done_order_load = function(instance, local) {
                     // create a new order line
                     order.addProduct(product, {
                         price: orderLine.price_unit,
-                        quantity: orderLine.quantity,
+                        quantity: orderLine.qty,
                         discount: orderLine.discount,
                         merge:false,
                     })
