@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <template id="assets_backend" name="pos_product_without_image assets" inherit_id="point_of_sale.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/pos_product_without_image/static/src/js/pos_product_without_image.js"></script>
+        </xpath>
+    </template>
+
+
+    <template id="pos_product_without_image" name="pos_product_without_image_css" inherit_id="point_of_sale.index">
+        <xpath expr="//script[@id='loading-script']" position="before">
+            <link rel="stylesheet" href="/pos_product_without_image/static/src/css/pos_product_without_image.css"/>
+        </xpath>
+    </template>
+
+
+</data></openerp>

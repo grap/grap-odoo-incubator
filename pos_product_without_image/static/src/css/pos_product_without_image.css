@@ -1,0 +1,15 @@
+/******************************************************************************
+    Copyright (C) 2014-Today GRAP (http://www.grap.coop)
+    @author Julien WESTE
+    @author Sylvain LE GAL (https://twitter.com/legalsylvain)
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+******************************************************************************/
+
+/* 
+    New display for 'product-name' where there isn't image;
+*/
+
+.pos .product .product-name-without-image{
+    height:110px !important;
+    font-size: 16px !important;
+}
