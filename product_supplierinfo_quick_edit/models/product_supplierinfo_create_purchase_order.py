@@ -10,7 +10,7 @@ class ProductSupplierinfoCreatePurchaseOrder(models.TransientModel):
     _name = 'product.supplierinfo.create.purchase.order'
 
     purchase_disabled_products = fields.Boolean(
-        string='Purchase Disabled Products', default=True)
+        string='Purchase Disabled Products', default=False)
 
     @api.multi
     def create_purchase_order(self):
