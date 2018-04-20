@@ -1,82 +1,61 @@
-# -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Sale - Sale Order Mass Action module for Odoo
-#    Copyright (C) 2015-Today GRAP (http://www.grap.coop)
-#    @author Sylvain LE GAL (https://twitter.com/legalsylvain)
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# coding: utf-8
+# Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+# @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp.osv import fields
-from openerp.osv.orm import TransientModel
+from openerp import api, fields, models
 
 
-class SaleOrderMassActionWizard(TransientModel):
+class SaleOrderMassActionWizard(models.TransientModel):
     _name = 'sale.order.mass.action.wizard'
 
-    def _compute_confirmable_order_ids(self, cr, uid, context=None):
-        so_obj = self.pool['sale.order']
-        return so_obj.search(cr, uid, [
-            ('id', 'in', context.get('active_ids', [])),
-            ('state', '=', 'draft')], context=context)
+    # Column Section
+    confirmable_order_qty = fields.Integer(
+        string='Confirmable Order Quantity', readonly=True,
+        default=lambda s: s._default_confirmable_order_qty())
 
-    def _compute_finishable_order_ids(self, cr, uid, context=None):
-        so_obj = self.pool['sale.order']
-        return so_obj.search(cr, uid, [
-            ('id', 'in', context.get('active_ids', [])),
-            ('state', '=', 'progress')], context=context)
+    confirm = fields.Boolean(
+        string='Confirm', default=True, help="check this box if you want to"
+        " confirm all the selected quotations.")
 
-    def _default_confirmable_order_qty(self, cr, uid, context=None):
-        return len(
-            self._compute_confirmable_order_ids(cr, uid, context=context))
+    finishable_order_qty = fields.Integer(
+        string='Finishable Order Quantity', readonly=True,
+        default=lambda s: s._default_finishable_order_qty())
 
-    def _default_finishable_order_qty(self, cr, uid, context=None):
-        return len(
-            self._compute_finishable_order_ids(cr, uid, context=context))
+    finish = fields.Boolean(
+        'Manually Set To Done', default=True, help="check this box if you"
+        "manually set to done selected orders.")
 
-    _columns = {
-        'confirmable_order_qty': fields.integer(
-            string='Confirmable Order Quantity', readonly=True),
-        'confirm': fields.boolean(
-            'Confirm', help="""check this box if you want to"""
-            """ confirm all the selected quotations."""),
-        'finishable_order_qty': fields.integer(
-            string='Finishable Order Quantity', readonly=True),
-        'finish': fields.boolean(
-            'Manually Set To Done', help="""check this box if you manually"""
-            """ set to done selected orders."""),
-    }
+    # compute Section
+    @api.model
+    def _get_confirmable_order_ids(self):
+        so_obj = self.env['sale.order']
+        return so_obj.search([
+            ('id', 'in', self.env.context.get('active_ids', [])),
+            ('state', '=', 'draft')])
 
-    _defaults = {
-        'confirm': True,
-        'confirmable_order_qty': _default_confirmable_order_qty,
-        'finish': True,
-        'finishable_order_qty': _default_finishable_order_qty,
-    }
+    @api.model
+    def _get_finishable_order_ids(self):
+        so_obj = self.env['sale.order']
+        return so_obj.search([
+            ('id', 'in', self.env.context.get('active_ids', [])),
+            ('state', '=', 'progress')])
 
-    def apply_button(self, cr, uid, ids, context=None):
-        context = context or {}
-        so_obj = self.pool['sale.order']
-        wizard = self.browse(cr, uid, ids[0], context=context)
-        if wizard.confirm:
-            for so_id in self._compute_confirmable_order_ids(
-                    cr, uid, context=context):
-                so_obj.action_button_confirm(cr, uid, [so_id], context=context)
-        if wizard.finish:
-            so_ids = self._compute_finishable_order_ids(
-                cr, uid, context=context)
-            so_obj.write(cr, uid, so_ids, {'state': 'done'}, context=context)
-        return True
+    @api.model
+    def _default_confirmable_order_qty(self):
+        return len(self._get_confirmable_order_ids())
+
+    @api.model
+    def _default_finishable_order_qty(self):
+        return len(self._get_finishable_order_ids())
+
+    @api.multi
+    def apply_button(self):
+        self.ensure_one()
+        if self.confirm:
+            orders = self._get_confirmable_order_ids()
+            for order in orders:
+                order.action_button_confirm()
+        if self.finish:
+            orders = self._get_finishable_order_ids()
+            orders.write({'state': 'done'})

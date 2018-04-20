@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="view_sale_order_mass_action_wizard_form" model="ir.ui.view">
+        <field name="model">sale.order.mass.action.wizard</field>
+        <field name="arch" type="xml">
+        <form>
+            <group col="4">
+                <field name="confirm" attrs="{'invisible': [('confirmable_order_qty', '=', 0)]}"/>
+                <field name="confirmable_order_qty" attrs="{'invisible': [('confirmable_order_qty', '=', 0)]}"/>
+                <field name="finish" attrs="{'invisible': [('finishable_order_qty', '=', 0)]}"/>
+                <field name="finishable_order_qty" attrs="{'invisible': [('finishable_order_qty', '=', 0)]}"/>
+            </group>
+            <footer>
+                <button name="apply_button" string="Apply" type="object" class="oe_highlight"/>
+                or
+                <button string="Cancel" class="oe_link" special="cancel"/>
+            </footer>
+        </form>
+        </field>
+    </record>
+
+    <record id="action_sale_order_mass_action" model="ir.actions.act_window">
+        <field name="name">Mass Action</field>
+        <field name="res_model">sale.order.mass.action.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_confirm_sale_order_value" model="ir.values">
+        <field name="model_id" ref="sale.model_sale_order" />
+        <field name="name">Mass Action</field>
+        <field name="key2">client_action_multi</field>
+        <field name="value" eval="'ir.actions.act_window,' + str(ref('action_sale_order_mass_action'))"/>
+        <field name="key">action</field>
+        <field name="model">sale.order</field>
+    </record>
+
+</data></openerp>
