@@ -10,7 +10,7 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     @api.multi
-    def onchange_product_id(
+    def product_id_change(
             self, pricelist, product, qty=0, uom=False, qty_uos=0, uos=False,
             name='', partner_id=False, lang=False, update_tax=True,
             date_order=False, packaging=False, fiscal_position=False,
