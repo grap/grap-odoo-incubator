@@ -20,20 +20,18 @@ class TestProductPrintCategory(TransactionCase):
 
     # Test Section
     def test_01_test_wizard_obsolete(self):
-        wizard = self.wizard_obj.create({})
-        wizard.write({'line_ids': self.wizard_obj.with_context(
+        wizard = self.wizard_obj.with_context(
             active_model='product.print.category',
-            active_id=self.print_category.id)._default_line_ids()})
+            active_ids=[self.print_category.id]).create({})
         self.assertEqual(
             len(wizard.line_ids), 1,
             "Print obsolete product should propose 1 product")
 
     def test_02_test_wizard_all(self):
-        wizard = self.wizard_obj.create({})
-        wizard.write({'line_ids': self.wizard_obj.with_context(
+        wizard = self.wizard_obj.with_context(
             active_model='product.print.category',
-            active_id=self.print_category.id,
-            all_products=True)._default_line_ids()})
+            active_ids=[self.print_category.id],
+            all_products=True).create({})
         self.assertEqual(
             len(wizard.line_ids), 5,
             "Print all products should propose 5 products")
