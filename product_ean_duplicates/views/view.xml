@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015-Today GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+ -->
+<openerp><data>
+
+<!-- Model: product.product -->
+        <record id="view_product_ean_duplicates" model="ir.ui.view">
+            <field name="model">product.product</field>
+            <field name="arch" type="xml">
+                <tree string="Products (EAN Duplicates)" editable="bottom">
+                        <field name="name"/>
+                        <field name="ean13"/>
+                        <field name="ean_duplicates_qty"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_product_product_search" model="ir.ui.view">
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_search_form_view"/>
+            <field name="arch" type="xml">
+                <filter name="filter_to_sell" position="after">
+                    <separator/>
+                    <filter string="EAN Duplicates" name="ean_duplicates" domain="[('ean_duplicates_exist', '=', True)]"/>
+                </filter>
+            </field>
+        </record>
+
+    </data>
+
+</openerp>
