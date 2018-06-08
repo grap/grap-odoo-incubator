@@ -48,8 +48,8 @@ class ProductProduct(models.Model):
     # Constrains Section
     @api.constrains('company_id', 'ean13')
     def _check_ean13_company(self):
-        for product in self:
-            duplicates = self.search([
+        for product in self.search([('ean13', '!=', False)]):
+            duplicates = self.with_context(active_test=True).search([
                 ('company_id', '=', product.company_id.id),
                 ('ean13', '=', product.ean13),
                 ('id', '!=', product.id)])

@@ -23,5 +23,8 @@
     'demo': [
         'demo/res_groups.xml',
     ],
+    'images': [
+        'static/description/product_barcode_constrains.png'
+    ],
     'installable': True,
 }

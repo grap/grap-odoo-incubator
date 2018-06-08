@@ -10,17 +10,14 @@ Functionality
 -------------
 
 * Add a view to detect and fix EAN duplicates of products into a company
+
 * Remove in the copy fields of product product the field ean
 
-Installation
-============
+* Add a constrains that prevent user to create two products with the
+ same ean13 into the same company.
 
-Normal installation.
-
-Configuration
-=============
-
-No Configuration is needed.
+.. figure:: /pos_ean_duplicates/static/description/product_barcode_constrains.png
+   :width: 800 px
 
 Credits
 =======
@@ -28,4 +25,11 @@ Credits
 Contributors
 ------------
 
-* Sylvain LE GAL <https://twitter.com/legalsylvain>
+* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+
+Funders
+-------
+
+The development of this module has been financially supported by:
+
+* GRAP, Groupement Régional Alimentaire de Proximité (http://www.grap.coop)
