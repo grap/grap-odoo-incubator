@@ -1,32 +1,38 @@
-# -*- encoding: utf-8 -*-
-##############################################################################
-#
-#    Product - EAN Duplicates Module for Odoo
-#    Copyright (C) 2014 -Today GRAP (http://www.grap.coop)
-#    @author Sylvain LE GAL (https://twitter.com/legalsylvain)
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# coding: utf-8
+# Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
+# @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import fields, models, api, _
+from openerp import _, api, fields, models
 from openerp.exceptions import ValidationError
+from openerp.exceptions import Warning as UserError
 
 
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
+    # Column Section
+    ean13 = fields.Char(copy=False)
+
+    ean_duplicates_exist = fields.Boolean(
+        compute='_compute_ean_duplicates',
+        string='Has EAN Duplicates', multi='ean_duplicates',
+        search='_search_ean_duplicates_exist')
+
+    ean_duplicates_qty = fields.Integer(
+        compute='_compute_ean_duplicates',
+        string='EAN Duplicates Quantity', multi='ean_duplicates')
+
+    # Compute Section
+    @api.multi
+    def _compute_ean_duplicates(self):
+        res = self._get_ean_duplicates()
+        for product in self:
+            if product.id in res:
+                product.ean_duplicates_qty = res[product.id]
+                product.ean_duplicates_exist = True
+
+    # Search Section
     def _search_ean_duplicates_exist(self, operator, operand):
         products = self.search([])
         res = products._get_ean_duplicates()
@@ -35,11 +41,27 @@ class ProductProduct(models.Model):
         elif operator == '=' and operand is False:
             product_ids = list(set(products.ids) - set(res.keys()))
         else:
-            raise ValidationError(_(
+            raise UserError(_(
                 "Operator '%s' not implemented.") % (operator))
         return [('id', 'in', product_ids)]
 
-    # Compute Section
+    # Constrains Section
+    @api.constrains('company_id', 'ean13')
+    def _check_ean13_company(self):
+        for product in self:
+            duplicates = self.search([
+                ('company_id', '=', product.company_id.id),
+                ('ean13', '=', product.ean13),
+                ('id', '!=', product.id)])
+            if duplicates:
+                raise ValidationError(_(
+                    "You can not set the ean13 '%s' for the product %s"
+                    " because you have other products with the same"
+                    " ean13 :\n - %s") % (
+                        product.ean13, product.name,
+                        '- %s\n'.join([x.name for x in duplicates])))
+
+    # Private Section
     @api.multi
     def _get_ean_duplicates(self):
         sql_req = """
@@ -64,21 +86,3 @@ class ProductProduct(models.Model):
             ORDER BY pp1.id""" % (', '.join([str(id) for id in self.ids]))
         self._cr.execute(sql_req)  # pylint: disable=invalid-commit
         return {x[0]: x[1] for x in self._cr.fetchall()}
-
-    @api.multi
-    def _compute_ean_duplicates(self):
-        res = self._get_ean_duplicates()
-        for product in self:
-            if product.id in res:
-                product.ean_duplicates_qty = res[product.id]
-                product.ean_duplicates_exist = True
-
-    # Column Section
-    ean13 = fields.Char(copy=False)
-    ean_duplicates_exist = fields.Boolean(
-        compute='_compute_ean_duplicates',
-        string='Has EAN Duplicates', multi=_get_ean_duplicates,
-        search=_search_ean_duplicates_exist)
-    ean_duplicates_qty = fields.Integer(
-        compute='_compute_ean_duplicates',
-        string='EAN Duplicates Quantity', multi=_get_ean_duplicates)

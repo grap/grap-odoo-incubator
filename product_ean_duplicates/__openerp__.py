@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 # Copyright (C) 2014-Today GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
@@ -21,7 +21,7 @@
         'views/menu.xml',
     ],
     'demo': [
-        'demo/res_groups.yml',
+        'demo/res_groups.xml',
     ],
     'installable': True,
 }
