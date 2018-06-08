@@ -15,9 +15,11 @@ Use Case
 This feature can be usefull for users:
 
 * to be sure the mail was sent because Odoo send mail depending of
-some partner parameters
+  some partner parameters
+
 * to have the whole conversation if the partner writes an answer and if
-mailbox manages thread by object
+  mailbox manages thread by object
+
 * to be sure smtp server works
 
 Configuration
