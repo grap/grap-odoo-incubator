@@ -83,6 +83,5 @@ class ProductProduct(models.Model):
                 AND pp1.ean13 != ''
                 AND pp1.id in (%s)
             GROUP BY pp1.id
-            ORDER BY pp1.id""",
-            (tuple(self.ids),))
+            ORDER BY pp1.id""", (tuple(self.ids),))
         return {x[0]: x[1] for x in self._cr.fetchall()}
