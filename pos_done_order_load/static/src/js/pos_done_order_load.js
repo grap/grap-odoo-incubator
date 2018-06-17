@@ -6,7 +6,7 @@
 
 "use strict";
 
-openerp.pos_done_order_load = function(instance, local) {
+openerp.pos_done_order_load = function(instance) {
 
 
     var module = instance.point_of_sale;
@@ -23,7 +23,7 @@ openerp.pos_done_order_load = function(instance, local) {
         export_for_printing: function(attributes){
             var order = moduleOrderParent.prototype.export_for_printing.apply(this, arguments);
             if (this.backoffice_pos_reference){
-                order['name'] = this.backoffice_pos_reference;
+                order.name = this.backoffice_pos_reference;
             }
             return order;
         },
@@ -142,10 +142,10 @@ openerp.pos_done_order_load = function(instance, local) {
                 _.each(result, function(order) {
                     order.display_print_button = (self.pos.pos_session.id === order.session_id[0]) && self.pos.config.iface_print_via_proxy;
                     order.amount_total_display = self.format_currency(order.amount_total);
-                })
+                });
                 self.render_list(result);
             }).fail(function (error, event){
-                if (parseInt(error.code) === 200) {
+                if (parseInt(error.code, 10) === 200) {
                     // Business Logic Error, not a connection problem
                     self.pos_widget.screen_selector.show_popup(
                         'error-traceback', {
@@ -153,8 +153,7 @@ openerp.pos_done_order_load = function(instance, local) {
                             comment: error.data.debug
                         }
                     );
-                }
-                else{
+                } else {
                     self.pos_widget.screen_selector.show_popup('error',{
                         message: _t('Connection error'),
                         comment: _t('Can not execute this action because the POS is currently offline'),
@@ -174,7 +173,7 @@ openerp.pos_done_order_load = function(instance, local) {
                 var order_line = document.createElement('tbody');
                 order_line.innerHTML = order_line_html;
                 order_line = order_line.childNodes[1];
-                print_button = order_line.querySelector('.print-done-order');
+                var print_button = order_line.querySelector('.print-done-order');
                 if (print_button){
                     order_line.querySelector('.print-done-order').addEventListener('click', self.on_click_print_order);
                 }
@@ -213,7 +212,7 @@ openerp.pos_done_order_load = function(instance, local) {
                 }
 
             }).fail(function (error, event){
-                if (parseInt(error.code) === 200) {
+                if (parseInt(error.code, 10) === 200) {
                     // Business Logic Error, not a connection problem
                     self.pos_widget.screen_selector.show_popup(
                         'error-traceback', {
@@ -271,8 +270,8 @@ openerp.pos_done_order_load = function(instance, local) {
                             order.selected_paymentline.set_amount(paymentLine.amount);
                         }
                     }
-                })
-            })
+                });
+            });
             return order;
         },
 

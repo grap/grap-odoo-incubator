@@ -15,7 +15,6 @@ openerp.pos_optional_printing = function (instance) {
         Extend PaymentScreen Widget:
             * Add a new button Validate 'Without Bill'
     */
-    var PaymentScreenWidgetParent = module.PaymentScreenWidget;
     module.PaymentScreenWidget = module.PaymentScreenWidget.extend({
         show: function(){
             this._super();
@@ -33,13 +32,12 @@ openerp.pos_optional_printing = function (instance) {
 
         validate_order: function(options) {
             var currentOrder = this.pos.get('selectedOrder');
-            if(options && options.without_bill){
+            if (options && options.without_bill){
                 currentOrder.without_bill = true;
-            }
-            else{
+            } else {
                 currentOrder.without_bill = false;
             }
-            if(options && options.invoice){
+            if (options && options.invoice){
                 // Disable without_bill button if invoiced is selected
                 this.pos_widget.action_bar.set_button_disabled('validation_without_bill', true);
             }
@@ -48,7 +46,7 @@ openerp.pos_optional_printing = function (instance) {
 
         update_payment_summary: function() {
             this._super();
-            if(this.pos_widget.action_bar){
+            if (this.pos_widget.action_bar) {
                 this.pos_widget.action_bar.set_button_disabled('validation_without_bill', !this.is_paid());
             }
         },
@@ -65,9 +63,7 @@ openerp.pos_optional_printing = function (instance) {
             if (receipt && this.pos.get('selectedOrder') && this.pos.get('selectedOrder').without_bill){
                 return ProxyDeviceParent.prototype.print_receipt.apply(this);
             }
-            else {
-                return ProxyDeviceParent.prototype.print_receipt.apply(this, arguments);
-            }
+            return ProxyDeviceParent.prototype.print_receipt.apply(this, arguments);
         },
     });
 

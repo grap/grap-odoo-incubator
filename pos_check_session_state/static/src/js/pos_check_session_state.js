@@ -9,12 +9,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 openerp.pos_check_session_state = function (instance) {
     var module = instance.point_of_sale;
 
-    /* 
+    /*
         Define : New ErrorClosedSessionPopupWidget Widget.
         This pop up will be shown if the current pos.session of the PoS is not
         in an 'open' state;
         The check will be done depending on a parameter on the PoS config
-    */  
+    */
     module.ErrorClosedSessionPopupWidget = module.ErrorPopupWidget.extend({
         template:'ErrorClosedSessionPopupWidget',
 
@@ -25,11 +25,11 @@ openerp.pos_check_session_state = function (instance) {
             this._super(parent, options);
 
             self.intervalID = setInterval(function() {
-                self.pos.fetch('pos.session', ['name','state'], [['id', '=', self.pos.pos_session.id]]) 
+                self.pos.fetch('pos.session', ['name', 'state'], [['id', '=', self.pos.pos_session.id]])
                 .then(function(sessions){
-                    if (sessions[0]['state'] != 'opened') {
+                    if (sessions[0].state !== 'opened') {
                         // warn user if current session is not opened
-                        self.session_name = sessions[0]['name'];
+                        self.session_name = sessions[0].name;
                         self.renderElement();
                         self.pos_widget.screen_selector.show_popup('error-closed-session');
                         clearInterval(self.intervalID);
@@ -43,7 +43,7 @@ openerp.pos_check_session_state = function (instance) {
         },
     });
 
-    /* 
+    /*
         Overload : PosWidget to include ErrorClosedSessionPopupWidget inside.
     */
     module.PosWidget = module.PosWidget.extend({

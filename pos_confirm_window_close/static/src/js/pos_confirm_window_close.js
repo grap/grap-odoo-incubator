@@ -28,8 +28,3 @@ openerp.pos_confirm_window_close = function(instance){
         },
     });
 };
-
-
-
-
-
