@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015-Today GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<openerp><data>
+
+    <record id="view_pos_order_log_search" model="ir.ui.view">
+        <field name="model">pos.order.log</field>
+        <field name="arch" type="xml">
+            <search string="Pos Order Log">
+                <field name="user_id"/>
+                <field name="date"/>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_pos_order_log_tree" model="ir.ui.view">
+        <field name="model">pos.order.log</field>
+        <field name="arch" type="xml">
+            <tree string="Pos Order Log">
+                <field name="user_id"/>
+                <field name="date"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_pos_order_log_form" model="ir.ui.view">
+        <field name="model">pos.order.log</field>
+        <field name="arch" type="xml">
+            <form string="Pos Order Log">
+                <field name="user_id"/>
+                <field name="date"/>
+                <field name="name"/>
+                <field name="note"/>
+            </form>
+        </field>
+    </record>
+
+</data></openerp>
