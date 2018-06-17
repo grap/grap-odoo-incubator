@@ -18,27 +18,27 @@ class ProductSupplierinfo(models.Model):
         digits_compute=dp.get_precision('Purchase Price'))
 
     simple_min_quantity = fields.Float(
-        compute='_get_simple_info', inverse='_set_simple_min_quantity',
+        compute='_compute_simple_info', inverse='_set_simple_min_quantity',
         string='Simple Minimum Quantity', multi='simple_info',
         required=True)
 
     simple_price = fields.Float(
-        compute='_get_simple_info', inverse='_set_simple_price',
+        compute='_compute_simple_info', inverse='_set_simple_price',
         string='Simple Price', multi='simple_info', required=True,
         digits_compute=dp.get_precision('Purchase Price'))
 
     simple_discount = fields.Float(
-        compute='_get_simple_info', inverse='_set_simple_discount',
+        compute='_compute_simple_info', inverse='_set_simple_discount',
         string='Simple Discount (%)', multi='simple_info', required=True,
         digits_compute=dp.get_precision('Discount'))
 
     simple_discount2 = fields.Float(
-        compute='_get_simple_info', inverse='_set_simple_discount2',
+        compute='_compute_simple_info', inverse='_set_simple_discount2',
         string='Simple Discount 2 (%)', multi='simple_info', required=True,
         digits_compute=dp.get_precision('Discount'))
 
     simple_discount3 = fields.Float(
-        compute='_get_simple_info', inverse='_set_simple_discount3',
+        compute='_compute_simple_info', inverse='_set_simple_discount3',
         string='Simple Discount 3 (%)', multi='simple_info', required=True,
         digits_compute=dp.get_precision('Discount'))
 
@@ -48,7 +48,7 @@ class ProductSupplierinfo(models.Model):
     # Compute Section
     @api.multi
     @api.depends('product_tmpl_id.standard_price')
-    def _get_simple_info(self):
+    def _compute_simple_info(self):
         for item in self:
             if len(item.pricelist_ids) == 1:
                 item.write({

@@ -31,7 +31,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <button name="unlink" string="Unlink" type="object" icon="gtk-cancel"/>
                 <field name="company_id" groups="base.group_multi_company" />
                 <field name="lines_qty" invisible="1"/>
-
             </tree>
         </field>
     </record>

@@ -7,7 +7,7 @@ from openerp import api, fields, models
 from openerp.addons import decimal_precision as dp
 
 
-class productSimplePricelistItemUpdateWizard(models.TransientModel):
+class ProductSimplePricelistItemUpdateWizard(models.TransientModel):
     _name = 'product.simple.pricelist.item.update.wizard'
 
     # Column Section
