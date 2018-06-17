@@ -21,6 +21,7 @@ class TestModule(TransactionCase):
                 'user_id': self.env.user.id,
                 'name': 'Order 00017-002-0003',
                 'amount_paid': 12,
+                'partner_id': False,
                 'pos_session_id': session.id,
                 'lines': [[0, 0, {
                     'product_id': product.id,
