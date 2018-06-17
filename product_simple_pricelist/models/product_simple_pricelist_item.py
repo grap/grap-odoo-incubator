@@ -102,8 +102,6 @@ class ProductSimplePricelistItem(models.Model):
     def unlink(self):
         raise UserError(_(
             "Please unlink specific price by using according button."))
-        # false super call, to avoid pylint error
-        return super(ProductSimplePricelistItem, self).unlink()
 
     # Init Section
     def init(self, cr):

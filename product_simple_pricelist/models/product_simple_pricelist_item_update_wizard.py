@@ -34,7 +34,7 @@ class ProductSimplePricelistItemUpdateWizard(models.TransientModel):
     def default_get(self, fields):
         product_obj = self.env['product.product']
         version_obj = self.env['product.pricelist.version']
-        res = super(productSimplePricelistItemUpdateWizard, self).default_get(
+        res = super(ProductSimplePricelistItemUpdateWizard, self).default_get(
             fields)
         context = self.env.context
         product = product_obj.browse(context.get('product_id', False))
