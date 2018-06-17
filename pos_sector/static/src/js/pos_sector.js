@@ -15,7 +15,7 @@ openerp.pos_sector = function(instance){
         initialize: function (session, attributes) {
             PosModelParent.prototype.initialize.apply(this, arguments);
 
-            var product_product_model;
+            var product_product_model = false;
             for (var i = 0, len = this.models.length; i < len; i++) {
                 if (this.models[i].model === 'product.product') {
                     product_product_model = this.models[i];
@@ -25,16 +25,10 @@ openerp.pos_sector = function(instance){
                 this.domain_before_pos_sector = product_product_model.domain;
                 product_product_model.domain = function(self){
                     var new_domain = self.domain_before_pos_sector;
-                    new_domain.push('|', ['sector_id', '=', false], ['sector_id', 'in', self.config.sector_ids])
+                    new_domain.push('|', ['sector_id', '=', false], ['sector_id', 'in', self.config.sector_ids]);
                     return new_domain;
                 };
             }
-
         },
     });
 };
-
-
-
-
-
