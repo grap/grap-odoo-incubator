@@ -64,7 +64,7 @@ class ProductProduct(models.Model):
     # Private Section
     @api.multi
     def _get_ean_duplicates(self):
-        sql_req = """
+        self._cr.execute("""
             SELECT
                 pp1.id,
                 count(*) as qty
@@ -83,8 +83,6 @@ class ProductProduct(models.Model):
                 AND pp1.ean13 != ''
                 AND pp1.id in (%s)
             GROUP BY pp1.id
-            ORDER BY pp1.id""" % (
-                ', '.join([str(id) for id in self.ids])
-            )  # pylint: disable=sql-injection
-        self._cr.execute(sql_req)  # pylint: disable=invalid-commit
+            ORDER BY pp1.id""",
+            (tuple(self.ids),))
         return {x[0]: x[1] for x in self._cr.fetchall()}
