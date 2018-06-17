@@ -10,10 +10,12 @@ Copyright (C) 2015-Today GRAP (http://www.grap.coop)
     <record id="view_pos_order_log_search" model="ir.ui.view">
         <field name="model">pos.order.log</field>
         <field name="arch" type="xml">
-            <search string="Pos Order Log">
+            <search>
                 <field name="user_id"/>
                 <field name="date"/>
                 <field name="name"/>
+                <field name="session_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
             </search>
         </field>
     </record>
@@ -21,10 +23,13 @@ Copyright (C) 2015-Today GRAP (http://www.grap.coop)
     <record id="view_pos_order_log_tree" model="ir.ui.view">
         <field name="model">pos.order.log</field>
         <field name="arch" type="xml">
-            <tree string="Pos Order Log">
+            <tree>
                 <field name="user_id"/>
                 <field name="date"/>
                 <field name="name"/>
+                <field name="amount_total"/>
+                <field name="session_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
             </tree>
         </field>
     </record>
@@ -32,13 +37,30 @@ Copyright (C) 2015-Today GRAP (http://www.grap.coop)
     <record id="view_pos_order_log_form" model="ir.ui.view">
         <field name="model">pos.order.log</field>
         <field name="arch" type="xml">
-            <form string="Pos Order Log">
+            <form>
+                <field name="name"/>
                 <field name="user_id"/>
                 <field name="date"/>
-                <field name="name"/>
                 <field name="note"/>
+                <field name="amount_total"/>
+                <field name="session_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
             </form>
         </field>
     </record>
+
+    <record id="action_pos_order_log" model="ir.actions.act_window">
+        <field name="name">PoS Order Logs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pos.order.log</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_pos_order_log"
+        parent="point_of_sale.menu_point_config_product"
+        action="action_pos_order_log"
+        groups="base.group_no_one"
+        sequence="20"/>
 
 </data></openerp>
