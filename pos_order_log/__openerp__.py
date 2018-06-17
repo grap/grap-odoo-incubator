@@ -21,4 +21,7 @@
     'demo': [
         'demo/res_groups.xml',
     ],
+    'images': [
+        'static/description/pos_order_log_tree.png',
+    ],
 }

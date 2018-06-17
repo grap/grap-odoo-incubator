@@ -13,17 +13,9 @@ created from the tactile UI.
 This module is usefull in a debug purpose, to investigate if some orders has
 been lost.
 
-.. image:: /pos_order_log/static/description/pos_order_log.png
-
-Installation
-============
-
-Normal installation.
-
-Configuration
-=============
-
-No configuration is needed.
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/pos_order_log/static/description/pos_order_log_tree.png
+   :width: 80 %
+   :align: center
 
 Credits
 =======
