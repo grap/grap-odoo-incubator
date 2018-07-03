@@ -24,5 +24,11 @@
         'demo/product_product.xml',
         'demo/stock_inventory.xml',
     ],
+    'images': [
+        'static/description/stock_inventory_disabled_warning.png',
+        'static/description/stock_inventory_form_complete_zero.png',
+        'static/description/stock_inventory_form_duplicate.png',
+        'static/description/stock_inventory_tree_merge.png',
+    ],
     'installable': True,
 }
