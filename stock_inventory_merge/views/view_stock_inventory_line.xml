@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="view_stock_inventory_line_tree" model="ir.ui.view">
+        <field name="model">stock.inventory.line</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" colors="blue: product_qty != theoretical_qty; red: theoretical_qty &lt; 0">
+                <field name="product_id" domain="[('type','=','product')]"
+                        on_change="onchange_createline(location_id, product_id, product_uom_id, package_id, prod_lot_id, partner_id)"/>
+                <field name="product_uom_id" groups="product.group_uom" string="UoM"
+                        on_change="onchange_createline(location_id, product_id, product_uom_id, package_id, prod_lot_id, partner_id)"/>
+                <field name="location_id" domain="[('id', 'child_of', parent.location_id)]" groups="stock.group_locations" 
+                        on_change="onchange_createline(location_id, product_id, product_uom_id, package_id, prod_lot_id, partner_id)"/>
+                <field name="prod_lot_id" domain="[('product_id', '=', product_id)]"
+                        on_change="onchange_createline(location_id, product_id, product_uom_id, package_id, prod_lot_id, partner_id)" 
+                        context="{'default_product_id': product_id}" groups="stock.group_production_lot"/>
+                <field name="package_id" domain="['|', ('location_id','=', False), ('location_id', '=', location_id)]"
+                        on_change="onchange_createline(location_id, product_id, product_uom_id, package_id, prod_lot_id, partner_id)" 
+                        groups="stock.group_tracking_lot"/>
+                <field name="partner_id"
+                        on_change="onchange_createline(location_id, product_id, product_uom_id, package_id, prod_lot_id, partner_id)" 
+                        groups="stock.group_tracking_owner"/>
+                <field name="theoretical_qty" readonly="1"/>
+                <field name="product_qty" string="Real Quantity"/>
+                <field name="state" invisible="True"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_view_duplicates_tree" model="ir.actions.act_window">
+        <field name="name">Duplicates</field>
+        <field name="res_model">stock.inventory.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_stock_inventory_line_tree"/>
+    </record>
+
+    <record id="action_stock_inventory_line_tree" model="ir.actions.act_window">
+        <field name="name">All Lines</field>
+        <field name="res_model">stock.inventory.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_stock_inventory_line_tree"/>
+    </record>
+
+</data></openerp>

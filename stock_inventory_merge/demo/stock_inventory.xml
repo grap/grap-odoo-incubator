@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="inventory_1" model="stock.inventory">
+        <field name="name">Inventory #1</field>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="filter">partial</field>
+    </record>
+
+    <record id="inventory_line_1_1" model="stock.inventory.line">
+        <field name="product_id" ref="stockable_product"/>
+        <field name="product_uom_id" ref="product.product_uom_unit"/>
+        <field name="inventory_id" ref="inventory_1"/>
+        <field name="product_qty">20</field>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+    </record>
+
+    <record id="inventory_line_1_2" model="stock.inventory.line">
+        <field name="product_id" ref="stockable_product"/>
+        <field name="product_uom_id" ref="product.product_uom_dozen"/>
+        <field name="inventory_id" ref="inventory_1"/>
+        <field name="product_qty">1</field>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+    </record>
+
+    <record id="inventory_line_1_3" model="stock.inventory.line">
+        <field name="product_id" ref="product.product_product_24"/>
+        <field name="product_uom_id" ref="product.product_uom_unit"/>
+        <field name="inventory_id" ref="inventory_1"/>
+        <field name="product_qty">16.0</field>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+    </record>
+
+    <record id="inventory_2" model="stock.inventory">
+        <field name="name">Inventory #2</field>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="filter">partial</field>
+    </record>
+
+    <record id="inventory_line_2_1" model="stock.inventory.line">
+        <field name="product_id" ref="stockable_product"/>
+        <field name="product_uom_id" ref="product.product_uom_unit"/>
+        <field name="inventory_id" ref="inventory_2"/>
+        <field name="product_qty">30</field>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+    </record>
+
+    <function model="stock.inventory" name="prepare_inventory">
+        <function eval="[[('id', 'in', [ref('inventory_1'), ref('inventory_2')])]]" model="stock.inventory" name="search"/>
+    </function>
+
+</data></openerp>
