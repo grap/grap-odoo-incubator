@@ -46,11 +46,12 @@ class TestModule(TransactionCase):
             "Merging 20 Units and 1 Dozen quantity should return 32 Units.")
 
     def test_03_merge_inventories(self):
+        inventory_name = 'Test Merged Inventory'
         to_merge_inventory_ids = [self.inventory_1.id, self.inventory_2.id]
         wizard = self.wizard_obj.with_context(
             active_ids=to_merge_inventory_ids,
             active_model='stock.inventory',
-        ).create({'name': 'Merged inventory'})
+        ).create({'name': inventory_name})
         wizard.action_merge()
         inventories = self.inventory_obj.search(
             [('id', 'in', to_merge_inventory_ids)])
@@ -58,7 +59,7 @@ class TestModule(TransactionCase):
             len(inventories), 2,
             "Merge Wizard Inventories should not delete inventories.")
         new_inventory = self.inventory_obj.search(
-            [('name', '=', 'Merged Inventory')])
+            [('name', '=', inventory_name)])
         self.assertEqual(
             len(new_inventory.line_ids), len(inventories.mapped('line_ids')),
             "Merging 2 inventories should create a new one with the lines."
