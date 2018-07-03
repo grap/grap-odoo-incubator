@@ -50,7 +50,7 @@ class TestModule(TransactionCase):
         wizard = self.wizard_obj.with_context(
             active_ids=to_merge_inventory_ids,
             active_model='stock.inventory',
-        ).create({})
+        ).create({'name': 'Merged inventory'})
         wizard.action_merge()
         inventories = self.inventory_obj.search(
             [('id', 'in', to_merge_inventory_ids)])
