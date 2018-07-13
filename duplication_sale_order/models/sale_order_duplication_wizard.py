@@ -106,7 +106,7 @@ class SaleOrderDuplicationWizard(models.TransientModel):
         order_ids = self._duplicate()
         result = self.env.ref('sale.action_quotations').read()[0]
         result['domain'] =\
-            "[('id', 'in', ["+','.join(map(str, order_ids))+"])]"
+            "[('id', 'in', [" + ','.join(map(str, order_ids)) + "])]"
         return result
 
     @api.multi

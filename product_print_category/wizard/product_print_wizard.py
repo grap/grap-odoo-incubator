@@ -45,8 +45,7 @@ class ProductPrintWizard(models.TransientModel):
                 raise UserError(_(
                     "The following products has not print category defined."
                     " Please define one before.\n %s") % (
-                        '\n'.join([x.name for x in products_without])
-                    ))
+                        '\n'.join([x.name for x in products_without])))
         for product in products:
                 lines_vals.append((0, 0, {
                     'product_id': product.id,

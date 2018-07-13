@@ -134,7 +134,7 @@ class AccountInvoiceDuplicationWizard(models.TransientModel):
         elif self.invoice_id.type == 'in_refund':
             result = self.env.ref('account.action_invoice_tree4').read()[0]
         result['domain'] =\
-            "[('id', 'in', ["+','.join(map(str, invoice_ids))+"])]"
+            "[('id', 'in', [" + ','.join(map(str, invoice_ids)) + "])]"
         return result
 
     @api.multi
@@ -145,5 +145,5 @@ class AccountInvoiceDuplicationWizard(models.TransientModel):
             invoice_ids.append(self.invoice_id.copy(default={
                 'date_invoice': date_line.date_invoice,
                 'date_due': date_line.date_due,
-                }).id)
+            }).id)
         return invoice_ids
