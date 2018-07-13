@@ -32,10 +32,10 @@ class StockInventory(models.Model):
     def action_done(self):
         inventories = self.filtered(lambda x: x.duplicates_qty)
         if inventories:
-            raise UserError(
+            raise UserError(_(
                 "You can not confirm '%s' because there are"
                 " some duplicated lines." % (
-                    ', '.join([x.name for x in inventories])))
+                    ', '.join([x.name for x in inventories]))))
         return super(StockInventory, self).action_done()
 
     # Action Section

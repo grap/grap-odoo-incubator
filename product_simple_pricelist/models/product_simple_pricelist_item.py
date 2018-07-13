@@ -99,7 +99,7 @@ class ProductSimplePricelistItem(models.Model):
 
     # Overload Section
     @api.multi
-    def unlink(self):
+    def unlink(self):  # pylint: disable=method-required-super
         raise UserError(_(
             "Please unlink specific price by using according button."))
 

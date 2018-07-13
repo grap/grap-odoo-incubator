@@ -18,17 +18,17 @@ class ProductSupplierinfo(models.Model):
         digits_compute=dp.get_precision('Purchase Price'))
 
     simple_min_quantity = fields.Float(
-        compute='_compute_simple_info', inverse='_set_simple_min_quantity',
+        compute='_compute_simple_info', inverse='_inverse_simple_min_quantity',
         string='Simple Minimum Quantity', multi='simple_info',
         required=True)
 
     simple_price = fields.Float(
-        compute='_compute_simple_info', inverse='_set_simple_price',
+        compute='_compute_simple_info', inverse='_inverse_simple_price',
         string='Simple Price', multi='simple_info', required=True,
         digits_compute=dp.get_precision('Purchase Price'))
 
     simple_discount = fields.Float(
-        compute='_compute_simple_info', inverse='_set_simple_discount',
+        compute='_compute_simple_info', inverse='_inverse_simple_discount',
         string='Simple Discount (%)', multi='simple_info', required=True,
         digits_compute=dp.get_precision('Discount'))
 
@@ -38,12 +38,12 @@ class ProductSupplierinfo(models.Model):
         digits_compute=dp.get_precision('Discount'))
 
     simple_discount3 = fields.Float(
-        compute='_compute_simple_info', inverse='_set_simple_discount3',
+        compute='_compute_simple_info', inverse='_inverse_simple_discount3',
         string='Simple Discount 3 (%)', multi='simple_info', required=True,
         digits_compute=dp.get_precision('Discount'))
 
     lines_qty = fields.Integer(
-        compute='_get_lines_qty', string='Lines Quantity', store=True)
+        compute='_compute_lines_qty', string='Lines Quantity', store=True)
 
     # Compute Section
     @api.multi
@@ -61,36 +61,36 @@ class ProductSupplierinfo(models.Model):
 
     @api.multi
     @api.depends('pricelist_ids')
-    def _get_lines_qty(self):
+    def _compute_lines_qty(self):
         for item in self:
             item.lines_qty = len(item.pricelist_ids)
 
     @api.multi
-    def _set_simple_min_quantity(self):
+    def _inverse_simple_min_quantity(self):
         self.ensure_one()
         if len(self.pricelist_ids) == 1:
             self.pricelist_ids[0].min_quantity = self.simple_min_quantity
 
     @api.multi
-    def _set_simple_price(self):
+    def _inverse_simple_price(self):
         self.ensure_one()
         if len(self.pricelist_ids) == 1:
             self.pricelist_ids[0].price = self.simple_price
 
     @api.multi
-    def _set_simple_discount(self):
+    def _inverse_simple_discount(self):
         self.ensure_one()
         if len(self.pricelist_ids) == 1:
             self.pricelist_ids[0].discount = self.simple_discount
 
     @api.multi
-    def _set_simple_discount2(self):
+    def _inverse_simple_discount2(self):
         self.ensure_one()
         if len(self.pricelist_ids) == 1:
             self.pricelist_ids[0].discount2 = self.simple_discount2
 
     @api.multi
-    def _set_simple_discount3(self):
+    def _inverse_simple_discount3(self):
         self.ensure_one()
         if len(self.pricelist_ids) == 1:
             self.pricelist_ids[0].discount3 = self.simple_discount3

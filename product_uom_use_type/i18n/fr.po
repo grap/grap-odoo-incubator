@@ -54,3 +54,4 @@ msgstr "Achat et vente"
 #: field:product.uom,use_type:0
 msgid "Use type"
 msgstr "Type d'usage"
+
