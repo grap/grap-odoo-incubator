@@ -33,7 +33,7 @@ class ProductSupplierinfo(models.Model):
         digits_compute=dp.get_precision('Discount'))
 
     simple_discount2 = fields.Float(
-        compute='_compute_simple_info', inverse='_set_simple_discount2',
+        compute='_compute_simple_info', inverse='_inverse_simple_discount2',
         string='Simple Discount 2 (%)', multi='simple_info', required=True,
         digits_compute=dp.get_precision('Discount'))
 
