@@ -1,6 +1,8 @@
-# -*- coding: utf-8 -*-
-# Copyright 2017, Grap
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+# coding: utf-8
+# Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
+# @author: Quentin DUPONT
+# @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from openerp import api, fields, models
 
@@ -12,20 +14,18 @@ class ProductTemplate(models.Model):
         [('no_tax', 'No sale tax'),
          ('all_tax_excl', 'Taxes are not included in sale price'),
          ('all_tax_incl', 'All taxes are included in sale price'),
-         ('various_taxes', 'Sale price may include taxes')],
+         ('mixed_taxes', 'Sale price may include taxes')],
         compute='_compute_sale_tax_price_include',
         string='Taxes in Sale Price',
-        help='Indicate if the Sale Price include Taxes or not',
-        )
+        help='Indicate if the Sale Price include Taxes or not')
 
     price_vat_excl = fields.Float(
         compute='_compute_price_vat_incl_excl', multi='price_vat_incl_excl',
-        string='Sale Price Taxes Excluded',
-        )
+        string='Sale Price Taxes Excluded')
+
     price_vat_incl = fields.Float(
         compute='_compute_price_vat_incl_excl', multi='price_vat_incl_excl',
-        string='Sale Price Taxes Included',
-        )
+        string='Sale Price Taxes Included')
 
     @api.multi
     @api.depends('list_price', 'taxes_id', 'taxes_id.type', 'taxes_id.amount')
@@ -54,10 +54,10 @@ class ProductTemplate(models.Model):
                         if sale_tax_price_include == 'all_tax_incl':
                             sale_tax_price_include = 'all_tax_incl'
                         else:
-                            sale_tax_price_include = 'various_taxes'
+                            sale_tax_price_include = 'mixed_taxes'
                     else:
                         if sale_tax_price_include == 'all_tax_excl':
                             sale_tax_price_include = 'all_tax_excl'
                         else:
-                            sale_tax_price_include = 'various_taxes'
+                            sale_tax_price_include = 'mixed_taxes'
                     template.sale_tax_price_include = sale_tax_price_include

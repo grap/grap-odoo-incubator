@@ -4,27 +4,27 @@
 
 <openerp><data>
 
-        <record model="product.template" id="product_template_demo_1">
+        <record id="product_template_demo_included" model="product.template">
             <field name="name">Demo Product 01 - Taxes included in price</field>
-            <field name="list_price">100</field>
+            <field name="list_price">300</field>
             <field name="taxes_id" eval="[(6,0,[ref('account_tax_included_in_price')])]" />
         </record>
 
-        <record model="product.template" id="product_template_demo_2">
+        <record id="product_template_demo_excluded" model="product.template">
             <field name="name">Demo Product 02 - Taxes not included in price</field>
-            <field name="list_price">100</field>
+            <field name="list_price">300</field>
             <field name="taxes_id" eval="[(6,0,[ref('account_tax_excluded_in_price')])]" />
         </record>
 
-        <record model="product.template" id="product_template_demo_3">
+        <record id="product_template_demo_mixed" model="product.template">
             <field name="name">Demo Product 03 - Taxes included and not included in price</field>
-            <field name="list_price">100</field>
+            <field name="list_price">300</field>
             <field name="taxes_id" eval="[(6,0,[ref('account_tax_excluded_in_price'),ref('account_tax_included_in_price')])]" />
         </record>
 
-        <record model="product.template" id="product_template_demo_4">
+        <record id="product_template_demo_no_tax" model="product.template">
             <field name="name">Demo Product 04 - No Taxes</field>
-            <field name="list_price">100</field>
+            <field name="list_price">300</field>
         </record>
 
 </data></openerp>

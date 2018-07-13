@@ -2,9 +2,9 @@
    :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-==============
+===============================
 Product sale tax price included
-==============
+===============================
 
 This module permits to quickly see the different prices of a product : price with taxes and price without taxes.
 
@@ -13,7 +13,7 @@ This module permits to quickly see the different prices of a product : price wit
    :width: 40%
 
 The four use cases
-=====
+==================
 
 In Customer taxes, there's a boolean called "Tax included in Price".
 
@@ -36,7 +36,7 @@ In Customer taxes, there's a boolean called "Tax included in Price".
    :width: 75%
 
 - **Or** if you choose two customer taxes, one included in price, and the other one not included in price,
-this module displays the sale price and the two calculated prices.
+  this module displays the sale price and the two calculated prices.
 
 .. image:: /product_sale_tax_price_included/static/description/product_tax_included_and_not.png
    :alt: A product with sale price and a warning message
