@@ -25,6 +25,7 @@ virtualenv:
 
 install:
   - git clone https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
+  - sed -i -e 's/Odoo Community Association (OCA)/GRAP/g' ${HOME}/maintainer-quality-tools/travis/cfg/travis_run_pylint_pr.cfg
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly
   - printf '[options]\n\nrunning_env = dev\n' > ${HOME}/.openerp_serverrc
