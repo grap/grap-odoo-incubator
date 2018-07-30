@@ -1,0 +1,54 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* product_category_usage_group
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-26 13:24+0000\n"
+"PO-Revision-Date: 2018-07-26 13:24+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_category_usage_group
+#: view:product.category:product_category_usage_group.view_product_category_form
+msgid "Access Rights"
+msgstr "Droits d'accès"
+
+#. module: product_category_usage_group
+#: model:product.category,name:product_category_usage_group.category_usage_group
+msgid "Demo Category (With Usage Group)"
+msgstr "Demo Category (With Usage Group)"
+
+#. module: product_category_usage_group
+#: help:product.category,usage_group_id:0
+msgid "If defined, the user should be member to this group, to use this product category when creating or updating products"
+msgstr "Si défini, l'utilisateur devra être membre de ce groupe pour utiliser cette catégorie de produit lors de la création ou de la modification d'un article"
+
+#. module: product_category_usage_group
+#: model:ir.model,name:product_category_usage_group.model_product_category
+msgid "Product Category"
+msgstr "Catégorie d'articles"
+
+#. module: product_category_usage_group
+#: model:ir.model,name:product_category_usage_group.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
+
+#. module: product_category_usage_group
+#: view:product.category:product_category_usage_group.view_product_category_search
+#: field:product.category,usage_group_id:0
+msgid "Usage Group"
+msgstr "Groupe d'utilisation"
+
+#. module: product_category_usage_group
+#: code:addons/product_category_usage_group/models/product_template.py:34
+#, python-format
+msgid "You can not use the product category '%s' because you're not member of the group '%s'."
+msgstr "Vous ne pouvez pas utiliser la catégorie de produit '%s' car vous n'êtes pas membre du groupe '%s'."
+
