@@ -41,6 +41,7 @@ class StockInventory(models.Model):
     # Action Section
     @api.multi
     def action_view_duplicates(self):
+        self.ensure_one()
         action = self.env.ref(
             'stock_inventory_merge.action_view_duplicates_tree')
         action_data = action.read()[0]

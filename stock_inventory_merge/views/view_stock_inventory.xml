@@ -13,7 +13,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
             <button name="action_done" position="after">
                 <button name="complete_with_zero" type="object" string="Complete With Zero" attrs="{'invisible': ['|', ('duplicates_qty', '!=', 0), ('state', '!=', 'confirm')]}"/>
-                <button name="action_merge_duplicates" type="object" string="Merge Duplicates" attrs="{'invisible': ['|', ('duplicates_qty', '=', 0), ('state', '!=', 'confirm')]}" class="oe_highlight"/>
+                <button name="action_merge_duplicated_line" type="object" string="Merge Duplicates" attrs="{'invisible': ['|', ('duplicates_qty', '=', 0), ('state', '!=', 'confirm')]}" class="oe_highlight"/>
             </button>
             <xpath expr="//div[@class='oe_title']" position="after">
                 <div class="oe_right oe_button_box" name="buttons">
@@ -21,10 +21,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             name="action_view_duplicates" icon="fa-copy"
                             attrs="{'invisible': [('duplicates_qty', '=', 0)]}">
                         <field string="Duplicates" name="duplicates_qty" widget="statinfo"/>
-                    </button>
-                    <button class="oe_inline oe_stat_button" type="action"
-                            name="%(action_stock_inventory_line_tree)d" icon="fa-list-ul" string="Lines"
-                            attrs="{'invisible': [('line_ids', '=', 0)]}">
                     </button>
                  </div>
             </xpath>
