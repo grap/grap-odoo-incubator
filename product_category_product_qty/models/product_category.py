@@ -13,7 +13,6 @@ class ProductCategory(models.Model):
     template_qty = fields.Integer(
         compute='_compute_multi_qty', string='Products Quantity')
 
-
     product_qty = fields.Integer(
         compute='_compute_multi_qty', string='Variants Quantity')
 
