@@ -50,18 +50,18 @@ angular.module(
             templateUrl: 'views/purchase_order.html',
             controller: 'PurchaseOrderCtrl'
     }).state(
-        'supplier', {
-            url: '/purchase_order/{order_id:int}/supplier',
-            templateUrl: 'views/supplier.html',
-            controller: 'SupplierCtrl'
+        'partner', {
+            url: '/partner',
+            templateUrl: 'views/partner.html',
+            controller: 'PartnerCtrl'
     }).state(
         'product', {
-            url: '/purchase_order/{order_id:int}/product',
+            url: '/purchase_order/{purchase_order_id:int}/product',
             templateUrl: 'views/product.html',
             controller: 'ProductCtrl'
     }).state(
         'quantity', {
-            url: '/purchase_order/{order_id:int}/product/:ean13',
+            url: '/purchase_order/{purchase_order_id:int}/product/:ean13',
             templateUrl: 'views/quantity.html',
             controller: 'QuantityCtrl'
     });

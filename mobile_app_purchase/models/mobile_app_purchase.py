@@ -12,10 +12,22 @@ class MobileAppPurchase(models.TransientModel):
 
     _MANDATORY_FIELDS = ['id', 'name', 'ean13']
 
-    # Public API Section
+    # Public API Section - Generic Functions
     @api.model
     def check_group(self, group_ext_id):
         return self.env.user.has_group(group_ext_id)
+
+    # Public API Section - Load Functions
+    @api.model
+    def get_purchase_orders(self):
+        """Return purchase orders available for the Mobile App
+        :return: [purchase_order_1_vals, purchase_order_2_vals, ...]
+        .. seealso:: _export_purchase_order() for purchase order vals details.
+        """
+        PurchaseOrder = self.env['purchase.order']
+        orders = PurchaseOrder.search(self._get_purchase_order_domain())
+        return [
+            self._export_purchase_order(order) for order in orders]
 
     @api.model
     def create_purchase_order(self, partner_id):
@@ -125,3 +137,30 @@ class MobileAppPurchase(models.TransientModel):
                             'field_name': _get_field_display(self, field)
                         }
         return res
+
+    # Private - Domain Section
+    @api.model
+    def _get_purchase_order_domain(self):
+        return [('state', '=', 'draft')]
+
+    # Private Export Section
+    @api.model
+    def _export_purchase_order(self, order):
+        return {
+            'id': order.id,
+            'name': order.name,
+            'partner': self._export_partner(order.partner_id),
+            'amount_untaxed': order.amount_untaxed,
+            'amount_total': order.amount_total,
+            'minimum_planned_date': order.minimum_planned_date,
+        }
+
+    @api.model
+    def _export_partner(self, partner):
+        return {
+            'id': partner.id,
+            'name': partner.name,
+            'city': partner.city,
+            'purchase_order_count': partner.purchase_order_count,
+            # DELETED COUNTRY_ID
+        }
