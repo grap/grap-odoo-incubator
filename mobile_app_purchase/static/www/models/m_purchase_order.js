@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('scan_to_purchase').factory(
+angular.module('mobile_app_purchase').factory(
         'PurchaseOrderModel', [
         '$q', '$rootScope', 'jsonRpc',
         function ($q, $rootScope, jsonRpc) {
@@ -19,7 +19,7 @@ angular.module('scan_to_purchase').factory(
         },
         CreatePurchaseOrder: function(partnerId) {
             return jsonRpc.call(
-                    'purchase.order', 'create_order_by_scan',
+                    'mobile.app.purchase', 'create_purchase_order',
                     [partnerId]).then(function (res) {
                 return res;
             });
@@ -35,7 +35,7 @@ angular.module('scan_to_purchase').factory(
         },
         AddOrderLine: function(purchaseOrderId, productId, quantity) {
             return jsonRpc.call(
-                    'purchase.order', 'add_order_line_by_scan',
+                    'mobile.app.purchase', 'add_purchase_order_line',
                     [purchaseOrderId, productId, quantity]).then(function (res) {
                 return res;
             });

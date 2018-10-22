@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('scan_to_purchase').controller(
+angular.module('mobile_app_purchase').controller(
         'SelectQuantityCtrl',
         ['$scope', '$rootScope', 'jsonRpc', '$state', 'PurchaseOrderModel', '$translate',
         function ($scope, $rootScope, jsonRpc, $state, PurchaseOrderModel, $translate) {

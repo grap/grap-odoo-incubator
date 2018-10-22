@@ -9,10 +9,10 @@ from openerp import fields, models
 class ResCompany(models.Model):
     _inherit = 'res.company'
 
-    mobile_purchase_product_fields_ids = fields.Many2many(
+    mobile_purchase_product_field_ids = fields.Many2many(
         comodel_name='ir.model.fields', string='Product Fields',
         domain=[('model', 'in', ['product.product'])])
 
-    mobile_purchase_supplierinfo_fields_ids = fields.Many2many(
+    mobile_purchase_supplierinfo_field_ids = fields.Many2many(
         comodel_name='ir.model.fields', string='Supplier Info Fields',
         domain=[('model', 'in', ['product.supplierinfo'])])
