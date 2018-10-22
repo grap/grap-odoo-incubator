@@ -48,13 +48,13 @@
         <!-- Import Models -->
         <script src="models/purchase_order.js"></script>
         <script src="models/product.js"></script>
-        <script src="models/supplier.js"></script>
+        <script src="models/partner.js"></script>
 
         <!-- Import Controllers -->
         <script src="controllers/login.js"></script>
         <script src="controllers/credit.js"></script>
         <script src="controllers/purchase_order.js"></script>
-        <script src="controllers/supplier.js"></script>
+        <script src="controllers/partner.js"></script>
         <script src="controllers/product.js"></script>
         <script src="controllers/quantity.js"></script>
     </head>
@@ -74,7 +74,7 @@
                             <i class="icon ion-person-stalker"></i>{{'Credits' | translate}}
                         </ion-item>
                         <ion-item menu-close class="item-icon-left" href="#/purchase_order"
-                                ng-show="['supplier', 'product', 'quantity'].indexOf(currentState) != -1">
+                                ng-show="['partner', 'product', 'quantity'].indexOf(currentState) != -1">
                             <i class="icon ion-home"></i>{{'Purchase Orders' | translate}}
                         </ion-item>
                         <ion-item menu-close class="item-icon-left" href="#/login"
@@ -82,7 +82,7 @@
                             <i class="icon ion-log-in"></i>{{'Log In' | translate}}
                         </ion-item>
                         <ion-item menu-close class="item-icon-left" href="#/logout"
-                                ng-show="['purchase_order', 'supplier', 'product', 'quantity'].indexOf(currentState) != -1">
+                                ng-show="['purchase_order', 'partner', 'product', 'quantity'].indexOf(currentState) != -1">
                             <i class="icon ion-log-out"></i>{{'Log Out' | translate}}
                         </ion-item>
                     </ion-list>

@@ -2,6 +2,65 @@
 
     <ion-header-bar class="bar bar-header bar-stable">
         <button menu-toggle="right" class="button button-icon ion-navicon"></button>
+        <h1 class="title"></ion-icon>{{'Purchase Orders' | translate}}</h1>
+        <span class="top-right-icon icon ion-clipboard"></span>
+    </ion-header-bar>
+
+    <ion-content class="has-header" data-ng-init="init()">
+        <form ng-submit="sub8mit()">
+
+            <div class="list list-insert">
+                <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input type="text" id="search" placeholder="Search on Name" ng-model="data.purchase_order_filter" required="">
+                </label>
+            </div>
+
+            <div class="list">
+
+                <ion-list>
+                    <ion-item ng-repeat="purchase_order in data.purchase_order_list | filter: data.purchase_order_filter">
+                        <a class="item" href="#" ng-click="select_purchase_order(purchase_order.id)">
+                            <h2>{{purchase_order.name}}</h2>
+                        </a>
+                    </ion-item>
+
+                </ion-list>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
+
+                                <!-- <span class="secondary-line" ng-show="inventory.date">{{inventory.date}}</span> -->
+
+<!--                     <ion-item ng-show="data.mobile_purchase_order_create">
+                        <label class="item item-input">
+                            <div class="form-label col-50">{{'Purchase Order Name' | translate}}</div>
+                            <span class="form-input col-50">
+                                {{ data.purchase_order_filter }}
+                            </span>
+                        </label>
+                        <label class="form-input" ng-hide="data.inventory_filter.length" for="search">
+                            {{ 'Enter a name in the field above' | translate }}
+                        </label>
+                    </label>
+                    <label class="item">
+                        <button class="button button-full button-royal" ng-disabled="!data.inventory_filter.length">
+                        {{'Create New Inventory' | translate}}</button>
+                    </label>
+ -->
+
+
+
+
+
+
+<!-- 
+
+<ion-view title="{{'Scan To Purchase' | translate}}">
+
+    <ion-header-bar class="bar bar-header bar-stable">
+        <button menu-toggle="right" class="button button-icon ion-navicon"></button>
         <h1 class="title">{{'Orders' | translate}} ({{data.purchase_order_qty }})</h1>
     </ion-header-bar>
 
@@ -30,3 +89,4 @@
     </ion-content>
 
 </ion-view>
+ -->
