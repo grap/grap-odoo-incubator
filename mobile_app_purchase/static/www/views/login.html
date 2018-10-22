@@ -8,25 +8,23 @@
     <ion-content class="has-header" data-ng-init="init()">
         <form ng-submit="submit()">
             <div class="list">
-                <label class="item item-input input-select"> 
-                    <div class="input-label" for="db">{{'Database Name' | translate}}</div>
-                    <select name="db" ng-options="value for value in data.db_list" ng-model="data.db"></select>
+                <label class="item item-input input-select" ng-show="data.db_list.length > 1">
+                    <div class="form-label col-33" for="db">{{'Database' | translate}}</div>
+                    <select name="db" ng-options="value for value in data.db_list" ng-model="data.db" class="item-input select-required col-67"></select>
                 </label>
-                <label class="item item-input">
-                    <div class="input-label">{{'Login' | translate}}</div>
-                    <input type="text" ng-model="data.login" id="input_login" autocomplete="off"/>
+                <label class="item item-input" ng-show="data.db_list.length">
+                    <div class="form-label col-33">{{'Login' | translate}}</div>
+                    <input type="text" ng-model="data.login" id="input_login" name="input_login" autocomplete="off" class="item-input input-required col-67"/>
                 </label>
-                <label class="item item-input">
-                    <div class="input-label">{{'Password' | translate}}</div>
-                    <input type="password" ng-model="data.password"/>
+                <label class="item item-input" ng-show="data.db_list.length">
+                    <div class="form-label col-33">{{'Password' | translate}}</div>
+                    <input type="password" ng-model="data.password" id="input_password" name="input_password" class="item-input input-required col-67"/>
                 </label>
                 <label class="item">
                     <button class="button button-full button-royal" translate="Log In" />
                 </label>
             </div>
         </form>
-        <audio id="sound_start_session" src="./static/audio/start_session.mp3"></audio>
-        <audio id="sound_stop_session" src="./static/audio/stop_session.mp3"></audio>
     </ion-content>
 
     <ion-footer-bar class="bar-assertive" ng-show="errorMessage">
