@@ -9,4 +9,5 @@
     purchase_ok: True
     ean13: 3068320063003
     default_code: EVIAN-33
+    categ_id: product.product_category_all
     standard_price: 0.65
