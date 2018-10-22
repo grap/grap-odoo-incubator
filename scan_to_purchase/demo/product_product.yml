@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) 2016-Today: GRAP (http://www.grap.coop)
+# @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
+
+- !record {model: product.product, id: product_evian}:
+    name: Evian 33cl
+    purchase_ok: True
+    ean13: 3068320063003
+    default_code: EVIAN-33
+    standard_price: 0.65
