@@ -1,20 +1,28 @@
-'use strict';
-
-
+"use strict";
 angular.module('mobile_app_purchase').factory(
-        'ResPartnerModel', [
-        '$q', '$rootScope', 'jsonRpc',
-        function ($q, $rootScope, jsonRpc) {
+        'PartnerModel', [
+        '$q', 'jsonRpc',
+        function ($q, jsonRpc) {
+
+    function reset() {
+        data.partner_promise = null;
+        data.partners = [];
+    }
+    var data = {}
+    reset();
 
     return {
-        LoadSupplier: function() {
-            return jsonRpc.searchRead(
-                    'res.partner', [['supplier', '=', '1']], [
-                    'id', 'name', 'city', 'country_id', 'purchase_order_count',
-                    ]).then(function (res) {
-                $rootScope.SupplierList = res.records;
-                return res.records.length;
-            });
+        get_list: function(inventory) {
+            //get partners
+            //return a promise
+            data.partner_promise = data.partner_promise || jsonRpc.call(
+                'mobile.app.purchase', 'get_partners', [{}]
+                ).then(function (partners) {
+                    data.partners = partners;
+                    return partners;
+                }
+            );
+            return data.partner_promise;
         },
 
     };

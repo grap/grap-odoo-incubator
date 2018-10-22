@@ -12,81 +12,32 @@
             <div class="list list-insert">
                 <label class="item item-input">
                     <i class="icon ion-search placeholder-icon"></i>
-                    <input type="text" id="search" placeholder="Search on Name" ng-model="data.purchase_order_filter" required="">
+                    <input type="text" id="search" placeholder="Search" ng-model="data.purchase_order_filter">
                 </label>
             </div>
 
             <div class="list">
 
                 <ion-list>
-                    <ion-item ng-repeat="purchase_order in data.purchase_order_list | filter: data.purchase_order_filter">
-                        <a class="item" href="#" ng-click="select_purchase_order(purchase_order.id)">
-                            <h2>{{purchase_order.name}}</h2>
-                        </a>
-                    </ion-item>
-
-                </ion-list>
-            </div>
-        </form>
-    </ion-content>
-</ion-view>
-
-                                <!-- <span class="secondary-line" ng-show="inventory.date">{{inventory.date}}</span> -->
-
-<!--                     <ion-item ng-show="data.mobile_purchase_order_create">
-                        <label class="item item-input">
-                            <div class="form-label col-50">{{'Purchase Order Name' | translate}}</div>
-                            <span class="form-input col-50">
-                                {{ data.purchase_order_filter }}
-                            </span>
-                        </label>
-                        <label class="form-input" ng-hide="data.inventory_filter.length" for="search">
-                            {{ 'Enter a name in the field above' | translate }}
-                        </label>
-                    </label>
-                    <label class="item">
-                        <button class="button button-full button-royal" ng-disabled="!data.inventory_filter.length">
-                        {{'Create New Inventory' | translate}}</button>
-                    </label>
- -->
-
-
-
-
-
-
-<!-- 
-
-<ion-view title="{{'Scan To Purchase' | translate}}">
-
-    <ion-header-bar class="bar bar-header bar-stable">
-        <button menu-toggle="right" class="button button-icon ion-navicon"></button>
-        <h1 class="title">{{'Orders' | translate}} ({{data.purchase_order_qty }})</h1>
-    </ion-header-bar>
-
-    <ion-content class="has-header" data-ng-init="init()">
-        <form ng-submit="submit()">
-            <div class="list">
-                <label class="item">
-                    <button class="button button-full button-royal">{{'Create New Purchase Order' | translate}}</button>
-                </label>
-                <ion-list>
-                    <ion-item ng-repeat="order in data.purchase_order_list">
-                        <a class="item" href="#" ng-click="selectPurchaseOrder({{order.id}}, {{order.name}}, {{order.partner_id[0]}})">
+                    <ion-item ng-repeat="order in data.purchase_order_list | filter: data.purchase_order_filter">
+                        <a class="item" href="#" ng-click="select_purchase_order(order.id)">
                             <span class="badge badge-energized" ng-show="order.amount_total">
                                 {{order.amount_total | currency:"€"}} {{'VAT Incl.' | translate}}
                             </span>
                             <h2>{{order.name }}</h2>
                             <p>
-                                <span>{{order.partner_id[1]}}</span>
+                                <span>{{order.partner.name}}</span>
                                 <span ng-show="order.minimum_planned_date">- {{order.minimum_planned_date}}</span>
                             </p>
                         </a>
                     </ion-item>
+
                 </ion-list>
             </div>
         </form>
+        <label class="item">
+            <button class="button button-full button-royal" ng-click="create_purchase_order()">
+            {{'Create New Purchase Order' | translate}}</button>
+        </label>
     </ion-content>
-
 </ion-view>
- -->

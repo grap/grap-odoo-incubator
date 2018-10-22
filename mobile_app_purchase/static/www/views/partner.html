@@ -2,6 +2,49 @@
 
     <ion-header-bar class="bar bar-header bar-stable">
         <button menu-toggle="right" class="button button-icon ion-navicon"></button>
+        <h1 class="title">{{'Suppliers' | translate}}</h1>
+        <span class="top-right-icon icon ion-location"></span>
+    </ion-header-bar>
+
+    <ion-content class="has-header" data-ng-init="init()">
+       <form>
+           <div class="list list-insert">
+                <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input type="text" placeholder="{{'Search' | translate }}" ng-model="data.partner_filter">
+                </label>
+            </div>
+
+            <div class="list">
+                <ion-list>
+                    <ion-item ng-repeat="partner in data.partner_list | filter: data.partner_filter ">
+                        <a class="item" ng-click="select_partner(partner)">
+                            <span class="badge badge-energized" ng-show="partner.purchase_order_count">{{'PO' | translate}} : {{partner.purchase_order_count}}</span>
+                            <h2>{{partner.name}}</h2>
+                            <p>
+                                <span ng-show="partner.city">{{partner.city}}</span>
+                                <span ng-show="partner.zip"> {{partner.zip}}</span>
+                            </p>
+                        </a>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </form>
+    </ion-content>
+
+</ion-view>
+
+<!-- 
+                            <p>
+                                <span class="secondary-line">({{location.parent_complete_name}})</span>
+                            </p> -->
+
+
+
+<!-- <ion-view title="{{'Scan To Purchase' | translate}}">
+
+    <ion-header-bar class="bar bar-header bar-stable">
+        <button menu-toggle="right" class="button button-icon ion-navicon"></button>
         <h1 class="title">{{'Supplier' | translate}} ({{data.supplier_qty }})</h1>
     </ion-header-bar>
 
@@ -26,3 +69,4 @@
     </ion-content>
 
 </ion-view>
+ -->

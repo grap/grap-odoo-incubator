@@ -30,6 +30,19 @@ class MobileAppPurchase(models.TransientModel):
             self._export_purchase_order(order) for order in orders]
 
     @api.model
+    def get_partners(self, params):
+        """ Return supplier partners.
+        :param params: no params.
+        :return: [partner_1_vals, partner_2_vals, ...]
+        .. seealso::
+            _export_partner() for partner vals details
+        """
+        ResPartner = self.env['res.partner']
+        partners = ResPartner.search(self._get_partner_domain())
+        return [
+            self._export_partner(partner) for partner in partners]
+
+    @api.model
     def create_purchase_order(self, partner_id):
         PurchaseOrder = self.env['purchase.order']
         vals = PurchaseOrder.default_get(PurchaseOrder._defaults.keys())
@@ -143,6 +156,10 @@ class MobileAppPurchase(models.TransientModel):
     def _get_purchase_order_domain(self):
         return [('state', '=', 'draft')]
 
+    @api.model
+    def _get_partner_domain(self):
+        return [('supplier', '=', True)]
+
     # Private Export Section
     @api.model
     def _export_purchase_order(self, order):
@@ -162,5 +179,4 @@ class MobileAppPurchase(models.TransientModel):
             'name': partner.name,
             'city': partner.city,
             'purchase_order_count': partner.purchase_order_count,
-            # DELETED COUNTRY_ID
         }

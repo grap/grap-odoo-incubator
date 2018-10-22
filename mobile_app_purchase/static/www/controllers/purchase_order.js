@@ -20,11 +20,9 @@ angular.module('mobile_app_purchase').controller(
         }
     });
 
-    // $scope.submit = function () {
-    //     InventoryModel.create_inventory($scope.data.inventory_filter).then(function(inventory){
-    //         $scope.select_inventory(inventory.id);
-    //     });
-    // };
+    $scope.create_purchase_order = function () {
+        $state.go('partner');
+    };
 
     $scope.select_purchase_order = function (purchase_order_id) {
         $state.go('product', {purchase_order_id: purchase_order_id});
