@@ -4,15 +4,15 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    'name': 'Scan To Purchase',
-    'version': '1.0',
+    'name': 'Mobile App Purchase',
+    'version': '8.0.2.0.0',
     'category': 'Purchase',
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
     'license': 'AGPL-3',
     'depends': [
         'purchase',
-        'stock',
+        # 'stock',
     ],
     'data': [
         'views/view_res_company.xml',

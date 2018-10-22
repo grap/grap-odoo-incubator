@@ -41,7 +41,7 @@ angular.module('scan_to_purchase').controller(
 
     $scope.submit = function () {
         jsonRpc.login($scope.data.db, $scope.data.login, $scope.data.password).then(function (user) {
-            jsonRpc.call('res.users', 'check_group', ['purchase.group_purchase_user']).then(function (res) {
+            jsonRpc.call('mobile.app.purchase', 'check_group', ['purchase.group_purchase_user']).then(function (res) {
                 if (res){
                     angular.element(document.querySelector('#sound_start_session'))[0].play();
                     $scope.errorMessage = "";
