@@ -1,25 +1,19 @@
-'use strict';
-
-
+"use strict";
 angular.module('mobile_app_purchase').controller(
         'LoginCtrl', [
-        '$scope','$rootScope', 'jsonRpc', '$state', '$translate',
-        function ($scope, $rootScope, jsonRpc, $state, $translate) {
+        '$scope', 'jsonRpc', '$state', '$translate', 'ProductModel',
+        function ($scope, jsonRpc, $state, $translate, ProductModel) {
 
     $scope.data = {
         'db': '',
         'db_list': [],
         'login': '',
         'password': '',
-        'focus': true,
     };
 
     $scope.$on('$ionicView.beforeEnter', function() {
         if ($state.current.name === 'logout') {
-            delete $rootScope.ProductListByEan13;
-            delete $rootScope.OrderList;
-            delete $rootScope.SupplierList;
-            angular.element(document.querySelector('#sound_stop_session'))[0].play();
+            ProductModel.reset_list();
             jsonRpc.logout(true);
         }
     });
@@ -43,9 +37,8 @@ angular.module('mobile_app_purchase').controller(
         jsonRpc.login($scope.data.db, $scope.data.login, $scope.data.password).then(function (user) {
             jsonRpc.call('mobile.app.purchase', 'check_group', ['purchase.group_purchase_user']).then(function (res) {
                 if (res){
-                    angular.element(document.querySelector('#sound_start_session'))[0].play();
                     $scope.errorMessage = "";
-                    $state.go('load');
+                    $state.go('purchase_order');
                 }
                 else{
                     $scope.errorMessage = $translate.instant("Insufficient Acces Right: you should be member of 'Purchase / user' group.");

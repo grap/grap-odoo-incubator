@@ -2,7 +2,7 @@
 
 
 angular.module('mobile_app_purchase').factory(
-        'ProductProductModel', [
+        'ProductModel', [
         '$q', '$rootScope', 'jsonRpc',
         function ($q, $rootScope, jsonRpc) {
 
