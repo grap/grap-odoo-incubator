@@ -1,0 +1,8 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) 2015-Today GRAP (http://www.grap.coop)
+# Copyright (C) 2015-Today Noemis (http://www.noemis.fr)
+# @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
+- !record {model: res.groups, id: group_sale_order_line_no_warning}:
+    name: Sale Order Line - Disable Warnings
