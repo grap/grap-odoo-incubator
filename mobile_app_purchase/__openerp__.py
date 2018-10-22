@@ -18,8 +18,8 @@
         'views/view_res_company.xml',
     ],
     'demo': [
-        'demo/res_groups.yml',
-        'demo/product_product.yml',
+        'demo/res_groups.xml',
+        'demo/product_product.xml',
     ],
     'installable': True,
 }

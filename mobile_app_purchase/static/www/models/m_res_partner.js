@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('scan_to_purchase').factory(
+angular.module('mobile_app_purchase').factory(
         'ResPartnerModel', [
         '$q', '$rootScope', 'jsonRpc',
         function ($q, $rootScope, jsonRpc) {

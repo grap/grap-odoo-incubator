@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2016-Today GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<openerp><data>
+
+    <record id="product_evian" model="product.product">
+        <field name="name">Evian 33cl</field>
+        <field name="purchase_ok" eval="1"/>
+        <field name="ean13">3068320063003</field>
+        <field name="default_code">EVIAN-33</field>
+        <field name="categ_id" ref="product.product_category_all" />
+        <field name="standard_price">0.65</field>
+    </record>
+
+</data></openerp>

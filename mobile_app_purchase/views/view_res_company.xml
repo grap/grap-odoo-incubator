@@ -15,8 +15,8 @@ Copyright (C) 2015-Today GRAP (http://www.grap.coop)
             <xpath expr="//page[@string='General Information']" position="after">
                 <page string="Mobile App Purchase">
                     <group string="Settings">
-                        <field name="mobile_purchase_product_fields_ids" widget="many2many_tags"/>
-                        <field name="mobile_purchase_supplierinfo_fields_ids" widget="many2many_tags"/>
+                        <field name="mobile_purchase_product_field_ids" widget="many2many_tags"/>
+                        <field name="mobile_purchase_supplierinfo_field_ids" widget="many2many_tags"/>
                     </group>
                 </page>
             </xpath>
