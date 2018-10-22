@@ -1,0 +1,32 @@
+<ion-view title="{{'Scan To Purchase' | translate}}">
+
+    <ion-header-bar class="bar bar-header bar-stable">
+        <button menu-toggle="right" class="button button-icon ion-navicon"></button>
+        <h1 class="title">{{'Orders' | translate}} ({{data.purchase_order_qty }})</h1>
+    </ion-header-bar>
+
+    <ion-content class="has-header" data-ng-init="init()">
+        <form ng-submit="submit()">
+            <div class="list">
+                <label class="item">
+                    <button class="button button-full button-royal">{{'Create New Purchase Order' | translate}}</button>
+                </label>
+                <ion-list>
+                    <ion-item ng-repeat="order in data.purchase_order_list">
+                        <a class="item" href="#" ng-click="selectPurchaseOrder({{order.id}}, {{order.name}}, {{order.partner_id[0]}})">
+                            <span class="badge badge-energized" ng-show="order.amount_total">
+                                {{order.amount_total | currency:"€"}} {{'VAT Incl.' | translate}}
+                            </span>
+                            <h2>{{order.name }}</h2>
+                            <p>
+                                <span>{{order.partner_id[1]}}</span>
+                                <span ng-show="order.minimum_planned_date">- {{order.minimum_planned_date}}</span>
+                            </p>
+                        </a>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </form>
+    </ion-content>
+
+</ion-view>

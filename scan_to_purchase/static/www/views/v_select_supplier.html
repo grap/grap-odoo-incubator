@@ -1,0 +1,28 @@
+<ion-view title="{{'Scan To Purchase' | translate}}">
+
+    <ion-header-bar class="bar bar-header bar-stable">
+        <button menu-toggle="right" class="button button-icon ion-navicon"></button>
+        <h1 class="title">{{'Supplier' | translate}} ({{data.supplier_qty }})</h1>
+    </ion-header-bar>
+
+    <ion-content class="has-header" data-ng-init="init()">
+        <form ng-submit="submit()">
+            <div class="list">
+                <ion-list>
+                    <ion-item ng-repeat="supplier in data.supplier_list">
+                        <a class="item" href="#" ng-click="selectSupplier({{supplier.id}})">
+                            <span class="badge badge-energized">{{'PO' | translate}} : {{supplier.purchase_order_count}}</span>
+                            <h2>{{supplier.name}}</h2>
+                            <p>
+                                <span ng-show="supplier.city">{{supplier.city}}</span>
+                                <span ng-show="supplier.zip"> {{supplier.zip}}</span>
+                                <span ng-show="supplier.country_id"> ({{supplier.country_id[1]}})</span>
+                            </p>
+                        </a>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </form>
+    </ion-content>
+
+</ion-view>
