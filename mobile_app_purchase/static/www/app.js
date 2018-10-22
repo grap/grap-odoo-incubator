@@ -32,43 +32,38 @@ angular.module(
     $stateProvider.state(
         'login', {
             url: '/login',
-            templateUrl: 'views/v_login.html',
+            templateUrl: 'views/login.html',
             controller: 'LoginCtrl'
     }).state(
         'logout', {
             url: '/logout',
-            templateUrl: 'views/v_login.html',
+            templateUrl: 'views/login.html',
             controller: 'LoginCtrl'
     }).state(
         'credit', {
             url: '/credit',
-            templateUrl: 'views/v_credit.html',
+            templateUrl: 'views/credit.html',
             controller: 'CreditCtrl'
     }).state(
-        'load', {
-            url: '/load',
-            templateUrl: 'views/v_load.html',
-            controller: 'LoadCtrl'
+        'purchase_order', {
+            url: '/purchase_order',
+            templateUrl: 'views/purchase_order.html',
+            controller: 'PurchaseOrderCtrl'
     }).state(
-        'select_purchase_order', {
-            url: '/select_purchase_order',
-            templateUrl: 'views/v_select_purchase_order.html',
-            controller: 'SelectPurchaseOrderCtrl'
+        'supplier', {
+            url: '/purchase_order/{order_id:int}/supplier',
+            templateUrl: 'views/supplier.html',
+            controller: 'SupplierCtrl'
     }).state(
-        'select_supplier', {
-            url: '/select_supplier',
-            templateUrl: 'views/v_select_supplier.html',
-            controller: 'SelectSupplierCtrl'
+        'product', {
+            url: '/purchase_order/{order_id:int}/product',
+            templateUrl: 'views/product.html',
+            controller: 'ProductCtrl'
     }).state(
-        'select_product', {
-            url: '/select_product',
-            templateUrl: 'views/v_select_product.html',
-            controller: 'SelectProductCtrl'
-    }).state(
-        'select_quantity', {
-            url: '/select_quantity/:ean13',
-            templateUrl: 'views/v_select_quantity.html',
-            controller: 'SelectQuantityCtrl'
+        'quantity', {
+            url: '/purchase_order/{order_id:int}/product/:ean13',
+            templateUrl: 'views/quantity.html',
+            controller: 'QuantityCtrl'
     });
 
     $ionicConfigProvider.views.transition('none');
@@ -88,12 +83,14 @@ angular.module(
     .useSanitizeValueStrategy('escapeParameters');
 }])
 .controller('AppCtrl', [
-    '$scope', '$state', '$rootScope',
-    function($scope, $state, $rootScope) {
-        $scope.$on(
-            '$stateChangeSuccess',
+    '$scope', '$state', '$stateParams', '$rootScope',
+    function($scope, $state, $stateParams, $rootScope) {
+        $rootScope.$on("$stateChangeError", console.log.bind(console));
+        $scope.$on('$stateChangeSuccess',
             function(evt, toState, toParams, fromState, fromParams) {
+                //for side menu
                 $rootScope.currentState = toState.name;
+                $rootScope.params = toParams;
             }
         );
     }

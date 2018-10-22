@@ -46,18 +46,17 @@
         <link href="static/css/mobile_app_purchase.css" rel="stylesheet">
 
         <!-- Import Models -->
-        <script src="models/m_purchase_order.js"></script>
-        <script src="models/m_product_product.js"></script>
-        <script src="models/m_res_partner.js"></script>
+        <script src="models/purchase_order.js"></script>
+        <script src="models/product.js"></script>
+        <script src="models/supplier.js"></script>
 
         <!-- Import Controllers -->
-        <script src="controllers/c_login.js"></script>
-        <script src="controllers/c_credit.js"></script>
-        <script src="controllers/c_load.js"></script>
-        <script src="controllers/c_select_purchase_order.js"></script>
-        <script src="controllers/c_select_supplier.js"></script>
-        <script src="controllers/c_select_product.js"></script>
-        <script src="controllers/c_select_quantity.js"></script>
+        <script src="controllers/login.js"></script>
+        <script src="controllers/credit.js"></script>
+        <script src="controllers/purchase_order.js"></script>
+        <script src="controllers/supplier.js"></script>
+        <script src="controllers/product.js"></script>
+        <script src="controllers/quantity.js"></script>
     </head>
 
     <body ng-app="mobile_app_purchase">
@@ -65,28 +64,25 @@
 
             <ion-side-menu side="right">
                 <header class="bar bar-header bar-stable">
-                    <h1 class="title">{{'Scan To Purchase' | translate}}</h1>
+                    <h1 class="title">{{'Scan To Inventory' | translate}}</h1>
                 </header>
                 <ion-content class="has-header">
                     <ion-list>
+
                         <ion-item menu-close class="item-icon-left" href="#/credit"
                                 ng-show="['login', 'logout'].indexOf(currentState) != -1">
                             <i class="icon ion-person-stalker"></i>{{'Credits' | translate}}
                         </ion-item>
-                        <ion-item menu-close class="item-icon-left" href="#/select_purchase_order"
-                                ng-show="['select_supplier', 'select_product', 'select_quantity'].indexOf(currentState) != -1">
+                        <ion-item menu-close class="item-icon-left" href="#/purchase_order"
+                                ng-show="['supplier', 'product', 'quantity'].indexOf(currentState) != -1">
                             <i class="icon ion-home"></i>{{'Purchase Orders' | translate}}
-                        </ion-item>
-                        <ion-item menu-close class="item-icon-left" href="#/load"
-                                ng-show="['select_purchase_order', 'select_supplier', 'select_product', 'select_quantity'].indexOf(currentState) != -1">
-                            <i class="icon ion-refresh"></i>{{'Refresh' | translate}}
                         </ion-item>
                         <ion-item menu-close class="item-icon-left" href="#/login"
                                 ng-show="['credit'].indexOf(currentState) != -1">
                             <i class="icon ion-log-in"></i>{{'Log In' | translate}}
                         </ion-item>
                         <ion-item menu-close class="item-icon-left" href="#/logout"
-                                ng-show="['load', 'select_purchase_order', 'select_supplier', 'select_product', 'select_quantity'].indexOf(currentState) != -1">
+                                ng-show="['purchase_order', 'supplier', 'product', 'quantity'].indexOf(currentState) != -1">
                             <i class="icon ion-log-out"></i>{{'Log Out' | translate}}
                         </ion-item>
                     </ion-list>
@@ -98,5 +94,7 @@
            </ion-side-menu-content>
 
         </ion-side-menus>
+        <audio id="sound_ok" src="./static/audio/ok.mp3"></audio>
+        <audio id="sound_error" src="./static/audio/error.mp3"></audio>
     </body>
 </html>
