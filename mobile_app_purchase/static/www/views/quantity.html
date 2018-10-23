@@ -34,6 +34,10 @@ Copyright (C) 2015-Today GRAP (http://www.grap.coop)
                     <div class="form-label col-50">{{ key }}</div>
                     <span class="form-field col-50">{{ value }}</span>
                 </label>
+                <label class="item item-input" ng-repeat="(key, value) in product.supplierinfo_vals">
+                    <div class="form-label col-50">{{ key }}</div>
+                    <span class="form-field col-50">{{ value }}</span>
+                </label>
             </div>
         </form>
         <label class="item">

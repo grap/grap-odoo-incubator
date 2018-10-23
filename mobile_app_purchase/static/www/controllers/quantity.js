@@ -24,16 +24,17 @@ angular.module('mobile_app_purchase').controller(
             // Get Purchase order / Product Data
             PurchaseOrderModel.get_purchase_order(toParams.purchase_order_id).then(function (purchase_order) {
                 $scope.purchase_order = purchase_order;
+                ProductModel.search_product(toParams.ean13, $scope.purchase_order).then(function (product) {
+                    $scope.product = product;
+                }, function(reason) {
+                    angular.element(document.querySelector('#sound_error'))[0].play();
+                    $rootScope.errorMessage = $translate.instant("Loading Product failed");
+                });
             }, function(reason) {
                 angular.element(document.querySelector('#sound_error'))[0].play();
                 $rootScope.errorMessage = $translate.instant("Loading Purchase Order failed");
             });
-            ProductModel.search_product(toParams.ean13).then(function (product) {
-                $scope.product = product;
-            }, function(reason) {
-                angular.element(document.querySelector('#sound_error'))[0].play();
-                $rootScope.errorMessage = $translate.instant("Loading Product failed");
-            });
+
         }
     });
 

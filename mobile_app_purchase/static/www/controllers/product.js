@@ -34,7 +34,7 @@ angular.module('mobile_app_purchase').controller(
         // Reset Focus, in case the barcode is not correct
         angular.element(document.querySelector('#input_ean13'))[0].focus();
         if ($scope.data.ean13) {
-            ProductModel.search_product($scope.data.ean13).then(function (product) {
+            ProductModel.search_product($scope.data.ean13, $scope.purchase_order).then(function (product) {
                 if (!product.id){
                     angular.element(document.querySelector('#sound_error'))[0].play();
                     $rootScope.errorMessage = $translate.instant("Unknown EAN13 Barcode");

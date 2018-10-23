@@ -29,12 +29,14 @@ angular.module('mobile_app_purchase').factory(
             return product_promise;
         },
 
-        search_product: function(ean13) {
+        search_product: function(ean13, purchase_order) {
             return $q(function (success, error) {
                 if (products_by_barcode[ean13]) {//search in cache
                     return success(products_by_barcode[ean13]);
                 }
-                jsonRpc.call('mobile.app.purchase', 'search_barcode', [{'barcode': ean13}]
+                var vals = {'barcode': ean13, 'purchase_order': purchase_order}
+
+                jsonRpc.call('mobile.app.purchase', 'search_barcode', [vals]
                 ).then(function (res) {
                     if (!res){
                         return success({'id': 0});

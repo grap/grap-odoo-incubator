@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018-Today GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<openerp><data>
+
+    <record id="base.main_company" model="res.company">
+        <field name="mobile_purchase_product_field_ids" eval="[(6, 0, [
+            ref('product.field_product_product_list_price'),
+            ref('product.field_product_product_categ_id')])]"/>
+
+        <field name="mobile_purchase_supplierinfo_field_ids" eval="[(6, 0, [
+            ref('product.field_product_supplierinfo_product_code'),
+            ref('product.field_product_supplierinfo_product_name')])]"/>
+    </record>
+
+</data></openerp>
