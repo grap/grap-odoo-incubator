@@ -1,39 +1,95 @@
-'use strict';
-
-
+"use strict";
 angular.module('mobile_app_purchase').controller(
-        'SelectProductCtrl', [
-        '$scope', '$rootScope', 'jsonRpc', '$state', '$translate', 'PurchaseOrderModel',
-        function ($scope, $rootScope, jsonRpc, $state, $translate, PurchaseOrderModel) {
+        'ProductCtrl', [
+        '$scope', '$state', '$translate', 'PurchaseOrderModel', 'ProductModel',
+        function ($scope, $state, $translate, PurchaseOrderModel, ProductModel) {
 
-    $scope.data = {
-        'ean13': '',
-    };
+    $scope.data = { };
 
     $scope.$on(
             '$stateChangeSuccess',
             function(event, toState, toParams, fromState, fromParams){
-        if ($state.current.name === 'select_product') {
+        if ($state.current.name === 'product') {
             // Set Focus
             angular.element(document.querySelector('#input_ean13'))[0].focus();
+            //Initialize default data
             $scope.data.ean13 = '';
-
-            // Load current Purchase orders
-            PurchaseOrderModel.LoadOrder(
-                    $rootScope.currentPurchaseOrderId).then(function (res){
-                $scope.order = res;
-            })
+            $scope.errorMessage = "";
+            // Get Purchase order Data
+            PurchaseOrderModel.get_purchase_order(toParams.purchase_order_id).then(function (purchase_order) {
+                $scope.purchase_order = purchase_order;
+            });
         }
     });
 
     $scope.submit = function () {
-        if ($scope.data.ean13 in $rootScope.ProductListByEan13){
-            $scope.errorMessage = "";
-            $state.go('select_quantity', {ean13: $scope.data.ean13});
-        }else{
-            $scope.errorMessage = $translate.instant("Unknown EAN13 Barcode");
-            angular.element(document.querySelector('#sound_user_error'))[0].play();
-        }
+        // Reset Focus, in case the barcode is not correct
+        console.log("/////////////////");
+        console.log("/////////////////");
+        console.log("/////////////////");
+       //  angular.element(document.querySelector('#input_ean13'))[0].focus();
+       //  if ($scope.data.ean13) {
+       //      ProductModel.search_product($scope.data.ean13).then(function (product) {
+       //          SettingModel.get_setting('inventory_allow_unknown').then(function (setting) {
+       //              if (!product.found && !setting){
+       //                  $scope.errorMessage = $translate.instant("Unknown EAN13 Barcode");
+       //                  angular.element(document.querySelector('#sound_error'))[0].play();
+       //              } else {
+       //                  $state.go('quantity', {
+       //                      inventory_id: $scope.inventory.id,
+       //                      location_id: $scope.location.id,
+       //                      ean13: product.barcode,
+       //                  });
+       //              }
+       //          });
+       //      });
+       //  } else {
+       //      $scope.errorMessage = $translate.instant("Barcode : Required field");
+       //      angular.element(document.querySelector('#sound_error'))[0].play();
+       // }
     };
 
 }]);
+
+
+
+
+// 'use strict';
+
+
+// angular.module('mobile_app_purchase').controller(
+//         'ProductCtrl', [
+//         '$scope', '$rootScope', 'jsonRpc', '$state', '$translate', 'PurchaseOrderModel',
+//         function ($scope, $rootScope, jsonRpc, $state, $translate, PurchaseOrderModel) {
+
+//     $scope.data = {
+//         'ean13': '',
+//     };
+
+//     $scope.$on(
+//             '$stateChangeSuccess',
+//             function(event, toState, toParams, fromState, fromParams){
+//         if ($state.current.name === 'product') {
+//             // Set Focus
+//             angular.element(document.querySelector('#input_ean13'))[0].focus();
+//             $scope.data.ean13 = '';
+
+//             // Load current Purchase orders
+//             PurchaseOrderModel.LoadOrder(
+//                     $rootScope.currentPurchaseOrderId).then(function (res){
+//                 $scope.order = res;
+//             })
+//         }
+//     });
+
+//     $scope.submit = function () {
+//         if ($scope.data.ean13 in $rootScope.ProductListByEan13){
+//             $scope.errorMessage = "";
+//             $state.go('select_quantity', {ean13: $scope.data.ean13});
+//         }else{
+//             $scope.errorMessage = $translate.instant("Unknown EAN13 Barcode");
+//             angular.element(document.querySelector('#sound_user_error'))[0].play();
+//         }
+//     };
+
+// }]);

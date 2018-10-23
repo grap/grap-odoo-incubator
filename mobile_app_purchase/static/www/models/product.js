@@ -16,7 +16,7 @@ angular.module('mobile_app_purchase').factory(
             product_promise = product_promise || jsonRpc.call(
                 'mobile.app.purchase', 'get_products', 
                 [{purchase_order: purchase_order}]).then(function (products) {
-                    lines.forEach(function(product) {
+                    products.forEach(function(product) {
                         products[product.barcode] = product;
                         // products[product.barcode].found = true;
                     });
