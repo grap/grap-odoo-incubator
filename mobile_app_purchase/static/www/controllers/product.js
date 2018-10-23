@@ -37,7 +37,7 @@ angular.module('mobile_app_purchase').controller(
             ProductModel.search_product($scope.data.ean13, $scope.purchase_order).then(function (product) {
                 if (!product.id){
                     angular.element(document.querySelector('#sound_error'))[0].play();
-                    $rootScope.errorMessage = $translate.instant("Unknown EAN13 Barcode");
+                    $rootScope.errorMessage = $translate.instant("Unknown Barcode");
                 } else {
                     $state.go('quantity', {
                         purchase_order_id: $scope.purchase_order.id,

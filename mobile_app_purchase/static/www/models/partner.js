@@ -21,7 +21,7 @@ angular.module('mobile_app_purchase').factory(
             //get partners
             //return a promise
             data.partner_promise = data.partner_promise || jsonRpc.call(
-                'mobile.app.purchase', 'get_partners', [{}]
+                'mobile.app.purchase', 'get_partners', []
                 ).then(function (partners) {
                     data.partners = partners;
                     return partners;
