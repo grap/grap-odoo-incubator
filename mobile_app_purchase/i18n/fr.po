@@ -1,13 +1,13 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* mobile_app_purchase
+#   * mobile_app_purchase
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 7.0\n"
+"Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-15 01:22+0000\n"
-"PO-Revision-Date: 2016-05-15 01:22+0000\n"
+"POT-Creation-Date: 2018-10-23 13:18+0000\n"
+"PO-Revision-Date: 2018-10-23 13:18+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,26 +16,73 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: mobile_app_purchase
-#: code:addons/mobile_app_purchase/models/purchase_order.py:28
+#: code:addons/mobile_app_purchase/models/mobile_app_purchase.py:66
 #, python-format
 msgid "Barcode Reader"
 msgstr "Lecteur de code barre"
 
 #. module: mobile_app_purchase
-#: code:_description:0
-#: model:ir.model,name:mobile_app_purchase.model_purchase_order
-#, python-format
-msgid "Purchase Order"
-msgstr "Bon de commande"
+#: model:ir.model,name:mobile_app_purchase.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
 
 #. module: mobile_app_purchase
-#: code:_description:0
-#, python-format
-msgid "Users"
-msgstr "Utilisateurs"
+#: field:mobile.app.purchase,create_uid:0
+msgid "Created by"
+msgstr "Created by"
 
 #. module: mobile_app_purchase
-#: model:ir.model,name:mobile_app_purchase.model_res_users
-msgid "res.users"
-msgstr "res.users"
+#: field:mobile.app.purchase,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: mobile_app_purchase
+#: field:mobile.app.purchase,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: mobile_app_purchase
+#: model:product.template,name:mobile_app_purchase.product_evian_product_template
+msgid "Evian 33cl"
+msgstr "Evian 33cl"
+
+#. module: mobile_app_purchase
+#: field:mobile.app.purchase,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: mobile_app_purchase
+#: field:mobile.app.purchase,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: mobile_app_purchase
+#: field:mobile.app.purchase,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: mobile_app_purchase
+#: field:mobile.app.purchase,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: mobile_app_purchase
+#: view:res.company:mobile_app_purchase.view_res_company_form
+msgid "Mobile App Purchase"
+msgstr "Application mobile - Achat"
+
+#. module: mobile_app_purchase
+#: field:res.company,mobile_purchase_product_field_ids:0
+msgid "Product Fields"
+msgstr "Champs Produits"
+
+#. module: mobile_app_purchase
+#: view:res.company:mobile_app_purchase.view_res_company_form
+msgid "Settings"
+msgstr "Paramétrage"
+
+#. module: mobile_app_purchase
+#: field:res.company,mobile_purchase_supplierinfo_field_ids:0
+msgid "Supplier Info Fields"
+msgstr "Champs Informations Fournisseur"
 

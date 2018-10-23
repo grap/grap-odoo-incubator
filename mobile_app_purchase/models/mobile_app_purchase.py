@@ -43,6 +43,50 @@ class MobileAppPurchase(models.TransientModel):
             self._export_partner(partner) for partner in partners]
 
     @api.model
+    def get_products(self, params):
+        """ Return products of a given purchase order.
+        :param params: {'purchase_order': purchase_order_vals}
+        :return: [product_1_vals, product_2_vals, ...]
+        .. seealso::
+            _export_product() for product vals details
+        """
+        ResPartner = self.env['res.partner']
+        partner_id = self._extract_param(params, 'purchase_order.partner.id')
+        partner = ResPartner.browse(partner_id)
+        ProductSupplierinfo = self.env['product.supplierinfo']
+        supplierinfos = ProductSupplierinfo.search([
+            ('name', '=', partner.id)])
+        products = supplierinfos.mapped(
+            'product_tmpl_id.product_variant_ids').filtered(lambda x: x.ean13)
+
+        custom_fields = self._get_custom_fields()
+        supplierinfo_fields = self._get_supplierinfo_fields()
+
+        return [
+            self._export_product(
+                product, partner, custom_fields,
+                supplierinfo_fields) for product in products]
+
+    @api.model
+    def search_barcode(self, params):
+        barcode = self._extract_param(params, 'barcode')
+        partner_id = self._extract_param(params, 'purchase_order.partner.id')
+
+        ProductProduct = self.env['product.product']
+        ResPartner = self.env['res.partner']
+        products = ProductProduct.search([('ean13', '=', barcode)])
+        partner = ResPartner.browse(partner_id)
+        if not products:
+            return False
+        else:
+            custom_fields = self._get_custom_fields()
+            supplierinfo_fields = self._get_supplierinfo_fields()
+
+            return self._export_product(
+                products[0], partner, custom_fields,
+                supplierinfo_fields)
+
+    @api.model
     def create_purchase_order(self, params):
         """Create a new purchase order.
         :param params: {'partner': partner_vals}
@@ -100,50 +144,6 @@ class MobileAppPurchase(models.TransientModel):
         order_vals = {'order_line': [[0, False, line_vals]]}
         res = order.write(order_vals)
         return res
-
-    @api.model
-    def get_products(self, params):
-        """ Return products of a given purchase order.
-        :param params: {'purchase_order': purchase_order_vals}
-        :return: [product_1_vals, product_2_vals, ...]
-        .. seealso::
-            _export_product() for product vals details
-        """
-        ResPartner = self.env['res.partner']
-        partner_id = self._extract_param(params, 'purchase_order.partner.id')
-        partner = ResPartner.browse(partner_id)
-        ProductSupplierinfo = self.env['product.supplierinfo']
-        supplierinfos = ProductSupplierinfo.search([
-            ('name', '=', partner.id)])
-        products = supplierinfos.mapped(
-            'product_tmpl_id.product_variant_ids').filtered(lambda x: x.ean13)
-
-        custom_fields = self._get_custom_fields()
-        supplierinfo_fields = self._get_supplierinfo_fields()
-
-        return [
-            self._export_product(
-                product, partner, custom_fields,
-                supplierinfo_fields) for product in products]
-
-    @api.model
-    def search_barcode(self, params):
-        barcode = self._extract_param(params, 'barcode')
-        partner_id = self._extract_param(params, 'purchase_order.partner.id')
-
-        ProductProduct = self.env['product.product']
-        ResPartner = self.env['res.partner']
-        products = ProductProduct.search([('ean13', '=', barcode)])
-        partner = ResPartner.browse(partner_id)
-        if not products:
-            return False
-        else:
-            custom_fields = self._get_custom_fields()
-            supplierinfo_fields = self._get_supplierinfo_fields()
-
-            return self._export_product(
-                products[0], partner, custom_fields,
-                supplierinfo_fields)
 
     # Private - Domain Section
     @api.model
