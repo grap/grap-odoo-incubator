@@ -33,26 +33,17 @@ angular.module('mobile_app_purchase').factory(
             });
         },
 
-        // create_inventory: function(name) {
-        //     var vals = {'inventory': {'name': name}}
-        //     return jsonRpc.call('mobile.app.inventory', 'create_inventory', [vals]).then(function(inventory){
-        //         return inventory;
-        //     });
-        // },
-
-        // add_inventory_line: function(inventory, location, product, quantity, mode) {
-        //     var vals = {
-        //         'inventory': {'id': inventory.id},
-        //         'location': {'id': location.id},
-        //         'product': {'id': product.id, 'barcode': product.barcode},
-        //         'qty': quantity,
-        //         'mode': mode,
-        //     }
-        //     return jsonRpc.call(
-        //             'mobile.app.inventory', 'add_inventory_line', [vals]).then(function (res) {
-        //         return res;
-        //     });
-        // },
+        add_purchase_order_line: function(purchase_order, product, quantity) {
+            var vals = {
+                'purchase_order': purchase_order,
+                'product': product,
+                'qty': quantity,
+            }
+            return jsonRpc.call(
+                    'mobile.app.purchase', 'add_purchase_order_line', [vals]).then(function (res) {
+                return res;
+            });
+        },
 
     };
 }]);

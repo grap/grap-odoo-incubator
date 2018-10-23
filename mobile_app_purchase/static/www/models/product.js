@@ -19,7 +19,6 @@ angular.module('mobile_app_purchase').factory(
                     console.log(products);
                     products.forEach(function(product) {
                         products_by_barcode[product.barcode] = product;
-                        // products[product.barcode].found = true;
                     });
                     return products_by_barcode;
             });
@@ -32,16 +31,15 @@ angular.module('mobile_app_purchase').factory(
                 if (products_by_barcode[ean13]) {//search in cache
                     return success(products_by_barcode[ean13]);
                 }
-                // jsonRpc.call('mobile.app.inventory', 'search_barcode', [{'barcode': ean13}]
-                // ).then(function (res) {
-                //     if (!res){
-                //         res = {'found': false, 'name': 'unkown', 'barcode': ean13, 'custom_vals': {}}; //error('Product ' + ean13 + ' not found');
-                //     } else {
-                //         res.found = true;
-                //     }
-                //     products[ean13] = res; //set cache
-                //     return success(products[ean13]);
-                // });
+                jsonRpc.call('mobile.app.purchase', 'search_barcode', [{'barcode': ean13}]
+                ).then(function (res) {
+                    if (!res){
+                        return $q.reject('Product not found');
+                    } else {
+                        products_by_barcode[ean13] = res; //set cache
+                        return success(products_by_barcode[ean13]);
+                    }
+                });
             });
         },
 
