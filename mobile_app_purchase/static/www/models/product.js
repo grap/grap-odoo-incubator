@@ -5,7 +5,7 @@ angular.module('mobile_app_purchase').factory(
         function ($q, jsonRpc) {
 
     var product_promise = null;
-    var products = {};
+    var products_by_barcode = {};
 
     return {
         reset_list: function() {
@@ -16,19 +16,21 @@ angular.module('mobile_app_purchase').factory(
             product_promise = product_promise || jsonRpc.call(
                 'mobile.app.purchase', 'get_products', 
                 [{purchase_order: purchase_order}]).then(function (products) {
+                    console.log(products);
                     products.forEach(function(product) {
-                        products[product.barcode] = product;
+                        products_by_barcode[product.barcode] = product;
                         // products[product.barcode].found = true;
                     });
-                    return products;
+                    return products_by_barcode;
             });
             return product_promise;
         },
 
         search_product: function(ean13) {
             return $q(function (success, error) {
-                if (products[ean13]) {//search in cache
-                    return success(products[ean13]);
+                console.log(products_by_barcode);
+                if (products_by_barcode[ean13]) {//search in cache
+                    return success(products_by_barcode[ean13]);
                 }
                 // jsonRpc.call('mobile.app.inventory', 'search_barcode', [{'barcode': ean13}]
                 // ).then(function (res) {

@@ -24,29 +24,27 @@ angular.module('mobile_app_purchase').controller(
 
     $scope.submit = function () {
         // Reset Focus, in case the barcode is not correct
-        console.log("/////////////////");
-        console.log("/////////////////");
-        console.log("/////////////////");
-       //  angular.element(document.querySelector('#input_ean13'))[0].focus();
-       //  if ($scope.data.ean13) {
-       //      ProductModel.search_product($scope.data.ean13).then(function (product) {
-       //          SettingModel.get_setting('inventory_allow_unknown').then(function (setting) {
-       //              if (!product.found && !setting){
-       //                  $scope.errorMessage = $translate.instant("Unknown EAN13 Barcode");
-       //                  angular.element(document.querySelector('#sound_error'))[0].play();
-       //              } else {
-       //                  $state.go('quantity', {
-       //                      inventory_id: $scope.inventory.id,
-       //                      location_id: $scope.location.id,
-       //                      ean13: product.barcode,
-       //                  });
-       //              }
-       //          });
-       //      });
-       //  } else {
-       //      $scope.errorMessage = $translate.instant("Barcode : Required field");
-       //      angular.element(document.querySelector('#sound_error'))[0].play();
-       // }
+        angular.element(document.querySelector('#input_ean13'))[0].focus();
+        if ($scope.data.ean13) {
+            console.log("ean13");
+            ProductModel.search_product($scope.data.ean13).then(function (product) {
+                console.log("search_product result");
+                if (!product.id){
+                    console.log("not found");
+                    $scope.errorMessage = $translate.instant("Unknown EAN13 Barcode");
+                    angular.element(document.querySelector('#sound_error'))[0].play();
+                } else {
+                    console.log("found");
+                    $state.go('quantity', {
+                        purchase_order_id: $scope.purchase_order.id,
+                        ean13: product.barcode,
+                    });
+                }
+            });
+        } else {
+            $scope.errorMessage = $translate.instant("Barcode : Required field");
+            angular.element(document.querySelector('#sound_error'))[0].play();
+       }
     };
 
 }]);

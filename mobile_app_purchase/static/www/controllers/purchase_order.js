@@ -24,10 +24,10 @@ angular.module('mobile_app_purchase').controller(
         $state.go('partner');
     };
 
-    $scope.select_purchase_order = function (purchase_order_id) {
+    $scope.select_purchase_order = function (purchase_order) {
         // Load Products
         ProductModel.get_list(purchase_order).then(function(product_list) {
-            $state.go('product', {purchase_order_id: purchase_order_id});
+            $state.go('product', {purchase_order_id: purchase_order.id});
         });
     };
 }]);
