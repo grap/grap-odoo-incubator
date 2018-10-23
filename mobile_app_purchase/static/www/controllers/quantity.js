@@ -28,11 +28,11 @@ angular.module('mobile_app_purchase').controller(
                     $scope.product = product;
                 }, function(reason) {
                     angular.element(document.querySelector('#sound_error'))[0].play();
-                    $rootScope.errorMessage = $translate.instant("Loading Product failed");
+                    $rootScope.errorMessage = $translate.instant("Loading product failed");
                 });
             }, function(reason) {
                 angular.element(document.querySelector('#sound_error'))[0].play();
-                $rootScope.errorMessage = $translate.instant("Loading Purchase Order failed");
+                $rootScope.errorMessage = $translate.instant("Loading purchase order failed");
             });
 
         }
