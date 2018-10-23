@@ -90,11 +90,19 @@
             </ion-side-menu>
 
            <ion-side-menu-content ng-controller="AppCtrl">
-              <ion-nav-view />
+                <ion-nav-view>
+                <ion-footer-bar class="bar-assertive" ng-show="errorMessage">
+                    <h1 class="title">{{ errorMessage }}</h1>
+                </ion-footer-bar>
+            </ion-nav-view>
            </ion-side-menu-content>
 
         </ion-side-menus>
         <audio id="sound_ok" src="./static/audio/ok.mp3"></audio>
         <audio id="sound_error" src="./static/audio/error.mp3"></audio>
+
     </body>
 </html>
+
+
+ <!--  -->
