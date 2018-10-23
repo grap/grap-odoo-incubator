@@ -1,8 +1,8 @@
 "use strict";
 angular.module('mobile_app_purchase').controller(
     'PartnerCtrl', [
-    '$scope', '$filter', '$state', '$stateParams','PartnerModel',
-    function ($scope, $filter, $state, $stateParams, PartnerModel) {
+    '$scope', '$filter', '$state', '$stateParams','PartnerModel', 'PurchaseOrderModel', 'ProductModel',
+    function ($scope, $filter, $state, $stateParams, PartnerModel, PurchaseOrderModel, ProductModel) {
     $scope.data = {
         'partner_list': [],
         'partner_filter': null,
@@ -20,7 +20,14 @@ angular.module('mobile_app_purchase').controller(
     });
 
     $scope.select_partner = function (partner) {
-        // tools.go_to_scan_page($stateParams.inventory_id, location.id);
+        // Create Purchase order
+        PurchaseOrderModel.create_purchase_order(partner).then(function(purchase_order){
+            // Load Products
+            ProductModel.get_list(purchase_order).then(function(product_list) {
+                $state.go('product', {purchase_order_id: purchase_order.id});
+            });
+        });
+
     };
 
 }]);

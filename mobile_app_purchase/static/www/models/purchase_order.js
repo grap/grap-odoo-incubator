@@ -26,6 +26,13 @@ angular.module('mobile_app_purchase').factory(
             });
         },
 
+        create_purchase_order: function(partner) {
+            var vals = {'partner': partner}
+            return jsonRpc.call('mobile.app.purchase', 'create_purchase_order', [vals]).then(function(purchase_order){
+                return purchase_order;
+            });
+        },
+
         // create_inventory: function(name) {
         //     var vals = {'inventory': {'name': name}}
         //     return jsonRpc.call('mobile.app.inventory', 'create_inventory', [vals]).then(function(inventory){
