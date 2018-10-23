@@ -1,4 +1,9 @@
+// Copyright (C) 2015-Today GRAP (http://www.grap.coop)
+// @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+//  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
 "use strict";
+
 angular.module('mobile_app_purchase').factory(
         'ProductModel', [
         '$q', 'jsonRpc',
@@ -53,26 +58,3 @@ angular.module('mobile_app_purchase').factory(
         }    
     };
 }]);
- 
-
-
-
-// 'use strict';
-
-
-// angular.module('mobile_app_purchase').factory(
-//         'ProductModel', [
-//         '$q', '$rootScope', 'jsonRpc',
-//         function ($q, $rootScope, jsonRpc) {
-
-//     return {
-//         LoadProduct: function() {
-//             return jsonRpc.call(
-//                     'mobile.app.purchase', 'get_products', []).then(function (res) {
-//                 $rootScope.ProductListByEan13 = res;
-//                 return res.length;
-//             });
-//         },
-
-//     };
-// }]);

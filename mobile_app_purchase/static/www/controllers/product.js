@@ -1,4 +1,9 @@
+// Copyright (C) 2015-Today GRAP (http://www.grap.coop)
+// @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+//  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
 "use strict";
+
 angular.module('mobile_app_purchase').controller(
         'ProductCtrl', [
         '$scope', '$state', '$translate', 'PurchaseOrderModel', 'ProductModel',
@@ -48,46 +53,3 @@ angular.module('mobile_app_purchase').controller(
     };
 
 }]);
-
-
-
-
-// 'use strict';
-
-
-// angular.module('mobile_app_purchase').controller(
-//         'ProductCtrl', [
-//         '$scope', '$rootScope', 'jsonRpc', '$state', '$translate', 'PurchaseOrderModel',
-//         function ($scope, $rootScope, jsonRpc, $state, $translate, PurchaseOrderModel) {
-
-//     $scope.data = {
-//         'ean13': '',
-//     };
-
-//     $scope.$on(
-//             '$stateChangeSuccess',
-//             function(event, toState, toParams, fromState, fromParams){
-//         if ($state.current.name === 'product') {
-//             // Set Focus
-//             angular.element(document.querySelector('#input_ean13'))[0].focus();
-//             $scope.data.ean13 = '';
-
-//             // Load current Purchase orders
-//             PurchaseOrderModel.LoadOrder(
-//                     $rootScope.currentPurchaseOrderId).then(function (res){
-//                 $scope.order = res;
-//             })
-//         }
-//     });
-
-//     $scope.submit = function () {
-//         if ($scope.data.ean13 in $rootScope.ProductListByEan13){
-//             $scope.errorMessage = "";
-//             $state.go('select_quantity', {ean13: $scope.data.ean13});
-//         }else{
-//             $scope.errorMessage = $translate.instant("Unknown EAN13 Barcode");
-//             angular.element(document.querySelector('#sound_user_error'))[0].play();
-//         }
-//     };
-
-// }]);
