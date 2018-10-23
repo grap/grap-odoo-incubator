@@ -57,6 +57,8 @@ a.item{
 
 .form-label{
     font-weight:bold;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
 }
 
 .load-quantity{

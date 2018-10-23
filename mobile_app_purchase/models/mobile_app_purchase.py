@@ -30,7 +30,7 @@ class MobileAppPurchase(models.TransientModel):
             self._export_purchase_order(order) for order in orders]
 
     @api.model
-    def get_partners(self, params):
+    def get_partners(self):
         """ Return supplier partners.
         :param params: no params.
         :return: [partner_1_vals, partner_2_vals, ...]
@@ -119,115 +119,31 @@ class MobileAppPurchase(models.TransientModel):
             'product_tmpl_id.product_variant_ids').filtered(lambda x: x.ean13)
 
         custom_fields = self._get_custom_fields()
-        supplier_fields = self._get_supplierinfo_fields()
+        supplierinfo_fields = self._get_supplierinfo_fields()
 
         return [
             self._export_product(
                 product, partner, custom_fields,
-                supplier_fields) for product in products]
+                supplierinfo_fields) for product in products]
 
     @api.model
     def search_barcode(self, params):
         barcode = self._extract_param(params, 'barcode')
+        partner_id = self._extract_param(params, 'purchase_order.partner.id')
 
-        product_obj = self.env['product.product']
-        products = product_obj.search([('ean13', '=', barcode)])
+        ProductProduct = self.env['product.product']
+        ResPartner = self.env['res.partner']
+        products = ProductProduct.search([('ean13', '=', barcode)])
+        partner = ResPartner.browse(partner_id)
         if not products:
             return False
         else:
             custom_fields = self._get_custom_fields()
-            supplier_fields = self._get_supplierinfo_fields()
+            supplierinfo_fields = self._get_supplierinfo_fields()
 
             return self._export_product(
-                products[0], False, custom_fields,
-                supplier_fields)
-
-    @api.model
-    def _export_product(
-            self, product, partner, custom_fields, supplier_fields):
-        # Custom product fields
-        custom_vals = {}
-        supplier_vals = {}
-        for field_name, field_display in custom_fields.iteritems():
-            if field_name[-3:] == '_id':
-                value = getattr(product, field_name).name
-            elif field_name[-4:] == '_ids':
-                value = ", ".join(
-                    [attr.name for attr in getattr(product, field_name)])
-            else:
-                value = getattr(product, field_name)
-            custom_vals[field_display] = value
-
-        return {
-            'id': product.id,
-            'name': product.name,
-            'barcode': product.ean13,
-            'custom_vals': custom_vals,
-            'supplier_vals': supplier_vals,
-        }
-
-    # @api.model
-    # def get_products(self):
-    #     def _get_field_display(obj, field_name):
-    #         translation_obj = obj.env['ir.translation']
-    #         # Determine model name
-    #         if field_name in obj.env['product.product']._columns:
-    #             model = 'product.product'
-    #         elif field_name in obj.env['product.template']._columns:
-    #             model = 'product.template'
-    #         else:
-    #             model = 'product.supplierinfo'
-    #         # Get translation if defined
-    #         translation_ids = translation_obj.search([
-    #             ('lang', '=', obj.env.context.get('lang', False)),
-    #             ('type', '=', 'field'),
-    #             ('name', '=', '%s,%s' % (model, field_name))])
-    #         if translation_ids:
-    #             return translation_ids[0].value
-    #         else:
-    #             return obj.env[model]._columns[field_name].string
-
-    #     company = self.env.user.company_id
-    #     product_fields = [
-    #         x.name for x in company.mobile_purchase_product_field_ids]
-    #     supplierinfo_fields = [
-    #         x.name for x in company.mobile_purchase_supplierinfo_field_ids]
-
-    #     ProductProduct = self.env['product.product']
-
-    #     res = {}
-    #     products = ProductProduct.search([('ean13', '!=', False)])
-    #     for product in products:
-    #         res[product.ean13] = {}
-    #         # Add product fields
-    #         for field in self._MANDATORY_FIELDS:
-    #             res[product.ean13][field] = getattr(product, field)
-
-    #         for field in product_fields:
-    #             if field[-3:] == '_id':
-    #                 res[product.ean13][field] = {
-    #                     'id': getattr(product, field).id,
-    #                     'value': getattr(product, field).name,
-    #                     'field_name': _get_field_display(self, field),
-    #                 }
-    #             else:
-    #                 res[product.ean13][field] = {
-    #                     'value': getattr(product, field),
-    #                     'field_name': _get_field_display(self, field),
-    #                 }
-
-    #         # Add supplierinfo fields
-    #         res[product.ean13]['seller_ids'] = {}
-    #         if supplierinfo_fields:
-    #             for supplierinfo in product.product_tmpl_id.seller_ids:
-    #                 supp_id = supplierinfo.name.id
-    #                 res[product.ean13]['seller_ids'][supp_id] = {}
-    #                 for field in supplierinfo_fields:
-    #                     res[product.ean13]['seller_ids'][supp_id][field] = {
-    #                         'value': getattr(supplierinfo, field),
-    #                         'field_name': _get_field_display(self, field)
-    #                     }
-    #     return res
+                products[0], partner, custom_fields,
+                supplierinfo_fields)
 
     # Private - Domain Section
     @api.model
@@ -258,6 +174,47 @@ class MobileAppPurchase(models.TransientModel):
             'name': partner.name,
             'city': partner.city,
             'purchase_order_count': partner.purchase_order_count,
+        }
+
+    @api.model
+    def _export_product(
+            self, product, partner, custom_fields, supplierinfo_fields):
+        # Custom product fields
+        custom_vals = {}
+        supplierinfo_vals = {}
+        # Custom fields
+        for field_name, field_display in custom_fields.iteritems():
+            if field_name[-3:] == '_id':
+                value = getattr(product, field_name).name
+            elif field_name[-4:] == '_ids':
+                value = ", ".join(
+                    [attr.name for attr in getattr(product, field_name)])
+            else:
+                value = getattr(product, field_name)
+            custom_vals[field_display] = value
+
+        # Supplierinfo fields
+        supplierinfos = product.mapped('product_tmpl_id.seller_ids').filtered(
+            lambda x: x.name == partner)
+        if supplierinfos:
+            supplierinfo = supplierinfos[0]
+            for field_name, field_display in supplierinfo_fields.iteritems():
+                if field_name[-3:] == '_id':
+                    value = getattr(supplierinfo, field_name).name
+                elif field_name[-4:] == '_ids':
+                    value = ", ".join(
+                        [attr.name for attr in getattr(
+                            supplierinfo, field_name)])
+                else:
+                    value = getattr(supplierinfo, field_name)
+                supplierinfo_vals[field_display] = value
+
+        return {
+            'id': product.id,
+            'name': product.name,
+            'barcode': product.ean13,
+            'custom_vals': custom_vals,
+            'supplierinfo_vals': supplierinfo_vals,
         }
 
     # Private - Tools Section
