@@ -6,8 +6,8 @@
 
 angular.module('mobile_app_purchase').controller(
     'PurchaseOrderCtrl', [
-    '$scope', '$state', 'PurchaseOrderModel', 'ProductModel', '$translate',
-    function ($scope, $state,  PurchaseOrderModel, ProductModel, $translate) {
+    '$scope', '$rootScope', '$state', '$translate', 'PurchaseOrderModel', 'ProductModel', ,
+    function ($scope, $rootScope, $state, $translate, PurchaseOrderModel, ProductModel) {
 
     $scope.data = {
         'purchase_order_list': [],
@@ -21,6 +21,9 @@ angular.module('mobile_app_purchase').controller(
             $scope.data.purchase_order_filter = null;
             PurchaseOrderModel.get_list().then(function (purchase_order_list) {
                 $scope.data.purchase_order_list = purchase_order_list;
+            }, function(reason) {
+                angular.element(document.querySelector('#sound_error'))[0].play();
+                $rootScope.errorMessage = $translate.instant("Loading purchase orders failed");
             });
         }
     });
@@ -33,6 +36,10 @@ angular.module('mobile_app_purchase').controller(
         // Load Products
         ProductModel.get_list(purchase_order).then(function(product_list) {
             $state.go('product', {purchase_order_id: purchase_order.id});
+        }, function(reason) {
+            angular.element(document.querySelector('#sound_error'))[0].play();
+                $rootScope.errorMessage = $translate.instant("Loading products failed");
         });
+
     };
 }]);

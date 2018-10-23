@@ -117,8 +117,8 @@ class MobileAppPurchase(models.TransientModel):
             ('name', '=', partner.id)])
         products = supplierinfos.mapped('product_tmpl_id.product_variant_ids')
 
-        custom_fields = {}  # self._get_custom_fields()
-        supplier_fields = {}  # self._get_supplier_fields()
+        custom_fields = self._get_custom_fields()
+        supplier_fields = self._get_supplier_fields()
 
         return [
             self._export_product(
@@ -134,8 +134,8 @@ class MobileAppPurchase(models.TransientModel):
         if not products:
             return False
         else:
-            custom_fields = {}  # self._get_custom_fields()
-            supplier_fields = {}  # self._get_supplier_fields()
+            custom_fields = self._get_custom_fields()
+            supplier_fields = self._get_supplier_fields()
 
             return self._export_product(
                 products[0], False, custom_fields,
@@ -237,7 +237,7 @@ class MobileAppPurchase(models.TransientModel):
     def _get_partner_domain(self):
         return [('supplier', '=', True)]
 
-    # Private Export Section
+    # Private - Export Section
     @api.model
     def _export_purchase_order(self, order):
         return {
@@ -259,7 +259,50 @@ class MobileAppPurchase(models.TransientModel):
             'purchase_order_count': partner.purchase_order_count,
         }
 
-    # Custom Section
+    # Private - Tools Section
+    @api.model
+    def _get_custom_fields(self):
+        """Return a list of (field_name, field_display) for each custom
+        product fields that should be displayed during the purchase.
+        Don't work yet with computed fields (like display_name)
+        """
+        res = {}
+        company = self.env.user.company_id
+        for field in company.mobile_purchase_product_field_ids:
+            res[field.name] = self._get_field_display(field)
+        return res
+
+    def _get_supplier_fields(self):
+        """Return a list of (field_name, field_display) for each custom
+        supplier info fields that should be displayed during the purchase.
+        Don't work yet with computed fields (like display_name)
+        """
+        res = {}
+        company = self.env.user.company_id
+        for field in company.mobile_inventory_supplier_field_ids:
+            res[field.name] = self._get_field_display(
+                field, 'product.supplierinfo')
+        return res
+
+    @api.model
+    def _get_field_display(self, field, model_name=False):
+        IrTranslation = self.env['ir.translation']
+        # Determine model name
+        if not model_name:
+            if field.name in self.env['product.product']._columns:
+                model_name = 'product.product'
+            else:
+                model_name = 'product.template'
+        # Get translation if defined
+        translation_ids = IrTranslation.search([
+            ('lang', '=', self.env.context.get('lang', False)),
+            ('type', '=', 'field'),
+            ('name', '=', '%s,%s' % (model_name, field.name))])
+        if translation_ids:
+            return translation_ids[0].value
+        else:
+            return self.env[model_name]._columns[field.name].string
+
     @api.model
     def _extract_param(self, params, value_path):
         if not type(params) is dict:

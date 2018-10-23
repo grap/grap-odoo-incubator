@@ -6,8 +6,8 @@
 
 angular.module('mobile_app_purchase').controller(
     'PartnerCtrl', [
-    '$scope', '$filter', '$state', '$stateParams','PartnerModel', 'PurchaseOrderModel', 'ProductModel',
-    function ($scope, $filter, $state, $stateParams, PartnerModel, PurchaseOrderModel, ProductModel) {
+    '$scope', '$rootScope', '$state', '$translate', '$filter', 'PartnerModel', 'PurchaseOrderModel', 'ProductModel',
+    function ($scope, $rootScope, $state, $translate, $filter, PartnerModel, PurchaseOrderModel, ProductModel) {
     $scope.data = {
         'partner_list': [],
         'partner_filter': null,
@@ -20,6 +20,9 @@ angular.module('mobile_app_purchase').controller(
             $scope.data.partner_filter = null;
             PartnerModel.get_list().then(function(partner_list) {
                 $scope.data.partner_list = partner_list;
+            }, function(reason) {
+                angular.element(document.querySelector('#sound_error'))[0].play();
+                $rootScope.errorMessage = $translate.instant("Loading partners failed");
             });
         }
     });
@@ -30,6 +33,9 @@ angular.module('mobile_app_purchase').controller(
             // Load Products
             ProductModel.get_list(purchase_order).then(function(product_list) {
                 $state.go('product', {purchase_order_id: purchase_order.id});
+            }, function(reason) {
+                angular.element(document.querySelector('#sound_error'))[0].play();
+                $rootScope.errorMessage = $translate.instant("Loading products failed");
             });
         });
 

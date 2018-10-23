@@ -6,8 +6,8 @@
 
 angular.module('mobile_app_purchase').controller(
         'LoginCtrl', [
-        '$scope', 'jsonRpc', '$state', '$translate', 'ProductModel',
-        function ($scope, jsonRpc, $state, $translate, ProductModel) {
+        '$scope', '$rootScope', 'jsonRpc', '$state', '$translate', 'ProductModel',
+        function ($scope, $rootScope, jsonRpc, $state, $translate, ProductModel) {
 
     $scope.data = {
         'db': '',
@@ -34,7 +34,8 @@ angular.module('mobile_app_purchase').controller(
                 $scope.data.db = db_list[0];
             }
         }, function(reason) {
-            $scope.errorMessage = $translate.instant("Unreachable Service");
+            angular.element(document.querySelector('#sound_error'))[0].play();
+            $rootScope.errorMessage = $translate.instant("Unreachable Service");
         });
     };
 
@@ -42,15 +43,17 @@ angular.module('mobile_app_purchase').controller(
         jsonRpc.login($scope.data.db, $scope.data.login, $scope.data.password).then(function (user) {
             jsonRpc.call('mobile.app.purchase', 'check_group', ['purchase.group_purchase_user']).then(function (res) {
                 if (res){
-                    $scope.errorMessage = "";
+                    $rootScope.errorMessage = "";
                     $state.go('purchase_order');
                 }
                 else{
-                    $scope.errorMessage = $translate.instant("Insufficient Acces Right: you should be member of 'Purchase / user' group.");
+                    angular.element(document.querySelector('#sound_error'))[0].play();
+                    $rootScope.errorMessage = $translate.instant("Insufficient Acces Right: you should be member of 'Purchase / user' group.");
                 }
             });
         }, function(reason) {
-            $scope.errorMessage = $translate.instant("Bad Login / Password");
+            angular.element(document.querySelector('#sound_error'))[0].play();
+            $rootScope.errorMessage = $translate.instant("Bad Login / Password");
         });
     };
 }]);
