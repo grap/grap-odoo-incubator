@@ -1,4 +1,9 @@
+// Copyright (C) 2015-Today GRAP (http://www.grap.coop)
+// @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+//  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
 "use strict";
+
 angular.module('mobile_app_purchase').controller(
     'PurchaseOrderCtrl', [
     '$scope', '$state', 'PurchaseOrderModel', 'ProductModel', '$translate',
@@ -13,7 +18,7 @@ angular.module('mobile_app_purchase').controller(
         '$stateChangeSuccess',
         function(event, toState, toParams, fromState, fromParams){
         if ($state.current.name === 'purchase_order') {
-            $scope.data.inventory_filter = null;
+            $scope.data.purchase_order_filter = null;
             PurchaseOrderModel.get_list().then(function (purchase_order_list) {
                 $scope.data.purchase_order_list = purchase_order_list;
             });
@@ -31,40 +36,3 @@ angular.module('mobile_app_purchase').controller(
         });
     };
 }]);
-
-
-
-// 'use strict';
-
-
-// angular.module('mobile_app_purchase').controller(
-//         'SelectPurchaseOrderCtrl', [
-//         '$scope', '$rootScope', 'jsonRpc', '$state', 'PurchaseOrderModel',
-//         function ($scope, $rootScope, jsonRpc, $state, PurchaseOrderModel) {
-
-//     $scope.data = {
-//         'purchase_order_qty': 0,
-//         'purchase_order_list': false,
-//     }
-
-//     $scope.$on(
-//             '$stateChangeSuccess',
-//             function(event, toState, toParams, fromState, fromParams){
-//         if ($state.current.name === 'select_purchase_order') {
-//             $scope.data.purchase_order_list = $rootScope.DraftOrderList;
-//             $scope.data.purchase_order_qty = $rootScope.DraftOrderList.length;
-//         }
-//     });
-
-//     $scope.selectPurchaseOrder = function (id, name, partner_id) {
-//         $rootScope.currentPurchaseOrderId = id;
-//         $rootScope.currentPurchaseOrderName = name;
-//         $rootScope.currentPartnerId = partner_id;
-//         $state.go('select_product');
-//     };
-
-//     $scope.submit = function () {
-//         $state.go('select_supplier');
-//     };
-
-// }]);

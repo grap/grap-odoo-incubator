@@ -1,4 +1,9 @@
+// Copyright (C) 2015-Today GRAP (http://www.grap.coop)
+// @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+//  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
 "use strict";
+
 angular.module('mobile_app_purchase').factory(
         'PartnerModel', [
         '$q', 'jsonRpc',
@@ -12,7 +17,7 @@ angular.module('mobile_app_purchase').factory(
     reset();
 
     return {
-        get_list: function(inventory) {
+        get_list: function() {
             //get partners
             //return a promise
             data.partner_promise = data.partner_promise || jsonRpc.call(

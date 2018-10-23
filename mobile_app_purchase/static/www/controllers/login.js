@@ -1,4 +1,9 @@
+// Copyright (C) 2015-Today GRAP (http://www.grap.coop)
+// @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+//  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
 "use strict";
+
 angular.module('mobile_app_purchase').controller(
         'LoginCtrl', [
         '$scope', 'jsonRpc', '$state', '$translate', 'ProductModel',
@@ -44,7 +49,7 @@ angular.module('mobile_app_purchase').controller(
                     $scope.errorMessage = $translate.instant("Insufficient Acces Right: you should be member of 'Purchase / user' group.");
                 }
             });
-        }, function(e) {
+        }, function(reason) {
             $scope.errorMessage = $translate.instant("Bad Login / Password");
         });
     };
