@@ -6,7 +6,7 @@
 
 angular.module('mobile_app_purchase').controller(
     'PurchaseOrderCtrl', [
-    '$scope', '$rootScope', '$state', '$translate', 'PurchaseOrderModel', 'ProductModel', ,
+    '$scope', '$rootScope', '$state', '$translate', 'PurchaseOrderModel', 'ProductModel',
     function ($scope, $rootScope, $state, $translate, PurchaseOrderModel, ProductModel) {
 
     $scope.data = {
@@ -18,6 +18,9 @@ angular.module('mobile_app_purchase').controller(
         '$stateChangeSuccess',
         function(event, toState, toParams, fromState, fromParams){
         if ($state.current.name === 'purchase_order') {
+            //Initialize default data
+            $rootScope.errorMessage = '';
+
             $scope.data.purchase_order_filter = null;
             PurchaseOrderModel.get_list().then(function (purchase_order_list) {
                 $scope.data.purchase_order_list = purchase_order_list;

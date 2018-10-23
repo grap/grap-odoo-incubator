@@ -6,8 +6,8 @@
 
 angular.module('mobile_app_purchase').controller(
         'QuantityCtrl',
-        ['$scope', '$state', '$translate', 'PurchaseOrderModel', 'ProductModel',
-        function ($scope, $state, $translate, PurchaseOrderModel, ProductModel,) {
+        ['$scope', '$rootScope', '$state', '$translate', 'PurchaseOrderModel', 'ProductModel',
+        function ($scope, $rootScope, $state, $translate, PurchaseOrderModel, ProductModel,) {
 
     $scope.data = { };
 
@@ -15,19 +15,24 @@ angular.module('mobile_app_purchase').controller(
             '$stateChangeSuccess',
             function(event, toState, toParams, fromState, fromParams){
         if ($state.current.name === 'quantity') {
-            console.log("FROMAGE");
             // Set Focus
             angular.element(document.querySelector('#input_quantity'))[0].focus();
 
             //Initialize default data
-            $scope.errorMessage = '';
+            $rootScope.errorMessage = '';
             $scope.data.qty = '';
             // Get Purchase order / Product Data
             PurchaseOrderModel.get_purchase_order(toParams.purchase_order_id).then(function (purchase_order) {
                 $scope.purchase_order = purchase_order;
+            }, function(reason) {
+                angular.element(document.querySelector('#sound_error'))[0].play();
+                $rootScope.errorMessage = $translate.instant("Loading Purchase Order failed");
             });
             ProductModel.search_product(toParams.ean13).then(function (product) {
                 $scope.product = product;
+            }, function(reason) {
+                angular.element(document.querySelector('#sound_error'))[0].play();
+                $rootScope.errorMessage = $translate.instant("Loading Product failed");
             });
         }
     });
@@ -44,16 +49,16 @@ angular.module('mobile_app_purchase').controller(
                     $state.go('product', {purchase_order_id: $scope.purchase_order.id});
                     
                 }, function(reason) {
-                    $scope.errorMessage = $translate.instant("Something Wrong Happened");
+                    $rootScope.errorMessage = $translate.instant("Something Wrong Happened");
                     angular.element(document.querySelector('#sound_error'))[0].play();
                 });
             }else{
-                $scope.errorMessage = $translate.instant("Too Big Quantity");
+                $rootScope.errorMessage = $translate.instant("Too Big Quantity");
                 angular.element(document.querySelector('#sound_error'))[0].play();
             }
         }
         else{
-            $scope.errorMessage = $translate.instant("Incorrect Quantity");
+            $rootScope.errorMessage = $translate.instant("Incorrect Quantity");
             angular.element(document.querySelector('#sound_error'))[0].play();
         }
     };

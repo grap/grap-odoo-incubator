@@ -115,10 +115,11 @@ class MobileAppPurchase(models.TransientModel):
         ProductSupplierinfo = self.env['product.supplierinfo']
         supplierinfos = ProductSupplierinfo.search([
             ('name', '=', partner.id)])
-        products = supplierinfos.mapped('product_tmpl_id.product_variant_ids')
+        products = supplierinfos.mapped(
+            'product_tmpl_id.product_variant_ids').filtered(lambda x: x.ean13)
 
         custom_fields = self._get_custom_fields()
-        supplier_fields = self._get_supplier_fields()
+        supplier_fields = self._get_supplierinfo_fields()
 
         return [
             self._export_product(
@@ -135,7 +136,7 @@ class MobileAppPurchase(models.TransientModel):
             return False
         else:
             custom_fields = self._get_custom_fields()
-            supplier_fields = self._get_supplier_fields()
+            supplier_fields = self._get_supplierinfo_fields()
 
             return self._export_product(
                 products[0], False, custom_fields,
@@ -272,14 +273,14 @@ class MobileAppPurchase(models.TransientModel):
             res[field.name] = self._get_field_display(field)
         return res
 
-    def _get_supplier_fields(self):
+    def _get_supplierinfo_fields(self):
         """Return a list of (field_name, field_display) for each custom
         supplier info fields that should be displayed during the purchase.
         Don't work yet with computed fields (like display_name)
         """
         res = {}
         company = self.env.user.company_id
-        for field in company.mobile_inventory_supplier_field_ids:
+        for field in company.mobile_purchase_supplierinfo_field_ids:
             res[field.name] = self._get_field_display(
                 field, 'product.supplierinfo')
         return res
