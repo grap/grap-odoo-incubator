@@ -105,11 +105,14 @@ class MobileAppPurchase(models.TransientModel):
             _export_product() for product vals details
         """
         ResPartner = self.env['res.partner']
+        print ">>>>>>>>><<"
+        print params
+        print" >>>>>>>>>>"
         partner_id = self._extract_param(params, 'purchase_order.partner.id')
         partner = ResPartner.browse(partner_id)
         ProductSupplierinfo = self.env['product.supplierinfo']
         supplierinfos = ProductSupplierinfo.search([
-            ('name', '=', 'partner_id')])
+            ('name', '=', partner.id)])
         products = supplierinfos.mapped('product_tmpl_id.product_variant_ids')
 
         custom_fields = {} #self._get_custom_fields()
@@ -228,6 +231,7 @@ class MobileAppPurchase(models.TransientModel):
             'amount_untaxed': order.amount_untaxed,
             'amount_total': order.amount_total,
             'minimum_planned_date': order.minimum_planned_date,
+            'line_qty': len(order.order_line),
         }
 
     @api.model

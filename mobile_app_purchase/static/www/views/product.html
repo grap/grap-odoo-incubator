@@ -22,15 +22,15 @@
                     <span class="form-field col-50">{{purchase_order.name}}</span>
                 </label>
 
-<!--                 <label class="item item-input" ng-show="inventory.line_qty">
-                    <div class="form-label col-50">{{'Lines' | translate}}</div>
-                    <span class="form-field col-50">{{inventory.line_qty}}</span>
+                <label class="item item-input">
+                    <div class="form-label col-50">{{'Supplier' | translate}}</div>
+                    <span class="form-field col-50">{{purchase_order.partner.name}}</span>
                 </label>
 
-                <label class="item item-input" ng-show="inventory.unknown_line_qty">
-                    <div class="form-label col-50">{{'Unknown barcodes' | translate}}</div>
-                    <span class="form-field col-50">{{inventory.unknown_line_qty}}</span>
-                </label> -->
+                <label class="item item-input" ng-show="purchase_order.line_qty">
+                    <div class="form-label col-50">{{'Lines' | translate}}</div>
+                    <span class="form-field col-50">{{purchase_order.line_qty}}</span>
+                </label>
 
             </div>
         </form>
