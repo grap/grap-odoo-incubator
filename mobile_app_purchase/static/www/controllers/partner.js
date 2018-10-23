@@ -14,9 +14,12 @@ angular.module('mobile_app_purchase').controller(
     };
 
     $scope.$on(
-        '$stateChangeSuccess',
-        function(event, toState, toParams, fromState, fromParams) {
+            '$stateChangeSuccess',
+            function(event, toState, toParams, fromState, fromParams) {
         if ($state.current.name === 'partner') {
+            //Initialize default data
+            $rootScope.errorMessage = '';
+
             $scope.data.partner_filter = null;
             PartnerModel.get_list().then(function(partner_list) {
                 $scope.data.partner_list = partner_list;

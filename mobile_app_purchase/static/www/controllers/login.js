@@ -27,6 +27,9 @@ angular.module('mobile_app_purchase').controller(
         // Set focus
         angular.element(document.querySelector('#input_login'))[0].focus();
 
+            //Initialize default data
+            $rootScope.errorMessage = '';
+
         // Load available databases
         jsonRpc.get_database_list().then(function(db_list){
             $scope.data.db_list = db_list;
