@@ -143,7 +143,7 @@ Roadmap / Current Limits
 
 * Currency symbol is hard coded. (€ for the time being);
 
-* Dates and Prices displays do NOT change depending of the localization of
+* Dates and Prices displayed do NOT change depending of the localization of
   the user;
 
 * JS and CSS lib are hard included. So if many apps are developped, it could
@@ -158,8 +158,8 @@ Known Issues
   doesn't not works On Firefox Mobile.
   `See the bug on Ionic Github <https://github.com/driftyco/ionic/issues/4767>`_
   
-* **Chrome Mobile limitation** : This module plays mp3 sounds when app is,
-  or . This feature is not available for Chrome Mobile for the time being,
+* **Chrome Mobile limitation** : This module plays mp3 sounds.
+  This feature is not available for Chrome Mobile for the time being,
   cause Chrome consider that allowing to play a sound without explicit action
   of the user raises security issues.
   `See the bug on Chromium website <https://bugs.chromium.org/p/chromium/issues/detail?id=178297>`_
