@@ -68,7 +68,11 @@ class MobileAppPurchase(models.TransientModel):
         return self._export_purchase_order(order)
 
     @api.model
-    def add_purchase_order_line(self, order_id, product_id, qty):
+    def add_purchase_order_line(self, params):
+        order_id = self._extract_param(params, 'purchase_order.id')
+        product_id = self._extract_param(params, 'product.id')
+        qty = self._extract_param(params, 'qty')
+
         PurchaseOrder = self.env['purchase.order']
 
         PurchaseOrderLine = self.env['purchase.order.line']
@@ -94,7 +98,8 @@ class MobileAppPurchase(models.TransientModel):
         # This framework is awsome
         line_vals['taxes_id'] = [[6, False, line_vals['taxes_id']]]
         order_vals = {'order_line': [[0, False, line_vals]]}
-        return order.write(order_vals)
+        res = order.write(order_vals)
+        return res
 
     @api.model
     def get_products(self, params):
@@ -105,9 +110,6 @@ class MobileAppPurchase(models.TransientModel):
             _export_product() for product vals details
         """
         ResPartner = self.env['res.partner']
-        print ">>>>>>>>><<"
-        print params
-        print" >>>>>>>>>>"
         partner_id = self._extract_param(params, 'purchase_order.partner.id')
         partner = ResPartner.browse(partner_id)
         ProductSupplierinfo = self.env['product.supplierinfo']
@@ -115,14 +117,29 @@ class MobileAppPurchase(models.TransientModel):
             ('name', '=', partner.id)])
         products = supplierinfos.mapped('product_tmpl_id.product_variant_ids')
 
-        custom_fields = {} #self._get_custom_fields()
-        supplier_fields = {} #self._get_supplier_fields()
+        custom_fields = {}  # self._get_custom_fields()
+        supplier_fields = {}  # self._get_supplier_fields()
 
         return [
             self._export_product(
                 product, partner, custom_fields,
                 supplier_fields) for product in products]
 
+    @api.model
+    def search_barcode(self, params):
+        barcode = self._extract_param(params, 'barcode')
+
+        product_obj = self.env['product.product']
+        products = product_obj.search([('ean13', '=', barcode)])
+        if not products:
+            return False
+        else:
+            custom_fields = {}  # self._get_custom_fields()
+            supplier_fields = {}  # self._get_supplier_fields()
+
+            return self._export_product(
+                products[0], False, custom_fields,
+                supplier_fields)
 
     @api.model
     def _export_product(
@@ -147,7 +164,6 @@ class MobileAppPurchase(models.TransientModel):
             'custom_vals': custom_vals,
             'supplier_vals': supplier_vals,
         }
-
 
     # @api.model
     # def get_products(self):
