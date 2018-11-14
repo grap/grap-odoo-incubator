@@ -1,0 +1,239 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* stock_easy_valuation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-26 16:07+0000\n"
+"PO-Revision-Date: 2015-03-26 16:07+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_easy_valuation
+#: field:stock.easy.valuation.wizard.product.line,qty_available:0
+msgid "Brut Quantity"
+msgstr "Quantité Brute"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:70
+msgid "A: Automatic: The system generated a cost for the product, using one of the following valuation methods CUMP, LIFO, FIFO, LPP, NIFO...;"
+msgstr "A : Automatique : Le logiciel génère un prix de revient pour chaque article, en utilisant l'une des méthodes de valorisation suivantes CUMP, LIFO, FIFO, LPP, NIFO...;"
+
+#. module: stock_easy_valuation
+#: view:stock.easy.valuation.wizard:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: stock_easy_valuation
+#: field:stock.easy.valuation.wizard,category_line_ids:0
+#: field:stock.easy.valuation.wizard.category.line,category_id:0
+#: field:stock.easy.valuation.wizard.product.line,category_line_id:0
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:39
+#: field:stock.easy.valuation.wizard,company_id:0
+msgid "Company"
+msgstr "Société"
+
+#. module: stock_easy_valuation
+#: view:stock.easy.valuation.wizard:0
+msgid "Compute"
+msgstr "Calculer"
+
+#. module: stock_easy_valuation
+#: selection:stock.easy.valuation.wizard,state:0
+msgid "Compute Done"
+msgstr "Calcul Terminé"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:91
+msgid "Cost"
+msgstr "Prix de Revient"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:64
+msgid "Cost Method Description"
+msgstr "Description sur la méthode de valorisation"
+
+#. module: stock_easy_valuation
+#: selection:stock.easy.valuation.wizard,state:0
+msgid "Draft Wizard"
+msgstr "Process en brouillon"
+
+#. module: stock_easy_valuation
+#: field:stock.easy.valuation.wizard,inventory_ids:0
+msgid "Inventories"
+msgstr "Inventaires"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:52
+msgid "Inventory Variations"
+msgstr "Variations d'inventaire"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:69
+msgid "M: Manual: The user fill the value manually;"
+msgstr "M : Manuel : L'utilisateur renseigne la valeur manuellement;"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:92
+msgid "Method"
+msgstr "Méthode"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:84
+msgid "Name"
+msgstr "Nom"
+
+#. module: stock_easy_valuation
+#: view:stock.easy.valuation.wizard:0
+msgid "Print"
+msgstr "Imprimer"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:47
+#: field:stock.easy.valuation.wizard,print_date:0
+msgid "Print Date"
+msgstr "Date d'édition"
+
+#. module: stock_easy_valuation
+#: code:_description:0
+#: model:ir.model,name:stock_easy_valuation.model_product_product
+#: field:stock.easy.valuation.wizard.product.line,product_id:0
+#, python-format
+msgid "Product"
+msgstr "Article"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:115
+#: field:stock.easy.valuation.wizard.category.line,product_line_ids:0
+msgid "Products"
+msgstr "Articles"
+
+#. module: stock_easy_valuation
+#: model:ir.actions.act_window,name:stock_easy_valuation.action_product_product
+#: model:ir.ui.menu,name:stock_easy_valuation.menu_product_product
+#: view:product.product:0
+msgid "Products (Stock)"
+msgstr "Articles (Stock)"
+
+#. module: stock_easy_valuation
+#: field:stock.easy.valuation.wizard,state:0
+msgid "State"
+msgstr "Etat"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:35
+#: model:ir.actions.act_window,name:stock_easy_valuation.action_stock_easy_valuation_wizard
+#: model:ir.actions.report.xml,name:stock_easy_valuation.report_stock_easy_valuation_report
+#: model:ir.ui.menu,name:stock_easy_valuation.menu_stock_easy_valuation_wizard
+#: view:stock.easy.valuation.wizard:0
+msgid "Stock Valuation"
+msgstr "Valorisation du stock"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:68
+msgid "The Method Column indicates how the cost price is defined by product."
+msgstr "La colonne 'Méthode' indique comment le prix de revient est défini pour chaque article."
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:66
+msgid "The cost price is the one defined at print date. (The software does not manage the history of cost price.)"
+msgstr "Le prix de revient est celui défini à la date d'édition. (Le logiciel ne gère par l'historique des prix de revient.)"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:55
+msgid "The following inventories, realized after the requested date, has been taken into account for the valuation, in the variation column."
+msgstr "Les inventaires suivants, réalisés après la date demandée pour la valorisation, ont été prise en compte dans la valorisation finale, dans la colonne 'variation'."
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:86
+msgid "Theoretical Qty"
+msgstr "Qté Théorique"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:75
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:93
+msgid "Total"
+msgstr "Total"
+
+#. module: stock_easy_valuation
+#: field:stock.easy.valuation.wizard.category.line,total_product_qty:0
+msgid "Total Product Quantity"
+msgstr "Nombre total d'Article"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:89
+msgid "Total Qty"
+msgstr "Qté Total"
+
+#. module: stock_easy_valuation
+#: field:stock.easy.valuation.wizard.product.line,qty_total:0
+msgid "Total Quantity"
+msgstr "Quantité total"
+
+#. module: stock_easy_valuation
+#: field:stock.easy.valuation.wizard,total_valuation:0
+#: field:stock.easy.valuation.wizard.category.line,total_valuation:0
+msgid "Total Valuation"
+msgstr "Valorisation totale"
+
+#. module: stock_easy_valuation
+#: view:product.product:0
+msgid "Total Valuation On Hand"
+msgstr "Valeur Total du Stock Physique"
+
+#. module: stock_easy_valuation
+#: view:product.product:0
+msgid "Total Virtual Valuation"
+msgstr "Valeur Total du Stock Prévu"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:90
+msgid "UoM"
+msgstr "UdM"
+
+#. module: stock_easy_valuation
+#: field:stock.easy.valuation.wizard.category.line,valuation:0
+#: field:stock.easy.valuation.wizard.product.line,valuation:0
+msgid "Valuation"
+msgstr "Valorisation"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:43
+#: field:stock.easy.valuation.wizard,valuation_date:0
+msgid "Valuation Date"
+msgstr "Date de la valorisation"
+
+#. module: stock_easy_valuation
+#: field:product.product,valuation_qty_available:0
+msgid "Valuation of Quantity on Hand"
+msgstr "Valeur du Stock Physique"
+
+#. module: stock_easy_valuation
+#: field:product.product,valuation_virtual_available:0
+msgid "Valuation of Virtual Quantity"
+msgstr "Valeur du Stock Prévu"
+
+#. module: stock_easy_valuation
+#: report:addons/stock_easy_valuation/report/stock_easy_valuation_report.mako:87
+msgid "Variation"
+msgstr "Variation"
+
+#. module: stock_easy_valuation
+#: field:stock.easy.valuation.wizard.product.line,qty_variation:0
+msgid "Variation Quantity"
+msgstr "Quantité de variation"
+
+#. module: stock_easy_valuation
+#: field:stock.easy.valuation.wizard.category.line,wizard_id:0
+msgid "Wizard"
+msgstr "Wizard"
