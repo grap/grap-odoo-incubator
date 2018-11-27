@@ -9,4 +9,4 @@
 **Important Note**
 
 When you do this settings, a process will remove this char from all your
-partners in the field ``name`` and ``email``.
+partners in the fields ``name`` and ``email``.
