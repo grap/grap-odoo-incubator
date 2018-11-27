@@ -21,5 +21,12 @@
         'demo/account_tax.xml',
         'demo/product_template.xml'
     ],
+    'images': [
+        'static/description/product_different_prices.png',
+        'static/description/product_tax_excluded.png',
+        'static/description/product_tax_included.png',
+        'static/description/product_tax_included_and_not.png',
+        'static/description/taxes_creation.png',
+    ],
     'installable': True,
 }
