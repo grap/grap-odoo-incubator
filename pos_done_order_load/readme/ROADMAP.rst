@@ -11,4 +11,4 @@
 **Migration Note**
 
 For more recent version, please use OCA modules. (``pos_order_return``,
-`` pos_order_mgmt``)
+``pos_order_mgmt``)
