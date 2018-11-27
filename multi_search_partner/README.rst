@@ -43,13 +43,13 @@ Configuration
 **Important Note**
 
 When you do this settings, a process will remove this char from all your
-partners in the field ```name``` and ```email```.
+partners in the field ``name`` and ``email``.
 
 Usage
 =====
 
-If a user make a search with the following entry ```ag*la```, it will
-find products named " **Ag** ro **la** it"
+If a user make a search with the following entry ``la*ag`` or ``ag*la``, it
+will find partners named " **Ag** ro **la** it"
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/multi_search_partner/static/description/partner_search.png
    :width: 80 %

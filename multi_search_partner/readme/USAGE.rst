@@ -1,5 +1,5 @@
-If a user make a search with the following entry ```ag*la```, it will
-find products named " **Ag** ro **la** it"
+If a user make a search with the following entry ``la*ag`` or ``ag*la``, it
+will find partners named " **Ag** ro **la** it"
 
 .. figure:: ../static/description/partner_search.png
    :width: 80 %

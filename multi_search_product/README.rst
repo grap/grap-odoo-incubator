@@ -43,12 +43,12 @@ Configuration
 **Important Note**
 
 When you do this settings, a process will remove this char from all your
-products in the field ```name``` and ```default_code```.
+products in the field ``name`` and ``default_code``.
 
 Usage
 =====
 
-If a user make a search with the following entry ```dis*ret```, it will
+If a user make a search with the following entry ``dis*ret``, it will
 find products named "Ipad **Ret** ina **Dis** play"
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/multi_search_product/static/description/product_search.png

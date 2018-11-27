@@ -49,9 +49,6 @@ To use this module, you need to
 
 * check the box Send Email Bcc
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/mail_send_bcc/static/description/user_form.png
-   :width: 800 px
-
 Bug Tracker
 ===========
 

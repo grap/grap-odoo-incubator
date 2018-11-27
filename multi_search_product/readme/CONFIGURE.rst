@@ -9,4 +9,4 @@
 **Important Note**
 
 When you do this settings, a process will remove this char from all your
-products in the field ```name``` and ```default_code```.
+products in the field ``name`` and ``default_code``.
