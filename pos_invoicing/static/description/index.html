@@ -371,19 +371,21 @@ ul.auto-toc {
 <p>When you pay a pos_order, and then create an invoice :</p>
 <ul class="simple">
 <li>you mustn’t register a payment against the invoice as the payment
-already exists in POS;</li>
+already exists in POS</li>
 <li>The POS payment will be reconciled with the invoice when the session
-is closed.</li>
+is closed</li>
 <li>You mustn’t modify the invoice because the amount could become
 different from the one registered in POS. Thus we have to
-automatically validate the created invoice.</li>
+automatically validate the created invoice</li>
 </ul>
 <div class="section" id="functionality">
 <h1>Functionality</h1>
-<p>About the invoices created from POS after payment:
-* automatically validate them and don’t allow modifications;
-* Disable the Pay Button;
-* Don’t display them in the Customer Payment tool;</p>
+<p>About the invoices created from POS after payment:</p>
+<ul class="simple">
+<li>automatically validate them and don’t allow modifications</li>
+<li>Disable the Pay Button</li>
+<li>Don’t display them in the Customer Payment tool</li>
+</ul>
 </div>
 <div class="section" id="technically">
 <h1>Technically</h1>
