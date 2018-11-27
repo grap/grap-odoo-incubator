@@ -17,8 +17,8 @@
         'views/templates.xml',
         'views/view_pos_config.xml',
     ],
-    'demo': [
-    ],
     'images': [
+        'static/description/pos_error.png',
+        'static/description/pos_config_form.png',
     ],
 }
