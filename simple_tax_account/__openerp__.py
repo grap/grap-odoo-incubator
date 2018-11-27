@@ -27,5 +27,12 @@
         'demo/product_product.xml',
         'demo/account_invoice.xml',
     ],
+    'images': [
+        'static/description/invoice_mixed_taxes.png',
+        'static/description/invoice_harmonized_taxes.png',
+        'static/description/partner_setting.png',
+        'static/description/tax_setting.png',
+        'static/description/tax_template_setting.png',
+    ],
     'installable': True,
 }
