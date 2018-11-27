@@ -44,7 +44,6 @@ To use this module, you need to
 * Select any invoice and click on 'More' / 'Duplication Wizard'
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/duplication_account_invoice/static/description/account_invoice_duplication_wizard_form.png
-   :width: 800 px
 
 Known issues / Roadmap
 ======================
