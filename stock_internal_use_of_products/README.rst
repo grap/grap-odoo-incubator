@@ -30,6 +30,18 @@ specific uses (eg: gifts, tastings, etc.)
 .. contents::
    :local:
 
+Configuration
+=============
+
+* Go to 'Stock' / 'Settings' / 'Internal Use Types'
+* Create new item
+* set source and destination locations
+* optionnaly, define accounting settings, if you want to generate accounting
+  move, once the internal use is confirmed.
+
+
+.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/stock_internal_use_of_products/static/description/internal_use_case_form.png
+
 Bug Tracker
 ===========
 
