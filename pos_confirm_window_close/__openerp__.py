@@ -17,5 +17,8 @@
     'data': [
         'views/templates.xml',
     ],
+    'images': [
+        'static/description/pos_confirmation_close.png',
+    ],
     'installable': True,
 }
