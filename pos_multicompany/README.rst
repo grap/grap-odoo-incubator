@@ -33,7 +33,6 @@ and PoS Sessions by companies.
   Point of Sale.
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_multicompany/static/description/pos_category_tree.png
-   :width: 800 px
 
 **Table of contents**
 

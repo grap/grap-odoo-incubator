@@ -58,7 +58,6 @@ To use this module, you need to:
 * At the end of the line, buttons are available to make extra actions
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_done_order_load/static/description/pos_done_order_list.png
-   :width: 800 px
 
 Known issues / Roadmap
 ======================

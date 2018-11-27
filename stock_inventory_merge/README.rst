@@ -30,24 +30,23 @@ Main Features
 * Disable the constrains that makes impossible to have two pending inventories
   with the same product.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/stock_inventory_merge/static/description/stock_inventory_disabled_warning.png
+.. figure:: ../static/description/stock_inventory_disabled_warning.png
 
 * So, a new smart button is available to see the duplicates, into an pending
   inventory, and a button allow users to merge duplicates. In that case,
   the quantities will be sumed.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/stock_inventory_merge/static/description/stock_inventory_form_duplicate.png
-   :width: 1024 px
+.. figure:: ../static/description/stock_inventory_form_duplicate.png
 
 * Add an action to have the possibility to merge many inventories.
   that wizard will create a new inventories, based on the little ones.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/stock_inventory_merge/static/description/stock_inventory_tree_merge.png
+.. figure:: ../static/description/stock_inventory_tree_merge.png
 
 * An option is available to fill an inventory with the missing products that
   are not listed in the inventory lines.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/stock_inventory_merge/static/description/stock_inventory_form_complete_zero.png
+.. figure:: ../static/description/stock_inventory_form_complete_zero.png
 
 Credits
 =======

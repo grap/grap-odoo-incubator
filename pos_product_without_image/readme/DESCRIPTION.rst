@@ -4,4 +4,3 @@ display when they don't have images.
 It remove useless placeholder image and set the text bigger.
 
 .. figure:: ../static/description/point_of_sale.png
-   :width: 800 px

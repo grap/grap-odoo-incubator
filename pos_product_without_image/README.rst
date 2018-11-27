@@ -25,7 +25,6 @@ display when they don't have images.
 It remove useless placeholder image and set the text bigger.
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_product_without_image/static/description/point_of_sale.png
-   :width: 800 px
 
 **Table of contents**
 

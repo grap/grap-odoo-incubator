@@ -20,8 +20,7 @@ wizard to manage easily Supplierinfo
 * Possibility to select various products to create quickly a new draft purchase
   order;
 
-.. figure:: /product_supplierinfo_quick_edit/static/description/supplierinfo_tree.png
-   :width: 800 px
+.. figure:: ../static/description/supplierinfo_tree.png
 
 Credits
 =======

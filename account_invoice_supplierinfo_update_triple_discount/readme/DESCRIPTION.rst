@@ -8,4 +8,3 @@ It allows to update the three discounts on supplierinfo, if the invoice line
 has different discount values.
 
 .. figure:: ../static/description/wizard_form.png
-   :width: 800 px

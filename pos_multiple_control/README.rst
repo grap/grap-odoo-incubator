@@ -26,17 +26,14 @@ improved control during the close of the session.
   by default)
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_multiple_control/static/description/pos_session_closing_form.png
-   :width: 800 px
 
 * User should set the closing balance for all the statements
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_multiple_control/static/description/account_bank_statement_piece_form.png
-   :width: 800 px
 
 * User can access to the summary by payment methods for each statement
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_multiple_control/static/description/account_bank_statement_summary_form.png
-   :width: 800 px
 
 * So that, force user to have correct balance on each statement. If not,
   user should have to set Profit or Loss reason, using the OCA module
@@ -66,7 +63,6 @@ To configure this module, you need to:
   for this journal
   
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_multiple_control/static/description/account_journal_bank_setting.png
-   :width: 800 px
 
 Bug Tracker
 ===========

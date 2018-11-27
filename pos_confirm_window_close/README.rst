@@ -30,7 +30,6 @@ specially if users are using tactile screen.
 This module disables too the "back" button in the point of sale.
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_confirm_window_close/static/description/pos_confirmation_close.png
-   :width: 800 px
 
 **Table of contents**
 

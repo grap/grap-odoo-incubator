@@ -12,7 +12,7 @@ on the labels of the products.
 
 When a field has changed, the product will be set as 'To print' automatically.
 
-.. image:: /pos_to_print/static/description/product_category_group.png
+.. figure:: ../static/description/product_category_group.png
 
 
 Installation

@@ -28,7 +28,6 @@ order will be the session of the old one, that makes no sense.
 This module fixes this problem.
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_copy_order_opened_session/static/description/copy_order_warning.png
-   :width: 800 px
 
 **Table of contents**
 

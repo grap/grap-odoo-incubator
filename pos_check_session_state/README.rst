@@ -35,7 +35,6 @@ possible to create new pos order on a closed session, generating errors.
   reload the current page.
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_check_session_state/static/description/error_message.png
-   :width: 800 px
 
 **Table of contents**
 
@@ -49,7 +48,6 @@ Configuration
 * Open a PoS Config and set a frequency for the check
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_check_session_state/static/description/pos_config_form.png
-   :width: 800 px
 
 Bug Tracker
 ===========

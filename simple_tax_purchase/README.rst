@@ -16,11 +16,11 @@ when editing a Purchase Order.
 
 ** Purchase Orders with Mixed Taxes**
 
-.. image:: /simple_tax_purchase/static/description/purchase_harmonized_taxes.png
+.. figure:: ../static/description/purchase_harmonized_taxes.png
 
 ** Purchase Orders with Harmonized Taxes**
 
-.. image:: /simple_tax_purchase/static/description/purchase_mixed_taxes.png
+.. figure:: ../static/description/purchase_mixed_taxes.png
 
 
 See simple_tax_account for more detailled information.

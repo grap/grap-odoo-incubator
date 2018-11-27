@@ -10,8 +10,7 @@ This module extends the functionality of the OCA module 'Product Fiscal
 Classification', to restrict usage of fiscal classification to users that
 belong to a given group.
 
-.. figure:: ./static/description/product_template_warning.png
-   :width: 800 px
+.. figure:: ../static/description/product_template_warning.png
 
 Configuration
 =============
@@ -20,14 +19,13 @@ To configure this module, you need to:
 
 * Go to your fiscal classification form and set a group to restrict usage
 
-.. figure:: ./static/description/account_product_fiscal_classification_form.png
-   :width: 800 px
+.. figure:: ../static/description/account_product_fiscal_classification_form.png
 
 
 Known issues / Roadmap
 ======================
 
-* Overload the model ```account.product.fiscal.classification.template``` too.
+* Overload the model ``account.product.fiscal.classification.template`` too.
 
 Credits
 =======

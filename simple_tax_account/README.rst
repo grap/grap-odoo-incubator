@@ -27,7 +27,7 @@ with or without tax included. Sample:
 * TAX B : VAT 10% excluded
 * TAX A and TAX B will be linked together
 
-.. image:: /simple_tax_account/static/description/tax_setting.png
+.. figure:: ../static/description/tax_setting.png
 
 On res.partner, add a new field selection 'simple_tax_type' with
 the following values:
@@ -36,23 +36,23 @@ the following values:
 * 'excluded': All price will be recomputed with Tax excluded
 * 'included': All price will be recomputed with Tax inluded
 
-.. image:: /simple_tax_account/static/description/partner_setting.png
+.. figure:: ../static/description/partner_setting.png
 
 Possibility to switch between Price VAT Included and Price VAT Excluded
 when editing a Account Invoice
 
 ** Invoices with Mixed Taxes**
 
-.. image:: /simple_tax_account/static/description/invoice_harmonized_taxes.png
+.. figure:: ../static/description/invoice_harmonized_taxes.png
 
 ** Invoices with Harmonized Taxes**
 
-.. image:: /simple_tax_account/static/description/invoice_mixed_taxes.png
+.. figure:: ../static/description/invoice_mixed_taxes.png
 
 On account.tax.template, add a new field 'simple_template_id' that is
 the according template with of without tax included.
 
-.. image:: /simple_tax_account/static/description/tax_template_setting.png
+.. figure:: ../static/description/tax_template_setting.png
 
 Related Modules
 ---------------

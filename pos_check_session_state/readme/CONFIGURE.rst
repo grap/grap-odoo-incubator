@@ -2,4 +2,3 @@
 * Open a PoS Config and set a frequency for the check
 
 .. figure:: ../static/description/pos_config_form.png
-   :width: 800 px

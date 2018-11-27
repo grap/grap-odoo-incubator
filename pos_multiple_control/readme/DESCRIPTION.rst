@@ -5,17 +5,14 @@ improved control during the close of the session.
   by default)
 
 .. figure:: ../static/description/pos_session_closing_form.png
-   :width: 800 px
 
 * User should set the closing balance for all the statements
 
 .. figure:: ../static/description/account_bank_statement_piece_form.png
-   :width: 800 px
 
 * User can access to the summary by payment methods for each statement
 
 .. figure:: ../static/description/account_bank_statement_summary_form.png
-   :width: 800 px
 
 * So that, force user to have correct balance on each statement. If not,
   user should have to set Profit or Loss reason, using the OCA module

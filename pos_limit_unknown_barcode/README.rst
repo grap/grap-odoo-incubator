@@ -33,7 +33,6 @@ That's not very predictive and some undesired warning occured if:
 The first case occures very often if the user leaves the key 'backspace' pressed.
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_limit_unknown_barcode/static/description/pos_error.png
-   :width: 800 px
 
 This module will display a message only if the text matches exactly a given
 pattern.
@@ -55,7 +54,6 @@ To configure this module, you need to:
 by default the pattern matches with text from 8 to 13 digits.
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_limit_unknown_barcode/static/description/pos_config_form.png
-   :width: 800 px
 
 Bug Tracker
 ===========

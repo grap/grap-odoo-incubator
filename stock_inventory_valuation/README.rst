@@ -15,8 +15,7 @@ of one inventory.
 
 This module can be usefull when you don't use valuation by quants.
 
-.. figure:: ./stock_inventory_valuation/static/description/stock_inventory_form.png
-   :width: 800px
+.. figure:: ../static/description/stock_inventory_form.png
 
 Known issues / Roadmap
 ======================

@@ -12,7 +12,6 @@ That's not very predictive and some undesired warning occured if:
 The first case occures very often if the user leaves the key 'backspace' pressed.
 
 .. figure:: ../static/description/pos_error.png
-   :width: 800 px
 
 This module will display a message only if the text matches exactly a given
 pattern.

@@ -43,7 +43,6 @@ To use this module, you need to
 * Select any sale order and click on 'More' / 'Duplication Wizard'
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/duplication_sale_order/static/description/sale_order_duplication_wizard_form.png
-   :width: 800 px
 
 Bug Tracker
 ===========

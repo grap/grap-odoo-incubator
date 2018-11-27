@@ -6,4 +6,3 @@ To configure this module, you need to:
   for this journal
   
 .. figure:: ../static/description/account_journal_bank_setting.png
-   :width: 800 px

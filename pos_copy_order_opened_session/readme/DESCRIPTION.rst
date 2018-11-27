@@ -7,4 +7,3 @@ order will be the session of the old one, that makes no sense.
 This module fixes this problem.
 
 .. figure:: ../static/description/copy_order_warning.png
-   :width: 800 px

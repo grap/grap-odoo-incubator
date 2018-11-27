@@ -14,4 +14,3 @@ possible to create new pos order on a closed session, generating errors.
   reload the current page.
 
 .. figure:: ../static/description/error_message.png
-   :width: 800 px

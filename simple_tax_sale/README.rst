@@ -12,11 +12,11 @@ when editing a Sale Order.
 
 ** Sale Orders with Mixed Taxes**
 
-.. image:: /simple_tax_sale/static/description/sale_harmonized_taxes.png
+.. figure:: ../static/description/sale_harmonized_taxes.png
 
 ** Sale Orders with Harmonized Taxes**
 
-.. image:: /simple_tax_sale/static/description/sale_mixed_taxes.png
+.. figure:: ../static/description/sale_mixed_taxes.png
 
 
 See simple_tax_account for more detailled information.

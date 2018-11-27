@@ -21,8 +21,7 @@ To configure this module, you need to:
 
 * Check the box 'Market Place'
 
-.. figure:: /pos_street_market/static/description/pos_config_form.png
-   :width: 800 px
+.. figure:: ../static/description/pos_config_form.png
 
 Usage
 =====
@@ -33,14 +32,12 @@ To use this module, you need to
 
 * Click on 'Market Place' Button and select the place where you are
 
-.. figure:: /pos_street_market/static/description/pos_front_end_ui.png
-   :width: 800 px
+.. figure:: ../static/description/pos_front_end_ui.png
 
 You can later make some statistics, filtering your sale by market places.
 
 
-.. figure:: /pos_street_market/static/description/pos_order_search.png
-   :width: 800 px
+.. figure:: ../static/description/pos_order_search.png
 
 Note
 ----

@@ -28,7 +28,6 @@ that allows users to validate the order without printing the bill.
 For the time being, this module works only in the print via proxy mode.
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_optional_printing/static/description/pos_payment_screen.png
-   :width: 800 px
 
 **Table of contents**
 

@@ -7,4 +7,3 @@ that allows users to validate the order without printing the bill.
 For the time being, this module works only in the print via proxy mode.
 
 .. figure:: ../static/description/pos_payment_screen.png
-   :width: 800 px

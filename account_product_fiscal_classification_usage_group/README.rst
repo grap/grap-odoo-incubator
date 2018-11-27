@@ -24,7 +24,6 @@ Classification', to restrict usage of fiscal classification to users that
 belong to a given group.
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/account_product_fiscal_classification_usage_group/static/description/product_template_warning.png
-   :width: 800 px
 
 **Table of contents**
 
@@ -39,7 +38,6 @@ To configure this module, you need to:
 * Go to your fiscal classification form and set a group to restrict usage
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/account_product_fiscal_classification_usage_group/static/description/account_product_fiscal_classification_form.png
-   :width: 800 px
 
 Known issues / Roadmap
 ======================

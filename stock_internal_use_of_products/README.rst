@@ -10,8 +10,7 @@ This module extends the functionality of stock and account module
 to allow non accountant user to declare the use of stockable products for
 specific uses (eg: gifts, tastings, etc.)
 
-.. figure:: /stock_internal_use_of_products/static/description/internal_use_form.png
-   :width: 800 px
+.. figure:: ../static/description/internal_use_form.png
 
 
 Configuration
@@ -21,8 +20,7 @@ To configure this module, you need to:
 
 * Go to Warehouse / Configuration / Internal Use Cases
 
-.. figure:: /stock_internal_use_of_products/static/description/internal_use_case_form.png
-   :width: 800 px
+.. figure:: ../static/description/internal_use_case_form.png
 
 
 Technical informations
@@ -42,9 +40,9 @@ Known issues / Roadmap
 This module is designed like inventory concept. (New module inventory and
 inventory lines). We could consider replacing by native concept like replacing:
 
-* ```internal.use.case``` by ```stock.picking.type```
-* ```internal.use``` by ```stock.picking```
-* ```internal.use.line``` by ```stock.move```
+* ``internal.use.case`` by ``stock.picking.type``
+* ``internal.use`` by ``stock.picking``
+* ``internal.use.line`` by ``stock.move``
 
 Credits
 =======

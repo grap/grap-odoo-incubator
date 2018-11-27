@@ -29,7 +29,6 @@ It allows to update the three discounts on supplierinfo, if the invoice line
 has different discount values.
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/account_invoice_supplierinfo_update_triple_discount/static/description/wizard_form.png
-   :width: 800 px
 
 **Table of contents**
 

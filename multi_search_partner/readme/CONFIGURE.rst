@@ -3,8 +3,6 @@
 * Choose the character that will be used to allow a search with multiple words
 
 .. figure:: ../static/description/setting_form.png
-   :width: 80 %
-   :align: center
 
 **Important Note**
 

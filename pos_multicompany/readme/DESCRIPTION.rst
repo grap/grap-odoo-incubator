@@ -12,4 +12,3 @@ and PoS Sessions by companies.
   Point of Sale.
 
 .. figure:: ../static/description/pos_category_tree.png
-   :width: 800 px

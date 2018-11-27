@@ -37,8 +37,6 @@ Configuration
 * Choose the character that will be used to allow a search with multiple words
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/multi_search_partner/static/description/setting_form.png
-   :width: 80 %
-   :align: center
 
 **Important Note**
 
@@ -52,8 +50,6 @@ If a user make a search with the following entry ``la*ag`` or ``ag*la``, it
 will find partners named " **Ag** ro **la** it"
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/multi_search_partner/static/description/partner_search.png
-   :width: 80 %
-   :align: center
 
 Bug Tracker
 ===========

@@ -18,8 +18,7 @@ To use this module, you need to:
 
 A new tab is available, if ean13 is set.
 
-.. figure:: /product_ean13_image/static/description/product_form.png
-   :width: 600 px
+.. figure:: ../static/description/product_form.png
 
 
 Known issues / Roadmap

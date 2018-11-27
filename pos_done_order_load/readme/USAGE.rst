@@ -13,4 +13,3 @@ To use this module, you need to:
 * At the end of the line, buttons are available to make extra actions
 
 .. figure:: ../static/description/pos_done_order_list.png
-   :width: 800 px

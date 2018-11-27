@@ -13,9 +13,7 @@ categories :
 * uom for purchases only
 * uom for both sales and purchases (**default**).
 
-.. image:: /product_uom_use_type/static/description/use_type_list.png
-   :alt: Unities of measure with use type
-   :width: 900
+.. figure:: ../static/description/use_type_list.png
 
 Installation
 ============
@@ -33,9 +31,7 @@ Every unities of measure's use type will be set as **both** by default.
 If you want to change that (or when you create a new unity of measure),
 set use type field with sales/purchase/both.
 
-.. image:: /product_uom_use_type/static/description/use_type_form.png
-   :alt: Unities of measure with use type
-   :width: 900
+.. figure:: ../static/description/use_type_form.png
 
 Usage
 =====

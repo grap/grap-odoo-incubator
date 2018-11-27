@@ -9,4 +9,3 @@ specially if users are using tactile screen.
 This module disables too the "back" button in the point of sale.
 
 .. figure:: ../static/description/pos_confirmation_close.png
-   :width: 800 px
