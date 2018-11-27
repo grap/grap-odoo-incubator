@@ -23,9 +23,9 @@ This module extends the functionality of product module to display
 the quantity of products and variants for the product categories.
 
 
-.. figure:: figure:: static/description/product_category_tree.png
+.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/product_category_product_qty/static/description/product_category_tree.png
 
-.. figure:: figure:: static/description/product_category_form.png
+.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/product_category_product_qty/static/description/product_category_form.png
 
 **Table of contents**
 
