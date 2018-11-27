@@ -66,9 +66,9 @@ with or without tax included. Sample:
 On ``res.partner``, add a new field selection ``simple_tax_type`` with
 the following values:
 
-* 'none' : (default) undefined, the Tax will be the tax of the product
-* 'excluded': All price will be recomputed with Tax excluded
-* 'included': All price will be recomputed with Tax inluded
+* ``none``: (default) undefined, the Tax will be the tax of the product
+* ``excluded``: All price will be recomputed with Tax excluded
+* ``included``: All price will be recomputed with Tax inluded
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/simple_tax_account/static/description/partner_setting.png
 
