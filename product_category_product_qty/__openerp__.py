@@ -19,5 +19,9 @@
     'demo': [
         'demo/res_groups.xml',
     ],
+    'images': [
+        'static/description/product_category_tree.png',
+        'static/description/product_category_form.png',
+    ],
     'installable': True,
 }
