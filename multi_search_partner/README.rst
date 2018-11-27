@@ -43,7 +43,7 @@ Configuration
 **Important Note**
 
 When you do this settings, a process will remove this char from all your
-partners in the field ``name`` and ``email``.
+partners in the fields ``name`` and ``email``.
 
 Usage
 =====
@@ -85,5 +85,6 @@ Maintainers
 
 
 This module is part of the `GRAP/grap-odoo-incubator <https://github.com/GRAP/grap-odoo-incubator/tree/8.0/multi_search_partner>`_ project on GitHub.
+
 
 You are welcome to contribute.

@@ -75,4 +75,5 @@ Maintainers
 
 This module is part of the `GRAP/grap-odoo-incubator <https://github.com/GRAP/grap-odoo-incubator/tree/8.0/duplication_sale_order>`_ project on GitHub.
 
+
 You are welcome to contribute.
