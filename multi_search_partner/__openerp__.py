@@ -16,5 +16,9 @@
     'data': [
         'views/view_base_config_settings.xml',
     ],
+    'images': [
+        'static/description/partner_search.png',
+        'static/description/setting_form.png',
+    ],
     'installable': True,
 }
