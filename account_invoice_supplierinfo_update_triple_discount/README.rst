@@ -59,6 +59,13 @@ Contributors
 
 * Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
+Other credits
+~~~~~~~~~~~~~
+
+The development of this module has been financially supported by:
+
+* GRAP, Groupement Régional Alimentaire de Proximité (http://www.grap.coop)
+
 Maintainers
 ~~~~~~~~~~~
 
