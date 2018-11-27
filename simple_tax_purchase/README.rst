@@ -32,6 +32,7 @@ when editing a Purchase Order.
 
 
 **Important Note**
+
 See ``simple_tax_account`` description for more detailled information.
 
 **Table of contents**
