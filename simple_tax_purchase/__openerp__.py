@@ -21,6 +21,10 @@
     'demo': [
         'demo/purchase_order.xml',
     ],
+    'images': [
+        'static/description/purchase_mixed_taxes.png',
+        'static/description/purchase_harmonized_taxes.png',
+    ],
     'auto_install': True,
     'installable': True,
 }
