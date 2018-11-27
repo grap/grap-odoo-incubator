@@ -27,4 +27,7 @@
             # 'barcode',
         ],
     },
+    'images': [
+        'static/description/product_form.png',
+    ],
 }
