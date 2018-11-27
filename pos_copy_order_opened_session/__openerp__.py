@@ -13,5 +13,8 @@
     'depends': [
         'point_of_sale',
     ],
+    'images': [
+        'static/description/copy_order_warning.png',
+    ],
     'installable': True,
 }
