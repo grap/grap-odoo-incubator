@@ -42,7 +42,7 @@ To configure this module, you need to:
 Known issues / Roadmap
 ======================
 
-* Overload the model ```account.product.fiscal.classification.template``` too.
+* Overload the model ``account.product.fiscal.classification.template`` too.
 
 Bug Tracker
 ===========

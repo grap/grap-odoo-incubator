@@ -19,8 +19,8 @@ Stock Inventory - Valuation - Merge - Glue Module
 
 |badge1| |badge2| |badge3| 
 
-This module is a glue module installed if ```stock_inventory_merge```
-and ```stock_inventory_valuation``` are installed.
+This module is a glue module installed if ``stock_inventory_merge``
+and ``stock_inventory_valuation`` are installed.
 
 **Table of contents**
 
