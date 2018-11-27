@@ -21,5 +21,8 @@
         'demo/res_groups.xml',
         'demo/product_template.xml',
     ],
+    'images': [
+        'static/description/product_supplierinfo_form.png',
+    ],
     "installable": True,
 }
