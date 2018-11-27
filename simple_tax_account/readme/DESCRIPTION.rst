@@ -9,19 +9,13 @@ This module is useful in the following case:
 Possibility to switch between Price VAT Included and Price VAT Excluded
 when editing a Account Invoice
 
-** Invoices with Mixed Taxes**
+**Invoices with Mixed Taxes**
 
 .. figure:: ../static/description/invoice_mixed_taxes.png
 
-** Invoices with Harmonized Taxes**
+**Invoices with Harmonized Taxes**
 
 .. figure:: ../static/description/invoice_harmonized_taxes.png
-
-On account.tax.template, add a new field 'simple_template_id' that is
-the according template with of without tax included.
-
-.. figure:: ../static/description/tax_template_setting.png
-
 
 **Related Modules**
 
