@@ -41,17 +41,14 @@ To configure this module, you need to:
 * Create your PoS Sectors
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_sector/static/description/pos_sector_tree.png
-   :width: 800 px
 
 * Open your Point Of Sale configurations and set sectors
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_sector/static/description/pos_config_form.png
-   :width: 800 px
 
 * Finally, edit your products and set a sector
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/pos_sector/static/description/product_form.png
-   :width: 800 px
 
 Usage
 =====
