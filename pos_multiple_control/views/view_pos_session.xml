@@ -33,17 +33,18 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <group>
                             <field name="name" />
                             <field name="journal_id" />
-                            <field name="state" invisible="1" />
+                            <field name="state"/>
                         </group>
                             <field name="details_ids" nolabel="1" colspan="2">
                             <tree string="Cashbox Lines" editable="bottom">
 
                                 <field name="pieces" attrs="{'readonly': [('is_piece', '=', True)]}"/>
-                                <field name="number_opening"/>
+                                <field name="number_opening" attrs="{'readonly': [('is_piece', '=', False), ('statement_state', '!=', 'draft')]}"/>
                                 <field name="subtotal_opening" string="Opening Subtotal" sum="Total"/>
                                 <field name="number_closing" />
                                 <field name="subtotal_closing" string="Closing Subtotal" sum="Total"/>
                                 <field name="is_piece" invisible="1"/>
+                                <field name="statement_state" invisible="1"/>
                             </tree>
                         </field>
                     </form>

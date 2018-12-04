@@ -9,5 +9,15 @@ from openerp import fields, models
 class AccountCashboxLine(models.Model):
     _inherit = 'account.cashbox.line'
 
+    _STATEMENT_STATE_SELECTION = [
+        ('draft', 'New'),
+        ('open', 'Open'),
+        ('confirm', 'Closed'),
+    ]
+
     # Columns Section
     is_piece = fields.Boolean(string='Is Piece', readonly=True)
+
+    statement_state = fields.Selection(
+        related='bank_statement_id.state',
+        selection=_STATEMENT_STATE_SELECTION)
