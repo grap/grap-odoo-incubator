@@ -39,14 +39,16 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <xpath expr="//page[@name='setting']" position="inside">
                 <group>
                     <field name="one2many_field_id"/>
+                    <field name="allways_rewrite"/>
                     <field name="one2many_model" invisible="1"/>
                     <newline/>
                     <field name="line_ids" nolabel="1" colspan="4">
                         <tree editable="bottom"
-                                colors="gray:operation_type == 'ignored'; brown: operation_type == 'group_by'">
+                                colors="gray:operation_type == 'z_ignored'; brown: operation_type == 'group_by'">
                             <field name="field_id"/>
                             <field name="field_type"/>
                             <field name="operation_type"/>
+                            <field name="operation_argument" attrs="{'invisible': [('operation_type', '!=', 'related')]}"/>
                         </tree>
                     </field>
                 </group>

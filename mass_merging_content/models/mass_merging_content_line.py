@@ -10,15 +10,19 @@ from openerp.exceptions import ValidationError
 
 class MassMergingContentLine(models.Model):
     _name = 'mass.merging.content.line'
+    _order = 'operation_type, field_id'
 
     _OPERATION_TYPE_SELECTION = [
-        ('ignored', 'Ignored'),
-        ('sum', 'Sum Values'),
         ('group_by', 'Group'),
+        ('sum', 'Sum Values'),
+        ('join_text', 'Join Texts'),
+        ('related', 'Related value'),
+        ('z_ignored', 'Ignored'),
     ]
 
     merging_content_id = fields.Many2one(
-        comodel_name='mass.merging.content', ondelete='cascade')
+        comodel_name='mass.merging.content', ondelete='cascade',
+        required=True)
 
     field_id = fields.Many2one(
         comodel_name='ir.model.fields', string='Field', required=True,
@@ -30,6 +34,11 @@ class MassMergingContentLine(models.Model):
     operation_type = fields.Selection(
         string='Operation Type', required=True,
         selection=_OPERATION_TYPE_SELECTION)
+
+    operation_argument = fields.Char(
+        string='Extra Argument', help="Extra argument for the operation\n"
+        " * for 'Related': set the value that will be used in the"
+        " the first line, for exemple 'product_id.name'")
 
     @api.multi
     @api.depends('field_id')
@@ -43,8 +52,8 @@ class MassMergingContentLine(models.Model):
         for line in self:
             if line.field_id.model != line.merging_content_id.one2many_model:
                 raise ValidationError(_(
-                    "The selected field '%s' must belong to the model of"
-                    " the Field to Sort.") % (line.field_id.field_description))
+                    "The selected field '%s' must belong to the model of the"
+                    " field to merge.") % (line.field_id.field_description))
 
     @api.model
     def _is_technical_field(self, field):
@@ -57,7 +66,7 @@ class MassMergingContentLine(models.Model):
         if field.ttype in ('many2one', 'many2many'):
             operation_type = 'group_by'
         else:
-            operation_type = 'ignored'
+            operation_type = 'z_ignored'
         return {
             'field_id': field.id,
             'operation_type': operation_type,

@@ -26,9 +26,12 @@ class MassMergingContentWizard(models.TransientModel):
     @api.multi
     def _apply_operation(self, items):
         merging_content = self._get_mass_operation()
-        group_fields = merging_content._get_group_fields()
-        sum_field_names = merging_content._get_sum_field_names()
-        read_field_names = sum_field_names
+
+        group_fields = merging_content._get_fields(['group_by'])
+        related_content_lines = merging_content._get_content_lines(['related'])
+        sum_field_names = merging_content._get_field_names(['sum'])
+        join_text_field_names = merging_content._get_field_names(['join_text'])
+
         for item in items:
             lines = getattr(item, merging_content.one2many_field_id.name)
             grouped_data = {}
@@ -36,22 +39,39 @@ class MassMergingContentWizard(models.TransientModel):
                 key = self._prepare_key(group_fields, line)
                 if key not in grouped_data.keys():
                     print key
+                    vals = {x: False for x in sum_field_names}
+                    vals.update({x: '' for x in join_text_field_names})
                     grouped_data[key] = {
                         'first_item': line,
                         'delete_line_ids': [],
-                        'vals': {x: False for x in read_field_names},
+                        'vals': vals,
                     }
                 else:
                     grouped_data[key]['delete_line_ids'].append(line.id)
                 for sum_field_name in sum_field_names:
                     grouped_data[key]['vals'][sum_field_name] +=\
                         getattr(line, sum_field_name)
+                for join_text_field_name in join_text_field_names:
+                    if grouped_data[key]['vals'][join_text_field_name]:
+                        grouped_data[key]['vals'][join_text_field_name] += ', '
+                    grouped_data[key]['vals'][join_text_field_name] += \
+                        getattr(line, join_text_field_name)
 
+            to_delete_ids = []
             for key, data in grouped_data.iteritems():
-                # Update the first item
-                data['first_item'].write(data['vals'])
-                delete_ids = grouped_data[key]['delete_line_ids']
+                to_delete_ids += grouped_data[key]['delete_line_ids']
 
-                # Drop obsolete lines
-                if delete_ids:
-                    lines.filtered(lambda x: x.id in delete_ids).unlink()
+                if grouped_data[key]['delete_line_ids']\
+                        or merging_content.allways_rewrite:
+                    # Update the first item
+                    vals = data['vals']
+                    for related_content_line in related_content_lines:
+                        vals[related_content_line.field_id.name] =\
+                            data['first_item'].mapped(
+                                related_content_line.operation_argument)[0]
+                    print vals
+                    data['first_item'].write(vals)
+
+            # Drop obsolete lines
+            if to_delete_ids:
+                lines.filtered(lambda x: x.id in to_delete_ids).unlink()
