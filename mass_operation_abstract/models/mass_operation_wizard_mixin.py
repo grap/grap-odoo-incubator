@@ -14,7 +14,7 @@ class MassOperationWizardMixin(models.AbstractModel):
 
     # To Overwrite Section
     @api.multi
-    def _apply_operation(self):
+    def _apply_operation(self, items):
         pass
 
     # Column Section
@@ -44,13 +44,13 @@ class MassOperationWizardMixin(models.AbstractModel):
 
     @api.multi
     def button_apply(self):
-        items = self._get_filtered_items()
-        if len(items):
+        items = self._get_remaining_items()
+        if not len(items):
             raise UserError(_(
                 "there is no more element that corresponds to the rules of"
                 " the domain.\n Please refresh your list and try to"
                 " select again the items."))
-        self._apply_operation()
+        self._apply_operation(items)
 
     # Private Section
     @api.model
@@ -74,6 +74,8 @@ class MassOperationWizardMixin(models.AbstractModel):
 
     @api.model
     def _get_remaining_items(self):
+        print ">>>>>>>>>>>>>>>>>>>>>><"
+        print self.env.context
         active_ids = self.env.context.get('active_ids')
         mass_operation = self._get_mass_operation()
         if mass_operation.domain != '[]':
@@ -84,4 +86,6 @@ class MassOperationWizardMixin(models.AbstractModel):
             remaining_items = SrcModel.search(domain)
         else:
             remaining_items = active_ids
+        print remaining_items
+        print ">>>>>>>>>>>>>>>>>>>>>><"
         return remaining_items

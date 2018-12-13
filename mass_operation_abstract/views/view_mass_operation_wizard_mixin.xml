@@ -23,6 +23,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <p class="alert alert-info" attrs="{'invisible': ['|', ('selected_item_qty', '=', 1), ('removed_item_qty', '!=', 0)]}">
                         The treatment will be processed on the <b><field name="selected_item_qty" nolabel="1" class="oe_inline"/></b>
                         selected elements.</p>
+                    <p class="alert alert-info" attrs="{'invisible': ['|', ('selected_item_qty', '!=', 1), ('removed_item_qty', '!=', 0)]}">
+                        The treatment will be processed on the selected element.</p>
                     <group>
                         <field name="src_model_id" invisible="1"/>
                     </group>

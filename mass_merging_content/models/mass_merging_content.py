@@ -39,12 +39,24 @@ class MassMergingContent(models.Model):
             for field in fields:
                 if ContentLine._is_technical_field(field):
                     continue
-                print ">>>>>>>>>>>>>>>>>"
-                print field.name
                 vals = ContentLine._prepare_line(field)
                 line_ids_vals.append((0, 0, vals))
             print line_ids_vals
             self.line_ids = line_ids_vals
+
+    @api.multi
+    def _get_sum_field_names(self):
+        self.ensure_one()
+        return [
+            x.field_id.name for x in self.line_ids
+            if x.operation_type in ['sum']]
+
+    @api.multi
+    def _get_group_fields(self):
+        self.ensure_one()
+        return [
+            x.field_id for x in self.line_ids
+            if x.operation_type in ['group_by']]
 
     # Overwrite Section
     @api.multi

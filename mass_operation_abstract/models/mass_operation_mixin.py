@@ -65,7 +65,7 @@ class MassOperationMixin(models.AbstractModel):
     # Overload Section
     @api.multi
     def unlink(self):
-        self.unlink_action()
+        self.disable_mass_operation()
         return super(MassOperationMixin, self).unlink()
 
     @api.multi
