@@ -26,18 +26,6 @@ class MassMergingContent(models.Model):
         comodel_name='mass.merging.content.line',
         inverse_name='merging_content_id', string='Merging Criterias')
 
-    allways_rewrite = fields.Boolean(
-        string='Allways Rewrite', compute='_compute_allways_rewrite',
-        store=True)
-
-    @api.multi
-    @api.depends('line_ids.operation_type')
-    def _compute_allways_rewrite(self):
-        for merging_content in self:
-            merging_content.allways_rewrite = len(
-                merging_content.line_ids.filtered(
-                    lambda x: x.operation_type in ['related']))
-
     @api.onchange('one2many_field_id')
     def onchange_one2many_field_id(self):
         self.ensure_one()
@@ -76,7 +64,6 @@ class MassMergingContent(models.Model):
         return [
             x for x in self.line_ids
             if x.operation_type in operation_types]
-
 
     # Overwrite Section
     @api.multi

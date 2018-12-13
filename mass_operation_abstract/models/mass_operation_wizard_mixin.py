@@ -24,8 +24,6 @@ class MassOperationWizardMixin(models.AbstractModel):
 
     remaining_item_qty = fields.Integer(readonly=True)
 
-    src_model_id = fields.Many2one(comodel_name='ir.model')
-
     @api.model
     def default_get(self, fields):
         res = super(MassOperationWizardMixin, self).default_get(fields)
@@ -38,7 +36,6 @@ class MassOperationWizardMixin(models.AbstractModel):
             'selected_item_qty': len(active_ids),
             'remaining_item_qty': len(remaining_items),
             'removed_item_qty': len(active_ids) - len(remaining_items),
-            'src_model_id': self._get_src_model().id,
         })
         return res
 
@@ -74,8 +71,6 @@ class MassOperationWizardMixin(models.AbstractModel):
 
     @api.model
     def _get_remaining_items(self):
-        print ">>>>>>>>>>>>>>>>>>>>>><"
-        print self.env.context
         active_ids = self.env.context.get('active_ids')
         mass_operation = self._get_mass_operation()
         if mass_operation.domain != '[]':
@@ -86,6 +81,4 @@ class MassOperationWizardMixin(models.AbstractModel):
             remaining_items = SrcModel.search(domain)
         else:
             remaining_items = active_ids
-        print remaining_items
-        print ">>>>>>>>>>>>>>>>>>>>>><"
         return remaining_items

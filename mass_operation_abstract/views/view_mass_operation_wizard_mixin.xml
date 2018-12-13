@@ -25,8 +25,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         selected elements.</p>
                     <p class="alert alert-info" attrs="{'invisible': ['|', ('selected_item_qty', '!=', 1), ('removed_item_qty', '!=', 0)]}">
                         The treatment will be processed on the selected element.</p>
-                    <group>
-                        <field name="src_model_id" invisible="1"/>
+                    <group name="custom_info">
+                        <!-- include here custom fields in inherited modules -->
                     </group>
                   <footer>
                       <button string="Apply" name="button_apply" type="object" class="oe_highlight" attrs="{'invisible': [('remaining_item_qty', '=', 0)]}"/>

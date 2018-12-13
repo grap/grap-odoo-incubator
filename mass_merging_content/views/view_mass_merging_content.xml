@@ -39,7 +39,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <xpath expr="//page[@name='setting']" position="inside">
                 <group>
                     <field name="one2many_field_id"/>
-                    <field name="allways_rewrite"/>
                     <field name="one2many_model" invisible="1"/>
                     <newline/>
                     <field name="line_ids" nolabel="1" colspan="4">

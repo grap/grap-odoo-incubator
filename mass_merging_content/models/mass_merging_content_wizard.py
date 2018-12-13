@@ -61,15 +61,13 @@ class MassMergingContentWizard(models.TransientModel):
             for key, data in grouped_data.iteritems():
                 to_delete_ids += grouped_data[key]['delete_line_ids']
 
-                if grouped_data[key]['delete_line_ids']\
-                        or merging_content.allways_rewrite:
+                if grouped_data[key]['delete_line_ids']:
                     # Update the first item
                     vals = data['vals']
                     for related_content_line in related_content_lines:
                         vals[related_content_line.field_id.name] =\
                             data['first_item'].mapped(
                                 related_content_line.operation_argument)[0]
-                    print vals
                     data['first_item'].write(vals)
 
             # Drop obsolete lines
