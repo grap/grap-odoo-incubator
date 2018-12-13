@@ -18,7 +18,10 @@
     ],
     'data': [
         'views/menu.xml',
+        'views/view_mass_operation_mixin.xml',
+        'views/view_mass_operation_wizard_mixin.xml',
     ],
     'demo': [
+        'demo/res_groups.xml',
     ],
 }

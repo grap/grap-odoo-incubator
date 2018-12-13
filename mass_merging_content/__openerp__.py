@@ -16,7 +16,8 @@
         'mass_operation_abstract',
     ],
     'data': [
-        # 'views/menu.xml',
+        'views/view_mass_merging_content.xml',
+        'views/view_mass_merging_content_wizard.xml',
     ],
     'demo': [
     ],

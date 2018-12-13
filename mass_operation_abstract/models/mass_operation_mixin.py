@@ -10,13 +10,19 @@ from openerp import _, api, fields, models
 class MassOperationMixin(models.AbstractModel):
     _name = 'mass.operation.mixin'
 
-    # To Overload Section
-    _action_pattern_name = False
-
+    # To Overwrite Section
     _wizard_model_name = False
+
+    @api.multi
+    def _get_action_name(self):
+        self.ensure_one()
+        return _("Mass Operation (%s)" % (self.name))
 
     # Column Section
     name = fields.Char(string='Name', translate=True, required=True)
+
+    action_name = fields.Char(
+        string='Action Name', translate=True, required=True)
 
     model_id = fields.Many2one(
         comodel_name='ir.model', string='Model', required=True)
@@ -29,6 +35,33 @@ class MassOperationMixin(models.AbstractModel):
         comodel_name='ir.values', string='Sidebar Button', readonly=True,
         copy=False)
 
+    groups_id = fields.Many2one(
+        comodel_name='res.groups', string='Allowed Groups')
+
+    domain = fields.Char(string='Domain', required=True, default="[]")
+
+    # Onchange Section
+    @api.onchange('name')
+    def onchange_name(self):
+        self.action_name = self._get_action_name()
+
+    # Action Section
+    @api.multi
+    def enable_mass_operation(self):
+        action_obj = self.env['ir.actions.act_window']
+        values_obj = self.env['ir.values']
+        for mixin in self:
+            mixin.action_id = action_obj.create(mixin._prepare_action())
+            mixin.value_id = values_obj.create(mixin._prepare_value())
+
+    @api.multi
+    def disable_mass_operation(self):
+        for mixin in self:
+            if mixin.action_id:
+                mixin.action_id.unlink()
+            if mixin.value_id:
+                mixin.value_id.unlink()
+
     # Overload Section
     @api.multi
     def unlink(self):
@@ -38,39 +71,36 @@ class MassOperationMixin(models.AbstractModel):
     @api.multi
     def copy(self, default=None):
         default = default or {}
-        default.update({
-            'name': _('%s (copy)') % self.name})
+        default.update({'name': _('%s (copy)') % self.name})
         return super(MassOperationMixin, self).copy(default=default)
 
-    # Custom Section
+    # Private Section
     @api.multi
-    def create_action(self):
-        action_obj = self.env['ir.actions.act_window']
-        values_obj = self.env['ir.values']
-        for mixin in self:
-            button_name = _(self._action_pattern_name) % mixin.name
-            mixin.action_id = action_obj.create({
-                'name': button_name,
-                'type': 'ir.actions.act_window',
-                'res_model': self._wizard_model_name,
-                'src_model': mixin.model_id.model,
-                'view_type': 'form',
-                'context': "{'mass_operation_mixin_id' : %d}" % (mixin.id),
-                'view_mode': 'form,tree',
-                'target': 'new',
-            })
-            mixin.value_id = values_obj.create({
-                'name': button_name,
-                'model': mixin.model_id.model,
-                'key2': 'client_action_multi',
-                'value': (
-                    "ir.actions.act_window,%s" % mixin.action_id.id),
-            })
+    def _prepare_action(self):
+        self.ensure_one()
+        res = {
+            'name': self.action_name,
+            'type': 'ir.actions.act_window',
+            'res_model': self._wizard_model_name,
+            'src_model': self.model_id.model,
+            'groups_id': self.groups_id.ids,
+            'view_type': 'form',
+            'context': """{
+                'mass_operation_mixin_id' : %d,
+                'mass_operation_mixin_name' : '%s',
+            }""" % (self.id, self._name),
+            'view_mode': 'form,tree',
+            'target': 'new',
+        }
+        print res
+        return res
 
     @api.multi
-    def unlink_action(self):
-        for mixin in self:
-            if mixin.action_id:
-                mixin.action_id.unlink()
-            if mixin.value_id:
-                mixin.value_id.unlink()
+    def _prepare_value(self):
+        self.ensure_one()
+        return {
+            'name': self.action_name,
+            'model': self.model_id.model,
+            'key2': 'client_action_multi',
+            'value': ("ir.actions.act_window,%s" % self.action_id.id),
+        }
