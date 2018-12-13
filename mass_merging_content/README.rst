@@ -39,7 +39,7 @@ Configuration
 
 * Create a new item
 
-  ..figure: ../static/description/mass_merging_content_form.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/mass_merging_content/static/description/mass_merging_content_form.png
 
 * Set a name for the button that will appear on the target model
 
@@ -77,22 +77,22 @@ Usage
 
 * the opened pop up display the number of selected items
 
-  ..figure: ../static/description/wizard_form_ok.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/mass_merging_content/static/description/wizard_form_ok.png
 
 if some items doesn't match with the domain, a warning is displayed
 
-  ..figure: ../static/description/wizard_form_warning.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/mass_merging_content/static/description/wizard_form_warning.png
 
 * Click on the 'Apply' button to process
 
 
 **Before the merge**
 
-  ..figure: ../static/description/account_invoice_form_before.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/mass_merging_content/static/description/account_invoice_form_before.png
 
 **After the merge**
 
-  ..figure: ../static/description/account_invoice_form_after.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/mass_merging_content/static/description/account_invoice_form_after.png
 
 Bug Tracker
 ===========

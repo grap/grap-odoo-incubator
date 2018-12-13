@@ -2,7 +2,7 @@
 
 * Create a new item
 
-  ..figure: ../static/description/mass_merging_content_form.png
+.. figure:: ../static/description/mass_merging_content_form.png
 
 * Set a name for the button that will appear on the target model
 
