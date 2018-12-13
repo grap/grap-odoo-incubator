@@ -16,7 +16,7 @@
    (usefull for ``integer`` and ``float`` fields)
 
 3. 'Join Texts': the value of this field will be joined.
-    (usefull for ``char`` fields)
+   (usefull for ``char`` fields)
 
 4. 'Related Value': the value will be recomputed, based on the given extra
    argument.

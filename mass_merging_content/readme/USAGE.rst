@@ -2,6 +2,9 @@
 
 * select items and click on 'More' and on the new button
 
+.. figure:: ../static/description/account_invoice_tree.png
+
+
 * the opened pop up display the number of selected items
 
 .. figure:: ../static/description/wizard_form_ok.png
