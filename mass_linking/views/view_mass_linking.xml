@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018-Today GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<openerp><data>
+
+    <record id="view_mass_linking_search" model="ir.ui.view">
+        <field name="model">mass.linking</field>
+        <field name="inherit_id" ref="mass_operation_abstract.view_mass_operation_mixin_search"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="model_id" position="after">
+                <field name="many2one_field_id"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="view_mass_linking_tree" model="ir.ui.view">
+        <field name="model">mass.linking</field>
+        <field name="inherit_id" ref="mass_operation_abstract.view_mass_operation_mixin_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="model_id" position="after">
+                <field name="many2one_field_id"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="view_mass_linking_form" model="ir.ui.view">
+        <field name="model">mass.linking</field>
+        <field name="inherit_id" ref="mass_operation_abstract.view_mass_operation_mixin_form"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='setting']" position="inside">
+                <group>
+                    <field name="many2one_field_id"/>
+                    <field name="many2one_field_model_name" invisible="1"/>
+                    <field name="target_action_id"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="action_mass_linking" model="ir.actions.act_window">
+        <field name="name">Linking</field>
+        <field name="res_model">mass.linking</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="menu_mass_linking"
+        action="action_mass_linking"
+        parent="mass_operation_abstract.menu_mass_operation"/>
+
+</data></openerp>

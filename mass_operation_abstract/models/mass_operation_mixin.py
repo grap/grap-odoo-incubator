@@ -51,8 +51,10 @@ class MassOperationMixin(models.AbstractModel):
         action_obj = self.env['ir.actions.act_window']
         values_obj = self.env['ir.values']
         for mixin in self:
-            mixin.action_id = action_obj.create(mixin._prepare_action())
-            mixin.value_id = values_obj.create(mixin._prepare_value())
+            if not mixin.action_id:
+                mixin.action_id = action_obj.create(mixin._prepare_action())
+            if not mixin.value_id:
+                mixin.value_id = values_obj.create(mixin._prepare_value())
 
     @api.multi
     def disable_mass_operation(self):
@@ -78,7 +80,7 @@ class MassOperationMixin(models.AbstractModel):
     @api.multi
     def _prepare_action(self):
         self.ensure_one()
-        res = {
+        return {
             'name': self.action_name,
             'type': 'ir.actions.act_window',
             'res_model': self._wizard_model_name,
@@ -92,8 +94,6 @@ class MassOperationMixin(models.AbstractModel):
             'view_mode': 'form,tree',
             'target': 'new',
         }
-        print res
-        return res
 
     @api.multi
     def _prepare_value(self):

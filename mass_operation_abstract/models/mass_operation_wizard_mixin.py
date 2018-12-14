@@ -73,12 +73,11 @@ class MassOperationWizardMixin(models.AbstractModel):
     def _get_remaining_items(self):
         active_ids = self.env.context.get('active_ids')
         mass_operation = self._get_mass_operation()
+        SrcModel = self.env[self._get_src_model().model]
         if mass_operation.domain != '[]':
-            SrcModel = self.env[self._get_src_model().model]
             domain = expression.AND([
                 safe_eval(mass_operation.domain),
                 [('id', 'in', active_ids)]])
-            remaining_items = SrcModel.search(domain)
         else:
-            remaining_items = active_ids
-        return remaining_items
+            domain = [('id', 'in', active_ids)]
+        return SrcModel.search(domain)

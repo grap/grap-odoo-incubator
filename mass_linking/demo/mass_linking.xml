@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="linking_user_partner" model="mass.linking">
+        <field name="name">Users -> Partners</field>
+        <field name="action_name">See Partners</field>
+        <field name="model_id" ref="base.model_res_users"/>
+        <field name="many2one_field_id" ref="base.field_res_users_partner_id"/>
+    </record>
+
+    <function model="mass.linking" name="enable_mass_operation">
+        <value eval="[ref('linking_user_partner')]"/>
+    </function>
+
+</data></openerp>
