@@ -1,25 +1,22 @@
-* Go to 'Setting / Technical / Mass Operations / Merging Content'
+* Go to 'Setting / Technical / Mass Operations / Link'
 
 * Create a new item
 
-.. figure:: ../static/description/mass_merging_content_form.png
+.. figure:: ../static/description/mass_linking_form.png
 
-* Set a name for the button that will appear on the target model
+* Set a name for your link, and another for the button that will appear on the
+  target model
 
-* choose a model, and select a ``one2many`` fields of this model
+* choose a model
 
-* for each field of this submodel, select the operation type
+* Then, select a field of this model. It can be a ``one2many``, ``many2many``,
+  ``many2one`` field.
 
-1. 'Group' : the lines will not be merged if this field is different
+* You can then optionally select a field (#2) that belong to the previous
+  selected field (#1) model
 
-2. 'Sum': the value of this field will be sumed into the merged lines.
-   (usefull for ``integer`` and ``float`` fields)
-
-3. 'Join Texts': the value of this field will be joined.
-   (usefull for ``char`` fields)
-
-4. 'Related Value': the value will be recomputed, based on the given extra
-   argument.
+* You can then optionally select a field (#3) that belong to the previous
+  selected field (#2) model
 
 * Once done, click on the 'Add Sidebar button' to generate a new 'More options'
   button.
@@ -27,6 +24,7 @@
 
 **Extra options**
 
-* you can define a domain, to limit the merge operation to items that match
+* you can define a domain, to limit the link operation to items that match
   with that domain.
 * you can define groups whose members will have access to that option.
+* You can select an action that will be used to display the target field list.

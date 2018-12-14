@@ -2,24 +2,17 @@
 
 * select items and click on 'More' and on the new button
 
-.. figure:: ../static/description/account_invoice_tree.png
+.. figure:: ../static/description/sale_order_tree.png
 
 
 * the opened pop up display the number of selected items
 
 .. figure:: ../static/description/wizard_form_ok.png
 
-if some items doesn't match with the domain, a warning is displayed
+**Result**
 
-.. figure:: ../static/description/wizard_form_warning.png
+It will display all the products associated to all the sale order lines
+associated to the selected sale orders.
 
-* Click on the 'Apply' button to process
 
-
-**Before the merge**
-
-.. figure:: ../static/description/account_invoice_form_before.png
-
-**After the merge**
-
-.. figure:: ../static/description/account_invoice_form_after.png
+.. figure:: ../static/description/result_product_list.png

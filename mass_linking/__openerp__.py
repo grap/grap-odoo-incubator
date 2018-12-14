@@ -9,7 +9,7 @@
     'version': "8.0.1.0.0",
     'author': 'GRAP',
     'summary': "Provide the possibility to see any related items of selected"
-    "items",
+    " items",
     'category': 'Tools',
     'website': 'http://www.grap.coop',
     'license': 'AGPL-3',
@@ -17,10 +17,17 @@
         'mass_operation_abstract',
     ],
     'data': [
+        'security/ir.model.access.csv',
         'views/view_mass_linking.xml',
         'views/view_mass_linking_wizard.xml',
     ],
     'demo': [
         'demo/mass_linking.xml',
+    ],
+    'images': [
+        'static/description/mass_linking_form.png',
+        'static/description/result_product_list.png',
+        'static/description/sale_order_tree.png',
+        'static/description/wizard_form_ok.png',
     ],
 }

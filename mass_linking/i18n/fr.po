@@ -1,0 +1,206 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * mass_linking
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-14 14:38+0000\n"
+"PO-Revision-Date: 2018-12-14 14:38+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mass_linking
+#: field:mass.linking,action_name:0
+msgid "Action Name"
+msgstr "Nom de l'action"
+
+#. module: mass_linking
+#: field:mass.linking,groups_id:0
+msgid "Allowed Groups"
+msgstr "Groupes authorisés"
+
+#. module: mass_linking
+#: field:mass.linking,create_uid:0
+#: field:mass.linking.wizard,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: mass_linking
+#: field:mass.linking,create_date:0
+#: field:mass.linking.wizard,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: mass_linking
+#: field:mass.linking,display_name:0
+#: field:mass.linking.wizard,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: mass_linking
+#: field:mass.linking,domain:0
+msgid "Domain"
+msgstr "Domaine"
+
+#. module: mass_linking
+#: field:mass.linking,link_field_1_id:0
+msgid "Field #1"
+msgstr "Champ #1"
+
+#. module: mass_linking
+#: field:mass.linking,link_field_1_model_id:0
+msgid "Field #1 Model"
+msgstr "Modèle du Champ #1"
+
+#. module: mass_linking
+#: field:mass.linking,link_field_2_model_id:0
+msgid "Field #2 Model"
+msgstr "Modèle du Champ #2"
+
+#. module: mass_linking
+#: field:mass.linking,link_field_3_model_id:0
+msgid "Field #3 Model"
+msgstr "Modèle du Champ #3"
+
+#. module: mass_linking
+#: field:mass.linking,link_field_2_id:0
+msgid "Field 2"
+msgstr "Champ 2"
+
+#. module: mass_linking
+#: field:mass.linking,link_field_3_id:0
+msgid "Field 3"
+msgstr "Champ 3"
+
+#. module: mass_linking
+#: field:mass.linking,link_field_id:0
+msgid "Final Target Field"
+msgstr "Champ final cible"
+
+#. module: mass_linking
+#: help:mass.linking,link_field_model_name:0
+msgid "For relationship fields, the technical name of the target model"
+msgstr "For relationship fields, the technical name of the target model"
+
+#. module: mass_linking
+#: view:mass.linking:mass_linking.view_mass_linking_form
+msgid "General Settings"
+msgstr "Configurations générales"
+
+#. module: mass_linking
+#: field:mass.linking,id:0
+#: field:mass.linking.wizard,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: mass_linking
+#: field:mass.linking,__last_update:0
+#: field:mass.linking.wizard,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: mass_linking
+#: field:mass.linking,write_uid:0
+#: field:mass.linking.wizard,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: mass_linking
+#: field:mass.linking,write_date:0
+#: field:mass.linking.wizard,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: mass_linking
+#: model:ir.actions.act_window,name:mass_linking.action_mass_linking
+#: model:ir.ui.menu,name:mass_linking.menu_mass_linking
+msgid "Linking"
+msgstr "Lien"
+
+#. module: mass_linking
+#: field:mass.linking,model_id:0
+msgid "Model"
+msgstr "Modèle"
+
+#. module: mass_linking
+#: field:mass.linking,name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: mass_linking
+#: field:mass.linking,link_field_model_name:0
+msgid "Object Relation"
+msgstr "Object Relation"
+
+#. module: mass_linking
+#: view:mass.linking:mass_linking.view_mass_linking_form
+msgid "Relation 1"
+msgstr "Relation 1"
+
+#. module: mass_linking
+#: view:mass.linking:mass_linking.view_mass_linking_form
+msgid "Relation 2"
+msgstr "Relation 2"
+
+#. module: mass_linking
+#: view:mass.linking:mass_linking.view_mass_linking_form
+msgid "Relation 3"
+msgstr "Relation 3"
+
+#. module: mass_linking
+#: field:mass.linking.wizard,remaining_item_qty:0
+msgid "Remaining item qty"
+msgstr "Remaining item qty"
+
+#. module: mass_linking
+#: field:mass.linking.wizard,removed_item_qty:0
+msgid "Removed item qty"
+msgstr "Removed item qty"
+
+#. module: mass_linking
+#: code:addons/mass_linking/models/mass_linking.py:104
+#, python-format
+msgid "See (%s)"
+msgstr "Voir (%s)"
+
+#. module: mass_linking
+#: model:mass.linking,action_name:mass_linking.linking_user_partner
+msgid "See Partners"
+msgstr "Voir les partenaires"
+
+#. module: mass_linking
+#: field:mass.linking.wizard,selected_item_qty:0
+msgid "Selected item qty"
+msgstr "Selected item qty"
+
+#. module: mass_linking
+#: field:mass.linking,action_id:0
+msgid "Sidebar Action"
+msgstr "Action de la barre latérale"
+
+#. module: mass_linking
+#: field:mass.linking,value_id:0
+msgid "Sidebar Button"
+msgstr "Boutton de la barre latérale"
+
+#. module: mass_linking
+#: field:mass.linking,target_action_id:0
+msgid "Target Action"
+msgstr "Action cible"
+
+#. module: mass_linking
+#: field:mass.linking,technical_relation:0
+msgid "Technical Relation"
+msgstr "Technical Relation"
+
+#. module: mass_linking
+#: model:mass.linking,name:mass_linking.linking_user_partner
+msgid "Users -> Partners"
+msgstr "Utilisateurs -> Partenaires"
+
