@@ -187,7 +187,7 @@ msgstr "Action de la barre latérale"
 #. module: mass_linking
 #: field:mass.linking,value_id:0
 msgid "Sidebar Button"
-msgstr "Boutton de la barre latérale"
+msgstr "Bouton de la barre latérale"
 
 #. module: mass_linking
 #: field:mass.linking,target_action_id:0
