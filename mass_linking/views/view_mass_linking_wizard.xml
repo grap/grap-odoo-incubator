@@ -7,7 +7,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 <openerp><data>
 
-
     <record id="view_mass_linking_wizard_form" model="ir.ui.view">
         <field name="model">mass.linking.wizard</field>
         <field name="inherit_id" ref="mass_operation_abstract.view_mass_operation_wizard_mixin_form"/>
@@ -18,6 +17,5 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             </xpath>
         </field>
     </record>
-
 
 </data></openerp>

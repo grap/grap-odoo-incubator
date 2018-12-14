@@ -41,7 +41,6 @@ class MassMergingContent(models.Model):
                     continue
                 vals = ContentLine._prepare_line(field)
                 line_ids_vals.append((0, 0, vals))
-            print line_ids_vals
             self.line_ids = line_ids_vals
 
     @api.multi

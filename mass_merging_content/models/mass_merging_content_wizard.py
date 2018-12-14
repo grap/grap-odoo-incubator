@@ -38,7 +38,6 @@ class MassMergingContentWizard(models.TransientModel):
             for line in lines:
                 key = self._prepare_key(group_fields, line)
                 if key not in grouped_data.keys():
-                    print key
                     vals = {x: False for x in sum_field_names}
                     vals.update({x: '' for x in join_text_field_names})
                     grouped_data[key] = {
