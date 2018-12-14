@@ -47,7 +47,7 @@ class MassOperationWizardMixin(models.AbstractModel):
                 "there is no more element that corresponds to the rules of"
                 " the domain.\n Please refresh your list and try to"
                 " select again the items."))
-        self._apply_operation(items)
+        return self._apply_operation(items)
 
     # Private Section
     @api.model

@@ -13,7 +13,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="mode">primary</field>
         <field name="arch" type="xml">
             <field name="model_id" position="after">
-                <field name="many2one_field_id"/>
+                <field name="link_field_id"/>
             </field>
         </field>
     </record>
@@ -25,7 +25,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="mode">primary</field>
         <field name="arch" type="xml">
             <field name="model_id" position="after">
-                <field name="many2one_field_id"/>
+                <field name="link_field_id"/>
             </field>
         </field>
     </record>
@@ -38,9 +38,26 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <xpath expr="//page[@name='setting']" position="inside">
                 <group>
-                    <field name="many2one_field_id"/>
-                    <field name="many2one_field_model_name" invisible="1"/>
-                    <field name="target_action_id"/>
+                    <group string="Relation 1" colspan="4" col="4">
+                        <field name="link_field_1_id"/>
+                        <field name="link_field_1_model_id"/>
+                    </group>
+                    <group string="Relation 2" colspan="4" col="4"
+                            attrs="{'invisible': [('link_field_1_id', '=', False)]}">
+                        <field name="link_field_2_id"/>
+                        <field name="link_field_2_model_id"/>
+                    </group>
+                    <group string="Relation 3" colspan="4" col="4"
+                            attrs="{'invisible': [('link_field_2_id', '=', False)]}">
+                        <field name="link_field_3_id"/>
+                        <field name="link_field_3_model_id"/>
+                    </group>
+                    <group string="General Settings" colspan="4" col="4">
+                        <field name="technical_relation"/>
+                        <field name="link_field_id"/>
+                        <field name="link_field_model_name"/>
+                        <field name="target_action_id"/>
+                    </group>
                 </group>
             </xpath>
         </field>

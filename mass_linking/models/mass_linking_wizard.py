@@ -14,17 +14,19 @@ class MassLinkingWizard(models.TransientModel):
     @api.multi
     def _apply_operation(self, items):
         mass_linking = self._get_mass_operation()
-        ids = items.mapped(mass_linking.many2one_field_id.name).ids
-        model_name = mass_linking.model_id.model
+        ids = items.mapped(mass_linking.technical_relation).ids
+        model_name = mass_linking.link_field_model_name
         domain = "[('id','in',[" + ','.join(map(str, ids)) + "])]"
         action = {
-            'name': 'FROMAGE',
-            'type': 'ir.actions.act_window',
-            'res_model': model_name,
-            'view_type': 'form',
-            'view_mode': 'tree,form',
-            'target': 'self',
             'domain': domain,
+            'res_model': model_name,
+            'target': 'current',
+            'type': 'ir.actions.act_window',
+            # 'view_id': False,
+            # 'view_ids': [False],
+            'view_mode': 'tree,form',
+            # 'view_type': 'form',
+            # 'views': False,
         }
 
         # action.pop('views')
@@ -35,7 +37,7 @@ class MassLinkingWizard(models.TransientModel):
             print action[k]
         print ">>>>>>>>>>>>>>>>>>>><"
         print ">>>>>>>>>>>>>>>>>>>><"
-        import pdb; pdb.set_trace()
+        # import pdb; pdb.set_trace()
         return action
 
         # action = mass_linking.target_action_id
