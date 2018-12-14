@@ -53,7 +53,7 @@ Configuration
    (usefull for ``integer`` and ``float`` fields)
 
 3. 'Join Texts': the value of this field will be joined.
-    (usefull for ``char`` fields)
+   (usefull for ``char`` fields)
 
 4. 'Related Value': the value will be recomputed, based on the given extra
    argument.
@@ -74,6 +74,9 @@ Usage
 * go to the model for which you have configured a merging operation
 
 * select items and click on 'More' and on the new button
+
+.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_mass_merging_line/mass_merging_content/static/description/account_invoice_tree.png
+
 
 * the opened pop up display the number of selected items
 
