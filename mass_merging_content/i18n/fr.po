@@ -18,12 +18,12 @@ msgstr ""
 #. module: mass_merging_content
 #: field:mass.merging.content,action_name:0
 msgid "Action Name"
-msgstr "Action Name"
+msgstr "Nom de l'action"
 
 #. module: mass_merging_content
 #: field:mass.merging.content,groups_id:0
 msgid "Allowed Groups"
-msgstr "Allowed Groups"
+msgstr "Groupes authorisés"
 
 #. module: mass_merging_content
 #: field:mass.merging.content,create_uid:0
@@ -49,39 +49,39 @@ msgstr "Display Name"
 #. module: mass_merging_content
 #: field:mass.merging.content,domain:0
 msgid "Domain"
-msgstr "Domain"
+msgstr "Domaine"
 
 #. module: mass_merging_content
 #: field:mass.merging.content.line,operation_argument:0
 msgid "Extra Argument"
-msgstr "Extra Argument"
+msgstr "Paramètre complémentaire"
 
 #. module: mass_merging_content
 #: help:mass.merging.content.line,operation_argument:0
 msgid "Extra argument for the operation\n"
 " * for 'Related': set the value that will be used in the the first line, for exemple 'product_id.name'"
-msgstr "Extra argument for the operation\n"
-" * for 'Related': set the value that will be used in the the first line, for exemple 'product_id.name'"
+msgstr "Paramètre supplémentaire pour l'opération\n"
+" * pour le type 'liaison': mettez la valeur qui sera utilisé pour la première ligne, par exemple 'product_id.name'"
 
 #. module: mass_merging_content
 #: field:mass.merging.content.line,field_id:0
 msgid "Field"
-msgstr "Field"
+msgstr "Champ"
 
 #. module: mass_merging_content
 #: field:mass.merging.content,one2many_field_id:0
 msgid "Field to Merge"
-msgstr "Field to Merge"
+msgstr "Champ à fusionner"
 
 #. module: mass_merging_content
 #: field:mass.merging.content.line,field_type:0
 msgid "Field type"
-msgstr "Field type"
+msgstr "Type de champ"
 
 #. module: mass_merging_content
 #: selection:mass.merging.content.line,operation_type:0
 msgid "Group"
-msgstr "Group"
+msgstr "Grouper"
 
 #. module: mass_merging_content
 #: field:mass.merging.content,id:0
@@ -93,12 +93,12 @@ msgstr "ID"
 #. module: mass_merging_content
 #: selection:mass.merging.content.line,operation_type:0
 msgid "Ignored"
-msgstr "Ignored"
+msgstr "Ignoré"
 
 #. module: mass_merging_content
 #: selection:mass.merging.content.line,operation_type:0
 msgid "Join Texts"
-msgstr "Join Texts"
+msgstr "Union de textes"
 
 #. module: mass_merging_content
 #: field:mass.merging.content,__last_update:0
@@ -125,18 +125,18 @@ msgstr "Last Updated on"
 #: code:addons/mass_merging_content/models/mass_merging_content.py:71
 #, python-format
 msgid "Merge Content (%s)"
-msgstr "Merge Content (%s)"
+msgstr "Fusion de contenu (%s)"
 
 #. module: mass_merging_content
 #: model:ir.actions.act_window,name:mass_merging_content.action_mass_merging_content
 #: model:ir.ui.menu,name:mass_merging_content.menu_mass_merging_content
 msgid "Merging Content"
-msgstr "Merging Content"
+msgstr "Fusion de contenu"
 
 #. module: mass_merging_content
 #: field:mass.merging.content,line_ids:0
 msgid "Merging Criterias"
-msgstr "Merging Criterias"
+msgstr "Critères de fusion"
 
 #. module: mass_merging_content
 #: field:mass.merging.content.line,merging_content_id:0
@@ -146,12 +146,12 @@ msgstr "Merging content id"
 #. module: mass_merging_content
 #: field:mass.merging.content,model_id:0
 msgid "Model"
-msgstr "Model"
+msgstr "Modèle"
 
 #. module: mass_merging_content
 #: field:mass.merging.content,name:0
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 #. module: mass_merging_content
 #: field:mass.merging.content,one2many_model:0
@@ -161,12 +161,12 @@ msgstr "Object Relation"
 #. module: mass_merging_content
 #: field:mass.merging.content.line,operation_type:0
 msgid "Operation Type"
-msgstr "Operation Type"
+msgstr "Type d'opération"
 
 #. module: mass_merging_content
 #: selection:mass.merging.content.line,operation_type:0
 msgid "Related value"
-msgstr "Related value"
+msgstr "Valeur liée"
 
 #. module: mass_merging_content
 #: field:mass.merging.content.wizard,remaining_item_qty:0
@@ -196,7 +196,7 @@ msgstr "Bouton de la barre latérale"
 #. module: mass_merging_content
 #: selection:mass.merging.content.line,operation_type:0
 msgid "Sum Values"
-msgstr "Sum Values"
+msgstr "Additionner"
 
 #. module: mass_merging_content
 #: help:mass.merging.content,one2many_model:0
@@ -207,5 +207,5 @@ msgstr "Technical field, used in the model 'mass.merging.content.line'"
 #: code:addons/mass_merging_content/models/mass_merging_content_line.py:54
 #, python-format
 msgid "The selected field '%s' must belong to the model of the field to merge."
-msgstr "The selected field '%s' must belong to the model of the field to merge."
+msgstr "Le champ sélectionné '%s' doit appartenir au modèle du champ à fusionner."
 
