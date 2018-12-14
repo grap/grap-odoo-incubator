@@ -25,7 +25,8 @@ class MassLinking(models.Model):
 
     link_field_2_id = fields.Many2one(
         comodel_name='ir.model.fields', string='Field 2',
-        domain="[('model_id', '=', link_field_1_model_id), ('relation', '!=', '')]")
+        domain="[('model_id', '=', link_field_1_model_id),"
+        " ('relation', '!=', '')]")
 
     link_field_2_model_id = fields.Many2one(
         string='Field #2 Model', comodel_name='ir.model',
@@ -33,7 +34,8 @@ class MassLinking(models.Model):
 
     link_field_3_id = fields.Many2one(
         comodel_name='ir.model.fields', string='Field 3',
-        domain="[('model_id', '=', link_field_2_model_id), ('relation', '!=', '')]")
+        domain="[('model_id', '=', link_field_2_model_id),"
+        " ('relation', '!=', '')]")
 
     link_field_3_model_id = fields.Many2one(
         string='Field #3 Model', comodel_name='ir.model',
