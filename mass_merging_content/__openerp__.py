@@ -16,9 +16,16 @@
         'mass_operation_abstract',
     ],
     'data': [
+        'security/ir.model.access.csv',
         'views/view_mass_merging_content.xml',
         'views/view_mass_merging_content_wizard.xml',
     ],
-    'demo': [
+    'images': [
+        'static/description/account_invoice_form_after.png',
+        'static/description/account_invoice_form_before.png',
+        'static/description/account_invoice_tree.png',
+        'static/description/mass_merging_content_form.png',
+        'static/description/wizard_form_ok.png',
+        'static/description/wizard_form_warning.png',
     ],
 }
