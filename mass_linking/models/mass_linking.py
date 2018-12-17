@@ -87,7 +87,7 @@ class MassLinking(models.Model):
     @api.depends('link_field_1_id', 'link_field_2_id', 'link_field_3_id')
     def _compute_link(self):
         for mass_linking in self:
-            if mass_linking.link_field_2_id:
+            if mass_linking.link_field_1_id:
                 links = [mass_linking.link_field_1_id.name]
                 field = mass_linking.link_field_1_id
                 if mass_linking.link_field_2_id:
