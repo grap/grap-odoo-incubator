@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mass_merging_content_user,access_mass_merging_content_user,model_mass_merging_content,base.group_user,1,,,
+access_mass_merging_content_manager,access_mass_merging_content_manager,model_mass_merging_content,base.group_system,1,1,1,1
+access_mass_merging_content_line_user,access_mass_merging_content_line_user,model_mass_merging_content_line,base.group_user,1,,,
+access_mass_merging_content_line_manager,access_mass_merging_content_line_manager,model_mass_merging_content_line,base.group_system,1,1,1,1

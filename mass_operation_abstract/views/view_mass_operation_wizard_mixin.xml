@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018-Today GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<openerp><data>
+
+    <record id="view_mass_operation_wizard_mixin_form" model="ir.ui.view">
+        <field name="model">mass.operation.wizard.mixin</field>
+        <field name="arch" type="xml">
+            <form>
+                <header/>
+                    <p class="alert alert-danger" attrs="{'invisible': [('remaining_item_qty', '!=', 0)]}">
+                        None of the items you have selected can be processed.
+                    </p>
+                    <p class="alert alert-warning" attrs="{'invisible': ['|', ('remaining_item_qty', '=', 0), ('removed_item_qty', '=', 0)]}">
+                        You have selected <b><field name="removed_item_qty" nolabel="1" class="oe_inline"/></b> items
+                        that can not be processed.<br/>
+                        Only <b><field name="remaining_item_qty" nolabel="1" class="oe_inline"/></b> items will be processed.
+                    </p>
+                    <p class="alert alert-info" attrs="{'invisible': ['|', ('selected_item_qty', '=', 1), ('removed_item_qty', '!=', 0)]}">
+                        The treatment will be processed on the <b><field name="selected_item_qty" nolabel="1" class="oe_inline"/></b>
+                        selected elements.</p>
+                    <p class="alert alert-info" attrs="{'invisible': ['|', ('selected_item_qty', '!=', 1), ('removed_item_qty', '!=', 0)]}">
+                        The treatment will be processed on the selected element.</p>
+                    <group name="custom_info">
+                        <!-- include here custom fields in inherited modules -->
+                    </group>
+                  <footer>
+                      <button string="Apply" name="button_apply" type="object" class="oe_highlight" attrs="{'invisible': [('remaining_item_qty', '=', 0)]}"/>
+                      <button string="Cancel" class="oe_link" special="cancel"/>
+                  </footer>
+            </form>
+        </field>
+    </record>
+
+</data></openerp>

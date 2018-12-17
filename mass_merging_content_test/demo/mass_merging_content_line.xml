@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="merging_invoice_line_1" model="mass.merging.content.line">
+        <field name="merging_content_id" ref="merging_invoice"/>
+        <field name="field_id" ref="account.field_account_invoice_line_account_analytic_id"/>
+        <field name="operation_type">group_by</field>
+    </record>
+
+    <record id="merging_invoice_line_2" model="mass.merging.content.line">
+        <field name="merging_content_id" ref="merging_invoice"/>
+        <field name="field_id" ref="account.field_account_invoice_line_account_id"/>
+        <field name="operation_type">group_by</field>
+    </record>
+
+    <record id="merging_invoice_line_3" model="mass.merging.content.line">
+        <field name="merging_content_id" ref="merging_invoice"/>
+        <field name="field_id" ref="account.field_account_invoice_line_invoice_line_tax_id"/>
+        <field name="operation_type">group_by</field>
+    </record>
+
+
+    <record id="merging_invoice_line_4" model="mass.merging.content.line">
+        <field name="merging_content_id" ref="merging_invoice"/>
+        <field name="field_id" ref="account.field_account_invoice_line_product_id"/>
+        <field name="operation_type">group_by</field>
+    </record>
+
+    <record id="merging_invoice_line_5" model="mass.merging.content.line">
+        <field name="merging_content_id" ref="merging_invoice"/>
+        <field name="field_id" ref="account.field_account_invoice_line_uos_id"/>
+        <field name="operation_type">group_by</field>
+    </record>
+
+    <record id="merging_invoice_line_6" model="mass.merging.content.line">
+        <field name="merging_content_id" ref="merging_invoice"/>
+        <field name="field_id" ref="account.field_account_invoice_line_discount"/>
+        <field name="operation_type">group_by</field>
+    </record>
+
+    <record id="merging_invoice_line_7" model="mass.merging.content.line">
+        <field name="merging_content_id" ref="merging_invoice"/>
+        <field name="field_id" ref="account.field_account_invoice_line_price_unit"/>
+        <field name="operation_type">group_by</field>
+    </record>
+
+    <record id="merging_invoice_line_8" model="mass.merging.content.line">
+        <field name="merging_content_id" ref="merging_invoice"/>
+        <field name="field_id" ref="account.field_account_invoice_line_quantity"/>
+        <field name="operation_type">sum</field>
+    </record>
+
+    <record id="merging_invoice_line_9" model="mass.merging.content.line">
+        <field name="merging_content_id" ref="merging_invoice"/>
+        <field name="field_id" ref="account.field_account_invoice_line_name"/>
+        <field name="operation_type">related</field>
+        <field name="operation_argument">product_id.name</field>
+    </record>
+
+</data></openerp>
