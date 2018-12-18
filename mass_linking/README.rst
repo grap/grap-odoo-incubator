@@ -13,9 +13,9 @@ Mass Linking
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-legalsylvain%2Fgrap--odoo--incubator-lightgray.png?logo=github
-    :target: https://github.com/legalsylvain/grap-odoo-incubator/tree/8.0_ADD_mass_merging_line/mass_linking
-    :alt: legalsylvain/grap-odoo-incubator
+.. |badge3| image:: https://img.shields.io/badge/github-GRAP%2Fgrap--odoo--incubator-lightgray.png?logo=github
+    :target: https://github.com/GRAP/grap-odoo-incubator/tree/8.0/mass_linking
+    :alt: GRAP/grap-odoo-incubator
 
 |badge1| |badge2| |badge3| 
 
@@ -34,7 +34,7 @@ Configuration
 
 * Create a new item
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_mass_merging_line/mass_linking/static/description/mass_linking_form.png
+.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/mass_linking/static/description/mass_linking_form.png
 
 * Set a name for your link, and another for the button that will appear on the
   target model
@@ -68,12 +68,12 @@ Usage
 
 * select items and click on 'More' and on the new button
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_mass_merging_line/mass_linking/static/description/sale_order_tree.png
+.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/mass_linking/static/description/sale_order_tree.png
 
 
 * the opened pop up display the number of selected items
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_mass_merging_line/mass_linking/static/description/wizard_form_ok.png
+.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/mass_linking/static/description/wizard_form_ok.png
 
 **Result**
 
@@ -81,15 +81,15 @@ It will display all the products associated to all the sale order lines
 associated to the selected sale orders.
 
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_mass_merging_line/mass_linking/static/description/result_product_list.png
+.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/mass_linking/static/description/result_product_list.png
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/legalsylvain/grap-odoo-incubator/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/GRAP/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/legalsylvain/grap-odoo-incubator/issues/new?body=module:%20mass_linking%0Aversion:%208.0_ADD_mass_merging_line%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/GRAP/grap-odoo-incubator/issues/new?body=module:%20mass_linking%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -111,7 +111,7 @@ Maintainers
 
 
 
-This module is part of the `legalsylvain/grap-odoo-incubator <https://github.com/legalsylvain/grap-odoo-incubator/tree/8.0_ADD_mass_merging_line/mass_linking>`_ project on GitHub.
+This module is part of the `GRAP/grap-odoo-incubator <https://github.com/GRAP/grap-odoo-incubator/tree/8.0/mass_linking>`_ project on GitHub.
 
 
 You are welcome to contribute.
