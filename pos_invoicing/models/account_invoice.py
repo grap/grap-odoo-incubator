@@ -34,6 +34,6 @@ class AccountInvoice(models.Model):
         invoices = self.filtered(lambda x: x.pos_pending_payment)
         if invoices:
             raise UserError(_(
-                "You can realize this action on the invoice(s) %s because"
+                "You can not realize this action on the invoice(s) %s because"
                 " there are pending payments in the Point of Sale.") % (
                     ', '.join(invoices.mapped('name'))))

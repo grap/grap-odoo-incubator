@@ -46,5 +46,5 @@ msgstr "Point de Vente"
 #. module: pos_invoicing
 #: code:addons/pos_invoicing/models/account_invoice.py:37
 #, python-format
-msgid "You can realize this action on the invoice(s) %s because there are pending payments in the Point of Sale."
-msgstr "Vous ne pouvez pas réaliser cette action sur la / les facture(s) car il y a des paiements en cours dans le point de vente."
+msgid "You can not realize this action on the invoice(s) %s because there are pending payments in the Point of Sale."
+msgstr "Vous ne pouvez pas réaliser cette action sur la / les facture(s) %s car il y a des paiements en cours dans le point de vente."
