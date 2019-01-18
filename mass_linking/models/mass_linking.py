@@ -14,6 +14,11 @@ class MassLinking(models.Model):
     # Overwrite Section
     _wizard_model_name = 'mass.linking.wizard'
 
+    @api.multi
+    def _prepare_action_name(self):
+        self.ensure_one()
+        return _("See (%s)" % (self.name))
+
     # Column Section
     link_field_1_id = fields.Many2one(
         comodel_name='ir.model.fields', string='Field #1', required=True,
@@ -98,9 +103,3 @@ class MassLinking(models.Model):
                         field = mass_linking.link_field_3_id
                 mass_linking.technical_relation = '.'.join(links)
                 mass_linking.link_field_id = field
-
-    # Overwrite Section
-    @api.multi
-    def _get_action_name(self):
-        self.ensure_one()
-        return _("See (%s)" % (self.name))

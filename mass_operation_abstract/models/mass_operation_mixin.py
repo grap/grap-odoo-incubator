@@ -10,22 +10,27 @@ from openerp import _, api, fields, models
 class MassOperationMixin(models.AbstractModel):
     _name = 'mass.operation.mixin'
 
-    # To Overwrite Section
+    # To Overwrite Section (Mandatory)
     _wizard_model_name = False
 
+    # To Overwrite Section (Optional)
     @api.multi
-    def _get_action_name(self):
-        self.ensure_one()
+    def _prepare_action_name(self):
         return _("Mass Operation (%s)" % (self.name))
 
+    @api.multi
+    def _get_model_domain(self):
+        return [('osv_memory', '=', False)]
+
     # Column Section
-    name = fields.Char(string='Name', translate=True, required=True)
+    name = fields.Char(string='Name', required=True)
 
     action_name = fields.Char(
-        string='Action Name', translate=True, required=True)
+        string='Action Name', required=True)
 
     model_id = fields.Many2one(
-        comodel_name='ir.model', string='Model', required=True)
+        comodel_name='ir.model', string='Model', required=True,
+        domain=lambda s: s._get_model_domain())
 
     action_id = fields.Many2one(
         comodel_name='ir.actions.act_window', string='Sidebar Action',
@@ -43,7 +48,8 @@ class MassOperationMixin(models.AbstractModel):
     # Onchange Section
     @api.onchange('name')
     def onchange_name(self):
-        self.action_name = self._get_action_name()
+        if self.name and not self.action_name:
+            self.action_name = self._prepare_action_name()
 
     # Action Section
     @api.multi
