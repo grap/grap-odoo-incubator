@@ -36,8 +36,8 @@ Configuration
 
 .. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_mass_action/mass_action/static/description/mass_action_form.png
 
-* Set a name for your link, and another for the button that will appear on the
-  target model
+* Set a name for your mass action, and another for the button that will appear
+  on the target model for the end users
 
 * choose a model
 
@@ -50,7 +50,7 @@ Configuration
 
 **Extra options**
 
-* you can define a domain, to limit the action operation to items that match
+* you can define a domain, to limit the action to items that match
   with that domain
 * you can define groups whose members will have access to that option
 
@@ -70,8 +70,8 @@ Usage
 
 **Result**
 
-It will display all the products associated to all the sale order lines
-associated to the selected sale orders.
+The selected items will be processed. In that exemple, the selected users
+will be duplicated.
 
 
 .. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_mass_action/mass_action/static/description/res_users_tree_result.png

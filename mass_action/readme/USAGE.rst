@@ -11,8 +11,8 @@
 
 **Result**
 
-It will display all the products associated to all the sale order lines
-associated to the selected sale orders.
+The selected items will be processed. In that exemple, the selected users
+will be duplicated.
 
 
 .. figure:: ../static/description/res_users_tree_result.png
