@@ -93,7 +93,7 @@ class InternalUse(models.Model):
     def action_confirm(self):
         """ Set the internal use to 'confirmed' and create stock moves"""
         stock_move_obj = self.env['stock.move']
-        for use in self:
+        for use in self.filtered(lambda x: x.state == 'draft'):
             if len(use.line_ids) == 0:
                 raise UserError(_(
                     "You can not confirm an empty Internal Use."))
@@ -120,7 +120,13 @@ class InternalUse(models.Model):
 
         use_data = {}
 
-        for use in self:
+        # Handle confirmed internal use that have to generate accounting
+        # entries
+        for use in self.filtered(
+                lambda x: (
+                    x.state == 'confirmed' and
+                    x.internal_use_case_id.journal_id)):
+
             key = use._get_expense_entry_key()
 
             if key in use_data.keys():
@@ -167,6 +173,16 @@ class InternalUse(models.Model):
                 'state': 'done',
                 'account_move_id': account_move.id,
             })
+
+        # Handle confirmed internal use that don't have to generate accounting
+        # entries. (fix incorrect state)
+        uses = self.filtered(
+            lambda x: (
+                x.state == 'confirmed' and
+                not x.internal_use_case_id.journal_id))
+        uses.write({
+            'state': 'done',
+        })
 
         return True
 
