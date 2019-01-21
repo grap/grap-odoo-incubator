@@ -119,7 +119,7 @@ class InternalUseLine(models.Model):
         self.ensure_one()
         product = self.product_id
         return (
-            product.get_income_expense_accounts()['account_expense'].id,
+            product._get_expense_account()['account_expense'].id,
             tuple(product.supplier_taxes_id.ids),
         )
 
@@ -136,7 +136,7 @@ class InternalUseLine(models.Model):
             'product_id': False,
             'product_uom_id': False,
             'quantity': 0,
-            'account_id': self[0].product_id.get_income_expense_accounts()[
+            'account_id': self[0].product_id._get_expense_account()[
                 'account_expense'].id,
             'credit': (total > 0) and total or 0,
             'debit': (total < 0) and -total or 0,

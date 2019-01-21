@@ -4,29 +4,31 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, models
+from openerp import _, api, models
+from openerp.exceptions import Warning as UserError
 
 
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     @api.multi
-    def get_income_expense_accounts(self):
+    def _get_expense_account(self):
         """ get the income and expense accounts related to product.
         @return: dictionary which contains information regarding
             income and expense accounts
         """
         self.ensure_one()
         categ = self.categ_id
-        income_account = (
-            self.property_account_income or (
-                categ and categ.property_account_income_categ or False))
 
         expense_account = (
             self.property_account_expense or (
                 categ and categ.property_account_expense_categ or False))
 
+        if not expense_account:
+            raise UserError(_(
+                "The product %s has not account expense defined. Please define"
+                " one and try again") % (self.name))
+
         return {
-            'account_income': income_account,
             'account_expense': expense_account,
         }

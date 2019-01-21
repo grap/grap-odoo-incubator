@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-21 11:31+0000\n"
-"PO-Revision-Date: 2019-01-21 11:31+0000\n"
+"POT-Creation-Date: 2019-01-21 12:23+0000\n"
+"PO-Revision-Date: 2019-01-21 12:23+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -338,6 +338,12 @@ msgstr "Paramétrage de stock"
 #, python-format
 msgid "The current unit of measure '%s' of the line %s (quantity  %s) is not compatible with the unit of measure '%s' of the product"
 msgstr "L'unité de mesure '%s' de la ligne %s (quantité  %s) n'est pas compatible avec l'unité de mesure '%s' de l'article"
+
+#. module: stock_internal_use_of_products
+#: code:addons/stock_internal_use_of_products/models/product_product.py:28
+#, python-format
+msgid "The product %s has not account expense defined. Please define one and try again"
+msgstr "Le produit %s n'a pas de compte de dépense défini. Veuillez en définir un et essayer de nouveau"
 
 #. module: stock_internal_use_of_products
 #: view:internal.use:stock_internal_use_of_products.view_internal_use_search
