@@ -9,16 +9,16 @@ import time
 from openerp import _, api, fields, models
 from openerp.exceptions import Warning as UserError
 
-_INTERNAL_USE_STATE = [
-    ('draft', 'New'),
-    ('confirmed', 'Confirmed'),
-    ('done', 'Done'),
-]
-
 
 class InternalUse(models.Model):
     _name = 'internal.use'
     _order = 'date_done desc, name'
+
+    _INTERNAL_USE_STATE = [
+        ('draft', 'New'),
+        ('confirmed', 'Confirmed'),
+        ('done', 'Done'),
+    ]
 
     # Columns section
     name = fields.Char(string='Name', required=True, default='/')
@@ -52,7 +52,6 @@ class InternalUse(models.Model):
 
     line_ids = fields.One2many(
         comodel_name='internal.use.line', inverse_name='internal_use_id',
-        copy=False,
         string='Lines', states={
             'done': [('readonly', True)],
             'confirmed': [('readonly', True)]})
@@ -60,6 +59,10 @@ class InternalUse(models.Model):
     stock_move_ids = fields.One2many(
         comodel_name='stock.move', inverse_name='internal_use_id',
         string='Stock Moves', copy=False)
+
+    stock_move_qty = fields.Integer(
+        string='Stock Move Quantity', compute='_compute_stock_move_qty',
+        store=True)
 
     account_move_id = fields.Many2one(
         comodel_name='account.move', string='Account Moves', readonly=True,
@@ -75,6 +78,11 @@ class InternalUse(models.Model):
         for use in self:
             use.amount = sum(use.mapped('line_ids.amount'))
 
+    @api.depends('stock_move_ids.internal_use_id')
+    def _compute_stock_move_qty(self):
+        for use in self:
+            use.stock_move_qty = len(use.stock_move_ids)
+
     # Overload Section
     @api.model
     def create(self, vals):
@@ -88,7 +96,16 @@ class InternalUse(models.Model):
             raise UserError(_('You can only delete draft uses.'))
         return super(InternalUse, self).unlink()
 
-    # Actions section
+    # Action Section
+    @api.multi
+    def action_view_stock_lines(self):
+        self.ensure_one()
+        action = self.env.ref('stock.action_move_form2')
+        action_data = action.read()[0]
+        action_data['domain'] = "[('id','in',[" +\
+            ','.join(map(str, self.line_ids.ids)) + "])]"
+        return action_data
+
     @api.multi
     def action_confirm(self):
         """ Set the internal use to 'confirmed' and create stock moves"""

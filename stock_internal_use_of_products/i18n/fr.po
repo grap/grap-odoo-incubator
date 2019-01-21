@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-21 12:23+0000\n"
-"PO-Revision-Date: 2019-01-21 12:23+0000\n"
+"POT-Creation-Date: 2019-01-21 15:42+0000\n"
+"PO-Revision-Date: 2019-01-21 15:42+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -35,11 +35,6 @@ msgstr "Code de Taxe à l'achat (20%)"
 #: field:internal.use,account_move_id:0
 msgid "Account Moves"
 msgstr "Pièces Comptables"
-
-#. module: stock_internal_use_of_products
-#: view:internal.use:stock_internal_use_of_products.view_internal_use_form
-msgid "Accounting Entry"
-msgstr "Pièce comptable"
 
 #. module: stock_internal_use_of_products
 #: view:internal.use.case:stock_internal_use_of_products.view_internal_use_config_form
@@ -156,8 +151,8 @@ msgid "Expense Account"
 msgstr "Compte de dépense"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use.py:199
-#: code:addons/stock_internal_use_of_products/models/internal_use.py:207
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:232
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:240
 #: code:addons/stock_internal_use_of_products/models/internal_use_line.py:133
 #, python-format
 msgid "Expense Transfert (%s)"
@@ -323,6 +318,11 @@ msgid "Stock Move"
 msgstr "Mouvement de stock"
 
 #. module: stock_internal_use_of_products
+#: field:internal.use,stock_move_qty:0
+msgid "Stock Move Quantity"
+msgstr "Quantité de mouvement de stock"
+
+#. module: stock_internal_use_of_products
 #: view:internal.use:stock_internal_use_of_products.view_internal_use_form
 #: field:internal.use,stock_move_ids:0
 msgid "Stock Moves"
@@ -343,7 +343,7 @@ msgstr "L'unité de mesure '%s' de la ligne %s (quantité  %s) n'est pas compati
 #: code:addons/stock_internal_use_of_products/models/product_product.py:28
 #, python-format
 msgid "The product %s has not account expense defined. Please define one and try again"
-msgstr "Le produit %s n'a pas de compte de dépense défini. Veuillez en définir un et essayer de nouveau"
+msgstr "The product %s has not account expense defined. Please define one and try again"
 
 #. module: stock_internal_use_of_products
 #: view:internal.use:stock_internal_use_of_products.view_internal_use_search
@@ -376,13 +376,13 @@ msgid "Unit of Measure"
 msgstr "Unité de mesure"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use.py:98
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:115
 #, python-format
 msgid "You can not confirm an empty Internal Use."
 msgstr "Vous ne pouvez pas valider une utilisation interne sans aucune ligne"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use.py:88
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:96
 #, python-format
 msgid "You can only delete draft uses."
 msgstr "Vous pouvez seulement supprimer les utilisations internes en brouillon"
@@ -391,9 +391,4 @@ msgstr "Vous pouvez seulement supprimer les utilisations internes en brouillon"
 #: view:internal.use.mass.generate.wizard:stock_internal_use_of_products.view_internal_use_mass_generate_wizard_form
 msgid "or"
 msgstr "ou"
-
-#. module: stock_internal_use_of_products
-#: view:internal.use:stock_internal_use_of_products.view_internal_use_form
-msgid "total"
-msgstr "total"
 

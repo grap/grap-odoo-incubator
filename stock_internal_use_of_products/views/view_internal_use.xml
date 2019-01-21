@@ -50,8 +50,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_confirm" states="draft" string="Confirm" type="object" class="oe_highlight"/>
-                    <button name="action_done" states="confirmed" string="Generate Accounting Entry" type="object" class="oe_highlight" groups="account.group_account_manager"/>
+                    <button name="action_confirm" states="draft" string="Confirm"
+                        type="object" class="oe_highlight"/>
+                    <button name="action_done" states="confirmed" string="Generate Accounting Entry"
+                        type="object" class="oe_highlight" groups="account.group_account_manager"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
@@ -61,15 +63,24 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <field name="name" class="oe_inline" readonly="1"/>
                         </h1>
                     </div>
+                    <div class="oe_right oe_button_box" name="buttons">
+                        <button class="oe_inline oe_stat_button" type="object"
+                                name="action_view_stock_lines" icon="fa-list-ul" string="Stock Moves"
+                                attrs="{'invisible': [('stock_move_qty', '=', 0)]}">
+                        </button>
+                    </div>
                     <group>
                         <group>
                             <field name="internal_use_case_id"/>
-                            <field name="amount" sum="total"/>
+                            <field name="amount"/>
                         </group>
                         <group>
                             <field name="date_done"/>
                             <field name="description"/>
                             <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="stock_move_qty" invisible="1"/>
+                            <field name="account_move_id" groups="account.group_account_manager"/>
+
                         </group>
                     </group>
                     <notebook>
@@ -83,18 +94,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <field name="amount"/>
                                 </tree>
                             </field>
-                        </page>
-                        <page string="Stock Moves" attrs="{'invisible': [('state','in', ['draft'])]}">
-                            <group>
-                                <field name="stock_move_ids" nolabel="1" colspan="4"/>
-                            </group>
-                        </page>
-                        <page string="Accounting Entry" 
-                                attrs="{'invisible': [('state','in', ['draft', 'confirmed'])]}"
-                                groups="account.group_account_manager">
-                            <group>
-                                <field name="account_move_id"/>
-                            </group>
                         </page>
                     </notebook>
                 </sheet>
