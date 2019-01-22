@@ -9,7 +9,6 @@ categories).
 
 .. figure:: ../static/description/res_company_category_form.png
 
-* Go to your companies, and set for each a category in the 'Configuration'
-Tab.
+* Go to your companies, and set for each a category in the 'Configuration' tab.
 
 .. figure:: ../static/description/res_company_form.png
