@@ -1,6 +1,7 @@
 # coding: utf-8
 # Copyright (C) 2016 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# @author: Quentin Dupont (https://twitter.com/pondupont)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import os
@@ -8,7 +9,7 @@ import base64
 import StringIO
 import logging
 
-from openerp import api, fields, models
+from openerp import _, api, exceptions, fields, models
 
 logger = logging.getLogger(__name__)
 
@@ -36,7 +37,14 @@ class ProductProduct(models.Model):
         if not (barcode and cairosvg):
             return
         for product in self.filtered(lambda x: x.ean13):
-            EAN = barcode.get_barcode_class('ean13')
+
+            if len(product['ean13']) == 8:
+                EAN = barcode.get_barcode_class('ean8')
+            elif len(product['ean13']) == 13:
+                EAN = barcode.get_barcode_class('ean13')
+            else:
+                raise exceptions.Warning(_(
+                    "Barcode image will not be computed"))
             ean = EAN(product.ean13)
             fullname = ean.save('/tmp/' + product.ean13)
             f = open(fullname, 'r')
