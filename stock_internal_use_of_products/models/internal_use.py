@@ -102,8 +102,9 @@ class InternalUse(models.Model):
         self.ensure_one()
         action = self.env.ref('stock.action_move_form2')
         action_data = action.read()[0]
-        action_data['domain'] = "[('id','in',[" +\
-            ','.join(map(str, self.line_ids.ids)) + "])]"
+        action_data['domain'] = "[('internal_use_id','in',[" +\
+            ','.join(map(str, self.ids)) + "])]"
+        print action_data
         return action_data
 
     @api.multi
@@ -155,26 +156,48 @@ class InternalUse(models.Model):
             uses = self.browse(use_ids)
             # prepare Account Move
             account_move_vals = uses._prepare_account_move()
-
-            # Create Main Account Move Line
-            account_move_line_vals = uses._prepare_account_move_line(
-                account_move_vals)
-            all_account_move_line_vals = [(0, 0, account_move_line_vals)]
+            all_account_move_line_vals = []
+            # # Create Main Account Move Line
+            # account_move_line_vals = uses._prepare_account_move_line(
+            #     account_move_vals)
+            # all_account_move_line_vals = [(0, 0, account_move_line_vals)]
 
             # Create Counterpart Account Move Line(s)
-            use_line_data = {}
+            charge_use_line_data = {}
+            uncharge_use_line_data = {}
+
             for line in uses.mapped('line_ids'):
-                line_key = line._get_expense_entry_key()
+                # Get Charge line data
+                charge_line_key = line._get_expense_entry_key_charge()
 
-                if line_key in use_line_data:
-                    use_line_data[line_key].append(line.id)
+                if charge_line_key in charge_use_line_data:
+                    charge_use_line_data[charge_line_key].append(line.id)
                 else:
-                    use_line_data[line_key] = [line.id]
+                    charge_use_line_data[charge_line_key] = [line.id]
 
-            for line_key, line_ids in use_line_data.iteritems():
+                # Get Unharge line data
+                uncharge_line_key = line._get_expense_entry_key_uncharge()
+
+                if uncharge_line_key in uncharge_use_line_data:
+                    uncharge_use_line_data[uncharge_line_key].append(line.id)
+                else:
+                    uncharge_use_line_data[uncharge_line_key] = [line.id]
+
+            # Create uncharge Lines
+            for key, line_ids in uncharge_use_line_data.iteritems():
                 lines = use_line_obj.browse(line_ids)
-                account_move_line_vals = lines._prepare_account_move_line(
-                    account_move_vals)
+                account_move_line_vals =\
+                    lines._prepare_account_move_line_uncharge(
+                        account_move_vals)
+                all_account_move_line_vals.append(
+                    (0, 0, account_move_line_vals))
+
+            # Create charge Lines
+            for key, line_ids in charge_use_line_data.iteritems():
+                lines = use_line_obj.browse(line_ids)
+                account_move_line_vals =\
+                    lines._prepare_account_move_line_charge(
+                        account_move_vals)
                 all_account_move_line_vals.append(
                     (0, 0, account_move_line_vals))
 
@@ -230,17 +253,4 @@ class InternalUse(models.Model):
             'date': period.date_stop,
             'period_id': period.id,
             'ref': _('Expense Transfert (%s)') % (use_case.name),
-        }
-
-    @api.multi
-    def _prepare_account_move_line(self, account_move_vals):
-        use_case = self[0].internal_use_case_id
-        total = sum(self.mapped('amount'))
-        return {
-            'name': _('Expense Transfert (%s)') % (use_case.name),
-            'date': account_move_vals['date'],
-            'period_id': account_move_vals['period_id'],
-            'account_id': use_case.account_id.id,
-            'debit': (total > 0) and total or 0,
-            'credit': (total < 0) and -total or 0,
         }

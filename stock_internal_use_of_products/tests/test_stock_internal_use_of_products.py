@@ -58,11 +58,11 @@ class TestStockInternalUseOfProducts(TransactionCase):
             self.internal_use.account_move_id, False,
             "Finish an Internal use should generate an accounting entry")
         self.assertEqual(
-            len(self.internal_use.account_move_id.line_id), 3,
+            len(self.internal_use.account_move_id.line_id), 4,
             "Internal use with 3 lines including one with tax should generate"
-            " an accouting entry with 3 lines")
+            " an accouting entry with 4 lines")
 
-        # Check Line 1 (CounterPart 1) (merged lines without tax code)
+        # Check Line 1 (Charge 1) (merged lines without tax code)
         lines = self.move_line_obj.search([
             ('move_id', '=', self.internal_use.account_move_id.id),
             ('tax_code_id', '=', False),
@@ -73,7 +73,7 @@ class TestStockInternalUseOfProducts(TransactionCase):
             len(lines), 1,
             "many use lines should generate account single accounting move")
 
-        # Check Line 2 (CounterPart 2) (line with tax code)
+        # Check Line 2 (Charge 2) (line with tax code)
         lines = self.move_line_obj.search([
             ('move_id', '=', self.internal_use.account_move_id.id),
             ('tax_code_id', '=', self.purchase_tax_code.id),
@@ -84,13 +84,11 @@ class TestStockInternalUseOfProducts(TransactionCase):
             len(lines), 1,
             "Lines with tax code should generated separated account move line")
 
-        # Check Line 3 (Main line)
+        # Check Line 3 (Uncharge lines)
         lines = self.move_line_obj.search([
             ('move_id', '=', self.internal_use.account_move_id.id),
-            ('tax_code_id', '=', False),
-            ('debit', '=', (3 * 12 * 13) + 876 + 20),
             ('account_id', '=', self.use_expense_account.id),
         ])
         self.assertEqual(
-            len(lines), 1,
-            "Incorrect main account move line.")
+            len(lines), 2,
+            "Incorrect uncharge account move line.")
