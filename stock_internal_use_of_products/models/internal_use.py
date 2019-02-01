@@ -104,7 +104,6 @@ class InternalUse(models.Model):
         action_data = action.read()[0]
         action_data['domain'] = "[('internal_use_id','in',[" +\
             ','.join(map(str, self.ids)) + "])]"
-        print action_data
         return action_data
 
     @api.multi
