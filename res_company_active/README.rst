@@ -13,22 +13,22 @@ Company Active
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-legalsylvain%2Fgrap--odoo--incubator-lightgray.png?logo=github
-    :target: https://github.com/legalsylvain/grap-odoo-incubator/tree/8.0_res_company_active/res_company_active
-    :alt: legalsylvain/grap-odoo-incubator
+.. |badge3| image:: https://img.shields.io/badge/github-GRAP%2Fgrap--odoo--incubator-lightgray.png?logo=github
+    :target: https://github.com/GRAP/grap-odoo-incubator/tree/8.0/res_company_active
+    :alt: GRAP/grap-odoo-incubator
 
 |badge1| |badge2| |badge3| 
 
 This module adds ``active`` fields on company model.
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_res_company_active/res_company_active/static/description/res_company_form.png
+.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/res_company_active/static/description/res_company_form.png
 
 **Note**
 
 A control is realized, to check if the disabled company is the current company
 for active users.
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_res_company_active/res_company_active/static/description/validation_error.png
+.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/res_company_active/static/description/validation_error.png
 
 **Table of contents**
 
@@ -38,10 +38,10 @@ for active users.
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/legalsylvain/grap-odoo-incubator/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/GRAP/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/legalsylvain/grap-odoo-incubator/issues/new?body=module:%20res_company_active%0Aversion:%208.0_res_company_active%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/GRAP/grap-odoo-incubator/issues/new?body=module:%20res_company_active%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -63,7 +63,7 @@ Maintainers
 
 
 
-This module is part of the `legalsylvain/grap-odoo-incubator <https://github.com/legalsylvain/grap-odoo-incubator/tree/8.0_res_company_active/res_company_active>`_ project on GitHub.
+This module is part of the `GRAP/grap-odoo-incubator <https://github.com/GRAP/grap-odoo-incubator/tree/8.0/res_company_active>`_ project on GitHub.
 
 
 You are welcome to contribute.
