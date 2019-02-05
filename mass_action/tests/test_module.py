@@ -47,7 +47,6 @@ class TestModule(TransactionCase):
                     ALTER TABLE res_users
                     ALTER COLUMN alias_id DROP NOT NULL;""")
 
-
     def setUp(self):
         super(TestModule, self).setUp()
         self.Wizard = self.env['mass.action.wizard']
