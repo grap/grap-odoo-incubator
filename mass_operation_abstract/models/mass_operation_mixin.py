@@ -91,7 +91,7 @@ class MassOperationMixin(models.AbstractModel):
             'type': 'ir.actions.act_window',
             'res_model': self._wizard_model_name,
             'src_model': self.model_id.model,
-            'groups_id': [(6, 0, [self.groups_id.id])],
+            'groups_id': [(6, 0, [self.groups_id.ids])],
             'view_type': 'form',
             'context': """{
                 'mass_operation_mixin_id' : %d,
