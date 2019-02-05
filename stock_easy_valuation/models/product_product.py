@@ -11,21 +11,21 @@ class ProductProduct(models.Model):
 
     # Compute Section
     @api.multi
-    def _get_valuation_qty_available(self):
+    def _compute_valuation_qty_available(self):
         for product in self:
             product.valuation_qty_available =\
                 product.qty_available * product.standard_price
 
     @api.multi
-    def _get_valuation_virtual_available(self):
+    def _compute_valuation_virtual_available(self):
         for product in self:
             product.valuation_virtual_available =\
                 product.virtual_available * product.standard_price
 
     # Columns Section
     valuation_qty_available = fields.Float(
-        compute='_get_valuation_qty_available',
+        compute='_compute_valuation_qty_available',
         string='Valuation of Quantity on Hand')
     valuation_virtual_available = fields.Float(
-        compute='_get_valuation_virtual_available',
+        compute='_compute_valuation_virtual_available',
         string='Valuation of Virtual Quantity')
