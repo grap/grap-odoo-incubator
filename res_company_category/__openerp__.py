@@ -21,6 +21,7 @@
     'demo': [
         'demo/res_groups.xml',
         'demo/res_company_category.xml',
+        'demo/res_company.xml',
     ],
     'installable': True,
     'images': [
