@@ -110,10 +110,10 @@ class InternalUseLine(models.Model):
         }
 
     @api.multi
-    def _get_expense_entry_key(self):
+    def _get_expense_entry_key_charge(self):
         """
             define how to group by use lines to generate a unique account move
-            line.
+            line for charge move line.
             Overwrite this function to change the behaviour.
         """
         self.ensure_one()
@@ -124,7 +124,22 @@ class InternalUseLine(models.Model):
         )
 
     @api.multi
-    def _prepare_account_move_line(self, account_move_vals):
+    def _get_expense_entry_key_uncharge(self):
+        """
+            define how to group by use lines to generate a unique account move
+            line for uncharge move line.
+            Overwrite this function to change the behaviour.
+        """
+        self.ensure_one()
+        product = self.product_id
+        use_case = self.internal_use_id.internal_use_case_id
+        return (
+            use_case.account_id.id,
+            tuple(product.supplier_taxes_id.ids),
+        )
+
+    @api.multi
+    def _prepare_account_move_line_charge(self, account_move_vals):
         use_case = self[0].internal_use_id.internal_use_case_id
         total = sum(self.mapped('amount'))
         tax_code = self[0].product_id.supplier_taxes_id and\
@@ -138,8 +153,28 @@ class InternalUseLine(models.Model):
             'quantity': 0,
             'account_id': self[0].product_id._get_expense_account()[
                 'account_expense'].id,
-            'credit': (total > 0) and total or 0,
             'debit': (total < 0) and -total or 0,
+            'credit': (total > 0) and total or 0,
+            'tax_code_id': tax_code and tax_code.id or False,
+            'tax_amount': tax_code and max(total, -total) or 0,
+        }
+
+    @api.multi
+    def _prepare_account_move_line_uncharge(self, account_move_vals):
+        use_case = self[0].internal_use_id.internal_use_case_id
+        total = sum(self.mapped('amount'))
+        tax_code = self[0].product_id.supplier_taxes_id and\
+            self[0].product_id.supplier_taxes_id[0].base_code_id or False
+        return {
+            'name': _('Expense Transfert (%s)') % (use_case.name),
+            'date': account_move_vals['date'],
+            'period_id': account_move_vals['period_id'],
+            'product_id': False,
+            'product_uom_id': False,
+            'quantity': 0,
+            'account_id': use_case.account_id.id,
+            'debit': (total > 0) and total or 0,
+            'credit': (total < 0) and -total or 0,
             'tax_code_id': tax_code and tax_code.id or False,
             'tax_amount': tax_code and max(total, -total) or 0,
         }
