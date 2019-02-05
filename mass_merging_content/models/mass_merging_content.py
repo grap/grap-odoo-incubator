@@ -14,6 +14,12 @@ class MassMergingContent(models.Model):
     # Overwrite Section
     _wizard_model_name = 'mass.merging.content.wizard'
 
+    @api.multi
+    def _prepare_action_name(self):
+        self.ensure_one()
+        return _("Merge Content (%s)" % (self.name))
+
+    # Column Section
     one2many_field_id = fields.Many2one(
         comodel_name='ir.model.fields', string='Field to Merge', required=True,
         domain="[('model_id', '=', model_id),('ttype', '=', 'one2many')]")
@@ -63,9 +69,3 @@ class MassMergingContent(models.Model):
         return [
             x for x in self.line_ids
             if x.operation_type in operation_types]
-
-    # Overwrite Section
-    @api.multi
-    def _get_action_name(self):
-        self.ensure_one()
-        return _("Merge Content (%s)" % (self.name))
