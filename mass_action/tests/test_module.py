@@ -23,10 +23,30 @@ class TestModule(TransactionCase):
                 AND A.ATTNAME = 'notify_email'
                 AND C.relname= 'res_partner';""")
         if self.cr.fetchone():
-            self.cr.execute("""
-                ALTER TABLE res_partner
-                    ALTER COLUMN notify_email
-                    %s NOT NULL;""" % (function))
+            if function == 'SET':
+                self.cr.execute("""
+                    ALTER TABLE res_partner
+                    ALTER COLUMN notify_email SET NOT NULL;""")
+            else:
+                self.cr.execute("""
+                    ALTER TABLE res_partner
+                    ALTER COLUMN notify_email DROP NOT NULL;""")
+        self.cr.execute("""
+            SELECT A.ATTNAME
+                FROM PG_ATTRIBUTE A, PG_CLASS C
+                WHERE A.ATTRELID = C.OID
+                AND A.ATTNAME = 'alias_id'
+                AND C.relname= 'res_users';""")
+        if self.cr.fetchone():
+            if function == 'SET':
+                self.cr.execute("""
+                    ALTER TABLE res_users
+                    ALTER COLUMN alias_id SET NOT NULL;""")
+            else:
+                self.cr.execute("""
+                    ALTER TABLE res_users
+                    ALTER COLUMN alias_id DROP NOT NULL;""")
+
 
     def setUp(self):
         super(TestModule, self).setUp()
