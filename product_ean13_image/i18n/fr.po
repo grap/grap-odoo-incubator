@@ -21,6 +21,12 @@ msgid "Barcode"
 msgstr "Code barre"
 
 #. module: product_ean13_image
+#: code:addons/product_ean13_image/models/product_product.py:47
+#, python-format
+msgid "Barcode image will not be computed"
+msgstr "L'image du code barre ne sera pas générée"
+
+#. module: product_ean13_image
 #: field:product.product,ean13_image:0
 #: field:product.template,ean13_image:0
 msgid "Ean13 image"
