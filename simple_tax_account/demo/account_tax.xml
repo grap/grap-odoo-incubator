@@ -23,10 +23,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="simple_tax_id" ref="vat_5_exclude" />
     </record>
 
-    <record id="vat_5_exclude" model="account.tax">
-        <field name="simple_tax_id" ref="vat_5_include" />
-    </record>
-
     <record id="vat_20_exclude" model="account.tax">
         <field name="name">Tax 20% (Price Excl.)</field>
         <field name="type">percent</field>
@@ -42,10 +38,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="price_include" eval="True" />
         <field name="company_id" ref="base.main_company" />
         <field name="simple_tax_id" ref="vat_20_exclude" />
-    </record>
-
-    <record id="vat_20_exclude" model="account.tax">
-        <field name="simple_tax_id" ref="vat_20_include" />
     </record>
 
 </data></openerp>

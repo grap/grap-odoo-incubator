@@ -7,6 +7,13 @@ with or without tax included. Sample:
 
 .. figure:: ../static/description/tax_setting.png
 
+
+On ``account.tax.template``, add a new field ``simple_template_id`` that is
+the according template with of without tax included.
+
+.. figure:: ../static/description/tax_template_setting.png
+
+
 On ``res.partner``, add a new field selection ``simple_tax_type`` with
 the following values:
 
@@ -15,9 +22,3 @@ the following values:
 * ``included``: All price will be recomputed with Tax inluded
 
 .. figure:: ../static/description/partner_setting.png
-
-
-On ``account.tax.template``, add a new field ``simple_template_id`` that is
-the according template with of without tax included.
-
-.. figure:: ../static/description/tax_template_setting.png

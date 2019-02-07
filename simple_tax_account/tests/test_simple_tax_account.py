@@ -14,6 +14,11 @@ class TestSimpleTaxAccount(TransactionCase):
         self.invoice = self.env.ref('simple_tax_account.customer_invoice_1')
         self.vat_5_include = self.env.ref('simple_tax_account.vat_5_include')
         self.vat_5_exclude = self.env.ref('simple_tax_account.vat_5_exclude')
+
+        self.template_include = self.env.ref(
+            'simple_tax_account.template_vat_incl')
+        self.template_exclude = self.env.ref('account.itaxs')
+
         self.partner_tax_included = self.env.ref(
             'simple_tax_account.partner_tax_included')
         self.partner_tax_excluded = self.env.ref(
@@ -63,3 +68,29 @@ class TestSimpleTaxAccount(TransactionCase):
         self.assertEqual(
             invoice.amount_total, self.amount_total,
             "Total amount changed.")
+
+    def test_06_tax_propagation(self):
+        self.vat_5_include.simple_tax_id = False
+        self.assertEqual(
+            self.vat_5_exclude.simple_tax_id.id, False,
+            "Removing related simple tax to a tax should remove it to the"
+            " according related tax.")
+
+        self.vat_5_include.simple_tax_id = self.vat_5_exclude
+        self.assertEqual(
+            self.vat_5_exclude.simple_tax_id, self.vat_5_include,
+            "Set a related simple tax to a tax should add it to the"
+            " according related tax.")
+
+    def test_06_template_propagation(self):
+        self.template_include.simple_template_id = False
+        self.assertEqual(
+            self.template_exclude.simple_template_id.id, False,
+            "Removing related simple template to a teamplate should remove it"
+            " to the according related template.")
+
+        self.template_include.simple_template_id = self.template_exclude
+        self.assertEqual(
+            self.template_exclude.simple_template_id, self.template_include,
+            "Set a related simple template to a template should add it to the"
+            " according related template.")

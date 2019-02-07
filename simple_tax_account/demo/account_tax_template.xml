@@ -22,8 +22,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="simple_template_id" ref="account.itaxs" />
     </record>
 
-    <record id="account.itaxs" model="account.tax.template">
-        <field name="simple_template_id" ref="template_vat_incl" />
-    </record>
-
 </data></openerp>
