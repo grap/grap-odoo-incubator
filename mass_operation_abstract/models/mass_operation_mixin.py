@@ -86,7 +86,7 @@ class MassOperationMixin(models.AbstractModel):
     @api.multi
     def _prepare_action(self):
         self.ensure_one()
-        res = {
+        return {
             'name': self.action_name,
             'type': 'ir.actions.act_window',
             'res_model': self._wizard_model_name,
@@ -100,13 +100,6 @@ class MassOperationMixin(models.AbstractModel):
             'view_mode': 'form,tree',
             'target': 'new',
         }
-        print "=============================="
-        print "=============================="
-        print res
-        print "=============================="
-        print "=============================="
-        return res
-
 
     @api.multi
     def _prepare_value(self):
