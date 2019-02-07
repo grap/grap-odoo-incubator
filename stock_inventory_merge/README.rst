@@ -13,9 +13,9 @@ Stock - Merge Inventories
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-GRAP%2Fgrap--odoo--incubator-lightgray.png?logo=github
-    :target: https://github.com/GRAP/grap-odoo-incubator/tree/8.0/stock_inventory_merge
-    :alt: GRAP/grap-odoo-incubator
+.. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
+    :target: https://github.com/grap/grap-odoo-incubator/tree/8.0/stock_inventory_merge
+    :alt: grap/grap-odoo-incubator
 
 |badge1| |badge2| |badge3| 
 
@@ -41,23 +41,23 @@ In that case, with this module, the classical process is :
 * Disable the constrains that makes impossible to have two pending inventories
   with the same product.
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/stock_inventory_merge/static/description/stock_inventory_disabled_warning.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/stock_inventory_merge/static/description/stock_inventory_disabled_warning.png
 
 * So, a new smart button is available to see the duplicates, into an pending
   inventory, and a button allow users to merge duplicates. In that case,
   the quantities will be sumed.
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/stock_inventory_merge/static/description/stock_inventory_form_duplicate.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/stock_inventory_merge/static/description/stock_inventory_form_duplicate.png
 
 * Add an action to have the possibility to merge many inventories.
   that wizard will create a new inventories, based on the little ones.
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/stock_inventory_merge/static/description/stock_inventory_tree_merge.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/stock_inventory_merge/static/description/stock_inventory_tree_merge.png
 
 * An option is available to fill an inventory with the missing products that
   are not listed in the inventory lines.
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/stock_inventory_merge/static/description/stock_inventory_form_complete_zero.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/stock_inventory_merge/static/description/stock_inventory_form_complete_zero.png
 
 **Table of contents**
 
@@ -67,10 +67,10 @@ In that case, with this module, the classical process is :
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/GRAP/grap-odoo-incubator/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/GRAP/grap-odoo-incubator/issues/new?body=module:%20stock_inventory_merge%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20stock_inventory_merge%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -92,7 +92,7 @@ Maintainers
 
 
 
-This module is part of the `GRAP/grap-odoo-incubator <https://github.com/GRAP/grap-odoo-incubator/tree/8.0/stock_inventory_merge>`_ project on GitHub.
+This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/8.0/stock_inventory_merge>`_ project on GitHub.
 
 
 You are welcome to contribute.

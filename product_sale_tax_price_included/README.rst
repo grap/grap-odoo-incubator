@@ -13,36 +13,36 @@ Product Sale Tax Price Included
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-GRAP%2Fgrap--odoo--incubator-lightgray.png?logo=github
-    :target: https://github.com/GRAP/grap-odoo-incubator/tree/8.0/product_sale_tax_price_included
-    :alt: GRAP/grap-odoo-incubator
+.. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
+    :target: https://github.com/grap/grap-odoo-incubator/tree/8.0/product_sale_tax_price_included
+    :alt: grap/grap-odoo-incubator
 
 |badge1| |badge2| |badge3| 
 
 This module permits to quickly see the different prices of a product : price with taxes and price without taxes.
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/product_sale_tax_price_included/static/description/product_different_prices.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/product_sale_tax_price_included/static/description/product_different_prices.png
 
 **The four use cases**
 
 In Customer taxes, there's a boolean called "Tax included in Price".
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/product_sale_tax_price_included/static/description/taxes_creation.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/product_sale_tax_price_included/static/description/taxes_creation.png
 
 **According to the customer taxes** of the product (choosen in accouting part), there are 4 possibilities :
 
 - The sale price **AND** the sale price without taxes are displayed.
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/product_sale_tax_price_included/static/description/product_tax_included.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/product_sale_tax_price_included/static/description/product_tax_included.png
 
 - **Or** the sale price **AND** the sale price with taxes.
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/product_sale_tax_price_included/static/description/product_tax_excluded.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/product_sale_tax_price_included/static/description/product_tax_excluded.png
 
 - **Or** if you choose two customer taxes, one included in price, and the other one not included in price,
   this module displays the sale price and the two calculated prices.
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-incubator/8.0/product_sale_tax_price_included/static/description/product_tax_included_and_not.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/product_sale_tax_price_included/static/description/product_tax_included_and_not.png
 
 - **And lastly** if there's no taxe choosen, only the normal price is displayed. 
 
@@ -54,10 +54,10 @@ In Customer taxes, there's a boolean called "Tax included in Price".
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/GRAP/grap-odoo-incubator/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/GRAP/grap-odoo-incubator/issues/new?body=module:%20product_sale_tax_price_included%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20product_sale_tax_price_included%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -80,7 +80,7 @@ Maintainers
 
 
 
-This module is part of the `GRAP/grap-odoo-incubator <https://github.com/GRAP/grap-odoo-incubator/tree/8.0/product_sale_tax_price_included>`_ project on GitHub.
+This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/8.0/product_sale_tax_price_included>`_ project on GitHub.
 
 
 You are welcome to contribute.
