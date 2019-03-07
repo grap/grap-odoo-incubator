@@ -1,0 +1,70 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * pos_multiple_control_automatic_solve
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-18 10:26+0000\n"
+"PO-Revision-Date: 2019-03-18 10:26+0000\n"
+"Last-Translator: Quentin DUPONT <quentin.dupont@grap.coop>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_multiple_control_automatic_solve
+#: code:addons/pos_multiple_control_automatic_solve/models/account_bank_statement.py:50
+#, python-format
+msgid "Automatic solve"
+msgstr "Résolution automatique d'erreur de caisse"
+
+#. module: pos_multiple_control_automatic_solve
+#: model:ir.model,name:pos_multiple_control_automatic_solve.model_account_bank_statement
+msgid "Bank Statement"
+msgstr "Relevé bancaire"
+
+#. module: pos_multiple_control_automatic_solve
+#: field:account.bank.statement,display_autosolve:0
+msgid "Control Difference"
+msgstr "Différence du contrôle"
+
+#. module: pos_multiple_control_automatic_solve
+#: view:pos.session:pos_multiple_control_automatic_solve.view_pos_session_form
+msgid "Do you really want to solve this difference automatically ?"
+msgstr "Veux-tu vraiment solder cette différence automatiquement ?"
+
+#. module: pos_multiple_control_automatic_solve
+#: field:pos.config,autosolve_limit:0
+msgid "Limit for autosolving bank statement"
+msgstr "Limite pour la résolution automatique"
+
+#. module: pos_multiple_control_automatic_solve
+#: field:account.bank.statement,pos_session_state:0
+msgid "Pos session state"
+msgstr "État de la session de caisse"
+
+#. module: pos_multiple_control_automatic_solve
+#: field:pos.config,autosolve_product:0
+msgid "Product used to autosolve control difference in pos session"
+msgstr "Article utilisé pour résoudre automatiquement les différences de contrôle de la caisse"
+
+#. module: pos_multiple_control_automatic_solve
+#: field:cash.box.out,ref:0
+msgid "Reference"
+msgstr "Réference"
+
+#. module: pos_multiple_control_automatic_solve
+#: view:pos.session:pos_multiple_control_automatic_solve.view_pos_session_form
+msgid "Solve difference automatically with a product choosen in pos config"
+msgstr "Résoudre automatiquement les différences avec l'article choisi dans les paramètres de configuration de caisse"
+
+#. module: pos_multiple_control_automatic_solve
+#: code:addons/pos_multiple_control_automatic_solve/models/account_bank_statement.py:60
+#, python-format
+msgid "We can't autosolve this difference. \n"
+"You need to configure the Point Of Sale Config and choose a particular product for autosolving this difference."
+msgstr "On ne peut pas résoudre automatiquement cette différence. \n"
+"Vous devez paramétrer la configuration de caisse et choisir un article spécial pour résodure automatiquement cette différence."

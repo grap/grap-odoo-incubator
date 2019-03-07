@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2019 - Today: GRAP (http://www.grap.coop)
+@author Quentin DUPONT (quentin.dupont@grap.coop)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
+-->
+
+<openerp><data>
+
+    <record id="view_pos_session_form" model="ir.ui.view">
+        <field name="model">pos.session</field>
+        <field name="inherit_id" ref="pos_multiple_control.view_pos_session_form"/>
+        <field name="arch" type="xml">
+            <field name="control_difference" position="after">
+                <field name="pos_session_state" invisible="1"/>
+                <field name="display_autosolve" invisible="1"/>
+            </field>
+            <field name="control_difference" position="after">
+                <button name="automatic_solve"
+                    help="Solve difference automatically with a product choosen in pos config"
+                    type="object"
+                    class="oe_stat_button" icon="STOCK_EXECUTE"
+                    confirm="Do you really want to solve this difference automatically ?"
+                    attrs="{'invisible':[
+                    ('display_autosolve', '!=', True)]}">
+                </button>
+            </field>
+        </field>
+    </record>
+
+</data></openerp>

@@ -31,15 +31,18 @@ class PosBoxJournalReason(PosBox):
                         cashbox.statement_id = statement.id
 
     @api.model
-    def _create_bank_statement_line(self, box, record):
+    def _create_bank_statement_line(self, box, record, wizard=False):
         """Overwrite Section to allow to write in any statement, and not
         only the cash statement"""
         statement_obj = self.env['account.bank.statement']
         values = self._compute_values_for_statement_line(box, record)
-        values.update({
-            'journal_id': box.journal_id.id,
-            'statement_id': box.statement_id.id,
-        })
+        # useful for pos_multiple_control_automatic_solve
+        # because we don't have to update with context
+        if not wizard:
+            values.update({
+                'journal_id': box.journal_id.id,
+                'statement_id': box.statement_id.id,
+            })
         statement = statement_obj.browse(values['statement_id'])
         if statement.state == 'confirm':
                     raise exceptions.Warning(_(
