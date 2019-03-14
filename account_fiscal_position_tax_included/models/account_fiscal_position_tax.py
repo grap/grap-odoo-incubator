@@ -13,7 +13,6 @@ class AccountTax(models.Model):
     def _fix_tax_included_price(self, price, prod_taxes, line_taxes):
         """Subtract tax amount from price when corresponding "price included"
         taxes do not apply. (for tax excluded)"""
-        print "_fix_tax_included_price::OVERLOAD"
         res = super(AccountTax, self)._fix_tax_included_price(
             price, prod_taxes, line_taxes)
         if price != res:
@@ -22,7 +21,5 @@ class AccountTax(models.Model):
             tax for tax in prod_taxes
             if tax.id not in line_taxes and not tax.price_include]
         if excl_tax:
-            print ">>>> FIX INCLUDED"
             return prod_taxes.compute_all(price, 1)['total_included']
-        print ">>>> DONT FIX"
         return price
