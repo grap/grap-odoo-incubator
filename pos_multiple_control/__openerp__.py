@@ -19,6 +19,7 @@
     'data': [
         'views/view_pos_box.xml',
         'views/view_account_journal.xml',
+        'views/view_pos_config.xml',
         'views/view_pos_session.xml',
         'views/view_pos_session_opening.xml',
     ],
@@ -32,5 +33,6 @@
         'demo/res_groups.xml',
         'demo/account_journal.xml',
         'demo/pos_config.xml',
+        'demo/product_template.xml',
     ]
 }
