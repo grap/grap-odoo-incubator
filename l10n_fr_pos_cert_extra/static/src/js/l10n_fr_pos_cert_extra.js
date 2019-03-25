@@ -6,7 +6,9 @@
  *****************************************************************************/
 'use strict';
 
-openerp.l10n_fr_certification_pos = function(instance, local) {
+console.log("ET OUAIS !!!!");
+
+openerp.l10n_fr_pos_cert_extra = function(instance, local) {
 
     var module = instance.point_of_sale;
     var QWeb = instance.web.qweb;
@@ -50,6 +52,7 @@ openerp.l10n_fr_certification_pos = function(instance, local) {
         },
 
         export_for_printing: function(attributes){
+            console.log("export_for_printing");
             var order = moduleOrderParent.prototype.export_for_printing.apply(this, arguments);
             if (this.pos.config.l10n_fr_prevent_print === 'no'){
                 order.certification_text = false;
@@ -62,6 +65,7 @@ openerp.l10n_fr_certification_pos = function(instance, local) {
         },
 
         export_as_JSON: function() {
+            console.log("export_as_JSON");
             var order = moduleOrderParent.prototype.export_as_JSON.apply(this, arguments);
             order.certification_text = this.get('certification_text');
             return order;
