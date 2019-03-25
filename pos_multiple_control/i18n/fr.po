@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* pos_multiple_control
+#   * pos_multiple_control
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-15 19:19+0000\n"
-"PO-Revision-Date: 2018-02-15 19:19+0000\n"
+"POT-Creation-Date: 2019-03-25 13:37+0000\n"
+"PO-Revision-Date: 2019-03-25 13:37+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,12 @@ msgstr ""
 #: view:pos.session:pos_multiple_control.view_pos_session_form
 msgid "+ Transactions"
 msgstr "+ Transactions"
+
+#. module: pos_multiple_control
+#: code:addons/pos_multiple_control/models/account_bank_statement.py:97
+#, python-format
+msgid "Automatic solve"
+msgstr "Résolution automatique d'erreur de caisse"
 
 #. module: pos_multiple_control
 #: model:ir.model,name:pos_multiple_control.model_account_bank_statement
@@ -41,12 +47,18 @@ msgid "Cashbox Lines"
 msgstr "Mouvements de caisse"
 
 #. module: pos_multiple_control
+#: view:pos.session.opening:pos_multiple_control.view_pos_session_opening_form
+msgid "Close Session"
+msgstr "Fermer la session"
+
+#. module: pos_multiple_control
 #: view:pos.session:pos_multiple_control.view_pos_session_form
 msgid "Closing Subtotal"
 msgstr "Sous-total de fermeture"
 
 #. module: pos_multiple_control
 #: field:account.bank.statement,control_difference:0
+#: field:account.bank.statement,display_autosolve:0
 msgid "Control Difference"
 msgstr "Différence"
 
@@ -59,6 +71,11 @@ msgstr "Balance de fermeture"
 #: field:pos.session,control_register_difference:0
 msgid "Differences"
 msgstr "Differences"
+
+#. module: pos_multiple_control
+#: view:pos.session:pos_multiple_control.view_pos_session_form
+msgid "Do you really want to solve this difference automatically ?"
+msgstr "Veux-tu vraiment solder cette différence automatiquement ?"
 
 #. module: pos_multiple_control
 #: help:account.journal,bank_control:0
@@ -78,6 +95,11 @@ msgid "Journal"
 msgstr "Journal"
 
 #. module: pos_multiple_control
+#: field:pos.config,autosolve_limit:0
+msgid "Limit for autosolving bank statement"
+msgstr "Limite pour la résolution automatique"
+
+#. module: pos_multiple_control
 #: field:pos.session,control_register_balance_start:0
 msgid "Opening Balances"
 msgstr "Soldes d'ouverture"
@@ -93,14 +115,29 @@ msgid "PoS Control"
 msgstr "Contrôle en Point de Vente"
 
 #. module: pos_multiple_control
-#: model:ir.model,name:pos_multiple_control.model_pos_make_payment
-msgid "Point of Sale Payment"
-msgstr "Paiement du ticket"
+#: field:account.bank.statement,pos_session_state:0
+msgid "Pos session state"
+msgstr "État de la session de caisse"
+
+#. module: pos_multiple_control
+#: field:pos.config,autosolve_product:0
+msgid "Product used to autosolve control difference in pos session"
+msgstr "Article utilisé pour résoudre automatiquement les différences de contrôle de la caisse"
 
 #. module: pos_multiple_control
 #: field:pos.session,control_register_balance:0
 msgid "Real Closing Balances"
 msgstr "Soldes de clôture réelle"
+
+#. module: pos_multiple_control
+#: field:cash.box.out,ref:0
+msgid "Reference"
+msgstr "Réference"
+
+#. module: pos_multiple_control
+#: view:pos.session:pos_multiple_control.view_pos_session_form
+msgid "Solve difference automatically with a product choosen in pos config"
+msgstr "Résoudre automatiquement les différences avec l'article choisi dans les paramètres de configuration de caisse"
 
 #. module: pos_multiple_control
 #: field:cash.box.in,statement_id:0
@@ -110,8 +147,14 @@ msgstr "Relevé"
 
 #. module: pos_multiple_control
 #: field:pos.session,control_statement_ids:0
+#: field:pos.session,summary_statement_ids:0
 msgid "Statements"
 msgstr "Relevés"
+
+#. module: pos_multiple_control
+#: field:account.cashbox.line,statement_state:0
+msgid "Status"
+msgstr "Status"
 
 #. module: pos_multiple_control
 #: view:pos.session:pos_multiple_control.view_pos_session_form
@@ -125,12 +168,28 @@ msgid "Total"
 msgstr "Total"
 
 #. module: pos_multiple_control
+#: view:pos.session:pos_multiple_control.view_pos_session_form
 #: field:pos.session,control_register_total_entry_encoding:0
 msgid "Transactions"
 msgstr "Transactions"
 
 #. module: pos_multiple_control
-#: code:addons/pos_multiple_control/models/pos_session.py:109
+#: code:addons/pos_multiple_control/models/account_bank_statement.py:107
+#, python-format
+msgid "We can't autosolve this difference. \n"
+"You need to configure the Point Of Sale Config and choose a particular product for autosolving this difference."
+msgstr "On ne peut pas résoudre automatiquement cette différence. \n"
+"Vous devez paramétrer la configuration de caisse et choisir un article spécial pour résoudre automatiquement cette différence."
+
+#. module: pos_multiple_control
+#: help:account.cashbox.line,statement_state:0
+msgid "When new statement is created the status will be 'Draft'.\n"
+"And after getting confirmation from the bank it will be in 'Confirmed' status."
+msgstr "Quand une nouvelle ligne sur le relevé est crée, l'état est en 'Brouillon'.\n"
+"Après avoir eu la confirmation de la banque, il sera en état 'Confirmé'."
+
+#. module: pos_multiple_control
+#: code:addons/pos_multiple_control/models/pos_session.py:113
 #, python-format
 msgid "You can not close this session because the statement %s has a not null difference: \n"
 "\n"
@@ -140,7 +199,7 @@ msgstr "Vous ne pouvez pas fermer cette session car le relevé %s a une différe
 "%f"
 
 #. module: pos_multiple_control
-#: code:addons/pos_multiple_control/models/pos_session.py:98
+#: code:addons/pos_multiple_control/models/pos_session.py:102
 #, python-format
 msgid "You can not end this session because there are some draft orders: \n"
 "\n"
@@ -160,7 +219,7 @@ msgid "You cannot create two active sessions with the same responsible!"
 msgstr "Vous ne pouvez pas créer deux sessions actives avec le même responsable !"
 
 #. module: pos_multiple_control
-#: code:addons/pos_multiple_control/models/pos_box.py:47
+#: code:addons/pos_multiple_control/models/pos_box.py:49
 #, python-format
 msgid "You cannot put/take money in/out for the statement %s which is closed"
 msgstr "Vous ne pouvez pas prendre ou retirer de l'argent sur le relevé %s car celui ci est fermé"
@@ -171,6 +230,11 @@ msgid "brown: is_piece == False"
 msgstr "brown: is_piece == False"
 
 #. module: pos_multiple_control
+#: view:pos.session.opening:pos_multiple_control.view_pos_session_opening_form
+msgid "{'invisible' : [('pos_state', 'in', ['opened', 'opening_control'])]}"
+msgstr "{'invisible' : [('pos_state', 'in', ['opened', 'opening_control'])]}"
+
+#. module: pos_multiple_control
 #: view:pos.session:pos_multiple_control.view_pos_session_form
 msgid "{'invisible': [('state', 'not in', ('opening_control'))]}"
 msgstr "{'invisible': [('state', 'not in', ('opening_control'))]}"
@@ -179,4 +243,3 @@ msgstr "{'invisible': [('state', 'not in', ('opening_control'))]}"
 #: view:pos.session:pos_multiple_control.view_pos_session_form
 msgid "{'readonly': [('is_piece', '=', True)]}"
 msgstr "{'readonly': [('is_piece', '=', True)]}"
-

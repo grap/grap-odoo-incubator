@@ -1,6 +1,7 @@
 # coding: utf-8
 # Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# @author Quentin DUPONT (quentin.dupont@grap.coop)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from openerp import api, exceptions, fields, _
@@ -36,10 +37,13 @@ class PosBoxJournalReason(PosBox):
         only the cash statement"""
         statement_obj = self.env['account.bank.statement']
         values = self._compute_values_for_statement_line(box, record)
-        values.update({
-            'journal_id': box.journal_id.id,
-            'statement_id': box.statement_id.id,
-        })
+        # wizard : native cash.box.out/in
+        # not wizard : quick autosolve
+        if self.env.context.get('wizard', True):
+            values.update({
+                'journal_id': box.journal_id.id,
+                'statement_id': box.statement_id.id,
+            })
         statement = statement_obj.browse(values['statement_id'])
         if statement.state == 'confirm':
                     raise exceptions.Warning(_(
@@ -54,3 +58,12 @@ class PosBoxIn(PosBoxJournalReason):
 
 class PosBoxOut(PosBoxJournalReason):
     _inherit = 'cash.box.out'
+
+    ref = fields.Char(
+        string='Reference')
+
+    def _compute_values_for_statement_line(self, box, record):
+        values = super(PosBoxOut, self).\
+            _compute_values_for_statement_line(box, record)
+        values['ref'] = (box.ref or '')
+        return values

@@ -17,6 +17,10 @@ class TestMultipleControl(TransactionCase):
         self.order_obj = self.env['pos.order']
         self.payment_obj = self.env['pos.make.payment']
         self.product = self.env.ref('product.product_product_3')
+        self.product_cash_box = self.env.ref(
+            'pos_multiple_control.demo_product_cash_box')
+        self.product_not_cash_box = self.env.ref(
+            'pos_multiple_control.demo_product_not_cash_box')
         self.pos_config = self.env.ref(
             'pos_multiple_control.pos_config_control')
         self.check_journal = self.env.ref(
@@ -88,3 +92,49 @@ class TestMultipleControl(TransactionCase):
 
         with self.assertRaises(UserError):
             session.signal_workflow('close')
+
+    def test_05_check_autosolve(self):
+        # I create new session and open it
+        self.pos_config.write({
+            'autosolve_product': self.product_cash_box.id,
+            'autosolve_limit': 20
+            })
+        session = self.session_obj.create({'config_id': self.pos_config.id})
+
+        # Make sales and autosolve
+        session.open_cb()
+        sale = self._sale(session, 18, self.check_journal)
+        sale.statement_ids[0].statement_id.automatic_solve()
+        self.assertEqual(
+            session.summary_statement_ids[1].control_difference, 0,
+            "Incorrect transactions total")
+
+        session.signal_workflow('cashbox_control')
+        session.signal_workflow('close')
+
+    def test_06_check_display_button(self):
+        # I create new session and open it
+        self.pos_config.write({
+            'autosolve_product': self.product_cash_box.id,
+            'autosolve_limit': 30
+            })
+        session = self.session_obj.create({'config_id': self.pos_config.id})
+
+        # Make sales too important
+        session.open_cb()
+        sale = self._sale(session, 31, self.check_journal)
+        self.assertEqual(
+            sale.statement_ids[0].statement_id.display_autosolve, False,
+            "Autosolve button should be hidden")
+
+        # Autosolve and second sales
+        sale.statement_ids[0].statement_id.automatic_solve()
+        sale2 = self._sale(session, 29, self.check_journal)
+        sale2.statement_ids[0].statement_id._compute_display_autosolve()
+        self.assertEqual(
+            sale2.statement_ids[0].statement_id.display_autosolve, True,
+            "Autosolve button should not be hidden")
+
+        sale2.statement_ids[0].statement_id.automatic_solve()
+        session.signal_workflow('cashbox_control')
+        session.signal_workflow('close')

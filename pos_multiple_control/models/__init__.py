@@ -5,3 +5,4 @@ from . import account_journal
 from . import pos_session
 from . import pos_session_opening
 from . import pos_box
+from . import pos_config

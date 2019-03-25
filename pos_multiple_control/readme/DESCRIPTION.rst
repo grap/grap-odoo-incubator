@@ -10,6 +10,12 @@ improved control during the close of the session.
 
 .. figure:: ../static/description/account_bank_statement_piece_form.png
 
+* User could quickly solve control differences (we can an absolute limit),
+  thanks to a choosen product configured in POS config.
+  This functionnality uses cash.box.out/in methods.
+
+.. figure:: ../static/description/pos_session_automatic_solve.gif
+
 * User can access to the summary by payment methods for each statement
 
 .. figure:: ../static/description/account_bank_statement_summary_form.png
