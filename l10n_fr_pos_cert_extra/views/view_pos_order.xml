@@ -1,0 +1,25 @@
+<!-- GRAP display certification Hash -->
+<openerp><data>
+    <record id="view_pos_order_form" model="ir.ui.view">
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@string='Accounting Information']" position="after">
+                <group string="Certification Information">
+                    <field name="l10n_fr_secure_sequence_number" string="Inalterability Sequence"/>
+                    <field name="l10n_fr_previous_order"/>
+                    <field name="l10n_fr_hash"/>
+                    <field name="l10n_fr_secure_state"/>
+                </group>
+
+            </xpath>
+            <notebook position="inside">
+                <page string="Certified Data">
+                    <group>
+                        <field name="l10n_fr_string_to_hash_display"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</data></openerp>

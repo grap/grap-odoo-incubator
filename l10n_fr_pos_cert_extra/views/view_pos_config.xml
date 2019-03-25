@@ -7,8 +7,7 @@
         <field name="inherit_id" ref="point_of_sale.view_pos_config_form"/>
         <field name="arch" type="xml">
             <field name="stock_location_id" position="after">
-                <field name="l10n_fr_secure_sequence_id"/>
-                <field name="l10n_fr_prevent_print_legacy" attrs="{'invisible': [('l10n_fr_secure_sequence_id', '=', False)]}"/>
+                <field name="l10n_fr_prevent_print_legacy"/>
             </field>
         </field>
     </record>
