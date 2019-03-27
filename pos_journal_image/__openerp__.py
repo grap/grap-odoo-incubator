@@ -20,9 +20,12 @@
     'qweb': [
         'static/src/xml/pos_journal_image.xml',
     ],
+    'demo': [
+        'demo/account_journal.xml',
+    ],
     'images': [
-        # 'static/description/pos_payment_pad.png',
-        # 'static/description/pos_payment_list.png',
-        # 'static/description/account_journal_form.png',
+        'static/description/account_journal_form.png',
+        'static/description/pos_payment_list_image.png',
+        'static/description/pos_paypad_image.png',
     ],
 }

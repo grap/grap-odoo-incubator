@@ -6,17 +6,25 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <templates id="template" xml:space="preserve">
 
-<!--     <t t-name="ErrorClosedSessionPopupWidget">
-        <div class="modal-dialog">
-            <div class="popup">
-                <h1>
-                    <t t-esc="widget.session_name" />
-                </h1>
-                <p>
-                Sorry, the session you're working on is now closing or closed. <br />
-                Please close the current Point Of Sale Window and open it again to use a correct session.</p>
+    <t t-extend="PaypadButtonWidget">
+        <t t-jquery="[t-esc='widget.cashregister.journal.name']" t-operation="before">
+            <t t-if="widget.cashregister.journal.pos_image">
+                <div class="cashregister-img">
+                    <img t-att-src="widget.journal_icon_url(widget.cashregister.journal.id)"/>
+                </div>
+            </t>
+        </t>
+    </t>
+
+    <t t-extend="Paymentline">
+        <t t-jquery="[class='paymentline-name']" t-operation="before">
+            <div class="paymentline-img">
+                <img t-att-src="widget.journal_icon_url(line.cashregister.journal.id)"/>
+
             </div>
-        </div>
-    </t> -->
+        </t>
+    </t>
 
 </templates>
+
+

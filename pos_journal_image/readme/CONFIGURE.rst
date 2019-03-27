@@ -1,9 +1,9 @@
 To configure this module, you need to:
 
-* Go to Point of Sale / Configuration / Point of Sales
+* Go to 'Invoicing' / 'Configuration' / 'Journals' / 'Journals'
 
-* Tip a regex in the new field 'Regular Expresssion for Barcode Warnings'
+* Select journals available in the PoS
 
-by default the pattern matches with text from 8 to 13 digits.
+* In the 'Point of Sale' tab, set an image
 
-.. figure:: ../static/description/pos_config_form.png
+.. figure:: ../static/description/account_journal_form.png

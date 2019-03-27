@@ -1,17 +1,10 @@
-This module extends the functionality of point of sale to limit the
-display of 'Unknown barcode'.
+This module extends the functionality of point of sale to display images
+for each journal available in the Point of Sale.
 
-In Odoo, by default, when the user tip text with the keyboard a check is
-processed if the speed is quick, to check if it is a barcode.
+* The images are available in the Paypad part
 
-That's not very predictive and some undesired warning occured if:
+.. figure:: ../static/description/pos_paypad_image.png
 
-* the user remove a text in a field (for exemple in the field to search customer)
-* the user tip with the keyboard quickly.
+* There are also available in the payment screen
 
-The first case occures very often if the user leaves the key 'backspace' pressed.
-
-.. figure:: ../static/description/pos_error.png
-
-This module will display a message only if the text matches exactly a given
-pattern.
+.. figure:: ../static/description/pos_payment_list_image.png
