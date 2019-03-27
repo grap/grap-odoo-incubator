@@ -3,3 +3,5 @@ account-invoicing
 pos
 purchase-workflow
 server-tools
+
+grap-odoo-custom                https://github.com/legalsylvain/grap-odoo-custom.git       8.0_ADD_server_environment_files
