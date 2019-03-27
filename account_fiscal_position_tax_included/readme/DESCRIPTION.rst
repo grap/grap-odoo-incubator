@@ -1,14 +1,11 @@
-Possibility to switch between Price VAT Included and Price VAT Excluded
-when editing a Sale Order.
+This module extend the Odoo account module, regarding fiscal position.
 
-**Sale Orders with Mixed Taxes**
+By default, it is only possible to realize such tax mapping :
 
-.. figure:: ../static/description/sale_mixed_taxes.png
+* Tax Excl --> Tax Excl / No tax
+* Tax Incl --> Tax Excl / No tax
 
-**Sale Orders with Harmonized Taxes**
+This module allows to realize such mapping
 
-.. figure:: ../static/description/sale_harmonized_taxes.png
-
-**Important Note**
-
-See ``simple_tax_account`` description for more detailled information.
+* Tax Excl --> Tax Incl
+* Tax Incl --> Tax Incl
