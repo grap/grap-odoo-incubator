@@ -6,6 +6,15 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <templates id="template" xml:space="preserve">
 
+    <t t-extend="Paymentline">
+        <t t-jquery="[class='paymentline-name']" t-operation="after">
+            <div class='paymentline-set-change'>
+                <button class="input-button">
+                    <img src="/pos_payment_usability/static/src/img/exact_amount.png" />
+                </button>
+            </div>
+        </t>
+    </t>
 
 </templates>
 
