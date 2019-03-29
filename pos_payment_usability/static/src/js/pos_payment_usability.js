@@ -13,12 +13,10 @@ openerp.pos_payment_usability = function(instance){
 
     /*************************************************************************
         Extend Model Order:
-            * 
     */
     var moduleOrderParent = module.Order;
     module.Order = module.Order.extend({
 
-        // Do not add payment line, if the order is empty
         addPaymentline: function(cashregister){
             // Do not add payment line, if the order is empty
             if (this.get('orderLines').length === 0 && this.get('paymentLines').length === 0) {
@@ -37,25 +35,106 @@ openerp.pos_payment_usability = function(instance){
                     var paymentLine = paymentLines[i];
 
                     if (paymentLine.amount === 0) {
-                        // TODO Drop It
                         this.removePaymentline(paymentLine);
                     }
                 }
             }
-            var res = moduleOrderParent.prototype.addPaymentline.apply(this, arguments);
-            // Cancel Odoo Core feature that set by default the total amount
-            // for journal that are not 'cash'
-            this.selected_paymentline.set_amount(0.0);
-            this.selected_paymentline.node.querySelector('.paymentline-input').value = 0;
-
-            return res;
+            return moduleOrderParent.prototype.addPaymentline.apply(this, arguments);
         },
 
     });
 
     /*************************************************************************
-        Extend Model Order:
-            * 
+        Extend PaymentScreen Widget:
+    */
+    module.PaymentScreenWidget = module.PaymentScreenWidget.extend({
+
+        validate_order: function(options) {
+            var currentOrder = this.pos.get('selectedOrder');
+            var paymentLines = currentOrder.get('paymentLines').models;
+            var paidTotal = currentOrder.getPaidTotal();
+            var dueTotal = currentOrder.getTotalTaxIncluded();
+            var remaining = dueTotal > paidTotal ? dueTotal - paidTotal : 0;
+            var change = paidTotal > dueTotal ? paidTotal - dueTotal : 0;
+            var cashAmount = 0;
+
+            // Delete payment lines if the amount is null
+            for (var i = paymentLines.length - 1; i >=0 ; i--) {
+                var paymentLine = paymentLines[i];
+                if (paymentLine.amount === 0) {
+                    currentOrder.removePaymentline(paymentLine);
+                }
+            }
+
+            // Check if change is over the total amount of cash received
+            if (change > 0) {
+                for (var i = 0; i < paymentLines.length; i++) {
+                    var paymentLine = paymentLines[i];
+                    if (paymentLine.get_type() === 'cash') {
+                        cashAmount += paymentLine.amount;
+                    }
+                }
+            }
+            // Display a warning if cash amount is under the change
+            if (cashAmount < change) {
+                this.pos_widget.screen_selector.show_popup('error', {
+                    'message': _t('Incorrect Change Value'),
+                    'comment': _t('The change is over the total amount of cash received')
+                });
+                return;
+            }
+
+            this._super(options);
+        },
+
+        update_payment_summary: function() {
+            var currentOrder = this.pos.get('selectedOrder');
+            // var paymentLines = currentOrder.get('paymentLines').models;
+            var paidTotal = currentOrder.getPaidTotal();
+            var dueTotal = currentOrder.getTotalTaxIncluded();
+            var remaining = dueTotal > paidTotal ? dueTotal - paidTotal : 0;
+
+            // Display or hide button to reach the amount
+            if (remaining > 0) {
+                this.$('.paymentline-set-change button').removeClass('oe_hidden');
+            } else {
+                this.$('.paymentline-set-change button').addClass('oe_hidden');
+            }
+
+            this._super();
+        },
+
+        render_paymentline: function(line){
+            var node = this._super(line);
+            node.querySelector('.paymentline-set-change button')
+                .addEventListener('click', this.click_set_change);
+            return node;
+        },
+
+
+        click_set_change: function(event){
+
+            var node = this;
+            while(node && !node.classList.contains('paymentline')){
+                node = node.parentNode;
+            }
+            if(node){
+                var currentOrder = node.line.pos.get('selectedOrder');
+                var paidTotal = currentOrder.getPaidTotal();
+                var dueTotal = currentOrder.getTotalTaxIncluded();
+                var remaining = dueTotal > paidTotal ? dueTotal - paidTotal : 0;
+
+                var newAmount = node.line.amount + remaining;
+                node.querySelector('input').value = newAmount;
+                node.line.set_amount(newAmount);
+            }
+            event.stopPropagation();
+        },
+
+    });
+
+    /*************************************************************************
+        Extend ScreenSelector:
     */
     var modulScreenSelectorParent = module.ScreenSelector;
     module.ScreenSelector = module.ScreenSelector.extend({
