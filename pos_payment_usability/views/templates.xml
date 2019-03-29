@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2019 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <template id="pos_payment_usability_js" inherit_id="point_of_sale.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/pos_payment_usability/static/src/js/pos_payment_usability.js"></script>
+        </xpath>
+    </template>
+
+    <template id="pos_payment_usability_css" inherit_id="point_of_sale.index">
+        <xpath expr="//head" position="inside">
+            <link rel="stylesheet" href="/pos_payment_usability/static/src/css/pos_payment_usability.css"/>
+        </xpath>
+    </template>
+
+</data></openerp>
