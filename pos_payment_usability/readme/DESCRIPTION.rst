@@ -12,8 +12,9 @@ if the order is empty
 
 **Do not allow to have many lines with 0 amount**
 
-If there a payment line with 0 amount, and the user tries to add a new payment
-line, the previous payment line will be deleted and the new one will be added.
+If there is a payment line with 0 amount, and the user tries to add a new
+payment line, the previous payment line will be deleted and the new one will
+be added.
 
 
 **Do not save payment line with null amount**
@@ -30,7 +31,7 @@ will be displayed.
 
 .. figure:: ../static/description/pos_error_change_over_cash_received.png
 
-**Button to up the amount have no change**
+**Button to up the amount to have no change**
 
 A button is present if the remaining amount is positive.
 
