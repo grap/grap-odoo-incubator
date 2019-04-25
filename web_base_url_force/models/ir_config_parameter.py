@@ -24,3 +24,26 @@ class IrconfigParameter(models.Model):
         else:
             return super(IrconfigParameter, self).set_param(
                 key, value, groups=groups)
+
+    @api.model
+    def web_base_url_force(self):
+        cr = self.env.cr
+        if not odoo_config.get('web_base_url_force', False):
+            return
+
+        new_setting = odoo_config.get('web_base_url_force', False)
+
+        cr.execute("""
+            SELECT value
+            FROM ir_config_parameter
+            WHERE key = 'web.base.url';""")
+        result = cr.fetchone()
+        if result:
+            current_setting = result[0]
+            if current_setting != new_setting:
+                _logger.info("key 'web.base.url' %s replaced by %s" % (
+                    current_setting, new_setting))
+                cr.execute("""
+                    UPDATE ir_config_parameter
+                    SET value = %s
+                    WHERE KEY = 'web.base.url';""", (new_setting, ))
