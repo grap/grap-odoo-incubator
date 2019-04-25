@@ -12,6 +12,7 @@
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
     'depends': [
+        'base',
         'web',
     ],
     'installable': True,
