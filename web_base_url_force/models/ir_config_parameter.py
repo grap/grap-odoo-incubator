@@ -15,7 +15,8 @@ class IrconfigParameter(models.Model):
     _inherit = 'ir.config_parameter'
 
     @api.model
-    def set_param(self, key, value, groups=[]):
+    def set_param(self, key, value, groups=False):
+        groups = groups or []
         force_url = odoo_config.get('web_base_url_force', False)
         if key == 'web.base.url' and force_url:
             _logger.info(
