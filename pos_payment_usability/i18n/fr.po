@@ -1,0 +1,45 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * pos_payment_usability
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-16 14:58+0000\n"
+"PO-Revision-Date: 2019-04-16 14:58+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_payment_usability
+#. openerp-web
+#: code:addons/pos_payment_usability/static/src/js/pos_payment_usability.js:23
+#, python-format
+msgid "Empty Order"
+msgstr "Vente vide"
+
+#. module: pos_payment_usability
+#. openerp-web
+#: code:addons/pos_payment_usability/static/src/js/pos_payment_usability.js:85
+#, python-format
+msgid "Incorrect Change Value"
+msgstr "Valeur incorrecte pour la monnaie à rendre."
+
+#. module: pos_payment_usability
+#. openerp-web
+#: code:addons/pos_payment_usability/static/src/js/pos_payment_usability.js:86
+#, python-format
+msgid "The change is over the total amount of cash received"
+msgstr "La valeur de la monnaie à rendre est supérieure au montant total d'espèces reçus."
+
+#. module: pos_payment_usability
+#. openerp-web
+#: code:addons/pos_payment_usability/static/src/js/pos_payment_usability.js:24
+#, python-format
+msgid "You can not add payment on a empty order "
+msgstr "Vous ne pouvez pas rajouter un paiement sur une vente vide."
+
