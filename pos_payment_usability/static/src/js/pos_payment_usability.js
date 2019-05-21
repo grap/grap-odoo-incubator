@@ -130,8 +130,8 @@ openerp.pos_payment_usability = function (instance) {
                 var remaining = dueTotal > paidTotal ? dueTotal - paidTotal : 0;
 
                 var newAmount = node.line.amount + remaining;
-                node.querySelector('input').value = newAmount;
                 node.line.set_amount(newAmount);
+                node.querySelector('input').value = node.line.get_amount_str();
                 currentOrder.selectPaymentline(node.line);
 
             }
