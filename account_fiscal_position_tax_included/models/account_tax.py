@@ -15,11 +15,12 @@ class AccountTax(models.Model):
         taxes do not apply. (for tax excluded)"""
         res = super(AccountTax, self)._fix_tax_included_price(
             price, prod_taxes, line_taxes)
+
         if price != res:
             return res
-        excl_tax = [
-            tax for tax in prod_taxes
-            if tax.id not in line_taxes and not tax.price_include]
-        if excl_tax:
-            return prod_taxes.compute_all(price, 1)['total_included']
-        return price
+        dest_taxes = self.browse(line_taxes)
+        if any([x.price_include for x in dest_taxes])\
+                and not any([x.price_include for x in prod_taxes]):
+            # it's a switch between vat exc and vat incl
+            return price * (1 + dest_taxes[0].amount)
+        return res
