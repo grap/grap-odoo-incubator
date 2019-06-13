@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/grap/grap-odoo-incubator.svg?branch=8.0)](https://travis-ci.org/grap/grap-odoo-incubator?branch=8.0)
-[![codecov](https://codecov.io/gh/grap/grap-odoo-incubator/branch/8.0/graph/badge.svg)](https://codecov.io/gh/grap/grap-odoo-incubator)
-[![Coverage Status](https://coveralls.io/repos/github/grap/grap-odoo-incubator/badge.svg?branch=8.0)](https://coveralls.io/github/grap/grap-odoo-incubator?branch=8.0)
+[![Build Status](https://travis-ci.org/grap/grap-odoo-incubator.svg?branch=12.0)](https://travis-ci.org/grap/grap-odoo-incubator?branch=12.0)
+[![codecov](https://codecov.io/gh/grap/grap-odoo-incubator/branch/12.0/graph/badge.svg)](https://codecov.io/gh/grap/grap-odoo-incubator)
+[![Coverage Status](https://coveralls.io/repos/github/grap/grap-odoo-incubator/badge.svg?branch=12.0)](https://coveralls.io/github/grap/grap-odoo-incubator?branch=12.0)
 [![Code Climate](https://codeclimate.com/github/grap/grap-odoo-incubator/badges/gpa.svg)](https://codeclimate.com/github/grap/grap-odoo-incubator)
 
 
