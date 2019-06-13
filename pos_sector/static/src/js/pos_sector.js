@@ -4,16 +4,17 @@ Copyright (C) 2018-Today GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 */
 
-"use strict";
 
-openerp.pos_sector = function(instance){
-    var module = instance.point_of_sale;
+odoo.define('pos_sector.pos_sector', function (require){
+    "use strict";
 
-    var PosModelParent = module.PosModel;
-    module.PosModel = module.PosModel.extend({
+    var models = require('point_of_sale.models');
+    var PosModelParent = models.PosModel.prototype;
+
+    models.PosModel = models.PosModel.extend({
 
         initialize: function (session, attributes) {
-            PosModelParent.prototype.initialize.apply(this, arguments);
+            PosModelParent.initialize.apply(this, arguments);
 
             var product_product_model = false;
             for (var i = 0, len = this.models.length; i < len; i++) {
@@ -31,4 +32,4 @@ openerp.pos_sector = function(instance){
             }
         },
     });
-};
+});
