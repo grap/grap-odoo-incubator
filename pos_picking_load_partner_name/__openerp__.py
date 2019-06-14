@@ -14,4 +14,5 @@
         'pos_picking_load',
     ],
     'pre_init_hook': 'pre_init_hook',
+    'installable': False,
 }
