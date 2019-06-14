@@ -34,5 +34,6 @@
         'demo/account_journal.xml',
         'demo/pos_config.xml',
         'demo/product_template.xml',
-    ]
+    ],
+    'installable': False,
 }
