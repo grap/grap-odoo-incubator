@@ -20,4 +20,5 @@
         'static/description/product_template_warning.png',
         'static/description/account_product_fiscal_classification_form.png',
     ],
+    'installable': False,
 }
