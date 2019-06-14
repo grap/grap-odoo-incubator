@@ -5,17 +5,14 @@ Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record id="view_pos_category_search" model="ir.ui.view">
         <field name="model">pos.category</field>
         <field name="arch" type="xml">
             <search>
                 <field name="company_id" groups="base.group_multi_company"/>
-                <separator/>
-                <group expand="0" string="Group by...">
-                   <filter string="Company" context="{'group_by' : 'company_id'}"/>
-                </group>
+                <filter name="filter_company_id" string="Company" context="{'group_by' : 'company_id'}"/>
             </search>
         </field>
     </record>
@@ -24,7 +21,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">pos.category</field>
         <field name="inherit_id" ref="point_of_sale.product_pos_category_tree_view" />
         <field name="arch" type="xml">
-            <field name="complete_name" position="after">
+            <field name="display_name" position="after">
                 <field name="company_id" groups="base.group_multi_company"/>
             </field>
         </field>
@@ -40,4 +37,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         </field>
     </record>
 
-</data></openerp>
+</odoo>
