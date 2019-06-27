@@ -9,11 +9,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="view_pos_config_form" model="ir.ui.view">
         <field name="model">pos.config</field>
-        <field name="inherit_id" ref="point_of_sale.view_pos_config_form" />
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form" />
         <field name="arch" type="xml">
-            <field name="iface_big_scrollbars" position="after">
-                <field name="check_session_state_frequency"/>
-            </field>
+            <xpath expr="//div[@id='title']" position="after">
+                <group string="Check Session State">
+                    <field name="check_session_state_frequency"/>
+                </group>
+            </xpath>
         </field>
     </record>
 

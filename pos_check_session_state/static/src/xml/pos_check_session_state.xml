@@ -7,16 +7,28 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <templates id="template" xml:space="preserve">
 
     <t t-name="ErrorClosedSessionPopupWidget">
-        <div class="modal-dialog">
-            <div class="popup">
-                <h1>
-                    <t t-esc="widget.session_name" />
-                </h1>
-                <p>
-                Sorry, the session you're working on is now closing or closed. <br />
-                Please close the current Point Of Sale Window and open it again to use a correct session.</p>
+        <div role="cialog" class="modal-dialog">
+            <div class="popup popup-error">
+                <p class="title"><t t-esc="widget.pos.pos_session.name" /></p>
+                <t t-if="widget.options.session_state === 'closing_control'">
+                    <p class="body">
+                        The session you're working on is in closing control.
+                    </p>
+                </t>
+                <t t-if="widget.options.session_state === 'closed'">
+                    <p class="body">
+                        The session you're working on is closed.
+                    </p>
+                </t>
+
+                <p class="body">
+                    Please close the current Point Of Sale Window and open it again to use a correct session.
+                </p>
             </div>
         </div>
     </t>
 
 </templates>
+
+
+
