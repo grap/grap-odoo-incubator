@@ -78,10 +78,11 @@ class AccountBankStatement(models.Model):
             else:
                 difference_with_limit = -1
             # Display button autosolve with some conditions
-            statement.display_autosolve =\
-                (statement.pos_session_state in ['opened', 'closing_control']
-                    and difference_with_limit < 0
-                    and abs(round(statement.control_difference, 3)) != 0)
+            statement.display_autosolve = (
+                statement.pos_session_state
+                in ['opened', 'closing_control'] and
+                difference_with_limit < 0 and
+                abs(round(statement.control_difference, 3)) != 0)
 
     @api.multi
     @api.depends('pos_session_state')
@@ -106,7 +107,10 @@ class AccountBankStatement(models.Model):
                 })
                 # Parameter 'wizard' is used to not update info according to an
                 # active cashbox that doesn't exist in this with_context
-                _cashbox.with_context(wizard=False).\
+                _cashbox.with_context(
+                    active_model='pos.session',
+                    active_ids=[statement.pos_session_id.id],
+                    wizard=False).\
                     _create_bank_statement_line(_cashbox, statement)
             else:
                 raise UserError(_(
