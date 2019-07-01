@@ -60,6 +60,9 @@ openerp.pos_payment_usability = function (instance) {
             var paidTotal = currentOrder.getPaidTotal();
             var dueTotal = currentOrder.getTotalTaxIncluded();
             var change = paidTotal > dueTotal ? paidTotal - dueTotal : 0;
+            if (Math.abs(change) < 0.000001){
+                change = 0;
+            }
             var cashAmount = 0;
 
             // Delete payment lines if the amount is null
@@ -79,6 +82,7 @@ openerp.pos_payment_usability = function (instance) {
                     }
                 }
             }
+
             // Display a warning if cash amount is under the change
             if (cashAmount < change) {
                 this.pos_widget.screen_selector.show_popup('error', {
