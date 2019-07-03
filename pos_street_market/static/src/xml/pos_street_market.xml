@@ -15,52 +15,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <t t-name="MarketPlaceNameWidget">
         <span class="username">
-            FROM
-        </span>
-<!-- 
-        <span class="market_place_name">
-            FROMAGE
             <t t-esc="widget.get_name()" />
-        </span> -->
-<!--         <li class='market-place'>
-            <a href="#" class='market-place'>
-                <t t-esc="widget.model.code"/><br />
-                <t t-esc="widget.model.name"/>
-            </a>
-        </li> -->
+        </span>
     </t>
-
-    <!-- Define 'SelectMarketPlacePopupWidget' -->
-<!--     <t t-name="SelectMarketPlacePopupWidget">
-        <div class="modal-dialog">
-            <div class="popup popup-select-market-place">
-                <div class="market-place-header">
-                    <div>
-                        Market Places
-                    </div>
-                    <div id="market-place-empty" class="button">
-                        Let Empty
-                    </div>
-                </div>
-                <div class="content-container">
-                    <span class="placeholder-MarketPlaceListScreenWidget" />
-                </div>
-            </div>
-        </div>
-    </t> -->
-
-    <!-- Define 'MarketPlaceListScreenWidget' -->
-<!--     <t t-name="MarketPlaceListScreenWidget">
-        <div class='market-place-list-container'>
-            <div class="market-place-list-scroller">
-                <ol id="market-place-screen-ol" class="market-place-widget-list">
-                </ol>
-            </div>
-            <div class="shadow-top"></div>
-            <span class="placeholder-ScrollbarWidget" />
-        </div>
-    </t> -->
-
-
 
 </templates>

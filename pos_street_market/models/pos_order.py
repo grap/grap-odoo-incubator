@@ -11,9 +11,6 @@ class PosOrder(models.Model):
     market_place_id = fields.Many2one(
         string='Market Place', comodel_name='market.place')
 
-    # Overload 'date_order' column to make readonly to false
-    date_order = fields.Datetime(readonly=False)
-
     @api.model
     def _order_fields(self, ui_order):
         res = super(PosOrder, self)._order_fields(ui_order)

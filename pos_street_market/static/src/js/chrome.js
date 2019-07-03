@@ -7,8 +7,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 odoo.define('pos_street_market.chrome', function (require) {
     "use strict";
 
-    console.log("Loaded: chrome");
-
     var chrome = require('point_of_sale.chrome');
     var pos_street_market_widget = require('pos_street_market.widgets');
 
