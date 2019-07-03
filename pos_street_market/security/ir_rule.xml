@@ -13,4 +13,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
     </record>
 
-</data></openerp>
+</odoo>
