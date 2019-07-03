@@ -6,7 +6,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-    <record id="view_pos_order_search" model="ir.ui.view">
+<!--     <record id="view_pos_order_search" model="ir.ui.view">
         <field name="model">pos.order</field>
         <field name="inherit_id" ref="point_of_sale.view_pos_order_filter"/>
         <field name="arch" type="xml">
@@ -25,7 +25,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     groups="pos_street_market.group_street_market_manager"/>
             </xpath>
         </field>
-    </record>
+    </record> -->
 
     <record id="view_pos_order_tree" model="ir.ui.view">
         <field name="model">pos.order</field>

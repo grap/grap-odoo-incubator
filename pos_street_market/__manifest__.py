@@ -16,15 +16,13 @@
         'security/ir_rule.xml',
         'security/res_groups.xml',
         'security/ir.model.access.csv',
-        'views/templates.xml',
+        # 'views/templates.xml',
         'views/view_market_place.xml',
         'views/view_pos_order.xml',
         'views/view_pos_config.xml',
-        'views/action.xml',
-        'views/menu.xml',
     ],
     'qweb': [
-        'static/src/xml/pos_street_market.xml',
+        # 'static/src/xml/pos_street_market.xml',
     ],
     'demo': [
         'demo/res_groups.xml',

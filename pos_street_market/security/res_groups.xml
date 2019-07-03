@@ -8,7 +8,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="group_street_market_manager" model="res.groups">
         <field name="name">Street Market Manager</field>
-        <field name="category_id" ref="base.module_category_usability"/>
+        <field name="category_id" ref="base.module_category_hidden"/>
     </record>
 
 </odoo>
