@@ -7,15 +7,31 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 <templates id="template" xml:space="preserve">
 
-    <!-- Overload 'PosWidget' -->
-    <t t-extend="PosWidget">
-        <t t-jquery=".pos-logo" t-operation="append">
-            <span id="button_select_market_place" class="order-button">Market Place</span>
+    <t t-extend="Chrome">
+        <t t-jquery=".pos-logo" t-operation="after">
+            <span class="placeholder-MarketPlaceNameWidget"></span>
         </t>
     </t>
 
+    <t t-name="MarketPlaceNameWidget">
+        <span class="username">
+            FROM
+        </span>
+<!-- 
+        <span class="market_place_name">
+            FROMAGE
+            <t t-esc="widget.get_name()" />
+        </span> -->
+<!--         <li class='market-place'>
+            <a href="#" class='market-place'>
+                <t t-esc="widget.model.code"/><br />
+                <t t-esc="widget.model.name"/>
+            </a>
+        </li> -->
+    </t>
+
     <!-- Define 'SelectMarketPlacePopupWidget' -->
-    <t t-name="SelectMarketPlacePopupWidget">
+<!--     <t t-name="SelectMarketPlacePopupWidget">
         <div class="modal-dialog">
             <div class="popup popup-select-market-place">
                 <div class="market-place-header">
@@ -31,10 +47,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 </div>
             </div>
         </div>
-    </t>
+    </t> -->
 
     <!-- Define 'MarketPlaceListScreenWidget' -->
-    <t t-name="MarketPlaceListScreenWidget">
+<!--     <t t-name="MarketPlaceListScreenWidget">
         <div class='market-place-list-container'>
             <div class="market-place-list-scroller">
                 <ol id="market-place-screen-ol" class="market-place-widget-list">
@@ -43,16 +59,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <div class="shadow-top"></div>
             <span class="placeholder-ScrollbarWidget" />
         </div>
-    </t>
+    </t> -->
 
-    <!-- Define 'MarketPlaceWidget' -->
-    <t t-name="MarketPlaceWidget">
-        <li class='market-place'>
-            <a href="#" class='market-place'>
-                <t t-esc="widget.model.code"/><br />
-                <t t-esc="widget.model.name"/>
-            </a>
-        </li>
-    </t>
+
 
 </templates>

@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <template id="assets_backend" name="pos_street_market assets" inherit_id="web.assets_backend">
+        <template id="assets" inherit_id="point_of_sale.assets">
             <xpath expr="." position="inside">
-<!--                 Custom JS -->
                 <script type="text/javascript" src="/pos_street_market/static/src/js/widget.js"></script>
-                <script type="text/javascript" src="/pos_street_market/static/src/js/db.js"></script>
+                <script type="text/javascript" src="/pos_street_market/static/src/js/chrome.js"></script>
                 <script type="text/javascript" src="/pos_street_market/static/src/js/models.js"></script>
-                <script type="text/javascript" src="/pos_street_market/static/src/js/main.js"></script>
+                <script type="text/javascript" src="/pos_street_market/static/src/js/gui.js"></script>
             </xpath>
         </template>
-        <template id="index_pos_street_market" name="POS Index Street Market" inherit_id="point_of_sale.index">
+<!--         <template id="index_pos_street_market" inherit_id="point_of_sale.index">
             <xpath expr="//head" position="inside">
-<!--                 Custom CSS -->
                 <link rel="stylesheet" href="/pos_street_market/static/src/css/pos_street_market.css"/>
             </xpath>
-        </template>
+        </template> -->
     </data>
 </openerp>

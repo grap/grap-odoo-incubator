@@ -64,10 +64,6 @@ odoo.define('pos_street_market.widgets', function (require) {
 
     });
 
-    return {
-        MarketPlaceNameWidget: MarketPlaceNameWidget,
-    };
-
 });
 // function load__pos_street_market__widget(instance) {
 // "use strict";
