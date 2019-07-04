@@ -10,7 +10,6 @@ odoo.define('pos_street_market.models', function (require) {
     var models = require('point_of_sale.models');
     var _super_order = models.Order.prototype;
 
-
     // Load market.place model
     models.load_models({
         model: 'market.place',
@@ -22,7 +21,7 @@ odoo.define('pos_street_market.models', function (require) {
         },
     });
 
-    // make market place persistent in the session
+    // Make market place persistent in the session
     models.PosModel = models.PosModel.extend({
         get_market_place: function(){
             return this.get('current_market_place') || this.db.load('current_market_place');

@@ -6,9 +6,15 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
+    <record id="group_street_market_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="category_street_market"/>
+    </record>
+
     <record id="group_street_market_manager" model="res.groups">
-        <field name="name">Street Market Manager</field>
-        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="name">Manager</field>
+        <field name="category_id" ref="category_street_market"/>
+        <field name="implied_ids" eval="[(4, ref('group_street_market_user'))]"/>
     </record>
 
 </odoo>

@@ -6,7 +6,6 @@ To use this module, you need to
 
 .. figure:: ../static/description/pos_front_end_ui.png
 
-You can later make some statistics, filtering your sale by market places.
+* All the next Pos Order will be related to this market place.
 
-
-.. figure:: ../static/description/pos_order_search.png
+.. figure:: ../static/description/pos_order_tree.png

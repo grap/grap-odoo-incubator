@@ -27,16 +27,15 @@ odoo.define('pos_street_market.widgets', function (require) {
             });
         },
         click_market_place: function(){
-            console.log("click_market_place");
             var self = this;
-            this.gui.select_market_place({
-                'security':     true,
-                'current_market_place': this.pos.get_market_place(),
-                'title':      _t("Change Market Place"),
-            }).then(function(market_place){
+            this.gui.select_market_place({}).then(function(market_place){
                 self.pos.set_market_place(market_place);
                 self.renderElement();
             });
+        },
+        is_visible: function (){
+            return this.pos.user.groups_id.indexOf(
+                this.pos.config.group_pos_street_market_user_id[0]) != -1;
         },
         get_name: function(){
             var market_place = this.pos.get_market_place();

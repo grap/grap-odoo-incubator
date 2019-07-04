@@ -14,9 +14,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </t>
 
     <t t-name="MarketPlaceNameWidget">
-        <span class="username">
-            <t t-esc="widget.get_name()" />
-        </span>
+        <t t-if="widget.is_visible()">
+            <span class="username">
+                <t t-esc="widget.get_name()" />
+            </span>
+        </t>
     </t>
 
 </templates>

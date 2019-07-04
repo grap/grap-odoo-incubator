@@ -15,8 +15,8 @@ odoo.define('pos_street_market.chrome', function (require) {
         init: function() { 
             var self = this;
             this.widgets.push({
-                'name':   'market_place_name',
-                'widget': pos_street_market_widget.MarketPlaceNameWidget,
+                'name':     'market_place_name',
+                'widget':   pos_street_market_widget.MarketPlaceNameWidget,
                 'replace':  '.placeholder-MarketPlaceNameWidget',
             },);
             this._super(arguments[0], {});

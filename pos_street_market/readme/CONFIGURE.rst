@@ -1,9 +1,9 @@
 To configure this module, you need to:
 
-* Add your users to the new group 'Street Market Manager'
+* Add your users to the new group 'PoS - Street Market' (User or Manager)
 
-* Go to Point of Sale / Configuration / Point of Sales
+* Go to Point of Sale / Configuration / Market Places
 
-* Check the box 'Market Place'
+* Create your market places
 
-.. figure:: ../static/description/pos_config_form.png
+.. figure:: ../static/description/market_place_tree.png
