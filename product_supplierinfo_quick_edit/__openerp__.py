@@ -29,5 +29,5 @@
     'images': [
         'static/description/supplierinfo_tree.png',
     ],
-    'installable': True,
+    'installable': False,
 }

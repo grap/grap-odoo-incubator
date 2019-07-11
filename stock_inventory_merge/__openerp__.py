@@ -30,5 +30,5 @@
         'static/description/stock_inventory_form_duplicate.png',
         'static/description/stock_inventory_tree_merge.png',
     ],
-    'installable': True,
+    'installable': False,
 }

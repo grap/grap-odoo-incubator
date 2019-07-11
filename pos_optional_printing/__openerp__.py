@@ -19,5 +19,5 @@
     'images': [
         'static/description/pos_payment_screen.png',
     ],
-    'installable': True,
+    'installable': False,
 }

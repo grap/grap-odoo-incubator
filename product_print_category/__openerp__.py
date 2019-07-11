@@ -35,5 +35,5 @@
         'views/view_product_print_category.xml',
         'views/menu.xml',
     ],
-    'installable': True,
+    'installable': False,
 }

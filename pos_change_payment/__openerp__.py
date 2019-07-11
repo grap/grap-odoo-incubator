@@ -19,5 +19,5 @@
         'views/view_pos_order.xml',
         'views/view_pos_switch_journal_wizard.xml',
     ],
-    'installable': True,
+    'installable': False,
 }

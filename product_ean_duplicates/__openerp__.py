@@ -26,5 +26,5 @@
     'images': [
         'static/description/product_barcode_constrains.png'
     ],
-    'installable': True,
+    'installable': False,
 }

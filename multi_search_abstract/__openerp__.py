@@ -20,5 +20,5 @@
     'demo': [
         'demo/res_groups.xml',
     ],
-    'installable': True,
+    'installable': False,
 }

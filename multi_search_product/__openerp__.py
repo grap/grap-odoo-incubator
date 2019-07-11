@@ -22,5 +22,5 @@
         'static/description/product_search.png',
         'static/description/setting_form.png',
     ],
-    'installable': True,
+    'installable': False,
 }

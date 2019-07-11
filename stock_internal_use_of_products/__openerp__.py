@@ -38,5 +38,5 @@
         'static/description/internal_use_form.png',
         'static/description/internal_use_case_form.png',
     ],
-    'installable': True,
+    'installable': False,
 }

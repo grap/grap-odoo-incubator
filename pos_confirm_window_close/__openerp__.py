@@ -20,5 +20,5 @@
     'images': [
         'static/description/pos_confirmation_close.png',
     ],
-    'installable': True,
+    'installable': False,
 }
