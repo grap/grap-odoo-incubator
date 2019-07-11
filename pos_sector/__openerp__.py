@@ -34,4 +34,5 @@
         'static/description/pos_config_form.png',
         'static/description/product_form.png',
     ],
+    'installable': False,
 }
