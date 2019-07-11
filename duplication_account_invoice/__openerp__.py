@@ -18,5 +18,5 @@
         'views/view_account_invoice_duplication_wizard.xml',
         'views/action.xml',
     ],
-    'installable': True,
+    'installable': False,
 }
