@@ -16,5 +16,5 @@
     'data': [
         'security/res_groups.yml',
     ],
-    'installable': True,
+    'installable': False,
 }

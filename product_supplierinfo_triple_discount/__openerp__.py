@@ -24,5 +24,5 @@
     'images': [
         'static/description/product_supplierinfo_form.png',
     ],
-    "installable": True,
+    'installable': False,
 }

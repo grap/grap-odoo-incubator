@@ -37,4 +37,5 @@
         'static/description/pos_config_form.png',
         'static/description/pos_order_search.png',
     ],
+    'installable': False,
 }

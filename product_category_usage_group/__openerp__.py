@@ -24,5 +24,5 @@
         'static/description/product_template_warning.png',
         'static/description/product_category_form.png',
     ],
-    'installable': True,
+    'installable': False,
 }

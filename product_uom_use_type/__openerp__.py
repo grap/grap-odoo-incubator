@@ -20,5 +20,5 @@
         'demo/res_groups.xml',
         'demo/product_uom.xml',
     ],
-    "installable": True,
+    'installable': False,
 }

@@ -34,5 +34,5 @@
         'static/description/tax_setting.png',
         'static/description/tax_template_setting.png',
     ],
-    'installable': True,
+    'installable': False,
 }

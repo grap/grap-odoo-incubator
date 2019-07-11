@@ -23,10 +23,10 @@
         'demo/res_company_category.xml',
         'demo/res_company.xml',
     ],
-    'installable': True,
     'images': [
         'static/description/res_company_category_form.png',
         'static/description/res_company_category_tree.png',
         'static/description/res_company_form.png',
     ],
+    'installable': False,
 }

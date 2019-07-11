@@ -15,5 +15,5 @@
     'data': [
         'views/view_res_users.xml',
     ],
-    'installable': True,
+    'installable': False,
 }

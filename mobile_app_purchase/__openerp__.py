@@ -22,5 +22,5 @@
         'demo/res_company.xml',
         'demo/product_product.xml',
     ],
-    'installable': True,
+    'installable': False,
 }

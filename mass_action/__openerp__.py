@@ -30,4 +30,5 @@
         'static/description/res_users_tree_result.png',
         'static/description/wizard_form_ok.png',
     ],
+    'installable': False,
 }

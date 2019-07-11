@@ -21,4 +21,5 @@
         'static/description/pos_error.png',
         'static/description/pos_config_form.png',
     ],
+    'installable': False,
 }

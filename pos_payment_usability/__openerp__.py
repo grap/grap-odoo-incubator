@@ -21,4 +21,5 @@
     ],
     'images': [
     ],
+    'installable': False,
 }

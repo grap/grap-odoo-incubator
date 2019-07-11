@@ -28,4 +28,5 @@
         'static/description/wizard_form_ok.png',
         'static/description/wizard_form_warning.png',
     ],
+    'installable': False,
 }

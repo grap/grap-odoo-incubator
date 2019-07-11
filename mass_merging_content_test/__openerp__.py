@@ -23,5 +23,5 @@
         'demo/account_invoice.xml',
         'demo/account_invoice_line.xml',
     ],
-
+    'installable': False,
 }

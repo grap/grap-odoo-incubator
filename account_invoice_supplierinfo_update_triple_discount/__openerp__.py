@@ -16,12 +16,12 @@
         'account_invoice_supplierinfo_update_discount',
         'product_supplierinfo_triple_discount',
     ],
-    'installable': False,
-    'auto_install': True,
     'data': [
         'wizard/wizard_update_invoice_supplierinfo.xml',
     ],
     'images': [
         'static/description/wizard_form.png',
     ],
+    'auto_install': True,
+    'installable': False,
 }

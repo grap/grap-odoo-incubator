@@ -21,8 +21,8 @@
         'demo/res_groups.xml',
         'demo/res_company.xml',
     ],
-    'installable': True,
     'images': [
         'static/description/res_company_form.png',
     ],
+    'installable': False,
 }

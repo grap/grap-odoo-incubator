@@ -23,5 +23,5 @@
     'images': [
         'static/description/account_invoice_form.png',
     ],
-    'installable': True,
+    'installable': False,
 }

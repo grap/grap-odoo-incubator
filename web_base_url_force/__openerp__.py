@@ -15,5 +15,5 @@
         'base',
         'web',
     ],
-    'installable': True,
+    'installable': False,
 }

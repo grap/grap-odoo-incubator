@@ -28,5 +28,5 @@
         'static/description/product_tax_included_and_not.png',
         'static/description/taxes_creation.png',
     ],
-    'installable': True,
+    'installable': False,
 }

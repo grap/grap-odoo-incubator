@@ -20,5 +20,5 @@
     'images': [
         'static/description/point_of_sale.png',
     ],
-    'installable': True,
+    'installable': False,
 }

@@ -28,4 +28,5 @@
         'static/description/pos_payment_list_image.png',
         'static/description/pos_paypad_image.png',
     ],
+    'installable': False,
 }

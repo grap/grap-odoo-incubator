@@ -26,5 +26,5 @@
         'static/description/purchase_harmonized_taxes.png',
     ],
     'auto_install': True,
-    'installable': True,
+    'installable': False,
 }

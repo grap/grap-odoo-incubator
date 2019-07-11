@@ -30,4 +30,5 @@
         'static/description/sale_order_tree.png',
         'static/description/wizard_form_ok.png',
     ],
+    'installable': False,
 }

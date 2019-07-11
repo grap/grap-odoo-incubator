@@ -20,4 +20,5 @@
         'demo/res_groups.xml',
         'demo/product_category.xml',
     ],
+    'installable': False,
 }

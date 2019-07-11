@@ -32,5 +32,5 @@
         'static/description/simple_price_list_item.png',
         'static/description/wizard_form.png',
     ],
-    'installable': True,
+    'installable': False,
 }

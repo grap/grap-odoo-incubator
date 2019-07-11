@@ -26,5 +26,6 @@
         'static/description/pos_config_form.png',
         'static/description/pos_done_order_list.png',
         'static/description/pos_load_done_order_button.png',
-    ]
+    ],
+    'installable': False,
 }

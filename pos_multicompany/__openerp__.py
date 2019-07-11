@@ -27,4 +27,5 @@
     'images': [
         'static/description/pos_category_tree.png',
     ],
+    'installable': False,
 }

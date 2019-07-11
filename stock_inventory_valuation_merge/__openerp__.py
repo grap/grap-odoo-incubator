@@ -14,6 +14,6 @@
         'stock_inventory_valuation',
         'stock_inventory_merge',
     ],
-    'installable': True,
     'auto_install': True,
+    'installable': False,
 }

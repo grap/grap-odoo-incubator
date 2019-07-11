@@ -30,4 +30,5 @@
     'images': [
         'static/description/product_form.png',
     ],
+    'installable': False,
 }
