@@ -1,12 +1,11 @@
-# coding: utf-8
-# Copyright 2017, Grap
+# Copyright 2019, Grap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from openerp import fields, models
+from odoo import fields, models
 
 
 class ProductUom(models.Model):
-    _inherit = 'product.uom'
+    _inherit = 'uom.uom'
 
     use_type = fields.Selection(
         [('sale', 'Unit available for sales'),

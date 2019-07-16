@@ -1,10 +1,9 @@
-# coding: utf-8
-# Copyright 2017, Grap
+# Copyright 2019, Grap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Product UoM - Use Type",
     "summary": "Define UoM for Sale and / or for Purchase purpose",
-    "version": "8.0.1.0.0",
+    "version": "12.0.1.0.0",
     "category": "Product",
     "website": "https://github.com/OCA/product-attribute",
     "author": "GRAP, Odoo Community Association (OCA)",
@@ -17,8 +16,8 @@
         'views/view_product_uom.xml',
     ],
     'demo': [
-        'demo/res_groups.xml',
         'demo/product_uom.xml',
+        'demo/product_template.xml',
     ],
-    'installable': False,
+    "installable": True,
 }
