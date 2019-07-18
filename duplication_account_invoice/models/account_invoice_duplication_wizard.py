@@ -1,12 +1,12 @@
-# coding: utf-8
 # Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# @author: Quentin DUPONT (quentin.dupont@grap.coop)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import datetime
 from dateutil.relativedelta import relativedelta
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 
 class AccountInvoiceDuplicationWizard(models.TransientModel):
@@ -77,11 +77,7 @@ class AccountInvoiceDuplicationWizard(models.TransientModel):
         if invoice_id:
             invoice = invoice_obj.browse(invoice_id)
             if invoice.date_due and invoice.date_invoice:
-                date_invoice = datetime.datetime.strptime(
-                    invoice.date_invoice, '%Y-%m-%d')
-                due_date = datetime.datetime.strptime(
-                    invoice.date_due, '%Y-%m-%d')
-                return (due_date - date_invoice).days
+                return (invoice.date_due - invoice.date_invoice).days
         return 0
 
     # View Section
@@ -91,11 +87,11 @@ class AccountInvoiceDuplicationWizard(models.TransientModel):
     def onchange_duplication_settings(self):
         self.ensure_one()
         self.date_line_ids = []
+
         if (self.begin_date and self.duplication_type and
                 self.duplication_duration):
             date_line_ids = []
-            begin_date = datetime.datetime.strptime(
-                self.begin_date, '%Y-%m-%d')
+            date_line_ids.append((5, 0, 0))
             begin_index = 0
             end_index = self.duplication_duration
             if not self.include_current_date:
@@ -104,16 +100,16 @@ class AccountInvoiceDuplicationWizard(models.TransientModel):
             for i in range(begin_index, end_index):
                 if self.duplication_type == 'week':
                     date_invoice =\
-                        begin_date + datetime.timedelta(weeks=i)
+                        self.begin_date + datetime.timedelta(weeks=i)
                 else:
                     date_invoice =\
-                        begin_date + relativedelta(months=i)
+                        self.begin_date + relativedelta(months=i)
                 date_due =\
                     date_invoice + datetime.timedelta(
                         days=self.date_due_duration)
                 date_line_ids.append((0, 0, {
-                    'date_invoice': date_invoice.strftime('%Y-%m-%d'),
-                    'date_due': date_due.strftime('%Y-%m-%d'),
+                    'date_invoice': date_invoice,
+                    'date_due': date_due,
                 }))
             self.date_line_ids = date_line_ids
 
