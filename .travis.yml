@@ -29,11 +29,7 @@ install:
   - sed -i -e 's/Odoo Community Association (OCA)/GRAP/g' ${HOME}/maintainer-quality-tools/travis/cfg/travis_run_pylint_pr.cfg
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly
-  - printf '[options]\n\nrunning_env = env-dev\n' > ${HOME}/.openerp_serverrc
-  - ls -ail
-  - ls -ail ${HOME}
-  - ls -ail ${HOME}/virtualenv
-  - cat ${HOME}/.openerp_serverrc
+  - printf '[options]\n\nrunning_env = dev\n' > ${HOME}/.openerp_serverrc
   - if [ "$LINT_CHECK" != "1" ] ; then ln -s ${HOME}/dependencies/server-tools/server_environment_files_sample ${HOME}/dependencies/server-tools/server_environment_files; fi
 
 script:
