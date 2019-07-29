@@ -30,6 +30,7 @@ install:
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly
   - printf '[options]\n\nrunning_env = env-dev\n' > ${HOME}/.openerp_serverrc
+  - ln -s $HOME/server-tools/server_environment_files_sample $HOME/server-tools/server_environment_files
 
 script:
   - travis_run_tests
