@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* product_category_product_qty
+#   * product_category_product_qty
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-01 16:35+0000\n"
-"PO-Revision-Date: 2018-08-01 16:35+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2019-09-09 13:10+0000\n"
+"PO-Revision-Date: 2019-09-09 13:10+0000\n"
+"Last-Translator: Quentin Dupont <quentin.dupont@grap.coop>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,25 +18,19 @@ msgstr ""
 #. module: product_category_product_qty
 #: model:ir.model,name:product_category_product_qty.model_product_category
 msgid "Product Category"
-msgstr "Catégorie d'articles"
+msgstr "Catégorie d'article"
 
 #. module: product_category_product_qty
-#: view:product.category:product_category_product_qty.view_product_category_form
-msgid "Products"
-msgstr "Articles"
-
-#. module: product_category_product_qty
-#: field:product.category,template_qty:0
+#: model:ir.model.fields,field_description:product_category_product_qty.field_product_category__template_qty
 msgid "Products Quantity"
 msgstr "Nombre d'articles"
 
 #. module: product_category_product_qty
-#: view:product.category:product_category_product_qty.view_product_category_form
+#: model_terms:ir.ui.view,arch_db:product_category_product_qty.view_product_category_form
 msgid "Variants"
 msgstr "Variantes"
 
 #. module: product_category_product_qty
-#: field:product.category,product_qty:0
+#: model:ir.model.fields,field_description:product_category_product_qty.field_product_category__product_qty
 msgid "Variants Quantity"
 msgstr "Nombre de variantes"
-

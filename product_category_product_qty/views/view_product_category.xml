@@ -2,17 +2,17 @@
 <!--
 Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author: Quentin DUPONT (https://twitter.com/pondupont)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="view_product_category_tree" model="ir.ui.view">
         <field name="model">product.category</field>
         <field name="inherit_id" ref="product.product_category_list_view" />
         <field name="arch" type="xml">
-            <field name="complete_name" position="after">
-                <field name="type"/>
-                <field name="template_qty"/>
+            <field name="display_name" position="after">
+                <field string="Products Quantity" name="product_count"/>
                 <field name="product_qty"/>
             </field>
         </field>
@@ -22,15 +22,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.category</field>
         <field name="inherit_id" ref="product.product_category_form_view" />
         <field name="arch" type="xml">
-            <xpath expr="//div[@class='oe_title']" position="after">
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
                 <div class="oe_right oe_button_box" name="buttons">
-                    <button type="action" class="oe_stat_button" icon="fa-list"
-                            name="%(product.product_template_action)d"
-                            context="{'search_default_categ_id': active_id}"
-                            attrs="{'invisible': [('template_qty', '=', 0)]}">
-                        <field string="Products" name="template_qty" widget="statinfo"/>
-                    </button>
-                    <button type="action" class="oe_stat_button" icon="fa-list"
+                    <button type="action" class="oe_stat_button" icon="fa-th-list"
                             name="%(product.product_normal_action)d"
                             context="{'search_default_categ_id': active_id}"
                             attrs="{'invisible': [('product_qty', '=', 0)]}">
@@ -44,4 +38,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 
 
-</data></openerp>
+</odoo>
