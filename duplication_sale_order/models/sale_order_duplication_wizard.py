@@ -1,12 +1,12 @@
-# coding: utf-8
 # Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# @author: Quentin DUPONT (https://twitter.com/pondupont)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import datetime
 from dateutil.relativedelta import relativedelta
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 
 class SaleOrderDuplicationWizard(models.TransientModel):
@@ -65,7 +65,7 @@ class SaleOrderDuplicationWizard(models.TransientModel):
         if not order_id:
             return False
         else:
-            return order_obj.browse(order_id).requested_date
+            return order_obj.browse(order_id).date_order.strftime('%Y-%m-%d')
 
     # View Section
     @api.onchange(
@@ -74,11 +74,11 @@ class SaleOrderDuplicationWizard(models.TransientModel):
     def onchange_duplication_settings(self):
         self.ensure_one()
         self.date_line_ids = []
+
         if (self.begin_date and self.duplication_type and
                 self.duplication_duration):
             date_line_ids = []
-            begin_date = datetime.datetime.strptime(
-                self.begin_date, '%Y-%m-%d')
+            date_line_ids.append((5, 0, 0))
             begin_index = 0
             end_index = self.duplication_duration
             if not self.include_current_date:
@@ -87,10 +87,10 @@ class SaleOrderDuplicationWizard(models.TransientModel):
             for i in range(begin_index, end_index):
                 if self.duplication_type == 'week':
                     current_date =\
-                        begin_date + datetime.timedelta(weeks=i)
+                        self.begin_date + datetime.timedelta(weeks=i)
                 else:
                     current_date =\
-                        begin_date + relativedelta(months=i)
+                        self.begin_date + relativedelta(months=i)
                 date_line_ids.append((0, 0, {
                     'date': current_date.strftime('%Y-%m-%d'),
                 }))
@@ -115,5 +115,5 @@ class SaleOrderDuplicationWizard(models.TransientModel):
         order_ids = []
         for date_line in self.date_line_ids:
             order_ids.append(self.order_id.copy(
-                default={'requested_date': date_line.date}).id)
+                default={'date_order': date_line.date}).id)
         return order_ids
