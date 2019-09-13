@@ -1,36 +1,51 @@
-# coding: utf-8
 # Copyright (C) 2016-Today: La Louve (<http://www.lalouve.net/>)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 
 class ProductProduct(models.Model):
-    _inherit = 'product.product'
+    _inherit = "product.product"
 
+    # Columns Section
     print_category_id = fields.Many2one(
-        string='Print Category', related='product_tmpl_id.print_category_id')
+        string="Print Category",
+        comodel_name="product.print.category",
+        default=lambda s: s._default_print_category_id(),
+    )
 
-    to_print = fields.Boolean(string='To Print')
+    to_print = fields.Boolean(
+        string="To Print",
+        store=True
+    )
+
+    # Default Section
+    def _default_print_category_id(self):
+        return self.env.user.company_id.print_category_id
 
     @api.model
     def create(self, vals):
-        if vals.get('print_category_id', False):
-            vals['to_print'] = True
+        if vals.get("print_category_id", False):
+            vals["to_print"] = True
         return super(ProductProduct, self).create(vals)
 
     @api.multi
     def write(self, vals):
         res = super(ProductProduct, self).write(vals)
         product_ids = []
+        # Set 'To print' if we change one field choosen in print_category
         for product in self:
             if product.print_category_id:
-                if len(list(
-                        set(vals.keys()) &
-                        set(product.print_category_id.field_ids.
-                            mapped('name')))):
+                if len(
+                    list(
+                        set(vals.keys())
+                        & set(
+                            product.print_category_id.field_ids.mapped("name")
+                        )
+                    )
+                ):
                     product_ids.append(product.id)
         products = self.browse(product_ids)
-        super(ProductProduct, products).write({'to_print': True})
+        super(ProductProduct, products).write({"to_print": True})
         return res

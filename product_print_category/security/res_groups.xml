@@ -6,7 +6,7 @@ Copyright (C) 2012-Today GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record  id="user" model="res.groups">
         <field name="name">Print Category User</field>
@@ -19,4 +19,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="category_id" ref="module_product_print_category" />
     </record>
 
-</data></openerp>
+</odoo>
