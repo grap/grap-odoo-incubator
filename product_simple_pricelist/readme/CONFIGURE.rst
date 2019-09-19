@@ -9,12 +9,4 @@ To use this module, you need to go to Sale / Configuration / Pricelists
 * you can then edit easily change the price for a given product with the
   buttons in the end of each lines.
 
-.. figure:: ../static/description/simple_price_list_item.png
-
-* In the wizard, mention the new price you want to apply for this pricelist
-
-.. figure:: ../static/description/wizard_form.png
-
-* The according pricelist item will be created
-
-.. figure:: ../static/description/pricelist_item_form.png
+.. figure:: ../static/description/product_product_tree.png
