@@ -26,6 +26,8 @@ env:
 install:
   - pip install anybox.testing.openerp
   - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
+  # Disable manifest-required-author for this repository
+  - sed '/manifest-required-author,/d' ${HOME}/maintainer-quality-tools/travis/cfg/travis_run_pylint_pr.cfg -i
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly
 
