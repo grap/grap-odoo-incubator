@@ -5,12 +5,12 @@ Copyright (C) 2018-Today GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
-    <template id="assets_backend" name="stock_internal_use_of_products assets" inherit_id="stock.assets_backend">
+    <template id="assets_backend" name="stock_internal_use_of_products assets" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
             <link rel="stylesheet" href="/stock_internal_use_of_products/static/src/css/css.css"/>
         </xpath>
     </template>
 
-</data></openerp>
+</odoo>

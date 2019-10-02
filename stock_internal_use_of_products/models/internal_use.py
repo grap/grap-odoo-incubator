@@ -1,4 +1,3 @@
-# coding: utf-8
 # Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 # @author Julien WESTE
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -6,8 +5,8 @@
 
 import time
 
-from openerp import _, api, fields, models
-from openerp.exceptions import Warning as UserError
+from odoo import _, api, fields, models
+from odoo.exceptions import Warning as UserError
 
 
 class InternalUse(models.Model):

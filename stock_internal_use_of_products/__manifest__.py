@@ -1,4 +1,3 @@
-# coding: utf-8
 # Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 # @author Julien WESTE
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -38,5 +37,5 @@
         'static/description/internal_use_form.png',
         'static/description/internal_use_case_form.png',
     ],
-    'installable': False,
+    'installable': True,
 }

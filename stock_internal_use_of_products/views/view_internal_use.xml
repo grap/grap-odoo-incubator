@@ -5,7 +5,7 @@ Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
      <record id="view_internal_use_search" model="ir.ui.view">
         <field name="model">internal.use</field>
@@ -18,11 +18,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <filter name="to_confirm" string="To Process" domain="[('state', '=', 'draft')]"/>
                 <filter name="to_post" string="To Post" domain="[('state', '=', 'confirmed')]"/>
                 <filter string="Confirmed or Posted" name="confirmed_or_posted" domain="[('state', 'in', ('confirmed', 'done'))]"/>
-                <group expand="0" string="Group By...">
-                    <filter string="Status" context="{'group_by':'state'}"/>
-                    <filter string="Date" context="{'group_by':'date_done'}"/>
-                    <filter string="Case" context="{'group_by':'internal_use_case_id'}"/>
-                    <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="state" domain="[]" context="{'group_by':'state'}"/>
+                    <filter string="Date" name="date_done" domain="[]" context="{'group_by':'date_done'}"/>
+                    <!-- <filter string="Case" name="" domain="[]" context="{'group_by':'internal_use_case_id'}"/> -->
+                    <filter string="Company" name="company_id" domain="[]" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
                 </group>
             </search>
 
@@ -32,7 +32,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_internal_use_tree" model="ir.ui.view">
         <field name="model">internal.use</field>
         <field name="arch" type="xml">
-            <tree colors="grey:state == 'cancel'; blue:state == 'draft'; brown:state == 'confirmed'">
+            <tree>
+            <!-- <tree colors="grey:state == 'cancel'; blue:state == 'draft'; brown:state == 'confirmed'"> -->
                 <field name="date_done"/>
                 <field name="name"/>
                 <field name="internal_use_case_id"/>
@@ -59,7 +60,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <sheet>
                     <div class="oe_title">
                         <h1>
-                            <label string="Internal Use"/>
+                            <label for="Internal Use"/>
                             <field name="name" class="oe_inline" readonly="1"/>
                         </h1>
                     </div>
@@ -101,4 +102,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         </field>
     </record>
 
-</data></openerp>
+</odoo>

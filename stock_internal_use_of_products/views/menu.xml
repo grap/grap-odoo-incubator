@@ -5,7 +5,7 @@ Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <menuitem id="menu_internal_useroot"
         name="Internal Uses"
@@ -21,8 +21,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <menuitem id="menu_internal_uses_config" 
         name="Internal Use Cases" 
-        parent="stock.menu_stock_configuration" 
+        parent="stock.menu_stock_config_settings" 
         sequence="40" 
         action="action_internal_use_case_tree"/>
 
-</data></openerp>
+</odoo>
