@@ -11,45 +11,50 @@ import odoo.addons.decimal_precision as dp
 
 class InternalUseLine(models.Model):
     _name = 'internal.use.line'
+    _description = 'Lines of product for internal uses'
 
     # Column Section
     internal_use_id = fields.Many2one(
-        comodel_name='internal.use', string='Internal Uses', select=True,
+        comodel_name='internal.use', string='Internal Uses', index=True,
         readonly=True, ondelete='cascade', oldname='internal_use')
 
     product_id = fields.Many2one(
         comodel_name='product.product', string='Product', required=True,
-        domain="[('type', '!=', 'service')]", select=True)
+        domain="[('type', '!=', 'service')]", index=True)
 
     product_qty = fields.Float(
-        string='Quantity', digits_compute=dp.get_precision('Product UoM'),
+        string='Quantity', digits=dp.get_precision('Product UoM'),
         required=True, default=1)
 
     product_uom_id = fields.Many2one(
-        comodel_name='product.uom', string='Unit of Measure', required=True)
+        comodel_name='uom.uom', string='Unit of Measure', required=True)
 
     company_id = fields.Many2one(
-        comodel_name='res.company', string='Company', select=True,
+        comodel_name='res.company', string='Company', index=True,
         related='internal_use_id.company_id', store=True)
 
     price_unit = fields.Float(
         string='Unit Price (Tax Excluded)',
-        digits_compute=dp.get_precision('Product Price'))
+        digits=dp.get_precision('Product Price'))
 
     amount = fields.Float(
         string='Amount (Tax Excluded)', store=True,
         compute='_compute_amount',
-        digits_compute=dp.get_precision('Product Price'), oldname='subtotal')
+        digits=dp.get_precision('Product Price'), oldname='subtotal')
 
     # Compute section
     @api.depends('product_qty', 'price_unit', 'product_id', 'product_uom_id')
     def _compute_amount(self):
-        uom_obj = self.env['product.uom']
         for line in self:
             if not (line.product_id and line.product_uom_id):
                 continue
-            line.amount = line.price_unit * uom_obj._compute_qty_obj(
-                line.product_uom_id, line.product_qty, line.product_id.uom_id)
+            if line.product_uom_id != line.product_id.uom_id:
+                uom_to_use = line.product_id.uom_id
+            else:
+                uom_to_use = line.product_uom_id
+            # Convert the quantity thanks to new or actual  uom
+            line.amount = line.price_unit * line.product_uom_id.\
+                _compute_quantity(line.product_qty, uom_to_use)
 
     # Views section
     @api.onchange('product_id')
@@ -61,7 +66,7 @@ class InternalUseLine(models.Model):
         line.product_uom_id = line.product_id.uom_id.id
         line.price_unit = line.product_id.standard_price
         line.price_unit = line.product_id.supplier_taxes_id.compute_all(
-            line.price_unit, line.product_qty, line.product_id.id)['total']
+            line.price_unit, None, line.product_qty, line.product_id.id)['total_excluded']
 
     # Constrains Section
     @api.constrains('product_qty')
@@ -92,7 +97,7 @@ class InternalUseLine(models.Model):
         return {
             'name': 'Internal Use Line/' + str(self.id),
             'product_id': self.product_id.id,
-            'internal_use_id': self.internal_use_id.id,
+            'internal_use_id': self.internal_use_id.id, # ??
             'product_uom': self.product_uom_id.id,
             'date': self.internal_use_id.date_done,
             'product_uom_qty': (
@@ -108,6 +113,51 @@ class InternalUseLine(models.Model):
                 use_case.default_location_src_id.id),
         }
 
+    # ce qu'il y a dans stock inventory utiliser par la fonction def _generate_moves(self) qui m'a l'air pas mal
+    # car elle crée des stock move
+    # get info for one line
+    def _get_move_values(self, qty, location_id, location_dest_id, out):
+        use_case = self.internal_use_id.internal_use_case_id
+        self.ensure_one()
+        return {
+            'name': 'Internal Use Line/' + str(self.id),
+            'product_id': self.product_id.id,
+            'internal_use_id': self.internal_use_id.id,
+            'product_uom': self.product_uom_id.id,
+            'date': self.internal_use_id.date_done,
+            'product_uom_qty': (
+                self.product_qty > 0 and
+                self.product_qty or -self.product_qty),
+            'location_id': (
+                self.product_qty > 0 and
+                use_case.default_location_src_id.id or
+                use_case.default_location_dest_id.id),
+            'location_dest_id': (
+                self.product_qty > 0 and
+                use_case.default_location_dest_id.id or
+                use_case.default_location_src_id.id),
+            'move_line_ids': [(0, 0, {
+                'product_id': self.product_id.id,
+                # 'lot_id': self.prod_lot_id.id,
+                'product_uom_qty': 0,  # bypass reservation here
+                'product_uom_id': self.product_uom_id.id,
+                'qty_done': qty,
+                # 'package_id': out and self.package_id.id or False,
+                # 'result_package_id': (not out) and self.package_id.id or False,
+                'location_id': (
+                    self.product_qty > 0 and
+                    use_case.default_location_src_id.id or
+                    use_case.default_location_dest_id.id),
+                'location_dest_id': (
+                    self.product_qty > 0 and
+                    use_case.default_location_dest_id.id or
+                    use_case.default_location_src_id.id),
+                # 'owner_id': self.partner_id.id,
+            })]
+        }
+
+
+
     @api.multi
     def _get_expense_entry_key_charge(self):
         """
@@ -115,6 +165,7 @@ class InternalUseLine(models.Model):
             line for charge move line.
             Overwrite this function to change the behaviour.
         """
+        # import pdb; pdb.set_trace();
         self.ensure_one()
         product = self.product_id
         return (
@@ -141,12 +192,10 @@ class InternalUseLine(models.Model):
     def _prepare_account_move_line_charge(self, account_move_vals):
         use_case = self[0].internal_use_id.internal_use_case_id
         total = sum(self.mapped('amount'))
-        tax_code = self[0].product_id.supplier_taxes_id and\
-            self[0].product_id.supplier_taxes_id[0].base_code_id or False
+        # import pdb; pdb.set_trace();
+        tax_code = self[0].product_id.supplier_taxes_id or False
         return {
             'name': _('Expense Transfert (%s)') % (use_case.name),
-            'date': account_move_vals['date'],
-            'period_id': account_move_vals['period_id'],
             'product_id': False,
             'product_uom_id': False,
             'quantity': 0,
@@ -154,7 +203,7 @@ class InternalUseLine(models.Model):
                 'account_expense'].id,
             'debit': (total < 0) and -total or 0,
             'credit': (total > 0) and total or 0,
-            'tax_code_id': tax_code and tax_code.id or False,
+            'tax_ids': tax_code and [(6, 0, [tax_code.id])] or False,
             'tax_amount': tax_code and max(total, -total) or 0,
         }
 
@@ -162,18 +211,16 @@ class InternalUseLine(models.Model):
     def _prepare_account_move_line_uncharge(self, account_move_vals):
         use_case = self[0].internal_use_id.internal_use_case_id
         total = sum(self.mapped('amount'))
-        tax_code = self[0].product_id.supplier_taxes_id and\
-            self[0].product_id.supplier_taxes_id[0].base_code_id or False
+        # import pdb; pdb.set_trace();
+        tax_code = self[0].product_id.supplier_taxes_id or False
         return {
             'name': _('Expense Transfert (%s)') % (use_case.name),
-            'date': account_move_vals['date'],
-            'period_id': account_move_vals['period_id'],
             'product_id': False,
             'product_uom_id': False,
             'quantity': 0,
             'account_id': use_case.account_id.id,
             'debit': (total > 0) and total or 0,
             'credit': (total < 0) and -total or 0,
-            'tax_code_id': tax_code and tax_code.id or False,
+            'tax_ids': tax_code and [(6, 0, [tax_code.id])] or False,
             'tax_amount': tax_code and max(total, -total) or 0,
         }

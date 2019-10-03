@@ -20,8 +20,8 @@ class ProductProduct(models.Model):
         categ = self.categ_id
 
         expense_account = (
-            self.property_account_expense or (
-                categ and categ.property_account_expense_categ or False))
+            self.property_account_expense_id or (
+                categ and categ.property_account_expense_categ_id or False))
 
         if not expense_account:
             raise UserError(_(

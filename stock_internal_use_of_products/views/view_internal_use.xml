@@ -7,7 +7,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-     <record id="view_internal_use_search" model="ir.ui.view">
+<!--     <record id="view_internal_use_search" model="ir.ui.view">
         <field name="model">internal.use</field>
         <field name="arch" type="xml">
             <search>
@@ -21,13 +21,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <group expand="0" string="Group By">
                     <filter string="Status" name="state" domain="[]" context="{'group_by':'state'}"/>
                     <filter string="Date" name="date_done" domain="[]" context="{'group_by':'date_done'}"/>
-                    <!-- <filter string="Case" name="" domain="[]" context="{'group_by':'internal_use_case_id'}"/> -->
+                    <filter string="Case" name="" domain="[]" context="{'group_by':'internal_use_case_id'}"/>
                     <filter string="Company" name="company_id" domain="[]" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
                 </group>
             </search>
 
         </field>
-    </record>
+    </record> -->
 
     <record id="view_internal_use_tree" model="ir.ui.view">
         <field name="model">internal.use</field>
@@ -60,7 +60,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <sheet>
                     <div class="oe_title">
                         <h1>
-                            <label for="Internal Use"/>
                             <field name="name" class="oe_inline" readonly="1"/>
                         </h1>
                     </div>
@@ -90,7 +89,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <tree string="Lines" editable="bottom" class="stock_internal_use_of_products__view_internal_use_form">
                                     <field name="product_id"/>
                                     <field name="product_qty"/>
-                                    <field name="product_uom_id" groups="product.group_uom"/>
+                                    <field name="product_uom_id" groups="uom.group_uom"/>
                                     <field name="price_unit"/>
                                     <field name="amount"/>
                                 </tree>

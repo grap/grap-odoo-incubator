@@ -9,6 +9,7 @@ from odoo.exceptions import Warning as UserError
 
 class InternalUseCase(models.Model):
     _name = 'internal.use.case'
+    _description = 'handle different kind of internal uses'
 
     # Default Section
     def _default_company_id(self):
@@ -19,7 +20,7 @@ class InternalUseCase(models.Model):
 
     company_id = fields.Many2one(
         comodel_name='res.company', string='Company', required=True,
-        select=True, default=_default_company_id)
+        index=True, default=_default_company_id)
 
     active = fields.Boolean(
         string='Active', default=True, help="By unchecking the active field,"
@@ -40,7 +41,7 @@ class InternalUseCase(models.Model):
 
     account_id = fields.Many2one(
         comodel_name='account.account', string='Expense Account',
-        domain="[('type','=','other')]",
+        domain="[('user_type_id','=','other')]",
         oldname='expense_account',
         help="Expense account of the Use Case. The generated"
         " Entries will belong the following lines:\n\n"

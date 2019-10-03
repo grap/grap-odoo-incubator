@@ -11,6 +11,7 @@ from odoo.exceptions import Warning as UserError
 
 class InternalUse(models.Model):
     _name = 'internal.use'
+    _description = 'Internal use to impact stock and accounting'
     _order = 'date_done desc, name'
 
     _INTERNAL_USE_STATE = [
@@ -20,7 +21,7 @@ class InternalUse(models.Model):
     ]
 
     # Columns section
-    name = fields.Char(string='Name', required=True, default='/')
+    name = fields.Char(string='Name', required=True, default='New internal use')
 
     description = fields.Char(
         string='Description', states={
@@ -99,37 +100,44 @@ class InternalUse(models.Model):
     @api.multi
     def action_view_stock_lines(self):
         self.ensure_one()
-        action = self.env.ref('stock.action_move_form2')
+        action = self.env.ref('stock.stock_move_line_action')
         action_data = action.read()[0]
-        action_data['domain'] = "[('internal_use_id','in',[" +\
-            ','.join(map(str, self.ids)) + "])]"
+        moves = self.stock_move_ids.ids
+        moves_str = ','.join(str(e) for e in moves)
+        action_data['domain'] = "[('move_id','in', [" + moves_str + "])]"
         return action_data
 
     @api.multi
     def action_confirm(self):
-        """ Set the internal use to 'confirmed' and create stock moves"""
         stock_move_obj = self.env['stock.move']
         for use in self.filtered(lambda x: x.state == 'draft'):
             if len(use.line_ids) == 0:
                 raise UserError(_(
                     "You can not confirm an empty Internal Use."))
 
-            # Create stock moves
+            # Retrieve lines and create one stock move
+            vals_list = []
             for line in use.line_ids:
-                stock_move_obj.create(line._prepare_stock_move())
-
-            # Confirm stock moves
-            use.stock_move_ids.action_done()
+                vals = line._get_move_values(line.product_qty,\
+                    line.internal_use_id.internal_use_case_id.\
+                    default_location_src_id.id,\
+                    line.internal_use_id.internal_use_case_id.\
+                    default_location_dest_id.id, True)
+                vals_list.append(vals)
+            sm = stock_move_obj.create(vals_list)
+            sm._action_done()
 
             # Mark the use as 'confirmed' or 'done'
             if use.internal_use_case_id.journal_id:
                 use.write({'state': 'confirmed'})
             else:
                 use.write({'state': 'done'})
+
         return True
 
     @api.multi
     def action_done(self):
+        print("ACTION DONE dans INTERNAL USE");
         """ Set the internal use to 'done' and create account moves"""
         account_move_obj = self.env['account.move']
         use_line_obj = self.env['internal.use.line']
@@ -150,7 +158,7 @@ class InternalUse(models.Model):
             else:
                 use_data[key] = [use.id]
 
-        for key, use_ids in use_data.iteritems():
+        for key, use_ids in use_data.items():
             uses = self.browse(use_ids)
             # prepare Account Move
             account_move_vals = uses._prepare_account_move()
@@ -165,6 +173,7 @@ class InternalUse(models.Model):
             uncharge_use_line_data = {}
 
             for line in uses.mapped('line_ids'):
+                print("============ FOR DANS LINE IDS");
                 # Get Charge line data
                 charge_line_key = line._get_expense_entry_key_charge()
 
@@ -182,7 +191,8 @@ class InternalUse(models.Model):
                     uncharge_use_line_data[uncharge_line_key] = [line.id]
 
             # Create uncharge Lines
-            for key, line_ids in uncharge_use_line_data.iteritems():
+            for key, line_ids in uncharge_use_line_data.items():
+                print("============ FOR DANS UNCHARGE USE");
                 lines = use_line_obj.browse(line_ids)
                 account_move_line_vals =\
                     lines._prepare_account_move_line_uncharge(
@@ -191,7 +201,8 @@ class InternalUse(models.Model):
                     (0, 0, account_move_line_vals))
 
             # Create charge Lines
-            for key, line_ids in charge_use_line_data.iteritems():
+            for key, line_ids in charge_use_line_data.items():
+                print("============ FOR DANS CHARGE USE");
                 lines = use_line_obj.browse(line_ids)
                 account_move_line_vals =\
                     lines._prepare_account_move_line_charge(
@@ -200,11 +211,12 @@ class InternalUse(models.Model):
                     (0, 0, account_move_line_vals))
 
             # Create Account move and validate it
-            account_move_vals['line_id'] = all_account_move_line_vals
+            account_move_vals['line_ids'] = all_account_move_line_vals
+            print("====> avant création account move");
             account_move = account_move_obj.create(account_move_vals)
 
             # Validate Account Move
-            account_move.button_validate()
+            account_move.post()
 
             # associate internal uses to account move and set to 'done'
             uses.write({
@@ -243,12 +255,8 @@ class InternalUse(models.Model):
     @api.multi
     def _prepare_account_move(self):
         use_case = self[0].internal_use_case_id
-        period_obj = self.env['account.period']
-        period = period_obj.find(dt=self[0].date_done)
         return {
             'journal_id': use_case.journal_id.id,
             'company_id': use_case.company_id.id,
-            'date': period.date_stop,
-            'period_id': period.id,
             'ref': _('Expense Transfert (%s)') % (use_case.name),
         }

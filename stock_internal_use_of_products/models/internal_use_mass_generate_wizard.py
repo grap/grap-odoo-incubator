@@ -7,6 +7,7 @@ from odoo import api, fields, models
 
 class InternalUseMassGenerateWizard(models.TransientModel):
     _name = 'internal.use.mass.generate.wizard'
+    _description = 'Wizard to confirm several internal uses'
 
     # Default Section
     def _default_selected_use_qty(self):

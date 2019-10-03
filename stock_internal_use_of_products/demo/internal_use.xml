@@ -12,16 +12,16 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="internal_use_line_1" model="internal.use.line">
         <field name="internal_use_id" ref="internal_use" />
-        <field name="product_id" ref="product.product_product_48" />
-        <field name="product_uom_id" ref="product.product_uom_dozen" />
+        <field name="product_id" ref="product.product_product_6" />
+        <field name="product_uom_id" ref="uom.product_uom_dozen" />
         <field name="product_qty">3</field>
         <field name="price_unit">13</field>
     </record>
 
     <record id="internal_use_line_2" model="internal.use.line">
         <field name="internal_use_id" ref="internal_use" />
-        <field name="product_id" ref="product.product_product_24" />
-        <field name="product_uom_id" ref="product.product_uom_unit" />
+        <field name="product_id" ref="product.product_product_7" />
+        <field name="product_uom_id" ref="uom.product_uom_unit" />
         <field name="product_qty">1</field>
         <field name="price_unit">876</field>
     </record>
@@ -29,7 +29,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="internal_use_line_3" model="internal.use.line">
         <field name="internal_use_id" ref="internal_use" />
         <field name="product_id" ref="product_with_purchase_tax"/>
-        <field name="product_uom_id" ref="product.product_uom_unit" />
+        <field name="product_uom_id" ref="uom.product_uom_unit" />
         <field name="product_qty">1</field>
         <field name="price_unit">20</field>
     </record>
@@ -40,8 +40,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="internal_use_without_line_1" model="internal.use.line">
         <field name="internal_use_id" ref="internal_use_without" />
-        <field name="product_id" ref="product.product_product_48" />
-        <field name="product_uom_id" ref="product.product_uom_unit" />
+        <field name="product_id" ref="product.product_product_8" />
+        <field name="product_uom_id" ref="uom.product_uom_unit" />
         <field name="product_qty">2</field>
         <field name="price_unit">13</field>
     </record>
