@@ -113,9 +113,6 @@ class InternalUseLine(models.Model):
                 use_case.default_location_src_id.id),
         }
 
-    # ce qu'il y a dans stock inventory utiliser par la fonction def _generate_moves(self) qui m'a l'air pas mal
-    # car elle crée des stock move
-    # get info for one line
     def _get_move_values(self, qty, location_id, location_dest_id, out):
         use_case = self.internal_use_id.internal_use_case_id
         self.ensure_one()
@@ -138,12 +135,9 @@ class InternalUseLine(models.Model):
                 use_case.default_location_src_id.id),
             'move_line_ids': [(0, 0, {
                 'product_id': self.product_id.id,
-                # 'lot_id': self.prod_lot_id.id,
                 'product_uom_qty': 0,  # bypass reservation here
                 'product_uom_id': self.product_uom_id.id,
                 'qty_done': qty,
-                # 'package_id': out and self.package_id.id or False,
-                # 'result_package_id': (not out) and self.package_id.id or False,
                 'location_id': (
                     self.product_qty > 0 and
                     use_case.default_location_src_id.id or
@@ -152,7 +146,6 @@ class InternalUseLine(models.Model):
                     self.product_qty > 0 and
                     use_case.default_location_dest_id.id or
                     use_case.default_location_src_id.id),
-                # 'owner_id': self.partner_id.id,
             })]
         }
 
@@ -165,7 +158,6 @@ class InternalUseLine(models.Model):
             line for charge move line.
             Overwrite this function to change the behaviour.
         """
-        # import pdb; pdb.set_trace();
         self.ensure_one()
         product = self.product_id
         return (
@@ -192,7 +184,6 @@ class InternalUseLine(models.Model):
     def _prepare_account_move_line_charge(self, account_move_vals):
         use_case = self[0].internal_use_id.internal_use_case_id
         total = sum(self.mapped('amount'))
-        # import pdb; pdb.set_trace();
         tax_code = self[0].product_id.supplier_taxes_id or False
         return {
             'name': _('Expense Transfert (%s)') % (use_case.name),
@@ -211,7 +202,6 @@ class InternalUseLine(models.Model):
     def _prepare_account_move_line_uncharge(self, account_move_vals):
         use_case = self[0].internal_use_id.internal_use_case_id
         total = sum(self.mapped('amount'))
-        # import pdb; pdb.set_trace();
         tax_code = self[0].product_id.supplier_taxes_id or False
         return {
             'name': _('Expense Transfert (%s)') % (use_case.name),

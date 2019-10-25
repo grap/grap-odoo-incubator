@@ -26,8 +26,8 @@
         'views/view_internal_use_mass_generate_wizard.xml',
     ],
     'demo': [
+        'demo/account_journal.xml',
         'demo/account_tax.xml',
-        # 'demo/account_journal.xml',
         'demo/product_product.xml',
         'demo/res_groups.xml',
         'demo/internal_use_case.xml',

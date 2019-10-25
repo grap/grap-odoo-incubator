@@ -21,7 +21,7 @@ class InternalUse(models.Model):
     ]
 
     # Columns section
-    name = fields.Char(string='Name', required=True, default='New internal use')
+    name = fields.Char(string='Name', required=True, default=_('New internal use'))
 
     description = fields.Char(
         string='Description', states={
@@ -137,7 +137,6 @@ class InternalUse(models.Model):
 
     @api.multi
     def action_done(self):
-        print("ACTION DONE dans INTERNAL USE");
         """ Set the internal use to 'done' and create account moves"""
         account_move_obj = self.env['account.move']
         use_line_obj = self.env['internal.use.line']
@@ -163,17 +162,12 @@ class InternalUse(models.Model):
             # prepare Account Move
             account_move_vals = uses._prepare_account_move()
             all_account_move_line_vals = []
-            # # Create Main Account Move Line
-            # account_move_line_vals = uses._prepare_account_move_line(
-            #     account_move_vals)
-            # all_account_move_line_vals = [(0, 0, account_move_line_vals)]
 
             # Create Counterpart Account Move Line(s)
             charge_use_line_data = {}
             uncharge_use_line_data = {}
 
             for line in uses.mapped('line_ids'):
-                print("============ FOR DANS LINE IDS");
                 # Get Charge line data
                 charge_line_key = line._get_expense_entry_key_charge()
 
@@ -192,7 +186,6 @@ class InternalUse(models.Model):
 
             # Create uncharge Lines
             for key, line_ids in uncharge_use_line_data.items():
-                print("============ FOR DANS UNCHARGE USE");
                 lines = use_line_obj.browse(line_ids)
                 account_move_line_vals =\
                     lines._prepare_account_move_line_uncharge(
@@ -202,7 +195,6 @@ class InternalUse(models.Model):
 
             # Create charge Lines
             for key, line_ids in charge_use_line_data.items():
-                print("============ FOR DANS CHARGE USE");
                 lines = use_line_obj.browse(line_ids)
                 account_move_line_vals =\
                     lines._prepare_account_move_line_charge(
@@ -212,13 +204,12 @@ class InternalUse(models.Model):
 
             # Create Account move and validate it
             account_move_vals['line_ids'] = all_account_move_line_vals
-            print("====> avant création account move");
             account_move = account_move_obj.create(account_move_vals)
 
             # Validate Account Move
             account_move.post()
 
-            # associate internal uses to account move and set to 'done'
+            # Associate internal uses to account move and set to 'done'
             uses.write({
                 'state': 'done',
                 'account_move_id': account_move.id,
