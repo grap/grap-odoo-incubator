@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-25 13:48+0000\n"
-"PO-Revision-Date: 2019-10-25 13:48+0000\n"
+"POT-Creation-Date: 2019-10-25 14:04+0000\n"
+"PO-Revision-Date: 2019-10-25 14:04+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -58,6 +58,7 @@ msgstr "Annuler"
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__internal_use_case_id
+#: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_search
 msgid "Case"
 msgstr "Type"
 
@@ -65,6 +66,7 @@ msgstr "Type"
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__company_id
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_case__company_id
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_line__company_id
+#: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_search
 msgid "Company"
 msgstr "Société"
 
@@ -84,6 +86,11 @@ msgid "Confirmed"
 msgstr "Confirmé"
 
 #. module: stock_internal_use_of_products
+#: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_search
+msgid "Confirmed or Posted"
+msgstr "Confirmé ou validé"
+
+#. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__create_uid
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_case__create_uid
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_line__create_uid
@@ -101,6 +108,7 @@ msgstr "Créé le"
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__date_done
+#: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_search
 msgid "Date"
 msgstr "Date "
 
@@ -166,6 +174,11 @@ msgstr "Générer les écritures comptables"
 #: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_form
 msgid "Generate Accounting Entry"
 msgstr "Générer une écriture comptable"
+
+#. module: stock_internal_use_of_products
+#: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_search
+msgid "Group By"
+msgstr "Regrouper par"
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__id
@@ -291,6 +304,11 @@ msgid "Quantity"
 msgstr "Quantité"
 
 #. module: stock_internal_use_of_products
+#: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_search
+msgid "Search"
+msgstr "Rechercher"
+
+#. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_mass_generate_wizard__selected_use_qty
 msgid "Selected Internal Uses"
 msgstr "Utilisations interne selectionées"
@@ -302,6 +320,7 @@ msgstr "Définir le journal comptable utilisé pour générer les écritures com
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__state
+#: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_search
 msgid "Status"
 msgstr "État"
 
@@ -337,6 +356,16 @@ msgstr "L'unité de mesure '%s' de la ligne %s (quantité  %s) n'est pas compati
 #, python-format
 msgid "The product %s has not account expense defined. Please define one and try again"
 msgstr "Le produit %s n'a pas de compte de dépenses défini. Veuillez en définir un et réessayer"
+
+#. module: stock_internal_use_of_products
+#: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_search
+msgid "To Post"
+msgstr "À valider"
+
+#. module: stock_internal_use_of_products
+#: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_search
+msgid "To Process"
+msgstr "A traiter"
 
 #. module: stock_internal_use_of_products
 #: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_tree

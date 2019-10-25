@@ -23,7 +23,7 @@ class InternalUse(models.Model):
     # Columns section
     name = fields.Char(
         string='Name', required=True,
-        default=_('Draft internal use'))
+        default='Draft internal use')
 
     description = fields.Char(
         string='Description', states={

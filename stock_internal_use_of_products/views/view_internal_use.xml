@@ -3,14 +3,16 @@
 Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 @author Julien WESTE
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author: Quentin DUPONT (https://twitter.com/pondupont)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-<!--     <record id="view_internal_use_search" model="ir.ui.view">
+    <record id="view_internal_use_search" model="ir.ui.view">
+        <field name="name">internal.use.search</field>
         <field name="model">internal.use</field>
         <field name="arch" type="xml">
-            <search>
+            <search string="Search">
                 <field name="name"/>
                 <field name="date_done"/>
                 <field name="company_id" groups="base.group_multi_company"/>
@@ -19,21 +21,20 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <filter name="to_post" string="To Post" domain="[('state', '=', 'confirmed')]"/>
                 <filter string="Confirmed or Posted" name="confirmed_or_posted" domain="[('state', 'in', ('confirmed', 'done'))]"/>
                 <group expand="0" string="Group By">
-                    <filter string="Status" name="state" domain="[]" context="{'group_by':'state'}"/>
-                    <filter string="Date" name="date_done" domain="[]" context="{'group_by':'date_done'}"/>
-                    <filter string="Case" name="" domain="[]" context="{'group_by':'internal_use_case_id'}"/>
-                    <filter string="Company" name="company_id" domain="[]" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                    <filter string="Status" name="group_by_state" domain="[]" context="{'group_by':'state'}"/>
+                    <filter string="Date" name="group_by_date_done" domain="[]" context="{'group_by':'date_done'}"/>
+                    <filter string="Case" name="group_by_case" domain="[]" context="{'group_by':'internal_use_case_id'}"/>
+                    <filter string="Company" name="group_by_company_id" domain="[]" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
                 </group>
             </search>
 
         </field>
-    </record> -->
+    </record>
 
     <record id="view_internal_use_tree" model="ir.ui.view">
         <field name="model">internal.use</field>
         <field name="arch" type="xml">
-            <tree>
-            <!-- <tree colors="grey:state == 'cancel'; blue:state == 'draft'; brown:state == 'confirmed'"> -->
+            <tree decoration-primary="state=='draft'" decoration-success="state=='confirmed'" >
                 <field name="date_done"/>
                 <field name="name"/>
                 <field name="internal_use_case_id"/>

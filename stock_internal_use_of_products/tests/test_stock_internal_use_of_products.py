@@ -33,7 +33,6 @@ class TestStockInternalUseOfProducts(TransactionCase):
     # Test Section
     def test_02_stock_move_and_account_move(self):
         # Stock Check
-        self.product_dozen
         self.internal_use.action_confirm()
         self.assertEqual(
             len(self.internal_use.stock_move_ids), 3,
