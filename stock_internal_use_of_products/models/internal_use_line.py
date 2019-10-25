@@ -66,7 +66,8 @@ class InternalUseLine(models.Model):
         line.product_uom_id = line.product_id.uom_id.id
         line.price_unit = line.product_id.standard_price
         line.price_unit = line.product_id.supplier_taxes_id.compute_all(
-            line.price_unit, None, line.product_qty, line.product_id.id)['total_excluded']
+            line.price_unit, None, line.product_qty,
+            line.product_id.id)['total_excluded']
 
     # Constrains Section
     @api.constrains('product_qty')
@@ -97,7 +98,7 @@ class InternalUseLine(models.Model):
         return {
             'name': 'Internal Use Line/' + str(self.id),
             'product_id': self.product_id.id,
-            'internal_use_id': self.internal_use_id.id, # ??
+            'internal_use_id': self.internal_use_id.id,
             'product_uom': self.product_uom_id.id,
             'date': self.internal_use_id.date_done,
             'product_uom_qty': (
@@ -148,8 +149,6 @@ class InternalUseLine(models.Model):
                     use_case.default_location_src_id.id),
             })]
         }
-
-
 
     @api.multi
     def _get_expense_entry_key_charge(self):

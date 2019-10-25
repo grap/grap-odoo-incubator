@@ -21,7 +21,9 @@ class InternalUse(models.Model):
     ]
 
     # Columns section
-    name = fields.Char(string='Name', required=True, default=_('New internal use'))
+    name = fields.Char(
+        string='Name', required=True,
+        default=_('Draft internal use'))
 
     description = fields.Char(
         string='Description', states={
@@ -86,8 +88,6 @@ class InternalUse(models.Model):
     # Overload Section
     @api.model
     def create(self, vals):
-        sequence_obj = self.env['ir.sequence']
-        vals['name'] = sequence_obj.get('internal.use')
         return super(InternalUse, self).create(vals)
 
     @api.multi
@@ -118,14 +118,20 @@ class InternalUse(models.Model):
             # Retrieve lines and create one stock move
             vals_list = []
             for line in use.line_ids:
-                vals = line._get_move_values(line.product_qty,\
-                    line.internal_use_id.internal_use_case_id.\
-                    default_location_src_id.id,\
-                    line.internal_use_id.internal_use_case_id.\
+                vals = line._get_move_values(
+                    line.product_qty,
+                    line.internal_use_id.internal_use_case_id.
+                    default_location_src_id.id,
+                    line.internal_use_id.internal_use_case_id.
                     default_location_dest_id.id, True)
                 vals_list.append(vals)
             sm = stock_move_obj.create(vals_list)
             sm._action_done()
+
+            # Name internal use
+            sq_internal_use =\
+                self.env['ir.sequence'].next_by_code('internal.use')
+            use.write({'name': sq_internal_use})
 
             # Mark the use as 'confirmed' or 'done'
             if use.internal_use_case_id.journal_id:
@@ -151,7 +157,6 @@ class InternalUse(models.Model):
                     x.internal_use_case_id.journal_id)):
 
             key = use._get_expense_entry_key()
-
             if key in use_data.keys():
                 use_data[key].append(use.id)
             else:

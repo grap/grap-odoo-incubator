@@ -58,11 +58,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
-                    <div class="oe_title">
-                        <h1>
-                            <field name="name" class="oe_inline" readonly="1"/>
-                        </h1>
-                    </div>
+                    <h1 class="mt0">
+                        <label for="name" string="Draft internal use" attrs="{'invisible': [('state','!=', 'draft')]}"/>
+                        <field name="name" class="oe_inline" readonly="1" attrs="{'invisible': [('state','=', 'draft')]}"/>
+                    </h1>
                     <div class="oe_right oe_button_box" name="buttons">
                         <button class="oe_inline oe_stat_button" type="object"
                                 name="action_view_stock_lines" icon="fa-list-ul" string="Stock Moves"

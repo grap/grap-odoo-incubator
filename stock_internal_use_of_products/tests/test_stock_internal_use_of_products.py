@@ -11,9 +11,11 @@ class TestStockInternalUseOfProducts(TransactionCase):
     def setUp(self):
         super(TestStockInternalUseOfProducts, self).setUp()
         self.move_line_obj = self.env['account.move.line']
-        self.product_dozen = self.env.ref('product.product_product_6') # product_product_6 ? pourquoi dozen ?
-        self.regular_expense_account = self.env.ref('l10n_generic_coa.1_conf_a_expense')
-        self.use_expense_account = self.env.ref('l10n_generic_coa.1_conf_a_sale')
+        self.product_dozen = self.env.ref('product.product_product_6')
+        self.regular_expense_account =\
+            self.env.ref('l10n_generic_coa.1_conf_a_expense')
+        self.use_expense_account =\
+            self.env.ref('l10n_generic_coa.1_conf_a_sale')
         self.internal_use = self.env.ref(
             'stock_internal_use_of_products.internal_use')
         self.internal_use_without = self.env.ref(

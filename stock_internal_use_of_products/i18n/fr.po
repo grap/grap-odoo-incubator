@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-25 08:58+0000\n"
-"PO-Revision-Date: 2019-10-25 08:58+0000\n"
+"POT-Creation-Date: 2019-10-25 13:48+0000\n"
+"PO-Revision-Date: 2019-10-25 13:48+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: code:addons/stock_internal_use_of_products/models/internal_use_case.py:55
 #, python-format
 msgid "%s (copy)"
-msgstr "%s (copy)"
+msgstr ""
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__account_move_id
@@ -107,7 +107,7 @@ msgstr "Date "
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__description
 msgid "Description"
-msgstr "Description"
+msgstr ""
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_case__default_location_dest_id
@@ -128,14 +128,21 @@ msgid "Done"
 msgstr "Terminée"
 
 #. module: stock_internal_use_of_products
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:26
+#: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_form
+#, python-format
+msgid "Draft internal use"
+msgstr "Brouillon d'utilisation interne"
+
+#. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_case__account_id
 msgid "Expense Account"
 msgstr "Compte de dépenses"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use.py:261
-#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:198
-#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:217
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:257
+#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:188
+#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:206
 #, python-format
 msgid "Expense Transfert (%s)"
 msgstr "Transfert de charge (%s)"
@@ -166,7 +173,7 @@ msgstr "Générer une écriture comptable"
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_line__id
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_mass_generate_wizard__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: stock_internal_use_of_products
 #: code:addons/stock_internal_use_of_products/models/internal_use_case.py:64
@@ -202,7 +209,7 @@ msgstr "Utilisation interne pour influer sur les stocks et la comptabilité"
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_case__journal_id
 msgid "Journal"
-msgstr "Journal"
+msgstr ""
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use____last_update
@@ -229,7 +236,7 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:76
+#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:77
 #, python-format
 msgid "Line quantity can not be null"
 msgstr "La quantité sur la ligne ne peut pas être nulle"
@@ -255,12 +262,6 @@ msgstr "Nom"
 #: selection:internal.use,state:0
 msgid "New"
 msgstr "Brouillon"
-
-#. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use.py:24
-#, python-format
-msgid "New internal use"
-msgstr "Nouvelle utilisation interne"
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_case__default_location_src_id
@@ -326,7 +327,7 @@ msgid "Stock Settings"
 msgstr "Paramètres de stock"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:86
+#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:87
 #, python-format
 msgid "The current unit of measure '%s' of the line %s (quantity  %s) is not compatible with the unit of measure '%s' of the product"
 msgstr "L'unité de mesure '%s' de la ligne %s (quantité  %s) n'est pas compatible avec l'unité de mesure '%s' de l'article"
@@ -340,7 +341,7 @@ msgstr "Le produit %s n'a pas de compte de dépenses défini. Veuillez en défin
 #. module: stock_internal_use_of_products
 #: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_tree
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__amount
@@ -389,7 +390,7 @@ msgstr "gérer différents types d'utilisations internes"
 #: model:product.product,weight_uom_name:stock_internal_use_of_products.product_with_purchase_tax
 #: model:product.template,weight_uom_name:stock_internal_use_of_products.product_with_purchase_tax_product_template
 msgid "kg"
-msgstr "kg"
+msgstr ""
 
 #. module: stock_internal_use_of_products
 #: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_mass_generate_wizard_form
