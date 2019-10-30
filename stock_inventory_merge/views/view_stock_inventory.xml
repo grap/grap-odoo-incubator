@@ -4,14 +4,14 @@ Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="view_stock_inventory_form" model="ir.ui.view">
         <field name="model">stock.inventory</field>
         <field name="inherit_id" ref="stock.view_inventory_form" />
         <field name="arch" type="xml">
 
-            <button name="action_done" position="after">
+            <button name="action_validate" position="after">
                 <button name="complete_with_zero" type="object" string="Complete With Zero" attrs="{'invisible': ['|', ('duplicates_qty', '!=', 0), ('state', '!=', 'confirm')]}"/>
                 <button name="action_merge_duplicated_line" type="object" string="Merge Duplicates" attrs="{'invisible': ['|', ('duplicates_qty', '=', 0), ('state', '!=', 'confirm')]}" class="oe_highlight"/>
             </button>
@@ -33,15 +33,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
       <field name="view_type">form</field>
       <field name="view_mode">form</field>
       <field name="target">new</field>
+      <field name="binding_model_id" ref="stock.model_stock_inventory"/>
     </record>
 
-    <record id="value_stock_inventory_merge" model="ir.values">
-      <field name="model_id" ref="stock.model_stock_inventory" />
-      <field name="name">Merge Inventories</field>
-      <field name="key2">client_action_multi</field>
-      <field name="value" eval="'ir.actions.act_window,' + str(ref('action_stock_inventory_merge'))"/>
-      <field name="key">action</field>
-      <field name="model">stock.inventory</field>
-    </record>
-
-</data></openerp>
+</odoo>

@@ -4,7 +4,7 @@ Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="inventory_1" model="stock.inventory">
         <field name="name">Inventory #1</field>
@@ -54,4 +54,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <function eval="[[('id', 'in', [ref('inventory_1'), ref('inventory_2')])]]" model="stock.inventory" name="search"/>
     </function>
 
-</data></openerp>
+</odoo>
