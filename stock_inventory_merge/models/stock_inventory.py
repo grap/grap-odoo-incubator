@@ -35,7 +35,7 @@ class StockInventory(models.Model):
 
     # Overload Section
     @api.multi
-    def action_done(self):
+    def action_validate(self):
         inventories = self.filtered(lambda x: x.duplicates_qty)
         if inventories:
             raise UserError(
@@ -45,7 +45,7 @@ class StockInventory(models.Model):
                     % (", ".join([x.name for x in inventories]))
                 )
             )
-        return super(StockInventory, self).action_done()
+        return super(StockInventory, self).action_validate()
 
     # Action Section
     @api.multi
@@ -68,7 +68,7 @@ class StockInventory(models.Model):
     def complete_with_zero(self):
         line_obj = self.env["stock.inventory.line"]
         for inventory in self:
-            product_lines = inventory._get_inventory_lines(inventory)
+            product_lines = inventory._get_inventory_lines_values()
             current_vals = inventory._get_inventory_line_vals()
             for product_line in product_lines:
                 # Check if the line is in the inventory
@@ -77,16 +77,18 @@ class StockInventory(models.Model):
                     if self._get_inventory_line_keys(
                         item
                     ) == self._get_inventory_line_keys(product_line):
+                        print("=> FOUND")
                         found = True
                         continue
                 if not found:
                     # Add the line, if inventory line was not found
                     product_line["product_qty"] = 0
+                    product_line["inventory_id"] = self.id
                     line_obj.create(product_line)
 
     @api.multi
     def action_merge_duplicated_line(self):
-        uom_obj = self.env["product.uom"]
+        uom_obj = self.env["uom.uom"]
         line_obj = self.env["stock.inventory.line"]
         for inventory in self:
             line_group_ids = inventory._get_duplicated_line_ids()
@@ -95,7 +97,7 @@ class StockInventory(models.Model):
                 keeped_line_id = False
                 default_uom_id = False
                 for line_data in line_obj.search_read(
-                    [("id", "in", line_ids)], ["product_qty", "product_uom_id"]
+                    [("id", "in", line_ids)], ["product_uom_id", "product_qty"]
                 ):
                     if not keeped_line_id:
                         keeped_line_id = line_data["id"]
@@ -106,10 +108,10 @@ class StockInventory(models.Model):
                         if default_uom_id == line_data["product_uom_id"][0]:
                             sum_quantity += line_data["product_qty"]
                         else:
-                            sum_quantity += uom_obj._compute_qty(
-                                line_data["product_uom_id"][0],
+                            uom_id = line_data["product_uom_id"][0]
+                            sum_quantity += uom_obj.browse(uom_id)._compute_quantity(
                                 line_data["product_qty"],
-                                to_uom_id=default_uom_id,
+                                uom_obj.browse(default_uom_id),
                             )
 
                 # Update the first line with the sumed quantity
@@ -133,7 +135,7 @@ class StockInventory(models.Model):
                 check_dict[key].append(line_val["id"])
             else:
                 check_dict[key] = [line_val["id"]]
-        for k, v in check_dict.iteritems():
+        for k, v in check_dict.items():
             if len(v) > 1:
                 duplicates_group_ids.append(v)
         return duplicates_group_ids

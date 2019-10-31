@@ -6,9 +6,9 @@ from odoo.tests.common import TransactionCase
 from odoo.exceptions import Warning as UserError
 
 
-class TestModule(TransactionCase):
+class TestStockInventoryMerge(TransactionCase):
     def setUp(self):
-        super(TestModule, self).setUp()
+        super(TestStockInventoryMerge, self).setUp()
         self.inventory_obj = self.env["stock.inventory"]
         self.line_obj = self.env["stock.inventory.line"]
         self.wizard_obj = self.env["wizard.stock.inventory.merge"]
@@ -29,7 +29,7 @@ class TestModule(TransactionCase):
     # Test Section
     def test_01_block_done_inventory(self):
         with self.assertRaises(UserError):
-            self.inventory_1.action_done()
+            self.inventory_1.action_validate()
 
     def test_02_merge_duplicated_lines(self):
         to_merge_line_ids = [self.line_1_1.id, self.line_1_2.id]
@@ -39,7 +39,7 @@ class TestModule(TransactionCase):
             2,
             "Merging duplicated lines should delete lines.",
         )
-        lines = self.line_obj.search([("id", "in", to_merge_line_ids)])
+        lines = self.inventory_1.line_ids.search([("id", "in", to_merge_line_ids)])
         self.assertEqual(
             len(lines),
             1,
@@ -53,14 +53,22 @@ class TestModule(TransactionCase):
 
     def test_03_merge_inventories(self):
         inventory_name = "Test Merged Inventory"
-        to_merge_inventory_ids = [self.inventory_1.id, self.inventory_2.id]
+        to_merge_inventory = [self.inventory_1, self.inventory_2]
+        to_merge_inventory_ids = []
+
+        # Start inventories
+        for inventory in to_merge_inventory:
+            to_merge_inventory_ids.append(inventory.id)
+            inventory.action_start()
+
         wizard = self.wizard_obj.with_context(
             active_ids=to_merge_inventory_ids, active_model="stock.inventory",
         ).create({"name": inventory_name})
         wizard.action_merge()
+
         inventories = self.inventory_obj.search(
             [("id", "in", to_merge_inventory_ids)]
-        )
+        );
         self.assertEqual(
             len(inventories),
             2,
@@ -84,7 +92,7 @@ class TestModule(TransactionCase):
                 "location_id": self.stock_location.id,
             }
         )
-        new_inventory_1.prepare_inventory()
+        new_inventory_1.action_start()
         new_inventory_2 = new_inventory_1.copy(default={"name": "TEST #2"})
         self.line_obj.create(
             {
@@ -93,7 +101,7 @@ class TestModule(TransactionCase):
                 "inventory_id": new_inventory_2.id,
             }
         )
-        new_inventory_2.prepare_inventory()
+        new_inventory_2.action_start()
         new_inventory_1.complete_with_zero()
         new_inventory_2.complete_with_zero()
 
@@ -105,7 +113,7 @@ class TestModule(TransactionCase):
         )
 
         # We confirm an inventory that set all product to 0
-        new_inventory_1.action_done()
+        new_inventory_1.action_validate()
 
         new_inventory_3 = self.inventory_obj.create(
             {
@@ -114,7 +122,7 @@ class TestModule(TransactionCase):
                 "location_id": self.stock_location.id,
             }
         )
-        new_inventory_3.prepare_inventory()
+        new_inventory_3.action_start()
         new_inventory_3.complete_with_zero()
         self.assertEqual(
             len(new_inventory_3.line_ids),

@@ -1,1 +1,1 @@
-from . import test_module
+from . import test_stock_inventory_merge

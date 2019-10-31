@@ -14,6 +14,12 @@ class StockInventoryLine(models.Model):
             StockInventoryLine, self.with_context(do_not_check_duplicates=True)
         ).create(vals)
 
+    @api.multi
+    def write(self, vals):
+        return super(
+            StockInventoryLine, self.with_context(do_not_check_duplicates=True)
+        ).write(vals)
+
     @api.model
     def search(self, domain, *args, **kwargs):
         if self.env.context.get("do_not_check_duplicates", False):
