@@ -77,7 +77,6 @@ class StockInventory(models.Model):
                     if self._get_inventory_line_keys(
                         item
                     ) == self._get_inventory_line_keys(product_line):
-                        print("=> FOUND")
                         found = True
                         continue
                 if not found:
@@ -109,10 +108,11 @@ class StockInventory(models.Model):
                             sum_quantity += line_data["product_qty"]
                         else:
                             uom_id = line_data["product_uom_id"][0]
-                            sum_quantity += uom_obj.browse(uom_id)._compute_quantity(
-                                line_data["product_qty"],
-                                uom_obj.browse(default_uom_id),
-                            )
+                            sum_quantity += uom_obj.browse(uom_id).\
+                                _compute_quantity(
+                                    line_data["product_qty"],
+                                    uom_obj.browse(default_uom_id),
+                                )
 
                 # Update the first line with the sumed quantity
                 keeped_line = line_obj.browse(keeped_line_id)

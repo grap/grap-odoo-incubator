@@ -39,7 +39,8 @@ class TestStockInventoryMerge(TransactionCase):
             2,
             "Merging duplicated lines should delete lines.",
         )
-        lines = self.inventory_1.line_ids.search([("id", "in", to_merge_line_ids)])
+        lines = self.inventory_1.line_ids.search(
+            [("id", "in", to_merge_line_ids)])
         self.assertEqual(
             len(lines),
             1,
@@ -68,7 +69,7 @@ class TestStockInventoryMerge(TransactionCase):
 
         inventories = self.inventory_obj.search(
             [("id", "in", to_merge_inventory_ids)]
-        );
+        )
         self.assertEqual(
             len(inventories),
             2,
