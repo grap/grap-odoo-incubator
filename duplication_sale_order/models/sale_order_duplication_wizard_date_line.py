@@ -8,6 +8,7 @@ from odoo import fields, models
 
 class SaleOrderDuplicationWizardDateLine(models.TransientModel):
     _name = 'sale.order.duplication.wizard.date.line'
+    _description = "Sale Order Duplication Wizard Line"
 
     wizard_id = fields.Many2one(
         comodel_name='sale.order.duplication.wizard')

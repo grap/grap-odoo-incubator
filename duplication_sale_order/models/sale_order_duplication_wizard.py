@@ -11,6 +11,7 @@ from odoo import api, fields, models
 
 class SaleOrderDuplicationWizard(models.TransientModel):
     _name = 'sale.order.duplication.wizard'
+    _description = "Sale Order Duplication Wizard"
 
     _DUPLICATION_TYPE_KEYS = [
         ('week', 'Weekly'),
