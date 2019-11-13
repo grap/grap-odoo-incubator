@@ -9,7 +9,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="category_usage_group" model="product.category">
         <field name="name">Demo Category (With Usage Group)</field>
-        <field name="usage_group_id" ref="base.group_no_one"/>
+        <field name="usage_group_id" ref="base.group_multi_company"/>
     </record>
 
 </odoo>
