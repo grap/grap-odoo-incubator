@@ -4,10 +4,10 @@
 
 {
     "name": "Base - web.base.url Force Value",
+    "summary": "Force the value of the setting 'web.base.url'",
     "version": "12.0.1.0.0",
     "category": "Tools",
     "license": "AGPL-3",
-    "summary": "Force the value of the setting 'web.base.url'",
     "author": "GRAP",
     "website": "http://www.grap.coop",
     "depends": ["base", "web"],

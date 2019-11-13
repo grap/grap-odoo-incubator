@@ -3,21 +3,16 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import odoo
-import odoo.http as http
-from odoo.http import request
+from odoo import http
 
 
-class Home(openerp.addons.web.controllers.main.Home):
+class Home(odoo.addons.web.controllers.main.Home):
     @http.route("/web", type="http", auth="none")
     def web_client(self, s_action=None, **kw):
-        request.registry["ir.config_parameter"].web_base_url_force(
-            request.cr, openerp.SUPERUSER_ID, request.context
-        )
+        http.request.env["ir.config_parameter"].web_base_url_force()
         return super(Home, self).web_client(s_action=s_action, **kw)
 
     @http.route("/web/login", type="http", auth="none")
     def web_login(self, redirect=None, **kw):
-        request.registry["ir.config_parameter"].web_base_url_force(
-            request.cr, openerp.SUPERUSER_ID, request.context
-        )
+        http.request.env["ir.config_parameter"].web_base_url_force()
         return super(Home, self).web_login(redirect=redirect, **kw)
