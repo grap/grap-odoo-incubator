@@ -5,6 +5,7 @@
 
 import os
 import base64
+import io
 # import StringIO
 import logging
 
@@ -29,8 +30,7 @@ class ProductProduct(models.Model):
     _inherit = "product.product"
 
     barcode_image = fields.Binary(
-        string="Barcode Image", compute="_compute_barcode_image",
-        store=True, attachment=True)
+        compute="_compute_barcode_image", store=True)
 
     @api.multi
     @api.depends("barcode")
@@ -47,13 +47,27 @@ class ProductProduct(models.Model):
                 raise exceptions.Warning(
                     _("Barcode image will not be computed")
                 )
-            ean = EAN(product.barcode)
-            fullname = ean.save("/tmp/" + product.barcode)
-            f = open(fullname, "r")
-            # output = StringIO.StringIO()
+            writer = barcode.writer.ImageWriter()
+            # ean = EAN(product.barcode)
+            ean2 = EAN(product.barcode, writer=writer)
+            # fullname = ean.save("/tmp/" + product.barcode)
+            fullname2 = ean2.save("/tmp/" + product.barcode)
+            # f = open(fullname, "r")
+            f2 = open(fullname2, "r", encoding="latin_1")
+            # output = io.StringIO()
             # svg = f.read()
+            # truc2 = f2.read()
+            # import pdb; pdb.set_trace()
+            # import encodings
+            # for e in sorted(set(encodings.aliases.aliases.values())):
+            #     # print("Try: %s" % e)
+            #     try:
+            #         io.open(fullname2, mode="r", encoding=e).read()
+            #         print("SUCCESS %s" % e)
+            #     except:
+            #         pass
             # cairosvg.svg2png(
-            #     bytestring=svg, write_to=output, center_text=True, dpi=300
+            #     bytestring=svg, write_to=output, dpi=300
             # )
-            # product.barcode_image = base64.b64encode(output.getvalue())
-            # os.remove(fullname)
+            product.ean13_image = base64.b64encode(f2.read())
+            os.remove(fullname2)
