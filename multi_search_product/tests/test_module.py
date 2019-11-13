@@ -7,11 +7,11 @@ from odoo.tests.common import TransactionCase
 
 class TestModule(TransactionCase):
     def setUp(self):
-        super(TestModule, self).setUp()
-        self.product_obj = self.env["product.product"]
+        super().setUp()
+        self.ProductProduct = self.env["product.product"]
         self.product_category = self.env.ref("product.product_category_all")
         self.separator = "*"
-        self.setting_obj = self.env["base.config.settings"]
+        self.ResConfigSettings = self.env["res.config.settings"]
         self.name_with_separator = "Test%sAbc" % self.separator
         self.name_without_separator = "TestAbc"
 
@@ -23,7 +23,8 @@ class TestModule(TransactionCase):
             "name": self.name_with_separator,
             "categ_id": self.product_category.id,
         }
-        product = self.product_obj.create(vals)
+        product = self.ProductProduct.with_context(
+            mail_create_nosubscribe=True).create(vals)
         self.assertEqual(
             product.name,
             self.name_without_separator,
@@ -37,14 +38,15 @@ class TestModule(TransactionCase):
             "Special char in the field should be removed during update",
         )
 
-    def test_02_create_write_product_product_disbled(self):
+    def test_02_create_write_product_product_disabled(self):
         self._enable_settings(False)
         # Create Product
         vals = {
             "name": self.name_with_separator,
             "categ_id": self.product_category.id,
         }
-        product = self.product_obj.create(vals)
+        product = self.ProductProduct.with_context(
+            mail_create_nosubscribe=True).create(vals)
         self.assertEqual(
             product.name,
             self.name_with_separator,
@@ -64,17 +66,18 @@ class TestModule(TransactionCase):
 
         # Initial Search
         self._enable_settings(False)
-        initial_search = len(self.product_obj.search(ordered_domain))
+        initial_search = len(self.ProductProduct.search(ordered_domain))
 
         # Create Product
         vals = {
             "name": "Abc other Word Def",
             "categ_id": self.product_category.id,
         }
-        self.product_obj.create(vals)
+        self.ProductProduct.with_context(
+            mail_create_nosubscribe=True).create(vals)
 
         # First Search (Feature disabled)
-        disabled_feature_search = len(self.product_obj.search(ordered_domain))
+        disabled_feature_search = len(self.ProductProduct.search(ordered_domain))
         self.assertEqual(
             initial_search,
             disabled_feature_search,
@@ -84,7 +87,7 @@ class TestModule(TransactionCase):
         # Second search (ordered) (Feature enabled)
         self._enable_settings(True)
         ensabled_feature_search_ordered = len(
-            self.product_obj.search(ordered_domain)
+            self.ProductProduct.search(ordered_domain)
         )
         self.assertEqual(
             ensabled_feature_search_ordered,
@@ -93,7 +96,7 @@ class TestModule(TransactionCase):
         )
 
         ensabled_feature_search_unordered = len(
-            self.product_obj.search(unordered_domain)
+            self.ProductProduct.search(unordered_domain)
         )
         self.assertEqual(
             ensabled_feature_search_unordered,
@@ -107,7 +110,8 @@ class TestModule(TransactionCase):
             "name": self.name_with_separator,
             "categ_id": self.product_category.id,
         }
-        product = self.product_obj.create(vals)
+        product = self.ProductProduct.with_context(
+            mail_create_nosubscribe=True).create(vals)
 
         # Enable and disable mechanism
         self._enable_settings(True)
@@ -120,9 +124,9 @@ class TestModule(TransactionCase):
         )
 
     def _enable_settings(self, enable):
-        setting = self.setting_obj.create({})
-        if enable:
-            setting.multi_search_product_separator = self.separator
-        else:
-            setting.multi_search_product_separator = False
-        setting.set_multi_search_product_separator()
+        setting = self.ResConfigSettings.create({})
+        setting.write({
+            "multi_search_product_separator": enable and self.separator,
+            "multi_search_product_separator_changed": True,
+        })
+        setting.set_values()
