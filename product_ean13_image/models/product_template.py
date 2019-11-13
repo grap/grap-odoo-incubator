@@ -7,7 +7,8 @@ from openerp import fields, models
 
 
 class ProductTemplate(models.Model):
-    _inherit = 'product.template'
+    _inherit = "product.template"
 
     ean13_image = fields.Binary(
-        related='product_variant_ids.ean13_image', readonly=True)
+        related="product_variant_ids.ean13_image", readonly=True
+    )
