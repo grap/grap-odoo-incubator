@@ -24,17 +24,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 The payments which have not been matched with a bank statement will not be shown in bank reconciliation data if they were made before this date.
                             </div>
                             <field name="multi_search_product_separator"/>
-                            <field name="multi_search_product_separator_changed"/>
-
-
+                            <field name="multi_search_product_separator_changed" invisible="1"/>
                         </div>
                     </div>
                 </div>
-
             </xpath>
         </field>
     </record>
-
-
 
 </odoo>

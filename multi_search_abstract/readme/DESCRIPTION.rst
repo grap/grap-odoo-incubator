@@ -1,4 +1,4 @@
-This module is an abstract module that provides an mixin model to allow
+This module is an abstract module that provides a mixin model to allow
 searching in database with multiple words.
 
 The order of the words you type doesn't matter.
