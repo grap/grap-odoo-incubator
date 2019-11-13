@@ -1,10 +1,9 @@
-# coding: utf-8
 # Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp.tests.common import TransactionCase
-from openerp.exceptions import Warning as UserError
+from odoo.tests.common import TransactionCase
+from odoo.exceptions import Warning as UserError
 
 
 class Tests(TransactionCase):
@@ -19,7 +18,7 @@ class Tests(TransactionCase):
         self.category_special = self.env.ref(
             "product_category_usage_group.category_usage_group"
         )
-        self.product_group = self.env.ref("base.group_sale_manager")
+        self.product_group = self.env.ref("sales_team.group_sale_manager")
         self.restricted_group = self.env.ref("base.group_no_one")
         # Set only Root user as member of the restricted group
         self.restricted_group.users = False
