@@ -9,19 +9,16 @@ from openerp.http import request
 
 
 class Home(openerp.addons.web.controllers.main.Home):
-
-    @http.route('/web', type='http', auth="none")
+    @http.route("/web", type="http", auth="none")
     def web_client(self, s_action=None, **kw):
-        request.registry['ir.config_parameter'].web_base_url_force(
-            request.cr,
-            openerp.SUPERUSER_ID,
-            request.context)
+        request.registry["ir.config_parameter"].web_base_url_force(
+            request.cr, openerp.SUPERUSER_ID, request.context
+        )
         return super(Home, self).web_client(s_action=s_action, **kw)
 
-    @http.route('/web/login', type='http', auth="none")
+    @http.route("/web/login", type="http", auth="none")
     def web_login(self, redirect=None, **kw):
-        request.registry['ir.config_parameter'].web_base_url_force(
-            request.cr,
-            openerp.SUPERUSER_ID,
-            request.context)
+        request.registry["ir.config_parameter"].web_base_url_force(
+            request.cr, openerp.SUPERUSER_ID, request.context
+        )
         return super(Home, self).web_login(redirect=redirect, **kw)
