@@ -3,20 +3,23 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "Product - EAN13 Image",
-    "summary": "Generate EAN13 images for products",
+    "name": "Product - Barcode Image",
+    "summary": "Generate Barcode images for products",
     "version": "12.0.1.0.0",
     "category": "Product",
     "author": "GRAP",
     "website": "http://www.grap.coop",
     "license": "AGPL-3",
     "depends": ["product"],
-    # "data": ["views/view_product_product.xml"],
+    "data": [
+        "views/view_product_product.xml",
+        "views/view_product_template.xml"
+    ],
     "demo": ["demo/res_groups.xml", "demo/product_product.xml"],
     "external_dependencies": {
         "python": [
             "cairosvg",
-            # 'barcode',
+            "barcode",
         ]
     },
     "images": ["static/description/product_form.png"],
