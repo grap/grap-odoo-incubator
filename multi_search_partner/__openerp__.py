@@ -4,21 +4,17 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    'name': 'Multi Search - Partners',
-    'version': '8.0.1.0.0',
-    'category': 'Base',
-    'author': 'GRAP',
-    'website': 'http://www.grap.coop',
-    'license': 'AGPL-3',
-    'depends': [
-        'multi_search_abstract',
+    "name": "Multi Search - Partners",
+    "version": "8.0.1.0.0",
+    "category": "Base",
+    "author": "GRAP",
+    "website": "http://www.grap.coop",
+    "license": "AGPL-3",
+    "depends": ["multi_search_abstract"],
+    "data": ["views/view_base_config_settings.xml"],
+    "images": [
+        "static/description/partner_search.png",
+        "static/description/setting_form.png",
     ],
-    'data': [
-        'views/view_base_config_settings.xml',
-    ],
-    'images': [
-        'static/description/partner_search.png',
-        'static/description/setting_form.png',
-    ],
-    'installable': False,
+    "installable": False,
 }

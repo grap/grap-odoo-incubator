@@ -7,21 +7,21 @@ from openerp import api, models
 
 
 class ResPartner(models.Model):
-    _name = 'res.partner'
-    _inherit = ['res.partner', 'multi.search.mixin']
+    _name = "res.partner"
+    _inherit = ["res.partner", "multi.search.mixin"]
 
     # Overwrite Section
     @api.model
     def _multi_search_search_fields(self):
-        return ['display_name', 'email']
+        return ["display_name", "email"]
 
     @api.model
     def _multi_search_write_fields(self):
-        return ['name', 'email']
+        return ["name", "email"]
 
     @api.model
     def _multi_search_separator(self):
-        setting_obj = self.env['base.config.settings']
+        setting_obj = self.env["base.config.settings"]
         return setting_obj._get_multi_search_partner_separator()
 
     # Overload Section
