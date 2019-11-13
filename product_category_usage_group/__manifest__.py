@@ -11,7 +11,7 @@
     "license": "AGPL-3",
     "depends": ["product"],
     "data": ["views/view_product_category.xml"],
-    "demo": ["demo/res_groups.xml", "demo/product_category.xml"],
+    "demo": ["demo/product_category.xml"],
     "images": [
         "static/description/product_template_warning.png",
         "static/description/product_category_form.png",

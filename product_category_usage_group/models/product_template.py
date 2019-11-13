@@ -25,9 +25,9 @@ class ProductTemplate(models.Model):
     # Custom Section
     @api.multi
     def _check_usage_product_category(self, vals):
-        category_obj = self.env["product.category"]
+        ProductCategory = self.env["product.category"]
         if vals.get("categ_id", False):
-            category = category_obj.browse(vals["categ_id"])
+            category = ProductCategory.browse(vals["categ_id"])
             group = category.usage_group_id
             if group and group.id not in self.env.user.groups_id.ids:
                 raise UserError(
