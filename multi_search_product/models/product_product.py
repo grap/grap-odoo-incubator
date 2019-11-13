@@ -8,21 +8,21 @@ from openerp import api, models
 
 
 class ProductProduct(models.Model):
-    _name = 'product.product'
-    _inherit = ['product.product', 'multi.search.mixin']
+    _name = "product.product"
+    _inherit = ["product.product", "multi.search.mixin"]
 
     # Overwrite Section
     @api.model
     def _multi_search_search_fields(self):
-        return ['name', 'default_code']
+        return ["name", "default_code"]
 
     @api.model
     def _multi_search_write_fields(self):
-        return ['name', 'default_code']
+        return ["name", "default_code"]
 
     @api.model
     def _multi_search_separator(self):
-        setting_obj = self.env['base.config.settings']
+        setting_obj = self.env["base.config.settings"]
         return setting_obj._get_multi_search_product_separator()
 
     @api.multi
