@@ -1,4 +1,3 @@
-# coding: utf-8
 # Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
 # @author: Julien WESTE
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -6,7 +5,7 @@
 
 import string
 
-from openerp import api, models
+from odoo import api, models
 
 
 class MultiSearchMixin(models.AbstractModel):
