@@ -1,4 +1,3 @@
-# coding: utf-8
 # Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
 # @author: Julien WESTE
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -6,16 +5,16 @@
 
 {
     "name": "Multi Search - Products",
-    "version": "8.0.1.0.0",
+    "version": "12.0.1.0.0",
     "category": "Product",
     "author": "GRAP",
     "website": "http://www.grap.coop",
     "license": "AGPL-3",
     "depends": ["multi_search_abstract", "product"],
-    "data": ["views/view_base_config_settings.xml"],
+    "data": ["views/view_res_config_settings.xml"],
     "images": [
         "static/description/product_search.png",
         "static/description/setting_form.png",
     ],
-    "installable": False,
+    "installable": True,
 }

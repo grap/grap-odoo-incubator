@@ -1,4 +1,4 @@
-If a user make a search with the following entry ``dis*ret``, it will
-find products named "Ipad **Ret** ina **Dis** play"
+If a user make a search with the following entry " ca * la ", it will
+find products named " **La**rge **ca**binet "
 
 .. figure:: ../static/description/product_search.png

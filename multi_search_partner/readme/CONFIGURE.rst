@@ -1,4 +1,4 @@
-* Go to 'Settings / Configuration / General Settings'
+* Go to "Configuration" / "Settings" / "Multi Search"
 
 * Choose the character that will be used to allow a search with multiple words
 

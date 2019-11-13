@@ -10,7 +10,7 @@
     "website": "http://www.grap.coop",
     "license": "AGPL-3",
     "depends": ["multi_search_abstract"],
-    "data": ["views/view_base_config_settings.xml"],
+    "data": ["views/view_res_config_settings.xml"],
     "images": [
         "static/description/partner_search.png",
         "static/description/setting_form.png",
