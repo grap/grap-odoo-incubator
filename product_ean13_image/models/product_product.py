@@ -5,7 +5,7 @@
 
 import os
 import base64
-import StringIO
+# import StringIO
 import logging
 
 from odoo import _, api, exceptions, fields, models
@@ -16,13 +16,13 @@ try:
     import cairosvg
 except ImportError:
     cairosvg = False
-    logger.debug("grap_print_product - 'cairosvg' librairy not found")
+    logger.debug("product_barcodes_image - 'cairosvg' librairy not found")
 
 try:
     import barcode
 except ImportError:
     barcode = False
-    logger.debug("grap_print_product - 'barcode' librairy not found")
+    logger.debug("product_barcodes_image - 'barcode' librairy not found")
 
 
 class ProductProduct(models.Model):
@@ -50,8 +50,8 @@ class ProductProduct(models.Model):
             f = open(fullname, "r")
             output = StringIO.StringIO()
             svg = f.read()
-            cairosvg.svg2png(
-                bytestring=svg, write_to=output, center_text=True, dpi=300
-            )
-            product.ean13_image = base64.b64encode(output.getvalue())
-            os.remove(fullname)
+            # cairosvg.svg2png(
+            #     bytestring=svg, write_to=output, center_text=True, dpi=300
+            # )
+            # product.ean13_image = base64.b64encode(output.getvalue())
+            # os.remove(fullname)
