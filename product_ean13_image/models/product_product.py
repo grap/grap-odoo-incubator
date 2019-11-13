@@ -1,4 +1,3 @@
-# coding: utf-8
 # Copyright (C) 2016 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # @author: Quentin Dupont (https://twitter.com/pondupont)
@@ -9,7 +8,7 @@ import base64
 import StringIO
 import logging
 
-from openerp import _, api, exceptions, fields, models
+from odoo import _, api, exceptions, fields, models
 
 logger = logging.getLogger(__name__)
 
