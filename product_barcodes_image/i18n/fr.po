@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* product_ean13_image
+#	* product_barcodes_image
 #
 msgid ""
 msgstr ""
@@ -15,35 +15,35 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: product_ean13_image
-#: view:product.template:product_ean13_image.view_product_template_form
+#. module: product_barcodes_image
+#: view:product.template:product_barcodes_image.view_product_template_form
 msgid "Barcode"
 msgstr "Code barre"
 
-#. module: product_ean13_image
-#: code:addons/product_ean13_image/models/product_product.py:47
+#. module: product_barcodes_image
+#: code:addons/product_barcodes_image/models/product_product.py:47
 #, python-format
 msgid "Barcode image will not be computed"
 msgstr "L'image du code barre ne sera pas générée"
 
-#. module: product_ean13_image
-#: field:product.product,ean13_image:0
-#: field:product.template,ean13_image:0
-msgid "Ean13 image"
-msgstr "Image Ean13"
+#. module: product_barcodes_image
+#: field:product.product,barcodes_image:0
+#: field:product.template,barcodes_image:0
+msgid "Barcode Image"
+msgstr "Image du Code Barre"
 
-#. module: product_ean13_image
-#: model:product.template,name:product_ean13_image.cigarette_filter_product_template
+#. module: product_barcodes_image
+#: model:product.template,name:product_barcodes_image.cigarette_filter_product_template
 msgid "Gizeh - Cigarette Filter"
 msgstr "Gizeh - Filtre à cigarette"
 
-#. module: product_ean13_image
-#: model:ir.model,name:product_ean13_image.model_product_product
+#. module: product_barcodes_image
+#: model:ir.model,name:product_barcodes_image.model_product_product
 msgid "Product"
 msgstr "Article"
 
-#. module: product_ean13_image
-#: model:ir.model,name:product_ean13_image.model_product_template
+#. module: product_barcodes_image
+#: model:ir.model,name:product_barcodes_image.model_product_template
 msgid "Product Template"
 msgstr "Modèle d'article"
 

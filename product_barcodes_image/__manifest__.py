@@ -11,7 +11,7 @@
     "website": "http://www.grap.coop",
     "license": "AGPL-3",
     "depends": ["product"],
-    "data": ["views/view_product_product.xml"],
+    # "data": ["views/view_product_product.xml"],
     "demo": ["demo/res_groups.xml", "demo/product_product.xml"],
     "external_dependencies": {
         "python": [

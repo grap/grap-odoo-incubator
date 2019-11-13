@@ -8,7 +8,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="cigarette_filter" model="product.product">
         <field name="name">Gizeh - Cigarette Filter</field>
-        <field name="ean13">4002604284769</field>
+        <field name="barcode">4002604284769</field>
     </record>
 
 </odoo>

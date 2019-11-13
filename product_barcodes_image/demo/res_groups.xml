@@ -6,12 +6,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-    <record id="sales_team.group_sale_manager" model="res.groups">
+<!--     <record id="sales_team.group_sale_manager" model="res.groups">
         <field name="users" eval="[(4, ref('base.user_root'))]"/>
     </record>
 
     <record id="base.group_no_one" model="res.groups">
         <field name="users" eval="[(4, ref('base.user_root'))]"/>
-    </record>
+    </record> -->
 
 </odoo>
