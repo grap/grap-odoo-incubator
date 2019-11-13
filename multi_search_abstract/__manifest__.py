@@ -1,4 +1,3 @@
-# coding: utf-8
 # Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
 # @author: Julien WESTE
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -6,7 +5,7 @@
 
 {
     "name": "Multi Search - Abstract",
-    "version": "8.0.1.0.0",
+    "version": "12.0.1.0.0",
     "category": "Tools",
     "author": "GRAP",
     "website": "http://www.grap.coop",
@@ -14,5 +13,5 @@
     "depends": ["base_setup"],
     "data": ["views/view_base_config_settings.xml"],
     "demo": ["demo/res_groups.xml"],
-    "installable": False,
+    "installable": True,
 }
