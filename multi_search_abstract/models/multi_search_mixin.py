@@ -10,9 +10,9 @@ from openerp import api, models
 
 
 class MultiSearchMixin(models.AbstractModel):
-    _name = 'multi.search.mixin'
+    _name = "multi.search.mixin"
 
-    _MULTI_SEARCH_OPERATORS = ['ilike', 'not ilike']
+    _MULTI_SEARCH_OPERATORS = ["ilike", "not ilike"]
 
     # To Overwrite Section
     @api.model
@@ -41,17 +41,24 @@ class MultiSearchMixin(models.AbstractModel):
             for arg in copy_args:
                 if isinstance(arg, (tuple, list)) and len(arg) == 3:
                     name, operator, value = arg
-                    if name in self._multi_search_search_fields() and\
-                            operator in self._MULTI_SEARCH_OPERATORS and\
-                            self._multi_search_separator() in value:
+                    if (
+                        name in self._multi_search_search_fields()
+                        and operator in self._MULTI_SEARCH_OPERATORS
+                        and self._multi_search_separator() in value
+                    ):
                         criterias = value.split(self._multi_search_separator())
                         new_arg_lst = [
-                            (name, operator, x) for x in criterias if x != '']
-                        args = args[:args.index(arg)] +\
-                            ['&'] * (len(new_arg_lst) - 1) + new_arg_lst +\
-                            args[args.index(arg) + 1:]
+                            (name, operator, x) for x in criterias if x != ""
+                        ]
+                        args = (
+                            args[: args.index(arg)]
+                            + ["&"] * (len(new_arg_lst) - 1)
+                            + new_arg_lst
+                            + args[args.index(arg) + 1 :]
+                        )
         return super(MultiSearchMixin, self).search(
-            args, offset=offset, limit=limit, order=order, count=count)
+            args, offset=offset, limit=limit, order=order, count=count
+        )
 
     @api.model
     def create(self, vals):
@@ -67,8 +74,9 @@ class MultiSearchMixin(models.AbstractModel):
         domain = []
         for field in self._multi_search_write_fields():
             domain.append(
-                (field, 'like', '%' + self._multi_search_separator() + '%'))
-        domain = ['|' for x in range(len(domain) - 1)] + domain
+                (field, "like", "%" + self._multi_search_separator() + "%")
+            )
+        domain = ["|" for x in range(len(domain) - 1)] + domain
         items = super(MultiSearchMixin, self).search(domain)
         for item in items:
             vals = {}
@@ -84,7 +92,8 @@ class MultiSearchMixin(models.AbstractModel):
         for field, value in vals.iteritems():
             if field in self._multi_search_write_fields() and value:
                 new_value = string.replace(
-                    value, self._multi_search_separator(), '')
+                    value, self._multi_search_separator(), ""
+                )
                 if new_value != value or return_all:
                     res[field] = new_value
             elif return_all:
