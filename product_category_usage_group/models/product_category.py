@@ -8,9 +8,12 @@ from openerp import models, fields
 
 
 class ProductCategory(models.Model):
-    _inherit = 'product.category'
+    _inherit = "product.category"
 
     usage_group_id = fields.Many2one(
-        comodel_name='res.groups', string="Usage Group", help="If defined"
+        comodel_name="res.groups",
+        string="Usage Group",
+        help="If defined"
         ", the user should be member to this group, to use this product"
-        " category when creating or updating products")
+        " category when creating or updating products",
+    )

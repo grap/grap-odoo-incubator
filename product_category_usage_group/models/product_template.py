@@ -8,7 +8,7 @@ from openerp.exceptions import Warning as UserError
 
 
 class ProductTemplate(models.Model):
-    _inherit = 'product.template'
+    _inherit = "product.template"
 
     # Overload Section
     @api.model
@@ -26,12 +26,15 @@ class ProductTemplate(models.Model):
     # Custom Section
     @api.multi
     def _check_usage_product_category(self, vals):
-        category_obj = self.env['product.category']
-        if vals.get('categ_id', False):
-            category = category_obj.browse(vals['categ_id'])
+        category_obj = self.env["product.category"]
+        if vals.get("categ_id", False):
+            category = category_obj.browse(vals["categ_id"])
             group = category.usage_group_id
             if group and group.id not in self.env.user.groups_id.ids:
-                raise UserError(_(
-                    "You can not use the product category '%s' because"
-                    " you're not member of the group '%s'.") % (
-                        category.name, group.name))
+                raise UserError(
+                    _(
+                        "You can not use the product category '%s' because"
+                        " you're not member of the group '%s'."
+                    )
+                    % (category.name, group.name)
+                )
