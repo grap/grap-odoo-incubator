@@ -9,6 +9,8 @@ class ResPartner(models.Model):
     _name = "res.partner"
     _inherit = ["res.partner", "multi.search.mixin"]
 
+    _multi_search_separator_key_name = "multi_search.partner_separator"
+
     # Overwrite Section
     @api.model
     def _multi_search_search_fields(self):
@@ -17,19 +19,3 @@ class ResPartner(models.Model):
     @api.model
     def _multi_search_write_fields(self):
         return ["name", "email"]
-
-    @api.model
-    def _multi_search_separator(self):
-        # TODO FIX ME
-        return ":"
-
-    # Overload Section
-    @api.multi
-    def write(self, vals):
-        """Overload in this part, because write function is not called
-        in mixin model. TODO: Check if this weird behavior still occures
-        in more recent Odoo versions.
-        """
-        if self._multi_search_separator():
-            vals = self._multi_search_replace_dict(vals, True)
-        return super(ResPartner, self).write(vals)

@@ -3,8 +3,6 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-import string
-
 from odoo import api, models
 
 
@@ -15,6 +13,10 @@ class MultiSearchMixin(models.AbstractModel):
     _MULTI_SEARCH_OPERATORS = ["ilike", "not ilike"]
 
     # To Overwrite Section
+    """Overwrite this field to mention which key is used
+    in the ir.config_parameter model"""
+    _multi_search_separator_key_name = False
+
     @api.model
     def _multi_search_search_fields(self):
         """Overwrite in inherited model to define field on which the search
@@ -31,11 +33,13 @@ class MultiSearchMixin(models.AbstractModel):
     def _multi_search_separator(self):
         """Overwrite in inherited model to define witch char will be used to
         split the search words"""
-        return False
+        IrConfigParameter = self.env["ir.config_parameter"]
+        return IrConfigParameter.get_param(
+            self._multi_search_separator_key_name)
 
     # Overload Section
     @api.model
-    def search(self, args, offset=0, limit=None, order=None, count=False):
+    def search(self, args, **kwargs):
         copy_args = list(args)
         if self._multi_search_separator():
             for arg in copy_args:
@@ -54,17 +58,21 @@ class MultiSearchMixin(models.AbstractModel):
                             args[: args.index(arg)]
                             + ["&"] * (len(new_arg_lst) - 1)
                             + new_arg_lst
-                            + args[args.index(arg) + 1 :]
+                            + args[args.index(arg) + 1:]
                         )
-        return super(MultiSearchMixin, self).search(
-            args, offset=offset, limit=limit, order=order, count=count
-        )
+        return super().search(args, **kwargs)
 
     @api.model
     def create(self, vals):
         if self._multi_search_separator():
             vals = self._multi_search_replace_dict(vals, True)
-        return super(MultiSearchMixin, self).create(vals)
+        return super().create(vals)
+
+    @api.multi
+    def write(self, vals):
+        if self._multi_search_separator():
+            vals = self._multi_search_replace_dict(vals, True)
+        return super().write(vals)
 
     # Custom Section
     @api.model
@@ -77,7 +85,7 @@ class MultiSearchMixin(models.AbstractModel):
                 (field, "like", "%" + self._multi_search_separator() + "%")
             )
         domain = ["|" for x in range(len(domain) - 1)] + domain
-        items = super(MultiSearchMixin, self).search(domain)
+        items = super().search(domain)
         for item in items:
             vals = {}
             for field in self._multi_search_write_fields():
@@ -89,11 +97,9 @@ class MultiSearchMixin(models.AbstractModel):
     @api.model
     def _multi_search_replace_dict(self, vals, return_all):
         res = {}
-        for field, value in vals.iteritems():
+        for field, value in vals.items():
             if field in self._multi_search_write_fields() and value:
-                new_value = string.replace(
-                    value, self._multi_search_separator(), ""
-                )
+                new_value = value.replace(self._multi_search_separator(), " ")
                 if new_value != value or return_all:
                     res[field] = new_value
             elif return_all:
