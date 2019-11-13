@@ -10,6 +10,7 @@ from odoo import api, models
 
 class MultiSearchMixin(models.AbstractModel):
     _name = "multi.search.mixin"
+    _description = "Multi Search Mixin"
 
     _MULTI_SEARCH_OPERATORS = ["ilike", "not ilike"]
 

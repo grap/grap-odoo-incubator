@@ -20,8 +20,8 @@ class ResPartner(models.Model):
 
     @api.model
     def _multi_search_separator(self):
-        setting_obj = self.env["base.config.settings"]
-        return setting_obj._get_multi_search_partner_separator()
+        # TODO FIX ME
+        return ":"
 
     # Overload Section
     @api.multi

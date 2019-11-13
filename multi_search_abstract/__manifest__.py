@@ -10,8 +10,8 @@
     "author": "GRAP",
     "website": "http://www.grap.coop",
     "license": "AGPL-3",
-    "depends": ["base_setup"],
-    "data": ["views/view_base_config_settings.xml"],
+    "depends": ["base"],
+    "data": ["views/view_res_config_settings.xml"],
     "demo": ["demo/res_groups.xml"],
     "installable": True,
 }
