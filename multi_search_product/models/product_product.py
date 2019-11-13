@@ -10,6 +10,8 @@ class ProductProduct(models.Model):
     _name = "product.product"
     _inherit = ["product.product", "multi.search.mixin"]
 
+    _multi_search_separator_key_name = "multi_search.product_separator"
+
     # Overwrite Section
     @api.model
     def _multi_search_search_fields(self):
@@ -18,18 +20,3 @@ class ProductProduct(models.Model):
     @api.model
     def _multi_search_write_fields(self):
         return ["name", "default_code"]
-
-    @api.model
-    def _multi_search_separator(self):
-        setting_obj = self.env["base.config.settings"]
-        return setting_obj._get_multi_search_product_separator()
-
-    @api.multi
-    def write(self, vals):
-        """Overload in this part, because write function is not called
-        in mixin model. TODO: Check if this weird behavior still occures
-        in more recent Odoo versions.
-        """
-        if self._multi_search_separator():
-            vals = self._multi_search_replace_dict(vals, True)
-        return super(ProductProduct, self).write(vals)

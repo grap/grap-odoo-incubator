@@ -31,10 +31,10 @@ class ResConfigSettings(models.TransientModel):
     def set_values(self):
         ProductProduct = self.env["product.product"]
         ProductTemplate = self.env["product.template"]
-        for record in self:
-            if record.multi_search_product_separator_changed:
-                if record.multi_search_product_separator:
-                    ProductProduct._multi_search_replace_all()
-                    ProductTemplate._multi_search_replace_all()
-
-        super().set_values()
+        replace_all = any(
+            self.mapped('multi_search_product_separator_changed'))
+        res = super().set_values()
+        if replace_all:
+            ProductProduct._multi_search_replace_all()
+            ProductTemplate._multi_search_replace_all()
+        return res

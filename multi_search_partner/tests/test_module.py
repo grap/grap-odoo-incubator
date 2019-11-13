@@ -7,10 +7,10 @@ from odoo.tests.common import TransactionCase
 
 class TestModule(TransactionCase):
     def setUp(self):
-        super(TestModule, self).setUp()
-        self.partner_obj = self.env["res.partner"]
+        super().setUp()
+        self.ResPartner = self.env["res.partner"]
         self.separator = "*"
-        self.setting_obj = self.env["base.config.settings"]
+        self.ResConfigSettings = self.env["res.config.settings"]
         self.name_with_separator = "Test%sAbc" % self.separator
         self.name_without_separator = "TestAbc"
 
@@ -19,7 +19,7 @@ class TestModule(TransactionCase):
         self._enable_settings(True)
         # Create Partner
         vals = {"name": self.name_with_separator}
-        partner = self.partner_obj.create(vals)
+        partner = self.ResPartner.create(vals)
         self.assertEqual(
             partner.name,
             self.name_without_separator,
@@ -37,7 +37,7 @@ class TestModule(TransactionCase):
         self._enable_settings(False)
         # Create Partner
         vals = {"name": self.name_with_separator}
-        partner = self.partner_obj.create(vals)
+        partner = self.ResPartner.create(vals)
         self.assertEqual(
             partner.name,
             self.name_with_separator,
@@ -61,14 +61,14 @@ class TestModule(TransactionCase):
 
         # Initial Search
         self._enable_settings(False)
-        initial_search = len(self.partner_obj.search(ordered_domain))
+        initial_search = len(self.ResPartner.search(ordered_domain))
 
         # Create Partner
         vals = {"name": "Abc other Word Def"}
-        self.partner_obj.create(vals)
+        self.ResPartner.create(vals)
 
         # First Search (Feature disabled)
-        disabled_feature_search = len(self.partner_obj.search(ordered_domain))
+        disabled_feature_search = len(self.ResPartner.search(ordered_domain))
         self.assertEqual(
             initial_search,
             disabled_feature_search,
@@ -78,7 +78,7 @@ class TestModule(TransactionCase):
         # Second search (ordered) (Feature enabled)
         self._enable_settings(True)
         ensabled_feature_search_ordered = len(
-            self.partner_obj.search(ordered_domain)
+            self.ResPartner.search(ordered_domain)
         )
         self.assertEqual(
             ensabled_feature_search_ordered,
@@ -87,7 +87,7 @@ class TestModule(TransactionCase):
         )
 
         ensabled_feature_search_unordered = len(
-            self.partner_obj.search(unordered_domain)
+            self.ResPartner.search(unordered_domain)
         )
         self.assertEqual(
             ensabled_feature_search_unordered,
@@ -96,9 +96,9 @@ class TestModule(TransactionCase):
         )
 
     def _enable_settings(self, enable):
-        setting = self.setting_obj.create({})
-        if enable:
-            setting.multi_search_partner_separator = self.separator
-        else:
-            setting.multi_search_partner_separator = False
-        setting.set_multi_search_partner_separator()
+        setting = self.ResConfigSettings.create({})
+        setting.write({
+            "multi_search_partner_separator": enable and self.separator,
+            "multi_search_partner_separator_changed": True,
+        })
+        setting.set_values()

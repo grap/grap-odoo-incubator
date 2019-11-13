@@ -80,6 +80,8 @@ class MultiSearchMixin(models.AbstractModel):
         """Replace the separator by the replacement char in all fields defined
         in _multi_search_write_fields() for the current model"""
         domain = []
+        if not self._multi_search_separator():
+            return
         for field in self._multi_search_write_fields():
             domain.append(
                 (field, "like", "%" + self._multi_search_separator() + "%")
@@ -99,7 +101,7 @@ class MultiSearchMixin(models.AbstractModel):
         res = {}
         for field, value in vals.items():
             if field in self._multi_search_write_fields() and value:
-                new_value = value.replace(self._multi_search_separator(), " ")
+                new_value = value.replace(self._multi_search_separator(), "")
                 if new_value != value or return_all:
                     res[field] = new_value
             elif return_all:

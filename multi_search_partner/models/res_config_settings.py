@@ -24,14 +24,15 @@ class ResConfigSettings(models.TransientModel):
         current = self.env['ir.config_parameter'].get_param(
             'multi_search.partner_separator')
         for record in self:
-            record.multi_search_product_separator_changed = bool(
-                record.multi_search_product_separator != current)
+            record.multi_search_partner_separator_changed = bool(
+                record.multi_search_partner_separator != current)
 
     @api.multi
     def set_values(self):
         ResPartner = self.env["res.partner"]
-        for record in self:
-            if record.multi_search_partner_separator_changed:
-                if record.multi_search_partner_separator:
-                    ResPartner._multi_search_replace_all()
-        super().set_values()
+        replace_all = any(
+            self.mapped('multi_search_partner_separator_changed'))
+        res = super().set_values()
+        if replace_all:
+            ResPartner._multi_search_replace_all()
+        return res
