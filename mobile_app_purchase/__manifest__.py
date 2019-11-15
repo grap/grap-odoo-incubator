@@ -11,13 +11,12 @@
     "license": "AGPL-3",
     "depends": [
         "purchase",
-        # 'stock',
     ],
-    "data": ["views/view_res_company.xml"],
+    # "data": ["views/view_res_company.xml"],
     "demo": [
-        "demo/res_groups.xml",
-        "demo/res_company.xml",
-        "demo/product_product.xml",
+        # "demo/res_groups.xml",
+        # "demo/res_company.xml",
+        # "demo/product_product.xml",
     ],
     "installable": True,
 }
