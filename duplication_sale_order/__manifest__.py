@@ -12,7 +12,7 @@
     'website': 'http://www.grap.coop',
     'license': 'AGPL-3',
     'depends': [
-        'sale_management',
+        'sale',
     ],
     'data': [
         'views/view_sale_order_duplication_wizard.xml',
