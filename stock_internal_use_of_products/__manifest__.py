@@ -12,7 +12,8 @@
     'website': 'http://www.grap.coop',
     'license': 'AGPL-3',
     'depends': [
-        'stock_account',
+        'stock',
+        'account',
     ],
     'data': [
         'data/ir_sequence.xml',
