@@ -8,8 +8,9 @@ from odoo import _, api, models
 
 class MobileAppPurchase(models.TransientModel):
     _name = "mobile.app.purchase"
+    _description = "Mobile App Purchase"
 
-    _MANDATORY_FIELDS = ["id", "name", "ean13"]
+    _MANDATORY_FIELDS = ["id", "name", "barcode"]
 
     # Public API Section - Generic Functions
     @api.model
@@ -54,7 +55,7 @@ class MobileAppPurchase(models.TransientModel):
         supplierinfos = ProductSupplierinfo.search([("name", "=", partner.id)])
         products = supplierinfos.mapped(
             "product_tmpl_id.product_variant_ids"
-        ).filtered(lambda x: x.ean13)
+        ).filtered(lambda x: x.barcode)
 
         custom_fields = self._get_custom_fields()
         supplierinfo_fields = self._get_supplierinfo_fields()
@@ -73,7 +74,7 @@ class MobileAppPurchase(models.TransientModel):
 
         ProductProduct = self.env["product.product"]
         ResPartner = self.env["res.partner"]
-        products = ProductProduct.search([("ean13", "=", barcode)])
+        products = ProductProduct.search([("barcode", "=", barcode)])
         partner = ResPartner.browse(partner_id)
         if not products:
             return False
@@ -95,20 +96,24 @@ class MobileAppPurchase(models.TransientModel):
         """
         PurchaseOrder = self.env["purchase.order"]
         partner_id = self._extract_param(params, "partner.id")
-        vals = PurchaseOrder.default_get(PurchaseOrder._defaults.keys())
+        vals = PurchaseOrder.default_get(PurchaseOrder._fields.keys())
 
-        # Set Supplier
-        vals.update({"partner_id": partner_id})
-        vals.update(PurchaseOrder.onchange_partner_id(partner_id)["value"])
-
-        # Get Picking Type
-        vals["picking_type_id"] = PurchaseOrder._get_picking_in()
-        vals["location_id"] = PurchaseOrder.onchange_picking_type_id(
-            vals["picking_type_id"]
-        )["value"]["location_id"]
-
-        vals["origin"] = _("Barcode Reader")
+        vals.update({
+            "origin": _("Barcode Reader"),
+            "partner_id": partner_id,
+        })
         order = PurchaseOrder.create(vals)
+        order.onchange_partner_id()
+        # # Set Supplier
+        # vals.update({"partner_id": partner_id})
+        # vals.update(PurchaseOrder.onchange_partner_id(partner_id)["value"])
+
+        # # Get Picking Type
+        # vals["picking_type_id"] = PurchaseOrder._get_picking_in()
+        # vals["location_id"] = PurchaseOrder.onchange_picking_type_id(
+        #     vals["picking_type_id"]
+        # )["value"]["location_id"]
+
         return self._export_purchase_order(order)
 
     @api.model
@@ -221,7 +226,7 @@ class MobileAppPurchase(models.TransientModel):
         return {
             "id": product.id,
             "name": product.name,
-            "barcode": product.ean13,
+            "barcode": product.barcode,
             "custom_vals": custom_vals,
             "supplierinfo_vals": supplierinfo_vals,
         }

@@ -12,11 +12,12 @@
     "depends": [
         "purchase",
     ],
-    # "data": ["views/view_res_company.xml"],
+    "data": ["views/view_res_company.xml"],
     "demo": [
-        # "demo/res_groups.xml",
-        # "demo/res_company.xml",
-        # "demo/product_product.xml",
+        "demo/res_groups.xml",
+        "demo/res_company.xml",
+        "demo/product_product.xml",
+        "demo/product_supplierinfo.xml",
     ],
     "installable": True,
 }

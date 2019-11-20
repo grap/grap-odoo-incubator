@@ -11,14 +11,14 @@ Copyright (C) 2015-Today GRAP (http://www.grap.coop)
         <field name="model">res.company</field>
         <field name="inherit_id" ref="base.view_company_form" />
         <field name="arch" type="xml">
-            <xpath expr="//page[@string='General Information']" position="after">
+            <notebook position="inside">
                 <page string="Mobile App Purchase">
                     <group string="Settings">
                         <field name="mobile_purchase_product_field_ids" widget="many2many_tags"/>
                         <field name="mobile_purchase_supplierinfo_field_ids" widget="many2many_tags"/>
                     </group>
                 </page>
-            </xpath>
+            </notebook>
         </field>
     </record>
 

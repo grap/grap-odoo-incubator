@@ -10,20 +10,10 @@ Copyright (C) 2016-Today GRAP (http://www.grap.coop)
     <record id="product_evian" model="product.product">
         <field name="name">Evian 33cl</field>
         <field name="purchase_ok" eval="1"/>
-        <field name="ean13">3068320063003</field>
+        <field name="barcode">3068320063003</field>
         <field name="default_code">EVIAN-33</field>
         <field name="categ_id" ref="product.product_category_all" />
         <field name="standard_price">0.65</field>
-    </record>
-
-    <record id="product_supplierinfo_product_evian" model="product.supplierinfo">
-        <field name="product_tmpl_id" ref="product_evian_product_template"/>
-        <field name="name" ref="base.res_partner_1"/>
-        <field name="product_code">Product Code</field>
-        <field name="product_name">Product Name</field>
-
-        <field name="delay">8</field>
-        <field name="min_qty">1</field>
     </record>
 
 </odoo>
