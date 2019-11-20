@@ -12,7 +12,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="default_location_src_id" ref="stock.stock_location_components" />
         <field name="default_location_dest_id" ref="stock.stock_location_14" />
         <field name="journal_id" ref="stock_internal_use_of_products.misc_journal_demo" />
-        <field name="account_id" ref="l10n_generic_coa.1_conf_a_sale" />
+        <field name="account_id" ref="use_expense_account" />
     </record>
 
     <record id="internal_use_case_without" model="internal.use.case">

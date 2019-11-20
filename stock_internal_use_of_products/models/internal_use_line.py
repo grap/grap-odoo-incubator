@@ -194,7 +194,7 @@ class InternalUseLine(models.Model):
             'debit': (total < 0) and -total or 0,
             'credit': (total > 0) and total or 0,
             'tax_ids': tax_code and [(6, 0, [tax_code.id])] or False,
-            'tax_amount': tax_code and max(total, -total) or 0,
+            # 'tax_amount': tax_code and max(total, -total) or 0,
         }
 
     @api.multi
@@ -211,5 +211,5 @@ class InternalUseLine(models.Model):
             'debit': (total > 0) and total or 0,
             'credit': (total < 0) and -total or 0,
             'tax_ids': tax_code and [(6, 0, [tax_code.id])] or False,
-            'tax_amount': tax_code and max(total, -total) or 0,
+            # 'tax_amount': tax_code and max(total, -total) or 0,
         }

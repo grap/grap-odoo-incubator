@@ -26,6 +26,7 @@
         'views/view_internal_use_mass_generate_wizard.xml',
     ],
     'demo': [
+        'demo/account_account.xml',
         'demo/account_journal.xml',
         'demo/account_tax.xml',
         'demo/product_product.xml',
