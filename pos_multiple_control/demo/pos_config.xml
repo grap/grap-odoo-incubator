@@ -5,7 +5,7 @@ Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record id="pos_config_control" model="pos.config">
         <field name="name">Point Of Sale (With Mutiple Controls)</field>
@@ -16,4 +16,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             (4, ref('cash_journal'))]" />
     </record>
 
-</data></openerp>
+</odoo>

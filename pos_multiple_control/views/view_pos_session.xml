@@ -2,10 +2,11 @@
 <!--
 Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
 @author Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author Quentin DUPONT (https://twitter.com/pondupont)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record id="view_pos_session_form" model="ir.ui.view">
         <field name="model">pos.session</field>
@@ -14,96 +15,24 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="config_id" position="attributes">
                 <attribute name="readonly">1</attribute>
             </field>
-            <!-- Opening and Closing Controls -->
-            <xpath expr="//group[@string='Opening Cash Control']" position="before">
-                <field name="control_statement_ids" nolabel="1" colspan="4"
-                        attrs="{'invisible': [('state', 'in', ['opening_control'])], 'readonly': [('state', '=', ['closed'])]}">
-                    <tree colors="grey: is_pos_control == False" create="0" delete="0">
-                        <field name="name" />
-                        <field name="journal_id" />
-                        <field name="balance_start" />
-                        <field name="total_entry_encoding" />
-                        <field name="control_balance" />
-                        <field name="control_difference" />
-                        <field name="currency" groups="base.group_multi_currency" />
-                        <field name="state" invisible="1"/>
-                        <field name="is_pos_control" invisible="1"/>
-                    </tree>
-                    <form>
-                        <group>
-                            <field name="name" />
-                            <field name="journal_id" />
-                            <field name="state"/>
-                        </group>
-                            <field name="details_ids" nolabel="1" colspan="2">
-                            <tree string="Cashbox Lines" editable="bottom">
 
-                                <field name="pieces" attrs="{'readonly': [('is_piece', '=', True)]}"/>
-                                <field name="number_opening" attrs="{'readonly': [('is_piece', '=', False), ('statement_state', '!=', 'draft')]}"/>
-                                <field name="subtotal_opening" string="Opening Subtotal" sum="Total"/>
-                                <field name="number_closing" />
-                                <field name="subtotal_closing" string="Closing Subtotal" sum="Total"/>
-                                <field name="is_piece" invisible="1"/>
-                                <field name="statement_state" invisible="1"/>
-                            </tree>
-                        </field>
-                    </form>
-                </field>
+            <!-- Improve views -->
+<!--             <xpath expr="//field[@name='cash_register_balance_start']" position="attributes">
+                <attribute name="class"></attribute>
             </xpath>
-            <!-- Opening Cash Control -->
-            <xpath expr="//group[@string='Opening Cash Control']" position="attributes">
-                <attribute name="attrs">{'invisible': [('state', 'not in', ('opening_control'))]}</attribute>
-            </xpath>
-            <xpath expr="//field[@name='opening_details_ids']/tree/field[@name='pieces']" position="attributes">
-                <attribute name="readonly">0</attribute>
-                <attribute name="attrs">{'readonly': [('is_piece', '=', True)]}</attribute>
-            </xpath>
-            <xpath expr="//field[@name='opening_details_ids']/tree/field[@name='pieces']" position="after">
-                <field name="is_piece" invisible="1"/>
-            </xpath>
-            <xpath expr="//field[@name='opening_details_ids']/tree" position="attributes">
-                <attribute name="colors">brown: is_piece == False</attribute>
-            </xpath>
-            <!-- Closing Cash Control -->
-            <xpath expr="//group[@string='Closing Cash Control']" position="attributes">
-                <attribute name="invisible" >1</attribute>
-            </xpath>
-            <!-- Theoritical Summary -->
-            <xpath expr="//field[@name='cash_register_balance_start']/.." position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//field[@name='cash_register_balance_start']/.." position="after">
-                <group class="oe_subtotal_footer oe_right">
-                    <field name="control_register_balance_start" readonly="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                    <label for="control_register_total_entry_encoding" attrs="{'invisible' : [('state', '=', 'opening_control')]}" string="+ Transactions" class="oe_force_bold oe_opening_total"/>
-                    <field name="control_register_total_entry_encoding" nolabel="1" attrs="{'invisible' : [('state', '=', 'opening_control')]}" class="oe_bold oe_pos_total" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                    <label for="control_register_total_entry_encoding" attrs="{'invisible' : [('state', '=', 'opening_control')]}" string="Theoretical Closing Balances" class="oe_force_bold oe_opening_total"/>
-                    <field name="control_register_balance_end" nolabel="1" attrs="{'invisible' : [('state', '=', 'opening_control')]}" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                </group>
-            </xpath>
-            <!-- Real Summary -->
-            <xpath expr="//field[@name='cash_register_balance_end_real']/.." position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//field[@name='cash_register_balance_end_real']/.." position="after">
-                <group class="oe_subtotal_footer oe_right"
-                        attrs="{'invisible': ['|', ('cash_control', '=', False), ('state', '=', 'opening_control')]}">
-                    <field name="control_register_balance"
-                        class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                </group>
-            </xpath>
+            <xpath expr="//field[@name='cash_register_balance_end']" position="attributes">
+                <attribute name="class">oe_subtotal_footer_separator</attribute>
+            </xpath> -->
 
-            <xpath expr="//field[@name='cash_register_difference']/.." position="attributes">
-                <attribute name="invisible">1</attribute>
+            <xpath expr="//field[@name='cash_register_balance_end_real']/../.." position="replace">
+                <div>
+                    <group/>
+                    <group class="oe_subtotal_footer oe_right" attrs="{'invisible': ['|', ('cash_control', '=', False), ('state', '=', 'opening_control')]}">
+                        <field name="cash_register_balance_end_real" string="Real Closing Balance" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        <field name="cash_register_difference" class="oe_subtotal_footer_separator oe_right oe_pos_total oe_pos_difference" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    </group>
+                </div>
             </xpath>
-            <xpath expr="//field[@name='cash_register_difference']/.." position="after">
-                <group class="oe_subtotal_footer oe_right" attrs="{'invisible': ['|', ('cash_control', '=', False), ('state', '=', 'opening_control')]}">
-                    <field name="control_register_difference"
-                        class="oe_subtotal_footer_separator oe_right oe_pos_total oe_pos_difference"
-                        widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                </group>
-            </xpath>
-
             <!--  Summary by Payment Methods -->
             <field name="statement_ids" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -111,16 +40,28 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="statement_ids" position="after">
                 <field name="summary_statement_ids" nolabel="1" colspan="4"
                         attrs="{'invisible': [('state', 'in', ['opening_control'])], 'readonly': 1}">
-                    <tree >
+                    <tree decoration-muted="is_pos_control == False" decoration-danger="is_pos_control == True and control_difference != 0">
+                        <field name="is_pos_control" invisible="1"/>
                         <field name="name" />
                         <field name="journal_id" />
-                        <field name="balance_start" invisible="1"/>
+                        <field name="balance_start"/>
+                        <button name="open_cashbox_starting_balance"
+                            help="Set your starting balance"
+                            type="object"
+                            class="oe_stat_button" icon="fa-money"
+                            attrs="{'invisible' : ['|', ('is_pos_control','!=', True), ('state', 'in', ['opening_control','closed'])]}">
+                        </button>
                         <field name="total_entry_encoding" />
-                        <field name="balance_end_real" invisible="1"/>
-                        <field name="difference" invisible="1"/>
-                        <field name="currency" groups="base.group_multi_currency" />
+                        <field name="balance_end_real"/>
+                        <button name="open_cashbox_ending_balance"
+                            help="Set your ending balance"
+                            type="object"
+                            class="oe_stat_button" icon="fa-money"
+                            attrs="{'invisible' : ['|', ('is_pos_control','!=', True), ('state', 'in', ['opening_control', 'closed'])]}">
+                        </button>
+                        <field name="control_difference"/>
+                        <field name="currency_id" groups="base.group_multi_currency" />
                         <field name="state" invisible="1"/>
-
                     </tree>
                     <form>
                         <group>
@@ -128,10 +69,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <field name="journal_id" />
                             <field name="state" invisible="1" />
                         </group>
-                        <field name="line_ids" nolabel="1" colspan="2">
+                        <field name="line_ids" colspan="2">
                             <tree string="Transactions">
                                 <field name="date"/>
-                                <field name="name"/>
+                                <field name="pos_statement_id"/>
                                 <field name="ref"/>
                                 <field name="partner_id" />
                                 <field name="amount" sum="Total"/>
@@ -139,7 +80,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         </field>
                     </form>
                 </field>
-
             </field>
 
             <!-- Automatic solve - START -->
@@ -151,7 +91,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <button name="automatic_solve"
                     help="Solve difference automatically with a product choosen in pos config"
                     type="object"
-                    class="oe_stat_button" icon="STOCK_EXECUTE"
+                    class="oe_stat_button" icon="fa-cogs"
                     confirm="Do you really want to solve this difference automatically ?"
                     attrs="{'invisible':[
                     ('display_autosolve', '!=', True)]}">
@@ -161,4 +101,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         </field>
     </record>
 
-</data></openerp>
+</odoo>

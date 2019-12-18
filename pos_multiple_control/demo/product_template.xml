@@ -5,7 +5,7 @@ Copyright (C) 2018-Today: GRAP (<http://www.grap.coop>)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record model="product.template" id="demo_product_not_cash_box">
         <field name="name">Demo Product Not Cash box produt</field>
@@ -16,4 +16,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="income_pdt">True</field>
     </record>
 
-</data></openerp>
+</odoo>
