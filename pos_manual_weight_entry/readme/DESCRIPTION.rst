@@ -1,4 +1,4 @@
-Give the possibility to the user to enter the weight, selling weightable
+Give the possibility to the user to enter the weight, when he sells weightable
 products in the Point of Sale.
 
 

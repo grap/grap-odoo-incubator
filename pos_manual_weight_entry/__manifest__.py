@@ -15,4 +15,5 @@
     "data": ["views/assets.xml"],
     "qweb": ["static/src/xml/pos_manual_weight_entry.xml"],
     "installable": True,
+    "images": ["static/description/pos_manual_weight_entry.png"],
 }

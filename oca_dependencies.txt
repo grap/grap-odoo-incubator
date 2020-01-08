@@ -3,3 +3,5 @@ account-invoicing
 pos
 purchase-workflow
 server-tools
+
+pos__pos_tare                    https://github.com/legalsylvain/pos.git       12.0-ADD-pos_tare
