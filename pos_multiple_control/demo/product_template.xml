@@ -14,6 +14,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record model="product.template" id="demo_product_cash_box">
         <field name="name">Demo Product Cash box produt</field>
         <field name="income_pdt">True</field>
+        <field name="sale_ok" eval="False"/>
+        <field name="purchase_ok" eval="False"/>
     </record>
 
 </data></openerp>
