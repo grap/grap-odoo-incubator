@@ -4,7 +4,7 @@
 {
     'name': 'Point of Sale - Sectors',
     'summary': "Set sectors to the products and display in given PoS Sessions",
-    'version': '8.0.1.0.0',
+    'version': '12.0.1.0.0',
     'category': 'Point of Sale',
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
@@ -16,7 +16,7 @@
         'security/ir_rule.xml',
         'security/res_groups.xml',
         'security/ir.model.access.csv',
-        'views/templates.xml',
+        'views/assets.xml',
         'views/view_pos_sector.xml',
         'views/view_product_template.xml',
         'views/view_pos_config.xml',
@@ -32,5 +32,5 @@
         'static/description/pos_config_form.png',
         'static/description/product_form.png',
     ],
-    'installable': False,
+    'installable': True,
 }
