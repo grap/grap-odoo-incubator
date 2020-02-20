@@ -7,6 +7,7 @@ from odoo import models, fields
 
 class PosSector(models.Model):
     _name = 'pos.sector'
+    _description = 'Point of Sale Sectors'
 
     # Columns section
     name = fields.Char(required=True)
