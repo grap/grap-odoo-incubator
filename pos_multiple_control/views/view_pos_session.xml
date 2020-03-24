@@ -12,27 +12,41 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">pos.session</field>
         <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
         <field name="arch" type="xml">
+            <!-- Improve views -->
             <field name="config_id" position="attributes">
                 <attribute name="readonly">1</attribute>
             </field>
 
-            <!-- Improve views -->
-<!--             <xpath expr="//field[@name='cash_register_balance_start']" position="attributes">
-                <attribute name="class"></attribute>
+            <!-- Hide obsolete Buttons -->
+            <xpath expr="//span[text() = 'Set Closing Balance']/.." position="replace">
             </xpath>
-            <xpath expr="//field[@name='cash_register_balance_end']" position="attributes">
-                <attribute name="class">oe_subtotal_footer_separator</attribute>
-            </xpath> -->
 
+            <!-- Theoritical Summary -->
+            <xpath expr="//field[@name='cash_register_balance_start']/.." position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='cash_register_balance_start']/.." position="after">
+                <group class="oe_subtotal_footer oe_right">
+                    <field name="control_register_balance_start" readonly="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <label for="control_register_total_entry_encoding" attrs="{'invisible' : [('state', '=', 'opening_control')]}" string="+ Transactions" class="oe_opening_total"/>
+                    <field name="control_register_total_entry_encoding" nolabel="1" attrs="{'invisible' : [('state', '=', 'opening_control')]}" class="oe_pos_total" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <label for="control_register_balance_end" attrs="{'invisible' : [('state', '=', 'opening_control')]}" string="Theoretical Closing Balances" class="oe_opening_total"/>
+                    <field name="control_register_balance_end" nolabel="1" attrs="{'invisible' : [('state', '=', 'opening_control')]}" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                </group>
+            </xpath>
+
+
+            <!-- Real Summary and Differences -->
             <xpath expr="//field[@name='cash_register_balance_end_real']/../.." position="replace">
                 <div>
                     <group/>
                     <group class="oe_subtotal_footer oe_right" attrs="{'invisible': ['|', ('cash_control', '=', False), ('state', '=', 'opening_control')]}">
-                        <field name="cash_register_balance_end_real" string="Real Closing Balance" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                        <field name="cash_register_difference" class="oe_subtotal_footer_separator oe_right oe_pos_total oe_pos_difference" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        <field name="control_register_balance" string="Real Closing Balance" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        <field name="control_register_difference" class="oe_subtotal_footer_separator oe_right oe_pos_total oe_pos_difference" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                     </group>
                 </div>
             </xpath>
+
             <!--  Summary by Payment Methods -->
             <field name="statement_ids" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -40,7 +54,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="statement_ids" position="after">
                 <field name="summary_statement_ids" nolabel="1" colspan="4"
                         attrs="{'invisible': [('state', 'in', ['opening_control'])], 'readonly': 1}">
-                    <tree decoration-muted="is_pos_control == False" decoration-danger="is_pos_control == True and control_difference != 0">
+                    <tree decoration-muted="is_pos_control == False and state != 'closed'" decoration-danger="is_pos_control == True and control_difference != 0">
                         <field name="is_pos_control" invisible="1"/>
                         <field name="name" />
                         <field name="journal_id" />
@@ -72,8 +86,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <field name="line_ids" colspan="2">
                             <tree string="Transactions">
                                 <field name="date"/>
-                                <field name="pos_statement_id"/>
                                 <field name="ref"/>
+                                <field name="name"/>
                                 <field name="partner_id" />
                                 <field name="amount" sum="Total"/>
                             </tree>
@@ -82,7 +96,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 </field>
             </field>
 
-            <!-- Automatic solve - START -->
+            <!-- Automatic solve -->
             <field name="control_difference" position="after">
                 <field name="pos_session_state" invisible="1"/>
                 <field name="display_autosolve" invisible="1"/>
@@ -97,7 +111,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     ('display_autosolve', '!=', True)]}">
                 </button>
             </field>
-            <!-- Automatic solve - END -->
         </field>
     </record>
 

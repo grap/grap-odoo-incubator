@@ -96,7 +96,7 @@ class WizardPOSBankStatementUpdateBalance(models.TransientModel):
                 item.statement_id.balance_start = item.balance_start_real
             elif item.balance_moment == 'ending':
                 item.statement_id.balance_end_real = item.balance_end_real
-                item.statement_id.balance_end = item.balance_end_real
+                # item.statement_id.balance_end = item.balance_end_real
         return True
 
 class WizardPOSBankStatementUpdateBalanceLine(models.TransientModel):

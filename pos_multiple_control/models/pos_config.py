@@ -10,8 +10,8 @@ class PosConfig(models.Model):
     _inherit = "pos.config"
 
     # Columns Section
-    autosolve_product = fields.Many2one(
-        string="Autosolve product",
+    autosolve_pos_move_reason = fields.Many2one(
+        string="Autosolve pos move reason",
         description="Product used to autosolve control difference in pos session",
         comodel_name="pos.move.reason",
         domain="['|', ('is_income_reason', '=', True), ('is_expense_reason', '=', True)]",

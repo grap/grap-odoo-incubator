@@ -13,12 +13,10 @@
     "license": "AGPL-3",
     "depends": ["point_of_sale", "pos_cash_move_reason",],
     "data": [
-        # "views/view_pos_box.xml",
         "views/view_account_journal.xml",
         "views/view_pos_config.xml",
         "views/view_pos_session.xml",
         "wizard/wizard_pos_update_statement_balance.xml"
-        # "views/view_pos_session_opening.xml",
     ],
     "images": [
         "static/description/pos_session_closing_form.png",

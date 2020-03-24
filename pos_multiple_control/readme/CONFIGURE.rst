@@ -7,6 +7,8 @@ To configure this module, you need to:
   
 .. figure:: ../static/description/account_journal_bank_setting.png
 
+faut aussi cocher le cash control du pos setting
+
 For quickly automatic solve configuration :
 
 * Go to Point of Sale / Configuration / Point of Sales / <your session>

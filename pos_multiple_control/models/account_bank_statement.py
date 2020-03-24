@@ -37,23 +37,19 @@ class AccountBankStatement(models.Model):
         string="Display autosolve", compute="_compute_display_autosolve"
     )
 
-    # TODO : à qué ça sert ce champ ?
     # Compute Section
     @api.multi
-    # @api.depends("line_ids.subtotal_closing")
     @api.depends("line_ids")
     def _compute_control_balance(self):
-        print("============> Compute control balance")
+        print("============> ÇA SERT ÇA ???? Compute control BALANCE")
         for statement in self:
             statement.control_balance = sum(
-                statement.mapped("line_ids.amount")
+                statement.mapped("balance_end_real")
             )
 
-    # MODIF ICI
     @api.multi
     @api.depends("control_balance", "total_entry_encoding", "balance_end_real")
     def _compute_control_difference(self):
-        print("============> Compute control difference")
         for statement in self:
             statement.control_difference = (
                 + statement.balance_end_real
@@ -62,16 +58,11 @@ class AccountBankStatement(models.Model):
             )
 
     @api.multi
-    @api.depends("journal_id.pos_control", "pos_session_state")
+    @api.depends("journal_id.pos_control", "pos_session_state", "balance_start")
     def _compute_is_pos_control(self):
         for statement in self:
-            print("============> Compute control difference")
-            # import pdb; pdb.set_trace()
-            if statement.pos_session_state in ["opened", "closing_control"]:
-                journal = statement.journal_id
-                statement.is_pos_control = journal.pos_control
-            else:
-                statement.is_pos_control = False
+            journal = statement.journal_id
+            statement.is_pos_control = journal.pos_control
 
     @api.multi
     @api.depends("pos_session_id.state")
@@ -79,29 +70,32 @@ class AccountBankStatement(models.Model):
         for statement in self:
             statement.pos_session_state = statement.pos_session_id.state
 
+    # Display button autosolve with some conditions
     @api.multi
     def _compute_display_autosolve(self):
         for statement in self:
-            if statement.pos_session_id.config_id.autosolve_limit:
-                difference_with_limit = (
-                    abs(statement.control_difference)
-                    - statement.pos_session_id.config_id.autosolve_limit
-                )
+            if not statement.journal_id.pos_control:
+                display_autosolve = False
             else:
-                difference_with_limit = -1
-            # Display button autosolve with some conditions
-            statement.display_autosolve = (
-                statement.pos_session_state in ["opened", "closing_control"]
-                and difference_with_limit < 0
-                and abs(round(statement.control_difference, 3)) != 0
-            )
+                if statement.pos_session_id.config_id.autosolve_limit:
+                    difference_with_limit = (
+                        abs(statement.control_difference)
+                        - statement.pos_session_id.config_id.autosolve_limit
+                    )
+                else:
+                    difference_with_limit = -1
+                statement.display_autosolve = (
+                    statement.pos_session_state in ["opened", "closing_control"]
+                    and difference_with_limit < 0
+                    and abs(round(statement.control_difference, 3)) != 0
+                )
 
     @api.multi
     @api.depends("pos_session_state")
     def automatic_solve(self):
         self.WizardReason = self.env['wizard.pos.move.reason']
         for statement in self:
-            pos_move_reason = statement.pos_session_id.config_id.autosolve_product
+            pos_move_reason = statement.pos_session_id.config_id.autosolve_pos_move_reason
             if pos_move_reason:
                 cb_pos_move_reason_id = pos_move_reason.id
                 cb_difference = statement.control_difference
@@ -123,73 +117,14 @@ class AccountBankStatement(models.Model):
                     })
                 wizard.apply()
 
-                # _pos_move_reason = statement.env["pos.move.reason"].create(
-                #    {
-                #        "name": _("Automatic solve"),
-                #        "amount": cb_difference,
-                #        "journal_id": cb_journal_id,
-                #        "product_id": cb_product_id,
-                #        "ref": cb_ref,
-                #    }
-                #)
-                # Parameter 'wizard' is used to not update info according to an
-                # active pos_move_reason that doesn't exist in this with_context
-                #_pos_move_reason.with_context(
-                #    active_model="pos.session",
-                #    active_ids=[statement.pos_session_id.id],
-                #    wizard=False,
-                #)._create_bank_statement_line(_pos_move_reason, statement)
             else:
                 raise UserError(
                     _(
                         "We can't autosolve this difference. \nYou need to "
-                        "configure the Point Of Sale Config and choose a "
-                        "particular product for autosolving this difference."
+                        "configure the Point Of Sale config and choose a "
+                        "pos move reason for autosolving this difference."
                     )
                 )
-
-    # @api.multi
-    # @api.depends("pos_session_state")
-    # def open_pos_move_reason_balance(self):
-    #     self.ensure_one()
-    #     action = self.env.ref(
-    #         "pos_multiple_control."
-    #         "action_pos_update_bank_statement_balance")
-    #     result = action.read()[0]
-    #     return result
-
-    # @api.multi
-    # @api.depends("pos_session_state")
-    # def open_pos_move_reason_balance(self):
-    #     import pdb; pdb.set_trace();
-    #     self.ensure_one()
-    #     cb_journal_id = self.journal_id.id
-    #     # Créer pos_move_reason en se basant sur celui de poss sessin
-    #     # TODO
-    #     _update_balance = self.env["pos.update.bank.statement.balance"].create(
-    #         {
-    #             "name": _("Update Balance"),
-    #             "journal_id": cb_journal_id,
-    #         }
-    #     )
-    #     print("============= avec contexte =============")
-    #     # Parameter 'wizard' is used to not update info according to an
-    #     # active pos_move_reason that doesn't exist in this with_context
-    #     _update_balance.with_context(
-    #         active_model="pos.session",
-    #         active_ids=[self.pos_session_id.id],
-    #         wizard=True,
-    #     )
-    #     print("============= après contexte =============")
-    #     result = _update_balance.read()[0]
-    #     return result
-
-
-################
-# s'inspirer du travail fait pour pos_cash_move_reason de Sylvain pour les wizards :
-# voici le début
-# et mixer avec ce qu'il y a au dessus
-
 
     def open_cashbox_starting_balance(self):
         return self.open_cashbox_balance('starting')

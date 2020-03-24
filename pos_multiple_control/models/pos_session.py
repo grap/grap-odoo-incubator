@@ -25,98 +25,78 @@ class PosSession(models.Model):
     )
 
     control_register_balance_start = fields.Float(
-        compute="_compute_control_register_balance_start",
-        string="Opening Balances",
-    )
+        compute='_compute_control_register_balance_start',
+        string='Opening Balances')
 
     control_register_total_entry_encoding = fields.Float(
-        compute="_compute_control_register_total_entry_encoding",
-        string="Transactions",
-    )
+        compute='_compute_control_register_total_entry_encoding',
+        string='Transactions')
 
     control_register_balance_end = fields.Float(
-        compute="_compute_control_register_balance_end",
-        string="Theoretical Closing Balances",
-    )
+        compute='_compute_control_register_balance_end',
+        string='Theoretical Closing Balances')
 
     control_register_balance = fields.Float(
-        compute="_compute_control_register_balance",
-        string="Real Closing Balances",
-    )
+        compute='_compute_control_register_balance',
+        string='Real Closing Balances')
 
     control_register_difference = fields.Float(
-        compute="_compute_control_register_difference", string="Differences"
-    )
+        compute='_compute_control_register_difference',
+        string='Total difference')
 
     # Compute Section
     @api.multi
-    @api.depends("statement_ids.is_pos_control", "statement_ids.balance_start")
+    @api.depends('statement_ids.is_pos_control', 'statement_ids.balance_start')
     def _compute_control_register_balance_start(self):
         for session in self:
             session.control_register_balance_start = sum(
                 session.statement_ids.filtered(
-                    lambda x: x.is_pos_control
-                ).mapped("balance_start")
-            )
+                    lambda x: x.is_pos_control).mapped('balance_start'))
 
     @api.multi
     @api.depends(
-        "statement_ids.is_pos_control", "statement_ids.total_entry_encoding"
-    )
+        'statement_ids.is_pos_control', 'statement_ids.total_entry_encoding')
     def _compute_control_register_total_entry_encoding(self):
         for session in self:
             session.control_register_total_entry_encoding = sum(
                 session.statement_ids.filtered(
-                    lambda x: x.is_pos_control
-                ).mapped("total_entry_encoding")
-            )
+                    lambda x: x.is_pos_control).mapped('total_entry_encoding'))
 
     @api.multi
-    @api.depends("statement_ids.is_pos_control", "statement_ids.balance_end")
+    @api.depends(
+        'statement_ids.is_pos_control', 'statement_ids.balance_end_real')
     def _compute_control_register_balance_end(self):
-        print("============> Compute control_register_difference")
         for session in self:
             session.control_register_balance_end = sum(
                 session.statement_ids.filtered(
-                    lambda x: x.is_pos_control
-                ).mapped("balance_end_real")
-            )
+                    lambda x: x.is_pos_control).mapped('balance_end'))
 
     @api.multi
     @api.depends(
-        "statement_ids.is_pos_control", "statement_ids.control_balance"
-    )
+        'statement_ids.is_pos_control', 'statement_ids.control_balance')
     def _compute_control_register_balance(self):
-        print("============> Compute _compute_control_register_balance")
         for session in self:
             session.control_register_balance = sum(
                 session.statement_ids.filtered(
-                    lambda x: x.is_pos_control
-                ).mapped("control_balance")
-            )
+                    lambda x: x.is_pos_control).mapped('control_balance'))
 
     @api.multi
     @api.depends(
-        "statement_ids.is_pos_control", "statement_ids.control_difference"
-    )
+        'statement_ids.is_pos_control', 'statement_ids.control_difference')
     def _compute_control_register_difference(self):
-        print("============> Compute control_register_difference")
-        # import pdb; pdb.set_trace();
         for session in self:
             session.control_register_difference = sum(
                 session.statement_ids.filtered(
-                    lambda x: x.is_pos_control
-                ).mapped("control_difference")
-            )
+                    lambda x: x.is_pos_control).mapped('control_difference'))
+
 
     # Overload Section
-    @api.model
-    def create(self, vals):
-        session = super(PosSession, self).create(vals)
-        # session.opening_details_ids.write({"is_piece": True})
-        return session
+    # @api.model
+    # def create(self, vals):
+    #     session = super(PosSession, self).create(vals)
+    #     # session.opening_details_ids.write({"is_piece": True})
+    #     return session
 
-        # TODO CHANGER JIMAGINE, voir le truc originel
     @api.multi
     def wkf_action_closing_control(self):
         for session in self:
@@ -133,19 +113,8 @@ class PosSession(models.Model):
                 )
         return super(PosSession, self).wkf_action_closing_control()
 
-    # @api.multi
-    # def action_pos_session_closing_control(self):
-    #     self._check_pos_session_balance()
-    #     for session in self:
-    #         session.write({'state': 'closing_control', 'stop_at': fields.Datetime.now()})
-    #         if not session.config_id.cash_control:
-    #             session.action_pos_session_close()
-
-    # TODO : Checker que si pos_control=True
-    # TODO : actuellement sur les lignes on agit sur une variable "difference" alors qu'il faudrait agir sur control_difference comme c'est checké ici-meêm
     @api.multi
-    def action_pos_session_closing_control(self):
-        print("============> action_pos_session_closing_control")
+    def action_pos_session_validate(self):
         for session in self:
             for statement in session.statement_ids:
                 if statement.journal_id.pos_control is True:
@@ -153,12 +122,14 @@ class PosSession(models.Model):
                         raise UserError(
                             _(
                                 "You can not close this session because the journal %s "
-                                "(statement %s) has a not null difference: %s%s"
+                                "(from %s) has a not null difference: %s%s \n"
+                                "You have to change his starting or ending balance"
                             )
                             % (statement.journal_id.name, statement.name, str(round(statement.control_difference,3)), statement.currency_id.symbol)
                         )
-        return super(PosSession, self).action_pos_session_closing_control()
+        return super(PosSession, self).action_pos_session_validate()
 
+    # Constraints
     @api.multi
     def _check_unicity(self):
         for session in self:
@@ -180,7 +151,6 @@ class PosSession(models.Model):
             if self.search_count(domain) > 1:
                 return False
         return True
-
 
 
     _constraints = [

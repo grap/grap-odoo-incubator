@@ -108,7 +108,7 @@ class TestMultipleControl(TransactionCase):
         # I create new session and open it
         self.pos_config.write(
             {
-                "autosolve_product": self.product_cash_box.id,
+                "autosolve_pos_move_reason": self.product_cash_box.id,
                 "autosolve_limit": 20,
             }
         )
@@ -131,7 +131,7 @@ class TestMultipleControl(TransactionCase):
         # I create new session and open it
         self.pos_config.write(
             {
-                "autosolve_product": self.product_cash_box.id,
+                "autosolve_pos_move_reason": self.product_cash_box.id,
                 "autosolve_limit": 30,
             }
         )
