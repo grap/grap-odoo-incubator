@@ -24,7 +24,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[product_category_usage_group](product_category_usage_group/) | 12.0.1.0.0 | Restrict Usage of Product Categories to a given Group
+[product_category_usage_group](product_category_usage_group/) | 12.0.1.0.1 | Restrict Usage of Product Categories to a given Group
 
 
 Unported addons
