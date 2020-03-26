@@ -18,6 +18,15 @@ You could be interesting too by the following repositories:
 * [grap-odoo-business](https://github.com/grap/grap-odoo-business)
 * [grap-odoo-custom](https://github.com/grap/grap-odoo-custom)
 
+[//]: # (addons)
+
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+
+[//]: # (end addons)
+
 ## About GRAP
 
 <p align="center">
