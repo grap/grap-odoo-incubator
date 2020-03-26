@@ -72,7 +72,7 @@ addon | version | summary
 ## About GRAP
 
 <p align="center">
-   <img src="http://new.grap.coop/wp-content/uploads/2016/11/GRAP.png" width="200"/>
+   <img src="http://www.grap.coop/wp-content/uploads/2016/11/GRAP.png" width="200"/>
 </p>
 
 GRAP, [Groupement Régional Alimentaire de Proximité](http://www.grap.coop) is a
