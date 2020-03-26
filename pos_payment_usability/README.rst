@@ -13,9 +13,9 @@ Point of Sale - Payment Usability
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-legalsylvain%2Fgrap--odoo--incubator-lightgray.png?logo=github
-    :target: https://github.com/legalsylvain/grap-odoo-incubator/tree/8.0_ADD_pos_payment_usability/pos_payment_usability
-    :alt: legalsylvain/grap-odoo-incubator
+.. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
+    :target: https://github.com/grap/grap-odoo-incubator/tree/8.0/pos_payment_usability
+    :alt: grap/grap-odoo-incubator
 
 |badge1| |badge2| |badge3| 
 
@@ -28,20 +28,21 @@ payment usability.
 If the user try to click on a payment journal, this message will be displayed
 if the order is empty
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_pos_payment_usability/pos_payment_usability/static/description/pos_error_add_payment_empty_order.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/pos_payment_usability/static/description/pos_error_add_payment_empty_order.png
 
 
 **Do not allow to have many lines with 0 amount**
 
-If there a payment line with 0 amount, and the user tries to add a new payment
-line, the previous payment line will be deleted and the new one will be added.
+If there is a payment line with 0 amount, and the user tries to add a new
+payment line, the previous payment line will be deleted and the new one will
+be added.
 
 
 **Do not save payment line with null amount**
 If a user add a payment line with null amount, this line will be deleted,
 when the order will be confirmed.
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_pos_payment_usability/pos_payment_usability/static/description/pos_payment_drop_empty_line.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/pos_payment_usability/static/description/pos_payment_drop_empty_line.png
 
 
 **Block the possibility to have more change than the cash received**
@@ -49,16 +50,16 @@ when the order will be confirmed.
 If the change is over the total amount of cash received, the following message
 will be displayed.
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_pos_payment_usability/pos_payment_usability/static/description/pos_error_change_over_cash_received.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/pos_payment_usability/static/description/pos_error_change_over_cash_received.png
 
-**Button to up the amount have no change**
+**Button to up the amount to have no change**
 
 A button is present if the remaining amount is positive.
 
 by clicking on the button, the user will change the amount of the line,
 to make the order paid, without change.
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_pos_payment_usability/pos_payment_usability/static/description/pos_payment_set_change.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/pos_payment_usability/static/description/pos_payment_set_change.png
 
 **Table of contents**
 
@@ -68,10 +69,10 @@ to make the order paid, without change.
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/legalsylvain/grap-odoo-incubator/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/legalsylvain/grap-odoo-incubator/issues/new?body=module:%20pos_payment_usability%0Aversion:%208.0_ADD_pos_payment_usability%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20pos_payment_usability%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -99,9 +100,6 @@ Images for demo data come from flaticon.com
 Maintainers
 ~~~~~~~~~~~
 
-
-
-This module is part of the `legalsylvain/grap-odoo-incubator <https://github.com/legalsylvain/grap-odoo-incubator/tree/8.0_ADD_pos_payment_usability/pos_payment_usability>`_ project on GitHub.
-
+This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/8.0/pos_payment_usability>`_ project on GitHub.
 
 You are welcome to contribute.

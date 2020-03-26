@@ -70,9 +70,6 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
-
-
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/8.0/account_product_fiscal_classification_usage_group>`_ project on GitHub.
-
 
 You are welcome to contribute.

@@ -78,9 +78,6 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
-
-
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/8.0/stock_internal_use_of_products>`_ project on GitHub.
-
 
 You are welcome to contribute.

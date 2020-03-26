@@ -71,9 +71,6 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
-
-
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/8.0/product_print_category>`_ project on GitHub.
-
 
 You are welcome to contribute.

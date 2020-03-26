@@ -13,9 +13,9 @@ Extra - French Certification (Point of Sale)
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-legalsylvain%2Fgrap--odoo--incubator-lightgray.png?logo=github
-    :target: https://github.com/legalsylvain/grap-odoo-incubator/tree/8.0_ADD_l10n_fr_certification_pos_offline/l10n_fr_pos_cert_extra
-    :alt: legalsylvain/grap-odoo-incubator
+.. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
+    :target: https://github.com/grap/grap-odoo-incubator/tree/8.0/l10n_fr_pos_cert_extra
+    :alt: grap/grap-odoo-incubator
 
 |badge1| |badge2| |badge3| 
 
@@ -29,18 +29,18 @@ features :
 
 - It displays the hashed data
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_l10n_fr_certification_pos_offline/l10n_fr_pos_cert_extra/static/description/pos_order_detail.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/l10n_fr_pos_cert_extra/static/description/pos_order_detail.png
 
 - It displays on the ``pos.order`` form the hash, and if the data
   has been corrupted or not.
 
 **Certified Order**
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_l10n_fr_certification_pos_offline/l10n_fr_pos_cert_extra/static/description/pos_order_certified.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/l10n_fr_pos_cert_extra/static/description/pos_order_certified.png
 
 **Corrupted Order**
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_l10n_fr_certification_pos_offline/l10n_fr_pos_cert_extra/static/description/pos_order_corrupted.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/l10n_fr_pos_cert_extra/static/description/pos_order_corrupted.png
 
 **Table of contents**
 
@@ -65,7 +65,7 @@ To configure this module, you need to:
    'Prevent Uncertified Bill'. This field will be used only if the server is
    set to the mode ``legacy``.
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_l10n_fr_certification_pos_offline/l10n_fr_pos_cert_extra/static/description/pos_config.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/l10n_fr_pos_cert_extra/static/description/pos_config.png
 
 
 **Important note**
@@ -79,23 +79,23 @@ Depending of the settings, the french bills printed by the point of sale :
 
 * will display an extract of the hash of the order.
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_l10n_fr_certification_pos_offline/l10n_fr_pos_cert_extra/static/description/bill_with_hash.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/l10n_fr_pos_cert_extra/static/description/bill_with_hash.png
 
 * will display a warning text, if setting is set to 'warning'.
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_l10n_fr_certification_pos_offline/l10n_fr_pos_cert_extra/static/description/bill_warning.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/l10n_fr_pos_cert_extra/static/description/bill_warning.png
 
 * will not be printed, if setting is set to 'block'.
 
-.. figure:: https://raw.githubusercontent.com/legalsylvain/grap-odoo-incubator/8.0_ADD_l10n_fr_certification_pos_offline/l10n_fr_pos_cert_extra/static/description/bill_unprinted.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/8.0/l10n_fr_pos_cert_extra/static/description/bill_unprinted.png
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/legalsylvain/grap-odoo-incubator/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/legalsylvain/grap-odoo-incubator/issues/new?body=module:%20l10n_fr_pos_cert_extra%0Aversion:%208.0_ADD_l10n_fr_certification_pos_offline%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20l10n_fr_pos_cert_extra%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -110,9 +110,6 @@ Authors
 Maintainers
 ~~~~~~~~~~~
 
-
-
-This module is part of the `legalsylvain/grap-odoo-incubator <https://github.com/legalsylvain/grap-odoo-incubator/tree/8.0_ADD_l10n_fr_certification_pos_offline/l10n_fr_pos_cert_extra>`_ project on GitHub.
-
+This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/8.0/l10n_fr_pos_cert_extra>`_ project on GitHub.
 
 You are welcome to contribute.
