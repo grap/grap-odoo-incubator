@@ -8,11 +8,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <record model="product.template" id="demo_product_not_cash_box">
-        <field name="name">Demo Product Not Cash box produt</field>
+        <field name="name">Demo Product Not Cash box product</field>
     </record>
 
     <record model="product.template" id="demo_product_cash_box">
-        <field name="name">Demo Product Cash box produt</field>
+        <field name="name">Demo Product Cash box product</field>
         <field name="income_pdt">True</field>
     </record>
 

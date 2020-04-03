@@ -15,9 +15,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
                 <div class="col-12 col-lg-6 o_setting_box">
                     <div class="o_setting_right_pane">
                         <label for="autosolve_pos_move_reason"/>
-                        <div class="text-muted">
-                            Pos move reason to ausolve difference
-                        </div>
                         <field name="autosolve_pos_move_reason"/>
                     </div>
                 </div>
