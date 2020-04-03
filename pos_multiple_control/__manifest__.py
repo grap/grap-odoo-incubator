@@ -24,6 +24,13 @@
         "static/description/account_bank_statement_summary_form.png",
         "static/description/account_journal_bank_setting.png",
     ],
-    "demo": [],
+    'demo': [
+        'demo/res_groups.xml',
+        'demo/account_account.xml',
+        'demo/account_journal.xml',
+        'demo/pos_move_reason.xml',
+        'demo/pos_config.xml',
+        'demo/product_template.xml',
+    ],
     "installable": True,
 }

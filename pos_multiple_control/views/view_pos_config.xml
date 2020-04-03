@@ -31,12 +31,18 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
                     </div>
                 </div>
             </xpath>
-            <!-- <xpath expr="//field[@name='cash_control']/../.." position="replace"> -->
-<!--             <xpath expr="//field[@name='cash_control']/../.." position="replace">
-                <field name="cash_control" eval="False" invisible='1'/>
-            </xpath> -->
-                <!-- <attribute name="invisible">1</attribute> -->
         </field>
     </record>
+
+    <record id="view_pos_config_kanban" model="ir.ui.view">
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_config_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='open_existing_session_cb']" position="after">
+                <button t-if="_.contains(['closing_control'], record.current_session_state.raw_value)" class="btn btn-primary" name="open_new_session" type="object">New Session</button>
+            </xpath>
+        </field>
+    </record>
+
 
 </odoo>

@@ -41,7 +41,6 @@ class AccountBankStatement(models.Model):
     @api.multi
     @api.depends("line_ids")
     def _compute_control_balance(self):
-        print("============> ÇA SERT ÇA ???? Compute control BALANCE")
         for statement in self:
             statement.control_balance = sum(
                 statement.mapped("balance_end_real")
@@ -133,7 +132,6 @@ class AccountBankStatement(models.Model):
         return self.open_cashbox_balance('ending')
 
     def open_cashbox_balance(self, balance_moment):
-        print("======== open cashbox =============")
         action = self.env.ref(
             'pos_multiple_control.action_wizard_pos_update_bank_statement_balance').read()[0]
         action['context'] = {'balance_moment': balance_moment,\

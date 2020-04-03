@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class PosConfig(models.Model):
@@ -22,3 +22,27 @@ class PosConfig(models.Model):
         string="Autosolve limit",
         description="Limit for autosolving bank statement", default=20
     )
+
+    @api.multi
+    def open_new_session(self):
+        self.ensure_one()
+        # Check if some opening / opened session exists
+        session_obj = self.env['pos.session']
+        sessions = session_obj.search([
+            ('user_id', '=', self.env.uid),
+            ('config_id', '=', self.id),
+            ('state', 'in', ['opened', 'opening_control']),
+        ], limit=1)
+        if sessions:
+            # An opening / opened session exists
+            session = sessions[0]
+        else:
+            # Create a session
+            session = session_obj.create({
+                'user_id': self.env.uid,
+                'config_id': self.id,
+            })
+
+        if session.state == 'opening_control':
+            return self._open_session(session.id)
+        return self.open_ui()

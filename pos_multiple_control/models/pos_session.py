@@ -89,14 +89,7 @@ class PosSession(models.Model):
                 session.statement_ids.filtered(
                     lambda x: x.is_pos_control).mapped('control_difference'))
 
-
-    # Overload Section
-    # @api.model
-    # def create(self, vals):
-    #     session = super(PosSession, self).create(vals)
-    #     # session.opening_details_ids.write({"is_piece": True})
-    #     return session
-
+    # Model
     @api.multi
     def wkf_action_closing_control(self):
         for session in self:
@@ -121,16 +114,20 @@ class PosSession(models.Model):
                     if abs(statement.control_difference) > 0.001:
                         raise UserError(
                             _(
-                                "You can not close this session because the journal %s "
-                                "(from %s) has a not null difference: %s%s \n"
-                                "You have to change his starting or ending balance"
+                                "You can not close this session because the "
+                                "journal %s (from %s) has a not null "
+                                "difference: %s%s \n You have to change his "
+                                "starting or ending balance"
                             )
-                            % (statement.journal_id.name, statement.name, str(round(statement.control_difference,3)), statement.currency_id.symbol)
+                            % (statement.journal_id.name, statement.name,\
+                             str(round(statement.control_difference,3)),\
+                              statement.currency_id.symbol)
                         )
         return super(PosSession, self).action_pos_session_validate()
 
     # Constraints
     @api.multi
+    @api.constrains('user_id', 'state')
     def _check_unicity(self):
         for session in self:
             domain = [
@@ -138,10 +135,11 @@ class PosSession(models.Model):
                 ("user_id", "=", session.user_id.id),
             ]
             if self.search_count(domain) > 1:
-                return False
-        return True
+                raise ValidationError("You cannot create two active sessions\
+                 with the same responsible!")
 
     @api.multi
+    @api.constrains('config_id', 'state')
     def _check_pos_config(self):
         for session in self:
             domain = [
@@ -149,21 +147,5 @@ class PosSession(models.Model):
                 ("config_id", "=", session.config_id.id),
             ]
             if self.search_count(domain) > 1:
-                return False
-        return True
-
-
-    _constraints = [
-        (
-            _check_unicity,
-            "You cannot create two active sessions with the"
-            " same responsible!",
-            ["user_id", "state"],
-        ),
-        (
-            _check_pos_config,
-            "You cannot create two active sessions related"
-            " to the same point of sale!",
-            ["config_id", "state"],
-        ),
-    ]
+                raise ValidationError("You cannot create two active sessions\
+                 related to the same point of sale!")
