@@ -11,10 +11,10 @@
                         <field name="journal_id"/>
                         <field name="balance_moment" invisible="1"/>
                         <field name="balance_start"/>
-                        <field name="balance_start_real" attrs="{'readonly': [('balance_moment', '!=', 'starting')]}"/>
-                        <field name="total_entry_encoding"/>
-                        <field name="balance_end"/>
-                        <field name="balance_end_real" attrs="{'readonly': [('balance_moment', '!=', 'ending')]}"/>
+                        <field name="balance_start_real" invisible="context.get('balance_moment') != 'starting'"/>
+                        <field name="total_entry_encoding" invisible="context.get('balance_moment') != 'ending'"/>
+                        <field name="balance_end" invisible="context.get('balance_moment') != 'ending'"/>
+                        <field name="balance_end_real" invisible="context.get('balance_moment') != 'ending'"/>
                         <field name="currency_id" groups="base.group_multi_currency"/>
                     </tree>
                 </field>
