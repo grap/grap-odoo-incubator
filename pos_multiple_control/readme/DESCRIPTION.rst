@@ -1,31 +1,25 @@
-This module extends the functionality of point of sale and to support
-improved control during the close of the session.
+This module extends the functionality of the point of sale by allowing a 
+better control at the closing of the session.
 
-* Allow user to control each statement. (not only the cash statement,
-  by default)
+1. Show differences for all statements chosen (see config part)
 
-.. figure:: ../static/description/pos_session_closing_form.png
+2. Allow user to control each statement. (not only the cash statement, by 
+default) and change his starting and ending balance
 
-* User should set the closing balance for all the statements
+.. figure:: ../static/description/change_starting_balance.gif
 
-.. figure:: ../static/description/account_bank_statement_piece_form.png
+3. Quickly solve differences (we can set an absolute limit), thanks to 
+pos_move_reason
 
-* User could quickly solve control differences (we can an absolute limit),
-  thanks to a choosen product configured in POS config.
-  This functionnality uses cash.box.out/in methods.
+See this gif where where we set ending balance with difference, solve it and
+close session :
 
-.. figure:: ../static/description/pos_session_automatic_solve.gif
+.. figure:: ../static/description/end_session_balance_automatic_solve.gif
 
-* User can access to the summary by payment methods for each statement
+As the verification is more complete, allow the user to reopen a new session, 
+if the first one is in a closed state.
 
-.. figure:: ../static/description/account_bank_statement_summary_form.png
-
-* So that, force user to have correct balance on each statement. If not,
-  user should have to set Profit or Loss reason, using the OCA module
-  ``pos_cash_move_reason``
-
-* As the check is more complete, allow user to reopen a new session, if the
-  first one is in a closing state.
+.. figure:: ../static/description/open_new_session.png
 
 Extra checks are done, to prevent user errors:
 
