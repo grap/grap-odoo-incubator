@@ -465,7 +465,7 @@ msgstr ""
 msgid "You can not close this session because the journal %s (from %s) has a not null difference: %s%s \n"
 " You have to change his starting or ending balance"
 msgstr "Vous ne pouvez pas fermer cette session car le relevé %s (de %s) a une différence non nulle : %s%s \n"
-"Vous devez modifier son solde de départ ou de fin"
+"Vous devez modifier son solde de départ ou de fin."
 
 #. module: pos_multiple_control
 #: code:addons/pos_multiple_control/models/pos_session.py:101

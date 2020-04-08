@@ -24,7 +24,7 @@ class PosConfig(models.Model):
     )
 
     @api.multi
-    def open_new_session(self):
+    def open_new_session(self, openui):
         self.ensure_one()
         # Check if some opening / opened session exists
         session_obj = self.env['pos.session']
@@ -43,6 +43,6 @@ class PosConfig(models.Model):
                 'config_id': self.id,
             })
 
-        if session.state == 'opening_control':
+        if session.state == 'opening_control' or openui == False:
             return self._open_session(session.id)
         return self.open_ui()

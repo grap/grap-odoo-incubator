@@ -18,7 +18,25 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             </field>
 
             <!-- Hide obsolete Buttons -->
-            <xpath expr="//span[text() = 'Set Closing Balance']/.." position="replace">
+            <!-- Same name button for opening and closing.. -->
+            <xpath expr="//button[@name='open_cashbox']" position="replace">
+                <button name="open_cashbox_opening"
+                    class="oe_stat_button"
+                    attrs="{'invisible':['|', ('cash_control', '=', False), ('state', '!=', 'opening_control')]}"
+                    icon="fa-money"
+                    type="object" context="{'balance': 'start'}">
+                    <span class="o_stat_text">Set Opening Balance</span>
+                </button>
+            </xpath>
+            <!-- Hide closing button -->
+            <xpath expr="//button[@name='open_cashbox']" position="replace">
+            </xpath>
+
+            <!-- Add new session button on closing-->
+            <xpath expr="//header" position="inside">
+                <button name="action_pos_session_new_session" type="object" 
+                    string="New Session" class="oe_highlight"
+                    attrs="{'invisible' : [('state', '!=', 'closed')]}"/>
             </xpath>
 
             <!-- Theoritical Summary -->

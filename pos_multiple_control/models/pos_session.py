@@ -91,6 +91,14 @@ class PosSession(models.Model):
 
     # Model
     @api.multi
+    def open_cashbox_opening(self):
+        return super(PosSession, self).open_cashbox()
+
+    @api.multi
+    def action_pos_session_new_session(self):
+        return self.config_id.open_new_session(False)
+
+    @api.multi
     def wkf_action_closing_control(self):
         for session in self:
             draft_orders = session.order_ids.filtered(
