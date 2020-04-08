@@ -10,7 +10,7 @@ class AccountJournal(models.Model):
 
     pos_control = fields.Boolean(
         string="POS Journal Control",
-        help="If you want this journal" 
+        help="If you want this journal"
         " to be controled at closing of point of sale, check this option",
         default=False
     )

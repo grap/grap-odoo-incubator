@@ -35,7 +35,6 @@ class WizardPOSBankStatementUpdateBalance(models.TransientModel):
         comodel_name='pos.session', string="Current Session",
         default=_default_session_id, required=True, readonly=True)
 
-
     @api.model
     def _prepare_item(self, statement):
         return {
@@ -98,6 +97,7 @@ class WizardPOSBankStatementUpdateBalance(models.TransientModel):
                 item.statement_id.balance_end_real = item.balance_end_real
                 # item.statement_id.balance_end = item.balance_end_real
         return True
+
 
 class WizardPOSBankStatementUpdateBalanceLine(models.TransientModel):
     _name = "wizard.pos.update.bank.statement.balance.line"

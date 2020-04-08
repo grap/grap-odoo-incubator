@@ -47,7 +47,7 @@ class TestMultipleControl(TransactionCase):
             }
         )
         payment = self.payment_obj.create(
-            {"journal_id": journal.id, "amount": price,}
+            {"journal_id": journal.id, "amount": price, }
         )
         payment.with_context(active_id=order.id).check()
         return order

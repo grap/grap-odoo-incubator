@@ -12,9 +12,10 @@ class PosConfig(models.Model):
     # Columns Section
     autosolve_pos_move_reason = fields.Many2one(
         string="Autosolve pos move reason",
-        description="Product used to autosolve control difference in pos session",
+        description="Product used to autosolve control difference",
         comodel_name="pos.move.reason",
-        domain="['|', ('is_income_reason', '=', True), ('is_expense_reason', '=', True)]",
+        domain="['|', \
+        ('is_income_reason', '=', True), ('is_expense_reason', '=', True)]",
         default="",
     )
 
@@ -43,6 +44,6 @@ class PosConfig(models.Model):
                 'config_id': self.id,
             })
 
-        if session.state == 'opening_control' or openui == False:
+        if session.state == 'opening_control' or openui is False:
             return self._open_session(session.id)
         return self.open_ui()

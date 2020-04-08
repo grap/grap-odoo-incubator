@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 from odoo.exceptions import Warning as UserError
 
 
@@ -127,9 +128,9 @@ class PosSession(models.Model):
                                 "difference: %s%s \n You have to change his "
                                 "starting or ending balance"
                             )
-                            % (statement.journal_id.name, statement.name,\
-                             str(round(statement.control_difference,3)),\
-                              statement.currency_id.symbol)
+                            % (statement.journal_id.name, statement.name,
+                               str(round(statement.control_difference, 3)),
+                               statement.currency_id.symbol)
                         )
         return super(PosSession, self).action_pos_session_validate()
 

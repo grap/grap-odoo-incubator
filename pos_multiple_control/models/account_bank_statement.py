@@ -26,7 +26,7 @@ class AccountBankStatement(models.Model):
 
     is_pos_control = fields.Boolean(
         string="Pos control Bank statement",
-        compute="_compute_is_pos_control", store=True, 
+        compute="_compute_is_pos_control", store=True,
     )
 
     pos_session_state = fields.Char(
@@ -57,7 +57,8 @@ class AccountBankStatement(models.Model):
             )
 
     @api.multi
-    @api.depends("journal_id.pos_control", "pos_session_state", "balance_start")
+    @api.depends("journal_id.pos_control", "pos_session_state",
+                 "balance_start")
     def _compute_is_pos_control(self):
         for statement in self:
             journal = statement.journal_id
@@ -74,7 +75,7 @@ class AccountBankStatement(models.Model):
     def _compute_display_autosolve(self):
         for statement in self:
             if not statement.journal_id.pos_control:
-                display_autosolve = False
+                statement.display_autosolve = False
             else:
                 if statement.pos_session_id.config_id.autosolve_limit:
                     difference_with_limit = (
@@ -84,7 +85,8 @@ class AccountBankStatement(models.Model):
                 else:
                     difference_with_limit = -1
                 statement.display_autosolve = (
-                    statement.pos_session_state in ["opened", "closing_control"]
+                    statement.pos_session_state in
+                    ["opened", "closing_control"]
                     and difference_with_limit < 0
                     and abs(round(statement.control_difference, 3)) != 0
                 )
@@ -94,16 +96,16 @@ class AccountBankStatement(models.Model):
     def automatic_solve(self):
         self.WizardReason = self.env['wizard.pos.move.reason']
         for statement in self:
-            pos_move_reason = statement.pos_session_id.config_id.autosolve_pos_move_reason
+            pos_move_reason = statement.\
+                pos_session_id.config_id.autosolve_pos_move_reason
             if pos_move_reason:
                 cb_pos_move_reason_id = pos_move_reason.id
                 cb_difference = statement.control_difference
                 cb_journal_id = statement.journal_id.id
-                cb_ref = statement.pos_session_id.name
                 if cb_difference < 0:
-                    default_move_type="expense"
+                    default_move_type = "expense"
                 else:
-                    default_move_type="income"
+                    default_move_type = "income"
 
                 wizard = self.WizardReason.with_context(
                     active_id=statement.pos_session_id.id,
@@ -133,10 +135,10 @@ class AccountBankStatement(models.Model):
 
     def open_cashbox_balance(self, balance_moment):
         action = self.env.ref(
-            'pos_multiple_control.action_wizard_pos_update_bank_statement_balance').read()[0]
-        action['context'] = {'balance_moment': balance_moment,\
-                         'active_id' : [self.id],\
-                         'active_pos_id' : [self.pos_session_id.id],\
-                         'active_model' : 'pos.session'}
+            'pos_multiple_control.\
+            action_wizard_pos_update_bank_statement_balance').read()[0]
+        action['context'] = {'balance_moment': balance_moment,
+                             'active_id': [self.id],
+                             'active_pos_id': [self.pos_session_id.id],
+                             'active_model': 'pos.session'}
         return action
-
