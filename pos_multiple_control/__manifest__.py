@@ -28,7 +28,6 @@
         'demo/account_journal.xml',
         'demo/pos_move_reason.xml',
         'demo/pos_config.xml',
-        'demo/product_template.xml',
     ],
     "installable": True,
 }

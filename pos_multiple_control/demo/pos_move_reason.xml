@@ -7,7 +7,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 <odoo>
 
-    <record id="cash_register_error" model="pos.move.reason">
+    <record model="pos.move.reason" id="cash_register_error">
         <field name="name">Cash register error</field>
         <field name="is_income_reason" eval="True" />
         <field name="is_expense_reason" eval="True"/>
