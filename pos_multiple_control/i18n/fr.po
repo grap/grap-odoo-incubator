@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-03 16:13+0000\n"
-"PO-Revision-Date: 2020-04-03 16:13+0000\n"
+"POT-Creation-Date: 2020-04-09 15:56+0000\n"
+"PO-Revision-Date: 2020-04-09 15:56+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -39,6 +39,11 @@ msgstr "8,50 $"
 #: model_terms:ir.ui.view,arch_db:pos_multiple_control.view_pos_session_form
 msgid "+ Transactions"
 msgstr ""
+
+#. module: pos_multiple_control
+#: model_terms:ir.ui.view,arch_db:pos_multiple_control.view_pos_session_form
+msgid "<span class=\"o_stat_text\">Set Opening Balance</span>"
+msgstr "<span class=\"o_stat_text\">Réglez le solde d'ouverture</span>"
 
 #. module: pos_multiple_control
 #: model_terms:pos.config,customer_facing_display_html:pos_multiple_control.pos_config_control
@@ -180,6 +185,11 @@ msgid "Demo Product Not Cash box product"
 msgstr "Produit de démonstration Pas un produit de caisse"
 
 #. module: pos_multiple_control
+#: model_terms:pos.config,customer_facing_display_html:pos_multiple_control.pos_config_control
+msgid "Desk Organizer"
+msgstr ""
+
+#. module: pos_multiple_control
 #: model:ir.model.fields,field_description:pos_multiple_control.field_wizard_pos_update_bank_statement_balance__display_name
 #: model:ir.model.fields,field_description:pos_multiple_control.field_wizard_pos_update_bank_statement_balance_line__display_name
 msgid "Display Name"
@@ -229,11 +239,6 @@ msgid "Journal"
 msgstr ""
 
 #. module: pos_multiple_control
-#: model_terms:pos.config,customer_facing_display_html:pos_multiple_control.pos_config_control
-msgid "Lampe Led"
-msgstr ""
-
-#. module: pos_multiple_control
 #: model:ir.model.fields,field_description:pos_multiple_control.field_wizard_pos_update_bank_statement_balance____last_update
 #: model:ir.model.fields,field_description:pos_multiple_control.field_wizard_pos_update_bank_statement_balance_line____last_update
 msgid "Last Modified on"
@@ -252,24 +257,30 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: pos_multiple_control
+#: model_terms:pos.config,customer_facing_display_html:pos_multiple_control.pos_config_control
+msgid "Led Lamp"
+msgstr "Lampe Led"
+
+#. module: pos_multiple_control
 #: model_terms:ir.ui.view,arch_db:pos_multiple_control.view_pos_config_form
 msgid "Limit to display autosolve button"
 msgstr "Limite d'affichage du bouton de résolution automatique"
 
 #. module: pos_multiple_control
 #: model_terms:pos.config,customer_facing_display_html:pos_multiple_control.pos_config_control
-msgid "Logo Odoo"
-msgstr ""
-
-#. module: pos_multiple_control
-#: model_terms:pos.config,customer_facing_display_html:pos_multiple_control.pos_config_control
-msgid "Marqueur pour Tableau Blanc"
+msgid "Monitor Stand"
 msgstr ""
 
 #. module: pos_multiple_control
 #: model_terms:ir.ui.view,arch_db:pos_multiple_control.view_pos_config_kanban
+#: model_terms:ir.ui.view,arch_db:pos_multiple_control.view_pos_session_form
 msgid "New Session"
 msgstr "Nouvelle session"
+
+#. module: pos_multiple_control
+#: model_terms:pos.config,customer_facing_display_html:pos_multiple_control.pos_config_control
+msgid "Odoo Logo"
+msgstr "Logo Odoo"
 
 #. module: pos_multiple_control
 #: model:ir.model.fields,field_description:pos_multiple_control.field_pos_session__control_register_balance_start
@@ -277,12 +288,7 @@ msgid "Opening Balances"
 msgstr "Solde d'ouverture"
 
 #. module: pos_multiple_control
-#: model_terms:pos.config,customer_facing_display_html:pos_multiple_control.pos_config_control
-msgid "Organisateur de bureau"
-msgstr ""
-
-#. module: pos_multiple_control
-#: code:addons/pos_multiple_control/wizard/wizard_pos_update_statement_balance.py:86
+#: code:addons/pos_multiple_control/wizard/wizard_pos_update_statement_balance.py:85
 #, python-format
 msgid "Out"
 msgstr "Sortie"
@@ -318,24 +324,19 @@ msgid "Pos control Bank statement"
 msgstr "Contrôle des point de vente Relevé bancaire"
 
 #. module: pos_multiple_control
-#: model_terms:ir.ui.view,arch_db:pos_multiple_control.view_pos_config_form
-msgid "Pos move reason to ausolve difference"
-msgstr "Raison de résolution automatique de différence"
-
-#. module: pos_multiple_control
 #: model:ir.model.fields,field_description:pos_multiple_control.field_account_bank_statement__pos_session_state
 msgid "Pos session state"
 msgstr "État de la session de vente"
 
 #. module: pos_multiple_control
 #: model_terms:pos.config,customer_facing_display_html:pos_multiple_control.pos_config_control
-msgid "Prix"
-msgstr ""
+msgid "Price"
+msgstr "Prix"
 
 #. module: pos_multiple_control
 #: model_terms:pos.config,customer_facing_display_html:pos_multiple_control.pos_config_control
-msgid "Quantité"
-msgstr ""
+msgid "Quantity"
+msgstr "Quantité"
 
 #. module: pos_multiple_control
 #: model_terms:ir.ui.view,arch_db:pos_multiple_control.view_pos_session_form
@@ -394,11 +395,6 @@ msgid "Summary statements"
 msgstr "Résumé de relevés"
 
 #. module: pos_multiple_control
-#: model_terms:pos.config,customer_facing_display_html:pos_multiple_control.pos_config_control
-msgid "Support pour moniteur"
-msgstr ""
-
-#. module: pos_multiple_control
 #: model:ir.model.fields,field_description:pos_multiple_control.field_pos_session__control_register_balance_end
 #: model_terms:ir.ui.view,arch_db:pos_multiple_control.view_pos_session_form
 msgid "Theoretical Closing Balances"
@@ -447,7 +443,7 @@ msgid "Update Balances"
 msgstr "Mettre à jour les soldes"
 
 #. module: pos_multiple_control
-#: code:addons/pos_multiple_control/models/account_bank_statement.py:121
+#: code:addons/pos_multiple_control/models/account_bank_statement.py:123
 #, python-format
 msgid "We can't autosolve this difference. \n"
 "You need to configure the Point Of Sale config and choose a pos move reason for autosolving this difference."
@@ -455,12 +451,17 @@ msgstr "On ne peut pas résoudre automatiquement cette différence. \n"
 "Vous devez paramétrer la configuration de caisse et choisir un article spécial pour résoudre automatiquement cette différence."
 
 #. module: pos_multiple_control
+#: model_terms:pos.config,customer_facing_display_html:pos_multiple_control.pos_config_control
+msgid "Whiteboard Pen"
+msgstr "Marqueur pour Tableau Blanc"
+
+#. module: pos_multiple_control
 #: model:ir.model.fields,field_description:pos_multiple_control.field_wizard_pos_update_bank_statement_balance_line__wiz_id
 msgid "Wiz"
 msgstr ""
 
 #. module: pos_multiple_control
-#: code:addons/pos_multiple_control/models/pos_session.py:116
+#: code:addons/pos_multiple_control/models/pos_session.py:125
 #, python-format
 msgid "You can not close this session because the journal %s (from %s) has a not null difference: %s%s \n"
 " You have to change his starting or ending balance"
@@ -468,7 +469,7 @@ msgstr "Vous ne pouvez pas fermer cette session car le relevé %s (de %s) a une 
 "Vous devez modifier son solde de départ ou de fin."
 
 #. module: pos_multiple_control
-#: code:addons/pos_multiple_control/models/pos_session.py:101
+#: code:addons/pos_multiple_control/models/pos_session.py:110
 #, python-format
 msgid "You can not end this session because there are some draft orders: \n"
 "\n"
@@ -484,7 +485,7 @@ msgid "You cannot put/take money in/out for the statement %s which is closed"
 msgstr "Vous ne pouvez pas prendre ou retirer de l'argent sur le relevé %s car celui ci est fermé"
 
 #. module: pos_multiple_control
-#: code:addons/pos_multiple_control/wizard/wizard_pos_update_statement_balance.py:68
+#: code:addons/pos_multiple_control/wizard/wizard_pos_update_statement_balance.py:67
 #, python-format
 msgid "You cannot start the closing balance for multiple POS sessions"
 msgstr "Vous ne pouvez changer en même temps le solde de plusieurs sessions de vente"
