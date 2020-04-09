@@ -85,8 +85,8 @@ class AccountBankStatement(models.Model):
                 else:
                     difference_with_limit = -1
                 statement.display_autosolve = (
-                    statement.pos_session_state in
-                    ["opened", "closing_control"]
+                    statement.pos_session_state not in
+                    ["closed"]
                     and difference_with_limit < 0
                     and abs(round(statement.control_difference, 3)) != 0
                 )
@@ -135,8 +135,8 @@ class AccountBankStatement(models.Model):
 
     def open_cashbox_balance(self, balance_moment):
         action = self.env.ref(
-            'pos_multiple_control.\
-            action_wizard_pos_update_bank_statement_balance').read()[0]
+            "pos_multiple_control."
+            "action_wizard_pos_update_bank_statement_balance").read()[0]
         action['context'] = {'balance_moment': balance_moment,
                              'active_id': [self.id],
                              'active_pos_id': [self.pos_session_id.id],
