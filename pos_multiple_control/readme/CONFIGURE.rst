@@ -4,11 +4,10 @@ To configure this module, you need to:
 
 * Go to Invoicing / Configuration / Journals / Journals
 
-* Check the box 'Bank and Checks Control' if you want to enable this feature
-  for this journal
+* Check the box 'POS Journal Control' if you want to enable this feature for this journal
 
 * Unchecked journal will be in grey
-  
+
 .. figure:: ../static/description/account_journal_config.png
 
 **Configure your POS configuration** 

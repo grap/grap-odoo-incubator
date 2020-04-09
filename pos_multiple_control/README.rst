@@ -22,15 +22,15 @@ Point Of Sale - Multiple Cash Control
 This module extends the functionality of the point of sale by allowing a 
 better control at the closing of the session.
 
-1. Show differences for all statements chosen (see config part)
+* Show differences for all statements chosen (see config part)
 
-2. Allow user to control each statement. (not only the cash statement, by 
-default) and change his starting and ending balance
+* Allow user to control each statement. (not only the cash statement, by
+  default) and change his starting and ending balance
 
 .. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/12.0_pos_multiple_control/pos_multiple_control/static/description/change_starting_balance.gif
 
-3. Quickly solve differences (we can set an absolute limit), thanks to 
-pos_move_reason
+* Quickly solve differences (we can set an absolute limit),
+  thanks to pos_move_reason
 
 See this gif where where we set ending balance with difference, solve it and
 close session :
@@ -61,11 +61,10 @@ To configure this module, you need to:
 
 * Go to Invoicing / Configuration / Journals / Journals
 
-* Check the box 'Bank and Checks Control' if you want to enable this feature
-  for this journal
+* Check the box 'POS Journal Control' if you want to enable this feature for this journal
 
 * Unchecked journal will be in grey
-  
+
 .. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/12.0_pos_multiple_control/pos_multiple_control/static/description/account_journal_config.png
 
 **Configure your POS configuration** 
