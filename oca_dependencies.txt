@@ -4,5 +4,4 @@ pos
 purchase-workflow
 server-tools
 
-grap-odoo-custom                https://github.com/legalsylvain/grap-odoo-custom.git       8.0
-grap-odoo-backport             https://github.com/legalsylvain/grap-odoo-backport.git      8.0
+pos_cash_move_reason           https://github.com/legalsylvain/pos.git       12.0-mig-pos_cash_move_reason
