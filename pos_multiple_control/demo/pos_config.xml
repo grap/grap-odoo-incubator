@@ -2,18 +2,21 @@
 <!--
 Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
 @author Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author Quentin DUPONT (https://twitter.com/pondupont)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record id="pos_config_control" model="pos.config">
         <field name="name">Point Of Sale (With Mutiple Controls)</field>
-        <field name="journal_id" ref="account.sales_journal" />
-        <field name="stock_location_id" ref="stock.stock_location_stock" />
+        <field name="picking_type_id" ref="point_of_sale.picking_type_posout" />
         <field name="journal_ids" eval="[
             (4, ref('check_journal')),
             (4, ref('cash_journal'))]" />
+        <field name="cash_control" eval="True" />
+        <field name="autosolve_pos_move_reason" eval="cash_register_error" />
+
     </record>
 
-</data></openerp>
+</odoo>

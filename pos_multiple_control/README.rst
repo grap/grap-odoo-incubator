@@ -14,39 +14,33 @@ Point Of Sale - Multiple Cash Control
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-quentinDupont%2Fgrap--odoo--incubator-lightgray.png?logo=github
-    :target: https://github.com/quentinDupont/grap-odoo-incubator/tree/8.0_ADD_pos_multiple_control_automatic_solve/pos_multiple_control
+    :target: https://github.com/quentinDupont/grap-odoo-incubator/tree/12.0_pos_multiple_control/pos_multiple_control
     :alt: quentinDupont/grap-odoo-incubator
 
 |badge1| |badge2| |badge3| 
 
-This module extends the functionality of point of sale and to support
-improved control during the close of the session.
+This module extends the functionality of the point of sale by allowing a 
+better control at the closing of the session.
 
-* Allow user to control each statement. (not only the cash statement,
-  by default)
+* Show differences for all statements chosen (see config part)
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/8.0_ADD_pos_multiple_control_automatic_solve/pos_multiple_control/static/description/pos_session_closing_form.png
+* Allow user to control each statement. (not only the cash statement, by
+  default) and change his starting and ending balance
 
-* User should set the closing balance for all the statements
+.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/12.0_pos_multiple_control/pos_multiple_control/static/description/change_starting_balance.gif
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/8.0_ADD_pos_multiple_control_automatic_solve/pos_multiple_control/static/description/account_bank_statement_piece_form.png
+* Quickly solve differences (we can set an absolute limit),
+  thanks to pos_move_reason
 
-* User could quickly solve control differences (we can an absolute limit),
-  thanks to a choosen product configured in POS config.
-  This functionnality uses cash.box.out/in methods.
+See this gif where where we set ending balance with difference, solve it and
+close session :
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/8.0_ADD_pos_multiple_control_automatic_solve/pos_multiple_control/static/description/pos_session_automatic_solve.gif
+.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/12.0_pos_multiple_control/pos_multiple_control/static/description/end_session_balance_automatic_solve.gif
 
-* User can access to the summary by payment methods for each statement
+As the verification is more complete, allow the user to reopen a new session, 
+if the first one is in a closed state.
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/8.0_ADD_pos_multiple_control_automatic_solve/pos_multiple_control/static/description/account_bank_statement_summary_form.png
-
-* So that, force user to have correct balance on each statement. If not,
-  user should have to set Profit or Loss reason, using the OCA module
-  ``pos_cash_move_reason``
-
-* As the check is more complete, allow user to reopen a new session, if the
-  first one is in a closing state.
+.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/12.0_pos_multiple_control/pos_multiple_control/static/description/open_new_session.png
 
 Extra checks are done, to prevent user errors:
 
@@ -63,20 +57,29 @@ Configuration
 
 To configure this module, you need to:
 
+**Configure the journals** you want to control in your point of sale (POS)
+
 * Go to Invoicing / Configuration / Journals / Journals
 
-* Check the box 'Bank and Checks Control' if you want to enable this feature
-  for this journal
-  
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/8.0_ADD_pos_multiple_control_automatic_solve/pos_multiple_control/static/description/account_journal_bank_setting.png
+* Check the box 'POS Journal Control' if you want to enable this feature for this journal
 
-For quickly automatic solve configuration :
+* Unchecked journal will be in grey
 
-* Go to Point of Sale / Configuration / Point of Sales / <your session>
-* Choose a "Product used to autosolve control difference in pos session" - Only 'Point of Sale Cash In/Out' products are possible
-* (Not mandatory) Choose a limit to allow or not the user to autosolve control difference in pos - Set 0 if you don't want any limit.
+.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/12.0_pos_multiple_control/pos_multiple_control/static/description/account_journal_config.png
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/8.0_ADD_pos_multiple_control_automatic_solve/pos_multiple_control/static/description/pos_session_config_choice.png
+**Configure your POS configuration** 
+
+* Go to Point of Sale / Configuration / Point of Sale / <your pos> 
+
+* Choose your Payments methods (1)
+
+* Check Cash Control (2)
+
+* (optional) Choose a "pos move reason" to ausolve difference (3) (see pos_move_reason module for more details) 
+
+* (optional) Choose a limit to allow or not the user to autosolve control difference in pos - Set 0 if you don't want any limit. (4)
+
+.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/12.0_pos_multiple_control/pos_multiple_control/static/description/pos_session_config.png
 
 Bug Tracker
 ===========
@@ -84,7 +87,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/quentinDupont/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/quentinDupont/grap-odoo-incubator/issues/new?body=module:%20pos_multiple_control%0Aversion:%208.0_ADD_pos_multiple_control_automatic_solve%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/quentinDupont/grap-odoo-incubator/issues/new?body=module:%20pos_multiple_control%0Aversion:%2012.0_pos_multiple_control%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -101,11 +104,11 @@ Contributors
 
 * Sylvain LE GAL <https://twitter.com/legalsylvain>
 * Julien WESTE
-* Quentin DUPONT (quentin.dupont@grap.coop)
+* Quentin DUPONT <https://twitter.com/pondupont>
 
 Maintainers
 ~~~~~~~~~~~
 
-This module is part of the `quentinDupont/grap-odoo-incubator <https://github.com/quentinDupont/grap-odoo-incubator/tree/8.0_ADD_pos_multiple_control_automatic_solve/pos_multiple_control>`_ project on GitHub.
+This module is part of the `quentinDupont/grap-odoo-incubator <https://github.com/quentinDupont/grap-odoo-incubator/tree/12.0_pos_multiple_control/pos_multiple_control>`_ project on GitHub.
 
 You are welcome to contribute.
