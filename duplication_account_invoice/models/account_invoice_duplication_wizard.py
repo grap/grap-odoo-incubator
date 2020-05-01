@@ -11,6 +11,7 @@ from odoo import api, fields, models
 
 class AccountInvoiceDuplicationWizard(models.TransientModel):
     _name = 'account.invoice.duplication.wizard'
+    _description = "Account Invoice Duplication Wizard"
 
     _DUPLICATION_TYPE_KEYS = [
         ('week', 'Weekly'),
