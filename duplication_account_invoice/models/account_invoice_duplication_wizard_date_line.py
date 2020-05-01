@@ -7,6 +7,7 @@ from odoo import fields, models
 
 class AccountInvoiceDuplicationWizardDateLine(models.TransientModel):
     _name = 'account.invoice.duplication.wizard.date.line'
+    _description = "Account Invoice Duplication Wizard Line"
 
     wizard_id = fields.Many2one(
         comodel_name='account.invoice.duplication.wizard')
