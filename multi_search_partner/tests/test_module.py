@@ -20,7 +20,7 @@ class TestModule(TransactionCase):
         # Create Partner
         vals = {"name": self.name_with_separator}
         partner = self.ResPartner.with_context(
-            "mail_create_nosubscribe": True).create(vals)
+            mail_create_nosubscribe=True).create(vals)
         self.assertEqual(
             partner.name,
             self.name_without_separator,
@@ -38,7 +38,8 @@ class TestModule(TransactionCase):
         self._enable_settings(False)
         # Create Partner
         vals = {"name": self.name_with_separator}
-        partner = self.ResPartner.create(vals)
+        partner = self.ResPartner.with_context(
+            mail_create_nosubscribe=True).create(vals)
         self.assertEqual(
             partner.name,
             self.name_with_separator,
@@ -66,7 +67,8 @@ class TestModule(TransactionCase):
 
         # Create Partner
         vals = {"name": "Abc other Word Def"}
-        self.ResPartner.create(vals)
+        self.ResPartner.with_context(
+            mail_create_nosubscribe=True).create(vals)
 
         # First Search (Feature disabled)
         disabled_feature_search = len(self.ResPartner.search(ordered_domain))

@@ -21,7 +21,7 @@ class ResConfigSettings(models.TransientModel):
     @api.multi
     @api.depends('multi_search_product_separator')
     def _compute_multi_search_product_separator_changed(self):
-        current = self.env['ir.config_parameter'].get_param(
+        current = self.env['ir.config_parameter'].sudo().get_param(
             'multi_search.product_separator')
         for record in self:
             record.multi_search_product_separator_changed = bool(

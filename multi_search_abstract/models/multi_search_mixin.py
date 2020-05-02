@@ -33,8 +33,7 @@ class MultiSearchMixin(models.AbstractModel):
     def _multi_search_separator(self):
         """Overwrite in inherited model to define witch char will be used to
         split the search words"""
-        IrConfigParameter = self.env["ir.config_parameter"]
-        return IrConfigParameter.get_param(
+        return self.env["ir.config_parameter"].sudo().get_param(
             self._multi_search_separator_key_name)
 
     # Overload Section
