@@ -4,7 +4,6 @@
             <!-- <span class="o_hr_attendance_kiosk_backdrop"/> -->
     <t t-name="MobileAppPurchaseKioskModeSetProduct">
         <div class="o_hr_attendance_kiosk_mode_container o_home_menu_background">
-                <span class="placeholder-SylvainWidget">AAAA </span>
             <div class="o_hr_attendance_kiosk_mode">
                 <h1>Purchase Order</h1>
                 <h2>Choose Product</h2>
@@ -23,13 +22,8 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </t>
-
-
-
 
     <t t-name="MobileAppPurchaseKioskModeSetQuantity">
         <div class="o_hr_attendance_kiosk_mode_container o_home_menu_background">
@@ -37,6 +31,18 @@
             <div class="o_hr_attendance_kiosk_mode">
                 <h1>Purchase Order</h1>
                 <h2>Set Quantity</h2>
+                <div class="row o_hr_attendance_kiosk_welcome_row">
+
+                    <h1 class="mb8">product : <t t-esc="widget.product_name"/></h1>
+
+
+                    <input type="text" class="weight" id="quantity" autofocus="autofocus" />
+                    <div class="col-sm-5">
+                        <button class="button_add_quantity btn btn-primary mb16">
+                            <div class="mb16 mt16">Add quantity</div>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </t>

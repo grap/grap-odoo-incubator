@@ -6,28 +6,19 @@ odoo.define('mobile_app_purchase_test.kiosk_mode_set_product', function (require
     "use strict";
 
     var AbstractAction = require('web.AbstractAction');
-    var Widget = require('web.Widget');
     var ajax = require('web.ajax');
     var core = require('web.core');
     var Session = require('web.session');
 
     var QWeb = core.qweb;
 
-    var SylvainWidget = Widget.extend({
-        template: "SylvainWidget",
-
-        init:function(parent, options){
-            this._super(parent, options);
-        },
-    });
-
     var KioskModeSetProduct = AbstractAction.extend({
         template: "MobileAppPurchaseKioskModeSetProduct",
-
 
         events: {
             "click .o_product_product_kanban_select_button": function() {
                 this.do_action('mobile_app_purchase_test.action_product_product_kanban', {
+                    clear_breadcrumbs: true,
                     additional_context: {
                         'no_group_by': true,
                         'return_tag': "mobile_application_purchase_kiosk_mode_set_quantity",
@@ -37,35 +28,17 @@ odoo.define('mobile_app_purchase_test.kiosk_mode_set_product', function (require
         },
 
         start: function () {
-            console.log("KioskModeSetProduct::start");
             var self = this;
+            console.log(this.getSession());
             core.bus.on('barcode_scanned', this, this._onBarcodeScanned);
 
             // Make a RPC call every day to keep the session alive
             self._interval = window.setInterval(this._callServer.bind(this), (60*60*1000*24));
             self.session = Session;
-
-
-            // console.log($(".placeholder-SylvainWidget"));
-            // console.log(this.$el);
-            // console.log(this.$el.find(".placeholder-SylvainWidget"));
-            // console.log("================");
             return this._super.apply(this, arguments);
         },
 
-        renderElement: function () {
-            this._super();
-            var mySylvainWidget = new SylvainWidget(this, {});
-            // mySylvainWidget.appendTo(this.$el.find(".placeholder-SylvainWidget"));
-            console.log("================");
-            console.log(this.$(".placeholder-SylvainWidget"));
-            console.log(this.$el.find(".placeholder-SylvainWidget"));
-            console.log("================");
-            mySylvainWidget.appendTo(this.$(".placeholder-SylvainWidget"));
-        },
-
         _onBarcodeScanned: function(barcode) {
-            var self = this;
             core.bus.off('barcode_scanned', this, this._onBarcodeScanned);
             console.log("_onBarcodeScanned");
         },
