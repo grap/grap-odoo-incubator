@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2020 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="product_company_1" model="product.product">
+        <field name="name">My product of company 1</field>
+        <field name="barcode">9780201379624</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+
+    <record id="product_company_2" model="product.product">
+        <field name="name">My product of company 2</field>
+        <field name="barcode">9780201379624</field>
+        <field name="company_id" ref="res_company_second"/>
+    </record>
+
+</odoo>

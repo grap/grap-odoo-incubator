@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2020 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+        <record id="res_partner_second" model="res.partner">
+            <field name="name">My Second Company</field>
+            <field eval="1" name="customer"/>
+            <field eval="1" name="supplier"/>
+            <field name="is_company">1</field>
+            <field eval="1" name="active"/>
+        </record>
+
+        <record id="res_company_second" model="res.company">
+            <field name="name">My Second Company</field>
+            <field name="currency_id" ref="base.USD"/>
+            <field name="partner_id" ref="res_partner_second"/>
+        </record>
+
+</odoo>
