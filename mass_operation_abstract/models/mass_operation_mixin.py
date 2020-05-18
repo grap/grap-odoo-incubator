@@ -69,6 +69,7 @@ class MassOperationMixin(models.AbstractModel):
                 mixin.action_id.unlink()
             if mixin.value_id:
                 mixin.value_id.unlink()
+        return True
 
     # Overload Section
     @api.multi
