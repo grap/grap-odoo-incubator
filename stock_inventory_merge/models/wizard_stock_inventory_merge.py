@@ -10,7 +10,7 @@ from odoo.exceptions import Warning as UserError
 class WizardStockInventoryMerge(models.TransientModel):
     _name = "wizard.stock.inventory.merge"
     _description = "Stock Inventory Merge Wizard"
-    
+
     name = fields.Char(string="Inventory Name", required=True)
 
     @api.multi
