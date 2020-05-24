@@ -25,6 +25,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [account_fiscal_position_tax_included](account_fiscal_position_tax_included/) | 12.0.1.0.1 | Allow to map from tax excluded to tax included
+[base_company_legal_info](base_company_legal_info/) | 12.0.1.0.0 | Adds Legal informations on company model
 [multi_search_abstract](multi_search_abstract/) | 12.0.1.0.1 | Multi Search - Abstract
 [multi_search_partner](multi_search_partner/) | 12.0.1.0.1 | Multi Search - Partners
 [multi_search_product](multi_search_product/) | 12.0.1.0.1 | Multi Search - Products
@@ -37,7 +38,6 @@ Unported addons
 ---------------
 addon | version | summary
 --- | --- | ---
-[base_company_legal_info](base_company_legal_info/) | 8.0.1.0.0 (unported) | Adds Legal informations on company model
 [duplication_account_invoice](duplication_account_invoice/) | 8.0.1.0.0 (unported) | Duplication Tools for Invoices with a given frequency
 [duplication_sale_order](duplication_sale_order/) | 8.0.1.0.0 (unported) | Duplication Tools for Sale Orders with a given frequency
 [l10n_fr_pos_cert_extra](l10n_fr_pos_cert_extra/) | 8.0.1.0.0 (unported) | Certification for Point of Sale Module
