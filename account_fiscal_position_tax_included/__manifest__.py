@@ -5,7 +5,7 @@
 {
     "name": "Account Fiscal Position - Tax Excluded to Included",
     "summary": "Allow to map from tax excluded to tax included",
-    "version": "12.0.1.0.0",
+    "version": "12.0.1.0.1",
     "category": "Accounting",
     "author": "GRAP",
     "website": "http://www.grap.coop",
