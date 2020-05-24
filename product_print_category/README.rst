@@ -13,9 +13,9 @@ Product - To Print
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-quentinDupont%2Fgrap--odoo--incubator-lightgray.png?logo=github
-    :target: https://github.com/quentinDupont/grap-odoo-incubator/tree/12.0_product_print_category/product_print_category
-    :alt: quentinDupont/grap-odoo-incubator
+.. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
+    :target: https://github.com/grap/grap-odoo-incubator/tree/12.0/product_print_category
+    :alt: grap/grap-odoo-incubator
 
 |badge1| |badge2| |badge3| 
 
@@ -38,14 +38,14 @@ Usage
     * Set the fields that will trigger to print again the product label (e.g : name, sale price etc.)
     * Set the qweb view that will be used for this category
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/12.0_product_print_category/product_print_category/static/description/print_category.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_print_category/static/description/print_category.png
 
 * Affect products to the categories dire
     * Go to 'Sales' / 'Products' / 'Product variants'
     * Go to your product in sales tab
     * Set a print category 
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/12.0_product_print_category/product_print_category/static/description/product_print_options.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_print_category/static/description/product_print_options.png
 
 * You can set a default print category in res_company configuration settings
     * For each new product, it will be assigned to the print category
@@ -53,15 +53,15 @@ Usage
 * To print your products, go to 'Sales' / 'Products' / 'Print Categories'
     * Choose between "Print Obsolete Products" or "Print All Products"
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-incubator/12.0_product_print_category/product_print_category/static/description/print_options.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_print_category/static/description/print_options.png
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/quentinDupont/grap-odoo-incubator/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/quentinDupont/grap-odoo-incubator/issues/new?body=module:%20product_print_category%0Aversion:%2012.0_product_print_category%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20product_print_category%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -83,6 +83,6 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
-This module is part of the `quentinDupont/grap-odoo-incubator <https://github.com/quentinDupont/grap-odoo-incubator/tree/12.0_product_print_category/product_print_category>`_ project on GitHub.
+This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/12.0/product_print_category>`_ project on GitHub.
 
 You are welcome to contribute.
