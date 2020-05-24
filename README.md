@@ -25,6 +25,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.0.1 | Restrict Usage of Product Categories to a given Group
+[web_base_url_force](web_base_url_force/) | 12.0.1.0.0 | Force the value of the setting 'web.base.url'
 
 
 Unported addons
@@ -65,7 +66,6 @@ addon | version | summary
 [stock_inventory_merge](stock_inventory_merge/) | 8.0.1.0.0 (unported) | Allow to merge multiples partial inventories
 [stock_inventory_valuation](stock_inventory_valuation/) | 8.0.1.0.0 (unported) | Stock Inventory - Valuation
 [stock_inventory_valuation_merge](stock_inventory_valuation_merge/) | 8.0.1.0.0 (unported) | Stock Inventory - Valuation - Merge - Glue Module
-[web_base_url_force](web_base_url_force/) | 8.0.1.0.0 (unported) | Force the value of the setting 'web.base.url'
 
 [//]: # (end addons)
 
