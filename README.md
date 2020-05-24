@@ -25,6 +25,9 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [account_fiscal_position_tax_included](account_fiscal_position_tax_included/) | 12.0.1.0.1 | Allow to map from tax excluded to tax included
+[multi_search_abstract](multi_search_abstract/) | 12.0.1.0.0 | Multi Search - Abstract
+[multi_search_partner](multi_search_partner/) | 12.0.1.0.0 | Multi Search - Partners
+[multi_search_product](multi_search_product/) | 12.0.1.0.0 | Multi Search - Products
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.0.1 | Restrict Usage of Product Categories to a given Group
 [web_base_url_force](web_base_url_force/) | 12.0.1.0.1 | Force the value of the setting 'web.base.url'
 
@@ -43,9 +46,6 @@ addon | version | summary
 [mass_merging_content_test](mass_merging_content_test/) | 8.0.1.0.0 (unported) | Test the module mass_merging_content
 [mass_operation_abstract](mass_operation_abstract/) | 8.0.1.0.0 (unported) | Abstract Tools used for modules that realize operation onmany items
 [mobile_app_purchase](mobile_app_purchase/) | 8.0.2.0.0 (unported) | Mobile App Purchase
-[multi_search_abstract](multi_search_abstract/) | 8.0.1.0.0 (unported) | Multi Search - Abstract
-[multi_search_partner](multi_search_partner/) | 8.0.1.0.0 (unported) | Multi Search - Partners
-[multi_search_product](multi_search_product/) | 8.0.1.0.0 (unported) | Multi Search - Products
 [pos_environment](pos_environment/) | 8.0.1.0.0 (unported) | Custom messages on the bill depending on the environment
 [pos_invoicing](pos_invoicing/) | 8.0.3.0.0 (unported) | Handle invoicing from Point Of Sale
 [pos_limit_unknown_barcode](pos_limit_unknown_barcode/) | 8.0.1.0.0 (unported) | Limit Unknown barcode message in Point Of Sale
