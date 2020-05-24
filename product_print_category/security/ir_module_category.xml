@@ -6,11 +6,11 @@ Copyright (C) 2012-Today GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record  id="module_product_print_category" model="ir.module.category">
         <field name="name">Pricetags</field>
         <field name="sequence">80</field>
     </record>
 
-</data></openerp>
+</odoo>

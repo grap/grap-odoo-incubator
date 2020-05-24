@@ -5,7 +5,7 @@ Copyright (C) 2016-Today: La Louve (<http://www.lalouve.net/>)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
         <record id="paper_format" model="report.paperformat">
             <field name="name">Products Print Format</field>
@@ -22,4 +22,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="dpi">90</field>
         </record>
 
-</data></openerp>
+</odoo>
