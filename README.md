@@ -29,6 +29,7 @@ addon | version | summary
 [multi_search_abstract](multi_search_abstract/) | 12.0.1.0.1 | Multi Search - Abstract
 [multi_search_partner](multi_search_partner/) | 12.0.1.0.1 | Multi Search - Partners
 [multi_search_product](multi_search_product/) | 12.0.1.0.1 | Multi Search - Products
+[product_category_product_qty](product_category_product_qty/) | 12.0.1.0.0 | Product Category - Product Quantity
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.0.1 | Restrict Usage of Product Categories to a given Group
 [product_print_category](product_print_category/) | 12.0.1.0.1 | Automate products print, when data has changed
 [web_base_url_force](web_base_url_force/) | 12.0.1.0.1 | Force the value of the setting 'web.base.url'
@@ -57,7 +58,6 @@ addon | version | summary
 [pos_product_without_image](pos_product_without_image/) | 8.0.1.0.0 (unported) | Improvements on Display of products images
 [pos_sector](pos_sector/) | 8.0.1.0.0 (unported) | Set sectors to the products and display in given PoS Sessions
 [pos_street_market](pos_street_market/) | 8.0.2.0.0 (unported) | Set the market place of the PoS orders
-[product_category_product_qty](product_category_product_qty/) | 8.0.1.0.0 (unported) | Product Category - Product Quantity
 [product_ean13_image](product_ean13_image/) | 8.0.1.0.0 (unported) | Generate EAN13 images for products
 [product_sale_tax_price_included](product_sale_tax_price_included/) | 8.0.1.0.0 (unported) | Provides new fields Sale Prices w/o taxes
 [product_simple_pricelist](product_simple_pricelist/) | 8.0.1.0.0 (unported) | Provides Wizard to manage easily Pricelist By Products
