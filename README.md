@@ -29,7 +29,7 @@ addon | version | summary
 [multi_search_abstract](multi_search_abstract/) | 12.0.1.0.1 | Multi Search - Abstract
 [multi_search_partner](multi_search_partner/) | 12.0.1.0.1 | Multi Search - Partners
 [multi_search_product](multi_search_product/) | 12.0.1.0.1 | Multi Search - Products
-[product_category_product_qty](product_category_product_qty/) | 12.0.1.0.0 | Product Category - Product Quantity
+[product_category_product_qty](product_category_product_qty/) | 12.0.1.0.1 | Product Category - Product Quantity
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.0.1 | Restrict Usage of Product Categories to a given Group
 [product_print_category](product_print_category/) | 12.0.1.0.1 | Automate products print, when data has changed
 [web_base_url_force](web_base_url_force/) | 12.0.1.0.1 | Force the value of the setting 'web.base.url'
