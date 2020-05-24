@@ -24,7 +24,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[account_fiscal_position_tax_included](account_fiscal_position_tax_included/) | 12.0.1.0.0 | Allow to map from tax excluded to tax included
+[account_fiscal_position_tax_included](account_fiscal_position_tax_included/) | 12.0.1.0.1 | Allow to map from tax excluded to tax included
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.0.1 | Restrict Usage of Product Categories to a given Group
 [web_base_url_force](web_base_url_force/) | 12.0.1.0.1 | Force the value of the setting 'web.base.url'
 
