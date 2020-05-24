@@ -4,7 +4,7 @@
 {
     'name': 'Point of Sale - Sectors',
     'summary': "Set sectors to the products and display in given PoS Sessions",
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.0.1',
     'category': 'Point of Sale',
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
