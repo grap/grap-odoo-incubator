@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_fiscal_position_tax_included
+#   * account_fiscal_position_tax_included
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-27 15:57+0000\n"
-"PO-Revision-Date: 2019-03-27 15:57+0000\n"
+"POT-Creation-Date: 2019-11-14 13:26+0000\n"
+"PO-Revision-Date: 2019-11-14 13:26+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,34 +16,35 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_fiscal_position_tax_included
-#: model:account.tax,name:account_fiscal_position_tax_included.tax_20_tax_excl
-msgid "20% Tax Excl"
-msgstr "20% Tax Excl"
-
-#. module: account_fiscal_position_tax_included
-#: model:account.tax,name:account_fiscal_position_tax_included.tax_20_tax_incl
-msgid "20% Tax Incl"
-msgstr "20% Tax Incl"
-
-#. module: account_fiscal_position_tax_included
-#: model:product.template,name:account_fiscal_position_tax_included.product_20_tax_excl__product_template
+#: model:product.product,name:account_fiscal_position_tax_included.product_20_tax_excl
 #: model:product.template,name:account_fiscal_position_tax_included.product_20_tax_excl_product_template
 msgid "Product 20% Tax Excl."
-msgstr "Product 20% Tax Excl."
+msgstr "Produit TVA 20% (HT)"
 
 #. module: account_fiscal_position_tax_included
-#: model:product.template,name:account_fiscal_position_tax_included.product_20_tax_incl__product_template
+#: model:product.product,name:account_fiscal_position_tax_included.product_20_tax_incl
 #: model:product.template,name:account_fiscal_position_tax_included.product_20_tax_incl_product_template
 msgid "Product 20% Tax Incl."
-msgstr "Product 20% Tax Incl."
+msgstr "Produit TVA 20% (TTC)"
 
 #. module: account_fiscal_position_tax_included
 #: model:ir.model,name:account_fiscal_position_tax_included.model_account_tax
 msgid "Tax"
-msgstr "Taxes"
+msgstr "Taxe"
 
 #. module: account_fiscal_position_tax_included
-#: view:account.fiscal.position:account_fiscal_position_tax_included.view_account_fiscal_position_form
-msgid "[('parent_id', '=', False)]"
-msgstr "[('parent_id', '=', False)]"
+#: model:product.product,uom_name:account_fiscal_position_tax_included.product_20_tax_excl
+#: model:product.product,uom_name:account_fiscal_position_tax_included.product_20_tax_incl
+#: model:product.template,uom_name:account_fiscal_position_tax_included.product_20_tax_excl_product_template
+#: model:product.template,uom_name:account_fiscal_position_tax_included.product_20_tax_incl_product_template
+msgid "Unit(s)"
+msgstr "Unité(s)"
+
+#. module: account_fiscal_position_tax_included
+#: model:product.product,weight_uom_name:account_fiscal_position_tax_included.product_20_tax_excl
+#: model:product.product,weight_uom_name:account_fiscal_position_tax_included.product_20_tax_incl
+#: model:product.template,weight_uom_name:account_fiscal_position_tax_included.product_20_tax_excl_product_template
+#: model:product.template,weight_uom_name:account_fiscal_position_tax_included.product_20_tax_incl_product_template
+msgid "kg"
+msgstr "kg"
 
