@@ -24,6 +24,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[account_fiscal_position_tax_included](account_fiscal_position_tax_included/) | 12.0.1.0.0 | Allow to map from tax excluded to tax included
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.0.1 | Restrict Usage of Product Categories to a given Group
 [web_base_url_force](web_base_url_force/) | 12.0.1.0.1 | Force the value of the setting 'web.base.url'
 
@@ -32,7 +33,6 @@ Unported addons
 ---------------
 addon | version | summary
 --- | --- | ---
-[account_fiscal_position_tax_included](account_fiscal_position_tax_included/) | 8.0.1.0.0 (unported) | Allow to map from tax excluded to tax included
 [base_company_legal_info](base_company_legal_info/) | 8.0.1.0.0 (unported) | Adds Legal informations on company model
 [duplication_account_invoice](duplication_account_invoice/) | 8.0.1.0.0 (unported) | Duplication Tools for Invoices with a given frequency
 [duplication_sale_order](duplication_sale_order/) | 8.0.1.0.0 (unported) | Duplication Tools for Sale Orders with a given frequency
