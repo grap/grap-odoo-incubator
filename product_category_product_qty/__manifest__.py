@@ -5,7 +5,7 @@
 
 {
     'name': 'Product Category - Product Quantity',
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.0.1',
     'category': 'Product',
     'author': 'GRAP, '
               'Odoo Community Association (OCA)',
