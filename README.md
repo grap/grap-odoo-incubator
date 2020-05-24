@@ -25,7 +25,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [account_fiscal_position_tax_included](account_fiscal_position_tax_included/) | 12.0.1.0.1 | Allow to map from tax excluded to tax included
-[base_company_legal_info](base_company_legal_info/) | 12.0.1.0.0 | Adds Legal informations on company model
+[base_company_legal_info](base_company_legal_info/) | 12.0.1.0.1 | Adds Legal informations on company model
 [multi_search_abstract](multi_search_abstract/) | 12.0.1.0.1 | Multi Search - Abstract
 [multi_search_partner](multi_search_partner/) | 12.0.1.0.1 | Multi Search - Partners
 [multi_search_product](multi_search_product/) | 12.0.1.0.1 | Multi Search - Products
