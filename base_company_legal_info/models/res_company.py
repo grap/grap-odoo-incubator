@@ -1,11 +1,10 @@
-# coding: utf-8
 # © 2014-2016 Akretion (http://www.akretion.com)
 # Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 # @author Alexis de Lattre <alexis.delattre@akretion.com>
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import _, api, fields, models
+from odoo import _, api, fields, models
 
 
 class ResCompany(models.Model):
