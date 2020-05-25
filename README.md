@@ -35,6 +35,7 @@ addon | version | summary
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.0.1 | Restrict Usage of Product Categories to a given Group
 [product_print_category](product_print_category/) | 12.0.1.0.1 | Automate products print, when data has changed
 [product_simple_pricelist](product_simple_pricelist/) | 12.0.1.0.1 | Provides Wizard to manage easily Pricelist By Products
+[stock_internal_use_of_products](stock_internal_use_of_products/) | 12.0.1.0.0 | Declare the use of products for specific uses (eg: gifts,...)
 [stock_inventory_merge](stock_inventory_merge/) | 12.0.1.0.1 | Allow to merge multiples partial inventories
 [web_base_url_force](web_base_url_force/) | 12.0.1.0.1 | Force the value of the setting 'web.base.url'
 
@@ -63,7 +64,6 @@ addon | version | summary
 [product_ean13_image](product_ean13_image/) | 8.0.1.0.0 (unported) | Generate EAN13 images for products
 [product_sale_tax_price_included](product_sale_tax_price_included/) | 8.0.1.0.0 (unported) | Provides new fields Sale Prices w/o taxes
 [product_supplierinfo_quick_edit](product_supplierinfo_quick_edit/) | 8.0.4.0.0 (unported) | Provides Wizard to manage easily Supplierinfo
-[stock_internal_use_of_products](stock_internal_use_of_products/) | 8.0.2.0.0 (unported) | Declare the use of products for specific uses (eg: gifts,...)
 [stock_inventory_valuation](stock_inventory_valuation/) | 8.0.1.0.0 (unported) | Stock Inventory - Valuation
 [stock_inventory_valuation_merge](stock_inventory_valuation_merge/) | 8.0.1.0.0 (unported) | Stock Inventory - Valuation - Merge - Glue Module
 
