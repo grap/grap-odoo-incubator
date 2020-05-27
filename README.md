@@ -45,25 +45,9 @@ Unported addons
 addon | version | summary
 --- | --- | ---
 [duplication_sale_order](duplication_sale_order/) | 8.0.1.0.0 (unported) | Duplication Tools for Sale Orders with a given frequency
-[l10n_fr_pos_cert_extra](l10n_fr_pos_cert_extra/) | 8.0.1.0.0 (unported) | Certification for Point of Sale Module
-[mass_action](mass_action/) | 8.0.1.0.0 (unported) | Provide the possibility to execute python code on many items from any models
-[mass_linking](mass_linking/) | 8.0.1.0.0 (unported) | Provide the possibility to see any related items of selected items
-[mass_merging_content](mass_merging_content/) | 8.0.1.0.0 (unported) | Merge lines according given settings, for any models
-[mass_merging_content_test](mass_merging_content_test/) | 8.0.1.0.0 (unported) | Test the module mass_merging_content
-[mass_operation_abstract](mass_operation_abstract/) | 8.0.1.0.0 (unported) | Abstract Tools used for modules that realize operation onmany items
-[mobile_app_purchase](mobile_app_purchase/) | 8.0.2.0.0 (unported) | Mobile App Purchase
-[pos_environment](pos_environment/) | 8.0.1.0.0 (unported) | Custom messages on the bill depending on the environment
-[pos_invoicing](pos_invoicing/) | 8.0.3.0.0 (unported) | Handle invoicing from Point Of Sale
-[pos_limit_unknown_barcode](pos_limit_unknown_barcode/) | 8.0.1.0.0 (unported) | Limit Unknown barcode message in Point Of Sale
 [pos_multicompany](pos_multicompany/) | 8.0.3.0.0 (unported) | Point of Sale Settings in Multi company context
 [pos_multiple_control](pos_multiple_control/) | 8.0.3.0.0 (unported) | Allow user to control each statement and add extra checks
-[pos_payment_usability](pos_payment_usability/) | 8.0.1.0.0 (unported) | Improve Payment in the Point of Sale front part
 [pos_picking_load_partner_name](pos_picking_load_partner_name/) | 8.0.2.0.0 (unported) | Improve load of picking in PoS by partner name
-[pos_product_without_image](pos_product_without_image/) | 8.0.1.0.0 (unported) | Improvements on Display of products images
-[pos_street_market](pos_street_market/) | 8.0.2.0.0 (unported) | Set the market place of the PoS orders
-[product_ean13_image](product_ean13_image/) | 8.0.1.0.0 (unported) | Generate EAN13 images for products
-[product_sale_tax_price_included](product_sale_tax_price_included/) | 8.0.1.0.0 (unported) | Provides new fields Sale Prices w/o taxes
-[product_supplierinfo_quick_edit](product_supplierinfo_quick_edit/) | 8.0.4.0.0 (unported) | Provides Wizard to manage easily Supplierinfo
 [stock_inventory_valuation](stock_inventory_valuation/) | 8.0.1.0.0 (unported) | Stock Inventory - Valuation
 [stock_inventory_valuation_merge](stock_inventory_valuation_merge/) | 8.0.1.0.0 (unported) | Stock Inventory - Valuation - Merge - Glue Module
 
