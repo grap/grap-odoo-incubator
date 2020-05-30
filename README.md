@@ -30,6 +30,7 @@ addon | version | summary
 [multi_search_abstract](multi_search_abstract/) | 12.0.1.0.1 | Multi Search - Abstract
 [multi_search_partner](multi_search_partner/) | 12.0.1.0.1 | Multi Search - Partners
 [multi_search_product](multi_search_product/) | 12.0.1.0.1 | Multi Search - Products
+[pos_multicompany](pos_multicompany/) | 12.0.1.0.0 | Point of Sale Settings in Multi company context
 [pos_sector](pos_sector/) | 12.0.1.0.1 | Set sectors to the products and display in given PoS Sessions
 [product_category_product_qty](product_category_product_qty/) | 12.0.1.0.1 | Product Category - Product Quantity
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.0.1 | Restrict Usage of Product Categories to a given Group
@@ -45,7 +46,6 @@ Unported addons
 addon | version | summary
 --- | --- | ---
 [duplication_sale_order](duplication_sale_order/) | 8.0.1.0.0 (unported) | Duplication Tools for Sale Orders with a given frequency
-[pos_multicompany](pos_multicompany/) | 8.0.3.0.0 (unported) | Point of Sale Settings in Multi company context
 [pos_multiple_control](pos_multiple_control/) | 8.0.3.0.0 (unported) | Allow user to control each statement and add extra checks
 [pos_picking_load_partner_name](pos_picking_load_partner_name/) | 8.0.2.0.0 (unported) | Improve load of picking in PoS by partner name
 [stock_inventory_valuation](stock_inventory_valuation/) | 8.0.1.0.0 (unported) | Stock Inventory - Valuation
