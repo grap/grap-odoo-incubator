@@ -1,4 +1,3 @@
-# coding: utf-8
 # Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
 # @author Julien WESTE
 # @author Sylvain LE GAL (https://twitter.com/legalsylvain)
