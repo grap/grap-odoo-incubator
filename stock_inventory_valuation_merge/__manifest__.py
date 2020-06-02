@@ -4,7 +4,7 @@
 
 {
     "name": "Stock Inventory - Valuation - Merge - Glue Module",
-    "version": "12.0.1.0.0",
+    "version": "12.0.1.0.1",
     "category": "Stock",
     "author": "GRAP",
     "website": "http://www.grap.coop",
