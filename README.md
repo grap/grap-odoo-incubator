@@ -39,7 +39,7 @@ addon | version | summary
 [stock_internal_use_of_products](stock_internal_use_of_products/) | 12.0.1.0.2 | Declare the use of products for specific uses (eg: gifts,...)
 [stock_inventory_merge](stock_inventory_merge/) | 12.0.1.0.1 | Allow to merge multiples partial inventories
 [stock_inventory_valuation](stock_inventory_valuation/) | 12.0.1.0.1 | Stock Inventory - Valuation
-[stock_inventory_valuation_merge](stock_inventory_valuation_merge/) | 12.0.1.0.0 | Stock Inventory - Valuation - Merge - Glue Module
+[stock_inventory_valuation_merge](stock_inventory_valuation_merge/) | 12.0.1.0.1 | Stock Inventory - Valuation - Merge - Glue Module
 [web_base_url_force](web_base_url_force/) | 12.0.1.0.1 | Force the value of the setting 'web.base.url'
 
 
