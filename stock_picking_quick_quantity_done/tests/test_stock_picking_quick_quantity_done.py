@@ -102,7 +102,6 @@ class TestQuickQuantityDone(TransactionCase):
         )
         self.picking3.action_confirm()
 
-
     def test_one_quantity_change(self):
 
         # test initial demands
@@ -131,14 +130,11 @@ class TestQuickQuantityDone(TransactionCase):
                 self.assertEqual(line.quantity_done, 7)
 
     def test_all_quantities_done_with_no_initial_demands(self):
-
         # test with changing all quantities
         with self.assertRaises(UserError):
             self.picking2.quick_quantities_done()
 
-
     def test_all_quantities_done_with_no_line(self):
-
         # test with changing all quantities
         with self.assertRaises(UserError):
             self.picking3.quick_quantities_done()
