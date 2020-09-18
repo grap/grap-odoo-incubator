@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* pos_sector
+#   * pos_sector
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-02 15:41+0000\n"
-"PO-Revision-Date: 2018-03-02 15:41+0000\n"
+"POT-Creation-Date: 2020-09-18 11:54+0000\n"
+"PO-Revision-Date: 2020-09-18 11:54+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,75 +16,93 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: pos_sector
-#: field:pos.sector,active:0
+#: model:ir.model.fields,field_description:pos_sector.field_pos_sector__active
 msgid "Active"
-msgstr "Active"
+msgstr "Actif"
 
 #. module: pos_sector
-#: field:pos.sector,company_id:0
+#: model_terms:ir.ui.view,arch_db:pos_sector.view_pos_sector_search
+msgid "Archived"
+msgstr "Archivé"
+
+#. module: pos_sector
+#: model:ir.model.fields,field_description:pos_sector.field_pos_sector__company_id
 msgid "Company"
-msgstr "Company"
+msgstr "Société"
 
 #. module: pos_sector
-#: field:pos.sector,create_uid:0
+#: model:ir.model.fields,field_description:pos_sector.field_pos_sector__create_uid
 msgid "Created by"
-msgstr "Created by"
+msgstr "Créé par"
 
 #. module: pos_sector
-#: field:pos.sector,create_date:0
+#: model:ir.model.fields,field_description:pos_sector.field_pos_sector__create_date
 msgid "Created on"
-msgstr "Created on"
+msgstr "Créé le"
 
 #. module: pos_sector
+#: model:product.product,name:pos_sector.product_sector__1
 #: model:product.template,name:pos_sector.product_sector__1_product_template
 msgid "Demo Product on sector 1"
 msgstr "Produit de démonstration Secteur 1"
 
 #. module: pos_sector
+#: model:product.product,name:pos_sector.product_sector__2
 #: model:product.template,name:pos_sector.product_sector__2_product_template
 msgid "Demo Product on sector 2"
 msgstr "Produit de démonstration Secteur 2"
 
 #. module: pos_sector
-#: field:pos.sector,display_name:0
+#: model:ir.model.fields,field_description:pos_sector.field_pos_sector__display_name
 msgid "Display Name"
-msgstr "Display Name"
+msgstr "Nom affiché"
 
 #. module: pos_sector
-#: field:pos.sector,id:0
+#: model:ir.model.fields,field_description:pos_sector.field_pos_sector__id
 msgid "ID"
 msgstr "ID"
 
 #. module: pos_sector
-#: field:pos.sector,__last_update:0
+#: model:ir.model.fields,field_description:pos_sector.field_pos_sector____last_update
 msgid "Last Modified on"
-msgstr "Last Modified on"
+msgstr "Dernière modification le"
 
 #. module: pos_sector
-#: field:pos.sector,write_uid:0
+#: model:ir.model.fields,field_description:pos_sector.field_pos_sector__write_uid
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Dernière mise à jour par"
 
 #. module: pos_sector
-#: field:pos.sector,write_date:0
+#: model:ir.model.fields,field_description:pos_sector.field_pos_sector__write_date
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Dernière mise à jour le"
 
 #. module: pos_sector
-#: view:pos.sector:pos_sector.view_pos_sector_form
-#: field:pos.sector,name:0
+#: model:ir.model.fields,field_description:pos_sector.field_pos_sector__name
+#: model_terms:ir.ui.view,arch_db:pos_sector.view_pos_sector_form
 msgid "Name"
 msgstr "Nom"
 
 #. module: pos_sector
 #: model:res.groups,name:pos_sector.group_pos_sector_product_user
-msgid "PoS Sector - Product Settings"
-msgstr "Secteur Point de vente - Paramétrage des produits"
+msgid "POint of Sale - Sectors"
+msgstr "Point de vente - Secteurs"
 
 #. module: pos_sector
-#: field:product.template,sector_id:0
+#: model:ir.model,name:pos_sector.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "Paramétrage du point de vente"
+
+#. module: pos_sector
+#: model:ir.model.fields,field_description:pos_sector.field_product_product__sector_id
+#: model:ir.model.fields,field_description:pos_sector.field_product_template__sector_id
 msgid "Point of Sale Sector"
-msgstr "Secteur du point de vente"
+msgstr "Secteur de Point de vente"
+
+#. module: pos_sector
+#: model:ir.model,name:pos_sector.model_pos_sector
+msgid "Point of Sale Sectors"
+msgstr "Secteurs de Point de vente"
 
 #. module: pos_sector
 #: model:ir.model,name:pos_sector.model_product_template
@@ -93,7 +111,25 @@ msgstr "Modèle d'article"
 
 #. module: pos_sector
 #: model:ir.actions.act_window,name:pos_sector.action_pos_sector
+#: model:ir.model.fields,field_description:pos_sector.field_pos_config__sector_ids
 #: model:ir.ui.menu,name:pos_sector.menu_pos_sector
-#: field:pos.config,sector_ids:0
+#: model_terms:ir.ui.view,arch_db:pos_sector.view_pos_config_form
 msgid "Sectors"
 msgstr "Secteurs"
+
+#. module: pos_sector
+#: model:product.product,uom_name:pos_sector.product_sector__1
+#: model:product.product,uom_name:pos_sector.product_sector__2
+#: model:product.template,uom_name:pos_sector.product_sector__1_product_template
+#: model:product.template,uom_name:pos_sector.product_sector__2_product_template
+msgid "Unit(s)"
+msgstr "Unité(s)"
+
+#. module: pos_sector
+#: model:product.product,weight_uom_name:pos_sector.product_sector__1
+#: model:product.product,weight_uom_name:pos_sector.product_sector__2
+#: model:product.template,weight_uom_name:pos_sector.product_sector__1_product_template
+#: model:product.template,weight_uom_name:pos_sector.product_sector__2_product_template
+msgid "kg"
+msgstr "kg"
+
