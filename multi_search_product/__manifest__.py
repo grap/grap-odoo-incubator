@@ -5,7 +5,7 @@
 
 {
     "name": "Multi Search - Products",
-    "version": "12.0.1.0.1",
+    "version": "12.0.1.0.2",
     "category": "Product",
     "author": "GRAP",
     "website": "http://www.grap.coop",
