@@ -27,9 +27,9 @@ addon | version | summary
 [account_fiscal_position_tax_included](account_fiscal_position_tax_included/) | 12.0.1.0.1 | Allow to map from tax excluded to tax included
 [base_company_legal_info](base_company_legal_info/) | 12.0.1.0.1 | Adds Legal informations on company model
 [duplication_account_invoice](duplication_account_invoice/) | 12.0.1.0.1 | Duplication Tools for Invoices with a given frequency
-[multi_search_abstract](multi_search_abstract/) | 12.0.1.0.1 | Multi Search - Abstract
-[multi_search_partner](multi_search_partner/) | 12.0.1.0.1 | Multi Search - Partners
-[multi_search_product](multi_search_product/) | 12.0.1.0.1 | Multi Search - Products
+[multi_search_abstract](multi_search_abstract/) | 12.0.1.0.2 | Multi Search - Abstract
+[multi_search_partner](multi_search_partner/) | 12.0.1.0.2 | Multi Search - Partners
+[multi_search_product](multi_search_product/) | 12.0.1.0.2 | Multi Search - Products
 [pos_multicompany](pos_multicompany/) | 12.0.1.0.1 | Point of Sale Settings in Multi company context
 [pos_sector](pos_sector/) | 12.0.1.0.2 | Set sectors to the products and display in given PoS Sessions
 [product_category_product_qty](product_category_product_qty/) | 12.0.1.0.1 | Product Category - Product Quantity
