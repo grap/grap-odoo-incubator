@@ -48,7 +48,6 @@ Unported addons
 addon | version | summary
 --- | --- | ---
 [duplication_sale_order](duplication_sale_order/) | 8.0.1.0.0 (unported) | Duplication Tools for Sale Orders with a given frequency
-[pos_multiple_control](pos_multiple_control/) | 8.0.3.0.0 (unported) | Allow user to control each statement and add extra checks
 [pos_picking_load_partner_name](pos_picking_load_partner_name/) | 8.0.2.0.0 (unported) | Improve load of picking in PoS by partner name
 
 [//]: # (end addons)
