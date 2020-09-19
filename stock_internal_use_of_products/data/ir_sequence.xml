@@ -7,7 +7,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <openerp>
     <data noupdate="1">
-        <record id="seq_stock_internal_use" model="ir.sequence">
+        <record id="ir_sequence_internal_use" model="ir.sequence">
             <field name="name">Internal Use</field>
             <field name="code">internal.use</field>
             <field name="prefix">IU/%(year)s/</field>
