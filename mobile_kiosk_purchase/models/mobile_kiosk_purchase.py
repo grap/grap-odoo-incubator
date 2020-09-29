@@ -101,7 +101,7 @@ class MobileKioskPurchase(models.TransientModel):
                 self._add_result_error(
                     result,
                     "Product without Supplier",
-                    _("The select product doesn't have any supplier defined")
+                    _("The selected product doesn't have any supplier defined")
                 )
                 return
             else:
