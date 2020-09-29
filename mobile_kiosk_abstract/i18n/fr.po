@@ -1,0 +1,198 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * mobile_kiosk_abstract
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-29 21:25+0000\n"
+"PO-Revision-Date: 2020-09-29 21:25+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mobile_kiosk_abstract
+#: model:product.product,name:mobile_kiosk_abstract.mobile_kiosk_product_1
+#: model:product.template,name:mobile_kiosk_abstract.mobile_kiosk_product_1_product_template
+msgid "1637 - tobacco (40 gr) (Mobile App)"
+msgstr "1637 - tobacco (40 gr) (Mobile App)"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application__action_tag
+msgid "Action Tag"
+msgstr "Tag de l'action"
+
+#. module: mobile_kiosk_abstract
+#. openerp-web
+#: code:addons/mobile_kiosk_abstract/static/src/js/widget.js:22
+#, python-format
+msgid "Connexion lost"
+msgstr "Connexion perdue"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_abstract__create_uid
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_abstract__create_date
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: mobile_kiosk_abstract
+#: selection:mobile.kiosk.application,target:0
+msgid "Current Window"
+msgstr "Fenêtre courante"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_abstract__display_name
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: mobile_kiosk_abstract
+#: selection:mobile.kiosk.application,target:0
+msgid "Full Screen"
+msgstr "Plein écran"
+
+#. module: mobile_kiosk_abstract
+#. openerp-web
+#: code:addons/mobile_kiosk_abstract/static/src/xml/mobile_kiosk_abstract.xml:14
+#, python-format
+msgid "Go to Home Page"
+msgstr "Aller à la page d'accueil"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_abstract__id
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application__id
+msgid "ID"
+msgstr "ID"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application__icon
+msgid "Icon URL"
+msgstr "URL de l’icône"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_abstract____last_update
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_abstract__write_uid
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_abstract__write_date
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: mobile_kiosk_abstract
+#: model_terms:ir.ui.view,arch_db:mobile_kiosk_abstract.view_mobile_kiosk_application_kanban
+#: model_terms:ir.ui.view,arch_db:mobile_kiosk_abstract.view_mobile_kiosk_application_tree
+msgid "Launch"
+msgstr "Lancer"
+
+#. module: mobile_kiosk_abstract
+#: selection:mobile.kiosk.application,target:0
+msgid "Main action of Current Window"
+msgstr "Action principale de la fenêtre"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.actions.act_window,name:mobile_kiosk_abstract.action_mobile_kiosk_application
+#: model:ir.ui.menu,name:mobile_kiosk_abstract.menu_mobile_kiosk_application
+#: model:ir.ui.menu,name:mobile_kiosk_abstract.menu_mobile_kiosk_main
+msgid "Mobile Apps"
+msgstr "Applications mobiles"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model,name:mobile_kiosk_abstract.model_mobile_kiosk_abstract
+msgid "Mobile Kiosk Abstract Proxy"
+msgstr "Proxy d'applications mobiles"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model,name:mobile_kiosk_abstract.model_mobile_kiosk_application
+msgid "Mobile Kiosk Applications"
+msgstr "Applications mobiles"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: mobile_kiosk_abstract
+#: selection:mobile.kiosk.application,target:0
+msgid "New Window"
+msgstr "Nouvelle fenêtre"
+
+#. module: mobile_kiosk_abstract
+#: model:product.product,name:mobile_kiosk_abstract.mobile_kiosk_product_2
+#: model:product.template,name:mobile_kiosk_abstract.mobile_kiosk_product_2_product_template
+msgid "OCB - Eco Slim Filters (x150) (Mobile App)"
+msgstr "OCB - Eco Slim Filters (x150) (Mobile App)"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.actions.act_window,name:mobile_kiosk_abstract.action_res_partner_kanban
+msgid "Partners"
+msgstr "Contacts"
+
+#. module: mobile_kiosk_abstract
+#. openerp-web
+#: code:addons/mobile_kiosk_abstract/static/src/js/widget.js:23
+#, python-format
+msgid "Please check your Internet Connexion, then try again"
+msgstr "Veuillez vérifier votre connexion internet, et essayer de nouveau"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.actions.act_window,name:mobile_kiosk_abstract.action_product_product_kanban
+msgid "Products"
+msgstr "Articles"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application__summary
+msgid "Summary"
+msgstr "Résumé"
+
+#. module: mobile_kiosk_abstract
+#: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application__target
+msgid "Target"
+msgstr "Cible"
+
+#. module: mobile_kiosk_abstract
+#: model:product.product,uom_name:mobile_kiosk_abstract.mobile_kiosk_product_1
+#: model:product.product,uom_name:mobile_kiosk_abstract.mobile_kiosk_product_2
+#: model:product.template,uom_name:mobile_kiosk_abstract.mobile_kiosk_product_1_product_template
+#: model:product.template,uom_name:mobile_kiosk_abstract.mobile_kiosk_product_2_product_template
+msgid "Unit(s)"
+msgstr "Unité(s)"
+
+#. module: mobile_kiosk_abstract
+#. openerp-web
+#: code:addons/mobile_kiosk_abstract/static/src/xml/mobile_kiosk_abstract.xml:10
+#, python-format
+msgid "You loose the context of your action by refreshing the page, please go the home page."
+msgstr "Vous avez perdu le contexte de votre action en rafraichissant la page, veuillez revenir à la page d'accueil."
+
+#. module: mobile_kiosk_abstract
+#: model:product.product,weight_uom_name:mobile_kiosk_abstract.mobile_kiosk_product_1
+#: model:product.product,weight_uom_name:mobile_kiosk_abstract.mobile_kiosk_product_2
+#: model:product.template,weight_uom_name:mobile_kiosk_abstract.mobile_kiosk_product_1_product_template
+#: model:product.template,weight_uom_name:mobile_kiosk_abstract.mobile_kiosk_product_2_product_template
+msgid "kg"
+msgstr "kg"
+
+#. module: mobile_kiosk_abstract
+#: model_terms:ir.ui.view,arch_db:mobile_kiosk_abstract.view_mobile_kiosk_application_kanban
+msgid "record.icon.value"
+msgstr ""
+
