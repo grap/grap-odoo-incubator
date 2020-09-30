@@ -27,8 +27,8 @@ addon | version | summary
 [account_fiscal_position_tax_included](account_fiscal_position_tax_included/) | 12.0.1.0.1 | Allow to map from tax excluded to tax included
 [base_company_legal_info](base_company_legal_info/) | 12.0.1.0.1 | Adds Legal informations on company model
 [duplication_account_invoice](duplication_account_invoice/) | 12.0.1.0.1 | Duplication Tools for Invoices with a given frequency
-[mobile_kiosk_abstract](mobile_kiosk_abstract/) | 12.0.1.0.0 | Mobile Kiosk Absract Module
-[mobile_kiosk_purchase](mobile_kiosk_purchase/) | 12.0.1.0.0 | Mobile interface to make purchases
+[mobile_kiosk_abstract](mobile_kiosk_abstract/) | 12.0.1.0.1 | Mobile Kiosk Absract Module
+[mobile_kiosk_purchase](mobile_kiosk_purchase/) | 12.0.1.0.1 | Mobile interface to make purchases
 [multi_search_abstract](multi_search_abstract/) | 12.0.1.0.2 | Multi Search - Abstract
 [multi_search_partner](multi_search_partner/) | 12.0.1.0.2 | Multi Search - Partners
 [multi_search_product](multi_search_product/) | 12.0.1.0.2 | Multi Search - Products
