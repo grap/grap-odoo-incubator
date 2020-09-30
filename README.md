@@ -38,7 +38,7 @@ addon | version | summary
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.0.1 | Restrict Usage of Product Categories to a given Group
 [product_print_category](product_print_category/) | 12.0.1.0.1 | Automate products print, when data has changed
 [product_simple_pricelist](product_simple_pricelist/) | 12.0.1.0.1 | Provides Wizard to manage easily Pricelist By Products
-[stock_internal_use_of_products](stock_internal_use_of_products/) | 12.0.1.0.2 | Declare the use of products for specific uses (eg: gifts,...)
+[stock_internal_use_of_products](stock_internal_use_of_products/) | 12.0.1.0.3 | Declare the use of products for specific uses (eg: gifts,...)
 [stock_inventory_merge](stock_inventory_merge/) | 12.0.1.0.1 | Allow to merge multiples partial inventories
 [stock_inventory_valuation](stock_inventory_valuation/) | 12.0.1.0.1 | Stock Inventory - Valuation
 [stock_inventory_valuation_merge](stock_inventory_valuation_merge/) | 12.0.1.0.1 | Stock Inventory - Valuation - Merge - Glue Module
