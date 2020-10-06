@@ -60,7 +60,6 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
                     self.kiosk_should_go_back = true;
                 }
             });
-
             this._super.apply(this, arguments);
         },
 
