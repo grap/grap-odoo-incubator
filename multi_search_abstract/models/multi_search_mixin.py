@@ -36,9 +36,18 @@ class MultiSearchMixin(models.AbstractModel):
         return self.env["ir.config_parameter"].sudo().get_param(
             self._multi_search_separator_key_name)
 
-    # Overload Section
+    # Overload the private _search function, that is used by the other ORM
+    # functions (name_search, search_read)
     @api.model
-    def search(self, args, **kwargs):
+    def _search(
+        self,
+        args,
+        offset=0,
+        limit=None,
+        order=None,
+        count=False,
+        access_rights_uid=None,
+    ):
         copy_args = list(args)
         if self._multi_search_separator():
             for arg in copy_args:
@@ -59,7 +68,14 @@ class MultiSearchMixin(models.AbstractModel):
                             + new_arg_lst
                             + args[args.index(arg) + 1:]
                         )
-        return super().search(args, **kwargs)
+        return super()._search(
+            args=args,
+            offset=offset,
+            limit=limit,
+            order=order,
+            count=count,
+            access_rights_uid=access_rights_uid,
+        )
 
     @api.model
     def create(self, vals):
