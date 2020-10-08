@@ -13,6 +13,10 @@
     "depends": [
         "purchase",
         "mobile_kiosk_abstract",
+        # TODO, improve me. In newer version of odoo >=13
+        # remove the dependency to purchase_package_qty
+        # if it's possible
+        "purchase_package_qty",
     ],
     "data": [
         "views/templates.xml",
