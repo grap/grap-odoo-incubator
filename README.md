@@ -18,6 +18,10 @@ You could be interesting too by the following repositories:
 * [grap-odoo-business](https://github.com/grap/grap-odoo-business)
 * [grap-odoo-custom](https://github.com/grap/grap-odoo-custom)
 
+# TODO
+
+Fixme, remove dependency to grap-odoo-business, adding ``purchase_package_qty`` in the ``grap-odoo-incubator`` repository.
+
 [//]: # (addons)
 
 Available addons
