@@ -52,23 +52,69 @@ class MobileKioskPurchase(models.TransientModel):
         ProductProduct = self.env["product.product"]
         PurchaseOrder = self.env["purchase.order"]
         PurchaseOrderLine = self.env["purchase.order.line"]
+        ProductSupplierinfo = self.env['product.supplierinfo']
 
         order = PurchaseOrder.browse(purchase_order_id)
         product = ProductProduct.browse(product_id)
 
-        # TODO: FIXME
-        line = PurchaseOrderLine.create({
+        seller = product._select_seller(
+            partner_id=order.partner_id,
+            quantity=product_qty,
+            date=order.date_order and order.date_order.date(),
+            uom_id=product.uom_po_id)
+
+        # First, Check minimum quantity
+        if not seller:
+            supplierinfos = ProductSupplierinfo.search([
+                ('name', '=', order.partner_id.id),
+                ('product_tmpl_id', '=', product.product_tmpl_id.id),
+            ])
+            if supplierinfos:
+                min_qty = min(supplierinfos.mapped("min_qty"))
+                if min_qty > product_qty:
+                    self._add_result_notify(
+                        result,
+                        _("Quantity increased"),
+                        _(
+                            "The quantity has been increased to the minimum"
+                            " quantity (from %s to %s)" % (
+                                product_qty, min_qty))
+                    )
+                    product_qty = min_qty
+                    seller = product._select_seller(
+                        partner_id=order.partner_id,
+                        quantity=product_qty,
+                        date=order.date_order and order.date_order.date(),
+                        uom_id=product.uom_po_id)
+
+        # Then, Check package quantity
+        if seller:
+            rounded_qty = seller._get_quantity_according_package(
+                product_qty, product.uom_po_id)
+            if rounded_qty != product_qty:
+                self._add_result_notify(
+                    result,
+                    _("Quantity increased"),
+                    _(
+                        "The quantity has been rounded due to package"
+                        " quantity (from %s to %s)" % (
+                            product_qty, rounded_qty))
+                )
+                product_qty = rounded_qty
+
+        vals = {
             "order_id": order.id,
             "product_id": product.id,
             "product_qty": product_qty,
-            "name": "name",
-            "date_planned": "2020-01-01",
+            "name": "OVERWRITTEN VALUE BY ONCHANGE",
+            "date_planned": order.date_planned or order.date_order,
             "product_uom": product.uom_po_id.id,
             "price_unit": 0.0,
-        })
+        }
+
+        line = PurchaseOrderLine.create(vals)
         line.onchange_product_id()
         line.product_qty = product_qty
-        # line._onchange_quantity()
         return result
 
     @api.model
