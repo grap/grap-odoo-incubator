@@ -22,7 +22,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.category</field>
         <field name="inherit_id" ref="product.product_category_form_view" />
         <field name="arch" type="xml">
-            <xpath expr="//div[@class='oe_button_box']" position="inside">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
                 <div class="oe_right oe_button_box" name="buttons">
                     <button type="action" class="oe_stat_button" icon="fa-th-list"
                             name="%(product.product_normal_action)d"
