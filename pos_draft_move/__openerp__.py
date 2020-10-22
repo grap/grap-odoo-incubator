@@ -5,7 +5,7 @@
 {
     'name': 'Point of Sale - Generate Draft Moves',
     'summary': "Do not post accounting moves, generating by PoS",
-    'version': '8.0.1.0.0',
+    'version': '8.0.1.0.1',
     'category': 'Point of Sale',
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
