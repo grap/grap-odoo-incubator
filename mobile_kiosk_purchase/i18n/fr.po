@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-08 10:34+0000\n"
-"PO-Revision-Date: 2020-10-08 10:34+0000\n"
+"POT-Creation-Date: 2020-10-23 22:16+0000\n"
+"PO-Revision-Date: 2020-10-23 22:16+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: mobile_kiosk_purchase
-#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:135
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:136
 #, python-format
 msgid "A new Purchase Order %s has been created"
 msgstr "Le bon de commande %s a été créé"
@@ -51,9 +51,15 @@ msgid "Display Name"
 msgstr "Nom affiché"
 
 #. module: mobile_kiosk_purchase
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:131
+#, python-format
+msgid "From mobile app purchase"
+msgstr "Application mobile d'achat"
+
+#. module: mobile_kiosk_purchase
 #: model:ir.model.fields,field_description:mobile_kiosk_purchase.field_mobile_kiosk_purchase__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: mobile_kiosk_purchase
 #. openerp-web
@@ -65,7 +71,7 @@ msgstr "Valeur incorrecte"
 #. module: mobile_kiosk_purchase
 #: model:ir.model.fields,field_description:mobile_kiosk_purchase.field_mobile_kiosk_purchase____last_update
 msgid "Last Modified on"
-msgstr "Dernière modification le"
+msgstr "Dernière Modification le"
 
 #. module: mobile_kiosk_purchase
 #: model:ir.model.fields,field_description:mobile_kiosk_purchase.field_mobile_kiosk_purchase__write_uid
@@ -96,7 +102,7 @@ msgid "Please enter a valid quantity."
 msgstr "Veuillez entrer une quantité valide."
 
 #. module: mobile_kiosk_purchase
-#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:134
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:135
 #, python-format
 msgid "Purchase Order created"
 msgstr "Bon de commande créé"
@@ -142,7 +148,7 @@ msgid "The quantity has been rounded due to package quantity (from %s to %s)"
 msgstr "La quantité a été arrondie a cause du conditionnement. (%s -> %s)"
 
 #. module: mobile_kiosk_purchase
-#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:150
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:151
 #, python-format
 msgid "The selected product doesn't have any supplier defined"
 msgstr "L'article sélectionné n'a pas de fournisseur défini"
@@ -154,4 +160,3 @@ msgstr "L'article sélectionné n'a pas de fournisseur défini"
 #, python-format
 msgid "or"
 msgstr "ou"
-
