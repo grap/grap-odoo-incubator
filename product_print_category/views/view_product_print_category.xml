@@ -11,7 +11,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.print.category</field>
         <field name="type">tree</field>
         <field name="arch" type="xml">
-            <tree colors="red: product_to_print_qty != 0">
+            <tree decoration-danger="product_to_print_qty != 0">
                 <field name="name" />
                 <field name="product_to_print_qty" />
                 <field name="product_qty" />
