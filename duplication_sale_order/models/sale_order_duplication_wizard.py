@@ -116,5 +116,5 @@ class SaleOrderDuplicationWizard(models.TransientModel):
         order_ids = []
         for date_line in self.date_line_ids:
             order_ids.append(self.order_id.copy(
-                default={'date_order': date_line.date}).id)
+                default={'commitment_date': date_line.date}).id)
         return order_ids
