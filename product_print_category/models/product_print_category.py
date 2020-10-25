@@ -8,6 +8,7 @@ from odoo import api, fields, models
 class ProductPrintCategory(models.Model):
     _name = "product.print.category"
     _description = "Print Category for Product"
+    _order = 'name'
 
     # Fields Section
     name = fields.Char(string="Name", required=True)
