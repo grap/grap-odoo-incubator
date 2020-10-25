@@ -13,6 +13,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <group col="4" string="Item to duplicate">
                 <field name="order_id"/>
                 <field name="partner_id"/>
+                <field name="picking_policy"/>
             </group>
             <group col="4" string="Settings">
                 <field name="begin_date"/>

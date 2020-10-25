@@ -13,6 +13,7 @@
     'license': 'AGPL-3',
     'depends': [
         'sale',
+        'sale_stock',
     ],
     'data': [
         'views/view_sale_order_duplication_wizard.xml',

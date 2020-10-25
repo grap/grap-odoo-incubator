@@ -27,6 +27,10 @@ class SaleOrderDuplicationWizard(models.TransientModel):
         comodel_name='res.partner', string='Partner', readonly=True,
         default=lambda s: s._default_partner_id())
 
+    picking_policy = fields.Selection(
+        related='order_id.picking_policy',
+        default=lambda s: s._default_picking_policy_id())
+
     begin_date = fields.Date(
         string='Begin Date', required=True,
         default=lambda s: s._default_begin_date())
@@ -58,6 +62,15 @@ class SaleOrderDuplicationWizard(models.TransientModel):
             return False
         else:
             return order_obj.browse(order_id).partner_id
+
+    @api.model
+    def _default_picking_policy_id(self):
+        order_obj = self.env['sale.order']
+        order_id = self.env.context.get('active_id', False)
+        if not order_id:
+            return False
+        else:
+            return order_obj.browse(order_id).picking_policy
 
     @api.model
     def _default_begin_date(self):
