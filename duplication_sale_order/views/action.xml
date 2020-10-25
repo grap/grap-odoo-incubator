@@ -4,7 +4,7 @@ Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="action_sale_order_duplication_wizard" model="ir.actions.act_window">
         <field name="name">Duplication Wizard</field>
@@ -12,15 +12,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
     </record>
 
-    <record id="value_sale_order_duplication_wizard" model="ir.values">
-        <field name="model_id" ref="sale.model_sale_order" />
-        <field name="name">Duplication Wizard</field>
-        <field name="key2">client_action_multi</field>
-        <field name="value" eval="'ir.actions.act_window,' + str(ref('action_sale_order_duplication_wizard'))"/>
-        <field name="key">action</field>
-        <field name="model">sale.order</field>
-    </record>
-
-</data></openerp>
+</odoo>

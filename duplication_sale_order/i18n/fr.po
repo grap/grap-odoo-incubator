@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* duplication_sale_order
+#   * duplication_sale_order
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-27 17:38+0000\n"
-"PO-Revision-Date: 2018-02-27 17:38+0000\n"
+"POT-Creation-Date: 2019-09-11 15:03+0000\n"
+"PO-Revision-Date: 2019-09-11 15:03+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,55 +16,55 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,begin_date:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__begin_date
 msgid "Begin Date"
 msgstr "Date de début"
 
 #. module: duplication_sale_order
-#: view:sale.order.duplication.wizard:duplication_sale_order.view_sale_order_duplication_wizard_form
+#: model_terms:ir.ui.view,arch_db:duplication_sale_order.view_sale_order_duplication_wizard_form
 msgid "Cancel"
 msgstr "Annuler"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,create_uid:0
-#: field:sale.order.duplication.wizard.date.line,create_uid:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__create_uid
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard_date_line__create_uid
 msgid "Created by"
-msgstr "Created by"
+msgstr "Créé par"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,create_date:0
-#: field:sale.order.duplication.wizard.date.line,create_date:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__create_date
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard_date_line__create_date
 msgid "Created on"
-msgstr "Created on"
+msgstr "Créé le"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard.date.line,date:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard_date_line__date
 msgid "Date"
-msgstr "Date"
+msgstr "Date "
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,display_name:0
-#: field:sale.order.duplication.wizard.date.line,display_name:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__display_name
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard_date_line__display_name
 msgid "Display Name"
-msgstr "Display Name"
+msgstr "Nom affiché"
 
 #. module: duplication_sale_order
-#: view:sale.order.duplication.wizard:duplication_sale_order.view_sale_order_duplication_wizard_form
+#: model_terms:ir.ui.view,arch_db:duplication_sale_order.view_sale_order_duplication_wizard_form
 msgid "Duplicate"
 msgstr "Dupliquer"
 
 #. module: duplication_sale_order
-#: view:sale.order.duplication.wizard:duplication_sale_order.view_sale_order_duplication_wizard_form
+#: model_terms:ir.ui.view,arch_db:duplication_sale_order.view_sale_order_duplication_wizard_form
 msgid "Duplicate and Open"
-msgstr "Dupliquer et Ouvrir"
+msgstr "Dupliquer et ouvrir"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,duplication_duration:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__duplication_duration
 msgid "Duplication Duration"
 msgstr "Durée de la duplication"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,duplication_type:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__duplication_type
 msgid "Duplication Type"
 msgstr "Type de duplication"
 
@@ -74,38 +74,38 @@ msgid "Duplication Wizard"
 msgstr "Assistant de duplication"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,id:0
-#: field:sale.order.duplication.wizard.date.line,id:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__id
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard_date_line__id
 msgid "ID"
 msgstr "ID"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,include_current_date:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__include_current_date
 msgid "Include Current Date"
 msgstr "Inclure la date courante"
 
 #. module: duplication_sale_order
-#: view:sale.order.duplication.wizard:duplication_sale_order.view_sale_order_duplication_wizard_form
+#: model_terms:ir.ui.view,arch_db:duplication_sale_order.view_sale_order_duplication_wizard_form
 msgid "Item to duplicate"
 msgstr "Elément à dupliquer"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,__last_update:0
-#: field:sale.order.duplication.wizard.date.line,__last_update:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard____last_update
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard_date_line____last_update
 msgid "Last Modified on"
-msgstr "Last Modified on"
+msgstr "Dernière modification le"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,write_uid:0
-#: field:sale.order.duplication.wizard.date.line,write_uid:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__write_uid
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard_date_line__write_uid
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Dernière mise à jour par"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,write_date:0
-#: field:sale.order.duplication.wizard.date.line,write_date:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__write_date
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard_date_line__write_date
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Dernière mise à jour le"
 
 #. module: duplication_sale_order
 #: selection:sale.order.duplication.wizard,duplication_type:0
@@ -113,24 +113,24 @@ msgid "Monthly"
 msgstr "Mensuelle"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,date_line_ids:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__date_line_ids
 msgid "New Dates"
 msgstr "Nouvelles Dates"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,partner_id:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__partner_id
 msgid "Partner"
 msgstr "Partenaire"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard,order_id:0
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard__order_id
 msgid "Sale Order"
 msgstr "Commande de vente"
 
 #. module: duplication_sale_order
-#: view:sale.order.duplication.wizard:duplication_sale_order.view_sale_order_duplication_wizard_form
+#: model_terms:ir.ui.view,arch_db:duplication_sale_order.view_sale_order_duplication_wizard_form
 msgid "Settings"
-msgstr "Paramètres"
+msgstr "Configuration"
 
 #. module: duplication_sale_order
 #: selection:sale.order.duplication.wizard,duplication_type:0
@@ -138,7 +138,16 @@ msgid "Weekly"
 msgstr "Hebdomadaire"
 
 #. module: duplication_sale_order
-#: field:sale.order.duplication.wizard.date.line,wizard_id:0
-msgid "Wizard id"
-msgstr "Wizard id"
+#: model:ir.model.fields,field_description:duplication_sale_order.field_sale_order_duplication_wizard_date_line__wizard_id
+msgid "Wizard"
+msgstr "Assistant"
 
+#. module: duplication_sale_order
+#: model:ir.model,name:duplication_sale_order.model_sale_order_duplication_wizard
+msgid "sale.order.duplication.wizard"
+msgstr "sale.order.duplication.wizard"
+
+#. module: duplication_sale_order
+#: model:ir.model,name:duplication_sale_order.model_sale_order_duplication_wizard_date_line
+msgid "sale.order.duplication.wizard.date.line"
+msgstr "sale.order.duplication.wizard.date.line"
