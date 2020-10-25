@@ -40,7 +40,7 @@ addon | version | summary
 [pos_multicompany](pos_multicompany/) | 12.0.1.0.1 | Point of Sale Settings in Multi company context
 [pos_sector](pos_sector/) | 12.0.1.0.2 | Set sectors to the products and display in given PoS Sessions
 [product_category_product_qty](product_category_product_qty/) | 12.0.1.0.2 | Product Category - Product Quantity
-[product_category_type](product_category_type/) | 12.0.1.0.1 | Restore type field on product.category
+[product_category_type](product_category_type/) | 12.0.1.0.2 | Restore type field on product.category
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.0.1 | Restrict Usage of Product Categories to a given Group
 [product_print_category](product_print_category/) | 12.0.1.0.2 | Automate products print, when data has changed
 [product_simple_pricelist](product_simple_pricelist/) | 12.0.1.0.1 | Provides Wizard to manage easily Pricelist By Products
