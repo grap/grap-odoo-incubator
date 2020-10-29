@@ -1,5 +1,6 @@
 account-fiscal-rule
 account-invoicing
+multi-company
 pos
 purchase-workflow
 server-tools
