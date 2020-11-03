@@ -11,7 +11,7 @@ class ProductPrintCategory(models.Model):
     _order = 'name'
 
     # Fields Section
-    name = fields.Char(string="Name", required=True)
+    name = fields.Char(string="Name", required=True, translate=True)
 
     active = fields.Boolean(string="Active", default=True)
 
