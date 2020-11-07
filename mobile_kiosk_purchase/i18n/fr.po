@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 22:16+0000\n"
-"PO-Revision-Date: 2020-10-23 22:16+0000\n"
+"POT-Creation-Date: 2020-11-07 17:09+0000\n"
+"PO-Revision-Date: 2020-11-07 17:09+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Le bon de commande %s a été créé"
 #: code:addons/mobile_kiosk_purchase/static/src/xml/mobile_kiosk_purchase.xml:61
 #, python-format
 msgid "Add quantity"
-msgstr "Ajouter une quantité"
+msgstr "Ajouter quantité"
 
 #. module: mobile_kiosk_purchase
 #. openerp-web
@@ -71,7 +71,7 @@ msgstr "Valeur incorrecte"
 #. module: mobile_kiosk_purchase
 #: model:ir.model.fields,field_description:mobile_kiosk_purchase.field_mobile_kiosk_purchase____last_update
 msgid "Last Modified on"
-msgstr "Dernière Modification le"
+msgstr "Dernière modification le"
 
 #. module: mobile_kiosk_purchase
 #: model:ir.model.fields,field_description:mobile_kiosk_purchase.field_mobile_kiosk_purchase__write_uid
@@ -92,14 +92,19 @@ msgstr "Proxy d'application d'achat mobile"
 #: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:43
 #, python-format
 msgid "No product has been found for barcode '%s'"
-msgstr "Aucun article trouvé pour le code barre '%s'"
+msgstr "Aucun article n'a été trouvé pour le code barre '%s'"
 
 #. module: mobile_kiosk_purchase
 #. openerp-web
 #: code:addons/mobile_kiosk_purchase/static/src/js/set_quantity.js:35
 #, python-format
 msgid "Please enter a valid quantity."
-msgstr "Veuillez entrer une quantité valide."
+msgstr "Veuillez saisir une quantité valide."
+
+#. module: mobile_kiosk_purchase
+#: model:mobile.kiosk.application,name:mobile_kiosk_purchase.mobile_kiosk_application_purchase
+msgid "Purchase"
+msgstr "Achat"
 
 #. module: mobile_kiosk_purchase
 #: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:135
@@ -115,11 +120,16 @@ msgid "Quantity increased"
 msgstr "Quantité augmentée"
 
 #. module: mobile_kiosk_purchase
+#: model:mobile.kiosk.application,summary:mobile_kiosk_purchase.mobile_kiosk_application_purchase
+msgid "Scan Products Barcodes to create Purchase Orders"
+msgstr "Scanner des codes barres d'article pour créer des commandes d'achat"
+
+#. module: mobile_kiosk_purchase
 #. openerp-web
 #: code:addons/mobile_kiosk_purchase/static/src/xml/mobile_kiosk_purchase.xml:36
 #, python-format
 msgid "Scan a Product"
-msgstr "Scanner un article"
+msgstr "Scanner un code barre"
 
 #. module: mobile_kiosk_purchase
 #. openerp-web
@@ -160,3 +170,4 @@ msgstr "L'article sélectionné n'a pas de fournisseur défini"
 #, python-format
 msgid "or"
 msgstr "ou"
+

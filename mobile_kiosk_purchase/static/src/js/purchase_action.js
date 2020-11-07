@@ -5,14 +5,16 @@
 odoo.define("mobile_kiosk_purchase.purchase_action", function (require) {
     "use strict";
 
+    var core = require('web.core');
     var ActionMobileKioskAbstract = require("mobile_kiosk_abstract.abstract_action");
+    var _t = core._t;
 
     var ActionMobileKioskPurchase = ActionMobileKioskAbstract.extend({
 
         _kiosk_home_page_tag: "mobile_kiosk_purchase_action_set_supplier",
-        _kiosk_home_page_name: "Purchase",
+        _kiosk_home_page_name: _("Purchase"),
 
-        _kiosk_title: "Purchase Order",
+        _kiosk_title: _("Purchase Order"),
 
     });
 
