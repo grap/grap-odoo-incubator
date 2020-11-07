@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 14:34+0000\n"
-"PO-Revision-Date: 2020-10-06 14:34+0000\n"
+"POT-Creation-Date: 2020-11-07 17:07+0000\n"
+"PO-Revision-Date: 2020-11-07 17:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "Nom affiché"
 #. module: mobile_kiosk_inventory
 #: model:ir.model.fields,field_description:mobile_kiosk_inventory.field_mobile_kiosk_inventory__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: mobile_kiosk_inventory
 #. openerp-web
@@ -64,10 +64,25 @@ msgstr "Inventaires"
 
 #. module: mobile_kiosk_inventory
 #. openerp-web
+#: code:addons/mobile_kiosk_inventory/static/src/js/inventory_action.js:15
+#: model:mobile.kiosk.application,name:mobile_kiosk_inventory.mobile_kiosk_application_inventory
+#, python-format
+msgid "Inventory"
+msgstr "Inventaire"
+
+#. module: mobile_kiosk_inventory
+#. openerp-web
 #: code:addons/mobile_kiosk_inventory/static/src/xml/mobile_kiosk_inventory.xml:16
 #, python-format
 msgid "Inventory Name"
 msgstr "Nom de l'inventaire"
+
+#. module: mobile_kiosk_inventory
+#. openerp-web
+#: code:addons/mobile_kiosk_inventory/static/src/js/inventory_action.js:17
+#, python-format
+msgid "Inventory your Stock"
+msgstr "Inventorier votre stock"
 
 #. module: mobile_kiosk_inventory
 #: model:ir.model.fields,field_description:mobile_kiosk_inventory.field_mobile_kiosk_inventory____last_update
@@ -126,6 +141,11 @@ msgstr "Quantité modifiée"
 #, python-format
 msgid "Quantity inventoried changed from %s to %s"
 msgstr "La quantité inventoriée est passé de %s à %s"
+
+#. module: mobile_kiosk_inventory
+#: model:mobile.kiosk.application,summary:mobile_kiosk_inventory.mobile_kiosk_application_inventory
+msgid "Scan Products Barcodes to create Inventories"
+msgstr "Scaner des codes barres d'articles pour créer un inventaires"
 
 #. module: mobile_kiosk_inventory
 #. openerp-web
