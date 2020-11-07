@@ -17,13 +17,13 @@ class MobileKioskApplication(models.Model):
         ('main', 'Main action of Current Window'),
     ]
 
-    name = fields.Char(string="Name", required=True)
+    name = fields.Char(string="Name", required=True, translate=True)
 
     action_tag = fields.Char(string="Action Tag", required=True)
 
     target = fields.Selection(selection=_TARGET_SELECTION, required=True)
 
-    summary = fields.Char(string="Summary")
+    summary = fields.Char(string="Summary", translate=True)
 
     icon = fields.Char(string="Icon URL")
 
