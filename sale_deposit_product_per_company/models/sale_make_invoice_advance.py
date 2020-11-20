@@ -20,6 +20,4 @@ class SaleAdvancePaymentInv(models.TransientModel):
             action['context'] = {'product_id': product_id.id}
             return product_id
 
-    product_id = fields.Many2one(
-        comodel_name="product.product", string="Down Payment Product",
-        domain=[('type', '=', 'service')], default=_default_product_id)
+    product_id = fields.Many2one(default=_default_product_id)
