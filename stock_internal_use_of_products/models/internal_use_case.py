@@ -9,7 +9,7 @@ from odoo.exceptions import Warning as UserError
 
 class InternalUseCase(models.Model):
     _name = 'internal.use.case'
-    _description = 'handle different kind of internal uses'
+    _description = 'Internal Use Cases'
 
     # Default Section
     def _default_company_id(self):
@@ -28,21 +28,18 @@ class InternalUseCase(models.Model):
 
     default_location_src_id = fields.Many2one(
         comodel_name='stock.location', string='Origin Location', required=True,
-        domain="[('usage','=','internal')]", oldname='location_from')
+        domain="[('usage','=','internal')]")
 
     default_location_dest_id = fields.Many2one(
         comodel_name='stock.location', string='Destination Location',
-        required=True, oldname='location_to')
+        required=True)
 
     journal_id = fields.Many2one(
         comodel_name='account.journal', string='Journal',
-        oldname='journal',
         help="Set the Accounting Journal used to generate Accounting Entries")
 
     account_id = fields.Many2one(
         comodel_name='account.account', string='Expense Account',
-        domain="[('user_type_id','=','other')]",
-        oldname='expense_account',
         help="Expense account of the Use Case. The generated"
         " Entries will belong the following lines:\n\n"
         " * Debit: This Expense Account"
@@ -53,7 +50,7 @@ class InternalUseCase(models.Model):
     def copy_data(self, default=None):
         default = default and default or {}
         default['name'] = _('%s (copy)') % self.name
-        return super(InternalUseCase, self).copy_data(default)
+        return super().copy_data(default)
 
     # Constrains Section
     @api.constrains('journal_id', 'account_id')

@@ -15,14 +15,11 @@
         'stock_account',
     ],
     'data': [
-        'data/ir_sequence.xml',
         'security/ir.model.access.csv',
         'security/ir_rule.xml',
-        'views/templates.xml',
+        'data/ir_sequence.xml',
         'views/view_internal_use.xml',
         'views/view_internal_use_case.xml',
-        'views/action.xml',
-        'views/menu.xml',
         'views/view_internal_use_mass_generate_wizard.xml',
     ],
     'demo': [

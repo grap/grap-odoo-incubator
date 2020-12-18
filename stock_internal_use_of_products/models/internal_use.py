@@ -11,7 +11,7 @@ from odoo.exceptions import Warning as UserError
 
 class InternalUse(models.Model):
     _name = 'internal.use'
-    _description = 'Internal use to impact stock and accounting'
+    _description = 'Internal Uses'
     _order = 'date_done desc, name'
 
     _INTERNAL_USE_STATE = [
@@ -41,8 +41,7 @@ class InternalUse(models.Model):
         comodel_name='internal.use.case', string='Case', required=True,
         states={
             'done': [('readonly', True)],
-            'confirmed': [('readonly', True)]},
-        oldname='internal_use_case')
+            'confirmed': [('readonly', True)]})
 
     company_id = fields.Many2one(
         comodel_name='res.company', string='Company', readonly=True,
@@ -86,15 +85,11 @@ class InternalUse(models.Model):
             use.stock_move_qty = len(use.stock_move_ids)
 
     # Overload Section
-    @api.model
-    def create(self, vals):
-        return super(InternalUse, self).create(vals)
-
     @api.multi
     def unlink(self):
         if self.filtered(lambda x: x.state != 'draft'):
             raise UserError(_('You can only delete draft uses.'))
-        return super(InternalUse, self).unlink()
+        return super().unlink()
 
     # Action Section
     @api.multi
@@ -109,7 +104,7 @@ class InternalUse(models.Model):
 
     @api.multi
     def action_confirm(self):
-        stock_move_obj = self.env['stock.move']
+        StockMove = self.env['stock.move']
         for use in self.filtered(lambda x: x.state == 'draft'):
             if len(use.line_ids) == 0:
                 raise UserError(_(
@@ -125,7 +120,7 @@ class InternalUse(models.Model):
                     line.internal_use_id.internal_use_case_id.
                     default_location_dest_id.id, True)
                 vals_list.append(vals)
-            sm = stock_move_obj.create(vals_list)
+            sm = StockMove.create(vals_list)
             sm._action_done()
 
             # Name internal use
@@ -144,8 +139,8 @@ class InternalUse(models.Model):
     @api.multi
     def action_done(self):
         """ Set the internal use to 'done' and create account moves"""
-        account_move_obj = self.env['account.move']
-        use_line_obj = self.env['internal.use.line']
+        AccountMove = self.env['account.move']
+        InternalUseLine = self.env['internal.use.line']
 
         use_data = {}
 
@@ -191,7 +186,7 @@ class InternalUse(models.Model):
 
             # Create uncharge Lines
             for key, line_ids in uncharge_use_line_data.items():
-                lines = use_line_obj.browse(line_ids)
+                lines = InternalUseLine.browse(line_ids)
                 account_move_line_vals =\
                     lines._prepare_account_move_line_uncharge(
                         account_move_vals)
@@ -200,7 +195,7 @@ class InternalUse(models.Model):
 
             # Create charge Lines
             for key, line_ids in charge_use_line_data.items():
-                lines = use_line_obj.browse(line_ids)
+                lines = InternalUseLine.browse(line_ids)
                 account_move_line_vals =\
                     lines._prepare_account_move_line_charge(
                         account_move_vals)
@@ -209,7 +204,7 @@ class InternalUse(models.Model):
 
             # Create Account move and validate it
             account_move_vals['line_ids'] = all_account_move_line_vals
-            account_move = account_move_obj.create(account_move_vals)
+            account_move = AccountMove.create(account_move_vals)
 
             # Validate Account Move
             account_move.post()
