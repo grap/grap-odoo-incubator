@@ -16,8 +16,6 @@
         'product',
         'res_company_code',
     ],
-    'demo': [
-        'demo/res_groups.xml',
-    ],
+    'post_init_hook': '_create_company_sequence',
     'installable': True,
 }
