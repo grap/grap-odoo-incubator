@@ -41,7 +41,7 @@ class InternalUseCase(models.Model):
 
     account_id = fields.Many2one(
         comodel_name='account.account', string='Expense Account',
-        domain="[('user_type_id','=','other')]",
+        domain="[('user_type_id.type','=','other')]",
         oldname='expense_account',
         help="Expense account of the Use Case. The generated"
         " Entries will belong the following lines:\n\n"
