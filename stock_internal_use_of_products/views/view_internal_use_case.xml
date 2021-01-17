@@ -52,4 +52,18 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         </field>
     </record>
 
+    <record id="action_internal_use_case_tree" model="ir.actions.act_window">
+        <field name="name">Internal Use Cases</field>
+        <field name="res_model">internal.use.case</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_internal_uses_config"
+        name="Internal Use Cases"
+        parent="stock.menu_stock_config_settings"
+        sequence="40"
+        action="action_internal_use_case_tree"/>
+
 </odoo>

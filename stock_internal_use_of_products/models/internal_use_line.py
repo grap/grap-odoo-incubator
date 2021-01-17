@@ -11,12 +11,12 @@ import odoo.addons.decimal_precision as dp
 
 class InternalUseLine(models.Model):
     _name = 'internal.use.line'
-    _description = 'Lines of product for internal uses'
+    _description = 'Internal Use Case Lines'
 
     # Column Section
     internal_use_id = fields.Many2one(
         comodel_name='internal.use', string='Internal Uses', index=True,
-        readonly=True, ondelete='cascade', oldname='internal_use')
+        readonly=True, ondelete='cascade')
 
     product_id = fields.Many2one(
         comodel_name='product.product', string='Product', required=True,
@@ -40,7 +40,7 @@ class InternalUseLine(models.Model):
     amount = fields.Float(
         string='Amount (Tax Excluded)', store=True,
         compute='_compute_amount',
-        digits=dp.get_precision('Product Price'), oldname='subtotal')
+        digits=dp.get_precision('Product Price'))
 
     # Compute section
     @api.depends('product_qty', 'price_unit', 'product_id', 'product_uom_id')

@@ -22,8 +22,8 @@ class InternalUseMassGenerateWizard(models.TransientModel):
     @api.multi
     def apply_button(self):
         self.ensure_one()
-        use_obj = self.env['internal.use']
-        uses = use_obj.search([
+        InternalUse = self.env['internal.use']
+        uses = InternalUse.search([
             ('id', 'in', self.env.context.get('active_ids')),
             ('state', '=', 'confirmed')])
         return uses.action_done()

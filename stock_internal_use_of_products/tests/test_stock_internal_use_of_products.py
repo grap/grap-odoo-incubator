@@ -9,8 +9,8 @@ class TestStockInternalUseOfProducts(TransactionCase):
     """Tests for 'Stock - Internal Use of Products' Module"""
 
     def setUp(self):
-        super(TestStockInternalUseOfProducts, self).setUp()
-        self.move_line_obj = self.env['account.move.line']
+        super().setUp()
+        self.AccountMoveLine = self.env['account.move.line']
         self.product_dozen = self.env.ref('product.product_product_6')
         self.regular_expense_account = self.env.ref(
             'stock_internal_use_of_products.regular_expense_account')
@@ -62,7 +62,7 @@ class TestStockInternalUseOfProducts(TransactionCase):
             " an accouting entry with 4 lines")
 
         # # Check Line 1 (Charge 1) (merged lines without tax code)
-        # lines = self.move_line_obj.search([
+        # lines = self.AccountMoveLine.search([
         #     ('move_id', '=', self.internal_use.account_move_id.id),
         #     ('tax_ids', '=', False),
         #     ('credit', '=', (3 * 12 * 13) + 876),
@@ -73,7 +73,7 @@ class TestStockInternalUseOfProducts(TransactionCase):
         #     "many use lines should generate account single accounting move")
 
         # # Check Line 2 (Charge 2) (line with tax code)
-        # lines = self.move_line_obj.search([
+        # lines = self.AccountMoveLine.search([
         #     ('move_id', '=', self.internal_use.account_move_id.id),
         #     ('credit', '=', 20),
         #     ('account_id', '=', self.regular_expense_account.id),
@@ -84,7 +84,7 @@ class TestStockInternalUseOfProducts(TransactionCase):
         #     " separated account move line")
 
         # Check Line 3 (Uncharge lines)
-        lines = self.move_line_obj.search([
+        lines = self.AccountMoveLine.search([
             ('move_id', '=', self.internal_use.account_move_id.id),
             ('account_id', '=', self.use_expense_account.id),
         ])

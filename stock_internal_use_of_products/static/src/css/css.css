@@ -1,9 +1,0 @@
-@charset "utf-8";
-
-/* stock_internal_use_of_products - view_internal_use_form                    */
-
-.stock_internal_use_of_products__view_internal_use_form [data-id="product_id"]      {width: 52%;}
-.stock_internal_use_of_products__view_internal_use_form [data-id="product_qty"]     {width: 12%;}
-.stock_internal_use_of_products__view_internal_use_form [data-id="product_uom"]     {width: 12%;}
-.stock_internal_use_of_products__view_internal_use_form [data-id="price_unit"]      {width: 12%;}
-.stock_internal_use_of_products__view_internal_use_form [data-id="subtotal"]        {width: 12%;}
