@@ -24,5 +24,5 @@ class ProductProduct(models.Model):
     def _set_default_code(self):
         IrSequence = self.env['ir.sequence']
         for product in self:
-            product.default_code = IrSequence.get(
+            product.default_code = IrSequence.next_by_code(
                 'product_product.default_code')
