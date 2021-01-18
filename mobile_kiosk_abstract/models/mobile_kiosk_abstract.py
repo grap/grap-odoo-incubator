@@ -50,6 +50,11 @@ class MobileKioskAbstract(models.TransientModel):
     @api.model
     def _prepare_supplierinfo_data(self, result, supplierinfo=False):
         result.update({
-            "price": supplierinfo and supplierinfo.price or 0.0,
-            "min_qty": supplierinfo and supplierinfo.min_qty or 0.0,
+            "supplierinfo_price": supplierinfo and supplierinfo.price or 0.0,
+            "supplierinfo_min_qty":
+            supplierinfo and supplierinfo.min_qty or 0.0,
+            "supplierinfo_uom_po_id":
+            supplierinfo and supplierinfo.product_uom.id or False,
+            "supplierinfo_uom_po_name":
+            supplierinfo and supplierinfo.product_uom.name or False,
         })
