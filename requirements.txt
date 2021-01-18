@@ -1,2 +1,2 @@
 viivakoodi
-cairosvg==1.0.22
+cairosvg
