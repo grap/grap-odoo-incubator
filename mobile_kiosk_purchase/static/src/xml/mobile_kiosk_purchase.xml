@@ -51,9 +51,20 @@
         <t t-jquery=".place-holder" t-operation="append">
             <div class="row o_mobile_kiosk_abstract_row">
                 <div class="col-sm-12">
-                    <h3><t t-esc="widget.kiosk_context.partner_name"/></h3>
-                    <h3><t t-esc="widget.kiosk_context.purchase_order_name"/></h3>
+                    <h3><t t-esc="widget.kiosk_context.purchase_order_name"/> - <t t-esc="widget.kiosk_context.partner_name"/></h3>
                     <h3><t t-esc="widget.kiosk_context.product_name"/></h3>
+                    <h4>
+                        <t t-if="widget.kiosk_context.supplierinfo_package_qty">
+                            Pack: <t t-esc="widget.kiosk_context.supplierinfo_package_qty"/>;
+                        </t>
+                        <t t-if="widget.kiosk_context.supplierinfo_min_qty">
+                            Min: <t t-esc="widget.kiosk_context.supplierinfo_min_qty"/>;
+                        </t>
+                        <t t-if="widget.kiosk_context.supplierinfo_price">
+                            <t t-esc="widget.kiosk_context.supplierinfo_price"/> € /
+                            <t t-esc="widget.kiosk_context.supplierinfo_uom_po_name"/>
+                        </t>
+                    </h4>
                 </div>
                 <div class="placeholder-padwidget"/>
                 <div class="col-sm-12">

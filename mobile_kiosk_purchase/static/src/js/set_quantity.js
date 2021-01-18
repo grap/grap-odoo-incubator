@@ -51,6 +51,11 @@ odoo.define('mobile_kiosk_purchase.set_quantity', function (require) {
                                 self.kiosk_context.partner_name = undefined;
                                 self.kiosk_context.purchase_order_id = undefined;
                                 self.kiosk_context.purchase_order_name = undefined;
+                                self.kiosk_context.supplierinfo_price = undefined;
+                                self.kiosk_context.supplierinfo_min_qty = undefined;
+                                self.kiosk_context.supplierinfo_uom_po_id = undefined;
+                                self.kiosk_context.supplierinfo_uom_po_name = undefined;
+                                self.kiosk_context.supplierinfo_package_qty = undefined;
                             };
                             // Return to the product page
                             self.do_action({

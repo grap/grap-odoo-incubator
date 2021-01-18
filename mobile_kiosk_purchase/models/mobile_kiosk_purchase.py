@@ -174,3 +174,11 @@ class MobileKioskPurchase(models.TransientModel):
     @api.model
     def _get_purchase_order_loadable_state(self):
         return ["draft", "sent"]
+
+    @api.model
+    def _prepare_supplierinfo_data(self, result, supplierinfo=False):
+        super()._prepare_supplierinfo_data(result, supplierinfo=supplierinfo)
+        result.update({
+            "supplierinfo_package_qty":
+            supplierinfo and supplierinfo.package_qty or 0.0,
+        })
