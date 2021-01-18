@@ -3,8 +3,10 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo.tests.common import TransactionCase
+from odoo.tests import tagged
 
 
+@tagged('post_install', '-at_install')
 class TestModule(TransactionCase):
     """Tests for 'product_default_code_res_company_code' Module"""
 
