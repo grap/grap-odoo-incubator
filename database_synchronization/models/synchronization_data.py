@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
-import odoorpc
+from datetime import datetime
 
 from odoo import api, fields, models
 
@@ -20,10 +20,23 @@ _NOT_COPIED_FIELDS = [
 
 class SynchronizationData(models.Model):
     _name = "synchronization.data"
+    _order = "model"
+    _inherit = ["synchronization.mixin"]
     _description = "Odoo Data Synchronisation"
+    _rec_name = "model"
 
     model_id = fields.Many2one(
-        comodel_name="ir.model", string="Model")
+        comodel_name="ir.model", string="Model",
+        required=True)
+
+    mapping_ids = fields.One2many(
+        comodel_name="synchronization.mapping",
+        inverse_name="synchronization_data_id")
+
+    mapping_qty = fields.Integer(
+        string="Mapping Quantity",
+        compute="_compute_mapping_qty",
+        store=True)
 
     model = fields.Char(
         related="model_id.model", string="Model Name", store=True)
@@ -31,7 +44,16 @@ class SynchronizationData(models.Model):
     ignored_field_ids = fields.Many2many(
         comodel_name="ir.model.fields", string="Ignored Fields")
 
-    active = fields.Boolean(string="Active", default="True")
+    active = fields.Boolean(string="Active", default=True)
+
+    _sql_constraints = [
+        ('unique_model_id', 'unique(model_id)', 'Model should be unique'),
+    ]
+
+    @api.depends("mapping_ids")
+    def _compute_mapping_qty(self):
+        for data in self:
+            data.mapping_qty = len(data.mapping_ids)
 
     @api.onchange('model_id')
     def _onchange_model_id(self):
@@ -53,27 +75,14 @@ class SynchronizationData(models.Model):
 
     def _synchronize(self, force_update=False):
         self.ensure_one()
-        IrConfigParameter = self.env['ir.config_parameter'].sudo()
-        port = IrConfigParameter.get_param("database_synchronization.port")
-        host = IrConfigParameter.get_param("database_synchronization.host")
-        database = IrConfigParameter.get_param(
-            "database_synchronization.database")
-        login = IrConfigParameter.get_param("database_synchronization.login")
-        password = IrConfigParameter.get_param(
-            "database_synchronization.password")
+        right_now = fields.Datetime.now()
 
         SynchronisationMapping = self.env["synchronization.mapping"]
         TargetModel = self.env[self.model_id.model]
 
-        if port == 443:
-            protocol = "jsonrpc+ssl"
-        else:
-            protocol = "jsonrpc"
-        external_odoo = odoorpc.ODOO(host, protocol, port=port)
-        external_odoo.login(database, login, password)
-
+        # Get External access
+        external_odoo = self._get_external_odoo()
         external_model = external_odoo.env[self.model_id.model]
-
         external_datas = external_model.with_context(
             active_test=False).search_read([])
 
@@ -90,20 +99,26 @@ class SynchronizationData(models.Model):
 
         _tmp_data = SynchronisationMapping.search_read(
             [("model_id", "=", self.model_id.id)],
-            ["external_id", "internal_id"],
+            ["external_id", "internal_id", "write_date"],
         )
-        mapping = {x["external_id"]: x["internal_id"] for x in _tmp_data}
+        mapping_external_2_local = {x["external_id"]: {
+            "internal_id": x["internal_id"],
+            "mapping_id": x["id"],
+            "write_date": x["write_date"]}
+            for x in _tmp_data}
 
         for external_data in external_datas:
-            check_update = True
             external_id = external_data["id"]
-            if external_id not in mapping:
-                # We should create the mapping first
-
+            if external_id not in mapping_external_2_local:
+                # We create the mapping first
                 if external_id in external_xml_id_datas:
+                    # If we map for the first time,
+                    # we should synchronize data
+                    to_update = True
+
                     xml_id = external_xml_id_datas[external_id]
                     module, name = xml_id.split(".")
-                    # This is an xml data we map with local exsiting data
+                    # This is an xml data we map with local existing data
                     local_datas = self.env["ir.model.data"].search(
                         [("module", "=", module), ("name", "=", name)]
                     )
@@ -122,27 +137,47 @@ class SynchronizationData(models.Model):
                                 xml_id=xml_id))
 
                 else:
+                    xml_id = False
+                    to_update = False
                     _logger.info(
                         "Model : {model}. Create new item, based on the"
                         " external #{external_id}".format(
                             model=self.model_id.model,
                             external_id=external_id,
                         ))
-                    check_update = False
                     internal_id = TargetModel.create(self._prepare_values(
                         external_data)).id
 
-                SynchronisationMapping.create({
-                    "model_id": self.model_id.id,
+                mapping = SynchronisationMapping.create({
+                    "synchronization_data_id": self.id,
                     "external_id": external_id,
                     "internal_id": internal_id,
-                    })
+                    "xml_id": xml_id,
+                })
 
             else:
-                internal_id = mapping[external_data["id"]]
+                # The mapping has been done previously
+                internal_id = mapping_external_2_local[external_data["id"]]["internal_id"]
+                local_write_date = mapping_external_2_local[external_data["id"]]["write_date"]
+                external_write_date = datetime.strptime(
+                    external_data["write_date"], '%Y-%m-%d %H:%M:%S')
+                to_update = force_update or (
+                    external_write_date > local_write_date)
+                mapping = SynchronisationMapping.browse(
+                    mapping_external_2_local[external_data["id"]]["mapping_id"])
 
-            if check_update or force_update:
-                print("todo, check update")
+            if to_update:
+                _logger.info(
+                    "Updating %s#%d (External #%d)" % (
+                        self.model,
+                        internal_id,
+                        external_data["id"]))
+                # Update Target Item
+                internal_item = TargetModel.browse(internal_id)
+                internal_item.write(self._prepare_values(
+                    external_data))
+                # Update mapping last update
+                mapping.write({"write_date": right_now})
 
     def _prepare_values(self, external_data):
         SynchronisationMapping = self.env["synchronization.mapping"]
