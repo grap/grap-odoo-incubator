@@ -205,6 +205,7 @@ class InternalUse(models.Model):
             # Create Account move and validate it
             account_move_vals['line_ids'] = all_account_move_line_vals
             account_move = AccountMove.create(account_move_vals)
+            account_move.date = self.date_done
 
             # Validate Account Move
             account_move.post()
