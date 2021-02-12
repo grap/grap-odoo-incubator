@@ -157,14 +157,15 @@ class SynchronizationData(models.Model):
 
             else:
                 # The mapping has been done previously
-                internal_id = mapping_external_2_local[external_data["id"]]["internal_id"]
-                local_write_date = mapping_external_2_local[external_data["id"]]["write_date"]
+                _local_info = mapping_external_2_local[external_data["id"]]
+                internal_id = _local_info["internal_id"]
+                local_write_date = _local_info["write_date"]
                 external_write_date = datetime.strptime(
                     external_data["write_date"], '%Y-%m-%d %H:%M:%S')
                 to_update = force_update or (
                     external_write_date > local_write_date)
                 mapping = SynchronisationMapping.browse(
-                    mapping_external_2_local[external_data["id"]]["mapping_id"])
+                    _local_info["mapping_id"])
 
             if to_update:
                 _logger.info(

@@ -110,7 +110,7 @@ class SynchronizationAbstract(models.AbstractModel):
 
     @api.model
     def _external_search_read(
-                self, external_odoo, model_name, domain=[], field_names=[]):
+            self, external_odoo, model_name, domain=[], field_names=[]):
         return external_odoo.env[model_name].search_read(
             domain, field_names)
 
@@ -118,7 +118,5 @@ class SynchronizationAbstract(models.AbstractModel):
     def _cron_synchronize_all(self):
         # synchronize module installed
         # if works, synchronize also data
-        print("==========<BEGIN> et ouais mon petit cron")
         SynchronisationModule = self.env["synchronization.module"]
         SynchronisationModule._synchronize_module_installed()
-        print("==========<END> et ouais mon petit cron")
