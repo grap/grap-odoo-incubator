@@ -5,7 +5,7 @@
 import logging
 from datetime import datetime
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 
 from odoo.exceptions import UserError
 
@@ -123,7 +123,7 @@ class SynchronizationData(models.Model):
                         [("module", "=", module), ("name", "=", name)]
                     )
                     if not local_datas:
-                        raise UserError("xml id not found %s" % (xml_id))
+                        raise UserError(_("xml id not found %s") % (xml_id))
                     else:
                         # we map with the local data
                         internal_id = local_datas[0]["res_id"]
