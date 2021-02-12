@@ -205,7 +205,6 @@ class InternalUse(models.Model):
             # Create Account move and validate it
             account_move_vals['line_ids'] = all_account_move_line_vals
             account_move = AccountMove.create(account_move_vals)
-            account_move.date = self.date_done
 
             # Validate Account Move
             account_move.post()
@@ -251,4 +250,5 @@ class InternalUse(models.Model):
             'journal_id': use_case.journal_id.id,
             'company_id': use_case.company_id.id,
             'ref': _('Expense Transfert (%s)') % (use_case.name),
+            'date': max(self.mapped("date_done")),
         }
