@@ -7,7 +7,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <record id="company_grap" model="res.company">
-        <field name="name">GRAP</field>
+        <field name="name">G.R.A.P.</field>
         <field name="legal_name">GRAP, Groupement Régional Alimentaire de Proximité</field>
         <field name="legal_type">SA coopérative à conseil d'administration</field>
         <field name="street">3, grande rue des feuillants</field>
