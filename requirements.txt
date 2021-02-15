@@ -1,2 +1,5 @@
 viivakoodi
 cairosvg
+
+# [database_synchronization]
+odoorpc
