@@ -29,7 +29,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [account_fiscal_position_tax_included](account_fiscal_position_tax_included/) | 12.0.1.0.2 | Allow to map from tax excluded to tax included
-[base_company_legal_info](base_company_legal_info/) | 12.0.1.0.1 | Adds Legal informations on company model
+[base_company_legal_info](base_company_legal_info/) | 12.0.1.0.2 | Adds Legal informations on company model
 [database_synchronization](database_synchronization/) | 12.0.1.0.2 | Synchronize many Odoo databases (datas, ...)
 [duplication_account_invoice](duplication_account_invoice/) | 12.0.1.0.1 | Duplication Tools for Invoices with a given frequency
 [duplication_sale_order](duplication_sale_order/) | 12.0.1.0.1 | Duplication Tools for Sale Orders with a given frequency
