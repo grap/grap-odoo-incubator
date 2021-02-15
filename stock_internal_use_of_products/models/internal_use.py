@@ -250,4 +250,5 @@ class InternalUse(models.Model):
             'journal_id': use_case.journal_id.id,
             'company_id': use_case.company_id.id,
             'ref': _('Expense Transfert (%s)') % (use_case.name),
+            'date': max(self.mapped("date_done")),
         }
