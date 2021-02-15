@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-07 17:09+0000\n"
-"PO-Revision-Date: 2020-11-07 17:09+0000\n"
+"POT-Creation-Date: 2021-01-18 16:04+0000\n"
+"PO-Revision-Date: 2021-01-18 16:04+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "Le bon de commande %s a été créé"
 
 #. module: mobile_kiosk_purchase
 #. openerp-web
-#: code:addons/mobile_kiosk_purchase/static/src/xml/mobile_kiosk_purchase.xml:61
+#: code:addons/mobile_kiosk_purchase/static/src/xml/mobile_kiosk_purchase.xml:72
 #, python-format
 msgid "Add quantity"
 msgstr "Ajouter quantité"
@@ -84,6 +84,13 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: mobile_kiosk_purchase
+#. openerp-web
+#: code:addons/mobile_kiosk_purchase/static/src/xml/mobile_kiosk_purchase.xml:60
+#, python-format
+msgid "Min:"
+msgstr "Min:"
+
+#. module: mobile_kiosk_purchase
 #: model:ir.model,name:mobile_kiosk_purchase.model_mobile_kiosk_purchase
 msgid "Mobile Kiosk Purchase Proxy"
 msgstr "Proxy d'application d'achat mobile"
@@ -93,6 +100,13 @@ msgstr "Proxy d'application d'achat mobile"
 #, python-format
 msgid "No product has been found for barcode '%s'"
 msgstr "Aucun article n'a été trouvé pour le code barre '%s'"
+
+#. module: mobile_kiosk_purchase
+#. openerp-web
+#: code:addons/mobile_kiosk_purchase/static/src/xml/mobile_kiosk_purchase.xml:57
+#, python-format
+msgid "Pack:"
+msgstr "Cond:"
 
 #. module: mobile_kiosk_purchase
 #. openerp-web
