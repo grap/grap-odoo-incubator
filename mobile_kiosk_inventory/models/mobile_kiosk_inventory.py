@@ -90,7 +90,7 @@ class MobileKioskInventory(models.TransientModel):
             self._add_result_notify(
                 result,
                 _("Quantity Changed"),
-                _("Quantity inventoried changed from %s to %s" % (
+                _("Quantity inventoried changed from {} to {}".format(
                     old_quantity, new_quantity))
             )
         else:
