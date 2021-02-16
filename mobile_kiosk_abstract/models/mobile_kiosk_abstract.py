@@ -22,7 +22,7 @@ class MobileKioskAbstract(models.TransientModel):
             "level": "error",
             "title": title,
             "message": message,
-            })
+        })
         return result
 
     def _add_result_notify(self, result, title, message):
@@ -30,7 +30,7 @@ class MobileKioskAbstract(models.TransientModel):
             "level": "notify",
             "title": title,
             "message": message,
-            })
+        })
         return result
 
     @api.model

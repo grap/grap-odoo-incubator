@@ -36,7 +36,11 @@ odoo.define('mobile_kiosk_inventory.set_quantity', function (require) {
                     this._rpc({
                         model: 'mobile.kiosk.inventory',
                         method: 'add_quantity',
-                        args: [self.kiosk_context.inventory_id, self.kiosk_context.product_id, quantity],
+                        args: [
+                            self.kiosk_context.inventory_id,
+                            self.kiosk_context.product_id,
+                            quantity,
+                        ],
                     })
                         .then(function (result) {
                             self.kiosk_notify_result(result);
@@ -58,7 +62,10 @@ odoo.define('mobile_kiosk_inventory.set_quantity', function (require) {
 
     });
 
-    core.action_registry.add('mobile_kiosk_inventory_action_set_quantity', ActionSetQuantity);
+    core.action_registry.add(
+        'mobile_kiosk_inventory_action_set_quantity',
+        ActionSetQuantity
+    );
 
     return ActionSetQuantity;
 

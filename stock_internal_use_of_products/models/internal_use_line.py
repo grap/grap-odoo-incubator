@@ -102,16 +102,16 @@ class InternalUseLine(models.Model):
             'product_uom': self.product_uom_id.id,
             'date': self.internal_use_id.date_done,
             'product_uom_qty': (
-                self.product_qty > 0 and
-                self.product_qty or -self.product_qty),
+                self.product_qty > 0
+                and self.product_qty or -self.product_qty),
             'location_id': (
-                self.product_qty > 0 and
-                use_case.default_location_src_id.id or
-                use_case.default_location_dest_id.id),
+                self.product_qty > 0
+                and use_case.default_location_src_id.id
+                or use_case.default_location_dest_id.id),
             'location_dest_id': (
-                self.product_qty > 0 and
-                use_case.default_location_dest_id.id or
-                use_case.default_location_src_id.id),
+                self.product_qty > 0
+                and use_case.default_location_dest_id.id
+                or use_case.default_location_src_id.id),
         }
 
     def _get_move_values(self, qty, location_id, location_dest_id, out):
@@ -124,29 +124,29 @@ class InternalUseLine(models.Model):
             'product_uom': self.product_uom_id.id,
             'date': self.internal_use_id.date_done,
             'product_uom_qty': (
-                self.product_qty > 0 and
-                self.product_qty or -self.product_qty),
+                self.product_qty > 0
+                and self.product_qty or -self.product_qty),
             'location_id': (
-                self.product_qty > 0 and
-                use_case.default_location_src_id.id or
-                use_case.default_location_dest_id.id),
+                self.product_qty > 0
+                and use_case.default_location_src_id.id
+                or use_case.default_location_dest_id.id),
             'location_dest_id': (
-                self.product_qty > 0 and
-                use_case.default_location_dest_id.id or
-                use_case.default_location_src_id.id),
+                self.product_qty > 0
+                and use_case.default_location_dest_id.id
+                or use_case.default_location_src_id.id),
             'move_line_ids': [(0, 0, {
                 'product_id': self.product_id.id,
                 'product_uom_qty': 0,  # bypass reservation here
                 'product_uom_id': self.product_uom_id.id,
                 'qty_done': qty,
                 'location_id': (
-                    self.product_qty > 0 and
-                    use_case.default_location_src_id.id or
-                    use_case.default_location_dest_id.id),
+                    self.product_qty > 0
+                    and use_case.default_location_src_id.id
+                    or use_case.default_location_dest_id.id),
                 'location_dest_id': (
-                    self.product_qty > 0 and
-                    use_case.default_location_dest_id.id or
-                    use_case.default_location_src_id.id),
+                    self.product_qty > 0
+                    and use_case.default_location_dest_id.id
+                    or use_case.default_location_src_id.id),
             })]
         }
 

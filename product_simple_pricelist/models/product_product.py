@@ -24,9 +24,9 @@ class ProductProduct(models.Model):
     def _get_pricelist_item_by_pricelist(self, pricelist):
         self.ensure_one()
         items = pricelist.item_ids.filtered(
-            lambda x: x.applied_on == '0_product_variant' and
-            x.product_id.id == self.id and
-            x.compute_price == 'fixed')
+            lambda x: x.applied_on == '0_product_variant'
+            and x.product_id.id == self.id
+            and x.compute_price == 'fixed')
         return items and items[0] or False
 
     def _compute_pricelist_price(self):

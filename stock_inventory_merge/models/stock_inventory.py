@@ -112,7 +112,7 @@ class StockInventory(models.Model):
                                 _compute_quantity(
                                     line_data["product_qty"],
                                     uom_obj.browse(default_uom_id),
-                                )
+                            )
 
                 # Update the first line with the sumed quantity
                 keeped_line = line_obj.browse(keeped_line_id)
@@ -135,7 +135,7 @@ class StockInventory(models.Model):
                 check_dict[key].append(line_val["id"])
             else:
                 check_dict[key] = [line_val["id"]]
-        for k, v in check_dict.items():
+        for _k, v in check_dict.items():
             if len(v) > 1:
                 duplicates_group_ids.append(v)
         return duplicates_group_ids

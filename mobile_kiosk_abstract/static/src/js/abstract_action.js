@@ -10,7 +10,6 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
     var ajax = require('web.ajax');
     var core = require('web.core');
     var session = require('web.session');
-    var QWeb = core.qweb;
 
     var ActionMobileKioskAbstract = AbstractAction.extend({
 
@@ -43,7 +42,8 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
         init: function (parent, action) {
             var self = this;
 
-            // Add events that will be raised for each action that inherit of this abstract action
+            // Add events that will be raised for each action that
+            // inherit of this abstract action
             Object.keys(this._kiosk_abstract_events).forEach(function (event_key) {
                 self.events[event_key] = self._kiosk_abstract_events[event_key];
 
@@ -73,11 +73,11 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
         },
 
         start: function () {
-            var self = this;
             this.session = session;
 
             // Make a RPC call every day to keep the session alive
-            this._interval = window.setInterval(this._callServer.bind(this), 60*60*1000*24);
+            this._interval = window.setInterval(
+                this._callServer.bind(this), 60*60*1000*24);
 
             // Enable barcode if required
             this._toggleBarcode(true);
@@ -103,7 +103,7 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
             }
         },
 
-        _onBarcodeScanned: function (barcode) {
+        _onBarcodeScanned: function () {
             this._toggleBarcode(false);
         },
 

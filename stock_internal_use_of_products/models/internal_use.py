@@ -148,8 +148,8 @@ class InternalUse(models.Model):
         # entries
         for use in self.filtered(
                 lambda x: (
-                    x.state == 'confirmed' and
-                    x.internal_use_case_id.journal_id)):
+                    x.state == 'confirmed'
+                    and x.internal_use_case_id.journal_id)):
 
             key = use._get_expense_entry_key()
             if key in use_data.keys():
@@ -157,7 +157,7 @@ class InternalUse(models.Model):
             else:
                 use_data[key] = [use.id]
 
-        for key, use_ids in use_data.items():
+        for _key, use_ids in use_data.items():
             uses = self.browse(use_ids)
             # prepare Account Move
             account_move_vals = uses._prepare_account_move()
@@ -185,7 +185,7 @@ class InternalUse(models.Model):
                     uncharge_use_line_data[uncharge_line_key] = [line.id]
 
             # Create uncharge Lines
-            for key, line_ids in uncharge_use_line_data.items():
+            for _key, line_ids in uncharge_use_line_data.items():
                 lines = InternalUseLine.browse(line_ids)
                 account_move_line_vals =\
                     lines._prepare_account_move_line_uncharge(
@@ -194,7 +194,7 @@ class InternalUse(models.Model):
                     (0, 0, account_move_line_vals))
 
             # Create charge Lines
-            for key, line_ids in charge_use_line_data.items():
+            for _key, line_ids in charge_use_line_data.items():
                 lines = InternalUseLine.browse(line_ids)
                 account_move_line_vals =\
                     lines._prepare_account_move_line_charge(
@@ -219,8 +219,8 @@ class InternalUse(models.Model):
         # entries. (fix incorrect state)
         uses = self.filtered(
             lambda x: (
-                x.state == 'confirmed' and
-                not x.internal_use_case_id.journal_id))
+                x.state == 'confirmed'
+                and not x.internal_use_case_id.journal_id))
         uses.write({
             'state': 'done',
         })

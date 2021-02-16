@@ -90,8 +90,8 @@ class AccountInvoiceDuplicationWizard(models.TransientModel):
         self.ensure_one()
         self.date_line_ids = []
 
-        if (self.begin_date and self.duplication_type and
-                self.duplication_duration):
+        if (self.begin_date and self.duplication_type
+                and self.duplication_duration):
             date_line_ids = []
             date_line_ids.append((5, 0, 0))
             begin_index = 0
