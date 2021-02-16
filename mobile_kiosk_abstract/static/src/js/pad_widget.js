@@ -11,25 +11,25 @@ odoo.define("mobile_kiosk_abstract.pad_widget", function (require) {
         template: "MobileAppAbstract.PadWidget",
 
         events: {
-            'click .kiosk-button-pad': function(event) {
+            'click .kiosk-button-pad': function (event) {
                 var key = event.target.attributes["data-value-id"].nodeValue;
-                if (! isNaN(key)){
+                if (! isNaN(key)) {
                     this.set_input_value(this.get_input_value() + key);
-                } else if (key === "."){
-                    if (this.$('#quantity').val().indexOf(".") === -1){
+                } else if (key === ".") {
+                    if (this.$('#quantity').val().indexOf(".") === -1) {
                         this.set_input_value(this.get_input_value() + key);
                     }
-                } else if (key === "C"){
+                } else if (key === "C") {
                     this.set_input_value("");
                 }
             },
         },
 
-        get_input_value: function(){
+        get_input_value: function () {
             return this.$('#quantity').val();
         },
 
-        set_input_value: function(value){
+        set_input_value: function (value) {
             return this.$('#quantity').val(value);
         },
 
