@@ -6,11 +6,8 @@ odoo.define("mobile_kiosk_inventory.set_inventory", function (require) {
     "use strict";
 
     var ActionMobileKioskInventory = require("mobile_kiosk_inventory.inventory_action");
-    var ajax = require("web.ajax");
     var core = require("web.core");
-    var Session = require("web.session");
-
-    var QWeb = core.qweb;
+    var _t = core._t;
 
     var ActionSetInventory = ActionMobileKioskInventory.extend({
         template: "MobileAppInventorySetInventory",
@@ -33,7 +30,8 @@ odoo.define("mobile_kiosk_inventory.set_inventory", function (require) {
                     })
                         .then(function (result) {
                             self.kiosk_notify_result(result);
-                            self.kiosk_update_context_from_result(self.kiosk_context, result);
+                            self.kiosk_update_context_from_result(
+                                self.kiosk_context, result);
 
                             // Go to the quantity page
                             self.do_action({
@@ -76,7 +74,10 @@ odoo.define("mobile_kiosk_inventory.set_inventory", function (require) {
 
     });
 
-    core.action_registry.add("mobile_kiosk_inventory_action_set_inventory", ActionSetInventory);
+    core.action_registry.add(
+        "mobile_kiosk_inventory_action_set_inventory",
+        ActionSetInventory
+    );
 
     return ActionSetInventory;
 
