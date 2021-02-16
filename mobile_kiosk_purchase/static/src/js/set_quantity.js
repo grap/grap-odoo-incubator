@@ -6,11 +6,8 @@ odoo.define('mobile_kiosk_purchase.set_quantity', function (require) {
     "use strict";
 
     var ActionMobileKioskPurchase = require("mobile_kiosk_purchase.purchase_action");
-    var ajax = require('web.ajax');
     var core = require('web.core');
-    var Session = require('web.session');
-
-    var QWeb = core.qweb;
+    var _t = core._t;
 
     var ActionSetQuantity = ActionMobileKioskPurchase.extend({
         template: "MobileAppPurchaseSetQuantity",
@@ -39,15 +36,19 @@ odoo.define('mobile_kiosk_purchase.set_quantity', function (require) {
                     this._rpc({
                         model: 'mobile.kiosk.purchase',
                         method: 'add_quantity',
-                        args: [self.kiosk_context.purchase_order_id, self.kiosk_context.product_id, quantity],
+                        args: [
+                            self.kiosk_context.purchase_order_id,
+                            self.kiosk_context.product_id,
+                            quantity,
+                        ],
                     })
                         .then(function (result) {
                             self.kiosk_notify_result(result);
                             if (result.status === "ok") {
                                 if (self.kiosk_context.partner_id === undefined) {
-                                // If we don't have any partner selected,
-                                // we reset the value that has been defined by the
-                                // selection of a product
+                                    // If we don't have any partner selected,
+                                    // we reset the value that has been defined by the
+                                    // selection of a product
                                     self.kiosk_context.partner_name = undefined;
                                     self.kiosk_context.purchase_order_id = undefined;
                                     self.kiosk_context.purchase_order_name = undefined;

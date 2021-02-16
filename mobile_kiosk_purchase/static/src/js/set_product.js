@@ -6,11 +6,7 @@ odoo.define("mobile_kiosk_purchase.set_product", function (require) {
     "use strict";
 
     var ActionMobileKioskPurchase = require("mobile_kiosk_purchase.purchase_action");
-    var ajax = require("web.ajax");
     var core = require("web.core");
-    var Session = require("web.session");
-
-    var QWeb = core.qweb;
 
     var ActionSetProduct = ActionMobileKioskPurchase.extend({
         template: "MobileAppPurchaseSetProduct",
@@ -52,7 +48,8 @@ odoo.define("mobile_kiosk_purchase.set_product", function (require) {
                 .then(function (result) {
                     self.kiosk_notify_result(result);
                     if (result.status === "ok") {
-                        self.kiosk_update_context_from_result(self.kiosk_context, result);
+                        self.kiosk_update_context_from_result(
+                            self.kiosk_context, result);
 
                         // Go to the quantity page
                         self.do_action({
@@ -61,9 +58,8 @@ odoo.define("mobile_kiosk_purchase.set_product", function (require) {
                             tag: "mobile_kiosk_purchase_action_set_quantity",
                             kiosk_context: self.kiosk_context,
                         });
-                    } {
-                        self._toggleBarcode(true);
                     }
+                    self._toggleBarcode(true);
                 }, function () {
                     self.kiosk_warn_connexion();
                     self._toggleBarcode(true);
@@ -72,7 +68,10 @@ odoo.define("mobile_kiosk_purchase.set_product", function (require) {
         },
     });
 
-    core.action_registry.add("mobile_kiosk_purchase_action_set_product", ActionSetProduct);
+    core.action_registry.add(
+        "mobile_kiosk_purchase_action_set_product",
+        ActionSetProduct
+    );
 
     return ActionSetProduct;
 
