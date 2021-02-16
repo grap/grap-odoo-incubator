@@ -6,8 +6,7 @@
     "version": "12.0.1.0.2",
     "category": "Stock",
     "website": "https://github.com/OCA/stock-logistics-workflow",
-    "author": "GRAP, "
-              "Odoo Community Association (OCA)",
+    "author": "GRAP, " "Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
@@ -16,6 +15,6 @@
         "stock",
     ],
     "data": [
-        'views/view_stock_picking.xml',
+        "views/view_stock_picking.xml",
     ],
 }
