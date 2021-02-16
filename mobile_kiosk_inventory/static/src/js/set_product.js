@@ -24,7 +24,7 @@ odoo.define("mobile_kiosk_inventory.set_product", function (require) {
         ],
 
         events: {
-            "click .button_list_products": function() {
+            "click .button_list_products": function () {
                 this.do_action("mobile_kiosk_abstract.action_product_product_kanban", {
                     additional_context: {
                         "kiosk_action": "mobile_kiosk_inventory_select_product",
@@ -40,7 +40,7 @@ odoo.define("mobile_kiosk_inventory.set_product", function (require) {
             },
         },
 
-        _onBarcodeScanned: function(barcode) {
+        _onBarcodeScanned: function (barcode) {
             var self = this;
             this._super.apply(this, arguments);
             this._rpc({
@@ -48,25 +48,25 @@ odoo.define("mobile_kiosk_inventory.set_product", function (require) {
                 method: 'scan_barcode',
                 args: [self.kiosk_context.inventory_id, barcode],
             })
-            .then(function (result) {
-                self.kiosk_notify_result(result);
-                if (result["status"] === "ok"){
-                    self.kiosk_update_context_from_result(self.kiosk_context, result);
+                .then(function (result) {
+                    self.kiosk_notify_result(result);
+                    if (result.status === "ok") {
+                        self.kiosk_update_context_from_result(self.kiosk_context, result);
 
-                    // Go to the quantity page
-                    self.do_action({
-                        type: 'ir.actions.client',
-                        name: 'Confirm',
-                        tag: "mobile_kiosk_inventory_action_set_quantity",
-                        kiosk_context: self.kiosk_context,
-                    });
-                } {
+                        // Go to the quantity page
+                        self.do_action({
+                            type: 'ir.actions.client',
+                            name: 'Confirm',
+                            tag: "mobile_kiosk_inventory_action_set_quantity",
+                            kiosk_context: self.kiosk_context,
+                        });
+                    } {
+                        self._toggleBarcode(true);
+                    }
+                }, function () {
+                    self.kiosk_warn_connexion();
                     self._toggleBarcode(true);
-                }
-            }, function () {
-                self.kiosk_warn_connexion();
-                self._toggleBarcode(true);
-            });
+                });
 
         },
     });
