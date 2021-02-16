@@ -26,7 +26,7 @@ odoo.define('mobile_kiosk_inventory.set_quantity', function (require) {
         _kiosk_pad_widget_required: true,
 
         events: {
-            "click .button_add_quantity": function() {
+            "click .button_add_quantity": function () {
                 var self = this;
                 var quantity = parseFloat(this.numpad_widget.get_input_value(), 10);
                 if (isNaN(quantity)) {
@@ -41,20 +41,20 @@ odoo.define('mobile_kiosk_inventory.set_quantity', function (require) {
                         method: 'add_quantity',
                         args: [self.kiosk_context.inventory_id, self.kiosk_context.product_id, quantity],
                     })
-                    .then(function (result) {
-                        self.kiosk_notify_result(result);
-                        if (result["status"] === "ok"){
+                        .then(function (result) {
+                            self.kiosk_notify_result(result);
+                            if (result.status === "ok") {
                             // Return to the product page
-                            self.do_action({
-                                type: 'ir.actions.client',
-                                name: 'Select Product',
-                                tag: "mobile_kiosk_inventory_action_set_product",
-                                kiosk_context: self.kiosk_context,
-                            });
-                        }
-                    }, function () {
-                        self.kiosk_warn_connexion();
-                    });
+                                self.do_action({
+                                    type: 'ir.actions.client',
+                                    name: 'Select Product',
+                                    tag: "mobile_kiosk_inventory_action_set_product",
+                                    kiosk_context: self.kiosk_context,
+                                });
+                            }
+                        }, function () {
+                            self.kiosk_warn_connexion();
+                        });
                 }
             },
         },

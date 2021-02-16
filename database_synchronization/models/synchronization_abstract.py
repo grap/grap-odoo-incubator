@@ -3,12 +3,13 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
-import odoorpc
 from urllib.error import URLError
-from odoo import _, api, models
-from odoo.release import version_info
 
+import odoorpc
+
+from odoo import _, api, models
 from odoo.exceptions import UserError
+from odoo.release import version_info
 
 _logger = logging.getLogger(__name__)
 
@@ -80,7 +81,7 @@ class SynchronizationAbstract(models.AbstractModel):
                 " are in a bad state locally\n"
                 "- %s " % (
                     '\n- '.join([
-                        "%s : %s" % (x.name, x.state)
+                        "{} : {}".format(x.name, x.state)
                         for x in local_incorrect_state_modules]))
             ))
 
@@ -96,7 +97,7 @@ class SynchronizationAbstract(models.AbstractModel):
                 " are in a bad state on external Odoo\n"
                 "- %s " % (
                     '\n- '.join([
-                        "%s : %s" % (x["name"], x["state"])
+                        "{} : {}".format(x["name"], x["state"])
                         for x in external_incorrect_state_modules]))
             ))
 

@@ -38,6 +38,6 @@ class SynchronizationMapping(models.Model):
     @api.depends("model_id.model", "internal_id")
     def _compute_name(self):
         for mapping in self:
-            mapping.name = "%s - %s" % (
+            mapping.name = "{} - {}".format(
                 mapping.synchronization_data_id.model_id.model,
                 mapping.internal_id)

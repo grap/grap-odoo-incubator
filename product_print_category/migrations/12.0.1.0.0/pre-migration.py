@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # Copyright (C) 2017-Today: GRAP (http://www.grap.coop)
 # @author: Quentin DUPONT (https://twitter.com/pondupont)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
-from openupgradelib import openupgrade
 
+from openupgradelib import openupgrade
 
 logger = logging.getLogger('OpenUpgrade.product_print_category')
 

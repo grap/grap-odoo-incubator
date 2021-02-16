@@ -5,7 +5,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 */
 
 
-odoo.define('pos_sector.models', function (require){
+odoo.define('pos_sector.models', function (require) {
     "use strict";
 
     var models = require('point_of_sale.models');
@@ -22,9 +22,9 @@ odoo.define('pos_sector.models', function (require){
                     product_product_model = this.models[i];
                 }
             }
-            if (product_product_model){
+            if (product_product_model) {
                 this.domain_before_pos_sector = product_product_model.domain;
-                product_product_model.domain = function(self){
+                product_product_model.domain = function (self) {
                     var new_domain = self.domain_before_pos_sector;
                     new_domain.push('|', ['sector_id', '=', false], ['sector_id', 'in', self.config.sector_ids]);
                     return new_domain;

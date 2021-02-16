@@ -4,6 +4,7 @@
 
 
 from odoo import api, models
+
 from .product_product import _SUFFIX_LENGTH
 
 
