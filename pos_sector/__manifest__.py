@@ -2,35 +2,35 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    'name': 'Point of Sale - Sectors',
-    'summary': "Set sectors to the products and display in given PoS Sessions",
-    'version': '12.0.1.0.2',
-    'category': 'Point of Sale',
-    'author': 'GRAP',
-    'website': 'http://www.grap.coop',
-    'license': 'AGPL-3',
-    'depends': [
-        'point_of_sale',
+    "name": "Point of Sale - Sectors",
+    "summary": "Set sectors to the products and display in given PoS Sessions",
+    "version": "12.0.1.0.2",
+    "category": "Point of Sale",
+    "author": "GRAP",
+    "website": "http://www.grap.coop",
+    "license": "AGPL-3",
+    "depends": [
+        "point_of_sale",
     ],
-    'data': [
-        'security/ir_rule.xml',
-        'security/res_groups.xml',
-        'security/ir.model.access.csv',
-        'views/assets.xml',
-        'views/view_pos_sector.xml',
-        'views/view_product_template.xml',
-        'views/view_pos_config.xml',
-        'views/menu.xml',
+    "data": [
+        "security/ir_rule.xml",
+        "security/res_groups.xml",
+        "security/ir.model.access.csv",
+        "views/assets.xml",
+        "views/view_pos_sector.xml",
+        "views/view_product_template.xml",
+        "views/view_pos_config.xml",
+        "views/menu.xml",
     ],
-    'demo': [
-        'demo/res_groups.xml',
-        'demo/pos_sector.xml',
-        'demo/pos_config.xml',
-        'demo/product_product.xml',
+    "demo": [
+        "demo/res_groups.xml",
+        "demo/pos_sector.xml",
+        "demo/pos_config.xml",
+        "demo/product_product.xml",
     ],
-    'images': [
-        'static/description/pos_config_form.png',
-        'static/description/product_form.png',
+    "images": [
+        "static/description/pos_config_form.png",
+        "static/description/product_form.png",
     ],
-    'installable': True,
+    "installable": True,
 }
