@@ -27,7 +27,7 @@ class StockPicking(models.Model):
     @api.multi
     def quick_quantities_done(self):
         for picking in self:
-            moves = self.mapped('move_lines').filtered(
+            moves = picking.mapped('move_lines').filtered(
                 lambda move: move.state not in ('draft', 'cancel', 'done'))
             if not moves:
                 raise UserError(_('Nothing to check the availability for.'))
