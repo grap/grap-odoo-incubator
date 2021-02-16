@@ -9,7 +9,8 @@ class ResCompany(models.Model):
     _inherit = "res.company"
 
     deposit_product_id = fields.Many2one(
-        string="Default Deposit Product", comodel_name="product.product",
-        help='Default product used for payment advances',
+        string="Default Deposit Product",
+        comodel_name="product.product",
+        help="Default product used for payment advances",
         domain="['&', ('company_id', '=', id), ('type', '=', 'service')]",
     )
