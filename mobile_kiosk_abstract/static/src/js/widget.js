@@ -6,6 +6,9 @@ odoo.define("mobile_kiosk_abstract.widget", function (require) {
     "use strict";
 
     var Widget = require('web.Widget');
+    var core = require("web.core");
+    var _t = core._t;
+
 
     Widget.include({
 
