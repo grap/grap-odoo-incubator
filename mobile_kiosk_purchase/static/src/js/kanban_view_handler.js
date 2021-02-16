@@ -25,7 +25,8 @@ odoo.define("mobile_kiosk_purchase.kanban_view_handler", function (require) {
                     .then(function (result) {
                         return result;
                     });
-            } else if (context.kiosk_action === "mobile_kiosk_purchase_select_product") {
+            } else if (
+                context.kiosk_action === "mobile_kiosk_purchase_select_product") {
                 return self._rpc({
                     model: 'mobile.kiosk.purchase',
                     method: 'select_product',

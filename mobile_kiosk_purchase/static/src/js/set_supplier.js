@@ -6,11 +6,7 @@ odoo.define("mobile_kiosk_purchase.set_supplier", function (require) {
     "use strict";
 
     var ActionMobileKioskPurchase = require("mobile_kiosk_purchase.purchase_action");
-    var ajax = require("web.ajax");
     var core = require("web.core");
-    var Session = require("web.session");
-
-    var QWeb = core.qweb;
 
     var ActionSetSupplier = ActionMobileKioskPurchase.extend({
         template: "MobileAppPurchaseSetSupplier",
@@ -42,7 +38,10 @@ odoo.define("mobile_kiosk_purchase.set_supplier", function (require) {
 
     });
 
-    core.action_registry.add("mobile_kiosk_purchase_action_set_supplier", ActionSetSupplier);
+    core.action_registry.add(
+        "mobile_kiosk_purchase_action_set_supplier",
+        ActionSetSupplier
+    );
 
     return ActionSetSupplier;
 
