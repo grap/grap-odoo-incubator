@@ -6,10 +6,6 @@ odoo.define("mobile_kiosk_abstract.kanban_view_handler", function (require) {
     "use strict";
 
     var KanbanRecord = require("web.KanbanRecord");
-    var crash_manager = require('web.crash_manager');
-    var translation = require('web.translation');
-
-    var _t = translation._t;
 
     KanbanRecord.include({
 
@@ -28,8 +24,10 @@ odoo.define("mobile_kiosk_abstract.kanban_view_handler", function (require) {
         _openRecord: function () {
             var self = this;
             if (this.$el.parents(".mobile_kiosk_mode").length) {
-                var kiosk_context = this.qweb_context.widget.state.context.kiosk_context || {};
-                var fields = this.qweb_context.widget.state.context.kiosk_extra_fields || {};
+                var kiosk_context =
+                    this.qweb_context.widget.state.context.kiosk_context || {};
+                var fields =
+                    this.qweb_context.widget.state.context.kiosk_extra_fields || {};
                 Object.keys(fields).forEach(function (key) {
                     kiosk_context[key] = self.record[fields[key]].raw_value;
                 });
@@ -37,7 +35,8 @@ odoo.define("mobile_kiosk_abstract.kanban_view_handler", function (require) {
                 this._mobileOpenRecordHook()
                     .then(function (result) {
                         if (result === undefined) {
-                        // TODO, fixme don't understand why I don't receive the result of
+                        // TODO, fixme don't understand why I don't
+                        // receive the result of
                         // the false promise
                             result = {"status": "ok"};
                         }
