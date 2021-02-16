@@ -16,7 +16,7 @@ odoo.define("mobile_kiosk_inventory.set_inventory", function (require) {
         template: "MobileAppInventorySetInventory",
 
         events: {
-            "click .button_create_inventory": function() {
+            "click .button_create_inventory": function () {
                 var self = this;
                 var inventory_name = this.$('#inventory_name').val().trim();
                 if (inventory_name.length === 0) {
@@ -31,21 +31,21 @@ odoo.define("mobile_kiosk_inventory.set_inventory", function (require) {
                         method: 'create_inventory',
                         args: [inventory_name],
                     })
-                    .then(function (result) {
-                        self.kiosk_notify_result(result);
-                        self.kiosk_update_context_from_result(self.kiosk_context, result);
+                        .then(function (result) {
+                            self.kiosk_notify_result(result);
+                            self.kiosk_update_context_from_result(self.kiosk_context, result);
 
-                        // Go to the quantity page
-                        self.do_action({
-                            type: 'ir.actions.client',
-                            name: 'Confirm',
-                            tag: "mobile_kiosk_inventory_action_set_product",
-                            kiosk_context: self.kiosk_context,
+                            // Go to the quantity page
+                            self.do_action({
+                                type: 'ir.actions.client',
+                                name: 'Confirm',
+                                tag: "mobile_kiosk_inventory_action_set_product",
+                                kiosk_context: self.kiosk_context,
+                            });
+
+                        }, function () {
+                            self.kiosk_warn_connexion();
                         });
-
-                    }, function () {
-                        self.kiosk_warn_connexion();
-                    });
                 }
             },
 
@@ -59,7 +59,7 @@ odoo.define("mobile_kiosk_inventory.set_inventory", function (require) {
             //         kiosk_context: this.kiosk_context,
             //     });
             // },
-            "click .button_list_inventories": function() {
+            "click .button_list_inventories": function () {
                 this.do_action("mobile_kiosk_inventory.action_stock_inventory_kanban", {
                     additional_context: {
                         "kiosk_action": "mobile_kiosk_inventory_select_inventory",
