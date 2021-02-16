@@ -13,7 +13,7 @@ odoo.define('pos_sector.models', function (require) {
 
     models.PosModel = models.PosModel.extend({
 
-        initialize: function (session, attributes) {
+        initialize: function () {
             PosModelParent.initialize.apply(this, arguments);
 
             var product_product_model = false;
@@ -26,7 +26,11 @@ odoo.define('pos_sector.models', function (require) {
                 this.domain_before_pos_sector = product_product_model.domain;
                 product_product_model.domain = function (self) {
                     var new_domain = self.domain_before_pos_sector;
-                    new_domain.push('|', ['sector_id', '=', false], ['sector_id', 'in', self.config.sector_ids]);
+                    new_domain.push(
+                        '|',
+                        ['sector_id', '=', false],
+                        ['sector_id', 'in', self.config.sector_ids]
+                    );
                     return new_domain;
                 };
             }
