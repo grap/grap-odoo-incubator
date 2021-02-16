@@ -16,7 +16,7 @@ odoo.define("mobile_kiosk_purchase.set_supplier", function (require) {
         template: "MobileAppPurchaseSetSupplier",
 
         events: {
-            "click .button_skip_partner": function() {
+            "click .button_skip_partner": function () {
                 // Go to the product page
                 this.do_action({
                     type: 'ir.actions.client',
@@ -25,7 +25,7 @@ odoo.define("mobile_kiosk_purchase.set_supplier", function (require) {
                     kiosk_context: this.kiosk_context,
                 });
             },
-            "click .button_list_partners": function() {
+            "click .button_list_partners": function () {
                 this.do_action("mobile_kiosk_abstract.action_res_partner_kanban", {
                     additional_context: {
                         "kiosk_action": "mobile_kiosk_purchase_select_supplier",
