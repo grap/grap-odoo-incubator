@@ -5,8 +5,7 @@ from odoo import fields, models
 
 
 class PosConfig(models.Model):
-    _inherit = 'pos.config'
+    _inherit = "pos.config"
 
     # Columns section
-    sector_ids = fields.Many2many(
-        string='Sectors', comodel_name='pos.sector')
+    sector_ids = fields.Many2many(string="Sectors", comodel_name="pos.sector")

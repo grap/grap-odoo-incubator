@@ -5,8 +5,9 @@ from odoo import fields, models
 
 
 class ProductTemplate(models.Model):
-    _inherit = 'product.template'
+    _inherit = "product.template"
 
     # Columns section
     sector_id = fields.Many2one(
-        comodel_name='pos.sector', string='Point of Sale Sector')
+        comodel_name="pos.sector", string="Point of Sale Sector"
+    )
