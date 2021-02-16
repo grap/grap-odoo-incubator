@@ -6,12 +6,12 @@ from odoo import api, models
 
 
 class SaleOrder(models.Model):
-    _inherit = 'sale.order'
+    _inherit = "sale.order"
 
     @api.multi
     def action_confirm(self):
-        """ After Confirm, force stock.move.line to be full, ready to be
-         validated"""
+        """After Confirm, force stock.move.line to be full, ready to be
+        validated"""
         super().action_confirm()
         for picking in self.picking_ids:
             picking.quick_quantities_done()

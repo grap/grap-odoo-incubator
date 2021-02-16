@@ -9,7 +9,7 @@
     "author": "GRAP",
     "website": "http://www.grap.coop",
     "license": "AGPL-3",
-    "depends": ['stock'],
+    "depends": ["stock"],
     "data": [
         "views/view_stock_inventory.xml",
     ],

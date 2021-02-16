@@ -6,7 +6,7 @@ from odoo import api, fields, models
 
 
 class SaleAdvancePaymentInv(models.TransientModel):
-    _inherit = 'sale.advance.payment.inv'
+    _inherit = "sale.advance.payment.inv"
 
     @api.model
     def _default_product_id(self):
@@ -15,9 +15,9 @@ class SaleAdvancePaymentInv(models.TransientModel):
             return super(SaleAdvancePaymentInv, self)._default_product_id()
         else:
             action = self.env.ref(
-                "sale."
-                "action_view_sale_advance_payment_inv").read()[0]
-            action['context'] = {'product_id': product_id.id}
+                "sale." "action_view_sale_advance_payment_inv"
+            ).read()[0]
+            action["context"] = {"product_id": product_id.id}
             return product_id
 
     product_id = fields.Many2one(default=_default_product_id)

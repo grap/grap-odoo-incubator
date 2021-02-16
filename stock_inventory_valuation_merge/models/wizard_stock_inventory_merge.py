@@ -14,5 +14,4 @@ class WizardStockInventoryMerge(models.TransientModel):
     @api.multi
     def action_merge(self):
         action_data = super(WizardStockInventoryMerge, self).action_merge()
-        self.env["stock.inventory"].browse(
-            action_data["res_id"])._compute_valuation()
+        self.env["stock.inventory"].browse(action_data["res_id"])._compute_valuation()

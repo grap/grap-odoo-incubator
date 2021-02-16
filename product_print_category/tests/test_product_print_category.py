@@ -14,9 +14,7 @@ class TestProductPrintCategory(TransactionCase):
         self.custom_report_obj = self.env[
             "report.product_print_category.report_pricetag"
         ]
-        self.print_category = self.env.ref(
-            "product_print_category.demo_category"
-        )
+        self.print_category = self.env.ref("product_print_category.demo_category")
 
     # Test Section
     def test_01_test_wizard_obsolete(self):

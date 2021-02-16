@@ -10,5 +10,8 @@ class ProductCategory(models.Model):
 
     # Fields Section
     type = fields.Selection(
-        selection=[('normal', 'Normal'), ('view', 'View')],
-        default="normal", string="Type", required=True)
+        selection=[("normal", "Normal"), ("view", "View")],
+        default="normal",
+        string="Type",
+        required=True,
+    )

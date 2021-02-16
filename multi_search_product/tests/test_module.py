@@ -23,8 +23,9 @@ class TestModule(TransactionCase):
             "name": self.name_with_separator,
             "categ_id": self.product_category.id,
         }
-        product = self.ProductProduct.with_context(
-            mail_create_nosubscribe=True).create(vals)
+        product = self.ProductProduct.with_context(mail_create_nosubscribe=True).create(
+            vals
+        )
         self.assertEqual(
             product.name,
             self.name_without_separator,
@@ -45,8 +46,9 @@ class TestModule(TransactionCase):
             "name": self.name_with_separator,
             "categ_id": self.product_category.id,
         }
-        product = self.ProductProduct.with_context(
-            mail_create_nosubscribe=True).create(vals)
+        product = self.ProductProduct.with_context(mail_create_nosubscribe=True).create(
+            vals
+        )
         self.assertEqual(
             product.name,
             self.name_with_separator,
@@ -73,8 +75,7 @@ class TestModule(TransactionCase):
             "name": "Abc other Word Def",
             "categ_id": self.product_category.id,
         }
-        self.ProductProduct.with_context(
-            mail_create_nosubscribe=True).create(vals)
+        self.ProductProduct.with_context(mail_create_nosubscribe=True).create(vals)
 
         # First Search (Feature disabled)
         disabled_feature_search = len(self.ProductProduct.search(ordered_domain))
@@ -110,8 +111,9 @@ class TestModule(TransactionCase):
             "name": self.name_with_separator,
             "categ_id": self.product_category.id,
         }
-        product = self.ProductProduct.with_context(
-            mail_create_nosubscribe=True).create(vals)
+        product = self.ProductProduct.with_context(mail_create_nosubscribe=True).create(
+            vals
+        )
 
         # Enable and disable mechanism
         self._enable_settings(True)
@@ -125,8 +127,10 @@ class TestModule(TransactionCase):
 
     def _enable_settings(self, enable):
         setting = self.ResConfigSettings.create({})
-        setting.write({
-            "multi_search_product_separator": enable and self.separator,
-            "multi_search_product_separator_changed": True,
-        })
+        setting.write(
+            {
+                "multi_search_product_separator": enable and self.separator,
+                "multi_search_product_separator_changed": True,
+            }
+        )
         setting.set_values()

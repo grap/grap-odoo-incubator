@@ -14,15 +14,9 @@ class TestStockInventoryMerge(TransactionCase):
         self.wizard_obj = self.env["wizard.stock.inventory.merge"]
         self.inventory_1 = self.env.ref("stock_inventory_merge.inventory_1")
         self.stock_location = self.env.ref("stock.stock_location_stock")
-        self.component_location = self.env.ref(
-            "stock.stock_location_components"
-        )
-        self.line_1_1 = self.env.ref(
-            "stock_inventory_merge.inventory_line_1_1"
-        )
-        self.line_1_2 = self.env.ref(
-            "stock_inventory_merge.inventory_line_1_2"
-        )
+        self.component_location = self.env.ref("stock.stock_location_components")
+        self.line_1_1 = self.env.ref("stock_inventory_merge.inventory_line_1_1")
+        self.line_1_2 = self.env.ref("stock_inventory_merge.inventory_line_1_2")
         self.inventory_2 = self.env.ref("stock_inventory_merge.inventory_2")
         self.ipad_product = self.env.ref("product.product_product_6")
 
@@ -39,8 +33,7 @@ class TestStockInventoryMerge(TransactionCase):
             2,
             "Merging duplicated lines should delete lines.",
         )
-        lines = self.inventory_1.line_ids.search(
-            [("id", "in", to_merge_line_ids)])
+        lines = self.inventory_1.line_ids.search([("id", "in", to_merge_line_ids)])
         self.assertEqual(
             len(lines),
             1,
@@ -63,21 +56,18 @@ class TestStockInventoryMerge(TransactionCase):
             inventory.action_start()
 
         wizard = self.wizard_obj.with_context(
-            active_ids=to_merge_inventory_ids, active_model="stock.inventory",
+            active_ids=to_merge_inventory_ids,
+            active_model="stock.inventory",
         ).create({"name": inventory_name})
         wizard.action_merge()
 
-        inventories = self.inventory_obj.search(
-            [("id", "in", to_merge_inventory_ids)]
-        )
+        inventories = self.inventory_obj.search([("id", "in", to_merge_inventory_ids)])
         self.assertEqual(
             len(inventories),
             2,
             "Merge Wizard Inventories should not delete inventories.",
         )
-        new_inventory = self.inventory_obj.search(
-            [("name", "=", inventory_name)]
-        )
+        new_inventory = self.inventory_obj.search([("name", "=", inventory_name)])
         self.assertEqual(
             len(new_inventory.line_ids),
             len(inventories.mapped("line_ids")),

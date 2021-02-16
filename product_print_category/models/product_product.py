@@ -15,10 +15,7 @@ class ProductProduct(models.Model):
         default=lambda s: s._default_print_category_id(),
     )
 
-    to_print = fields.Boolean(
-        string="To Print",
-        store=True
-    )
+    to_print = fields.Boolean(string="To Print", store=True)
 
     # Default Section
     def _default_print_category_id(self):
@@ -40,9 +37,7 @@ class ProductProduct(models.Model):
                 if len(
                     list(
                         set(vals.keys())
-                        & set(
-                            product.print_category_id.field_ids.mapped("name")
-                        )
+                        & set(product.print_category_id.field_ids.mapped("name"))
                     )
                 ):
                     product_ids.append(product.id)

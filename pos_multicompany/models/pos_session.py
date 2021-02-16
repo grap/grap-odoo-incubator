@@ -7,8 +7,12 @@ from openerp import fields, models
 
 
 class PosSession(models.Model):
-    _inherit = 'pos.session'
+    _inherit = "pos.session"
 
     company_id = fields.Many2one(
-        comodel_name='res.company', string='Company',
-        related='config_id.company_id', store=True, readonly=True)
+        comodel_name="res.company",
+        string="Company",
+        related="config_id.company_id",
+        store=True,
+        readonly=True,
+    )

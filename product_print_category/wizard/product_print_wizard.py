@@ -36,9 +36,7 @@ class ProductPrintWizard(models.TransientModel):
             products = product_obj.browse(product_ids)
         elif context.get("active_model", False) == "product.template":
             template_ids = context.get("active_ids", [])
-            products = product_obj.search(
-                [("product_tmpl_id", "in", template_ids)]
-            )
+            products = product_obj.search([("product_tmpl_id", "in", template_ids)])
         else:
             return False
 
@@ -71,8 +69,9 @@ class ProductPrintWizard(models.TransientModel):
     def print_report(self):
         self.ensure_one()
         data = self._prepare_data()
-        return self.env.ref(
-            'product_print_category.pricetag').report_action(self, data=data)
+        return self.env.ref("product_print_category.pricetag").report_action(
+            self, data=data
+        )
 
     @api.multi
     def _prepare_data(self):

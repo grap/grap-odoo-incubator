@@ -7,7 +7,8 @@ from odoo import fields, models
 
 
 class StockMove(models.Model):
-    _inherit = 'stock.move'
+    _inherit = "stock.move"
 
     internal_use_id = fields.Many2one(
-        comodel_name='internal.use', string='Internal Use', copy=False)
+        comodel_name="internal.use", string="Internal Use", copy=False
+    )

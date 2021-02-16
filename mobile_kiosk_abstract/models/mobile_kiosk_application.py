@@ -7,14 +7,14 @@ from openerp import fields, models
 
 
 class MobileKioskApplication(models.Model):
-    _name = 'mobile.kiosk.application'
-    _description = 'Mobile Kiosk Applications'
+    _name = "mobile.kiosk.application"
+    _description = "Mobile Kiosk Applications"
 
     _TARGET_SELECTION = [
-        ('current', 'Current Window'),
-        ('new', 'New Window'),
-        ('fullscreen', 'Full Screen'),
-        ('main', 'Main action of Current Window'),
+        ("current", "Current Window"),
+        ("new", "New Window"),
+        ("fullscreen", "Full Screen"),
+        ("main", "Main action of Current Window"),
     ]
 
     name = fields.Char(string="Name", required=True, translate=True)

@@ -8,9 +8,11 @@ from odoo.tests.common import TransactionCase
 class TestQuickQuantityDone(TransactionCase):
     def setUp(self):
         super(TestQuickQuantityDone, self).setUp()
-        partner = self.env['res.partner'].create({
-            'name': 'Test',
-        })
+        partner = self.env["res.partner"].create(
+            {
+                "name": "Test",
+            }
+        )
         self.product_id_1 = self.env.ref("product.product_product_8")
         self.product_id_2 = self.env.ref("product.product_product_11")
 
@@ -48,7 +50,7 @@ class TestQuickQuantityDone(TransactionCase):
                             "location_id": stock_location.id,
                             "location_dest_id": customer_location.id,
                         },
-                    )
+                    ),
                 ],
             }
         )
@@ -85,7 +87,7 @@ class TestQuickQuantityDone(TransactionCase):
                             "location_id": stock_location.id,
                             "location_dest_id": customer_location.id,
                         },
-                    )
+                    ),
                 ],
             }
         )

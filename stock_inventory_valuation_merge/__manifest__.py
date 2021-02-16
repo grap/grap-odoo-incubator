@@ -9,7 +9,10 @@
     "author": "GRAP",
     "website": "http://www.grap.coop",
     "license": "AGPL-3",
-    "depends": ["stock_inventory_valuation", "stock_inventory_merge", ],
+    "depends": [
+        "stock_inventory_valuation",
+        "stock_inventory_merge",
+    ],
     "auto_install": True,
     "installable": True,
 }

@@ -3,18 +3,18 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    'name': 'Sale Deposit Product per Company',
-    'summary': "Handle one deposit product (down payment) per company",
-    'version': '12.0.1.0.1',
-    'category': 'Sale',
+    "name": "Sale Deposit Product per Company",
+    "summary": "Handle one deposit product (down payment) per company",
+    "version": "12.0.1.0.1",
+    "category": "Sale",
     "author": "GRAP, Odoo Community Association (OCA)",
-    'website': 'http://www.grap.coop',
-    'license': 'AGPL-3',
-    'depends': [
-        'sale',
+    "website": "http://www.grap.coop",
+    "license": "AGPL-3",
+    "depends": [
+        "sale",
     ],
-    'data': [
-        'views/view_res_company.xml',
+    "data": [
+        "views/view_res_company.xml",
     ],
-    'installable': True,
+    "installable": True,
 }

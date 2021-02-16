@@ -10,5 +10,5 @@ class ProductTemplate(models.Model):
 
     # Columns Section
     categ_id = fields.Many2one(
-        comodel_name='product.category',
-        domain="[('type', '=', 'normal')]")
+        comodel_name="product.category", domain="[('type', '=', 'normal')]"
+    )

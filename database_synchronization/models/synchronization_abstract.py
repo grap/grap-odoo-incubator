@@ -21,17 +21,12 @@ class SynchronizationAbstract(models.AbstractModel):
     @api.model
     def _get_external_odoo(self):
         # Get configurations
-        IrConfigParameter = self.env['ir.config_parameter'].sudo()
-        port = int(IrConfigParameter.get_param(
-            "database_synchronization.port"))
-        host = IrConfigParameter.get_param(
-            "database_synchronization.host")
-        database = IrConfigParameter.get_param(
-            "database_synchronization.database")
-        login = IrConfigParameter.get_param(
-            "database_synchronization.login")
-        password = IrConfigParameter.get_param(
-            "database_synchronization.password")
+        IrConfigParameter = self.env["ir.config_parameter"].sudo()
+        port = int(IrConfigParameter.get_param("database_synchronization.port"))
+        host = IrConfigParameter.get_param("database_synchronization.host")
+        database = IrConfigParameter.get_param("database_synchronization.database")
+        login = IrConfigParameter.get_param("database_synchronization.login")
+        password = IrConfigParameter.get_param("database_synchronization.password")
 
         if port == 443:
             protocol = "jsonrpc+ssl"
@@ -43,63 +38,84 @@ class SynchronizationAbstract(models.AbstractModel):
         try:
             external_odoo = odoorpc.ODOO(host, protocol, port=port)
         except URLError:
-            raise UserError(_(
-                "The settings to connect to the external Odoo"
-                " are incorrect.\n"
-                " - host: %s\n"
-                " - protocol: %s\n"
-                " - port: %s" % (host, protocol, port)
-            ))
+            raise UserError(
+                _(
+                    "The settings to connect to the external Odoo"
+                    " are incorrect.\n"
+                    " - host: %s\n"
+                    " - protocol: %s\n"
+                    " - port: %s" % (host, protocol, port)
+                )
+            )
         _logger.info("Login into %s ..." % database)
         try:
             external_odoo.login(database, login, password)
         except odoorpc.error.RPCError:
-            raise UserError(_(
-                "Unable to login. The database or the credentials"
-                " are incorrect:\n"
-                " - database: %s\n"
-                " - login: %s\n" % (database, login)
-            ))
+            raise UserError(
+                _(
+                    "Unable to login. The database or the credentials"
+                    " are incorrect:\n"
+                    " - database: %s\n"
+                    " - login: %s\n" % (database, login)
+                )
+            )
 
         # Check versions on both instance
-        local_version = '.'.join(str(v) for v in version_info[:2])
+        local_version = ".".join(str(v) for v in version_info[:2])
         external_version = external_odoo.version
         if local_version != external_version:
-            raise UserError(_(
-                "You try to synchronize your local Odoo (Version %s)"
-                " with an external Odoo (Version %s)" % (
-                    local_version, external_version)
-            ))
+            raise UserError(
+                _(
+                    "You try to synchronize your local Odoo (Version %s)"
+                    " with an external Odoo (Version %s)"
+                    % (local_version, external_version)
+                )
+            )
 
         # Check if local modules are correctly installed
         local_incorrect_state_modules = self.env["ir.module.module"].search(
             [("state", "in", ["to upgrade", "to remove", "to install"])]
         )
         if local_incorrect_state_modules:
-            raise UserError(_(
-                "Unable to synchronize modules, because some modules"
-                " are in a bad state locally\n"
-                "- %s " % (
-                    '\n- '.join([
-                        "{} : {}".format(x.name, x.state)
-                        for x in local_incorrect_state_modules]))
-            ))
+            raise UserError(
+                _(
+                    "Unable to synchronize modules, because some modules"
+                    " are in a bad state locally\n"
+                    "- %s "
+                    % (
+                        "\n- ".join(
+                            [
+                                "{} : {}".format(x.name, x.state)
+                                for x in local_incorrect_state_modules
+                            ]
+                        )
+                    )
+                )
+            )
 
         # check if external modules are correctly installed
         external_incorrect_state_modules = self._external_search_read(
-            external_odoo, "ir.module.module",
+            external_odoo,
+            "ir.module.module",
             [("state", "in", ["to upgrade", "to remove", "to install"])],
-            ["name", "state"]
+            ["name", "state"],
         )
         if len(external_incorrect_state_modules):
-            raise UserError(_(
-                "Unable to synchronize modules, because some modules"
-                " are in a bad state on external Odoo\n"
-                "- %s " % (
-                    '\n- '.join([
-                        "{} : {}".format(x["name"], x["state"])
-                        for x in external_incorrect_state_modules]))
-            ))
+            raise UserError(
+                _(
+                    "Unable to synchronize modules, because some modules"
+                    " are in a bad state on external Odoo\n"
+                    "- %s "
+                    % (
+                        "\n- ".join(
+                            [
+                                "{} : {}".format(x["name"], x["state"])
+                                for x in external_incorrect_state_modules
+                            ]
+                        )
+                    )
+                )
+            )
 
         return external_odoo
 
@@ -110,10 +126,8 @@ class SynchronizationAbstract(models.AbstractModel):
         return ExternalModel.browse(item_ids)
 
     @api.model
-    def _external_search_read(
-            self, external_odoo, model_name, domain, field_names):
-        return external_odoo.env[model_name].search_read(
-            domain, field_names)
+    def _external_search_read(self, external_odoo, model_name, domain, field_names):
+        return external_odoo.env[model_name].search_read(domain, field_names)
 
     @api.model
     def _cron_synchronize_all(self):

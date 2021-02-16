@@ -6,24 +6,29 @@ from odoo import api, fields, models
 
 
 class InternalUseMassGenerateWizard(models.TransientModel):
-    _name = 'internal.use.mass.generate.wizard'
-    _description = 'Wizard to confirm several internal uses'
+    _name = "internal.use.mass.generate.wizard"
+    _description = "Wizard to confirm several internal uses"
 
     # Default Section
     def _default_selected_use_qty(self):
-        return len(self.env.context.get('active_ids'))
+        return len(self.env.context.get("active_ids"))
 
     # Columns Section
     selected_use_qty = fields.Integer(
-        string='Selected Internal Uses', readonly=True,
-        default=_default_selected_use_qty)
+        string="Selected Internal Uses",
+        readonly=True,
+        default=_default_selected_use_qty,
+    )
 
     # Action Section
     @api.multi
     def apply_button(self):
         self.ensure_one()
-        InternalUse = self.env['internal.use']
-        uses = InternalUse.search([
-            ('id', 'in', self.env.context.get('active_ids')),
-            ('state', '=', 'confirmed')])
+        InternalUse = self.env["internal.use"]
+        uses = InternalUse.search(
+            [
+                ("id", "in", self.env.context.get("active_ids")),
+                ("state", "=", "confirmed"),
+            ]
+        )
         return uses.action_done()

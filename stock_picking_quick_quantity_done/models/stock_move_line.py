@@ -6,9 +6,12 @@ from odoo import fields, models
 
 
 class StockMoveLine(models.Model):
-    _inherit = 'stock.move.line'
+    _inherit = "stock.move.line"
 
     product_initial_demand = fields.Float(
-        string='Initial Demand',
-        default=0.0, required=True, states={'done': [('readonly', True)]},
-        related='move_id.product_uom_qty')
+        string="Initial Demand",
+        default=0.0,
+        required=True,
+        states={"done": [("readonly", True)]},
+        related="move_id.product_uom_qty",
+    )
