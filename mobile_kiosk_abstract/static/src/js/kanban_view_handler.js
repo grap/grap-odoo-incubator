@@ -35,18 +35,20 @@ odoo.define("mobile_kiosk_abstract.kanban_view_handler", function (require) {
                 this._mobileOpenRecordHook()
                     .then(function (result) {
                         if (result === undefined) {
-                        // TODO, fixme don't understand why I don't
-                        // receive the result of
-                        // the false promise
+                            // TODO, fixme don't understand why I don't
+                            // receive the result of
+                            // the false promise
                             result = {"status": "ok"};
                         }
                         self.kiosk_notify_result(result);
                         if (result.status === "ok") {
-                            self.kiosk_update_context_from_result(kiosk_context, result);
+                            self.kiosk_update_context_from_result(
+                                kiosk_context, result);
                             self.do_action({
                                 type: "ir.actions.client",
                                 name: "Confirm",
-                                tag: self.qweb_context.widget.state.context.kiosk_next_tag,
+                                tag: self.qweb_context.widget.state.context
+                                    .kiosk_next_tag,
                                 kiosk_context: kiosk_context,
                             });
                         }
