@@ -6,7 +6,7 @@
 {
     "name": "Product - To Print",
     "summary": "Automate products print, when data has changed",
-    "version": "12.0.1.0.4",
+    "version": "12.0.1.1.0",
     "category": "Product",
     "license": "AGPL-3",
     "author": "GRAP, " "La Louve, " "Odoo Community Association (OCA)",
