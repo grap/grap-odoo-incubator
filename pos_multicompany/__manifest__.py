@@ -5,7 +5,7 @@
 
 {
     "name": "Point Of Sale - Multi Company",
-    "version": "12.0.1.0.1",
+    "version": "12.0.1.1.0",
     "summary": "Point of Sale Settings in Multi company context",
     "category": "Point of Sale",
     "author": "GRAP",
