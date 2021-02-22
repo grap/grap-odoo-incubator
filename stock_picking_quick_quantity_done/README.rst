@@ -19,10 +19,10 @@ Stock Picking Quick Quantity Done
 
 |badge1| |badge2| |badge3| 
 
-This module allows you to quickly indicate the done quantities in pickings. 
-This is useful for activities (such as grocery stores) where product stock 
+This module allows you to quickly indicate the done quantities in pickings.
+This is useful for activities (such as grocery stores) where product stock
 quantities are not well updated, due to lack of time for example.
-This is the same objective as the legacy function "Force availability". 
+This is the same objective as the legacy function "Force availability".
 
 .. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/stock_picking_quick_quantity_done/static/description/picking.png
 
