@@ -5,7 +5,7 @@
 {
     "name": "Sale Order - Duplication",
     "summary": "Duplication Tools for Sale Orders with a given frequency",
-    "version": "12.0.1.0.1",
+    "version": "12.0.1.1.0",
     "category": "Sale",
     "author": "GRAP, " "Odoo Community Association (OCA)",
     "website": "http://www.grap.coop",
