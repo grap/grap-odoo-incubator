@@ -5,7 +5,7 @@
 {
     "name": "Stock - Merge Inventories",
     "summary": "Allow to merge multiples partial inventories",
-    "version": "12.0.1.0.1",
+    "version": "12.0.1.1.0",
     "category": "Stock",
     "author": "GRAP",
     "website": "http://www.grap.coop",
