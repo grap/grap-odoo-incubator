@@ -43,7 +43,7 @@ Usage
 * Affect products to the categories dire
     * Go to 'Sales' / 'Products' / 'Product variants'
     * Go to your product in sales tab
-    * Set a print category 
+    * Set a print category
 
 .. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_print_category/static/description/product_print_options.png
 
