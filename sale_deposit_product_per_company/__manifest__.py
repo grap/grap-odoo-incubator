@@ -5,7 +5,7 @@
 {
     "name": "Sale Deposit Product per Company",
     "summary": "Handle one deposit product (down payment) per company",
-    "version": "12.0.1.0.1",
+    "version": "12.0.1.1.0",
     "category": "Sale",
     "author": "GRAP, Odoo Community Association (OCA)",
     "website": "http://www.grap.coop",
