@@ -4,7 +4,7 @@
 
 {
     "name": "Stock Inventory - Valuation",
-    "version": "12.0.1.0.1",
+    "version": "12.0.1.1.0",
     "category": "Stock",
     "author": "GRAP",
     "website": "http://www.grap.coop",
