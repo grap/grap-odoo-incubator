@@ -55,13 +55,6 @@ addon | version | summary
 [stock_picking_quick_quantity_done](stock_picking_quick_quantity_done/) | 12.0.1.0.2 | Stock Picking Quick Quantity Done
 [web_base_url_force](web_base_url_force/) | 12.0.1.0.1 | Force the value of the setting 'web.base.url'
 
-
-Unported addons
----------------
-addon | version | summary
---- | --- | ---
-[pos_picking_load_partner_name](pos_picking_load_partner_name/) | 8.0.2.0.0 (unported) | Improve load of picking in PoS by partner name
-
 [//]: # (end addons)
 
 ## About GRAP
