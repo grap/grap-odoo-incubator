@@ -9,12 +9,8 @@ class TestStockInventoryMerge(TransactionCase):
     def setUp(self):
         super(TestStockInventoryMerge, self).setUp()
         self.inventory_obj = self.env["stock.inventory"]
-        self.inventory_1 = self.env.ref(
-            "stock_inventory_valuation.inventory_1"
-        )
-        self.line_1_1 = self.env.ref(
-            "stock_inventory_valuation.inventory_line_1_1"
-        )
+        self.inventory_1 = self.env.ref("stock_inventory_valuation.inventory_1")
+        self.line_1_1 = self.env.ref("stock_inventory_valuation.inventory_line_1_1")
 
     # Test Section
     def test_01_compute_valuation(self):

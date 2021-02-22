@@ -11,23 +11,28 @@ class ResCompany(models.Model):
     _inherit = "res.company"
 
     legal_name = fields.Char(
-        string="Legal Name", help="Also called 'Business Name'.\n"
+        string="Legal Name",
+        help="Also called 'Business Name'.\n"
         " Set the official name of the company, and in the"
-        " regular 'name' field, the Trade name of the company.")
+        " regular 'name' field, the Trade name of the company.",
+    )
 
     legal_type = fields.Char(
-        string="Legal Type", help="Type of Company, e.g. Ltd., SARL, GmbH ...")
+        string="Legal Type", help="Type of Company, e.g. Ltd., SARL, GmbH ..."
+    )
 
     report_legal_description = fields.Char(
-        compute='_compute_report_legal_description', store=True)
+        compute="_compute_report_legal_description", store=True
+    )
 
     @api.multi
-    @api.depends('name', 'legal_name', 'legal_type')
+    @api.depends("name", "legal_name", "legal_type")
     def _compute_report_legal_description(self):
         for company in self:
             name = company.legal_name or company.name
             if not company.legal_type:
                 company.report_legal_description = name
             else:
-                company.report_legal_description = _("%s, %s" % (
-                    name, company.legal_type))
+                company.report_legal_description = _(
+                    "{}, {}".format(name, company.legal_type)
+                )

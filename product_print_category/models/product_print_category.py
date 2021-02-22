@@ -8,7 +8,7 @@ from odoo import api, fields, models
 class ProductPrintCategory(models.Model):
     _name = "product.print.category"
     _description = "Print Category for Product"
-    _order = 'name'
+    _order = "name"
 
     # Fields Section
     name = fields.Char(string="Name", required=True, translate=True)
@@ -26,9 +26,7 @@ class ProductPrintCategory(models.Model):
         comodel_name="product.product", inverse_name="print_category_id"
     )
 
-    product_qty = fields.Integer(
-        string="Products", compute="_compute_product_qty"
-    )
+    product_qty = fields.Integer(string="Products", compute="_compute_product_qty")
 
     product_to_print_ids = fields.One2many(
         comodel_name="product.product",
@@ -82,12 +80,14 @@ class ProductPrintCategory(models.Model):
     @api.multi
     def action_view_product_product(self):
         self.ensure_one()
-        action = self.env.ref('product.product_normal_action')
+        action = self.env.ref("product.product_normal_action")
         action_data = action.read()[0]
-        if self.env.context['to_print']:
-            action_data['domain'] = "['&', ('print_category_id','=', " +\
-                str(self.id) + "), ('to_print','=', True)]"
+        if self.env.context["to_print"]:
+            action_data["domain"] = (
+                "['&', ('print_category_id','=', "
+                + str(self.id)
+                + "), ('to_print','=', True)]"
+            )
         else:
-            action_data['domain'] = "[('print_category_id','=', " +\
-                str(self.id) + ")]"
+            action_data["domain"] = "[('print_category_id','=', " + str(self.id) + ")]"
         return action_data

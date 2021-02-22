@@ -2,11 +2,11 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo.tests.common import TransactionCase
 from odoo.tests import tagged
+from odoo.tests.common import TransactionCase
 
 
-@tagged('post_install', '-at_install')
+@tagged("post_install", "-at_install")
 class TestModule(TransactionCase):
     """Tests for 'product_default_code_res_company_code' Module"""
 
@@ -18,10 +18,12 @@ class TestModule(TransactionCase):
     def test_01_create_product(self):
         # First reinitialize the sequence, to make
         # test idempotent
-        sequence = self.env["ir.sequence"].search([
-            ('code', '=', 'product_product.default_code'),
-            ('prefix', '=', 'C1-'),
-        ])
+        sequence = self.env["ir.sequence"].search(
+            [
+                ("code", "=", "product_product.default_code"),
+                ("prefix", "=", "C1-"),
+            ]
+        )
         sequence.number_next_actual = 1
         product = self.ProductProduct.create({"name": "Product test 1"})
         self.assertEqual(

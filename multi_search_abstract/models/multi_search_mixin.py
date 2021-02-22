@@ -33,8 +33,11 @@ class MultiSearchMixin(models.AbstractModel):
     def _multi_search_separator(self):
         """Overwrite in inherited model to define witch char will be used to
         split the search words"""
-        return self.env["ir.config_parameter"].sudo().get_param(
-            self._multi_search_separator_key_name)
+        return (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_param(self._multi_search_separator_key_name)
+        )
 
     # Overload the private _search function, that is used by the other ORM
     # functions (name_search, search_read)
@@ -66,7 +69,7 @@ class MultiSearchMixin(models.AbstractModel):
                             args[: args.index(arg)]
                             + ["&"] * (len(new_arg_lst) - 1)
                             + new_arg_lst
-                            + args[args.index(arg) + 1:]
+                            + args[args.index(arg) + 1 :]
                         )
         return super()._search(
             args=args,
@@ -98,9 +101,7 @@ class MultiSearchMixin(models.AbstractModel):
         if not self._multi_search_separator():
             return
         for field in self._multi_search_write_fields():
-            domain.append(
-                (field, "like", "%" + self._multi_search_separator() + "%")
-            )
+            domain.append((field, "like", "%" + self._multi_search_separator() + "%"))
         domain = ["|" for x in range(len(domain) - 1)] + domain
         items = super().search(domain)
         for item in items:

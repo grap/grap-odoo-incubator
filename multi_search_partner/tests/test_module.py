@@ -19,8 +19,9 @@ class TestModule(TransactionCase):
         self._enable_settings(True)
         # Create Partner
         vals = {"name": self.name_with_separator}
-        partner = self.ResPartner.with_context(
-            mail_create_nosubscribe=True).create(vals)
+        partner = self.ResPartner.with_context(mail_create_nosubscribe=True).create(
+            vals
+        )
         self.assertEqual(
             partner.name,
             self.name_without_separator,
@@ -38,8 +39,9 @@ class TestModule(TransactionCase):
         self._enable_settings(False)
         # Create Partner
         vals = {"name": self.name_with_separator}
-        partner = self.ResPartner.with_context(
-            mail_create_nosubscribe=True).create(vals)
+        partner = self.ResPartner.with_context(mail_create_nosubscribe=True).create(
+            vals
+        )
         self.assertEqual(
             partner.name,
             self.name_with_separator,
@@ -54,12 +56,8 @@ class TestModule(TransactionCase):
         )
 
     def test_03_search_partner(self):
-        ordered_domain = [
-            ("display_name", "ilike", "Abc%sDef" % self.separator)
-        ]
-        unordered_domain = [
-            ("display_name", "ilike", "Def%sAbc" % self.separator)
-        ]
+        ordered_domain = [("display_name", "ilike", "Abc%sDef" % self.separator)]
+        unordered_domain = [("display_name", "ilike", "Def%sAbc" % self.separator)]
 
         # Initial Search
         self._enable_settings(False)
@@ -67,8 +65,7 @@ class TestModule(TransactionCase):
 
         # Create Partner
         vals = {"name": "Abc other Word Def"}
-        self.ResPartner.with_context(
-            mail_create_nosubscribe=True).create(vals)
+        self.ResPartner.with_context(mail_create_nosubscribe=True).create(vals)
 
         # First Search (Feature disabled)
         disabled_feature_search = len(self.ResPartner.search(ordered_domain))
@@ -80,9 +77,7 @@ class TestModule(TransactionCase):
 
         # Second search (ordered) (Feature enabled)
         self._enable_settings(True)
-        ensabled_feature_search_ordered = len(
-            self.ResPartner.search(ordered_domain)
-        )
+        ensabled_feature_search_ordered = len(self.ResPartner.search(ordered_domain))
         self.assertEqual(
             ensabled_feature_search_ordered,
             initial_search + 1,
@@ -100,8 +95,10 @@ class TestModule(TransactionCase):
 
     def _enable_settings(self, enable):
         setting = self.ResConfigSettings.create({})
-        setting.write({
-            "multi_search_partner_separator": enable and self.separator,
-            "multi_search_partner_separator_changed": True,
-        })
+        setting.write(
+            {
+                "multi_search_partner_separator": enable and self.separator,
+                "multi_search_partner_separator_changed": True,
+            }
+        )
         setting.set_values()

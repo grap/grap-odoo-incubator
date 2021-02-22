@@ -33,20 +33,21 @@ class SynchronizationModule(models.TransientModel):
         IrModuleModule = self.env["ir.module.module"]
 
         external_installed_module_names = [
-            x["name"] for x in self._external_search_read(
-                external_odoo, "ir.module.module",
+            x["name"]
+            for x in self._external_search_read(
+                external_odoo,
+                "ir.module.module",
                 [("state", "=", "installed")],
-                ["name"]
-            )]
+                ["name"],
+            )
+        ]
 
         installed_modules = []
         try:
             for module_name in external_installed_module_names:
-                local_module = IrModuleModule.search(
-                    [("name", "=", module_name)])
+                local_module = IrModuleModule.search([("name", "=", module_name)])
                 if not local_module:
-                    raise UserError(_(
-                        "Module '%s' not found locally" % module_name))
+                    raise UserError(_("Module '%s' not found locally" % module_name))
                 else:
                     if local_module.state != "installed":
                         _logger.info("installing module %s ..." % module_name)
@@ -61,13 +62,18 @@ class SynchronizationModule(models.TransientModel):
             # TODO send mail sending installed_modules
             pass
 
-        local_only_installed_modules = IrModuleModule.search([
-            ("state", "=", "installed"),
-            ("name", "not in", external_installed_module_names),
-            ("name", "not in", self._get_ignored_installed_modules())
-        ])
+        local_only_installed_modules = IrModuleModule.search(
+            [
+                ("state", "=", "installed"),
+                ("name", "not in", external_installed_module_names),
+                ("name", "not in", self._get_ignored_installed_modules()),
+            ]
+        )
         if local_only_installed_modules:
-            raise UserError(_(
-                "You have some module to uninstall manually:\n"
-                " - %s" % ("\n- ".join(
-                    [x.name for x in local_only_installed_modules]))))
+            raise UserError(
+                _(
+                    "You have some module to uninstall manually:\n"
+                    " - %s"
+                    % ("\n- ".join([x.name for x in local_only_installed_modules]))
+                )
+            )

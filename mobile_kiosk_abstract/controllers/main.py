@@ -7,8 +7,7 @@ from odoo.http import request
 
 
 class Controllers(http.Controller):
-    @http.route(
-        '/mobile_kiosk_abstract/kiosk_keepalive', auth='user', type='json')
+    @http.route("/mobile_kiosk_abstract/kiosk_keepalive", auth="user", type="json")
     def kiosk_keepalive(self):
         request.httprequest.session.modified = True
         return {}

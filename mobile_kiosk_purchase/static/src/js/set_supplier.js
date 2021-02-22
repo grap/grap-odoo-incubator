@@ -6,17 +6,13 @@ odoo.define("mobile_kiosk_purchase.set_supplier", function (require) {
     "use strict";
 
     var ActionMobileKioskPurchase = require("mobile_kiosk_purchase.purchase_action");
-    var ajax = require("web.ajax");
     var core = require("web.core");
-    var Session = require("web.session");
-
-    var QWeb = core.qweb;
 
     var ActionSetSupplier = ActionMobileKioskPurchase.extend({
         template: "MobileAppPurchaseSetSupplier",
 
         events: {
-            "click .button_skip_partner": function() {
+            "click .button_skip_partner": function () {
                 // Go to the product page
                 this.do_action({
                     type: 'ir.actions.client',
@@ -25,7 +21,7 @@ odoo.define("mobile_kiosk_purchase.set_supplier", function (require) {
                     kiosk_context: this.kiosk_context,
                 });
             },
-            "click .button_list_partners": function() {
+            "click .button_list_partners": function () {
                 this.do_action("mobile_kiosk_abstract.action_res_partner_kanban", {
                     additional_context: {
                         "kiosk_action": "mobile_kiosk_purchase_select_supplier",
@@ -42,7 +38,10 @@ odoo.define("mobile_kiosk_purchase.set_supplier", function (require) {
 
     });
 
-    core.action_registry.add("mobile_kiosk_purchase_action_set_supplier", ActionSetSupplier);
+    core.action_registry.add(
+        "mobile_kiosk_purchase_action_set_supplier",
+        ActionSetSupplier
+    );
 
     return ActionSetSupplier;
 

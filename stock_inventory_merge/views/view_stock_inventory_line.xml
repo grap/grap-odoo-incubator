@@ -13,7 +13,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <tree editable="bottom" decoration-success="product_qty != theoretical_qty" decoration-danger="theoretical_qty &lt; 0">
                 <field name="product_id" domain="[('type','=','product')]"/>
                 <field name="product_uom_id" groups="uom.group_uom" string="UoM"/>
-                <field name="location_id" domain="[('id', 'child_of', parent.location_id)]" 
+                <field name="location_id" domain="[('id', 'child_of', parent.location_id)]"
                         groups="stock.group_stock_multi_locations"/>
                 <field name="prod_lot_id" domain="[('product_id', '=', product_id)]"
                         groups="stock.group_production_lot"/>

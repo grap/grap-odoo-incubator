@@ -31,18 +31,13 @@ class WizardStockInventoryMerge(models.TransientModel):
 
         # Check valid state
         if inventories.filtered(lambda x: x.state != "confirm"):
-            raise UserError(
-                _("Merging is only allowed on 'In Progress' inventories.")
-            )
+            raise UserError(_("Merging is only allowed on 'In Progress' inventories."))
 
         # Check coherent locations
         locations = inventories.mapped("location_id")
         if len(locations) != 1:
             raise UserError(
-                _(
-                    "Merging is only allowed on inventories with the same"
-                    " location."
-                )
+                _("Merging is only allowed on inventories with the same" " location.")
             )
 
         # Create new Inventory and fill with it

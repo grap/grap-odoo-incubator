@@ -24,11 +24,13 @@ class MobileKioskInventory(models.TransientModel):
                 _("No internal locations has been found."),
             )
 
-        inventory = StockInventory.create({
-            "name": inventory_name,
-            "filter": "partial",
-            "location_id": locations[0].id,
-        })
+        inventory = StockInventory.create(
+            {
+                "name": inventory_name,
+                "filter": "partial",
+                "location_id": locations[0].id,
+            }
+        )
         inventory.action_start()
 
         self._prepare_stock_inventory_data(result, inventory)
@@ -78,44 +80,53 @@ class MobileKioskInventory(models.TransientModel):
         inventory = StockInventory.browse(inventory_id)
         product = ProductProduct.browse(product_id)
 
-        lines = StockInventoryLine.search([
-            ('inventory_id', '=', inventory_id),
-            ('product_id', '=', product_id),
-        ])
+        lines = StockInventoryLine.search(
+            [
+                ("inventory_id", "=", inventory_id),
+                ("product_id", "=", product_id),
+            ]
+        )
         if lines:
             line = lines[0]
             old_quantity = line.product_qty
             new_quantity = old_quantity + product_qty
-            lines[0].write({'product_qty': new_quantity})
+            lines[0].write({"product_qty": new_quantity})
             self._add_result_notify(
                 result,
                 _("Quantity Changed"),
-                _("Quantity inventoried changed from %s to %s" % (
-                    old_quantity, new_quantity))
+                _(
+                    "Quantity inventoried changed from {} to {}".format(
+                        old_quantity, new_quantity
+                    )
+                ),
             )
         else:
-            line = StockInventoryLine.create({
-                "inventory_id": inventory.id,
-                "product_id": product.id,
-                "location_id": inventory.location_id.id,
-                "product_qty": product_qty,
-                "product_uom_id": product.uom_id.id,
-            })
+            line = StockInventoryLine.create(
+                {
+                    "inventory_id": inventory.id,
+                    "product_id": product.id,
+                    "location_id": inventory.location_id.id,
+                    "product_qty": product_qty,
+                    "product_uom_id": product.uom_id.id,
+                }
+            )
         return result
 
     @api.model
     def _select_stock_inventory(self, inventory_id, result):
         StockInventory = self.env["stock.inventory"]
 
-        inventories = StockInventory.search([
-            ("id", "=", inventory_id),
-            ("state", "in", self._get_stock_inventory_loadable_state())
-        ])
+        inventories = StockInventory.search(
+            [
+                ("id", "=", inventory_id),
+                ("state", "in", self._get_stock_inventory_loadable_state()),
+            ]
+        )
         if not inventories:
             self._add_result_error(
                 result,
                 "Inventory not found",
-                _("The selected inventory has been dropped, or confirmed.")
+                _("The selected inventory has been dropped, or confirmed."),
             )
             return
 
@@ -126,14 +137,16 @@ class MobileKioskInventory(models.TransientModel):
     def _select_product(self, inventory_id, product_id, result):
         ProductProduct = self.env["product.product"]
 
-        products = ProductProduct.search([
-            ("id", "=", product_id),
-        ])
+        products = ProductProduct.search(
+            [
+                ("id", "=", product_id),
+            ]
+        )
         if not products:
             self._add_result_error(
                 result,
                 "Product not found",
-                _("The product has been dropped, or disabled.")
+                _("The product has been dropped, or disabled."),
             )
             return
 
@@ -144,11 +157,13 @@ class MobileKioskInventory(models.TransientModel):
 
     @api.model
     def _prepare_stock_inventory_data(self, result, stock_inventory):
-        result.update({
-            "inventory_id": stock_inventory.id,
-            "inventory_name": stock_inventory.name,
-            "inventory_date": stock_inventory.date,
-        })
+        result.update(
+            {
+                "inventory_id": stock_inventory.id,
+                "inventory_name": stock_inventory.name,
+                "inventory_date": stock_inventory.date,
+            }
+        )
 
     @api.model
     def _get_stock_inventory_loadable_state(self):

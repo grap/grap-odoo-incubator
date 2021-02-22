@@ -8,7 +8,7 @@ _SUFFIX_LENGTH = 6
 
 
 class ProductProduct(models.Model):
-    _inherit = 'product.product'
+    _inherit = "product.product"
 
     default_code = fields.Char(readonly=True)
 
@@ -22,7 +22,8 @@ class ProductProduct(models.Model):
     # Custom Section
     @api.multi
     def _set_default_code(self):
-        IrSequence = self.env['ir.sequence']
+        IrSequence = self.env["ir.sequence"]
         for product in self:
             product.default_code = IrSequence.next_by_code(
-                'product_product.default_code')
+                "product_product.default_code"
+            )

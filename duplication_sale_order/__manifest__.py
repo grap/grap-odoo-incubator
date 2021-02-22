@@ -3,21 +3,20 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    'name': 'Sale Order - Duplication',
-    'summary': 'Duplication Tools for Sale Orders with a given frequency',
-    'version': '12.0.1.0.1',
-    'category': 'Sale',
-    'author': "GRAP, "
-              "Odoo Community Association (OCA)",
-    'website': 'http://www.grap.coop',
-    'license': 'AGPL-3',
-    'depends': [
-        'sale',
-        'sale_stock',
+    "name": "Sale Order - Duplication",
+    "summary": "Duplication Tools for Sale Orders with a given frequency",
+    "version": "12.0.1.0.1",
+    "category": "Sale",
+    "author": "GRAP, " "Odoo Community Association (OCA)",
+    "website": "http://www.grap.coop",
+    "license": "AGPL-3",
+    "depends": [
+        "sale",
+        "sale_stock",
     ],
-    'data': [
-        'views/view_sale_order_duplication_wizard.xml',
-        'views/action.xml',
+    "data": [
+        "views/view_sale_order_duplication_wizard.xml",
+        "views/action.xml",
     ],
-    'installable': True,
+    "installable": True,
 }

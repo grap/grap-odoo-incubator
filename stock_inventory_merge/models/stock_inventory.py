@@ -29,9 +29,7 @@ class StockInventory(models.Model):
     @api.multi
     def _compute_duplicates_qty(self):
         for inventory in self:
-            inventory.duplicates_qty = len(
-                inventory._get_duplicated_line_ids()
-            )
+            inventory.duplicates_qty = len(inventory._get_duplicated_line_ids())
 
     # Overload Section
     @api.multi
@@ -51,9 +49,7 @@ class StockInventory(models.Model):
     @api.multi
     def action_view_duplicates(self):
         self.ensure_one()
-        action = self.env.ref(
-            "stock_inventory_merge.action_view_duplicates_tree"
-        )
+        action = self.env.ref("stock_inventory_merge.action_view_duplicates_tree")
         action_data = action.read()[0]
         duplicates_list = self._get_duplicated_line_ids()
         duplicate_ids = []
@@ -108,11 +104,10 @@ class StockInventory(models.Model):
                             sum_quantity += line_data["product_qty"]
                         else:
                             uom_id = line_data["product_uom_id"][0]
-                            sum_quantity += uom_obj.browse(uom_id).\
-                                _compute_quantity(
-                                    line_data["product_qty"],
-                                    uom_obj.browse(default_uom_id),
-                                )
+                            sum_quantity += uom_obj.browse(uom_id)._compute_quantity(
+                                line_data["product_qty"],
+                                uom_obj.browse(default_uom_id),
+                            )
 
                 # Update the first line with the sumed quantity
                 keeped_line = line_obj.browse(keeped_line_id)
@@ -135,7 +130,7 @@ class StockInventory(models.Model):
                 check_dict[key].append(line_val["id"])
             else:
                 check_dict[key] = [line_val["id"]]
-        for k, v in check_dict.items():
+        for _k, v in check_dict.items():
             if len(v) > 1:
                 duplicates_group_ids.append(v)
         return duplicates_group_ids

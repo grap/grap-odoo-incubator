@@ -10,7 +10,6 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
     var ajax = require('web.ajax');
     var core = require('web.core');
     var session = require('web.session');
-    var QWeb = core.qweb;
 
     var ActionMobileKioskAbstract = AbstractAction.extend({
 
@@ -31,7 +30,7 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
         _kiosk_home_page_name: false,
 
         _kiosk_abstract_events: {
-            "click .button_home_page": function() {
+            "click .button_home_page": function () {
                 this.do_action({
                     type: 'ir.actions.client',
                     name: this._kiosk_home_page_name,
@@ -43,19 +42,20 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
         init: function (parent, action) {
             var self = this;
 
-            // Add events that will be raised for each action that inherit of this abstract action
-            Object.keys(this._kiosk_abstract_events).forEach(function(event_key){
+            // Add events that will be raised for each action that
+            // inherit of this abstract action
+            Object.keys(this._kiosk_abstract_events).forEach(function (event_key) {
                 self.events[event_key] = self._kiosk_abstract_events[event_key];
 
             });
 
-            // recover context
+            // Recover context
             this.kiosk_context = action.kiosk_context || {};
 
             // Check if the context if valid. If not, the interface will propose
             // to go to the home page
             this.kiosk_should_go_back = false;
-            this._kiosk_required_fields.forEach(function(required_key){
+            this._kiosk_required_fields.forEach(function (required_key) {
                 if (self.kiosk_context[required_key] === undefined) {
                     self.kiosk_should_go_back = true;
                 }
@@ -63,26 +63,26 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
             this._super.apply(this, arguments);
         },
 
-        renderElement: function() {
+        renderElement: function () {
             this._super();
-            // create and render a PadWidget if required
-            if (this._kiosk_pad_widget_required){
+            // Create and render a PadWidget if required
+            if (this._kiosk_pad_widget_required) {
                 this.numpad_widget = new PadWidget(this, {});
                 this.numpad_widget.appendTo(this.$('.placeholder-padwidget'));
             }
         },
 
         start: function () {
-            var self = this;
             this.session = session;
 
             // Make a RPC call every day to keep the session alive
-            this._interval = window.setInterval(this._callServer.bind(this), (60*60*1000*24));
+            this._interval = window.setInterval(
+                this._callServer.bind(this), 60*60*1000*24);
 
             // Enable barcode if required
             this._toggleBarcode(true);
 
-            return this._super.apply(this, arguments);;
+            return this._super.apply(this, arguments);
         },
 
         destroy: function () {
@@ -93,9 +93,9 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
             this._super.apply(this, arguments);
         },
 
-        _toggleBarcode: function(active){
-            if (this._kiosk_barcode_scanner_required){
-                if (active){
+        _toggleBarcode: function (active) {
+            if (this._kiosk_barcode_scanner_required) {
+                if (active) {
                     core.bus.on('barcode_scanned', this, this._onBarcodeScanned);
                 } else {
                     core.bus.off('barcode_scanned', this, this._onBarcodeScanned);
@@ -103,7 +103,7 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
             }
         },
 
-        _onBarcodeScanned: function(barcode) {
+        _onBarcodeScanned: function () {
             this._toggleBarcode(false);
         },
 

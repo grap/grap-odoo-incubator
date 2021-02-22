@@ -52,7 +52,7 @@ class MobileKioskPurchase(models.TransientModel):
         ProductProduct = self.env["product.product"]
         PurchaseOrder = self.env["purchase.order"]
         PurchaseOrderLine = self.env["purchase.order.line"]
-        ProductSupplierinfo = self.env['product.supplierinfo']
+        ProductSupplierinfo = self.env["product.supplierinfo"]
 
         order = PurchaseOrder.browse(purchase_order_id)
         product = ProductProduct.browse(product_id)
@@ -61,14 +61,17 @@ class MobileKioskPurchase(models.TransientModel):
             partner_id=order.partner_id,
             quantity=product_qty,
             date=order.date_order and order.date_order.date(),
-            uom_id=product.uom_po_id)
+            uom_id=product.uom_po_id,
+        )
 
         # First, Check minimum quantity
         if not seller:
-            supplierinfos = ProductSupplierinfo.search([
-                ('name', '=', order.partner_id.id),
-                ('product_tmpl_id', '=', product.product_tmpl_id.id),
-            ])
+            supplierinfos = ProductSupplierinfo.search(
+                [
+                    ("name", "=", order.partner_id.id),
+                    ("product_tmpl_id", "=", product.product_tmpl_id.id),
+                ]
+            )
             if supplierinfos:
                 min_qty = min(supplierinfos.mapped("min_qty"))
                 if min_qty > product_qty:
@@ -77,28 +80,30 @@ class MobileKioskPurchase(models.TransientModel):
                         _("Quantity increased"),
                         _(
                             "The quantity has been increased to the minimum"
-                            " quantity (from %s to %s)" % (
-                                product_qty, min_qty))
+                            " quantity (from %s to %s)" % (product_qty, min_qty)
+                        ),
                     )
                     product_qty = min_qty
                     seller = product._select_seller(
                         partner_id=order.partner_id,
                         quantity=product_qty,
                         date=order.date_order and order.date_order.date(),
-                        uom_id=product.uom_po_id)
+                        uom_id=product.uom_po_id,
+                    )
 
         # Then, Check package quantity
         if seller:
             rounded_qty = seller._get_quantity_according_package(
-                product_qty, product.uom_po_id)
+                product_qty, product.uom_po_id
+            )
             if rounded_qty != product_qty:
                 self._add_result_notify(
                     result,
                     _("Quantity increased"),
                     _(
                         "The quantity has been rounded due to package"
-                        " quantity (from %s to %s)" % (
-                            product_qty, rounded_qty))
+                        " quantity (from %s to %s)" % (product_qty, rounded_qty)
+                    ),
                 )
                 product_qty = rounded_qty
 
@@ -121,19 +126,24 @@ class MobileKioskPurchase(models.TransientModel):
     def _select_purchase_order(self, partner_id, result):
         PurchaseOrder = self.env["purchase.order"]
 
-        orders = PurchaseOrder.search([
-            ("partner_id", "=", partner_id),
-            ("state", "in", self._get_purchase_order_loadable_state())
-        ], order="date_order desc")
+        orders = PurchaseOrder.search(
+            [
+                ("partner_id", "=", partner_id),
+                ("state", "in", self._get_purchase_order_loadable_state()),
+            ],
+            order="date_order desc",
+        )
         if not orders:
-            order = PurchaseOrder.create({
-                "partner_id": partner_id,
-                "origin": _("From mobile app purchase"),
-            })
+            order = PurchaseOrder.create(
+                {
+                    "partner_id": partner_id,
+                    "origin": _("From mobile app purchase"),
+                }
+            )
             self._add_result_notify(
                 result,
                 _("Purchase Order created"),
-                _("A new Purchase Order %s has been created" % (order.name))
+                _("A new Purchase Order %s has been created" % (order.name)),
             )
         else:
             order = orders[0]
@@ -148,7 +158,7 @@ class MobileKioskPurchase(models.TransientModel):
                 self._add_result_error(
                     result,
                     "Product without Supplier",
-                    _("The selected product doesn't have any supplier defined")
+                    _("The selected product doesn't have any supplier defined"),
                 )
                 return
             else:
@@ -157,19 +167,22 @@ class MobileKioskPurchase(models.TransientModel):
                 self._select_purchase_order(partner_id, result)
 
         # Get Supplierinfo
-        supplierinfos = product.seller_ids\
-            .filtered(lambda r: r.name.id == partner_id and (
-                not r.product_id or r.product_id.id == product.id))\
-            .sorted(key=lambda r: r.min_qty)
+        supplierinfos = product.seller_ids.filtered(
+            lambda r: r.name.id == partner_id
+            and (not r.product_id or r.product_id.id == product.id)
+        ).sorted(key=lambda r: r.min_qty)
         self._prepare_supplierinfo_data(
-            result, supplierinfos and supplierinfos[0] or False)
+            result, supplierinfos and supplierinfos[0] or False
+        )
 
     @api.model
     def _prepare_purchase_order_data(self, result, purchase_order):
-        result.update({
-            "purchase_order_id": purchase_order.id,
-            "purchase_order_name": purchase_order.name,
-        })
+        result.update(
+            {
+                "purchase_order_id": purchase_order.id,
+                "purchase_order_name": purchase_order.name,
+            }
+        )
 
     @api.model
     def _get_purchase_order_loadable_state(self):
@@ -178,7 +191,10 @@ class MobileKioskPurchase(models.TransientModel):
     @api.model
     def _prepare_supplierinfo_data(self, result, supplierinfo=False):
         super()._prepare_supplierinfo_data(result, supplierinfo=supplierinfo)
-        result.update({
-            "supplierinfo_package_qty":
-            supplierinfo and supplierinfo.package_qty or 0.0,
-        })
+        result.update(
+            {
+                "supplierinfo_package_qty": supplierinfo
+                and supplierinfo.package_qty
+                or 0.0,
+            }
+        )
