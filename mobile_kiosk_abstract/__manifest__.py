@@ -4,7 +4,7 @@
 
 {
     "name": "Mobile Kiosk Abstract",
-    "version": "12.0.1.0.5",
+    "version": "12.0.1.1.0",
     "author": "GRAP",
     "summary": "Mobile Kiosk Absract Module",
     "category": "Tools",
