@@ -124,8 +124,10 @@ class SynchronizationAbstract(models.AbstractModel):
         return external_odoo.env[model_name].search_read(domain, field_names)
 
     @api.model
-    def _cron_synchronize_all(self):
-        # synchronize module installed
-        # if works, synchronize also data
-        SynchronisationModule = self.env["synchronization.module"]
-        SynchronisationModule._synchronize_module_installed()
+    def cron_synchronize_module_installed(self, max_module_qty):
+        self.env["synchronization.module"]._synchronize_module_installed(max_module_qty)
+
+    @api.model
+    def cron_synchronize_data(self):
+        synchronizationDatas = self.env["synchronization.data"].search()
+        synchronizationDatas.action_synchronize()

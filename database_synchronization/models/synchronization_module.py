@@ -28,7 +28,7 @@ class SynchronizationModule(models.TransientModel):
         ]
 
     @api.model
-    def _synchronize_module_installed(self):
+    def _synchronize_module_installed(self, max_module_qty):
         external_odoo = self._get_external_odoo()
         IrModuleModule = self.env["ir.module.module"]
 
@@ -43,12 +43,17 @@ class SynchronizationModule(models.TransientModel):
         ]
 
         installed_modules = []
+        module_qty = 0
+        break_before_end = False
         try:
             for module_name in external_installed_module_names:
                 local_module = IrModuleModule.search([("name", "=", module_name)])
                 if not local_module:
                     raise UserError(_("Module '%s' not found locally" % module_name))
                 else:
+                    if max_module_qty and module_qty > max_module_qty:
+                        break_before_end = True
+                        break
                     if local_module.state != "installed":
                         _logger.info("installing module %s ..." % module_name)
                         # Avoid to install modules installed by dependency
@@ -57,11 +62,16 @@ class SynchronizationModule(models.TransientModel):
                         # reload self in the new registry
                         self.env.reset()
                         self = self.env()[self._name]
+                        module_qty += 1
                     installed_modules.append(installed_modules)
         finally:
             # TODO send mail sending installed_modules
             pass
 
+        if break_before_end:
+            return
+
+        # Check if all the modules are correctly installed
         local_only_installed_modules = IrModuleModule.search(
             [
                 ("state", "=", "installed"),
