@@ -6,8 +6,6 @@ import logging
 
 from odoo import _, api, models
 from odoo.exceptions import UserError
-from odoo.addons.queue_job.job import job
-
 
 _logger = logging.getLogger(__name__)
 
@@ -35,14 +33,17 @@ class SynchronizationModule(models.TransientModel):
         IrModuleModule = self.env["ir.module.module"]
 
         # Do not execute the cron if they are pending job
-        pending_jobs = QueueJob.search([
-            ("channel", "=", "root.database_synchronization_install_module"),
-            ("state", "!=", "done"),
-        ])
+        pending_jobs = QueueJob.search(
+            [
+                ("channel", "=", "root.database_synchronization_install_module"),
+                ("state", "!=", "done"),
+            ]
+        )
         if pending_jobs:
             _logger.info(
                 "Ignoring run of _synchronize_module_installed, because some jobs"
-                " are not finished.")
+                " are not finished."
+            )
             return
 
         # Get modules installed in the external instance
@@ -65,7 +66,9 @@ class SynchronizationModule(models.TransientModel):
                 raise UserError(_("Module '%s' not found locally" % module_name))
             else:
                 if local_module.state == "uninstalled":
-                    _logger.info("Enqueue module in installation list %s ..." % module_name)
+                    _logger.info(
+                        "Enqueue module in installation list %s ..." % module_name
+                    )
                     local_module.with_delay()._database_synchronization_install_module()
 
         # Check if all the modules are correctly installed
@@ -79,6 +82,5 @@ class SynchronizationModule(models.TransientModel):
         if local_only_installed_modules:
             _logger.error(
                 "You have some module to uninstall manually:\n"
-                " - %s"
-                % ("\n- ".join([x.name for x in local_only_installed_modules]))
+                " - %s" % ("\n- ".join([x.name for x in local_only_installed_modules]))
             )

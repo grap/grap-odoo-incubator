@@ -5,8 +5,8 @@
 import logging
 
 from odoo import api, models
-from odoo.addons.queue_job.job import job
 
+from odoo.addons.queue_job.job import job
 
 _logger = logging.getLogger(__name__)
 
@@ -16,7 +16,7 @@ class IrModuleModule(models.Model):
 
     # Custom Section
     @api.multi
-    @job(default_channel='root.database_synchronization_install_module')
+    @job(default_channel="root.database_synchronization_install_module")
     def _database_synchronization_install_module(self):
         for module in self:
             if module.state != "uninstalled":
