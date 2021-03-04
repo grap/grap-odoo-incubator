@@ -21,8 +21,8 @@
         "data/ir_cron.xml",
         "data/ir_config_parameter.xml",
         "views/menu.xml",
-        "views/view_synchronization_data.xml",
         "views/view_synchronization_mapping.xml",
+        "views/view_synchronization_data.xml",
     ],
     "installable": True,
 }

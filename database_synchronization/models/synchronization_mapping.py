@@ -18,10 +18,17 @@ class SynchronizationMapping(models.Model):
     )
 
     model_id = fields.Many2one(
+        string="Model",
         comodel_name="ir.model",
         related="synchronization_data_id.model_id",
         store=True,
         readonly=True,
+    )
+
+    model = fields.Char(
+        related="synchronization_data_id.model_id.model",
+        string="Model Name",
+        store=True,
     )
 
     internal_id = fields.Integer(string="Internal ID", readonly=True)

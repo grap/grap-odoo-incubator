@@ -12,6 +12,7 @@ _logger = logging.getLogger(__name__)
 
 _NOT_COPIED_FIELDS = [
     "id",
+    "parent_path",
     "__last_update",
     "create_uid",
     "create_date",
@@ -22,10 +23,12 @@ _NOT_COPIED_FIELDS = [
 
 class SynchronizationData(models.Model):
     _name = "synchronization.data"
-    _order = "model"
+    _order = "sequence"
     _inherit = ["synchronization.mixin"]
     _description = "Odoo Data Synchronisation"
     _rec_name = "model"
+
+    sequence = fields.Integer(string="Sequence", default=10, required=True)
 
     model_id = fields.Many2one(comodel_name="ir.model", string="Model", required=True)
 
@@ -39,11 +42,20 @@ class SynchronizationData(models.Model):
 
     model = fields.Char(related="model_id.model", string="Model Name", store=True)
 
+    just_map = fields.Boolean(
+        "Just Map",
+        help="Check this box, if you only want to map items,"
+        " without overwriting datas. This can be usefull"
+        " for model like res.groups, etc..",
+    )
+
     ignored_field_ids = fields.Many2many(
         comodel_name="ir.model.fields", string="Ignored Fields"
     )
 
     active = fields.Boolean(string="Active", default=True)
+
+    active_test = fields.Boolean(string="Synchronize Only Active items", default=True)
 
     _sql_constraints = [
         ("unique_model_id", "unique(model_id)", "Model should be unique"),
@@ -82,10 +94,17 @@ class SynchronizationData(models.Model):
         # Get External access
         external_odoo = self._get_external_odoo()
         external_model = external_odoo.env[self.model_id.model]
-        external_datas = external_model.with_context(active_test=False).search_read([])
 
+        # Load External Datas
+        external_datas = external_model.with_context(
+            active_test=self.active_test
+        ).search_read([])
+
+        # Get external xml ids
         _tmp_data = external_odoo.env["ir.model.data"].search_read(
-            [("model", "=", self.model_id.model)], ["complete_name", "res_id"]
+            [("model", "=", self.model_id.model)],
+            ["complete_name", "res_id"],
+            order="complete_name",
         )
         external_xml_id_datas = {
             x["res_id"]: x["complete_name"]
@@ -93,6 +112,7 @@ class SynchronizationData(models.Model):
             if not x["complete_name"].startswith("__export__.")
         }
 
+        # Get Existing Mappings (between internal and external datas)
         _tmp_data = SynchronisationMapping.search_read(
             [("model_id", "=", self.model_id.id)],
             ["external_id", "internal_id", "write_date"],
@@ -138,6 +158,15 @@ class SynchronizationData(models.Model):
                         )
 
                 else:
+                    if self.just_map:
+                        raise UserError(
+                            _(
+                                "It should not be possible to create"
+                                " item in a 'just map' Mapping. Data\n\n: {}".format(
+                                    external_data
+                                )
+                            )
+                        )
                     xml_id = False
                     to_update = False
                     _logger.info(
@@ -171,7 +200,7 @@ class SynchronizationData(models.Model):
                 to_update = force_update or (external_write_date > local_write_date)
                 mapping = SynchronisationMapping.browse(_local_info["mapping_id"])
 
-            if to_update:
+            if to_update and not self.just_map:
                 _logger.info(
                     "Updating %s#%d (External #%d)"
                     % (self.model, internal_id, external_data["id"])
@@ -211,17 +240,26 @@ class SynchronizationData(models.Model):
                 continue
 
             if field.ttype == "many2one":
-                mapping = SynchronisationMapping.search(
-                    [
-                        ("model", "=", field.relation),
-                        ("external_id", "=", v),
-                    ],
-                    limit=1,
-                )
-                if mapping:
-                    res[k] = mapping.internal_id
+                if not v:
+                    res[k] = False
                 else:
-                    raise NotImplementedError("many2one: " + k)
+                    mapping = SynchronisationMapping.search(
+                        [
+                            ("model", "=", field.relation),
+                            ("external_id", "=", v[0]),
+                        ],
+                        limit=1,
+                    )
+                    if mapping:
+                        res[k] = mapping.internal_id
+                    else:
+                        raise UserError(
+                            _(
+                                "Unable to find a mapping for the field '{}',"
+                                " value '{}', name '{}'. External data: \n\n {}"
+                                ""
+                            ).format(k, v[0], v[1], external_data)
+                        )
             elif field.ttype == "many2many":
                 raise NotImplementedError("many2many: " + k)
             else:

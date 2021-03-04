@@ -42,10 +42,10 @@ class SynchronizationAbstract(models.AbstractModel):
                 _(
                     "The settings to connect to the external Odoo"
                     " are incorrect.\n"
-                    " - host: %s\n"
-                    " - protocol: %s\n"
-                    " - port: %s" % (host, protocol, port)
-                )
+                    " - host: {}\n"
+                    " - protocol: {}\n"
+                    " - port: {}"
+                ).format(host, protocol, port)
             )
         _logger.info("Login into %s ..." % database)
         try:
@@ -55,9 +55,9 @@ class SynchronizationAbstract(models.AbstractModel):
                 _(
                     "Unable to login. The database or the credentials"
                     " are incorrect:\n"
-                    " - database: %s\n"
-                    " - login: %s\n" % (database, login)
-                )
+                    " - database: {}\n"
+                    " - login: {}\n"
+                ).format(database, login)
             )
 
         # Check versions on both instance
@@ -66,10 +66,9 @@ class SynchronizationAbstract(models.AbstractModel):
         if local_version != external_version:
             raise UserError(
                 _(
-                    "You try to synchronize your local Odoo (Version %s)"
-                    " with an external Odoo (Version %s)"
-                    % (local_version, external_version)
-                )
+                    "You try to synchronize your local Odoo (Version {})"
+                    " with an external Odoo (Version {})"
+                ).format(local_version, external_version)
             )
 
         # Check if local modules are correctly installed
@@ -80,15 +79,13 @@ class SynchronizationAbstract(models.AbstractModel):
             raise UserError(
                 _(
                     "Unable to synchronize modules, because some modules"
-                    " are in a bad state locally\n"
-                    "- %s "
-                    % (
-                        "\n- ".join(
-                            [
-                                "{} : {}".format(x.name, x.state)
-                                for x in local_incorrect_state_modules
-                            ]
-                        )
+                    " are in a bad state locally\n- {} "
+                ).format(
+                    "\n- ".join(
+                        [
+                            "{} : {}".format(x.name, x.state)
+                            for x in local_incorrect_state_modules
+                        ]
                     )
                 )
             )
@@ -104,19 +101,16 @@ class SynchronizationAbstract(models.AbstractModel):
             raise UserError(
                 _(
                     "Unable to synchronize modules, because some modules"
-                    " are in a bad state on external Odoo\n"
-                    "- %s "
-                    % (
-                        "\n- ".join(
-                            [
-                                "{} : {}".format(x["name"], x["state"])
-                                for x in external_incorrect_state_modules
-                            ]
-                        )
+                    " are in a bad state on external Odoo\n- {} "
+                ).format(
+                    "\n- ".join(
+                        [
+                            "{} : {}".format(x["name"], x["state"])
+                            for x in external_incorrect_state_modules
+                        ]
                     )
                 )
             )
-
         return external_odoo
 
     @api.model
@@ -130,8 +124,10 @@ class SynchronizationAbstract(models.AbstractModel):
         return external_odoo.env[model_name].search_read(domain, field_names)
 
     @api.model
-    def _cron_synchronize_all(self):
-        # synchronize module installed
-        # if works, synchronize also data
-        SynchronisationModule = self.env["synchronization.module"]
-        SynchronisationModule._synchronize_module_installed()
+    def cron_synchronize_module_installed(self, max_module_qty):
+        self.env["synchronization.module"]._synchronize_module_installed(max_module_qty)
+
+    @api.model
+    def cron_synchronize_data(self):
+        synchronizationDatas = self.env["synchronization.data"].search()
+        synchronizationDatas.action_synchronize()
