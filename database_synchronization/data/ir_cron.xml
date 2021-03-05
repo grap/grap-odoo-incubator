@@ -11,7 +11,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="name">Database Synchronization - Synchronize Installed Modules</field>
         <field name="model_id" ref="model_synchronization_mixin"/>
         <field name="state">code</field>
-        <field name="code">model.cron_synchronize_module_installed(10)</field>
+        <field name="code">model.cron_synchronize_module_installed()</field>
         <field name="user_id" ref="base.user_root"/>
         <field name="interval_number">1</field>
         <field name="interval_type">hours</field>

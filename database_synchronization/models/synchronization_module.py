@@ -28,10 +28,26 @@ class SynchronizationModule(models.TransientModel):
         ]
 
     @api.model
-    def _synchronize_module_installed(self, max_module_qty):
-        external_odoo = self._get_external_odoo()
+    def _synchronize_module_installed(self):
+        QueueJob = self.env["queue.job"]
         IrModuleModule = self.env["ir.module.module"]
 
+        # Do not execute the cron if they are pending job
+        pending_jobs = QueueJob.search(
+            [
+                ("channel", "=", "root.database_synchronization_install_module"),
+                ("state", "!=", "done"),
+            ]
+        )
+        if pending_jobs:
+            _logger.info(
+                "Ignoring run of _synchronize_module_installed, because some jobs"
+                " are not finished."
+            )
+            return
+
+        # Get modules installed in the external instance
+        external_odoo = self._get_external_odoo()
         external_installed_module_names = [
             x["name"]
             for x in self._external_search_read(
@@ -42,34 +58,18 @@ class SynchronizationModule(models.TransientModel):
             )
         ]
 
-        installed_modules = []
-        module_qty = 0
-        break_before_end = False
-        try:
-            for module_name in external_installed_module_names:
-                local_module = IrModuleModule.search([("name", "=", module_name)])
-                if not local_module:
-                    raise UserError(_("Module '%s' not found locally" % module_name))
-                else:
-                    if max_module_qty and module_qty > max_module_qty:
-                        break_before_end = True
-                        break
-                    if local_module.state != "installed":
-                        _logger.info("installing module %s ..." % module_name)
-                        # Avoid to install modules installed by dependency
-                        local_module.button_immediate_install()
-                        # the registry has changed
-                        # reload self in the new registry
-                        self.env.reset()
-                        self = self.env()[self._name]
-                        module_qty += 1
-                    installed_modules.append(installed_modules)
-        finally:
-            # TODO send mail sending installed_modules
-            pass
-
-        if break_before_end:
-            return
+        # Enqueue module for each module installed
+        # in the external instance and not installed in the local one
+        for module_name in external_installed_module_names:
+            local_module = IrModuleModule.search([("name", "=", module_name)])
+            if not local_module:
+                raise UserError(_("Module '%s' not found locally" % module_name))
+            else:
+                if local_module.state == "uninstalled":
+                    _logger.info(
+                        "Enqueue module in installation list %s ..." % module_name
+                    )
+                    local_module.with_delay()._database_synchronization_install_module()
 
         # Check if all the modules are correctly installed
         local_only_installed_modules = IrModuleModule.search(
@@ -80,10 +80,7 @@ class SynchronizationModule(models.TransientModel):
             ]
         )
         if local_only_installed_modules:
-            raise UserError(
-                _(
-                    "You have some module to uninstall manually:\n"
-                    " - %s"
-                    % ("\n- ".join([x.name for x in local_only_installed_modules]))
-                )
+            _logger.error(
+                "You have some module to uninstall manually:\n"
+                " - %s" % ("\n- ".join([x.name for x in local_only_installed_modules]))
             )

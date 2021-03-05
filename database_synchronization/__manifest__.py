@@ -11,7 +11,7 @@
     "website": "http://www.grap.coop",
     "license": "AGPL-3",
     "depends": [
-        "base",
+        "queue_job",
     ],
     "external_dependencies": {
         "python": ["odoorpc"],
