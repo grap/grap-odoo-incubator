@@ -7,6 +7,7 @@ from datetime import datetime
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+from odoo.tools.safe_eval import safe_eval
 
 _logger = logging.getLogger(__name__)
 
@@ -28,7 +29,7 @@ class SynchronizationData(models.Model):
     _description = "Odoo Data Synchronisation"
     _rec_name = "model"
 
-    sequence = fields.Integer(string="Sequence", default=10, required=True)
+    sequence = fields.Integer(string="Sequence", default=100, required=True)
 
     model_id = fields.Many2one(comodel_name="ir.model", string="Model", required=True)
 
@@ -42,20 +43,28 @@ class SynchronizationData(models.Model):
 
     model = fields.Char(related="model_id.model", string="Model Name", store=True)
 
-    just_map = fields.Boolean(
-        "Just Map",
+    synchronization_type = fields.Selection(
+        string="Synchronization Type",
+        selection=[("all", "All"), ("active", "Only Active Items")],
+        default="all",
+    )
+
+    mapping_type = fields.Selection(
+        string="Mapping Type",
+        selection=[("id", "IDs"), ("data", "Datas")],
+        default="data",
         help="Check this box, if you only want to map items,"
         " without overwriting datas. This can be usefull"
         " for model like res.groups, etc..",
     )
 
-    ignored_field_ids = fields.Many2many(
-        comodel_name="ir.model.fields", string="Ignored Fields"
+    field_ids = fields.Many2many(
+        comodel_name="ir.model.fields", string="Fields to Synchronize"
     )
 
     active = fields.Boolean(string="Active", default=True)
 
-    active_test = fields.Boolean(string="Synchronize Only Active items", default=True)
+    domain = fields.Char(string="Domain", default="[]")
 
     _sql_constraints = [
         ("unique_model_id", "unique(model_id)", "Model should be unique"),
@@ -68,11 +77,17 @@ class SynchronizationData(models.Model):
 
     @api.onchange("model_id")
     def _onchange_model_id(self):
+        domain = [
+            ("model_id", "=", self.model_id.id),
+            ("name", "not in", _NOT_COPIED_FIELDS),
+            ("readonly", "=", False),
+            ("ttype", "not in", ("one2many", "many2many")),
+            ("store", "=", True),
+        ]
+        self.field_ids = self.env["ir.model.fields"].search(domain)
         return {
             "domain": {
-                "ignored_field_ids": [
-                    ("model", "=", self.model_id.model),
-                ],
+                "field_ids": domain,
             }
         }
 
@@ -86,56 +101,78 @@ class SynchronizationData(models.Model):
 
     def _synchronize(self, force_update=False):
         self.ensure_one()
-        right_now = fields.Datetime.now()
-
         SynchronisationMapping = self.env["synchronization.mapping"]
-        TargetModel = self.env[self.model_id.model]
 
         # Get External access
         external_odoo = self._get_external_odoo()
         external_model = external_odoo.env[self.model_id.model]
 
+        # Get Existing Mappings (between internal and external datas)
+        existing_mapping_datas = SynchronisationMapping.search_read(
+            [("model_id", "=", self.model_id.id)],
+            ["external_id", "internal_id", "write_date"],
+        )
+
         # Load External Datas
+        # TODO, if active_test, add existing ids to domain
         external_datas = external_model.with_context(
-            active_test=self.active_test
-        ).search_read([])
+            active_test=(self.synchronization_type == "active")
+        ).search_read(safe_eval(self.domain))
 
         # Get external xml ids
-        _tmp_data = external_odoo.env["ir.model.data"].search_read(
+        external_xml_id_datas = external_odoo.env["ir.model.data"].search_read(
             [("model", "=", self.model_id.model)],
             ["complete_name", "res_id"],
             order="complete_name",
         )
-        external_xml_id_datas = {
+
+        self._synchronize_execute(
+            existing_mapping_datas,
+            external_xml_id_datas,
+            external_datas,
+            force_update=force_update,
+        )
+
+    def _synchronize_execute(
+        self,
+        existing_mapping_datas,
+        external_xml_id_datas,
+        external_datas,
+        force_update=False,
+    ):
+        """This function is done to allow to execute test"""
+        self.ensure_one()
+        right_now = fields.Datetime.now()
+
+        SynchronisationMapping = self.env["synchronization.mapping"]
+        TargetModel = self.env[self.model_id.model]
+
+        external_xml_id_dict = {
             x["res_id"]: x["complete_name"]
-            for x in _tmp_data
+            for x in external_xml_id_datas
             if not x["complete_name"].startswith("__export__.")
         }
 
-        # Get Existing Mappings (between internal and external datas)
-        _tmp_data = SynchronisationMapping.search_read(
-            [("model_id", "=", self.model_id.id)],
-            ["external_id", "internal_id", "write_date"],
-        )
-        mapping_external_2_local = {
+        external_id_2_local_id_dict = {
             x["external_id"]: {
                 "internal_id": x["internal_id"],
                 "mapping_id": x["id"],
                 "write_date": x["write_date"],
             }
-            for x in _tmp_data
+            for x in existing_mapping_datas
         }
 
         for external_data in external_datas:
             external_id = external_data["id"]
-            if external_id not in mapping_external_2_local:
-                # We create the mapping first
-                if external_id in external_xml_id_datas:
+
+            if external_id not in external_id_2_local_id_dict:
+                # We create the mapping first if it doesn't exist
+                if external_id in external_xml_id_dict:
                     # If we map for the first time,
                     # we should synchronize data
                     to_update = True
 
-                    xml_id = external_xml_id_datas[external_id]
+                    xml_id = external_xml_id_dict[external_id]
                     module, name = xml_id.split(".")
                     # This is an xml data we map with local existing data
                     local_datas = self.env["ir.model.data"].search(
@@ -158,7 +195,7 @@ class SynchronizationData(models.Model):
                         )
 
                 else:
-                    if self.just_map:
+                    if self.mapping_type == "id":
                         raise UserError(
                             _(
                                 "It should not be possible to create"
@@ -191,7 +228,7 @@ class SynchronizationData(models.Model):
 
             else:
                 # The mapping has been done previously
-                _local_info = mapping_external_2_local[external_data["id"]]
+                _local_info = external_id_2_local_id_dict[external_data["id"]]
                 internal_id = _local_info["internal_id"]
                 local_write_date = _local_info["write_date"]
                 external_write_date = datetime.strptime(
@@ -200,7 +237,7 @@ class SynchronizationData(models.Model):
                 to_update = force_update or (external_write_date > local_write_date)
                 mapping = SynchronisationMapping.browse(_local_info["mapping_id"])
 
-            if to_update and not self.just_map:
+            if to_update and self.mapping_type == "data":
                 _logger.info(
                     "Updating %s#%d (External #%d)"
                     % (self.model, internal_id, external_data["id"])
@@ -208,6 +245,7 @@ class SynchronizationData(models.Model):
                 # Update Target Item
                 internal_item = TargetModel.browse(internal_id)
                 internal_item.write(self._prepare_values(external_data))
+
                 # Update mapping last update
                 mapping.write({"write_date": right_now})
 
@@ -220,7 +258,7 @@ class SynchronizationData(models.Model):
             if k in _NOT_COPIED_FIELDS:
                 continue
 
-            if k in self.mapped("ignored_field_ids.name"):
+            if k not in self.mapped("field_ids.name"):
                 continue
 
             field = self.env["ir.model.fields"].search(
