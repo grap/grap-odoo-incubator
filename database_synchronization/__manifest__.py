@@ -24,5 +24,8 @@
         "views/view_synchronization_mapping.xml",
         "views/view_synchronization_data.xml",
     ],
+    "demo": [
+        "demo/synchronization_data.xml",
+    ],
     "installable": True,
 }
