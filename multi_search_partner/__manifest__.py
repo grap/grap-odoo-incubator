@@ -9,7 +9,7 @@
     "author": "GRAP",
     "website": "http://www.grap.coop",
     "license": "AGPL-3",
-    "depends": ["multi_search_abstract"],
+    "depends": ["multi_search_abstract", "name_search_reset_res_partner"],
     "data": ["views/view_res_config_settings.xml"],
     "images": [
         "static/description/partner_search.png",

@@ -2,9 +2,11 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import TransactionCase, at_install, post_install
 
 
+@at_install(False)
+@post_install(True)
 class TestModule(TransactionCase):
     def setUp(self):
         super().setUp()
@@ -91,6 +93,42 @@ class TestModule(TransactionCase):
             ensabled_feature_search_unordered,
             initial_search + 1,
             "Multi search in unordered mode failed.",
+        )
+
+    def test_04_name_search_partner(self):
+        ordered_name = "Abc%sDef" % self.separator
+        unordered_name = "Def%sAbc" % self.separator
+
+        initial_name_search = len(self.ResPartner.name_search(unordered_name))
+
+        # Create Partner
+        vals = {"name": "Abc other Word Def"}
+        self.ResPartner.with_context(mail_create_nosubscribe=True).create(vals)
+
+        # First Name Search (Feature disabled)
+        disabled_feature_search = len(self.ResPartner.name_search(ordered_name))
+        self.assertEqual(
+            initial_name_search,
+            disabled_feature_search,
+            "Name Search function should not return items if settins is disabled",
+        )
+
+        # Second search (ordered) (Feature enabled)
+        self._enable_settings(True)
+        ensabled_feature_search_ordered = len(self.ResPartner.name_search(ordered_name))
+        self.assertEqual(
+            ensabled_feature_search_ordered,
+            initial_name_search + 1,
+            "Multi Name Search in ordered mode failed.",
+        )
+
+        ensabled_feature_search_unordered = len(
+            self.ResPartner.name_search(unordered_name)
+        )
+        self.assertEqual(
+            ensabled_feature_search_unordered,
+            initial_name_search + 1,
+            "Multi Name Search in unordered mode failed.",
         )
 
     def _enable_settings(self, enable):
