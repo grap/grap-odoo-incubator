@@ -45,15 +45,17 @@ class SynchronizationData(models.Model):
 
     synchronization_type = fields.Selection(
         string="Synchronization Type",
+        required=True,
         selection=[("all", "All"), ("active", "Only Active Items")],
         default="all",
     )
 
     mapping_type = fields.Selection(
         string="Mapping Type",
+        required=True,
         selection=[("id", "IDs"), ("data", "Datas")],
         default="data",
-        help="Check this box, if you only want to map items,"
+        help="Set 'IDs' if you only want to map items,"
         " without overwriting datas. This can be usefull"
         " for model like res.groups, etc..",
     )
@@ -101,17 +103,10 @@ class SynchronizationData(models.Model):
 
     def _synchronize(self, force_update=False):
         self.ensure_one()
-        SynchronisationMapping = self.env["synchronization.mapping"]
 
         # Get External access
         external_odoo = self._get_external_odoo()
         external_model = external_odoo.env[self.model_id.model]
-
-        # Get Existing Mappings (between internal and external datas)
-        existing_mapping_datas = SynchronisationMapping.search_read(
-            [("model_id", "=", self.model_id.id)],
-            ["external_id", "internal_id", "write_date"],
-        )
 
         # Load External Datas
         # TODO, if active_test, add existing ids to domain
@@ -127,7 +122,6 @@ class SynchronizationData(models.Model):
         )
 
         self._synchronize_execute(
-            existing_mapping_datas,
             external_xml_id_datas,
             external_datas,
             force_update=force_update,
@@ -135,17 +129,22 @@ class SynchronizationData(models.Model):
 
     def _synchronize_execute(
         self,
-        existing_mapping_datas,
         external_xml_id_datas,
         external_datas,
         force_update=False,
     ):
         """This function is done to allow to execute test"""
         self.ensure_one()
-        right_now = fields.Datetime.now()
 
+        right_now = fields.Datetime.now()
         SynchronisationMapping = self.env["synchronization.mapping"]
         TargetModel = self.env[self.model_id.model]
+
+        # Get Existing Mappings (between internal and external datas)
+        existing_mapping_datas = SynchronisationMapping.search_read(
+            [("model_id", "=", self.model_id.id)],
+            ["external_id", "internal_id", "write_date"],
+        )
 
         external_xml_id_dict = {
             x["res_id"]: x["complete_name"]
@@ -199,7 +198,7 @@ class SynchronizationData(models.Model):
                         raise UserError(
                             _(
                                 "It should not be possible to create"
-                                " item in a 'just map' Mapping. Data\n\n: {}".format(
+                                " item in an 'IDs' Mapping. Data\n\n: {}".format(
                                     external_data
                                 )
                             )
@@ -231,9 +230,12 @@ class SynchronizationData(models.Model):
                 _local_info = external_id_2_local_id_dict[external_data["id"]]
                 internal_id = _local_info["internal_id"]
                 local_write_date = _local_info["write_date"]
-                external_write_date = datetime.strptime(
-                    external_data["write_date"], "%Y-%m-%d %H:%M:%S"
-                )
+                if type(external_data["write_date"]) is fields.datetime:
+                    external_write_date = external_data["write_date"]
+                else:
+                    external_write_date = datetime.strptime(
+                        external_data["write_date"], "%Y-%m-%d %H:%M:%S"
+                    )
                 to_update = force_update or (external_write_date > local_write_date)
                 mapping = SynchronisationMapping.browse(_local_info["mapping_id"])
 
