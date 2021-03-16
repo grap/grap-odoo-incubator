@@ -5,7 +5,7 @@
 {
     "name": "Name Search Reset for partners",
     "summary": "Reset _name_search function for res.partner model",
-    "version": "12.0.1.1.0",
+    "version": "12.0.1.1.1",
     "category": "Tools",
     "author": "GRAP",
     "website": "http://www.grap.coop",
