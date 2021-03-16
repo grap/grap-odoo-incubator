@@ -36,10 +36,10 @@ addon | version | summary
 [mobile_kiosk_abstract](mobile_kiosk_abstract/) | 12.0.1.1.0 | Mobile Kiosk Absract Module
 [mobile_kiosk_inventory](mobile_kiosk_inventory/) | 12.0.1.1.0 | Mobile interface to make inventories
 [mobile_kiosk_purchase](mobile_kiosk_purchase/) | 12.0.1.1.0 | Mobile interface to make purchases
-[multi_search_abstract](multi_search_abstract/) | 12.0.1.1.0 | Multi Search - Abstract
-[multi_search_partner](multi_search_partner/) | 12.0.1.1.0 | Multi Search - Partners
+[multi_search_abstract](multi_search_abstract/) | 12.0.1.1.1 | Multi Search - Abstract
+[multi_search_partner](multi_search_partner/) | 12.0.1.1.1 | Multi Search - Partners
 [multi_search_product](multi_search_product/) | 12.0.1.1.0 | Multi Search - Products
-[name_search_reset_res_partner](name_search_reset_res_partner/) | 12.0.1.1.0 | Reset _name_search function for res.partner model
+[name_search_reset_res_partner](name_search_reset_res_partner/) | 12.0.1.1.1 | Reset _name_search function for res.partner model
 [pos_multicompany](pos_multicompany/) | 12.0.1.1.0 | Point of Sale Settings in Multi company context
 [pos_sector](pos_sector/) | 12.0.1.1.0 | Set sectors to the products and display in given PoS Sessions
 [product_category_product_qty](product_category_product_qty/) | 12.0.1.1.0 | Product Category - Product Quantity
