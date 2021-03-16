@@ -14,7 +14,7 @@ class ResPartner(models.Model):
     # Overwrite Section
     @api.model
     def _multi_search_search_fields(self):
-        return ["display_name", "email"]
+        return ["name", "display_name", "email"]
 
     @api.model
     def _multi_search_write_fields(self):

@@ -72,7 +72,7 @@ class MultiSearchMixin(models.AbstractModel):
                             + args[args.index(arg) + 1 :]
                         )
         return super()._search(
-            args=args,
+            args,
             offset=offset,
             limit=limit,
             order=order,
