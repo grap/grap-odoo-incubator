@@ -15,10 +15,17 @@ fields_view_get_origin = models.BaseModel.fields_view_get
 
 @api.model
 def fields_view_get(self, view_id=None, view_type="form", toolbar=False, submenu=False):
-    SynchronizationData = self.env["synchronization.data"]
     res = fields_view_get_origin(
         self, view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu
     )
+
+    # We make an optional load of the model because this code can be executed
+    # on database that have the module database_synchronization installed.
+    # see : https://github.com/OCA/OpenUpgrade/issues/2440#issuecomment-800903396
+    if "synchronization.data" not in self.env:
+        return res
+
+    SynchronizationData = self.env["synchronization.data"]
     synchronizations = SynchronizationData.search([("model", "=", self._name)])
     if synchronizations and view_type == "form":
         doc = etree.XML(res["arch"])
