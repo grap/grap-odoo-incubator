@@ -12,6 +12,7 @@
     "depends": ["stock"],
     "data": [
         "views/view_stock_inventory.xml",
+        "views/view_stock_inventory_line.xml",
     ],
     "demo": [
         "demo/product_product.xml",

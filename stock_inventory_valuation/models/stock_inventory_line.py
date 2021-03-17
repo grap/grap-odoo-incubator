@@ -28,13 +28,11 @@ class StockInventoryLine(models.Model):
     )
 
     # Compute Section
-    @api.multi
     @api.depends("product_id")
     def _compute_price_unit(self):
         for line in self:
             line.price_unit = line.product_id and line.product_id.standard_price or 0.0
 
-    @api.multi
     @api.depends("price_unit", "product_id", "product_qty")
     def _compute_valuation(self):
         for line in self:

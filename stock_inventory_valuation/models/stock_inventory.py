@@ -19,7 +19,6 @@ class StockInventory(models.Model):
     )
 
     # Compute Section
-    @api.multi
     @api.depends("line_ids.valuation")
     def _compute_valuation(self):
         for inventory in self:
