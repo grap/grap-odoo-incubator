@@ -39,6 +39,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <header>
                     <button name="action_synchronize" string="Synchronize"
                         type="object" class="oe_highlight"/>
+                    <button name="action_full_synchronize" string="Synchronize (Force)"
+                        type="object"/>
                 </header>
                 <sheet>
                     <div class="oe_right oe_button_box" name="button_box">
@@ -67,6 +69,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <field name="name"/>
                                 <field name="field_description"/>
                                 <field name="ttype"/>
+                                <field name="store"/>
                                 <field name="relation" attrs="{'invisible': [('ttype', 'not in', ['many2one', 'many2many', 'one2many'])]}"/>
                             </tree>
                         </field>

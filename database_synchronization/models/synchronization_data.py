@@ -83,8 +83,7 @@ class SynchronizationData(models.Model):
             ("model_id", "=", self.model_id.id),
             ("name", "not in", _NOT_COPIED_FIELDS),
             ("readonly", "=", False),
-            ("ttype", "not in", ("one2many", "many2many")),
-            ("store", "=", True),
+            ("ttype", "not in", ["one2many"]),
         ]
         self.field_ids = self.env["ir.model.fields"].search(domain)
         return {
@@ -287,8 +286,7 @@ class SynchronizationData(models.Model):
                         [
                             ("model", "=", field.relation),
                             ("external_id", "=", v[0]),
-                        ],
-                        limit=1,
+                        ]
                     )
                     if mapping:
                         res[k] = mapping.internal_id
@@ -301,6 +299,29 @@ class SynchronizationData(models.Model):
                             ).format(k, v[0], v[1], external_data)
                         )
             elif field.ttype == "many2many":
+                if not v:
+                    res[k] = []
+                else:
+                    mappings = SynchronisationMapping.search(
+                        [
+                            ("model", "=", field.relation),
+                            ("external_id", "in", v),
+                        ],
+                    )
+                    if len(mappings) == len(v):
+                        res[k] = [[6, False, mappings.mapped("internal_id")]]
+                    else:
+                        not_founds = list(set(v) - set(mappings.mapped("external_id")))
+                        raise UserError(
+                            _(
+                                "Unable to find a mapping for the field '{}'.\n"
+                                " - values: {}\n"
+                                " - not found {}\n\n"
+                                " - External data: \n {}"
+                                ""
+                            ).format(k, v, not_founds, external_data)
+                        )
+            elif field.ttype == "one2many":
                 raise NotImplementedError("many2many: " + k)
             else:
                 res[k] = v
