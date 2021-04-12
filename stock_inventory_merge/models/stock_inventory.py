@@ -78,7 +78,7 @@ class StockInventory(models.Model):
                 if not found:
                     # Add the line, if inventory line was not found
                     product_line["product_qty"] = 0
-                    product_line["inventory_id"] = self.id
+                    product_line["inventory_id"] = inventory.id
                     line_obj.create(product_line)
 
     @api.multi
