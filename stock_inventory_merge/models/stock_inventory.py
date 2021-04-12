@@ -74,7 +74,7 @@ class StockInventory(models.Model):
                         item
                     ) == self._get_inventory_line_keys(product_line):
                         found = True
-                        continue
+                        break
                 if not found:
                     # Add the line, if inventory line was not found
                     product_line["product_qty"] = 0
