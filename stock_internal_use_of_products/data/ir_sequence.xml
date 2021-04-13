@@ -12,6 +12,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="code">internal.use</field>
             <field name="prefix">IU/%(year)s/</field>
             <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
         </record>
     </data>
 </openerp>
