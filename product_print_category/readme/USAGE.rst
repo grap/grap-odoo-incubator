@@ -6,7 +6,8 @@
 .. figure:: ../static/description/print_category.png
 
 * Affect products to the categories dire
-    * Go to 'Sales' / 'Products' / 'Product variants'
+    * Go to 'Sales' / 'Products' / 'Product variants' (or 'Products' if
+      variants are not activated).
     * Go to your product in sales tab
     * Set a print category
 
