@@ -13,6 +13,6 @@ class SaleOrder(models.Model):
         """After Confirm, force stock.move.line to be full, ready to be
         validated"""
         super().action_confirm()
-        for picking in self.picking_ids:
+        for picking in self.mapped("picking_ids"):
             picking.quick_quantities_done()
         return True
