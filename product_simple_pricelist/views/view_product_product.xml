@@ -9,22 +9,49 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_product_product_tree" model="ir.ui.view">
         <field name="model">product.product</field>
         <field name="arch" type="xml">
-            <tree editable="bottom" create="false"
-                    decoration-muted="lst_price == pricelist_price"
-                    decoration-danger="lst_price &lt; pricelist_price">
-                <field name="default_code"/>
-                <field name="name"/>
-                <field name="lst_price"/>
-                <field name="pricelist_price" invisible="not context.get('pricelist_id', False)"/>
+            <tree editable="bottom" create="false">
+                <field name="default_code" readonly="1"/>
+                <field name="name" readonly="1"/>
+                <field name="specific_pricelist_item_id" invisible="1"/>
+                <field name="lst_price" readonly="1"/>
+                <field name="pricelist_price"
+                    invisible="not context.get('pricelist_id', False)"
+                    options="{'bg_color': '#FFFFC8:specific_pricelist_item_id != False'}"/>
                 <button name="delete_pricelist_price"
-                    attrs="{'invisible': [('pricelist_price_difference_rate', '=', 0)]}"
+                    attrs="{'invisible': [('specific_pricelist_item_id', '=', False)]}"
                     string="Delete Specific Price" type="object" icon="fa-minus"/>
                 <field name="pricelist_price_difference_rate"
                     attrs="{'invisible': [('pricelist_price_difference_rate', '=', 0)]}"/>
-
             </tree>
         </field>
     </record>
+
+    <record id="view_product_product_form" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <group name="pricelists" position="before">
+                <group name="group_variant_item_ids" groups="product_simple_pricelist.group_simple_pricelist_editor">
+                    <div name="div_variant_item_ids">
+                        <separator string="Variant Pricing"/>
+                        <field name="variant_item_ids" nolabel="1" context="{'default_base':'list_price', 'default_applied_on' :'0_product_variant'}">
+                            <tree editable="bottom">
+                                <field name="pricelist_id" string="Pricelist" required="1" domain="[('editable_by_product', '=', True)]"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="fixed_price" string="Price" required='1' widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="min_quantity"/>
+                                <field name="date_start"/>
+                                <field name="date_end"/>
+                                <field name="applied_on" invisible="1"/>
+                            </tree>
+                        </field>
+                    </div>
+                </group>
+            </group>
+        </field>
+    </record>
+
+
 
     <record id="action_edit_pricelist_by_product" model="ir.actions.act_window">
         <field name="name">Edit Pricelist</field>

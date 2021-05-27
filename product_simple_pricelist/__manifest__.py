@@ -12,10 +12,14 @@
     "license": "AGPL-3",
     "depends": [
         "product",
+        "sale",
     ],
     "data": [
+        "security/res_groups.xml",
+        "security/ir.model.access.csv",
         "views/view_product_product.xml",
         "views/view_product_pricelist.xml",
+        "views/menu.xml",
     ],
     "demo": [
         "demo/res_groups.xml",
