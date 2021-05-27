@@ -12,54 +12,69 @@ class TestModule(TransactionCase):
         super().setUp()
         self.ProductPricelistItem = self.env["product.pricelist.item"]
         self.simple_pricelist = self.env.ref(
-            "product_simple_pricelist.pricelist_editable_by_product"
+            "product_simple_pricelist.pricelist_editable_based_default"
         )
-        self.corner_desk_product = self.env.ref(
-            "product.product_product_5"
-        ).with_context(pricelist_id=self.simple_pricelist.id)
+        self.simple_recursive_pricelist = self.env.ref(
+            "product_simple_pricelist.pricelist_editable_based_discount"
+        )
+        self.corner_desk_product = self.env.ref("product.product_product_5")
 
     # Test Section
     def test_01_add_new_price(self):
+        product = self.corner_desk_product.with_context(
+            pricelist_id=self.simple_pricelist.id
+        )
         self.assertEqual(
-            self.corner_desk_product.lst_price,
-            self.corner_desk_product.pricelist_price,
+            product.lst_price,
+            product.pricelist_price,
             "By default, pricelist price should be the same as list price.",
         )
 
-        self.corner_desk_product.pricelist_price = (
-            self.corner_desk_product.lst_price / 2
-        )
+        product.pricelist_price = product.lst_price / 2
 
-        self.corner_desk_product._compute_pricelist_price()
-
+        product._compute_pricelist_price()
         self.assertEqual(
-            self.corner_desk_product.pricelist_price_difference_rate,
+            product.pricelist_price_difference_rate,
             -50.0,
             "bad computation of the pricelist differente rate",
         )
-
         items = self.ProductPricelistItem.search(
             [
                 ("pricelist_id", "=", self.simple_pricelist.id),
-                ("product_id", "=", self.corner_desk_product.id),
+                ("product_id", "=", product.id),
             ]
         )
-
         self.assertEqual(
             len(items), 1, "apply pricelist price should create a pricelist item"
         )
 
-        self.corner_desk_product.pricelist_price = self.corner_desk_product.lst_price
-
+        product.delete_pricelist_price()
         items = self.ProductPricelistItem.search(
             [
                 ("pricelist_id", "=", self.simple_pricelist.id),
-                ("product_id", "=", self.corner_desk_product.id),
+                ("product_id", "=", product.id),
             ]
         )
-
         self.assertEqual(
             len(items),
             0,
-            "apply list price as pricelist price should delete the" " pricelist item",
+            "Delete pricelist price should delete the pricelist item",
+        )
+
+    def test_02_sub_pricelist(self):
+        product = self.corner_desk_product.with_context(
+            pricelist_id=self.simple_recursive_pricelist.id
+        )
+        self.assertEqual(
+            product.lst_price * 0.9,
+            product.pricelist_price,
+            "By default, pricelist price should be the default discount price (-10%).",
+        )
+
+        product.pricelist_price = product.lst_price / 2
+        product._compute_pricelist_price()
+        self.assertEqual(
+            product.pricelist_price_difference_rate,
+            -50.0,
+            "bad computation of the pricelist differente rate",
         )
