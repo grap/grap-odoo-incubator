@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_internal_use,Internal Use User,model_internal_use,,1,1,1,1
-access_internal_use_line,Internal Use Line User,model_internal_use_line,,1,1,1,1
-access_internal_use_case_manager,Internal Use Case Manager,model_internal_use_case,account.group_account_manager,1,1,1,1
-access_internal_use_case_user,Internal Use Case User,model_internal_use_case,stock.group_stock_user,1,,,
