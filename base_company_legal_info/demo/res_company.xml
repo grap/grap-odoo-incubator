@@ -19,7 +19,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <record id="company_akretion" model="res.company">
-        <field name="name">Akretion</field>
+        <field name="name">Akretion Coop</field>
         <field name="legal_name">AKRETION FRANCE</field>
         <field name="legal_type">Société coopérative exploitée sous forme de SARL</field>
         <field name="street">27, rue Henri Rolland</field>
