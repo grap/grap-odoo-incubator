@@ -6,18 +6,53 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-    <record id="pricelist_editable_by_product" model="product.pricelist">
-        <field name="name">My Simple Pricelist</field>
+    <record id="pricelist_editable_based_default" model="product.pricelist">
+        <field name="name">My Simple Pricelist (based on Public Pricelist)</field>
         <field name="editable_by_product" eval="True"/>
     </record>
 
-    <record id="pricelist_item_editable_by_product" model="product.pricelist.item">
+    <record id="pricelist_item_editable_based_default" model="product.pricelist.item">
         <field name="name">My Simple Pricelist (Item)</field>
-        <field name="pricelist_id" ref="pricelist_editable_by_product"/>
+        <field name="pricelist_id" ref="pricelist_editable_based_default"/>
         <field name="applied_on">0_product_variant</field>
         <field name="product_id" ref="product.product_product_11"/>
         <field name="compute_price">fixed</field>
         <field name="fixed_price">12.50</field>
     </record>
+
+    <record id="pricelist_discount_10" model="product.pricelist">
+        <field name="name">Public Price -10%</field>
+    </record>
+
+
+    <function model="product.pricelist.item" name="write">
+        <value model="product.pricelist" eval="
+            obj().browse(ref('product_simple_pricelist.pricelist_discount_10')).item_ids.filtered(
+                lambda x: x.applied_on == '3_global').ids
+            "/>
+        <value eval="{
+            'compute_price': 'formula',
+            'base': 'pricelist',
+            'price_discount': 10,
+            'base_pricelist_id': ref('product.list0'),
+        }"/>
+    </function>
+
+    <record id="pricelist_editable_based_discount" model="product.pricelist">
+        <field name="name">My Simple Pricelist (based on -10% Pricelist)</field>
+        <field name="editable_by_product" eval="True"/>
+    </record>
+
+    <function model="product.pricelist.item" name="write">
+        <value model="product.pricelist" eval="
+            obj().browse(ref('product_simple_pricelist.pricelist_editable_based_discount')).item_ids.filtered(
+                lambda x: x.applied_on == '3_global').ids
+            "/>
+        <value eval="{
+            'compute_price': 'formula',
+            'base': 'pricelist',
+            'base_pricelist_id': ref('product_simple_pricelist.pricelist_discount_10'),
+        }"/>
+    </function>
 
 </odoo>

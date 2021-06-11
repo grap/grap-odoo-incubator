@@ -2,11 +2,7 @@ To use this module, you need to go to Sale / Configuration / Pricelists
 
 * Check the box simple pricelist on your desired pricelist
 
-* click then on the edit button, available on the tree or the form view
+.. figure:: ../static/description/product_pricelist_form.png
 
-.. figure:: ../static/description/product_pricelist_tree.png
-
-* you can then edit easily change the price for a given product with the
-  buttons in the end of each lines.
-
-.. figure:: ../static/description/product_product_tree.png
+* You can optionnaly affect users to the new group "Simple Pricelist - Editor" to let
+  the possibility to user that can not create pricelist, to edit pricelist items for products.
