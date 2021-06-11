@@ -23,11 +23,7 @@ This module extends the functionality of Pricelist Module to provide an
 interface to easily change price per product, creating pricelist item for
 each product.
 
-It so add a boolean on pricelist "Is Simple". A wizard is available to edit
-the "simple pricelist", that allow users, in an editable tree view, to set
-price by product.
-
-A "simple pricelist" has one and only one version.
+It provides for some pricelists, a wizard to edit, in an editable tree view, prices by product.
 
 **Table of contents**
 
@@ -41,14 +37,37 @@ To use this module, you need to go to Sale / Configuration / Pricelists
 
 * Check the box simple pricelist on your desired pricelist
 
-* click then on the edit button, available on the tree or the form view
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_simple_pricelist/static/description/product_pricelist_form.png
+
+* You can optionnaly affect users to the new group "Simple Pricelist - Editor" to let
+  the possibility to user that can not create pricelist, to edit pricelist items for products.
+
+Usage
+=====
+
+**Via Pricelist**
+
+* Go to "Sales > Products > Pricelists"
+
+* Click then on the edit button, available on the tree or the form view
 
 .. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_simple_pricelist/static/description/product_pricelist_tree.png
 
-* you can then edit easily change the price for a given product with the
+* You can easily change the price for a given product with the
   buttons in the end of each lines.
 
 .. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_simple_pricelist/static/description/product_product_tree.png
+
+
+**Via Products**
+
+* Go to "Sales > Products > Product Variants"
+
+* Open a product and click on the "Sales" Tab.
+
+* edit prices per product and simple pricelist:
+
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_simple_pricelist/static/description/product_product_form.png
 
 Bug Tracker
 ===========
