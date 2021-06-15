@@ -2,17 +2,16 @@
 // @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 // License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
+odoo.define("mobile_kiosk_abstract.abstract_action", function (require) {
     "use strict";
 
-    var AbstractAction = require('web.AbstractAction');
-    var PadWidget = require('mobile_kiosk_abstract.pad_widget');
-    var ajax = require('web.ajax');
-    var core = require('web.core');
-    var session = require('web.session');
+    var AbstractAction = require("web.AbstractAction");
+    var PadWidget = require("mobile_kiosk_abstract.pad_widget");
+    var ajax = require("web.ajax");
+    var core = require("web.core");
+    var session = require("web.session");
 
     var ActionMobileKioskAbstract = AbstractAction.extend({
-
         // Set to True if you want enable the call of the function
         // _onBarcodeScanned, when a barcode is scanned
         _kiosk_barcode_scanner_required: false,
@@ -32,7 +31,7 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
         _kiosk_abstract_events: {
             "click .button_home_page": function () {
                 this.do_action({
-                    type: 'ir.actions.client',
+                    type: "ir.actions.client",
                     name: this._kiosk_home_page_name,
                     tag: this._kiosk_home_page_tag,
                 });
@@ -46,7 +45,6 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
             // inherit of this abstract action
             Object.keys(this._kiosk_abstract_events).forEach(function (event_key) {
                 self.events[event_key] = self._kiosk_abstract_events[event_key];
-
             });
 
             // Recover context
@@ -68,7 +66,7 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
             // Create and render a PadWidget if required
             if (this._kiosk_pad_widget_required) {
                 this.numpad_widget = new PadWidget(this, {});
-                this.numpad_widget.appendTo(this.$('.placeholder-padwidget'));
+                this.numpad_widget.appendTo(this.$(".placeholder-padwidget"));
             }
         },
 
@@ -77,7 +75,9 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
 
             // Make a RPC call every day to keep the session alive
             this._interval = window.setInterval(
-                this._callServer.bind(this), 60*60*1000*24);
+                this._callServer.bind(this),
+                60 * 60 * 1000 * 24
+            );
 
             // Enable barcode if required
             this._toggleBarcode(true);
@@ -96,9 +96,9 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
         _toggleBarcode: function (active) {
             if (this._kiosk_barcode_scanner_required) {
                 if (active) {
-                    core.bus.on('barcode_scanned', this, this._onBarcodeScanned);
+                    core.bus.on("barcode_scanned", this, this._onBarcodeScanned);
                 } else {
-                    core.bus.off('barcode_scanned', this, this._onBarcodeScanned);
+                    core.bus.off("barcode_scanned", this, this._onBarcodeScanned);
                 }
             }
         },
@@ -111,9 +111,7 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
             // Make a call to the database to avoid the auto close of the session
             return ajax.rpc("/mobile_kiosk_abstract/kiosk_keepalive", {});
         },
-
     });
 
     return ActionMobileKioskAbstract;
-
 });

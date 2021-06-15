@@ -15,8 +15,8 @@ odoo.define("mobile_kiosk_purchase.set_supplier", function (require) {
             "click .button_skip_partner": function () {
                 // Go to the product page
                 this.do_action({
-                    type: 'ir.actions.client',
-                    name: 'Select Product',
+                    type: "ir.actions.client",
+                    name: "Select Product",
                     tag: "mobile_kiosk_purchase_action_set_product",
                     kiosk_context: this.kiosk_context,
                 });
@@ -24,18 +24,17 @@ odoo.define("mobile_kiosk_purchase.set_supplier", function (require) {
             "click .button_list_partners": function () {
                 this.do_action("mobile_kiosk_abstract.action_res_partner_kanban", {
                     additional_context: {
-                        "kiosk_action": "mobile_kiosk_purchase_select_supplier",
-                        "kiosk_next_tag": "mobile_kiosk_purchase_action_set_product",
-                        "kiosk_context": this.kiosk_context,
-                        "kiosk_extra_fields": {
-                            "partner_name": "display_name",
-                            "partner_id": "id",
+                        kiosk_action: "mobile_kiosk_purchase_select_supplier",
+                        kiosk_next_tag: "mobile_kiosk_purchase_action_set_product",
+                        kiosk_context: this.kiosk_context,
+                        kiosk_extra_fields: {
+                            partner_name: "display_name",
+                            partner_id: "id",
                         },
                     },
                 });
             },
         },
-
     });
 
     core.action_registry.add(
@@ -44,5 +43,4 @@ odoo.define("mobile_kiosk_purchase.set_supplier", function (require) {
     );
 
     return ActionSetSupplier;
-
 });

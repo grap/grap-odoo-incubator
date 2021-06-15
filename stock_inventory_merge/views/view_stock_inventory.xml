@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -12,15 +12,30 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
 
             <button name="action_validate" position="after">
-                <button name="complete_with_zero" type="object" string="Complete With Zero" attrs="{'invisible': ['|', ('duplicates_qty', '!=', 0), ('state', '!=', 'confirm')]}"/>
-                <button name="action_merge_duplicated_line" type="object" string="Merge Duplicates" attrs="{'invisible': ['|', ('duplicates_qty', '=', 0), ('state', '!=', 'confirm')]}" class="oe_highlight"/>
+                <button
+                    name="complete_with_zero"
+                    type="object"
+                    string="Complete With Zero"
+                    attrs="{'invisible': ['|', ('duplicates_qty', '!=', 0), ('state', '!=', 'confirm')]}"
+                />
+                <button
+                    name="action_merge_duplicated_line"
+                    type="object"
+                    string="Merge Duplicates"
+                    attrs="{'invisible': ['|', ('duplicates_qty', '=', 0), ('state', '!=', 'confirm')]}"
+                    class="oe_highlight"
+                />
             </button>
 
             <button name="action_inventory_line_tree" position="before">
-              <button class="oe_inline oe_stat_button" type="object"
-                      name="action_view_duplicates" icon="fa-copy"
-                      attrs="{'invisible': [('duplicates_qty', '=', 0)]}">
-                  <field string="Duplicates" name="duplicates_qty" widget="statinfo"/>
+              <button
+                    class="oe_inline oe_stat_button"
+                    type="object"
+                    name="action_view_duplicates"
+                    icon="fa-copy"
+                    attrs="{'invisible': [('duplicates_qty', '=', 0)]}"
+                >
+                  <field string="Duplicates" name="duplicates_qty" widget="statinfo" />
               </button>
             </button>
 
@@ -33,7 +48,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
       <field name="view_type">form</field>
       <field name="view_mode">form</field>
       <field name="target">new</field>
-      <field name="binding_model_id" ref="stock.model_stock_inventory"/>
+      <field name="binding_model_id" ref="stock.model_stock_inventory" />
     </record>
 
 </odoo>

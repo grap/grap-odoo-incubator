@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -11,7 +11,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="company_id" ref="base.main_company" />
         <field name="default_location_src_id" ref="stock.stock_location_components" />
         <field name="default_location_dest_id" ref="stock.stock_location_14" />
-        <field name="journal_id" ref="stock_internal_use_of_products.misc_journal_demo" />
+        <field
+            name="journal_id"
+            ref="stock_internal_use_of_products.misc_journal_demo"
+        />
         <field name="account_id" ref="use_expense_account" />
     </record>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
 @author Julien WESTE
@@ -11,12 +11,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">internal.use.case</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name"/>
-                <field name="default_location_src_id"/>
-                <field name="default_location_dest_id"/>
-                <field name="account_id"/>
-                <field name="journal_id"/>
-                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="name" />
+                <field name="default_location_src_id" />
+                <field name="default_location_dest_id" />
+                <field name="account_id" />
+                <field name="journal_id" />
+                <field name="company_id" groups="base.group_multi_company" />
             </tree>
         </field>
     </record>
@@ -28,23 +28,27 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
+                            <field name="name" />
                         </group>
                         <group>
-                            <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                                widget="selection"
+                            />
                         </group>
                         <group>
-                            <field name="active"/>
+                            <field name="active" />
                         </group>
                     </group>
                     <group>
                         <group string="Stock Settings">
-                            <field name="default_location_src_id"/>
-                            <field name="default_location_dest_id"/>
+                            <field name="default_location_src_id" />
+                            <field name="default_location_dest_id" />
                         </group>
                         <group string="Accounting Settings">
-                            <field name="journal_id"/>
-                            <field name="account_id"/>
+                            <field name="journal_id" />
+                            <field name="account_id" />
                         </group>
                     </group>
                 </sheet>
@@ -60,10 +64,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="menu_internal_uses_config"
+    <menuitem
+        id="menu_internal_uses_config"
         name="Internal Use Cases"
         parent="stock.menu_stock_config_settings"
         sequence="40"
-        action="action_internal_use_case_tree"/>
+        action="action_internal_use_case_tree"
+    />
 
 </odoo>

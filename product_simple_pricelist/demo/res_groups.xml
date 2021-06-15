@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -7,23 +7,26 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <record id="product.group_sale_pricelist" model="res.groups">
-        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
     </record>
 
     <record id="product.group_product_pricelist" model="res.groups">
-        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
     </record>
 
     <record id="product.group_pricelist_item" model="res.groups">
-        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
     </record>
 
     <record id="base.group_multi_company" model="res.groups">
-        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
     </record>
 
     <record id="group_simple_pricelist_editor" model="res.groups">
-        <field name="users" eval="[(4, ref('base.user_admin')), (4, ref('base.user_demo'))]"/>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_admin')), (4, ref('base.user_demo'))]"
+        />
     </record>
 
 </odoo>

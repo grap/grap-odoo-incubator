@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -11,12 +11,17 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
         <form>
             <group>
-                <field name="selected_use_qty"/>
+                <field name="selected_use_qty" />
             </group>
             <footer>
-                <button name="apply_button" string="Apply" type="object" class="oe_highlight"/>
+                <button
+                        name="apply_button"
+                        string="Apply"
+                        type="object"
+                        class="oe_highlight"
+                    />
                 or
-                <button string="Cancel" class="oe_link" special="cancel"/>
+                <button string="Cancel" class="oe_link" special="cancel" />
             </footer>
         </form>
         </field>

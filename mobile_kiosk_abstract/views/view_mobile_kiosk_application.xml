@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2020-Today GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-
 <odoo>
 
     <record id="view_mobile_kiosk_application_tree" model="ir.ui.view">
         <field name="model">mobile.kiosk.application</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name"/>
+                <field name="name" />
                 <button name="button_launch" type="object" string="Launch" />
             </tree>
         </field>
@@ -21,22 +20,30 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">mobile.kiosk.application</field>
         <field name="arch" type="xml">
             <kanban create="false" class="o_modules_kanban">
-                <field name="icon"/>
-                <field name="name"/>
-                <field name="summary"/>
+                <field name="icon" />
+                <field name="name" />
+                <field name="summary" />
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_module_vignette">
-                            <img t-attf-src="#{record.icon.value}" class="oe_module_icon" alt="record.icon.value"/>
+                            <img
+                                t-attf-src="#{record.icon.value}"
+                                class="oe_module_icon"
+                                alt="record.icon.value"
+                            />
                             <div class="oe_module_desc" t-att-title="record.name.value">
                                 <h4 class="o_kanban_record_title">
-                                    <field name="name"/>
+                                    <field name="name" />
                                 </h4>
                                 <p class="oe_module_name">
-                                    <field name="summary"/>
+                                    <field name="summary" />
                                 </p>
                                 <div class="oe_module_action">
-                                    <button name="button_launch" type="object" class="btn btn-primary btn-sm">Launch</button>
+                                    <button
+                                        name="button_launch"
+                                        type="object"
+                                        class="btn btn-primary btn-sm"
+                                    >Launch</button>
                                 </div>
                             </div>
                         </div>
@@ -53,9 +60,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="view_mode">kanban,tree</field>
     </record>
 
-    <menuitem id="menu_mobile_kiosk_application"
+    <menuitem
+        id="menu_mobile_kiosk_application"
         parent="menu_mobile_kiosk_main"
         action="action_mobile_kiosk_application"
-        sequence="1"/>
+        sequence="1"
+    />
 
 </odoo>

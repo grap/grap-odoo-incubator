@@ -5,13 +5,11 @@
 odoo.define("mobile_kiosk_abstract.widget", function (require) {
     "use strict";
 
-    var Widget = require('web.Widget');
+    var Widget = require("web.Widget");
     var core = require("web.core");
     var _t = core._t;
 
-
     Widget.include({
-
         kiosk_update_context_from_result: function (context, result) {
             Object.keys(result).forEach(function (key) {
                 if (key !== "status" && key !== "messages") {
@@ -38,8 +36,6 @@ odoo.define("mobile_kiosk_abstract.widget", function (require) {
                     self.do_notify(message.title, message.message, false);
                 }
             });
-
         },
-
     });
 });

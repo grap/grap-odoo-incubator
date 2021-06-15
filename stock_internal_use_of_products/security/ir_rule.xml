@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -8,7 +8,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="ir_rule_internal_use" model="ir.rule">
         <field name="name">Access to Internal Uses</field>
-        <field name="model_id" ref="stock_internal_use_of_products.model_internal_use"/>
+        <field
+            name="model_id"
+            ref="stock_internal_use_of_products.model_internal_use"
+        />
         <field name="domain_force">[
             '|',
             ('company_id','=', False),
@@ -19,7 +22,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="ir_rule_internal_use_case" model="ir.rule">
         <field name="name">Access to Internal Use Cases</field>
-        <field name="model_id" ref="stock_internal_use_of_products.model_internal_use_case"/>
+        <field
+            name="model_id"
+            ref="stock_internal_use_of_products.model_internal_use_case"
+        />
         <field name="domain_force">[
             '|',
             ('company_id','=', False),
@@ -30,7 +36,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="ir_rule_internal_use_line" model="ir.rule">
         <field name="name">Access to Internal Use Lines</field>
-        <field name="model_id" ref="stock_internal_use_of_products.model_internal_use_line"/>
+        <field
+            name="model_id"
+            ref="stock_internal_use_of_products.model_internal_use_line"
+        />
         <field name="domain_force">[
             '|',
             ('company_id','=', False),
