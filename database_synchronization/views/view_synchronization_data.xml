@@ -64,15 +64,23 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         </group>
                     </group>
                     <group string="Synchronization" attrs="{'invisible': [('mapping_type', '=', 'id')]}">
+                        <field name="synchronize_readonly"/>
                         <field name="field_ids">
                             <tree>
                                 <field name="name"/>
                                 <field name="field_description"/>
                                 <field name="ttype"/>
                                 <field name="store"/>
+                                <field name="readonly"/>
                                 <field name="relation" attrs="{'invisible': [('ttype', 'not in', ['many2one', 'many2many', 'one2many'])]}"/>
                             </tree>
                         </field>
+                    </group>
+                    <group string="Post Code" attrs="{'invisible': [('mapping_type', '=', 'id')]}">
+                        <field name="post_code" widget="ace" options="{'mode': 'python'}"/>
+                    </group>
+                        <group string="Note">
+                        <field name="description" nolabel="1"/>
                     </group>
                 </sheet>
             </form>
