@@ -118,7 +118,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="context">{'search_default_to_confirm': 1}</field>
     </record>
 
-    <menuitem id="menu_internal_uses"
+    <menuitem id="menu_internal_use"
         name="Internal Uses"
         parent="stock.menu_stock_warehouse_mgmt"
         sequence="50"

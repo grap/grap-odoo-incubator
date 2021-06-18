@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-18 20:34+0000\n"
-"PO-Revision-Date: 2020-12-18 20:34+0000\n"
+"POT-Creation-Date: 2021-06-18 12:39+0000\n"
+"PO-Revision-Date: 2021-06-18 12:39+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use_case.py:52
+#: code:addons/stock_internal_use_of_products/models/internal_use_case.py:66
 #, python-format
 msgid "%s (copy)"
 msgstr "%s (copie)"
@@ -58,6 +58,7 @@ msgstr "Annuler"
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__internal_use_case_id
+#: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_line__internal_use_case_id
 #: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_search
 msgid "Case"
 msgstr "Type"
@@ -103,9 +104,10 @@ msgstr "Créé le"
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__date_done
+#: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_line__date_done
 #: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_search
 msgid "Date"
-msgstr "Date"
+msgstr "Date "
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__description
@@ -141,9 +143,9 @@ msgid "Expense Account"
 msgstr "Compte de dépenses"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use.py:252
-#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:188
-#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:206
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:258
+#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:242
+#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:261
 #, python-format
 msgid "Expense Transfert (%s)"
 msgstr "Transfert de charge (%s)"
@@ -181,7 +183,7 @@ msgid "ID"
 msgstr ""
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use_case.py:61
+#: code:addons/stock_internal_use_of_products/models/internal_use_case.py:77
 #, python-format
 msgid "Incorrect Accounting Settings.\n"
 "Account and Journal should be set both or not set."
@@ -206,10 +208,16 @@ msgid "Internal Use Cases"
 msgstr "Types d'utilisation interne"
 
 #. module: stock_internal_use_of_products
+#: model:ir.actions.act_window,name:stock_internal_use_of_products.action_internal_use_line_tree
+#: model:ir.ui.menu,name:stock_internal_use_of_products.menu_internal_use_line
+msgid "Internal Use Lines"
+msgstr "Lignes d'utilisation interne"
+
+#. module: stock_internal_use_of_products
 #: model:ir.actions.act_window,name:stock_internal_use_of_products.action_internal_use_tree
 #: model:ir.model,name:stock_internal_use_of_products.model_internal_use
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_line__internal_use_id
-#: model:ir.ui.menu,name:stock_internal_use_of_products.menu_internal_uses
+#: model:ir.ui.menu,name:stock_internal_use_of_products.menu_internal_use
 msgid "Internal Uses"
 msgstr "Utilisations interne"
 
@@ -243,7 +251,7 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:77
+#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:113
 #, python-format
 msgid "Line quantity can not be null"
 msgstr "La quantité sur la ligne ne peut pas être nulle"
@@ -304,6 +312,7 @@ msgstr "Définir le journal comptable utilisé pour générer les écritures com
 
 #. module: stock_internal_use_of_products
 #: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use__state
+#: model:ir.model.fields,field_description:stock_internal_use_of_products.field_internal_use_line__state
 #: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_search
 msgid "Status"
 msgstr "État"
@@ -330,13 +339,13 @@ msgid "Stock Settings"
 msgstr "Paramètres de stock"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:87
+#: code:addons/stock_internal_use_of_products/models/internal_use_line.py:123
 #, python-format
 msgid "The current unit of measure '%s' of the line %s (quantity  %s) is not compatible with the unit of measure '%s' of the product"
 msgstr "L'unité de mesure '%s' de la ligne %s (quantité  %s) n'est pas compatible avec l'unité de mesure '%s' de l'article"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/product_product.py:27
+#: code:addons/stock_internal_use_of_products/models/product_product.py:28
 #, python-format
 msgid "The product %s has not account expense defined. Please define one and try again"
 msgstr "Le produit %s n'a pas de compte de dépenses défini. Veuillez en définir un et réessayer"
@@ -352,6 +361,7 @@ msgid "To Process"
 msgstr "A traiter"
 
 #. module: stock_internal_use_of_products
+#: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_line_tree
 #: model_terms:ir.ui.view,arch_db:stock_internal_use_of_products.view_internal_use_tree
 msgid "Total"
 msgstr ""
@@ -383,13 +393,13 @@ msgid "Wizard to confirm several internal uses"
 msgstr "Assistant pour confirmer plusieurs utilisations internes"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use.py:110
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:117
 #, python-format
 msgid "You can not confirm an empty Internal Use."
 msgstr "Vous ne pouvez pas valider une utilisation interne sans aucune ligne"
 
 #. module: stock_internal_use_of_products
-#: code:addons/stock_internal_use_of_products/models/internal_use.py:91
+#: code:addons/stock_internal_use_of_products/models/internal_use.py:98
 #, python-format
 msgid "You can only delete draft uses."
 msgstr "Vous pouvez seulement supprimer les utilisations internes en brouillon"
