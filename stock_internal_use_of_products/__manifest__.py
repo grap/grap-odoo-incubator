@@ -19,6 +19,7 @@
         "security/ir_rule.xml",
         "data/ir_sequence.xml",
         "views/view_internal_use.xml",
+        "views/view_internal_use_line.xml",
         "views/view_internal_use_case.xml",
         "views/view_internal_use_mass_generate_wizard.xml",
     ],

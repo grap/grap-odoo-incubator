@@ -8,17 +8,17 @@ import time
 from odoo import _, api, fields, models
 from odoo.exceptions import Warning as UserError
 
+_INTERNAL_USE_STATE = [
+    ("draft", "New"),
+    ("confirmed", "Confirmed"),
+    ("done", "Done"),
+]
+
 
 class InternalUse(models.Model):
     _name = "internal.use"
     _description = "Internal Uses"
     _order = "date_done desc, name"
-
-    _INTERNAL_USE_STATE = [
-        ("draft", "New"),
-        ("confirmed", "Confirmed"),
-        ("done", "Done"),
-    ]
 
     # Columns section
     name = fields.Char(string="Name", required=True, default="Draft internal use")
