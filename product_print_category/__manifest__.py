@@ -10,6 +10,7 @@
     "category": "Product",
     "license": "AGPL-3",
     "author": "GRAP, " "La Louve, " "Odoo Community Association (OCA)",
+    "website": "http://www.grap.coop",
     "depends": [
         "sale_management",
         "product",

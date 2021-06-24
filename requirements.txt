@@ -1,5 +1,2 @@
-viivakoodi
-cairosvg
-
-# [database_synchronization]
+# generated from manifests external_dependencies
 odoorpc

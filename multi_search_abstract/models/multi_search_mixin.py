@@ -21,13 +21,11 @@ class MultiSearchMixin(models.AbstractModel):
     def _multi_search_search_fields(self):
         """Overwrite in inherited model to define field on which the search
         will be processed"""
-        pass
 
     @api.model
     def _multi_search_write_fields(self):
         """Overwrite in inherited model to define fields that will not
         contain the special char"""
-        pass
 
     @api.model
     def _multi_search_separator(self):

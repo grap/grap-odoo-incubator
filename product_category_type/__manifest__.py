@@ -10,6 +10,7 @@
     "category": "Product",
     "license": "AGPL-3",
     "author": "GRAP",
+    "website": "http://www.grap.coop",
     "depends": ["product"],
     "data": [
         "views/view_product_category.xml",
