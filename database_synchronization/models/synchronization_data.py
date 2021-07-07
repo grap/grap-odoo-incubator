@@ -2,12 +2,12 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-import logging
-from datetime import datetime
 
-from odoo import _, api, fields, models
-from odoo.exceptions import UserError
-from odoo.tools.safe_eval import safe_eval
+import logging
+
+from odoo import _, api, exceptions, fields, models
+from odoo.exceptions import UserError, ValidationError
+from odoo.tools.safe_eval import safe_eval, test_python_expr
 
 _logger = logging.getLogger(__name__)
 
@@ -20,6 +20,12 @@ _NOT_COPIED_FIELDS = [
     "write_uid",
     "write_date",
 ]
+
+DEFAULT_PYTHON_CODE = """# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - record: record on which the code is executed
+#  - exception: can be used to raise exception.Warning, etc.
+\n\n\n\n"""
 
 
 class SynchronizationData(models.Model):
@@ -64,27 +70,43 @@ class SynchronizationData(models.Model):
         comodel_name="ir.model.fields", string="Fields to Synchronize"
     )
 
+    synchronize_readonly = fields.Boolean(string="Synchronize Readonly Fields")
+
     active = fields.Boolean(string="Active", default=True)
 
     domain = fields.Char(string="Domain", default="[]")
 
+    post_code = fields.Text(string="Post Code", default=DEFAULT_PYTHON_CODE)
+
+    description = fields.Char(string="Description")
+
     _sql_constraints = [
         ("unique_model_id", "unique(model_id)", "Model should be unique"),
     ]
+
+    @api.constrains("post_code")
+    def _check_python_code(self):
+        for item in self.sudo().filtered("post_code"):
+            msg = test_python_expr(expr=item.post_code.strip(), mode="exec")
+            if msg:
+                raise ValidationError(msg)
 
     @api.depends("mapping_ids")
     def _compute_mapping_qty(self):
         for data in self:
             data.mapping_qty = len(data.mapping_ids)
 
-    @api.onchange("model_id")
+    @api.onchange("model_id", "synchronize_readonly")
     def _onchange_model_id(self):
         domain = [
             ("model_id", "=", self.model_id.id),
+            ("store", "=", True),
             ("name", "not in", _NOT_COPIED_FIELDS),
-            ("readonly", "=", False),
             ("ttype", "not in", ["one2many"]),
         ]
+        if not self.synchronize_readonly:
+            domain.append(("readonly", "=", False))
+
         self.field_ids = self.env["ir.model.fields"].search(domain)
         return {
             "domain": {
@@ -126,6 +148,25 @@ class SynchronizationData(models.Model):
             force_update=force_update,
         )
 
+    def _post_code_execute(self, record):
+        self.ensure_one()
+        if self.post_code:
+            safe_eval(
+                self.sudo().post_code.strip(),
+                self._get_eval_context(record),
+                mode="exec",
+                nocopy=True,
+            )
+
+    @api.multi
+    def _get_eval_context(self, record):
+        self.ensure_one()
+        return {
+            "env": self.env,
+            "exceptions": exceptions,
+            "record": record,
+        }
+
     def _synchronize_execute(
         self,
         external_xml_id_datas,
@@ -134,7 +175,6 @@ class SynchronizationData(models.Model):
     ):
         """This function is done to allow to execute test"""
         self.ensure_one()
-
         right_now = fields.Datetime.now()
         SynchronisationMapping = self.env["synchronization.mapping"]
         TargetModel = self.env[self.model_id.model]
@@ -159,7 +199,6 @@ class SynchronizationData(models.Model):
             }
             for x in existing_mapping_datas
         }
-
         for external_data in external_datas:
             external_id = external_data["id"]
 
@@ -181,6 +220,7 @@ class SynchronizationData(models.Model):
                     else:
                         # we map with the local data
                         internal_id = local_datas[0]["res_id"]
+                        internal_item = TargetModel.browse(internal_id)
                         _logger.info(
                             "Model : {model}. mapped external"
                             " #{external_id} with local #{internal_id}"
@@ -211,15 +251,16 @@ class SynchronizationData(models.Model):
                             external_id=external_id,
                         )
                     )
-                    internal_id = TargetModel.create(
+                    internal_item = TargetModel.create(
                         self._prepare_values(external_data)
-                    ).id
+                    )
+                    self._post_code_execute(internal_item)
 
                 mapping = SynchronisationMapping.create(
                     {
                         "synchronization_data_id": self.id,
                         "external_id": external_id,
-                        "internal_id": internal_id,
+                        "internal_id": internal_item.id,
                         "xml_id": xml_id,
                     }
                 )
@@ -227,25 +268,30 @@ class SynchronizationData(models.Model):
             else:
                 # The mapping has been done previously
                 _local_info = external_id_2_local_id_dict[external_data["id"]]
-                internal_id = _local_info["internal_id"]
+                internal_item = TargetModel.browse(_local_info["internal_id"])
                 local_write_date = _local_info["write_date"]
-                if type(external_data["write_date"]) is fields.datetime:
-                    external_write_date = external_data["write_date"]
+                if external_data["write_date"]:
+                    if type(external_data["write_date"]) is fields.datetime:
+                        external_write_date = external_data["write_date"]
+                    else:
+                        external_write_date = fields.datetime.strptime(
+                            external_data["write_date"], "%Y-%m-%d %H:%M:%S"
+                        )
+                    to_update = force_update or (external_write_date > local_write_date)
                 else:
-                    external_write_date = datetime.strptime(
-                        external_data["write_date"], "%Y-%m-%d %H:%M:%S"
-                    )
-                to_update = force_update or (external_write_date > local_write_date)
+                    to_update = force_update
                 mapping = SynchronisationMapping.browse(_local_info["mapping_id"])
 
             if to_update and self.mapping_type == "data":
                 _logger.info(
                     "Updating %s#%d (External #%d)"
-                    % (self.model, internal_id, external_data["id"])
+                    % (self.model, internal_item.id, external_data["id"])
                 )
                 # Update Target Item
-                internal_item = TargetModel.browse(internal_id)
+
                 internal_item.write(self._prepare_values(external_data))
+
+                self._post_code_execute(internal_item)
 
                 # Update mapping last update
                 mapping.write({"write_date": right_now})

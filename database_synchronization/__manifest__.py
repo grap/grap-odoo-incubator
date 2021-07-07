@@ -4,7 +4,7 @@
 
 {
     "name": "Database Synchronization",
-    "summary": "Synchronize many Odoo databases (datas, ...)",
+    "summary": "Synchronize many Odoo Databases (datas, ...)",
     "version": "12.0.2.2.0",
     "category": "Settings",
     "author": "GRAP",
