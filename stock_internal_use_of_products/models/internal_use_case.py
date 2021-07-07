@@ -37,7 +37,6 @@ class InternalUseCase(models.Model):
         comodel_name="stock.location",
         string="Origin Location",
         required=True,
-        domain="[('usage','=','internal')]",
     )
 
     default_location_dest_id = fields.Many2one(
