@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Point of Sale - Sectors",
-    "summary": "Set sectors to the products and display in given PoS Sessions",
+    "summary": "Set Sectors to the products and display in given PoS Sessions",
     "version": "12.0.1.1.0",
     "category": "Point of Sale",
     "author": "GRAP",
