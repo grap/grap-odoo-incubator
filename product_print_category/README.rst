@@ -19,7 +19,7 @@ Product - To Print
 
 |badge1| |badge2| |badge3| 
 
-This module is designed to extend product variants printing features. It allows
+This module is designed to extend product printing features. It allows
 user to create new print categories of products depending of the data that are
 on the labels of the products variants.
 
@@ -41,7 +41,8 @@ Usage
 .. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_print_category/static/description/print_category.png
 
 * Affect products to the categories dire
-    * Go to 'Sales' / 'Products' / 'Product variants'
+    * Go to 'Sales' / 'Products' / 'Product variants' (or 'Products' if
+      variants are not activated).
     * Go to your product in sales tab
     * Set a print category
 
@@ -73,6 +74,7 @@ Authors
 
 * GRAP
 * La Louve
+* Coop IT Easy SCRLfs
 
 Contributors
 ~~~~~~~~~~~~
