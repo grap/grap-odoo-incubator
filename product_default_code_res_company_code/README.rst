@@ -19,13 +19,24 @@ Product Default Code with Company Code
 
 |badge1| |badge2| |badge3| 
 
-This module extends the functionality of product module to display
-the quantity of products and variants for the product categories.
+This module extends the functionality of product module to generate automatically internal reference
+(``default_code``) for product.
+
+Note, for that purpose, the field become readonly, and a sequence is created automatically per company.
+
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_default_code_res_company_code/static/description/sequence_form.png
+
+The new products will a default code with the following pattern
+``COD-XXXXXX``, where ``COD`` is the code of the company of the product,
+and ``XXXXXX`` is a autoincremented value.
 
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_default_code_res_company_code/static/description/product_category_tree.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_default_code_res_company_code/static/description/product_product_tree.png
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/product_default_code_res_company_code/static/description/product_category_form.png
+
+**Note**
+
+This new feature is enabled only for products that belong to a company.
 
 **Table of contents**
 
