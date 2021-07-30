@@ -41,7 +41,7 @@ addon | version | summary
 [multi_search_product](multi_search_product/) | 12.0.1.1.0 | Multi Search - Products
 [name_search_reset_res_partner](name_search_reset_res_partner/) | 12.0.1.1.1 | Reset _name_search function for res.partner model
 [pos_multicompany](pos_multicompany/) | 12.0.1.1.0 | Point of Sale Settings in Multi company context
-[pos_sector](pos_sector/) | 12.0.1.1.1 | Set Sectors to the products and display in given PoS Sessions
+[pos_sector](pos_sector/) | 12.0.1.1.2 | Set Sectors to the products and display in given PoS Sessions
 [product_category_product_qty](product_category_product_qty/) | 12.0.1.1.0 | Product Category - Product Quantity
 [product_category_type](product_category_type/) | 12.0.1.1.0 | Restore type field on product.category
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.1.0 | Restrict Usage of Product Categories to a given Group
