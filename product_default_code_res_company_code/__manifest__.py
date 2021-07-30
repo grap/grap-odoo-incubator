@@ -7,7 +7,7 @@
     "name": "Product Default Code with Company Code",
     "summary": "Generate product default code based on sequence"
     " defined by company, prefixed by company code",
-    "version": "12.0.1.1.0",
+    "version": "12.0.1.1.1",
     "category": "Product",
     "author": "GRAP",
     "website": "http://www.grap.coop",
