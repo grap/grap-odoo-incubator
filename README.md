@@ -45,7 +45,7 @@ addon | version | summary
 [product_category_product_qty](product_category_product_qty/) | 12.0.1.1.0 | Product Category - Product Quantity
 [product_category_type](product_category_type/) | 12.0.1.1.0 | Restore type field on product.category
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.1.0 | Restrict Usage of Product Categories to a given Group
-[product_default_code_res_company_code](product_default_code_res_company_code/) | 12.0.1.1.0 | Generate product default code based on sequence defined by company, prefixed by company code
+[product_default_code_res_company_code](product_default_code_res_company_code/) | 12.0.1.1.1 | Generate product default code based on sequence defined by company, prefixed by company code
 [product_print_category](product_print_category/) | 12.0.1.1.2 | Automate products print, when data has changed
 [product_simple_pricelist](product_simple_pricelist/) | 12.0.1.1.1 | Provides Wizard to manage easily Pricelist By Products
 [product_uom_package](product_uom_package/) | 12.0.1.1.1 | Product - Package UoM and Quantity
