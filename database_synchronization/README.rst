@@ -19,40 +19,73 @@ Database Synchronization
 
 |badge1| |badge2| |badge3| 
 
+This module can be used to synchronize two Odoo database that shares the
+same code base.
+
+It provides two features:
+
+- a cron task to synchronize the module installed.
+
+- an interface to synchronize data and create IDs mapping, between two instance;
 
 **Table of contents**
 
 .. contents::
    :local:
 
-Known issues / Roadmap
-======================
+Configuration
+=============
 
-When synchronizing module installation for the first time, it
-can take a big while. during the installation, cron will be fired, but
-due to the inconsistency of the registry, it will fail,
-for exemple, once ``queue_job`` is installed:
+* Go to "Settings > Technical > Parameters > System parameters" and
+  set information regarding the target Odoo instance, and the credencials,
+  with the following keys :
+
+1. ``database_synchronization.host`` : host of the target Odoo instance, without ``http://``. set only ``localhost`` or the ``myerp.mywebsite.tld``.
+
+2. ``database_synchronization.port``: port the target Odoo instance. Typically ``8069`` for dev instance, or ``443`` for test or production instance.
+
+3. ``database_synchronization.database``: name of the database.
+
+4. ``database_synchronization.login`` and ``database_synchronization.password``: credential used for the authentication.
+
+* This module depends on ``queue_job`` module that requires specific
+  configuration to works properly. Make sure your config file is correctly set.
+  See https://github.com/OCA/queue/tree/12.0/queue_job
+
+You should update your ``odoo.cfg`` file to add a new channel named
+``root.database_synchronization_install_module``:
 
 
 .. code-block::
 
-    Traceback (most recent call last):
-        File "/src_code/odoo/odoo/addons/base/models/ir_cron.py", line 109, in _callback
-            self.env['ir.actions.server'].browse(server_action_id).run()
-        File "/src_code/odoo/odoo/addons/base/models/ir_actions.py", line 538, in run
-            eval_context = self._get_eval_context(action)
-        File "/src_code/odoo/addons/mail/models/ir_actions.py", line 150, in _get_eval_context
-            eval_context = super(ServerActions, self)._get_eval_context(action=action)
-        File "/src_code/odoo/odoo/addons/base/models/ir_actions.py", line 494, in _get_eval_context
-            model = self.env[model_name]
-        File "/src_code/odoo/odoo/api.py", line 831, in __getitem__
-            return self.registry[model_name]._browse((), self)
-        File "/src_code/odoo/odoo/modules/registry.py", line 177, in __getitem__
-            return self.models[model_name]
-    KeyError: 'queue.job'
+  [queue_job]
+  channels = root:2,root.database_synchronization_install_module:1
 
-That is a non blocking errors, and all will be ok, once the installation
-of all modules has been done.
+Otherwise, you'll have a non blocking warning in your log, like this one.
+
+.. code-block::
+
+  WARNING ? odoo.addons.queue_job.jobrunner.channels: unknown channel root.database_synchronization_install_module, using root channel for job 23f6b872-1d2c-4003-bd38-a8486bbec664
+
+Usage
+=====
+
+TODO
+
+Known issues / Roadmap
+======================
+
+When synchronizing module installation for the first time, it
+can take a big while. During the installation, some task could be failed.
+In that case, simply restart the jobs.
+
+.. code-block::
+
+  File "/home/sylvain/grap_dev/grap-odoo-env-12.0/src/odoo/odoo/addons/base/models/ir_module.py", line 446, in button_immediate_install
+    return self._button_immediate_function(type(self).button_install)
+  File "/home/sylvain/grap_dev/grap-odoo-env-12.0/src/odoo/odoo/addons/base/models/ir_module.py", line 556, in _button_immediate_function
+    raise UserError(_("The server is busy right now, module operations are not possible at"
+  odoo.exceptions.UserError: ('The server is busy right now, module operations are not possible at this time, please try again later.', '')
 
 Bug Tracker
 ===========
