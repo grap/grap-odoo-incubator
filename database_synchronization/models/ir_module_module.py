@@ -6,8 +6,6 @@ import logging
 
 from odoo import api, models
 
-from odoo.addons.queue_job.job import job
-
 _logger = logging.getLogger(__name__)
 
 
@@ -16,14 +14,9 @@ class IrModuleModule(models.Model):
 
     # Custom Section
     @api.multi
-    @job(default_channel="root.database_synchronization_install_module")
     def _database_synchronization_install_module(self):
-        for module in self:
-            if module.state != "uninstalled":
-                continue
-            _logger.info("installing modules %s ..." % module.name)
-            module.button_immediate_install()
-            # # the registry has changed
-            # # reload self in the new registry
-            # self.env.reset()
-            # self = self.env()[self._name]
+        self.ensure_one()
+        if self.state != "uninstalled":
+            return
+        _logger.info("installing modules %s ..." % self.name)
+        self.button_immediate_install()

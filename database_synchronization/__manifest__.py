@@ -20,6 +20,8 @@
         "security/ir.model.access.csv",
         "data/ir_cron.xml",
         "data/ir_config_parameter.xml",
+        "data/queue_job_channel.xml",
+        "data/queue_job_function.xml",
         "views/menu.xml",
         "views/view_synchronization_mapping.xml",
         "views/view_synchronization_data.xml",
