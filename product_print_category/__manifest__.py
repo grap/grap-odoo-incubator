@@ -8,7 +8,7 @@
 {
     "name": "Product - To Print",
     "summary": "Automate products print, when data has changed",
-    "version": "12.0.1.1.1",
+    "version": "12.0.1.1.2",
     "category": "Product",
     "license": "AGPL-3",
     "author": "GRAP, "
