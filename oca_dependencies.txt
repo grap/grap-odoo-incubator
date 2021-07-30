@@ -5,5 +5,3 @@ pos
 purchase-workflow
 queue
 server-tools
-
-grap-odoo-business    https://github.com/grap/grap-odoo-business/    12.0
