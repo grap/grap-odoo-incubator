@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author Julien Weste
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_product_supplierinfo_form" model="ir.ui.view">
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_form_view" />
+        <field name="arch" type="xml">
+            <field name="product_tmpl_id" position="after">
+                <label for="package_qty"/>
+                <div>
+                    <field name="package_qty" class="oe_inline"/>
+                    <field name="product_uom" class="oe_inline" groups="uom.group_uom"/>
+                </div>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_product_supplierinfo_tree" model="ir.ui.view">
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_tree_view" />
+        <field name="arch" type="xml">
+            <field name="min_qty" position="before">
+                <field name="package_qty"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
