@@ -9,6 +9,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <menuitem id="menu_mobile_kiosk_main"
         name="Mobile Apps"
-        web_icon="mobile_kiosk_abstract,static/src/img/icon.png"/>
+        web_icon="mobile_kiosk_abstract,static/src/img/icon.png"
+        groups="stock.group_stock_user"/>
 
 </odoo>
