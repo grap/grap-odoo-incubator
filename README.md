@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.org/grap/grap-odoo-incubator.svg?branch=12.0)](https://travis-ci.org/grap/grap-odoo-incubator?branch=12.0)
+[![Build Status](https://www.travis-ci.com/grap/grap-odoo-incubator.svg?branch=12.0)](https://www.travis-ci.com/grap/grap-odoo-incubator)
 [![codecov](https://codecov.io/gh/grap/grap-odoo-incubator/branch/12.0/graph/badge.svg)](https://codecov.io/gh/grap/grap-odoo-incubator)
 [![Coverage Status](https://coveralls.io/repos/github/grap/grap-odoo-incubator/badge.svg?branch=12.0)](https://coveralls.io/github/grap/grap-odoo-incubator?branch=12.0)
-[![Code Climate](https://codeclimate.com/github/grap/grap-odoo-incubator/badges/gpa.svg)](https://codeclimate.com/github/grap/grap-odoo-incubator)
 
 
 # grap-odoo-incubator
@@ -60,7 +59,9 @@ addon | version | summary
 
 [//]: # (end addons)
 
-## About GRAP
+# Funders
+
+The development of the modules has been financially supported by:
 
 <p align="center">
    <img src="http://www.grap.coop/wp-content/uploads/2016/11/GRAP.png" width="200"/>
