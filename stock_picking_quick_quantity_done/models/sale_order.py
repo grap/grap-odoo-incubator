@@ -15,6 +15,6 @@ class SaleOrder(models.Model):
         super().action_confirm()
         for picking in self.mapped("picking_ids").filtered(
                 lambda picking: picking.state not in ("cancel", "done")
-            ):
+        ):
             picking.quick_quantities_done()
         return True
