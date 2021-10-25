@@ -9,7 +9,7 @@
     "category": "Tools",
     "license": "AGPL-3",
     "author": "GRAP",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "depends": ["base", "web"],
     "installable": True,
 }

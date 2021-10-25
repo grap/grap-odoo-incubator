@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "summary": "Adds Legal informations on company model",
     "author": "Akretion,GRAP,Odoo Community Association (OCA)",
-    "website": "http://www.akretion.com",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "depends": [
         "web",
     ],

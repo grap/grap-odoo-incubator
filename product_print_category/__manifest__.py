@@ -11,6 +11,7 @@
     "version": "12.0.1.1.2",
     "category": "Product",
     "license": "AGPL-3",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "author": "GRAP, "
     "La Louve, "
     "Coop IT Easy SCRLfs, "

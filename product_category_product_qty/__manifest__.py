@@ -8,7 +8,7 @@
     "version": "12.0.1.1.0",
     "category": "Product",
     "author": "GRAP, " "Odoo Community Association (OCA)",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": [
         "product",

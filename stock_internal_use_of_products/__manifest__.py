@@ -9,7 +9,7 @@
     "version": "12.0.1.1.2",
     "category": "Stock",
     "author": "GRAP",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": [
         "stock_account",

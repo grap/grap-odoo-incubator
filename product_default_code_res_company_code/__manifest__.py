@@ -10,16 +10,13 @@
     "version": "12.0.1.1.1",
     "category": "Product",
     "author": "GRAP",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": [
         "product",
         "res_company_code",
     ],
-    "data": [
-        "views/view_product_product.xml",
-        "views/view_product_template.xml"
-    ],
+    "data": ["views/view_product_product.xml", "views/view_product_template.xml"],
     "post_init_hook": "_create_company_sequence",
     "installable": True,
 }
