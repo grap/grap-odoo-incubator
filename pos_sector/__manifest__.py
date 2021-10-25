@@ -4,7 +4,7 @@
 {
     "name": "Point of Sale - Sectors",
     "summary": "Set Sectors to the products and display in given PoS Sessions",
-    "version": "12.0.1.1.2",
+    "version": "12.0.1.1.3",
     "category": "Point of Sale",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
