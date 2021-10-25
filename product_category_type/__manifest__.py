@@ -6,7 +6,7 @@
 {
     "name": "Product - Category Types",
     "summary": "Restore type field on product.category",
-    "version": "12.0.1.1.0",
+    "version": "12.0.1.1.1",
     "category": "Product",
     "license": "AGPL-3",
     "author": "GRAP",
