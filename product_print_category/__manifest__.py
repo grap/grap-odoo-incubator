@@ -8,7 +8,7 @@
 {
     "name": "Product - To Print",
     "summary": "Automate products print, when data has changed",
-    "version": "12.0.1.1.2",
+    "version": "12.0.1.1.3",
     "category": "Product",
     "license": "AGPL-3",
     "website": "https://github.com/grap/grap-odoo-incubator",
