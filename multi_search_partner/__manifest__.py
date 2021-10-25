@@ -4,7 +4,7 @@
 
 {
     "name": "Multi Search - Partners",
-    "version": "12.0.1.1.1",
+    "version": "12.0.1.1.2",
     "category": "Base",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
