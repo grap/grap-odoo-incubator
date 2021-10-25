@@ -7,7 +7,7 @@
     "version": "12.0.1.1.2",
     "category": "Point of Sale",
     "author": "GRAP",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": [
         "point_of_sale",
