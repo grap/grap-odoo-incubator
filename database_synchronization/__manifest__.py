@@ -8,7 +8,7 @@
     "version": "12.0.2.2.1",
     "category": "Settings",
     "author": "GRAP",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": [
         "queue_job",

@@ -2,8 +2,13 @@ exclude: "^setup/|/static/lib/|/static/src/lib/"
 default_language_version:
   python: python3
 repos:
+- repo: https://github.com/oca/maintainer-tools
+  rev: ab1d7f6
+  hooks:
+    - id: oca-fix-manifest-website
+      args: ["https://github.com/grap/grap-odoo-incubator"]
 - repo: https://github.com/psf/black
-  rev: stable
+  rev: 20.8b1
   hooks:
   - id: black
 - repo: https://github.com/pre-commit/pre-commit-hooks

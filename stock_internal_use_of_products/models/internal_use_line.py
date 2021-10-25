@@ -7,6 +7,7 @@ from odoo import _, api, fields, models
 from odoo.exceptions import Warning as UserError
 
 import odoo.addons.decimal_precision as dp
+
 from .internal_use import _INTERNAL_USE_STATE
 
 
@@ -26,17 +27,19 @@ class InternalUseLine(models.Model):
     internal_use_case_id = fields.Many2one(
         comodel_name="internal.use.case",
         string="Case",
-        related="internal_use_id.internal_use_case_id", store=True
+        related="internal_use_id.internal_use_case_id",
+        store=True,
     )
 
     state = fields.Selection(
-        selection=_INTERNAL_USE_STATE, string="Status",
-        related="internal_use_id.state", store=True
+        selection=_INTERNAL_USE_STATE,
+        string="Status",
+        related="internal_use_id.state",
+        store=True,
     )
 
     date_done = fields.Date(
-        string="Date",
-        related="internal_use_id.date_done", store=True
+        string="Date", related="internal_use_id.date_done", store=True
     )
 
     product_id = fields.Many2one(

@@ -8,7 +8,7 @@
     "version": "12.0.1.1.1",
     "category": "Tools",
     "author": "GRAP",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": ["base"],
     "demo": ["demo/res_partner.xml"],

@@ -5,7 +5,7 @@
     "name": "Stock Picking Quick Quantity Done",
     "version": "12.0.1.1.2",
     "category": "Stock",
-    "website": "https://github.com/OCA/stock-logistics-workflow",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "author": "GRAP, " "Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,

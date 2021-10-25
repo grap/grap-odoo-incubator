@@ -7,7 +7,7 @@
     "version": "12.0.1.1.1",
     "category": "Base",
     "author": "GRAP",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": ["multi_search_abstract", "name_search_reset_res_partner"],
     "data": ["views/view_res_config_settings.xml"],
