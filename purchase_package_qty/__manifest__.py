@@ -5,7 +5,7 @@
 
 {
     "name": "Purchase - Package Quantity",
-    "version": "12.0.1.1.0",
+    "version": "12.0.1.1.1",
     "category": "Purchase",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
