@@ -4,7 +4,7 @@
 
 {
     "name": "Product - Package UoM and Quantity",
-    "version": "12.0.1.1.1",
+    "version": "12.0.1.1.2",
     "category": "Product",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
