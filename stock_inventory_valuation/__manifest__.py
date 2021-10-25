@@ -4,7 +4,7 @@
 
 {
     "name": "Stock Inventory - Valuation",
-    "version": "12.0.1.1.1",
+    "version": "12.0.1.1.2",
     "category": "Stock",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
