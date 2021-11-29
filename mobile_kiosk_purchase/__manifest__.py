@@ -10,6 +10,7 @@
     "category": "Tools",
     "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
+    "maintainers": ["legalsylvain"],
     "depends": [
         "purchase",
         "mobile_kiosk_abstract",
