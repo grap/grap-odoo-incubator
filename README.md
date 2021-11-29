@@ -32,8 +32,8 @@ addon | version | maintainers | summary
 [database_synchronization](database_synchronization/) | 12.0.2.2.2 |  | Synchronize many Odoo Databases (datas, ...)
 [duplication_account_invoice](duplication_account_invoice/) | 12.0.1.1.1 |  | Duplication Tools for Invoices with a given frequency
 [duplication_sale_order](duplication_sale_order/) | 12.0.1.1.1 |  | Duplication Tools for Sale Orders with a given frequency
-[mobile_kiosk_abstract](mobile_kiosk_abstract/) | 12.0.1.1.3 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Abstract Module that provides a framework to develop 'kiosk application' for mobile usage like in 'hr_attendance' Odoo module
-[mobile_kiosk_inventory](mobile_kiosk_inventory/) | 12.0.1.1.2 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Mobile interface to make inventories
+[mobile_kiosk_abstract](mobile_kiosk_abstract/) | 12.0.1.1.4 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Abstract Module that provides a framework to develop 'kiosk application' for mobile usage like in 'hr_attendance' Odoo module
+[mobile_kiosk_inventory](mobile_kiosk_inventory/) | 12.0.1.1.3 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Mobile interface to make inventories
 [mobile_kiosk_purchase](mobile_kiosk_purchase/) | 12.0.1.1.2 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Mobile interface to make purchases
 [multi_search_abstract](multi_search_abstract/) | 12.0.1.1.2 |  | Multi Search - Abstract
 [multi_search_partner](multi_search_partner/) | 12.0.1.1.2 |  | Multi Search - Partners
