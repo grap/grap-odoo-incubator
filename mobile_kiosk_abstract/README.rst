@@ -19,12 +19,45 @@ Mobile Kiosk Abstract
 
 |badge1| |badge2| |badge3| 
 
-TODO
+This module is a technical module that adds tools to write mobile applications like
+``mobile_kiosk_purchase`` or ``mobile_kiosk_inventory`` modules, present in the same repository.
+
+The name "kiosk" is based on full screen technology used in Odoo Core for some application like
+in ``hr_attendance`` module, with the kiosk mode.
+
+Visually, it adds a new main menu named "Mobile Apps".
+
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_abstract/static/description/main_menu.png
 
 **Table of contents**
 
 .. contents::
    :local:
+
+Development
+===========
+
+* Technically, this module add a new mixin ``mobile.kiosk.abstract`` that can be inherited
+  to develop new mobile application.
+
+* It also adds a light javascript and CSS framework for the same purpose
+
+* it provides a new widget named "pad_widget", used to enter a numeric value.
+
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_abstract/static/description/pad_widget.png
+
+Known issues / Roadmap
+======================
+
+* For the time being, if the user click on refresh the page, he will use the
+  context, and so has to do again the current action. It is due to a current Odoo
+  limitation in the web framework.
+
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_abstract/static/description/context_lost_message.png
+
+* This module has been developped in a simple context. (A single locations, no lots, etc...)
+  Some extra screen could be added to select locations, product lots, ...
+  depending on if the user belong to some groups like "Multi-location group", ...
 
 Bug Tracker
 ===========
@@ -55,6 +88,14 @@ Other credits
 
 Maintainers
 ~~~~~~~~~~~
+
+.. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
+    :target: https://github.com/legalsylvain
+    :alt: legalsylvain
+
+Current maintainer:
+
+|maintainer-legalsylvain| 
 
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/12.0/mobile_kiosk_abstract>`_ project on GitHub.
 

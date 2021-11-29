@@ -19,12 +19,55 @@ Mobile Kiosk Inventory
 
 |badge1| |badge2| |badge3| 
 
-TODO
+This module adds a new mobile interface to makes inventories in Odoo with a mobile that
+has a barcode scanner integrated.
 
 **Table of contents**
 
 .. contents::
    :local:
+
+Usage
+=====
+
+* Click on "Mobile Apps" Menu.
+
+* Launch the "Inventory" application.
+
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_inventory/static/description/application_launch.png
+
+* Select an existing inventory or create a new one.
+
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_inventory/static/description/inventory_create_or_select.png
+
+To create a new inventory, enter a name, and click on "Create new Inventory"
+
+To select an existing inventory, click on the according button, then select a pending
+inventory in the list :
+
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_inventory/static/description/product_scan_or_select.png
+
+* The next page allows you to choose a product.
+
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_inventory/static/description/inventory_select_existing_inventory.png
+
+If you use a mobile with a barcode scanner, you can scan a barcode, to select
+the product.
+
+Otherwise, you can manually select a product, if it doesn't have a barcode set.
+
+* The next page allows you to set a quantity. Tip a quantity, then click on the button
+  "Add quantity"
+
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_inventory/static/description/product_set_quantity.png
+
+Note
+~~~~
+
+If you scan twice the same product, a message will be displayed to inform the user
+that the quantities has been summed.
+
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_inventory/static/description/product_set_quantity_duplicate.png
 
 Bug Tracker
 ===========
@@ -52,6 +95,14 @@ Other credits
 
 Maintainers
 ~~~~~~~~~~~
+
+.. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
+    :target: https://github.com/legalsylvain
+    :alt: legalsylvain
+
+Current maintainer:
+
+|maintainer-legalsylvain| 
 
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/12.0/mobile_kiosk_inventory>`_ project on GitHub.
 
