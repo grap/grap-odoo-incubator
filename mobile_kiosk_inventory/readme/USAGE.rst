@@ -13,11 +13,11 @@ To create a new inventory, enter a name, and click on "Create new Inventory"
 To select an existing inventory, click on the according button, then select a pending
 inventory in the list :
 
-.. figure:: ../static/description/product_scan_or_select.png
+.. figure:: ../static/description/inventory_select_existing_inventory.png
 
 * The next page allows you to choose a product.
 
-.. figure:: ../static/description/inventory_select_existing_inventory.png
+.. figure:: ../static/description/product_scan_or_select.png
 
 If you use a mobile with a barcode scanner, you can scan a barcode, to select
 the product.
