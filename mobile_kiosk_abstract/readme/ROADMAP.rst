@@ -3,7 +3,3 @@
   limitation in the web framework.
 
 .. figure:: ../static/description/context_lost_message.png
-
-* This module has been developped in a simple context. (A single locations, no lots, etc...)
-  Some extra screen could be added to select locations, product lots, ...
-  depending on if the user belong to some groups like "Multi-location group", ...
