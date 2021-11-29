@@ -6,10 +6,13 @@
     "name": "Mobile Kiosk Abstract",
     "version": "12.0.1.1.2",
     "author": "GRAP",
-    "summary": "Mobile Kiosk Absract Module",
+    "summary": "Absract Module that provides a framework to develop"
+    " 'kiosk application' for mobile usage like in 'hr_attendance'"
+    " Odoo module",
     "category": "Tools",
     "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
+    "maintainers": ["legalsylvain"],
     "depends": [
         "stock",
     ],
