@@ -4,7 +4,7 @@
 
 {
     "name": "Base - Company Legal Information",
-    "version": "12.0.1.1.2",
+    "version": "12.0.1.1.3",
     "category": "Tools",
     "license": "AGPL-3",
     "summary": "Adds Legal informations on company model",
