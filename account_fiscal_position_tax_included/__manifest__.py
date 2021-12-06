@@ -8,6 +8,8 @@
     "version": "12.0.1.1.1",
     "category": "Accounting",
     "author": "GRAP",
+    "maintainers": ["legalsylvain"],
+    "development_status": "Alpha",
     "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": ["account"],
