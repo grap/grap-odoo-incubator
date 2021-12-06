@@ -7,9 +7,9 @@ Account Fiscal Position - Tax Excluded to Included
    !! changes will be overwritten.                   !!
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-.. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
+.. |badge1| image:: https://img.shields.io/badge/maturity-Alpha-red.png
     :target: https://odoo-community.org/page/development-status
-    :alt: Beta
+    :alt: Alpha
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
@@ -31,10 +31,25 @@ This module allows to realize such mapping and fixes incorrect computation.
 * Tax Excl --> Tax Incl
 * Tax Incl --> Tax Incl
 
+.. IMPORTANT::
+   This is an alpha version, the data model and design can change at any time without warning.
+   Only for development or testing purpose, do not use in production.
+   `More details on development status <https://odoo-community.org/page/development-status>`_
+
 **Table of contents**
 
 .. contents::
    :local:
+
+Known issues / Roadmap
+======================
+
+legalsylvain 2021-12-06:
+
+I'm not very confortable to have such patch in an external module.
+
+* When migrating to V16, check if this module is still necessary, or
+  open an issue.
 
 Bug Tracker
 ===========
@@ -61,6 +76,14 @@ Contributors
 
 Maintainers
 ~~~~~~~~~~~
+
+.. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
+    :target: https://github.com/legalsylvain
+    :alt: legalsylvain
+
+Current maintainer:
+
+|maintainer-legalsylvain| 
 
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/12.0/account_fiscal_position_tax_included>`_ project on GitHub.
 

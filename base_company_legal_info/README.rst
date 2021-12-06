@@ -84,6 +84,14 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
+.. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
+    :target: https://github.com/legalsylvain
+    :alt: legalsylvain
+
+Current maintainer:
+
+|maintainer-legalsylvain| 
+
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/12.0/base_company_legal_info>`_ project on GitHub.
 
 You are welcome to contribute.
