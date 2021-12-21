@@ -42,7 +42,6 @@ addon | version | maintainers | summary
 [pos_multicompany](pos_multicompany/) | 12.0.1.1.1 |  | Point of Sale Settings in Multi company context
 [pos_sector](pos_sector/) | 12.0.1.1.3 |  | Set Sectors to the products and display in given PoS Sessions
 [product_category_product_qty](product_category_product_qty/) | 12.0.1.1.1 |  | Product Category - Product Quantity
-[product_category_type](product_category_type/) | 12.0.1.1.1 |  | Restore type field on product.category
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.1.1 |  | Restrict Usage of Product Categories to a given Group
 [product_default_code_res_company_code](product_default_code_res_company_code/) | 12.0.1.1.2 |  | Generate product default code based on sequence defined by company, prefixed by company code
 [product_print_category](product_print_category/) | 12.0.1.1.3 |  | Automate products print, when data has changed
