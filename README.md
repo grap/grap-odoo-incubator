@@ -50,7 +50,7 @@ addon | version | maintainers | summary
 [purchase_package_qty](purchase_package_qty/) | 12.0.1.1.1 |  | Purchase - Package Quantity
 [sale_deposit_product_per_company](sale_deposit_product_per_company/) | 12.0.1.1.1 |  | Handle one deposit product (down payment) per company
 [stock_internal_use_of_products](stock_internal_use_of_products/) | 12.0.1.1.3 |  | Declare the use of products for specific uses (eg: gifts,...)
-[stock_inventory_disabled_product](stock_inventory_disabled_product/) | 12.0.1.0.1 |  | Stock - Inventory disabled Products
+[stock_inventory_disabled_product](stock_inventory_disabled_product/) | 12.0.1.0.2 |  | Stock - Inventory disabled Products
 [stock_inventory_merge](stock_inventory_merge/) | 12.0.1.1.1 |  | Allow to merge multiples partial inventories
 [stock_inventory_valuation](stock_inventory_valuation/) | 12.0.1.1.2 |  | Stock Inventory - Valuation
 [stock_inventory_valuation_merge](stock_inventory_valuation_merge/) | 12.0.1.1.1 |  | Stock Inventory - Valuation - Merge - Glue Module
