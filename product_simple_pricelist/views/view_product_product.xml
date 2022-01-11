@@ -40,8 +40,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <field name="currency_id" invisible="1"/>
                                 <field name="fixed_price" string="Price" required='1' widget='monetary' options="{'currency_field': 'currency_id'}"/>
                                 <field name="min_quantity"/>
-                                <field name="date_start"/>
-                                <field name="date_end"/>
+                                <field name="date_start" groups="product_simple_pricelist.editor_with_date"/>
+                                <field name="date_end" groups="product_simple_pricelist.editor_with_date"/>
                                 <field name="applied_on" invisible="1"/>
                             </tree>
                         </field>
