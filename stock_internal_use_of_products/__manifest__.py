@@ -6,7 +6,7 @@
 {
     "name": "Stock - Internal Use of products",
     "summary": "Declare the use of products for specific uses (eg: gifts,...)",
-    "version": "12.0.1.1.3",
+    "version": "12.0.1.1.4",
     "category": "Stock",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
