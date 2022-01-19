@@ -29,7 +29,7 @@ odoo.define('pos_sector.models', function (require) {
                     new_domain.push(
                         '|',
                         ['sector_id', '=', false],
-                        ['sector_id', 'in', self.config.sector_ids]
+                        ['sector_id', 'in', self.config.sector_ids],
                     );
                     return new_domain;
                 };
