@@ -4,7 +4,7 @@
 
 {
     "name": "Stock - Inventory disabled Products",
-    "version": "12.0.1.0.2",
+    "version": "12.0.1.0.3",
     "category": "Stock",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
