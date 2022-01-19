@@ -30,7 +30,7 @@ odoo.define('mobile_kiosk_inventory.set_quantity', function (require) {
                     self.do_warn(
                         _t("Incorrect value"),
                         _t("Please enter a valid quantity."),
-                        false
+                        false,
                     );
                 } else {
                     this._rpc({
@@ -64,7 +64,7 @@ odoo.define('mobile_kiosk_inventory.set_quantity', function (require) {
 
     core.action_registry.add(
         'mobile_kiosk_inventory_action_set_quantity',
-        ActionSetQuantity
+        ActionSetQuantity,
     );
 
     return ActionSetQuantity;

@@ -70,7 +70,7 @@ odoo.define("mobile_kiosk_purchase.set_product", function (require) {
 
     core.action_registry.add(
         "mobile_kiosk_purchase_action_set_product",
-        ActionSetProduct
+        ActionSetProduct,
     );
 
     return ActionSetProduct;

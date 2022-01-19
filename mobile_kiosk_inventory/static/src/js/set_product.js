@@ -69,7 +69,7 @@ odoo.define("mobile_kiosk_inventory.set_product", function (require) {
 
     core.action_registry.add(
         "mobile_kiosk_inventory_action_set_product",
-        ActionSetProduct
+        ActionSetProduct,
     );
 
     return ActionSetProduct;
