@@ -24,7 +24,7 @@ odoo.define("mobile_kiosk_abstract.widget", function (require) {
             this.do_warn(
                 _t("Connexion lost"),
                 _t("Please check your Internet Connexion, then try again"),
-                false
+                false,
             );
         },
 
