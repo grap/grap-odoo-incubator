@@ -5,7 +5,7 @@
 {
     "name": "Database Synchronization",
     "summary": "Synchronize many Odoo Databases (datas, ...)",
-    "version": "12.0.2.2.2",
+    "version": "12.0.2.2.3",
     "category": "Settings",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
