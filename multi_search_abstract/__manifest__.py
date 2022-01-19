@@ -5,7 +5,7 @@
 
 {
     "name": "Multi Search - Abstract",
-    "version": "12.0.1.1.2",
+    "version": "12.0.1.1.3",
     "category": "Tools",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
