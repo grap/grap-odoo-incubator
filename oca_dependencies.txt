@@ -1,7 +1,0 @@
-account-fiscal-rule
-account-invoicing
-multi-company
-pos
-purchase-workflow
-queue
-server-tools
