@@ -5,7 +5,7 @@
 {
     "name": "Base - web.base.url Force Value",
     "summary": "Force the value of the setting 'web.base.url'",
-    "version": "12.0.1.0.2",
+    "version": "12.0.1.0.3",
     "category": "Tools",
     "license": "AGPL-3",
     "author": "GRAP",
