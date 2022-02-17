@@ -6,21 +6,20 @@
     "name": "Stock Picking Report Summary",
     "summary": "Stock Picking Report Summary",
     "version": "12.0.1.0.0",
-    "author": "Grap, "
-              "Odoo Community Association (OCA)",
+    "author": "GRAP",
     "maintainers": ["quentinDupont"],
-    "website": "https://github.com/OCA/stock-logistics-reporting",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "category": "Warehouse Management",
     "license": "AGPL-3",
     "depends": [
         "stock",
     ],
-    'data': [
-        'reports/report_paperformat.xml',
-        'reports/report_print_picking_summary.xml',
-        'reports/report_print_picking_summary_template.xml',
-        'views/view_picking_summary_wizard.xml',
-        'views/action.xml',
+    "data": [
+        "reports/report_paperformat.xml",
+        "reports/report_print_picking_summary.xml",
+        "reports/report_print_picking_summary_template.xml",
+        "views/view_picking_summary_wizard.xml",
+        "views/action.xml",
     ],
     "installable": True,
 }

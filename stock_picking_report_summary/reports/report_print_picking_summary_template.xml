@@ -4,16 +4,16 @@
         <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="picking_w">
                 <style type="text/css">
-                    table, th, td { 
+                    table, th, td {
                         border: 1px solid #4a4a4a;
                         width:100%;
                     }
                     h1 {
                         text-align:center;
                     }
-                    th, td { 
-                        padding: 8px; 
-                    } 
+                    th, td {
+                        padding: 8px;
+                    }
                    .align-center{
                         text-align:center;
                    }
@@ -113,4 +113,3 @@
     </template>
 
 </odoo>
-

@@ -3,15 +3,15 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, fields, models
-from odoo.addons import decimal_precision as dp
 
 
 class StockPicking(models.Model):
-    _inherit = 'stock.picking'
+    _inherit = "stock.picking"
 
     print_summary_extra_info = fields.Html(
-        string='Extra Information Printed on Summary',
-        compute="_compute_print_summary_extra_info")
+        string="Extra Information Printed on Summary",
+        compute="_compute_print_summary_extra_info",
+    )
 
     @api.multi
     def _compute_print_summary_extra_info(self):
