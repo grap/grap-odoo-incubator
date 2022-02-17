@@ -5,7 +5,7 @@ Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 @author: Quentin DUPONT (quentin.dupont@grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<odoo><data>
+<odoo>
 
     <record id="view_picking_summary_wizard_form" model="ir.ui.view">
         <field name="model">picking.summary.wizard</field>
@@ -20,7 +20,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     </group>
                     <group string="Pickings Details" colspan="2">
                         <field name="print_detail"/>
-                        <field name="print_unity_in_list" attrs="{'invisible': [('print_detail', '=', False)]}"/>
+                        <field name="print_unit_in_list" attrs="{'invisible': [('print_detail', '=', False)]}"/>
                     </group>
                 </group>
                 <footer>
@@ -31,4 +31,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         </field>
     </record>
 
-</data></odoo>
+</odoo>

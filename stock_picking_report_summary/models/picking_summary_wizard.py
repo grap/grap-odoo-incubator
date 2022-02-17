@@ -65,7 +65,7 @@ class PickingSummaryWizard(models.TransientModel):
     print_detail = fields.Boolean(
         string='Print Detail', default=True)
 
-    print_unity_in_list = fields.Boolean(
+    print_unit_in_list = fields.Boolean(
         string='Print Unit in Pickings List', default=True)
 
     product_line_ids = fields.One2many(

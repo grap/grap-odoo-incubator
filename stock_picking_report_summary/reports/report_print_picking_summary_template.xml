@@ -71,7 +71,7 @@
                             <tr>
                                 <th>Product</th>
                                 <th class="align-center">Quantity</th>
-                                <th t-if="picking_w.print_unity_in_list" class="align-center">Unity</th>
+                                <th t-if="picking_w.print_unit_in_list" class="align-center">Unit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,16 +89,17 @@
                                         <td class="align-center">
                                             <span t-field="move_line.product_qty"/>
                                         </td>
-                                        <td t-if="picking_w.print_unity_in_list" class="align-center">
+                                        <td t-if="picking_w.print_unit_in_list" class="align-center">
                                             <span t-field="move_line.product_id.uom_id.name"/>
                                         </td>
                                     </tr>
                                 </t>
 
-                                <t t-if="picking_line.picking_id.note">
+                                <t t-if="picking_line.picking_id.print_summary_extra_info">
                                     <tr class="line">
                                         <td colspan="100%">
-                                            <span t-field="picking_line.picking_id.note" />
+                                            <span style="color: #666; font-style:italic;"
+                                                t-field="picking_line.picking_id.print_summary_extra_info" />
                                         </td>
                                     </tr>
                                 </t>

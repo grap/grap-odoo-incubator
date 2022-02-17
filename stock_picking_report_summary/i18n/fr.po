@@ -131,7 +131,7 @@ msgid "Print Summary"
 msgstr "Imprimer le résumé"
 
 #. module: stock_picking_report_summary
-#: model:ir.model.fields,field_description:stock_picking_report_summary.field_picking_summary_wizard__print_unity_in_list
+#: model:ir.model.fields,field_description:stock_picking_report_summary.field_picking_summary_wizard__print_unit_in_list
 msgid "Print Unit in Pickings List"
 msgstr "Afficher l'unité des produits"
 
