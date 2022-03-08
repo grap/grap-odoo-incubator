@@ -13,9 +13,9 @@ Stock Picking Report Summary
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-quentinDupont%2Fstock--logistics--reporting-lightgray.png?logo=github
-    :target: https://github.com/quentinDupont/stock-logistics-reporting/tree/12.0_ADD_picking_summary_report/stock_picking_report_summary
-    :alt: quentinDupont/stock-logistics-reporting
+.. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
+    :target: https://github.com/grap/grap-odoo-incubator/tree/12.0/stock_picking_report_summary
+    :alt: grap/grap-odoo-incubator
 
 |badge1| |badge2| |badge3| 
 
@@ -42,17 +42,17 @@ To use this module, you need to
 
 * Select any pickings and click on 'Action' / 'Print Picking Summary (PDF)'
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/stock-logistics-reporting/12.0_ADD_picking_summary_report/stock_picking_report_summary/static/description/wizard.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/stock_picking_report_summary/static/description/wizard.png
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/stock-logistics-reporting/12.0_ADD_picking_summary_report/stock_picking_report_summary/static/description/pdf_report.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/stock_picking_report_summary/static/description/pdf_report.png
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/quentinDupont/stock-logistics-reporting/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/quentinDupont/stock-logistics-reporting/issues/new?body=module:%20stock_picking_report_summary%0Aversion:%2012.0_ADD_picking_summary_report%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20stock_picking_report_summary%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -62,7 +62,7 @@ Credits
 Authors
 ~~~~~~~
 
-* Grap
+* GRAP
 
 Contributors
 ~~~~~~~~~~~~
@@ -72,6 +72,14 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
-This module is part of the `quentinDupont/stock-logistics-reporting <https://github.com/quentinDupont/stock-logistics-reporting/tree/12.0_ADD_picking_summary_report/stock_picking_report_summary>`_ project on GitHub.
+.. |maintainer-quentinDupont| image:: https://github.com/quentinDupont.png?size=40px
+    :target: https://github.com/quentinDupont
+    :alt: quentinDupont
+
+Current maintainer:
+
+|maintainer-quentinDupont| 
+
+This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/12.0/stock_picking_report_summary>`_ project on GitHub.
 
 You are welcome to contribute.
