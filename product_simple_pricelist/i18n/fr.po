@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-27 21:23+0000\n"
-"PO-Revision-Date: 2021-05-27 21:23+0000\n"
+"POT-Creation-Date: 2022-02-28 14:16+0000\n"
+"PO-Revision-Date: 2022-02-28 14:16+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,13 @@ msgstr "Supprimer le prix spécifique"
 #. module: product_simple_pricelist
 #: model:ir.model.fields,field_description:product_simple_pricelist.field_product_product__pricelist_price_difference_rate
 msgid "Difference (%)"
-msgstr ""
+msgstr "Différence (%)"
+
+#. module: product_simple_pricelist
+#: code:addons/product_simple_pricelist/models/product_pricelist.py:29
+#, python-format
+msgid "Edit %s"
+msgstr "Editer %s"
 
 #. module: product_simple_pricelist
 #: model_terms:ir.ui.view,arch_db:product_simple_pricelist.view_product_pricelist_tree
@@ -39,12 +45,6 @@ msgstr "Editer par produit"
 #: model:ir.actions.act_window,name:product_simple_pricelist.action_edit_pricelist_by_product
 msgid "Edit Pricelist"
 msgstr "Editer la liste de prix"
-
-#. module: product_simple_pricelist
-#: code:addons/product_simple_pricelist/models/product_pricelist.py:30
-#, python-format
-msgid "Edit Pricelist '%s' By Product"
-msgstr "Editer la liste de prix '%s' par produit"
 
 #. module: product_simple_pricelist
 #: model_terms:ir.ui.view,arch_db:product_simple_pricelist.view_product_pricelist_form
@@ -98,6 +98,16 @@ msgid "Simple Pricelist - Editor"
 msgstr "Liste de prix simple - Editeur"
 
 #. module: product_simple_pricelist
+#: model:res.groups,name:product_simple_pricelist.editor_inline
+msgid "Simple Pricelist - Editor inline"
+msgstr "Liste de prix simple - Edition en ligne"
+
+#. module: product_simple_pricelist
+#: model:res.groups,name:product_simple_pricelist.editor_with_date
+msgid "Simple Pricelist - Editor with date"
+msgstr "Liste de prix simple - Edition par date"
+
+#. module: product_simple_pricelist
 #: model:ir.model.fields,field_description:product_simple_pricelist.field_product_product__specific_pricelist_item_id
 msgid "Specific Pricelist Item"
 msgstr "Elément de prix spécifique"
@@ -118,4 +128,3 @@ msgstr "Elément de prix de variante"
 #: model_terms:ir.ui.view,arch_db:product_simple_pricelist.view_product_product_form
 msgid "Variant Pricing"
 msgstr "Tarification des variantes"
-

@@ -11,8 +11,7 @@ class ProductPricelist(models.Model):
 
     editable_by_product = fields.Boolean(
         string="Editable By Product",
-        oldname="is_simple",
-        help="Check this box if you want to edit this" " pricelist by product",
+        help="Check this box if you want to edit this pricelist by product",
     )
 
     # View Section
@@ -27,9 +26,8 @@ class ProductPricelist(models.Model):
         context.update({"pricelist_id": self.id})
         result.update(
             {
-                "name": _("Edit Pricelist '%s' By Product") % (self.name),
+                "display_name": _("Edit %s") % (self.name),
                 "context": str(context),
             }
         )
-
         return result
