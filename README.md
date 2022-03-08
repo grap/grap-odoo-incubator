@@ -55,6 +55,7 @@ addon | version | maintainers | summary
 [stock_inventory_valuation](stock_inventory_valuation/) | 12.0.1.1.3 |  | Stock Inventory - Valuation
 [stock_inventory_valuation_merge](stock_inventory_valuation_merge/) | 12.0.1.1.2 |  | Stock Inventory - Valuation - Merge - Glue Module
 [stock_picking_quick_quantity_done](stock_picking_quick_quantity_done/) | 12.0.1.1.4 |  | Stock Picking Quick Quantity Done
+[stock_picking_report_summary](stock_picking_report_summary/) | 12.0.1.0.0 | [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Stock Picking Report Summary
 [web_base_url_force](web_base_url_force/) | 12.0.1.0.3 |  | Force the value of the setting 'web.base.url'
 
 [//]: # (end addons)
