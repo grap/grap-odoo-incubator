@@ -32,14 +32,20 @@ class ProductProduct(models.Model):
         res = super(
             ProductProduct, self.with_context(do_not_update_to_print_category=True)
         ).write(vals)
-        product_ids = []
+        self._update_to_print_values(ProductProduct, self, vals)
+        return res
+
+    @api.model
+    def _update_to_print_values(self, className, items, vals):
+        # This function work for item that are product.product and product.template
+        model = self.env[items._name]
+        item_ids = []
         # Set 'To print' if we change one field choosen in print_category
-        for product in self.filtered(lambda x: x.print_category_id):
-            triggering_fields = product.print_category_id.field_ids.mapped("name") + [
+        for item in items.filtered(lambda x: x.print_category_id):
+            triggering_fields = item.print_category_id.field_ids.mapped("name") + [
                 "print_category_id"
             ]
             if len(list(set(vals.keys()) & set(triggering_fields))):
-                product_ids.append(product.id)
-        products = self.browse(product_ids)
-        super(ProductProduct, products).write({"to_print": True})
-        return res
+                item_ids.append(item.id)
+        to_update_items = model.browse(item_ids)
+        super(className, to_update_items).write({"to_print": True})
