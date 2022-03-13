@@ -6,7 +6,8 @@ from odoo import api, fields, models
 
 
 class ProductProduct(models.Model):
-    _inherit = "product.product"
+    _name = "product.product"
+    _inherit = ["product.product", "product.print.category.mixin"]
 
     # Columns Section
     print_category_id = fields.Many2one(
@@ -32,20 +33,5 @@ class ProductProduct(models.Model):
         res = super(
             ProductProduct, self.with_context(do_not_update_to_print_category=True)
         ).write(vals)
-        self._update_to_print_values(ProductProduct, self, vals)
+        self._update_to_print_values(vals)
         return res
-
-    @api.model
-    def _update_to_print_values(self, className, items, vals):
-        # This function work for item that are product.product and product.template
-        model = self.env[items._name]
-        item_ids = []
-        # Set 'To print' if we change one field choosen in print_category
-        for item in items.filtered(lambda x: x.print_category_id):
-            triggering_fields = item.print_category_id.field_ids.mapped("name") + [
-                "print_category_id"
-            ]
-            if len(list(set(vals.keys()) & set(triggering_fields))):
-                item_ids.append(item.id)
-        to_update_items = model.browse(item_ids)
-        super(className, to_update_items).write({"to_print": True})
