@@ -29,7 +29,9 @@ class ProductProduct(models.Model):
 
     @api.multi
     def write(self, vals):
-        res = super().write(vals)
+        res = super(
+            ProductProduct, self.with_context(do_not_update_to_print_category=True)
+        ).write(vals)
         product_ids = []
         # Set 'To print' if we change one field choosen in print_category
         for product in self.filtered(lambda x: x.print_category_id):
