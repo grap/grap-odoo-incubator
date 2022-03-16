@@ -9,7 +9,7 @@
     "category": "Tools",
     "license": "AGPL-3",
     "author": "GRAP, " "Odoo Community Association (OCA)",
-    "website": "https://github.com/OCA/grap-odoo-incubator",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "depends": ["base", "web"],
     "installable": True,
 }

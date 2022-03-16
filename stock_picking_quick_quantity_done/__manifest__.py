@@ -5,7 +5,7 @@
     "name": "Stock Picking Quick Quantity Done",
     "version": "13.0.1.1.4",
     "category": "Stock",
-    "website": "https://github.com/OCA/grap-odoo-incubator",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "author": "GRAP, " "Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,

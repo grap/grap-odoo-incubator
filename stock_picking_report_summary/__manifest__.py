@@ -8,7 +8,7 @@
     "version": "13.0.1.0.1",
     "author": "GRAP, " "Odoo Community Association (OCA)",
     "maintainers": ["quentinDupont"],
-    "website": "https://github.com/OCA/grap-odoo-incubator",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "category": "Warehouse Management",
     "license": "AGPL-3",
     "depends": ["stock",],

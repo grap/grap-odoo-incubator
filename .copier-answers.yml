@@ -1,15 +1,18 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: v1.5.1
+_commit: v3.0.6
 _src_path: https://github.com/grap/oca-addons-repo-template.git
 ci: GitHub
 dependency_installation_mode: PIP
 generate_requirements_txt: true
 include_wkhtmltopdf: false
 odoo_version: 13.0
+org_name: GRAP
+org_slug: grap
 rebel_module_groups: []
 repo_description: my description
 repo_name: GRAP Odoo Incubator Modules
 repo_slug: grap-odoo-incubator
+repo_website: https://github.com/grap/grap-odoo-incubator
 travis_apt_packages: []
 travis_apt_sources: []
 
