@@ -108,11 +108,7 @@ class SynchronizationData(models.Model):
             domain.append(("readonly", "=", False))
 
         self.field_ids = self.env["ir.model.fields"].search(domain)
-        return {
-            "domain": {
-                "field_ids": domain,
-            }
-        }
+        return {"domain": {"field_ids": domain,}}
 
     def action_synchronize(self):
         for synchronization in self:
@@ -143,9 +139,7 @@ class SynchronizationData(models.Model):
         )
 
         self._synchronize_execute(
-            external_xml_id_datas,
-            external_datas,
-            force_update=force_update,
+            external_xml_id_datas, external_datas, force_update=force_update,
         )
 
     def _post_code_execute(self, record):
@@ -168,10 +162,7 @@ class SynchronizationData(models.Model):
         }
 
     def _synchronize_execute(
-        self,
-        external_xml_id_datas,
-        external_datas,
-        force_update=False,
+        self, external_xml_id_datas, external_datas, force_update=False,
     ):
         """This function is done to allow to execute test"""
         self.ensure_one()
@@ -247,8 +238,7 @@ class SynchronizationData(models.Model):
                     _logger.info(
                         "Model : {model}. Create new item, based on the"
                         " external #{external_id}".format(
-                            model=self.model_id.model,
-                            external_id=external_id,
+                            model=self.model_id.model, external_id=external_id,
                         )
                     )
                     internal_item = TargetModel.create(
@@ -309,11 +299,7 @@ class SynchronizationData(models.Model):
                 continue
 
             field = self.env["ir.model.fields"].search(
-                [
-                    ("model_id", "=", self.model_id.id),
-                    ("name", "=", k),
-                ],
-                limit=1,
+                [("model_id", "=", self.model_id.id), ("name", "=", k),], limit=1,
             )
             if not field:
                 _logger.warning(
@@ -329,10 +315,7 @@ class SynchronizationData(models.Model):
                     res[k] = False
                 else:
                     mapping = SynchronisationMapping.search(
-                        [
-                            ("model", "=", field.relation),
-                            ("external_id", "=", v[0]),
-                        ]
+                        [("model", "=", field.relation), ("external_id", "=", v[0]),]
                     )
                     if mapping:
                         res[k] = mapping.internal_id
@@ -349,10 +332,7 @@ class SynchronizationData(models.Model):
                     res[k] = []
                 else:
                     mappings = SynchronisationMapping.search(
-                        [
-                            ("model", "=", field.relation),
-                            ("external_id", "in", v),
-                        ],
+                        [("model", "=", field.relation), ("external_id", "in", v),],
                     )
                     if len(mappings) == len(v):
                         res[k] = [[6, False, mappings.mapped("internal_id")]]

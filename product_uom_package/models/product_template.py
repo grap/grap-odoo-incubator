@@ -12,10 +12,7 @@ class ProductTemplate(models.Model):
         comodel_name="uom.uom", string="Package Unit of Measure"
     )
 
-    uom_package_qty = fields.Float(
-        string="Package Quantity",
-        default=0,
-    )
+    uom_package_qty = fields.Float(string="Package Quantity", default=0,)
 
     @api.model
     def _round_package_quantity(self, qty, uom_package_qty, uom_package_id, uom_id):

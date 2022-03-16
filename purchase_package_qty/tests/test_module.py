@@ -23,9 +23,7 @@ class TestModule(TransactionCase):
         # If we set min_qty to 3, the package_qty should be down to
         # 3 also
         self.supplierinfo.write(
-            {
-                "min_qty": 3,
-            }
+            {"min_qty": 3,}
         )
 
         self.supplierinfo.onchange_min_qty()
@@ -36,9 +34,7 @@ class TestModule(TransactionCase):
         )
 
         self.supplierinfo.write(
-            {
-                "min_qty": 0,
-            }
+            {"min_qty": 0,}
         )
 
         self.supplierinfo.onchange_min_qty()
@@ -52,9 +48,7 @@ class TestModule(TransactionCase):
         # If we set min_qty to 601, with a package of 6, the min_qty should
         # be rounded to 606
         self.supplierinfo.write(
-            {
-                "min_qty": 601,
-            }
+            {"min_qty": 601,}
         )
 
         self.supplierinfo.onchange_min_qty()
@@ -69,9 +63,7 @@ class TestModule(TransactionCase):
         # If we set package_qty to 70, the min_qty should be up to
         # 70 also.
         self.supplierinfo.write(
-            {
-                "package_qty": 70,
-            }
+            {"package_qty": 70,}
         )
 
         self.supplierinfo.onchange_package_qty()
@@ -84,9 +76,7 @@ class TestModule(TransactionCase):
     def test_04_supplierinfo_change_package_qty_lower_not_rounded(self):
         # If we set package_qty to 25, the min_qty should be down to 50.
         self.supplierinfo.write(
-            {
-                "package_qty": 25,
-            }
+            {"package_qty": 25,}
         )
 
         self.supplierinfo.onchange_package_qty()
@@ -99,9 +89,7 @@ class TestModule(TransactionCase):
     def test_05_supplierinfo_change_package_qty_lower_rounded(self):
         # If we set package_qty to 30, the min_qty should not change.
         self.supplierinfo.write(
-            {
-                "package_qty": 30,
-            }
+            {"package_qty": 30,}
         )
 
         self.supplierinfo.onchange_package_qty()
@@ -115,9 +103,7 @@ class TestModule(TransactionCase):
     def test_06_supplierinfo_change_package_qty_null(self):
         # If we unset package_qty, min_qty should not change.
         self.supplierinfo.write(
-            {
-                "package_qty": 0,
-            }
+            {"package_qty": 0,}
         )
 
         self.supplierinfo.onchange_package_qty()

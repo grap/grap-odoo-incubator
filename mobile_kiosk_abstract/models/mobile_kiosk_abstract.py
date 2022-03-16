@@ -19,40 +19,26 @@ class MobileKioskAbstract(models.TransientModel):
     def _add_result_error(self, result, title, message):
         result["status"] = "ko"
         result["messages"].append(
-            {
-                "level": "error",
-                "title": title,
-                "message": message,
-            }
+            {"level": "error", "title": title, "message": message,}
         )
         return result
 
     def _add_result_notify(self, result, title, message):
         result["messages"].append(
-            {
-                "level": "notify",
-                "title": title,
-                "message": message,
-            }
+            {"level": "notify", "title": title, "message": message,}
         )
         return result
 
     @api.model
     def _prepare_product_data(self, result, product):
         result.update(
-            {
-                "product_id": product.id,
-                "product_name": product.name,
-            }
+            {"product_id": product.id, "product_name": product.name,}
         )
 
     @api.model
     def _prepare_partner_data(self, result, partner):
         result.update(
-            {
-                "partner_id": partner.id,
-                "partner_name": partner.name,
-            }
+            {"partner_id": partner.id, "partner_name": partner.name,}
         )
 
     @api.model

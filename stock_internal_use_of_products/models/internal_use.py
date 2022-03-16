@@ -214,10 +214,7 @@ class InternalUse(models.Model):
 
             # Associate internal uses to account move and set to 'done'
             uses.write(
-                {
-                    "state": "done",
-                    "account_move_id": account_move.id,
-                }
+                {"state": "done", "account_move_id": account_move.id,}
             )
 
         # Handle confirmed internal use that don't have to generate accounting
@@ -226,9 +223,7 @@ class InternalUse(models.Model):
             lambda x: (x.state == "confirmed" and not x.internal_use_case_id.journal_id)
         )
         uses.write(
-            {
-                "state": "done",
-            }
+            {"state": "done",}
         )
 
         return True

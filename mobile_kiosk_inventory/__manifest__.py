@@ -8,23 +8,16 @@
     "author": "GRAP",
     "summary": "Mobile interface to make inventories",
     "category": "Tools",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "license": "AGPL-3",
     "maintainers": ["legalsylvain"],
-    "depends": [
-        "stock",
-        "mobile_kiosk_abstract",
-    ],
+    "depends": ["stock", "mobile_kiosk_abstract",],
     "data": [
         "views/templates.xml",
         "views/view_stock_inventory.xml",
         "data/mobile_kiosk_application.xml",
     ],
-    "qweb": [
-        "static/src/xml/mobile_kiosk_inventory.xml",
-    ],
-    "demo": [
-        "demo/res_groups.xml",
-    ],
+    "qweb": ["static/src/xml/mobile_kiosk_inventory.xml",],
+    "demo": ["demo/res_groups.xml",],
     "installable": True,
 }

@@ -135,10 +135,7 @@ class MobileKioskPurchase(models.TransientModel):
         )
         if not orders:
             order = PurchaseOrder.create(
-                {
-                    "partner_id": partner_id,
-                    "origin": _("From mobile app purchase"),
-                }
+                {"partner_id": partner_id, "origin": _("From mobile app purchase"),}
             )
             self._add_result_notify(
                 result,

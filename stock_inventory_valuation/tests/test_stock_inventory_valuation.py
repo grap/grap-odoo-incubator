@@ -16,7 +16,5 @@ class TestStockInventoryMerge(TransactionCase):
     def test_01_compute_valuation(self):
 
         self.assertEqual(
-            self.line_1_1.valuation,
-            11,
-            "Valuation of this line should be 11",
+            self.line_1_1.valuation, 11, "Valuation of this line should be 11",
         )

@@ -11,15 +11,12 @@
     "version": "12.0.1.1.4",
     "category": "Product",
     "license": "AGPL-3",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "author": "GRAP, "
     "La Louve, "
     "Coop IT Easy SCRLfs, "
     "Odoo Community Association (OCA)",
-    "depends": [
-        "sale_management",
-        "product",
-    ],
+    "depends": ["sale_management", "product",],
     "demo": [
         "demo/res_groups.xml",
         "demo/qweb_template.xml",

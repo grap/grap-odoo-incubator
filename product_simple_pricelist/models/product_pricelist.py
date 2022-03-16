@@ -25,9 +25,6 @@ class ProductPricelist(models.Model):
         context = safe_eval(result.get("context", "{}"))
         context.update({"pricelist_id": self.id})
         result.update(
-            {
-                "display_name": _("Edit %s") % (self.name),
-                "context": str(context),
-            }
+            {"display_name": _("Edit %s") % (self.name), "context": str(context),}
         )
         return result

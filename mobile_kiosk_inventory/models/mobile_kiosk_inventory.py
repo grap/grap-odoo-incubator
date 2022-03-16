@@ -81,10 +81,7 @@ class MobileKioskInventory(models.TransientModel):
         product = ProductProduct.browse(product_id)
 
         lines = StockInventoryLine.search(
-            [
-                ("inventory_id", "=", inventory_id),
-                ("product_id", "=", product_id),
-            ]
+            [("inventory_id", "=", inventory_id), ("product_id", "=", product_id),]
         )
         if lines:
             line = lines[0]
@@ -137,11 +134,7 @@ class MobileKioskInventory(models.TransientModel):
     def _select_product(self, inventory_id, product_id, result):
         ProductProduct = self.env["product.product"]
 
-        products = ProductProduct.search(
-            [
-                ("id", "=", product_id),
-            ]
-        )
+        products = ProductProduct.search([("id", "=", product_id),])
         if not products:
             self._add_result_error(
                 result,

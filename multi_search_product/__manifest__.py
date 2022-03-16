@@ -8,7 +8,7 @@
     "version": "12.0.1.1.2",
     "category": "Product",
     "author": "GRAP",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": ["multi_search_abstract", "product"],
     "data": ["views/view_res_config_settings.xml"],

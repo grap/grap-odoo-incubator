@@ -8,12 +8,10 @@
     "version": "12.0.1.0.1",
     "author": "GRAP",
     "maintainers": ["quentinDupont"],
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "category": "Warehouse Management",
     "license": "AGPL-3",
-    "depends": [
-        "stock",
-    ],
+    "depends": ["stock",],
     "data": [
         "reports/report_paperformat.xml",
         "reports/report_print_picking_summary.xml",

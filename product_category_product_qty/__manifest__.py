@@ -8,17 +8,11 @@
     "version": "12.0.1.1.2",
     "category": "Product",
     "author": "GRAP, " "Odoo Community Association (OCA)",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "license": "AGPL-3",
-    "depends": [
-        "product",
-    ],
-    "data": [
-        "views/view_product_category.xml",
-    ],
-    "demo": [
-        "demo/res_groups.xml",
-    ],
+    "depends": ["product",],
+    "data": ["views/view_product_category.xml",],
+    "demo": ["demo/res_groups.xml",],
     "images": [
         "static/description/product_category_tree.png",
         "static/description/product_category_form.png",

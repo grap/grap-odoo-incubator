@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
 Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 @author: Quentin DUPONT (https://twitter.com/pondupont)
@@ -9,13 +9,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="regular_expense_account" model="account.account">
         <field name="code">601</field>
         <field name="name">Regular Expense Account</field>
-        <field name="user_type_id" ref="account.data_account_type_expenses"/>
+        <field name="user_type_id" ref="account.data_account_type_expenses" />
     </record>
 
     <record id="use_expense_account" model="account.account">
         <field name="code">6232</field>
         <field name="name">Use Expense Account</field>
-        <field name="user_type_id" ref="account.data_account_type_expenses"/>
+        <field name="user_type_id" ref="account.data_account_type_expenses" />
     </record>
 
 </odoo>

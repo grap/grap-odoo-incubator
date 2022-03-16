@@ -1,10 +1,9 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <!--
 Copyright (C) 2016-Today: La Louve (<http://www.lalouve.net/>)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-
 <odoo>
 
     <template id="qweb_template_demo">
@@ -13,13 +12,15 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <t t-foreach="line.quantity" t-as="q">
                 <div style="border: 1px solid; width: 50%; background-color:#c8c8d3">
                     <div>
-                        <b><t t-esc="line.product_id.name"/></b>
+                        <b><t t-esc="line.product_id.name" /></b>
                     </div>
                     <div>
-                        <t t-if="line.product_id.code">Code: <t t-esc="line.product_id.code"/><br/></t>
+                        <t t-if="line.product_id.code">Code: <t
+                                t-esc="line.product_id.code"
+                            /><br /></t>
                     </div>
                     <div class="product_price">
-                        <t t-esc="'%0.2f' % (line.product_id.list_price)"/>€
+                        <t t-esc="'%0.2f' % (line.product_id.list_price)" />€
                     </div>
                 </div>
             </t>

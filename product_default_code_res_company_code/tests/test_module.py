@@ -19,10 +19,7 @@ class TestModule(TransactionCase):
         # First reinitialize the sequence, to make
         # test idempotent
         sequence = self.env["ir.sequence"].search(
-            [
-                ("code", "=", "product_product.default_code"),
-                ("prefix", "=", "C1-"),
-            ]
+            [("code", "=", "product_product.default_code"), ("prefix", "=", "C1-"),]
         )
         sequence.number_next_actual = 1
         product = self.ProductProduct.create({"name": "Product test 1"})

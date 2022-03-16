@@ -1,15 +1,17 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <!--
     Copyright (C) 2016-Today: La Louve (<http://www.lalouve.net/>)
     @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-
 <odoo>
 
-    <menuitem id="menu_product_print_category"
-        parent="sale.product_menu_catalog" sequence="110"
+    <menuitem
+        id="menu_product_print_category"
+        parent="sale.product_menu_catalog"
+        sequence="110"
         action="action_product_print_category"
-        groups="product_print_category.user"/>
+        groups="product_print_category.user"
+    />
 
 </odoo>

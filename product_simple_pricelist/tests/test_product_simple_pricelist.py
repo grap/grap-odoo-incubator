@@ -56,9 +56,7 @@ class TestModule(TransactionCase):
             ]
         )
         self.assertEqual(
-            len(items),
-            0,
-            "Delete pricelist price should delete the pricelist item",
+            len(items), 0, "Delete pricelist price should delete the pricelist item",
         )
 
     def test_02_sub_pricelist(self):

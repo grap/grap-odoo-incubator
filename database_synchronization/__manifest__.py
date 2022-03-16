@@ -8,14 +8,10 @@
     "version": "12.0.2.2.3",
     "category": "Settings",
     "author": "GRAP",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "license": "AGPL-3",
-    "depends": [
-        "queue_job",
-    ],
-    "external_dependencies": {
-        "python": ["odoorpc"],
-    },
+    "depends": ["queue_job",],
+    "external_dependencies": {"python": ["odoorpc"],},
     "data": [
         "security/ir.model.access.csv",
         "data/ir_cron.xml",
@@ -26,8 +22,6 @@
         "views/view_synchronization_mapping.xml",
         "views/view_synchronization_data.xml",
     ],
-    "demo": [
-        "demo/synchronization_data.xml",
-    ],
+    "demo": ["demo/synchronization_data.xml",],
     "installable": True,
 }

@@ -9,11 +9,9 @@
     "summary": "Point of Sale Settings in Multi company context",
     "category": "Point of Sale",
     "author": "GRAP",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "license": "AGPL-3",
-    "depends": [
-        "point_of_sale",
-    ],
+    "depends": ["point_of_sale",],
     "data": [
         "security/ir_rule.xml",
         "views/view_pos_config.xml",
@@ -21,11 +19,7 @@
         "views/view_pos_order.xml",
         "views/view_pos_category.xml",
     ],
-    "demo": [
-        "demo/res_groups.xml",
-    ],
-    "images": [
-        "static/description/pos_category_tree.png",
-    ],
+    "demo": ["demo/res_groups.xml",],
+    "images": ["static/description/pos_category_tree.png",],
     "installable": True,
 }

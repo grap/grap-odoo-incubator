@@ -10,12 +10,10 @@
     " 'kiosk application' for mobile usage like in 'hr_attendance'"
     " Odoo module",
     "category": "Tools",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "license": "AGPL-3",
     "maintainers": ["legalsylvain"],
-    "depends": [
-        "stock",
-    ],
+    "depends": ["stock",],
     "data": [
         "security/ir.model.access.csv",
         "views/menu.xml",
@@ -24,9 +22,7 @@
         "views/view_res_partner.xml",
         "views/view_mobile_kiosk_application.xml",
     ],
-    "qweb": [
-        "static/src/xml/mobile_kiosk_abstract.xml",
-    ],
+    "qweb": ["static/src/xml/mobile_kiosk_abstract.xml",],
     "demo": [
         "demo/res_partner.xml",
         "demo/product_product.xml",

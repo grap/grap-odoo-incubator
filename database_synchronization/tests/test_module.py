@@ -55,8 +55,7 @@ class TestModule(TransactionCase):
 
         # Make a correct synchronization (id only)
         self.synchronization_group._synchronize_execute(
-            external_xml_id_datas,
-            external_datas,
+            external_xml_id_datas, external_datas,
         )
 
         # check if mapping has been created
@@ -69,8 +68,7 @@ class TestModule(TransactionCase):
 
         with self.assertRaises(UserError):
             self.synchronization_group._synchronize_execute(
-                external_xml_id_datas,
-                incorrect_external_datas,
+                external_xml_id_datas, incorrect_external_datas,
             )
 
     def test_synchronize_data(self):
@@ -80,8 +78,7 @@ class TestModule(TransactionCase):
 
         # Make a correct synchronization (data)
         self.synchronization_company._synchronize_execute(
-            external_xml_id_datas,
-            external_datas,
+            external_xml_id_datas, external_datas,
         )
 
         company_qty = len(self.ResCompany.search([]))
@@ -92,17 +89,12 @@ class TestModule(TransactionCase):
         street_value = "FIELD NOT SYNCHRONIZED"
         external_datas_with_new_company = external_datas.copy()
         external_datas_with_new_company.append(
-            {
-                "id": 999,
-                "name": company_value,
-                "street": street_value,
-            }
+            {"id": 999, "name": company_value, "street": street_value,}
         )
 
         # Make a new synchronization
         self.synchronization_company._synchronize_execute(
-            external_xml_id_datas,
-            external_datas_with_new_company,
+            external_xml_id_datas, external_datas_with_new_company,
         )
 
         # Check if the company has been created
@@ -118,15 +110,10 @@ class TestModule(TransactionCase):
         new_company_value = "New Company Name"
         external_datas_with_new_company = external_datas.copy()
         external_datas_with_new_company.append(
-            {
-                "id": 999,
-                "name": new_company_value,
-                "write_date": "2100-01-01 00:00:00",
-            }
+            {"id": 999, "name": new_company_value, "write_date": "2100-01-01 00:00:00",}
         )
         self.synchronization_company._synchronize_execute(
-            external_xml_id_datas,
-            external_datas_with_new_company,
+            external_xml_id_datas, external_datas_with_new_company,
         )
 
         new_company = self.ResCompany.browse(new_company.id)
@@ -144,8 +131,7 @@ class TestModule(TransactionCase):
             }
         )
         self.synchronization_company._synchronize_execute(
-            external_xml_id_datas,
-            external_datas_with_new_company,
+            external_xml_id_datas, external_datas_with_new_company,
         )
 
         new_company = self.ResCompany.browse(new_company.id)

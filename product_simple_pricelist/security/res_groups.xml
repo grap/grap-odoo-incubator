@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2021 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -8,19 +8,25 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="group_simple_pricelist_editor" model="res.groups">
         <field name="name">Simple Pricelist - Editor</field>
-        <field name="category_id" ref="base.module_category_usability"/>
+        <field name="category_id" ref="base.module_category_usability" />
     </record>
 
     <record id="editor_with_date" model="res.groups">
         <field name="name">Simple Pricelist - Editor with date</field>
-        <field name="implied_ids" eval="[(4, ref('product_simple_pricelist.group_simple_pricelist_editor'))]" />
-        <field name="category_id" ref="base.module_category_usability"/>
+        <field
+            name="implied_ids"
+            eval="[(4, ref('product_simple_pricelist.group_simple_pricelist_editor'))]"
+        />
+        <field name="category_id" ref="base.module_category_usability" />
     </record>
 
     <record id="editor_inline" model="res.groups">
         <field name="name">Simple Pricelist - Editor inline</field>
-        <field name="implied_ids" eval="[(4, ref('product_simple_pricelist.group_simple_pricelist_editor'))]" />
-        <field name="category_id" ref="base.module_category_usability"/>
+        <field
+            name="implied_ids"
+            eval="[(4, ref('product_simple_pricelist.group_simple_pricelist_editor'))]"
+        />
+        <field name="category_id" ref="base.module_category_usability" />
     </record>
 
 </odoo>

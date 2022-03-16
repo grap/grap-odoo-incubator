@@ -17,11 +17,7 @@ class TestProductPrintCategory(TransactionCase):
 
     # Test Section
     def test_01_to_print_value(self):
-        product = self.ProductProduct.create(
-            {
-                "name": "Demo Product Name",
-            }
-        )
+        product = self.ProductProduct.create({"name": "Demo Product Name",})
         self.assertEqual(product.to_print, False)
 
         product.print_category_id = self.print_category.id
@@ -39,8 +35,7 @@ class TestProductPrintCategory(TransactionCase):
             ]
         )
         wizard = self.ProductPrintWizard.with_context(
-            active_model="product.print.category",
-            active_ids=[self.print_category.id],
+            active_model="product.print.category", active_ids=[self.print_category.id],
         ).create({})
         self.assertEqual(
             len(wizard.line_ids),
@@ -50,9 +45,7 @@ class TestProductPrintCategory(TransactionCase):
 
     def test_11_test_wizard_all(self):
         products = self.ProductProduct.search(
-            [
-                ("print_category_id", "=", self.print_category.id),
-            ]
+            [("print_category_id", "=", self.print_category.id),]
         )
         wizard = self.ProductPrintWizard.with_context(
             active_model="product.print.category",

@@ -7,16 +7,10 @@
     "version": "12.0.1.1.3",
     "category": "Stock",
     "author": "GRAP",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": ["stock"],
-    "data": [
-        "views/view_stock_inventory.xml",
-        "views/view_stock_inventory_line.xml",
-    ],
-    "demo": [
-        "demo/product_product.xml",
-        "demo/stock_inventory.xml",
-    ],
+    "data": ["views/view_stock_inventory.xml", "views/view_stock_inventory_line.xml",],
+    "demo": ["demo/product_product.xml", "demo/stock_inventory.xml",],
     "installable": True,
 }

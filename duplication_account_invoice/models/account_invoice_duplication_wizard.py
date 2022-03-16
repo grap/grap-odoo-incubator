@@ -124,14 +124,7 @@ class AccountInvoiceDuplicationWizard(models.TransientModel):
                     days=self.date_due_duration
                 )
                 date_line_ids.append(
-                    (
-                        0,
-                        0,
-                        {
-                            "date_invoice": date_invoice,
-                            "date_due": date_due,
-                        },
-                    )
+                    (0, 0, {"date_invoice": date_invoice, "date_due": date_due,},)
                 )
             self.date_line_ids = date_line_ids
 

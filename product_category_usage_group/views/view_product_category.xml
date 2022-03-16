@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -11,8 +11,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="product.product_category_search_view" />
         <field name="arch" type="xml">
             <field name="parent_id" position="after">
-                <field name="usage_group_id"/>
-                <filter name="group_by_usage_group_id" string="Usage Group" context="{'group_by':'usage_group_id'}"/>
+                <field name="usage_group_id" />
+                <filter
+                    name="group_by_usage_group_id"
+                    string="Usage Group"
+                    context="{'group_by':'usage_group_id'}"
+                />
             </field>
         </field>
     </record>
@@ -22,7 +26,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="product.product_category_list_view" />
         <field name="arch" type="xml">
             <field name="display_name" position="after">
-                <field name="usage_group_id"/>
+                <field name="usage_group_id" />
             </field>
         </field>
     </record>
@@ -33,7 +37,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <xpath expr="//group[@name='first']" position="after">
                 <group name="access_right" string="Access Rights" colspan="2">
-                    <field name="usage_group_id"/>
+                    <field name="usage_group_id" />
                 </group>
             </xpath>
         </field>

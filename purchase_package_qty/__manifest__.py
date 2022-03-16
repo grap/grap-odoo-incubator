@@ -8,14 +8,10 @@
     "version": "12.0.1.1.2",
     "category": "Purchase",
     "author": "GRAP",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "license": "AGPL-3",
-    "depends": [
-        "purchase",
-    ],
-    "data": [
-        "views/view_product_supplierinfo.xml",
-    ],
+    "depends": ["purchase",],
+    "data": ["views/view_product_supplierinfo.xml",],
     "demo": [
         "demo/res_groups.xml",
         "demo/product_template.xml",

@@ -8,15 +8,9 @@
     "version": "12.0.1.1.2",
     "category": "Sale",
     "author": "GRAP, " "Odoo Community Association (OCA)",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "license": "AGPL-3",
-    "depends": [
-        "sale",
-        "sale_stock",
-    ],
-    "data": [
-        "views/view_sale_order_duplication_wizard.xml",
-        "views/action.xml",
-    ],
+    "depends": ["sale", "sale_stock",],
+    "data": ["views/view_sale_order_duplication_wizard.xml", "views/action.xml",],
     "installable": True,
 }

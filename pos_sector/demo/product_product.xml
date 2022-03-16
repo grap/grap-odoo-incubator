@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -8,18 +8,18 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="product_sector__1" model="product.product">
         <field name="name">Demo Product on sector 1</field>
-        <field name="sector_id" ref="sector_1"/>
-        <field name="categ_id" ref="product.product_category_all"/>
+        <field name="sector_id" ref="sector_1" />
+        <field name="categ_id" ref="product.product_category_all" />
         <field name="list_price">100</field>
-        <field name="available_in_pos" eval="True"/>
+        <field name="available_in_pos" eval="True" />
     </record>
 
     <record id="product_sector__2" model="product.product">
         <field name="name">Demo Product on sector 2</field>
-        <field name="sector_id" ref="sector_2"/>
-        <field name="categ_id" ref="product.product_category_all"/>
+        <field name="sector_id" ref="sector_2" />
+        <field name="categ_id" ref="product.product_category_all" />
         <field name="list_price">200</field>
-        <field name="available_in_pos" eval="True"/>
+        <field name="available_in_pos" eval="True" />
     </record>
 
 </odoo>

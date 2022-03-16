@@ -1,23 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
 Copyright (C) 2021-Today: Coop IT Easy SCRLfs<http://coopiteasy.be>
 @author: Rémy Taymans <remy@coopiteasy.be>
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-
 <odoo>
 
     <record id="view_product_template_only_form" model="ir.ui.view">
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_only_form_view" />
-        <field name="groups_id" eval="[(4, ref('product_print_category.user'))]"/>
+        <field name="groups_id" eval="[(4, ref('product_print_category.user'))]" />
         <field name="arch" type="xml">
             <xpath expr="//page[@name='sales']" position="inside">
                 <group string="Print options" name="print_options">
-                    <field name="product_variant_count" invisible="True"/>
-                    <field name="print_category_id" attrs="{'invisible': [('product_variant_count', '&gt;', 1)]}"/>
-                    <field name="to_print" attrs="{'invisible': [('product_variant_count', '&gt;', 1)]}"/>
-                    <p attrs="{'invisible': [('product_variant_count', '&lt;=', 1)]}">Print options should be configured on Product Variants</p>
+                    <field name="product_variant_count" invisible="True" />
+                    <field
+                        name="print_category_id"
+                        attrs="{'invisible': [('product_variant_count', '&gt;', 1)]}"
+                    />
+                    <field
+                        name="to_print"
+                        attrs="{'invisible': [('product_variant_count', '&gt;', 1)]}"
+                    />
+                    <p
+                        attrs="{'invisible': [('product_variant_count', '&lt;=', 1)]}"
+                    >Print options should be configured on Product Variants</p>
                 </group>
             </xpath>
         </field>

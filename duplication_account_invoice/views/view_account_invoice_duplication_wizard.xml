@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -11,28 +11,37 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
         <form>
             <group col="4" string="Item to duplicate">
-                <field name="invoice_id"/>
-                <field name="partner_id"/>
+                <field name="invoice_id" />
+                <field name="partner_id" />
             </group>
             <group col="4" string="Settings">
-                <field name="begin_date"/>
-                <field name="include_current_date"/>
-                <field name="duplication_type"/>
-                <field name="duplication_duration"/>
-                <field name="date_due_duration"/>
+                <field name="begin_date" />
+                <field name="include_current_date" />
+                <field name="duplication_type" />
+                <field name="duplication_duration" />
+                <field name="date_due_duration" />
             </group>
             <group>
                 <field name="date_line_ids" nolabel="1" colspan="2">
                     <tree editable="bottom">
-                        <field name="date_invoice"/>
-                        <field name="date_due"/>
+                        <field name="date_invoice" />
+                        <field name="date_due" />
                     </tree>
                 </field>
             </group>
             <footer>
-                <button name="duplicate_button" string="Duplicate" type="object" class="oe_highlight"/>
-                <button name="duplicate_open_button" string="Duplicate and Open" type="object"/>
-                <button string="Cancel" class="oe_link" special="cancel"/>
+                <button
+                        name="duplicate_button"
+                        string="Duplicate"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                <button
+                        name="duplicate_open_button"
+                        string="Duplicate and Open"
+                        type="object"
+                    />
+                <button string="Cancel" class="oe_link" special="cancel" />
             </footer>
         </form>
         </field>

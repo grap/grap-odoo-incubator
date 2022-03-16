@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -8,11 +8,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="product_template_package_6" model="product.template">
         <field name="name">Beers (package x6)</field>
-        <field name="categ_id" ref="product.product_category_all"/>
+        <field name="categ_id" ref="product.product_category_all" />
     </record>
 
     <record id="product_product_package_6" model="product.product">
-        <field name="product_tmpl_id" ref="product_template_package_6"/>
+        <field name="product_tmpl_id" ref="product_template_package_6" />
     </record>
 
 </odoo>

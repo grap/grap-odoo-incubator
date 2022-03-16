@@ -52,15 +52,7 @@ class PickingSummaryWizard(models.TransientModel):
         res = []
         picking_ids = self.env.context.get("active_ids", [])
         for picking in StockPicking.browse(picking_ids):
-            res.append(
-                (
-                    0,
-                    0,
-                    {
-                        "picking_id": picking.id,
-                    },
-                )
-            )
+            res.append((0, 0, {"picking_id": picking.id,},))
         return res
 
     def _default_product_line_ids(self):
@@ -93,14 +85,7 @@ class PickingSummaryWizard(models.TransientModel):
         #     key=lambda x: )
         for product_id, name_qty in product_lines_sorted:
             res.append(
-                (
-                    0,
-                    0,
-                    {
-                        "product_id": product_id,
-                        "quantity_total": name_qty["qty"],
-                    },
-                )
+                (0, 0, {"product_id": product_id, "quantity_total": name_qty["qty"],},)
             )
         return res
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 @author Julien Weste
@@ -12,10 +12,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="product.product_supplierinfo_form_view" />
         <field name="arch" type="xml">
             <field name="product_tmpl_id" position="after">
-                <label for="package_qty"/>
+                <label for="package_qty" />
                 <div>
-                    <field name="package_qty" class="oe_inline"/>
-                    <field name="product_uom" class="oe_inline" groups="uom.group_uom"/>
+                    <field name="package_qty" class="oe_inline" />
+                    <field
+                        name="product_uom"
+                        class="oe_inline"
+                        groups="uom.group_uom"
+                    />
                 </div>
             </field>
         </field>
@@ -26,7 +30,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="product.product_supplierinfo_tree_view" />
         <field name="arch" type="xml">
             <field name="min_qty" position="before">
-                <field name="package_qty"/>
+                <field name="package_qty" />
             </field>
         </field>
     </record>

@@ -116,13 +116,7 @@ class SaleOrderDuplicationWizard(models.TransientModel):
                 else:
                     current_date = self.begin_date + relativedelta(months=i)
                 date_line_ids.append(
-                    (
-                        0,
-                        0,
-                        {
-                            "date": current_date.strftime("%Y-%m-%d"),
-                        },
-                    )
+                    (0, 0, {"date": current_date.strftime("%Y-%m-%d"),},)
                 )
             self.date_line_ids = date_line_ids
 

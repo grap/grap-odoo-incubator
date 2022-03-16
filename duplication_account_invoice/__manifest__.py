@@ -8,14 +8,9 @@
     "version": "12.0.1.1.2",
     "category": "Account",
     "author": "GRAP, Odoo Community Association (OCA)",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "license": "AGPL-3",
-    "depends": [
-        "account",
-    ],
-    "data": [
-        "views/view_account_invoice_duplication_wizard.xml",
-        "views/action.xml",
-    ],
+    "depends": ["account",],
+    "data": ["views/view_account_invoice_duplication_wizard.xml", "views/action.xml",],
     "installable": True,
 }

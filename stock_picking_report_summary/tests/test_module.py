@@ -14,8 +14,7 @@ class TestModule(TransactionCase):
 
     def _test_wizard(self, pickings):
         wizard = self.PickingReportWizard.with_context(
-            active_model="stock.picking",
-            active_ids=pickings.ids,
+            active_model="stock.picking", active_ids=pickings.ids,
         ).create({})
 
         custom_note = "La Rabia Del Pueblo - Keny Arkana"
@@ -26,8 +25,6 @@ class TestModule(TransactionCase):
 
     def test_wizard(self):
         pickings = self.StockPicking.search(
-            [
-                ("picking_type_id", "=", self.outPickingType.id),
-            ]
+            [("picking_type_id", "=", self.outPickingType.id),]
         )
         self._test_wizard(pickings)

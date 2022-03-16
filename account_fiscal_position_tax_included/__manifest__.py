@@ -10,7 +10,7 @@
     "author": "GRAP",
     "maintainers": ["legalsylvain"],
     "development_status": "Alpha",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": ["account"],
     "demo": [

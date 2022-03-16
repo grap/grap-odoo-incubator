@@ -16,15 +16,11 @@ class TestModule(TransactionCase):
     def test_01_name_search_by_vat(self):
         vat_search_qty = len(self.ResPartner.name_search("987987987"))
         self.assertEqual(
-            vat_search_qty,
-            0,
-            "Name search should not be based on VAT field.",
+            vat_search_qty, 0, "Name search should not be based on VAT field.",
         )
 
     def test_02_name_search_by_name(self):
         search_qty = len(self.ResPartner.name_search("Search Reset"))
         self.assertNotEqual(
-            search_qty,
-            0,
-            "Name search should be based on name field.",
+            search_qty, 0, "Name search should be based on name field.",
         )

@@ -12,8 +12,7 @@ class ProductProduct(models.Model):
     _inherit = "product.product"
 
     specific_pricelist_item_id = fields.Many2one(
-        comodel_name="product.pricelist.item",
-        compute="_compute_pricelist_price",
+        comodel_name="product.pricelist.item", compute="_compute_pricelist_price",
     )
 
     pricelist_price = fields.Float(

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -11,10 +11,15 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <form>
                 <group col="4">
-                    <field name="name"/>
+                    <field name="name" />
                 </group>
                 <footer>
-                    <button name="action_merge" string="Merge Inventories" type="object" class="oe_highlight"/>
+                    <button
+                        name="action_merge"
+                        string="Merge Inventories"
+                        type="object"
+                        class="oe_highlight"
+                    />
                     or
                     <button string="Cancel" class="oe_link" special="cancel" />
                 </footer>

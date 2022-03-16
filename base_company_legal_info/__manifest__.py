@@ -10,17 +10,9 @@
     "summary": "Adds Legal informations on company model",
     "author": "Akretion,GRAP,Odoo Community Association (OCA)",
     "maintainers": ["legalsylvain"],
-    "website": "https://github.com/grap/grap-odoo-incubator",
-    "depends": [
-        "web",
-    ],
-    "data": [
-        "views/view_res_company.xml",
-        "views/external_layout_footer.xml",
-    ],
-    "demo": [
-        "demo/res_groups.xml",
-        "demo/res_company.xml",
-    ],
+    "website": "https://github.com/OCA/grap-odoo-incubator",
+    "depends": ["web",],
+    "data": ["views/view_res_company.xml", "views/external_layout_footer.xml",],
+    "demo": ["demo/res_groups.xml", "demo/res_company.xml",],
     "installable": True,
 }

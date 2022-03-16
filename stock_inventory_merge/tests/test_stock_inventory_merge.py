@@ -56,8 +56,7 @@ class TestStockInventoryMerge(TransactionCase):
             inventory.action_start()
 
         wizard = self.wizard_obj.with_context(
-            active_ids=to_merge_inventory_ids,
-            active_model="stock.inventory",
+            active_ids=to_merge_inventory_ids, active_model="stock.inventory",
         ).create({"name": inventory_name})
         wizard.action_merge()
 

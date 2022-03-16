@@ -34,9 +34,7 @@ class InternalUseCase(models.Model):
     )
 
     default_location_src_id = fields.Many2one(
-        comodel_name="stock.location",
-        string="Origin Location",
-        required=True,
+        comodel_name="stock.location", string="Origin Location", required=True,
     )
 
     default_location_dest_id = fields.Many2one(

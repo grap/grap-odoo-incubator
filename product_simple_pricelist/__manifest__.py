@@ -8,12 +8,9 @@
     "version": "12.0.1.1.5",
     "category": "Product",
     "author": "GRAP",
-    "website": "https://github.com/grap/grap-odoo-incubator",
+    "website": "https://github.com/OCA/grap-odoo-incubator",
     "license": "AGPL-3",
-    "depends": [
-        "product",
-        "sale",
-    ],
+    "depends": ["product", "sale",],
     "data": [
         "security/res_groups.xml",
         "security/ir.model.access.csv",
@@ -21,10 +18,7 @@
         "views/view_product_pricelist.xml",
         "views/menu.xml",
     ],
-    "demo": [
-        "demo/res_groups.xml",
-        "demo/product_pricelist.xml",
-    ],
+    "demo": ["demo/res_groups.xml", "demo/product_pricelist.xml",],
     "images": [
         "static/description/pricelist_item_form.png",
         "static/description/product_pricelist_tree.png",

@@ -29,15 +29,11 @@ class ProductPrintCategory(models.Model):
     product_qty = fields.Integer(string="Products", compute="_compute_product_qty")
 
     product_to_print_ids = fields.One2many(
-        comodel_name="product.product",
-        compute="_compute_to_print",
-        multi="to_print",
+        comodel_name="product.product", compute="_compute_to_print", multi="to_print",
     )
 
     product_to_print_qty = fields.Integer(
-        compute="_compute_to_print",
-        multi="to_print",
-        string="Products To Print",
+        compute="_compute_to_print", multi="to_print", string="Products To Print",
     )
 
     field_ids = fields.Many2many(
@@ -68,10 +64,7 @@ class ProductPrintCategory(models.Model):
         product_obj = self.env["product.product"]
         for category in self:
             products = product_obj.search(
-                [
-                    ("print_category_id", "=", category.id),
-                    ("to_print", "=", True),
-                ]
+                [("print_category_id", "=", category.id), ("to_print", "=", True),]
             )
             category.product_to_print_qty = len(products)
             category.product_to_print_ids = products
