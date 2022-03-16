@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_simple_pricelist_product_user,Simple pricelist – Product User,product.model_product_product,product_simple_pricelist.group_simple_pricelist_editor,1,1,1,1
-access_simple_pricelist_pricelist_item_user,Simple pricelist – Pricelist Item User,product.model_product_pricelist_item,product_simple_pricelist.group_simple_pricelist_editor,1,1,1,1

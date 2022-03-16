@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)..
 {
     "name": "Stock Picking Quick Quantity Done",
-    "version": "12.0.1.1.4",
+    "version": "13.0.1.1.4",
     "category": "Stock",
     "website": "https://github.com/OCA/grap-odoo-incubator",
     "author": "GRAP, " "Odoo Community Association (OCA)",

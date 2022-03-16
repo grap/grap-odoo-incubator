@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-synchronization_data_reader,synchronization_data_reader,model_synchronization_data,,1,0,0,0
-synchronization_data_manager,synchronization_data_manager,model_synchronization_data,base.group_system,1,1,1,1
-synchronization_mapping_manager,synchronization_mapping_manager,model_synchronization_mapping,base.group_system,1,1,1,1
