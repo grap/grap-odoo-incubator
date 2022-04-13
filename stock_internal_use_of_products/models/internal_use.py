@@ -144,7 +144,7 @@ class InternalUse(models.Model):
 
     @api.multi
     def action_done(self):
-        """ Set the internal use to 'done' and create account moves"""
+        """Set the internal use to 'done' and create account moves"""
         AccountMove = self.env["account.move"]
         InternalUseLine = self.env["internal.use.line"]
 
