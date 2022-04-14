@@ -31,7 +31,7 @@ class ProductProduct(models.Model):
     @api.multi
     def write(self, vals):
         res = super(
-            ProductProduct, self.with_context(do_not_update_to_print_category=True)
+            ProductProduct, self.with_context(update_to_print_category=False)
         ).write(vals)
         self._update_to_print_values(vals)
         return res

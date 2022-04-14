@@ -20,4 +20,6 @@ class ProductPrintCategoryMixin(models.AbstractModel):
             if len(list(set(vals.keys()) & set(triggering_fields))):
                 to_update_item_ids.append(item.id)
         to_update_items = self.browse(to_update_item_ids)
+        # This function is called from the write of the current RecordSet :
+        # prevent an infinite loop by calling the function super
         super(ProductPrintCategoryMixin, to_update_items).write({"to_print": True})

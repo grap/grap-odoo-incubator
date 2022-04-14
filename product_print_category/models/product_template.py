@@ -18,6 +18,6 @@ class ProductTemplate(models.Model):
     @api.multi
     def write(self, vals):
         res = super().write(vals)
-        if not self.env.context.get("do_not_update_to_print_category", False):
+        if self.env.context.get("update_to_print_category", True):
             self._update_to_print_values(vals)
         return res
