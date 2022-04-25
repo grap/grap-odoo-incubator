@@ -11,6 +11,10 @@ class TestModule(TransactionCase):
     def setUp(self):
         super().setUp()
         self.ResPartner = self.env["res.partner"]
+        self.parent_partner = self.env.ref(
+            "name_search_reset_res_partner.parent_partner"
+        )
+        self.child_partner = self.env.ref("name_search_reset_res_partner.child_partner")
 
     # Test Section
     def test_01_name_search_by_vat(self):
@@ -22,9 +26,17 @@ class TestModule(TransactionCase):
         )
 
     def test_02_name_search_by_name(self):
-        search_qty = len(self.ResPartner.name_search("Search Reset"))
-        self.assertNotEqual(
-            search_qty,
-            0,
-            "Name search should be based on name field.",
+        found_ids = [
+            x[0] for x in self.ResPartner.name_search(self.parent_partner.name)
+        ]
+        self.assertIn(
+            self.parent_partner.id,
+            found_ids,
+            "Name search should be based on name field, and return parent partner.",
+        )
+        self.assertIn(
+            self.child_partner.id,
+            found_ids,
+            "Name search should be based on Complete Name field,"
+            " and return child partner.",
         )

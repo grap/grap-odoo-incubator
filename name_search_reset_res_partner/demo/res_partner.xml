@@ -6,10 +6,15 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-    <record id="name_search_partner" model="res.partner">
-        <field name="name">Name Search Reset Partner</field>
+    <record id="parent_partner" model="res.partner">
+        <field name="name">Name Search Reset Partner Parent</field>
         <field name="vat">987987987</field>
         <field name="email">mail@res_partner.fr</field>
+    </record>
+
+    <record id="child_partner" model="res.partner">
+        <field name="name">My Child</field>
+        <field name="parent_id" ref="name_search_reset_res_partner.parent_partner"/>
     </record>
 
 </odoo>

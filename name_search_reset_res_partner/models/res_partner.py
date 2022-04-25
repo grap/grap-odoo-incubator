@@ -12,7 +12,7 @@ class ResPartner(models.Model):
 
     @api.model
     def _get_name_search_reset_fields(self):
-        return ["name", "email"]
+        return ["display_name", "email"]
 
     @api.model
     def _name_search(
