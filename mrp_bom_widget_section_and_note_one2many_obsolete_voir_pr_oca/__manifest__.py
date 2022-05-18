@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "MRP Widget Section and Note in BoM",
+    "name": "OBSOLETE VOIR PR OCA - MRP Widget Section and Note in BoM",
     "summary": "Add section and note in Bills of Materials",
     "version": "12.0.1.1.0",
     "category": "GRAP - Incubator",
