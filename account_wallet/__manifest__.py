@@ -20,7 +20,7 @@
         "views/account_payment.xml",
         "views/res_partner.xml",
         "wizards/wizard_account_move_credit_notes_wallet.xml",
-        "wizards/account_payment_register.xml",
+        # "wizards/account_payment_register.xml",
     ],
     "license": "AGPL-3",
     "post_init_hook": "post_init_hook",

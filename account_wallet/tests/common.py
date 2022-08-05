@@ -24,8 +24,9 @@ class WalletCommon(common.SavepointCase):
         super(WalletCommon, cls).setUpClass()
         load_file(cls.cr, "account_wallet", "tests/data/", "account_wallet_data.xml")
         cls.AccountMove = cls.env["account.move"]
+        cls.AccountInvoice = cls.env["account.invoice"]
         cls.AccountWallet = cls.env["account.wallet"]
-        cls.AccountPaymentRegister = cls.env["account.payment.register"]
+        cls.AccountPayment = cls.env["account.payment"]
 
         cls.wallet_account = cls.env.ref("account_wallet.wallet_account")
         cls.wallet_journal = cls.env.ref("account_wallet.wallet_journal")
@@ -35,6 +36,22 @@ class WalletCommon(common.SavepointCase):
 
         cls.receivable_account = cls.env["account.account"].search(
             [("user_type_id.type", "=", "receivable")], limit=1
+        )
+
+        cls.sale_account = cls.env["account.account"].search(
+            [
+                (
+                    "user_type_id.id",
+                    "=",
+                    cls.env.ref("account.data_account_type_revenue").id,
+                )
+            ],
+            limit=1,
+        )
+        cls.outbound_method = cls.env.ref("account.account_payment_method_manual_out")
+
+        cls.sale_journal = cls.env["account.journal"].search(
+            [("type", "=", "sale")], limit=1
         )
 
         cls.wallet = cls.AccountWallet.create(
@@ -51,9 +68,9 @@ class WalletCommon(common.SavepointCase):
         - return the invoice and the wallet
         """
 
-        invoice = self.AccountMove.create(
+        invoice = self.AccountInvoice.create(
             {
-                "move_type": "out_invoice",
+                "journal_id": self.sale_journal.id,
                 "partner_id": self.env.ref("base.res_partner_2").id,
                 "invoice_line_ids": [
                     (
@@ -70,9 +87,9 @@ class WalletCommon(common.SavepointCase):
                 ],
             }
         )
-        invoice.action_post()
+        invoice.action_invoice_open()
         has_wallet = False
-        for line in invoice.invoice_line_ids:
+        for line in invoice.move_id.line_ids:
             if line.account_id.id == self.wallet_type.account_id.id:
                 wallet = line.account_wallet_id
                 self.assertTrue(wallet.wallet_type_id.id, self.wallet_type.id)
@@ -80,10 +97,11 @@ class WalletCommon(common.SavepointCase):
         self.assertTrue(has_wallet)
         return invoice, wallet
 
-    def _create_invoice_sale(self, move_type, amount):
-        invoice = self.AccountMove.create(
+    def _create_invoice_sale(self, invoice_type, amount):
+        invoice = self.AccountInvoice.create(
             {
-                "move_type": move_type,
+                "journal_id": self.sale_journal.id,
+                "type": invoice_type,
                 "partner_id": self.env.ref("base.res_partner_2").id,
                 "invoice_line_ids": [
                     (
@@ -94,12 +112,13 @@ class WalletCommon(common.SavepointCase):
                             "quantity": 1,
                             "price_unit": amount,
                             "product_id": self.sale_product.id,
+                            "account_id": self.sale_account.id,
                         },
                     )
                 ],
             }
         )
-        invoice.action_post()
+        invoice.action_invoice_open()
         return invoice
 
     def _create_payment_move_wallet(self, debit_amount, wallet):
@@ -143,18 +162,19 @@ class WalletCommon(common.SavepointCase):
 
     def _create_payment_move_wallet_via_wizard(self, invoice, debit_amount, wallet):
         """
-        - Use the 'account.payment.register' wizard to pay an invoice
+        - Use the 'account.payment' wizard to pay an invoice
           with a 'wallet' journal
         - check that the wallet has been correctly debited
         """
-        payment_wizard = self.AccountPaymentRegister.with_context(
-            active_model="account.move",
+        payment_wizard = self.AccountPayment.with_context(
+            active_model="account.invoice",
             active_ids=invoice.ids,
         ).create(
             {
                 "journal_id": wallet.wallet_type_id.journal_id.id,
+                "payment_method_id": self.outbound_method.id,
                 "account_wallet_id": wallet.id,
                 "amount": debit_amount,
             }
         )
-        payment_wizard.action_create_payments()
+        payment_wizard.action_validate_invoice_payment()

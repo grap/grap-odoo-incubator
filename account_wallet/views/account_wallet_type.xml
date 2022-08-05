@@ -8,7 +8,7 @@
         <field name="name">wallet.type.tree (in account_wallet)</field>
         <field name="model">account.wallet.type</field>
         <field name="arch" type="xml">
-            <tree string="Wallet Type" sample="1">
+            <tree string="Wallet Type">
                 <field name="name" />
                 <field name="account_id" />
             </tree>

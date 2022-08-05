@@ -8,8 +8,7 @@
         <field name="name">Customer Wallet Reserves</field>
         <field name="code">WAL</field>
         <field name="type">cash</field>
-        <field name="default_account_id" ref="account_wallet_type_customer" />
-        <field name="payment_debit_account_id" ref="account_wallet_type_customer" />
-        <field name="payment_credit_account_id" ref="account_wallet_type_customer" />
+        <field name="default_debit_account_id" ref="account_wallet_type_customer" />
+        <field name="default_credit_account_id" ref="account_wallet_type_customer" />
     </record>
 </odoo>

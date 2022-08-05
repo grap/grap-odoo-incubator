@@ -52,6 +52,11 @@ class AccountMoveCreditNote(models.TransientModel):
 
     def apply(self):
         self.ensure_one()
+        # Waiting for denis roussel response
+        # https://github.com/OCA/wallet/pull/9#issuecomment-1206338548
+        raise NotImplementedError()
+
+    def __apply__(self):
         # the workaroung we designed is due to multiple factor
         # 1) account/account.move/_recompute_payment_terms_lines
         #       has not been designed to be extended

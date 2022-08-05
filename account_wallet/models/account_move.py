@@ -16,6 +16,6 @@ class AccountMove(models.Model):
         states={"draft": [("readonly", False)]},
     )
 
-    def action_post(self):
+    def post(self, invoice=False):
         self.mapped("line_ids").create_or_set_wallet()
-        return super().action_post()
+        return super().post(invoice=invoice)

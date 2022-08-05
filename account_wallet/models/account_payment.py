@@ -11,17 +11,8 @@ class AccountPayment(models.Model):
         comodel_name="account.wallet",
     )
 
-    def _prepare_move_line_default_vals(self, write_off_line_vals=None):
-        """
-        Adds the wallet on corresponding payment move line
-        """
-        res = super()._prepare_move_line_default_vals(
-            write_off_line_vals=write_off_line_vals
-        )
+    def _get_liquidity_move_line_vals(self, amount):
+        res = super()._get_liquidity_move_line_vals(amount)
         if self.account_wallet_id:
-            for vals in res:
-                if self.payment_type == "inbound" and vals["debit"] > 0:
-                    vals.update({"account_wallet_id": self.account_wallet_id.id})
-                if self.payment_type == "outbound" and vals["credit"] > 0:
-                    vals.update({"account_wallet_id": self.account_wallet_id.id})
+            res.update({"account_wallet_id": self.account_wallet_id.id})
         return res

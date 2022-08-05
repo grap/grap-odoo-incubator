@@ -20,11 +20,8 @@
             <field name="name">Wallet Journal - (test)</field>
             <field name="code">WAL</field>
             <field name="type">bank</field>
-            <field name="default_account_id" ref="wallet_account" />
-            <field name="loss_account_id" ref="wallet_account" />
-            <field name="profit_account_id" ref="wallet_account" />
-            <field name="payment_debit_account_id" ref="wallet_account" />
-            <field name="payment_credit_account_id" ref="wallet_account" />
+            <field name="default_debit_account_id" ref="wallet_account" />
+            <field name="default_credit_account_id" ref="wallet_account" />
         </record>
         <record id="product_product_wallet" model="product.product">
             <field name="name">Wallet</field>
