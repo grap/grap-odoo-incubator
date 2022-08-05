@@ -3,10 +3,10 @@
 
 {
     "name": "Account Wallet",
-    "version": "14.0.3.0.0",
-    "author": "Odoo Community Association (OCA), ACSONE SA/NV",
+    "version": "12.0.1.0.0",
+    "author": "GRAP,Odoo Community Association (OCA), ACSONE SA/NV",
     "category": "Accounting & Finance",
-    "website": "https://github.com/OCA/wallet",
+    "website": "https://github.com/grap/grap-odoo-incubator",
     "depends": [
         "account",
     ],
