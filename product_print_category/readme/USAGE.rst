@@ -1,3 +1,4 @@
+* Add yourself to the 'Print Category Manager' group in the 'Pricetags' category.
 * Go to 'Sales' / 'Products' / 'Print Categories'
 * Find or create new print categories of products
     * Set the fields that will trigger to print again the product label (e.g : name, sale price etc.)
