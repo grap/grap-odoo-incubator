@@ -7,6 +7,7 @@ from odoo import api, models
 
 class ProductPrintCategoryMixin(models.AbstractModel):
     _name = "product.print.category.mixin"
+    _description = "Abstract Model for Product Print Categories"
 
     @api.multi
     def _update_to_print_values(self, vals):
