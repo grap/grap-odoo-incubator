@@ -12,14 +12,15 @@ class TestProductPrintCategory(TransactionCase):
         super().setUp()
         self.ProductPrintWizard = self.env["product.print.wizard"]
         self.ProductProduct = self.env["product.product"]
+        self.ProductTemplate = self.env["product.template"]
         self.CustomReport = self.env["report.product_print_category.report_pricetag"]
         self.print_category = self.env.ref("product_print_category.demo_category")
 
     # Test Section
-    def test_01_to_print_value(self):
+    def test_01_product_product_to_print_value(self):
         product = self.ProductProduct.create(
             {
-                "name": "Demo Product Name",
+                "name": "Demo Product Product Name",
             }
         )
         self.assertEqual(product.to_print, False)
@@ -28,8 +29,23 @@ class TestProductPrintCategory(TransactionCase):
         self.assertEqual(product.to_print, True)
 
         product.to_print = False
-        product.name = "Demo Product Name Changed"
+        product.name = "Demo Product Product Name Changed"
         self.assertEqual(product.to_print, True)
+
+    def test_02_product_template_to_print_value(self):
+        template = self.ProductTemplate.create(
+            {
+                "name": "Demo Product Template Name",
+            }
+        )
+        self.assertEqual(template.to_print, False)
+
+        template.print_category_id = self.print_category.id
+        self.assertEqual(template.to_print, True)
+
+        template.to_print = False
+        template.name = "Demo Product Template Name Changed"
+        self.assertEqual(template.to_print, True)
 
     def test_10_test_wizard_obsolete(self):
         products = self.ProductProduct.search(
