@@ -44,7 +44,7 @@ addon | version | maintainers | summary
 [product_category_product_qty](product_category_product_qty/) | 12.0.1.1.2 |  | Product Category - Product Quantity
 [product_category_usage_group](product_category_usage_group/) | 12.0.1.1.2 |  | Restrict Usage of Product Categories to a given Group
 [product_default_code_res_company_code](product_default_code_res_company_code/) | 12.0.1.1.3 |  | Generate product default code based on sequence defined by company, prefixed by company code
-[product_print_category](product_print_category/) | 12.0.1.1.6 |  | Automate products print, when data has changed
+[product_print_category](product_print_category/) | 12.0.1.1.7 |  | Automate products print, when data has changed
 [product_simple_pricelist](product_simple_pricelist/) | 12.0.1.1.5 |  | Provides Wizard to manage easily Pricelist By Products
 [product_uom_package](product_uom_package/) | 12.0.1.1.3 |  | Product - Package UoM and Quantity
 [purchase_package_qty](purchase_package_qty/) | 12.0.1.1.2 |  | Purchase - Package Quantity
