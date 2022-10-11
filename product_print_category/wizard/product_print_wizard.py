@@ -18,6 +18,18 @@ class ProductPrintWizard(models.TransientModel):
         default=lambda s: s._default_line_ids(),
     )
 
+    option_print_code = fields.Boolean(
+        string="Print product code",
+        help="Print product code even if there is a barcode",
+        default=False,
+    )
+
+    option_print_barcode = fields.Boolean(
+        string="Print barcode",
+        help="Print barcode if it exists",
+        default=True,
+    )
+
     @api.model
     def _default_line_ids(self):
         lines_vals = []
@@ -77,6 +89,8 @@ class ProductPrintWizard(models.TransientModel):
     def _prepare_data(self):
         return {
             "line_data": [x.id for x in self.line_ids],
+            "option_print_code": self.option_print_code,
+            "option_print_barcode": self.option_print_barcode,
         }
 
     @api.multi
