@@ -12,11 +12,19 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.print.wizard</field>
         <field name="arch" type="xml">
             <form string="Print Products">
-                <p class="oe_grey">
-                    ⚠️ If you change Print Category here, it will be changed in the product.
-                </p>
+                <div class="wizard_options">
+                  <h5>🔧 Choose options</h5><br/>
+                  <label for="option_print_barcode"/><field name="option_print_barcode" widget="boolean_toggle"/><br/>
+                  <label for="option_print_code"/><field name="option_print_code" widget="boolean_toggle"/><br/>
+                </div>
+                <div class="wizard_instrutions">
+                  <br/><h5>🖨️ Choose Products to print</h5>
+                  <p class="alert alert-warning alert-dismissable" role="alert">
+                    If you change Print Category here, it will be changed in the product.
+                  </p>
+                </div>
                 <group colspan="2">
-                    <group col="4" colspan="2">
+                    <group col="4" colspan="4">
                         <field name="line_ids" nolabel="1">
                             <tree editable="bottom">
                                 <field name="product_id"/>
