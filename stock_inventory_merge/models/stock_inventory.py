@@ -74,11 +74,11 @@ class StockInventory(models.Model):
                         item
                     ) == self._get_inventory_line_keys(product_line):
                         found = True
-                        continue
+                        break
                 if not found:
                     # Add the line, if inventory line was not found
                     product_line["product_qty"] = 0
-                    product_line["inventory_id"] = self.id
+                    product_line["inventory_id"] = inventory.id
                     line_obj.create(product_line)
 
     @api.multi
@@ -109,13 +109,17 @@ class StockInventory(models.Model):
                                 uom_obj.browse(default_uom_id),
                             )
 
-                # Update the first line with the sumed quantity
-                keeped_line = line_obj.browse(keeped_line_id)
-                keeped_line.write({"product_qty": sum_quantity})
-
                 # Delete all the other lines
                 line_ids.remove(keeped_line_id)
                 line_obj.browse(line_ids).unlink()
+
+                # Update the first line with the sumed quantity
+                # Note: This has to be done *after* deleting the other lines,
+                # because the `write()` calls the `_check_no_duplicate_line()`
+                # which may trigger the "You cannot have two inventory
+                # adjustments..." exception.
+                keeped_line = line_obj.browse(keeped_line_id)
+                keeped_line.write({"product_qty": sum_quantity})
 
     # Custom Section
     @api.multi
