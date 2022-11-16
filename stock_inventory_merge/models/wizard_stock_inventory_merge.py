@@ -12,6 +12,10 @@ class WizardStockInventoryMerge(models.TransientModel):
     _description = "Stock Inventory Merge Wizard"
 
     name = fields.Char(string="Inventory Name", required=True)
+    cancel_src = fields.Boolean(
+        string="Cancel source inventories?",
+        default=True,
+    )
 
     @api.multi
     def action_merge(self):
@@ -50,6 +54,12 @@ class WizardStockInventoryMerge(models.TransientModel):
         inventory = inventory_obj.create(vals)
         for line in inventories.mapped("line_ids"):
             line.copy(default={"inventory_id": inventory.id})
+
+        if self.cancel_src:
+            # Note: `inventories.action_cancel_draft()` would remove the lines
+            # and set the inventories to 'draft'. We want 'cancel' instead.
+            inventories.mapped('move_ids')._action_cancel()
+            inventories.write({'state': 'cancel'})
 
         # Return the action focused on the created inventory
         action_data = self.env.ref("stock.action_inventory_form").read()[0]
