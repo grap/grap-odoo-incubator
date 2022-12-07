@@ -10,7 +10,7 @@ class ProductTemplate(models.Model):
     _inherit = ["product.template", "product.print.category.mixin"]
 
     print_category_id = fields.Many2one(
-        related="product_variant_id.print_category_id", readonly=False
+        related="product_variant_id.print_category_id", readonly=False, store=True
     )
 
     to_print = fields.Boolean(related="product_variant_id.to_print", readonly=False)
