@@ -1,0 +1,35 @@
+issuer: Relais Vert
+keywords:
+- SIRET 352 867 493 00137
+
+fields:
+  amount:
+    parser: regex
+    regex: Net à payer\s+   ([\d\s?]+\.\d+)
+    type: float
+  invoice_number:
+    parser: regex
+    regex: FACTURE\s+       (FC\d+)
+  date:
+    parser: regex
+    regex: DATE\s+          (\d{2}/\d{2}/\d{4})
+
+lines:
+    start: \s+Réf.\s+Désignation.*Total\sHT\sT\sP
+    end: \s+Siège\ssocial|Total\sBrut\sHT
+    line: ^(?P<product_code>\w+)
+      \s+(?P<product_name>.*)\s\s(COL|PCE)
+      \s+(\w+)\s+(/)?\s+(\w+)?\s+
+      \s+(?P<package_number>\d+)
+      \s+(?P<product_qty>\d+)
+      .*
+      \s+(?P<unit_price>\d+\.\d+)
+      \s+(?P<total_vat_excl>\d+\.\d+)
+
+
+options:
+  currency: EUR
+  date_formats: '%d/%m/%Y'
+  decimal_separator: '.'
+  replace:
+    - [',', '.']

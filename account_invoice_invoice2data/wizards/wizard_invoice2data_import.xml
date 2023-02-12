@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2023 - Today: GRAP (http://www.grap.coop)
+    @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
+-->
+
+<odoo>
+
+    <record id="view_wizard_invoice2data_import_form" model="ir.ui.view">
+        <field name="model">wizard.invoice2data.import</field>
+        <field name="arch" type="xml">
+            <form>
+                <group name="group_import">
+                    <field name="state"/>
+                    <field name="invoice_file" filename="invoice_filename"/>
+                    <field name="invoice_filename"/>
+                    <field name="invoice_id"/>
+                </group>
+                <group>
+                    <field name="line_ids">
+                        <tree>
+                            <field name="pdf_product_code"/>
+                            <field name="pdf_product_name"/>
+                            <field name="pdf_product_qty"/>
+                            <field name="pdf_unit_price"/>
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button name="analyze_invoice" type="object" class="btn-primary" string="Import"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_invoice2data_import" model="ir.actions.act_window">
+        <field name="name">Import Vendor Bill</field>
+        <field name="src_model">account.invoice</field>
+        <field name="res_model">wizard.invoice2data.import</field>
+        <field name="binding_model_id" ref="account.model_account_invoice" />
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_invoice_id': active_id}</field>
+    </record>
+
+</odoo>
