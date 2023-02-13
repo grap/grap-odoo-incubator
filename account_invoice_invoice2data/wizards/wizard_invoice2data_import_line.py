@@ -94,6 +94,7 @@ class WizardInvoice2dataImportLine(models.TransientModel):
             invoice_lines = wizard_line.wizard_id.invoice_id.invoice_line_ids.filtered(
                 lambda x: x.product_id == wizard_line.product_id
             )
+            # Case 1 : Many lines. Unimplemented feature
             if len(invoice_lines) > 1:
                 raise UserError(
                     _(
@@ -102,32 +103,35 @@ class WizardInvoice2dataImportLine(models.TransientModel):
                     % wizard_line.product_id.complete_name
                 )
 
-            if invoice_lines:
-                changes = []
-                if invoice_lines[0].quantity != wizard_line.pdf_product_qty:
-                    changes.append(
-                        _(
-                            "Quantity : %s -> %s"
-                            % (invoice_lines[0].quantity, wizard_line.pdf_product_qty)
-                        )
-                    )
-                if invoice_lines[0].price_unit != wizard_line.pdf_unit_price:
-                    changes.append(
-                        _(
-                            "Unit Price : %s -> %s"
-                            % (invoice_lines[0].price_unit, wizard_line.pdf_unit_price)
-                        )
-                    )
-                wizard_line.write(
-                    {
-                        "invoice_line_id": invoice_lines[0],
-                        "changes_description": "\n".join(changes),
-                    }
-                )
-            else:
+            # Case 2: No lines. -> Creation
+            if not invoice_lines:
                 wizard_line.write(
                     {
                         "description": _("New Line Creation"),
                         "invoice_line_id": False,
                     }
                 )
+                continue
+
+            # Case 3 : Check if data changed
+            changes = []
+            if invoice_lines[0].quantity != wizard_line.pdf_product_qty:
+                changes.append(
+                    _(
+                        "Quantity : %s -> %s"
+                        % (invoice_lines[0].quantity, wizard_line.pdf_product_qty)
+                    )
+                )
+            if invoice_lines[0].price_unit != wizard_line.pdf_unit_price:
+                changes.append(
+                    _(
+                        "Unit Price : %s -> %s"
+                        % (invoice_lines[0].price_unit, wizard_line.pdf_unit_price)
+                    )
+                )
+            wizard_line.write(
+                {
+                    "invoice_line_id": invoice_lines[0],
+                    "changes_description": "\n".join(changes),
+                }
+            )
