@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2023 - Today: GRAP (http://www.grap.coop)
+    @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
+-->
+
+<odoo>
+
+    <record id="product_relais_vert_gazole" model="product.product">
+        <field name="name">Taxe Gazole</field>
+    </record>
+
+    <record id="product_supplierinfo_relais_vert_gazole" model="product.supplierinfo">
+        <field name="name" ref="account_invoice_invoice2data.partner_relais_vert"/>
+        <field name="product_tmpl_id" model="product.template" eval="obj().env.ref('account_invoice_invoice2data.product_relais_vert_gazole').product_tmpl_id.id"/>
+        <field name="product_code">51200</field>
+    </record>
+
+    <record id="product_relais_vert_champignon" model="product.product">
+        <field name="name">Champignon Porto Bello</field>
+        <field name="uom_id" ref="uom.product_uom_kgm"/>
+        <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+    </record>
+
+    <record id="product_supplierinfo_relais_vert_champignon" model="product.supplierinfo">
+        <field name="name" ref="account_invoice_invoice2data.partner_relais_vert"/>
+        <field name="product_tmpl_id" model="product.template" eval="obj().env.ref('account_invoice_invoice2data.product_relais_vert_champignon').product_tmpl_id.id"/>
+        <field name="product_code">CHPB</field>
+    </record>
+
+    <record id="product_relais_vert_arachide" model="product.product">
+        <field name="name">Arachide</field>
+        <field name="uom_id" ref="uom.product_uom_kgm"/>
+        <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+    </record>
+
+    <record id="product_supplierinfo_relais_vert_arachide" model="product.supplierinfo">
+        <field name="name" ref="account_invoice_invoice2data.partner_relais_vert"/>
+        <field name="product_tmpl_id" model="product.template" eval="obj().env.ref('account_invoice_invoice2data.product_relais_vert_arachide').product_tmpl_id.id"/>
+        <field name="product_code">39518</field>
+    </record>
+
+    <record id="product_relais_vert_epinard" model="product.product">
+        <field name="name">Epinard</field>
+        <field name="uom_id" ref="uom.product_uom_kgm"/>
+        <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+    </record>
+
+    <record id="product_supplierinfo_relais_vert_epinard" model="product.supplierinfo">
+        <field name="name" ref="account_invoice_invoice2data.partner_relais_vert"/>
+        <field name="product_tmpl_id" model="product.template" eval="obj().env.ref('account_invoice_invoice2data.product_relais_vert_epinard').product_tmpl_id.id"/>
+        <field name="product_code">EPFE</field>
+    </record>
+
+    <record id="product_relais_vert_yacon" model="product.product">
+        <field name="name">Yacon</field>
+        <field name="uom_id" ref="uom.product_uom_kgm"/>
+        <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+    </record>
+
+    <record id="product_supplierinfo_relais_vert_yacon" model="product.supplierinfo">
+        <field name="name" ref="account_invoice_invoice2data.partner_relais_vert"/>
+        <field name="product_tmpl_id" model="product.template" eval="obj().env.ref('account_invoice_invoice2data.product_relais_vert_yacon').product_tmpl_id.id"/>
+        <field name="product_code">YAC</field>
+    </record>
+
+    <record id="product_relais_vert_kiwi" model="product.product">
+        <field name="name">Kiwi jaune</field>
+        <field name="uom_id" ref="uom.product_uom_kgm"/>
+        <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+    </record>
+
+</odoo>

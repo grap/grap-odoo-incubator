@@ -23,35 +23,63 @@ class WizardInvoice2dataImport(models.TransientModel):
 
     invoice_file = fields.Binary(string="PDF Invoice", required=True)
 
-    invoice_filename = fields.Char(string="Filename")
+    invoice_filename = fields.Char(string="Filename", readonly=True)
 
     state = fields.Selection(
-        [
+        selection=[
             ("import", "Import"),
-            ("update", "Update"),
-        ]
+            ("product_mapping", "Product Mapping"),
+            ("update_invoice", "Update Invoice"),
+        ],
+        default="import",
+        required=True,
+        readonly=True,
     )
 
     invoice_id = fields.Many2one(
-        "account.invoice", string="Draft Supplier Invoice to Update"
+        comodel_name="account.invoice",
+        string="Supplier Invoice",
+        required=True,
+        readonly=True,
+    )
+
+    partner_id = fields.Many2one(
+        string="Supplier",
+        comodel_name="res.partner",
+        related="invoice_id.partner_id",
+        readonly=True,
     )
 
     line_ids = fields.One2many(
         comodel_name="wizard.invoice2data.import.line", inverse_name="wizard_id"
     )
 
-    def analyze_invoice(self):
-        self.ensure_one()
-        result = self._extract_json_from_pdf()
-        self._initialize_wizard_lines(result)
-
+    def _get_action_from_state(self, state):
         action = self.env["ir.actions.act_window"].for_xml_id(
             "account_invoice_invoice2data", "action_wizard_invoice2data_import"
         )
+        self.state = state
         action["res_id"] = self.id
         return action
 
+    def import_invoice(self):
+        self.ensure_one()
+        result = self._extract_json_from_pdf()
+        self._initialize_wizard_lines(result)
+        if not all(self.mapped("line_ids.is_product_mapped")):
+            return self._get_action_from_state("product_mapping")
+        else:
+            return self._get_action_from_state("update_invoice")
+
+    def map_products(self):
+        self.line_ids._create_supplierinfo()
+        if not all(self.mapped("line_ids.is_product_mapped")):
+            return self._get_action_from_state("product_mapping")
+        else:
+            return self._get_action_from_state("update_invoice")
+
     def _initialize_wizard_lines(self, pdf_data):
+        self.line_ids.unlink()
         WizardLine = self.env["wizard.invoice2data.import.line"]
         for line in pdf_data["lines"]:
             WizardLine.create(WizardLine._prepare_from_pdf_line(self, line))

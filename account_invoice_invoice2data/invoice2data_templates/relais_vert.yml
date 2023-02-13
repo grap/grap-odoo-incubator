@@ -18,7 +18,7 @@ lines:
     start: \s+Réf.\s+Désignation.*Total\sHT\sT\sP
     end: \s+Siège\ssocial|Total\sBrut\sHT
     line: ^(?P<product_code>\w+)
-      \s+(?P<product_name>.*)\s\s(COL|PCE)
+      \s+(?P<product_name>.*)\s\s(COL|PCE|KG|KGV)
       \s+(\w+)\s+(/)?\s+(\w+)?\s+
       \s+(?P<package_number>\d+)
       \s+(?P<product_qty>\d+)

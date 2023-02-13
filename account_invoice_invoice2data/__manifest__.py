@@ -15,5 +15,9 @@
         "wizards/wizard_invoice2data_import.xml",
     ],
     "external_dependencies": {"python": ["invoice2data"]},
+    "demo": [
+        "demo/res_partner.xml",
+        "demo/product_product.xml",
+    ],
     "installable": True,
 }

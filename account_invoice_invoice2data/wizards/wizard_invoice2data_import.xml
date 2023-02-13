@@ -12,24 +12,31 @@
         <field name="model">wizard.invoice2data.import</field>
         <field name="arch" type="xml">
             <form>
-                <group name="group_import">
-                    <field name="state"/>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <group name="group_import" cols="4" >
                     <field name="invoice_file" filename="invoice_filename"/>
-                    <field name="invoice_filename"/>
-                    <field name="invoice_id"/>
+                    <field name="invoice_filename" force_save="1"/>
+                    <field name="invoice_id" force_save="1"/>
+                    <field name="partner_id"/>
                 </group>
                 <group>
-                    <field name="line_ids">
-                        <tree>
+                    <field name="line_ids" nolabel="1">
+                        <tree  editable="bottom">
                             <field name="pdf_product_code"/>
                             <field name="pdf_product_name"/>
+                            <field name="product_id" required="1" attrs="{'readonly': [('is_product_mapped', '=', True)]}"/>
                             <field name="pdf_product_qty"/>
                             <field name="pdf_unit_price"/>
+                            <field name="is_product_mapped"/>
+                            <field name="data"/>
                         </tree>
                     </field>
                 </group>
                 <footer>
-                    <button name="analyze_invoice" type="object" class="btn-primary" string="Import"/>
+                    <button name="import_invoice" type="object" class="btn-primary" string="Import" states="import"/>
+                    <button name="map_products" type="object" class="btn-primary" string="Map Products" states="product_mapping"/>
                 </footer>
             </form>
         </field>
