@@ -10,6 +10,8 @@ class WizardInvoice2dataImportLine(models.TransientModel):
     _name = "wizard.invoice2data.import.line"
     _description = "Wizard Line to import Bill invoices via invoice2data"
 
+    sequence = fields.Integer(readonly=True)
+
     wizard_id = fields.Many2one(comodel_name="wizard.invoice2data.import")
 
     product_id = fields.Many2one(comodel_name="product.product")
@@ -27,6 +29,8 @@ class WizardInvoice2dataImportLine(models.TransientModel):
     pdf_unit_price = fields.Float(readonly=True)
 
     data = fields.Text(readonly=True)
+
+    changes_description = fields.Char(readonly=True)
 
     @api.model
     def _get_product_id_from_product_code(self, partner, product_code):
@@ -52,11 +56,12 @@ class WizardInvoice2dataImportLine(models.TransientModel):
         return products and products[0].id
 
     @api.model
-    def _prepare_from_pdf_line(self, wizard, line_data):
+    def _prepare_from_pdf_line(self, wizard, line_data, sequence):
         product_id = self._get_product_id_from_product_code(
             wizard.partner_id, line_data["product_code"]
         )
         return {
+            "sequence": sequence,
             "wizard_id": wizard.id,
             "is_product_mapped": bool(product_id),
             "product_id": product_id,
@@ -83,3 +88,46 @@ class WizardInvoice2dataImportLine(models.TransientModel):
                 }
             )
             line.is_product_mapped = True
+
+    def _analyze_invoice_lines(self):
+        for wizard_line in self:
+            invoice_lines = wizard_line.wizard_id.invoice_id.invoice_line_ids.filtered(
+                lambda x: x.product_id == wizard_line.product_id
+            )
+            if len(invoice_lines) > 1:
+                raise UserError(
+                    _(
+                        "Unimplemented feature : Many invoice lines for the same product '%s'"
+                    )
+                    % wizard_line.product_id.complete_name
+                )
+
+            if invoice_lines:
+                changes = []
+                if invoice_lines[0].quantity != wizard_line.pdf_product_qty:
+                    changes.append(
+                        _(
+                            "Quantity : %s -> %s"
+                            % (invoice_lines[0].quantity, wizard_line.pdf_product_qty)
+                        )
+                    )
+                if invoice_lines[0].price_unit != wizard_line.pdf_unit_price:
+                    changes.append(
+                        _(
+                            "Unit Price : %s -> %s"
+                            % (invoice_lines[0].price_unit, wizard_line.pdf_unit_price)
+                        )
+                    )
+                wizard_line.write(
+                    {
+                        "invoice_line_id": invoice_lines[0],
+                        "changes_description": "\n".join(changes),
+                    }
+                )
+            else:
+                wizard_line.write(
+                    {
+                        "description": _("New Line Creation"),
+                        "invoice_line_id": False,
+                    }
+                )

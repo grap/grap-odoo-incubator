@@ -29,6 +29,7 @@ class WizardInvoice2dataImport(models.TransientModel):
         selection=[
             ("import", "Import"),
             ("product_mapping", "Product Mapping"),
+            ("invoice_line_mapping", "Invoice Line Mapping"),
             ("update_invoice", "Update Invoice"),
         ],
         default="import",
@@ -69,20 +70,27 @@ class WizardInvoice2dataImport(models.TransientModel):
         if not all(self.mapped("line_ids.is_product_mapped")):
             return self._get_action_from_state("product_mapping")
         else:
-            return self._get_action_from_state("update_invoice")
+            self._analyze_invoice_lines()
+            return self._get_action_from_state("invoice_line_mapping")
 
     def map_products(self):
         self.line_ids._create_supplierinfo()
         if not all(self.mapped("line_ids.is_product_mapped")):
             return self._get_action_from_state("product_mapping")
         else:
-            return self._get_action_from_state("update_invoice")
+            self._analyze_invoice_lines()
+            return self._get_action_from_state("invoice_line_mapping")
+
+    def _analyze_invoice_lines(self):
+        self.line_ids._analyze_invoice_lines()
 
     def _initialize_wizard_lines(self, pdf_data):
         self.line_ids.unlink()
         WizardLine = self.env["wizard.invoice2data.import.line"]
-        for line in pdf_data["lines"]:
-            WizardLine.create(WizardLine._prepare_from_pdf_line(self, line))
+        i = 0
+        for line_data in pdf_data["lines"]:
+            i += 1
+            WizardLine.create(WizardLine._prepare_from_pdf_line(self, line_data, i))
 
     def _extract_json_from_pdf(self):
         self.ensure_one()
