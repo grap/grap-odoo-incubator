@@ -78,7 +78,7 @@
     <record id="invoice_line_relais_vert_6_raisin" model="account.invoice.line">
         <field name="invoice_id" ref="invoice_relais_vert"/>
         <field name="product_id" ref="account_invoice_invoice2data.product_relais_vert_raisin"/>
-        <field name="name">Raisin Sultanine (Non livré)</field>
+        <field name="name">Raisin Sultanine (Non facturé)</field>
         <field name="quantity">12.5</field>
         <field name="price_unit">3.07</field>
         <field name="account_id" model="account.account"

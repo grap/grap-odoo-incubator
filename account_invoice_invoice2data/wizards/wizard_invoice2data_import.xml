@@ -22,23 +22,58 @@
                     <field name="partner_id"/>
                 </group>
                 <group>
-                    <field name="line_ids" nolabel="1">
-                        <tree editable="bottom">
-                            <field name="sequence"/>
-                            <field name="pdf_product_code"/>
-                            <field name="pdf_product_name"/>
-                            <field name="product_id" required="1" attrs="{'readonly': [('is_product_mapped', '=', True)]}"/>
-                            <field name="pdf_product_qty"/>
-                            <field name="pdf_unit_price"/>
-                            <field name="is_product_mapped" invisible="1"/>
-                            <field name="invoice_line_id" />
-                            <field name="changes_description" />
-                        </tree>
-                    </field>
+                    <notebook>
+                        <page string="Product Mapping" states="product_mapping">
+                            <field name="product_mapping_line_ids" nolabel="1">
+                                <tree editable="bottom" create="false" delete="false">
+                                    <field name="sequence"/>
+                                    <field name="pdf_product_code"/>
+                                    <field name="pdf_product_name"/>
+                                    <field name="pdf_product_qty"/>
+                                    <field name="pdf_unit_price"/>
+                                    <field name="is_product_mapped" invisible="1"/>
+                                    <field name="product_id" required="1" attrs="{'readonly': [('is_product_mapped', '=', True)]}" options="{'bg_color': 'red: product_id==False'}"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Invoice Lines Differences" states="line_differences">
+                            <field name="invoice_difference_line_ids" nolabel="1">
+                                <tree editable="bottom" create="false" delete="false">
+                                    <field name="sequence"/>
+                                    <field name="pdf_product_code"/>
+                                    <field name="pdf_product_name"/>
+                                    <field name="pdf_product_qty"/>
+                                    <field name="pdf_unit_price"/>
+                                    <field name="invoice_line_id"/>
+                                    <field name="changes_description"/>
+                                </tree>
+                            </field>
+
+                            <field name="to_delete_invoice_line_ids" nolabel="1" />
+                        </page>
+                        <page string="Technical Information" states="product_mapping,line_differences">
+                            <field name="line_ids" nolabel="1">
+                                <tree editable="bottom" create="false" delete="false">
+                                    <field name="sequence"/>
+                                    <field name="pdf_product_code"/>
+                                    <field name="pdf_product_name"/>
+                                    <field name="pdf_product_qty"/>
+                                    <field name="pdf_unit_price"/>
+                                    <field name="is_product_mapped" invisible="1"/>
+                                    <field name="product_id" required="1" attrs="{'readonly': [('is_product_mapped', '=', True)]}"/>
+                                    <field name="invoice_line_id" />
+                                    <field name="changes_description" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+
                 </group>
                 <footer>
                     <button name="import_invoice" type="object" class="btn-primary" string="Import" states="import"/>
                     <button name="map_products" type="object" class="btn-primary" string="Map Products" states="product_mapping"/>
+                    <button name="apply_changes" type="object" class="btn-primary" string="Apply Changes" states="line_differences"/>
                 </footer>
             </form>
         </field>

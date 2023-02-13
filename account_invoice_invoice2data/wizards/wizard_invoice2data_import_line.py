@@ -58,21 +58,57 @@ class WizardInvoice2dataImportLine(models.TransientModel):
         return products and products[0].id
 
     @api.model
-    def _prepare_from_pdf_line(self, wizard, line_data, sequence):
-        product_id = self._get_product_id_from_product_code(
-            wizard.partner_id, line_data["product_code"]
-        )
+    def _get_extra_products(self):
         return {
-            "sequence": sequence,
-            "wizard_id": wizard.id,
-            "is_product_mapped": bool(product_id),
-            "product_id": product_id,
-            "pdf_product_code": line_data["product_code"],
-            "pdf_product_name": line_data["product_name"],
-            "pdf_product_qty": line_data["product_qty"],
-            "pdf_unit_price": line_data["unit_price"],
-            "data": str(line_data),
+            "amount_parafiscal_tax_interfel": {
+                "product_code": "TPF",
+                "product_name": _("Taxe Interfel TPF"),
+            },
         }
+
+    @api.model
+    def _prepare_from_pdf_data(self, wizard, pdf_data):
+        result = []
+        sequence = 0
+        # Create regular product lines
+        for line_data in pdf_data["lines"]:
+            sequence += 1
+            product_id = self._get_product_id_from_product_code(
+                wizard.partner_id, line_data["product_code"]
+            )
+            result.append(
+                {
+                    "sequence": sequence,
+                    "wizard_id": wizard.id,
+                    "is_product_mapped": bool(product_id),
+                    "product_id": product_id,
+                    "pdf_product_code": line_data["product_code"],
+                    "pdf_product_name": line_data["product_name"],
+                    "pdf_product_qty": line_data["product_qty"],
+                    "pdf_unit_price": line_data["unit_price"],
+                    "data": str(line_data),
+                }
+            )
+        for key, value in self._get_extra_products().items():
+            if key in pdf_data.keys():
+                sequence += 1
+                product_id = self._get_product_id_from_product_code(
+                    wizard.partner_id, value["product_code"]
+                )
+                result.append(
+                    {
+                        "sequence": sequence,
+                        "wizard_id": wizard.id,
+                        "is_product_mapped": bool(product_id),
+                        "product_id": product_id,
+                        "pdf_product_code": value["product_code"],
+                        "pdf_product_name": value["product_name"],
+                        "pdf_product_qty": 1,
+                        "pdf_unit_price": pdf_data[key],
+                        "data": str(pdf_data[key]),
+                    }
+                )
+        return result
 
     def _create_supplierinfo(self):
         for line in self.filtered(lambda x: not x.is_product_mapped and x.product_id):
@@ -134,6 +170,46 @@ class WizardInvoice2dataImportLine(models.TransientModel):
             wizard_line.write(
                 {
                     "invoice_line_id": invoice_lines[0].id,
-                    "changes_description": "\n".join(changes),
+                    "changes_description": changes and "\n".join(changes) or False,
                 }
             )
+
+    def _prepare_invoice_line_vals(self):
+        self.ensure_one()
+        if not self.invoice_line_id:
+            # prepare creation of a new line
+            fiscal_position = self.wizard_id.invoice_id.fiscal_position_id
+            account = self.env["account.invoice.line"].get_invoice_line_account(
+                "in_invoice", self.product_id, fiscal_position, self.env.user.company_id
+            )
+            taxes = fiscal_position.map_tax(
+                self.product_id.supplier_taxes_id,
+                self.product_id,
+                self.wizard_id.invoice_id.partner_id,
+            )
+            name = self.product_id.with_context(
+                partner_id=self.wizard_id.partner_id.id
+            ).partner_ref
+            if self.product_id.description_purchase:
+                name += "\n" + self.product_id.description_purchase
+            return (
+                0,
+                0,
+                {
+                    "sequence": self.sequence,
+                    "product_id": self.product_id.id,
+                    "name": name,
+                    "origin": _("PDF Analysis"),
+                    "account_id": account.id,
+                    "quantity": self.pdf_product_qty,
+                    "price_unit": self.pdf_unit_price,
+                    "invoice_line_tax_ids": taxes.ids,
+                },
+            )
+        else:
+            vals = {"sequence": self.sequence}
+            if self.invoice_line_id.price_unit != self.pdf_unit_price:
+                vals.update({"price_unit": self.pdf_unit_price})
+            if self.invoice_line_id.quantity != self.pdf_product_qty:
+                vals.update({"quantity": self.pdf_product_qty})
+            return (1, self.invoice_line_id.id, vals)

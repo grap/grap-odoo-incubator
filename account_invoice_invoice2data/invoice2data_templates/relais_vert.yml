@@ -26,7 +26,10 @@ lines:
       \s+(?P<unit_price>\d+\.\d+)
       \s+(?P<total_vat_excl>\d+\.\d+)
 
-
+tables:
+  - start: Total Brut HT\s+   Montant Remise\s+   Montant Escompte\s+   Total Net HT\s+   Frais de port\s+    Frais de facturation\s+   Montant TPF HT
+    end: Total Taxable
+    body: (?P<_total_brut_vat_excl>\d+[\d|\s]?\.\d+)\s+    (?P<_total_net_vat_excl>[\d\s?]+\.\d+)\s+  (?P<amount_parafiscal_tax_interfel>[\d\s?]+\.\d+)
 options:
   currency: EUR
   date_formats: '%d/%m/%Y'

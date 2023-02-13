@@ -28,9 +28,8 @@ class WizardInvoice2dataImport(models.TransientModel):
     state = fields.Selection(
         selection=[
             ("import", "Import"),
-            ("product_mapping", "Product Mapping"),
-            ("invoice_line_mapping", "Invoice Line Mapping"),
-            ("update_invoice", "Update Invoice"),
+            ("product_mapping", "Products Mapping"),
+            ("line_differences", "Invoice Lines Differences"),
         ],
         default="import",
         required=True,
@@ -42,6 +41,7 @@ class WizardInvoice2dataImport(models.TransientModel):
         string="Supplier Invoice",
         required=True,
         readonly=True,
+        ondelete="cascade",
     )
 
     partner_id = fields.Many2one(
@@ -53,6 +53,26 @@ class WizardInvoice2dataImport(models.TransientModel):
 
     line_ids = fields.One2many(
         comodel_name="wizard.invoice2data.import.line", inverse_name="wizard_id"
+    )
+
+    product_mapping_line_ids = fields.One2many(
+        comodel_name="wizard.invoice2data.import.line",
+        inverse_name="wizard_id",
+        string="Product Mapping",
+        domain=[("is_product_mapped", "=", False)],
+    )
+
+    invoice_difference_line_ids = fields.One2many(
+        comodel_name="wizard.invoice2data.import.line",
+        inverse_name="wizard_id",
+        string="Invoice Lines Differences",
+        domain=[("changes_description", "!=", False)],
+    )
+
+    to_delete_invoice_line_ids = fields.Many2many(
+        comodel_name="account.invoice.line",
+        string="Invoice Lines to delete",
+        readonly=True,
     )
 
     def _get_action_from_state(self, state):
@@ -71,7 +91,7 @@ class WizardInvoice2dataImport(models.TransientModel):
             return self._get_action_from_state("product_mapping")
         else:
             self._analyze_invoice_lines()
-            return self._get_action_from_state("invoice_line_mapping")
+            return self._get_action_from_state("line_differences")
 
     def map_products(self):
         self.line_ids._create_supplierinfo()
@@ -79,18 +99,18 @@ class WizardInvoice2dataImport(models.TransientModel):
             return self._get_action_from_state("product_mapping")
         else:
             self._analyze_invoice_lines()
-            return self._get_action_from_state("invoice_line_mapping")
+            return self._get_action_from_state("line_differences")
 
     def _analyze_invoice_lines(self):
         self.line_ids._analyze_invoice_lines()
+        self.to_delete_invoice_line_ids = self.mapped(
+            "invoice_id.invoice_line_ids"
+        ).filtered(lambda x: x.id not in self.mapped("line_ids.invoice_line_id").ids)
 
     def _initialize_wizard_lines(self, pdf_data):
         self.line_ids.unlink()
         WizardLine = self.env["wizard.invoice2data.import.line"]
-        i = 0
-        for line_data in pdf_data["lines"]:
-            i += 1
-            WizardLine.create(WizardLine._prepare_from_pdf_line(self, line_data, i))
+        WizardLine.create(WizardLine._prepare_from_pdf_data(self, pdf_data))
 
     def _extract_json_from_pdf(self):
         self.ensure_one()
@@ -128,3 +148,12 @@ class WizardInvoice2dataImport(models.TransientModel):
             raise UserError(_("This PDF invoice doesn't match a known templates"))
 
         return result
+
+    def apply_changes(self):
+        self.ensure_one()
+        vals = {
+            "invoice_line_ids": [x._prepare_invoice_line_vals() for x in self.line_ids]
+        }
+        self.invoice_id.write(vals)
+        self.to_delete_invoice_line_ids.unlink()
+        self.invoice_id.message_post(body=str(vals))
