@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2023 - Today: GRAP (http://www.grap.coop)
+    @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
+-->
+
+<odoo>
+
+    <record id="invoice_relais_vert" model="account.invoice">
+        <field name="partner_id" ref="account_invoice_invoice2data.partner_relais_vert"/>
+        <field name="type">in_invoice</field>
+        <field name="date_invoice" eval="time.strftime('%Y-%m')+'-01'"/>
+        <field name="journal_id" search="[('type', '=', 'purchase')]"/>
+    </record>
+
+    <record id="invoice_line_relais_vert_1_champignon" model="account.invoice.line">
+        <field name="invoice_id" ref="invoice_relais_vert"/>
+        <field name="product_id" ref="account_invoice_invoice2data.product_relais_vert_champignon"/>
+        <field name="name">Champignon Porto Bello</field>
+        <field name="quantity">2</field>
+        <field name="price_unit">9.01</field>
+        <field name="account_id" model="account.account"
+            search="['|', ('tag_ids', '=', ref('account.demo_ceo_wages_account')),
+                    ('user_type_id', '=', ref('account.data_account_type_expenses')),
+                    ('company_id', '=', obj().env['res.company']._company_default_get('account.account').id)]"/>
+    </record>
+
+    <record id="invoice_line_relais_vert_2_arachide" model="account.invoice.line">
+        <field name="invoice_id" ref="invoice_relais_vert"/>
+        <field name="product_id" ref="account_invoice_invoice2data.product_relais_vert_arachide"/>
+        <field name="name">Arachide</field>
+        <field name="quantity">5</field>
+        <field name="price_unit">6.42</field>
+        <field name="account_id" model="account.account"
+            search="['|', ('tag_ids', '=', ref('account.demo_ceo_wages_account')),
+                    ('user_type_id', '=', ref('account.data_account_type_expenses')),
+                    ('company_id', '=', obj().env['res.company']._company_default_get('account.account').id)]"/>
+    </record>
+
+    <record id="invoice_line_relais_vert_3_epinard" model="account.invoice.line">
+        <field name="invoice_id" ref="invoice_relais_vert"/>
+        <field name="product_id" ref="account_invoice_invoice2data.product_relais_vert_epinard"/>
+        <field name="name">Epinard (Quantité partiellement livrée)</field>
+        <field name="quantity">99</field>
+        <field name="price_unit">3.43</field>
+        <field name="account_id" model="account.account"
+            search="['|', ('tag_ids', '=', ref('account.demo_ceo_wages_account')),
+                    ('user_type_id', '=', ref('account.data_account_type_expenses')),
+                    ('company_id', '=', obj().env['res.company']._company_default_get('account.account').id)]"/>
+    </record>
+
+    <record id="invoice_line_relais_vert_4_yacon" model="account.invoice.line">
+        <field name="invoice_id" ref="invoice_relais_vert"/>
+        <field name="product_id" ref="account_invoice_invoice2data.product_relais_vert_yacon"/>
+        <field name="name">Yacon (Prix Changé)</field>
+        <field name="quantity">2</field>
+        <field name="price_unit">6.99</field>
+        <field name="account_id" model="account.account"
+            search="['|', ('tag_ids', '=', ref('account.demo_ceo_wages_account')),
+                    ('user_type_id', '=', ref('account.data_account_type_expenses')),
+                    ('company_id', '=', obj().env['res.company']._company_default_get('account.account').id)]"/>
+    </record>
+
+    <record id="invoice_line_relais_vert_5_kiwi" model="account.invoice.line">
+        <field name="invoice_id" ref="invoice_relais_vert"/>
+        <field name="product_id" ref="account_invoice_invoice2data.product_relais_vert_kiwi"/>
+        <field name="name">Kiwi</field>
+        <field name="quantity">10</field>
+        <field name="price_unit">3.73</field>
+        <field name="account_id" model="account.account"
+            search="['|', ('tag_ids', '=', ref('account.demo_ceo_wages_account')),
+                    ('user_type_id', '=', ref('account.data_account_type_expenses')),
+                    ('company_id', '=', obj().env['res.company']._company_default_get('account.account').id)]"/>
+    </record>
+
+    <record id="invoice_line_relais_vert_6_raisin" model="account.invoice.line">
+        <field name="invoice_id" ref="invoice_relais_vert"/>
+        <field name="product_id" ref="account_invoice_invoice2data.product_relais_vert_raisin"/>
+        <field name="name">Raisin Sultanine (Non livré)</field>
+        <field name="quantity">12.5</field>
+        <field name="price_unit">3.07</field>
+        <field name="account_id" model="account.account"
+            search="['|', ('tag_ids', '=', ref('account.demo_ceo_wages_account')),
+                    ('user_type_id', '=', ref('account.data_account_type_expenses')),
+                    ('company_id', '=', obj().env['res.company']._company_default_get('account.account').id)]"/>
+    </record>
+
+</odoo>

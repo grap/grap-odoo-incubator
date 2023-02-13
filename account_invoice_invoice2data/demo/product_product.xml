@@ -72,4 +72,16 @@
         <field name="uom_po_id" ref="uom.product_uom_kgm"/>
     </record>
 
+    <record id="product_relais_vert_raisin" model="product.product">
+        <field name="name">Raisin sultanine n°9</field>
+        <field name="uom_id" ref="uom.product_uom_kgm"/>
+        <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+    </record>
+
+    <record id="product_supplierinfo_relais_vert_raisin" model="product.supplierinfo">
+        <field name="name" ref="account_invoice_invoice2data.partner_relais_vert"/>
+        <field name="product_tmpl_id" model="product.template" eval="obj().env.ref('account_invoice_invoice2data.product_relais_vert_yacon').product_tmpl_id.id"/>
+        <field name="product_code">36868</field>
+    </record>
+
 </odoo>
