@@ -16,7 +16,9 @@ class WizardInvoice2dataImportLine(models.TransientModel):
 
     product_id = fields.Many2one(comodel_name="product.product")
 
-    invoice_line_id = fields.Many2one(comodel_name="account.invoice.line")
+    invoice_line_id = fields.Many2one(
+        comodel_name="account.invoice.line", readonly=True
+    )
 
     is_product_mapped = fields.Boolean(readonly=True)
 
@@ -107,7 +109,7 @@ class WizardInvoice2dataImportLine(models.TransientModel):
             if not invoice_lines:
                 wizard_line.write(
                     {
-                        "description": _("New Line Creation"),
+                        "changes_description": _("New Line Creation"),
                         "invoice_line_id": False,
                     }
                 )
@@ -131,7 +133,7 @@ class WizardInvoice2dataImportLine(models.TransientModel):
                 )
             wizard_line.write(
                 {
-                    "invoice_line_id": invoice_lines[0],
+                    "invoice_line_id": invoice_lines[0].id,
                     "changes_description": "\n".join(changes),
                 }
             )
