@@ -37,19 +37,23 @@
                             </field>
                         </page>
                         <page string="Invoice Lines Differences" states="line_differences">
-                            <field name="invoice_difference_line_ids" nolabel="1">
-                                <tree editable="bottom" create="false" delete="false">
-                                    <field name="sequence"/>
-                                    <field name="pdf_product_code"/>
-                                    <field name="pdf_product_name"/>
-                                    <field name="pdf_product_qty"/>
-                                    <field name="pdf_unit_price"/>
-                                    <field name="invoice_line_id"/>
-                                    <field name="changes_description"/>
-                                </tree>
-                            </field>
+                            <group string="Invoice Lines to Update">
 
-                            <field name="to_delete_invoice_line_ids" nolabel="1" />
+                                <field name="invoice_difference_line_ids" nolabel="1">
+                                    <tree editable="bottom" create="false" delete="false">
+                                        <field name="sequence"/>
+                                        <field name="pdf_product_code"/>
+                                        <field name="pdf_product_name"/>
+                                        <field name="pdf_product_qty"/>
+                                        <field name="pdf_unit_price"/>
+                                        <field name="invoice_line_id"/>
+                                        <field name="changes_description"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <group string="Invoice Lines to Remove">
+                                <field name="to_delete_invoice_line_ids" nolabel="1" />
+                            </group>
                         </page>
                         <page string="Technical Information" states="product_mapping,line_differences">
                             <field name="line_ids" nolabel="1">

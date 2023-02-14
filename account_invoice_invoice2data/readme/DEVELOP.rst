@@ -1,15 +1,20 @@
+The module analyse the PDF using ``invoice2data`` python library.
+(https://github.com/invoice-x/invoice2data)
+
 **Regex Attention**
 
 When you write the 'lines' regex, be careful that writing a multi lines regex in the
 yaml file create implicite space for each return to the line :
 
 .. code-block:: yaml
+
     line: ^(?P<product_code>\d+)
       (?P<product_name>.*)
 
 is equivalent to
 
 .. code-block:: yaml
+
     line: ^(?P<product_code>\d+)\s(?P<product_name>.*)
 
 **Regex Common Pattern**

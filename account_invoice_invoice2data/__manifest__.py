@@ -11,7 +11,6 @@
     "license": "AGPL-3",
     "depends": ["account"],
     "data": [
-        "views/view_account_invoice.xml",
         "wizards/wizard_invoice2data_import.xml",
     ],
     "external_dependencies": {"python": ["invoice2data"]},

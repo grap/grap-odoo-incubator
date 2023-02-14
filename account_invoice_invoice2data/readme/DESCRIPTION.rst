@@ -3,9 +3,11 @@ to change Odoo supplier invoices when they receives the invoice from the supplie
 
 It is helpull in the following Use Case:
 
-- You create purchase orders with many lines in Odoo. (and send to your supplier)
-- you receive products and changes quantities in some picking lines when you receive the goods.
-- you generate a draft supplier invoice, based on the products you receiveds.
+- You create purchase orders with many lines in Odoo to generate and send the purchase order to the
+  supplier, via Odoo.
+- you change quantities in some picking lines when you receive the goods and confirm the picking.
+- you generate a draft supplier invoice, based on the products you received.
+  (Invoice Policy : Base on delivery)
 
 - Then you have to compare the draft theoritical invoice with the real supplier invoice
   and apply changes in the theoritical invoice to match with the real supplier invoice.
@@ -31,21 +33,9 @@ The reasons of the development of a specific module are the following :
 +-----------------------+---------------------+-----------------------------------------+
 | **Managed Suppliers**                                                                 |
 +-----------------------+---------------------+-----------------------------------------+
-| Supplier Name         |  VAT Number         |  Website                                |
+|  Supplier Name        |  VAT Number         |  Website                                |
 +=======================+=====================+=========================================+
 |  Relais Vert          |  FR 72 352 867 493  |  https://www.relais-vert.com/           |
 +-----------------------+---------------------+-----------------------------------------+
 |  Ekibio               |  FR 30 345 052 286  |  https://www.ekibio.fr/                 |
 +-----------------------+---------------------+-----------------------------------------+
-
-
-.. list-table:: **Managed Suppliers**
-   * - Supplier Name
-     - VAT Number
-     - Website
-   * - Relais Vert
-     - FR 72 352 867 493
-     - https://www.relais-vert.com/
-   * - Ekibio
-     - FR 30 345 052 286
-     - https://www.ekibio.fr/
