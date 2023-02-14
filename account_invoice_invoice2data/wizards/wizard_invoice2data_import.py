@@ -10,6 +10,7 @@ import base64
 import mimetypes
 import os
 import tempfile
+from datetime import datetime
 
 import invoice2data
 
@@ -75,6 +76,14 @@ class WizardInvoice2dataImport(models.TransientModel):
         readonly=True,
     )
 
+    pdf_invoice_number = fields.Char(readonly=True)
+
+    pdf_amount = fields.Float(readonly=True)
+
+    pdf_date = fields.Date(readonly=True)
+
+    pdf_date_due = fields.Date(readonly=True)
+
     def _get_action_from_state(self, state):
         action = self.env["ir.actions.act_window"].for_xml_id(
             "account_invoice_invoice2data", "action_wizard_invoice2data_import"
@@ -86,12 +95,23 @@ class WizardInvoice2dataImport(models.TransientModel):
     def import_invoice(self):
         self.ensure_one()
         result = self._extract_json_from_pdf()
+        self._initialize_wizard_invoice(result)
         self._initialize_wizard_lines(result)
         if not all(self.mapped("line_ids.is_product_mapped")):
             return self._get_action_from_state("product_mapping")
         else:
             self._analyze_invoice_lines()
             return self._get_action_from_state("line_differences")
+
+    def _initialize_wizard_invoice(self, result):
+        for invoice_field in ["amount", "invoice_number", "date", "date_due"]:
+            if invoice_field in result:
+                value = result[invoice_field]
+                if "date" in invoice_field:
+                    value = datetime.strptime(
+                        result[invoice_field], result["date_format"]
+                    ).date()
+                setattr(self, "pdf_%s" % invoice_field, value)
 
     def map_products(self):
         self.line_ids._create_supplierinfo()
@@ -168,4 +188,26 @@ class WizardInvoice2dataImport(models.TransientModel):
             }
             lines_vals.append((1, line.id, line_vals))
 
-        self.invoice_id.write({"invoice_line_ids": lines_vals})
+        vals = {
+            "invoice_line_ids": lines_vals,
+        }
+        if self.pdf_date:
+            vals.update(
+                {
+                    "date_invoice": self.pdf_date,
+                }
+            )
+        if self.pdf_date_due:
+            vals.update(
+                {
+                    "date_due": self.pdf_date_due,
+                }
+            )
+        if self.pdf_invoice_number:
+            vals.update(
+                {
+                    "reference": self.pdf_invoice_number,
+                }
+            )
+
+        self.invoice_id.write(vals)

@@ -20,6 +20,10 @@
                     <field name="invoice_filename" force_save="1"/>
                     <field name="invoice_id" force_save="1"/>
                     <field name="partner_id"/>
+                    <field name="pdf_invoice_number" attrs="{'invisible': [('pdf_invoice_number', '=', False)]}"/>
+                    <field name="pdf_amount" attrs="{'invisible': [('pdf_amount', '=', False)]}"/>
+                    <field name="pdf_date" attrs="{'invisible': [('pdf_date', '=', False)]}"/>
+                    <field name="pdf_date_due" attrs="{'invisible': [('pdf_date_due', '=', False)]}"/>
                 </group>
                 <group>
                     <notebook>

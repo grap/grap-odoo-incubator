@@ -13,6 +13,9 @@ fields:
   date:
     parser: regex
     regex: DATE\s+          (\d{2}/\d{2}/\d{4})
+  date_format:
+    parser: static
+    value: '%d/%m/%Y'
 
 lines:
     start: \s+Réf.\s+Désignation.*Total\sHT\sT\sP
@@ -34,6 +37,8 @@ tables:
 options:
   currency: EUR
   date_formats: '%d/%m/%Y'
+  languages:
+    - fr
   decimal_separator: '.'
   replace:
     - [',', '.']

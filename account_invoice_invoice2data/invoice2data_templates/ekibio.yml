@@ -12,7 +12,10 @@ fields:
     regex: FACTURE No\s+(\d+)
   date:
     parser: regex
-    regex: du\s+(\d{2}/\d{2}/\d{4})
+    regex: FACTURE No\s+\d+\s+du\s+(\d{2}\/\d{2}\/\d{2})
+  date_format:
+    parser: static
+    value: '%d/%m/%y'
 
 lines:
     start: Code et Désignation.*Montant HT\s+T
@@ -30,7 +33,7 @@ lines:
 
 options:
   currency: EUR
-  date_formats: '%d/%m/%Y'
+  date_formats: '%d/%m/%y'
   decimal_separator: '.'
   replace:
     - [',', '.']
