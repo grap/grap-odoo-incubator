@@ -34,6 +34,7 @@ The reasons of the development of a specific module are the following :
 | Supplier Name         |  VAT Number         |  Website                                |
 +=======================+=====================+=========================================+
 |  Relais Vert          |  FR 72 352 867 493  |  https://www.relais-vert.com/           |
++-----------------------+---------------------+-----------------------------------------+
 |  Ekibio               |  FR 30 345 052 286  |  https://www.ekibio.fr/                 |
 +-----------------------+---------------------+-----------------------------------------+
 
