@@ -87,6 +87,8 @@ class WizardInvoice2dataImport(models.TransientModel):
         self.ensure_one()
         result = self._extract_json_from_pdf()
         self._initialize_wizard_lines(result)
+        return self._get_action_from_state("import")
+
         if not all(self.mapped("line_ids.is_product_mapped")):
             return self._get_action_from_state("product_mapping")
         else:

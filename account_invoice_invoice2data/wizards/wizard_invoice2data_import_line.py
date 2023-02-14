@@ -213,3 +213,15 @@ class WizardInvoice2dataImportLine(models.TransientModel):
             if self.invoice_line_id.quantity != self.pdf_product_qty:
                 vals.update({"quantity": self.pdf_product_qty})
             return (1, self.invoice_line_id.id, vals)
+
+
+# ===============
+# --> en 1 ligne, qui marche
+# line: ^(?P<product_code>\d+)\s+(?P<product_name>.*)\s\s+(?P<certification>\d\d\d)\s+(?P<referential>\d\d\d)\s+(?P<package_number>\d+)\s+(?P<product_qty>\d+\.\d+)\s+.*\s+(?P<unit_price>\d+\.\d+)\s+(?P<total_vat_excl>\d+\.\d+)\s+\d+
+# ^(?P<product_code>\d+)\s+(?P<product_name>.*)\s\s+(?P<certification>\d\d\d)\s+(?P<referential>\d\d\d)\s+(?P<package_number>\d+)\s+(?P<product_qty>\d+\.\d+)\s+.*\s+(?P<unit_price>\d+\.\d+)\s+(?P<total_vat_excl>\d+\.\d+)\s+\d+
+
+# --> en 2 lignes, ça chie
+# line: ^(?P<product_code>\d+)
+#   \s+(?P<product_name>.*)\s\s+(?P<certification>\d\d\d)\s+(?P<referential>\d\d\d)\s+(?P<package_number>\d+)\s+(?P<product_qty>\d+\.\d+)\s+.*\s+(?P<unit_price>\d+\.\d+)\s+(?P<total_vat_excl>\d+\.\d+)\s+\d+
+
+# ^(?P<product_code>\d+) \s+(?P<product_name>.*)\s\s+(?P<certification>\d\d\d)\s+(?P<referential>\d\d\d)\s+(?P<package_number>\d+)\s+(?P<product_qty>\d+\.\d+)\s+.*\s+(?P<unit_price>\d+\.\d+)\s+(?P<total_vat_excl>\d+\.\d+)\s+\d+

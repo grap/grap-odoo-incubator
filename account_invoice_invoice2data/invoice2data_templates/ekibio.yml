@@ -1,6 +1,5 @@
 issuer: Ekibio
 keywords:
-- "34505228600027"
 - FR30345052286
 
 fields:
@@ -18,7 +17,8 @@ fields:
 lines:
     start: Code et Désignation.*Montant HT\s+T
     end: FACTURE No|Sous-total BL
-    line: ^(?P<product_code>\d+)\s+(?P<product_name>.*)\s\s\s+(?P<certification>\d\d\d)\s+(?P<referential>\d\d\d)\s+(?P<package_number>\d+)\s+(?P<product_qty>\d+\.\d+)\s+.*\s+(?P<unit_price>\d+\.\d+)\s+(?P<total_vat_excl>\d+\.\d+)\s+\d+
+    line: ^(?P<product_code>\d+)
+      (?P<product_name>.*)\s\s+(?P<certification>\d\d\d)\s+(?P<referential>\d\d\d)\s+(?P<package_number>\d+)\s+(?P<product_qty>\d+\.\d+)\s+.*\s+(?P<unit_price>\d+\.\d+)\s+(?P<total_vat_excl>\d+\.\d+)\s+\d+
 
 options:
   currency: EUR
