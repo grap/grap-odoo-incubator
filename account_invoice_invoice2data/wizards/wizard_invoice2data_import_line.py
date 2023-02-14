@@ -218,7 +218,9 @@ class WizardInvoice2dataImportLine(models.TransientModel):
                 vals.update({"quantity": self.pdf_product_qty})
 
             if self.changes_description:
-                extra_text = ""
+                extra_text = _("[PDF analysis] %s") % (
+                    " ; ".join(self.changes_description.split("\n"))
+                )
                 vals.update(
                     {"name": "%s\n%s" % (self.invoice_line_id.name, extra_text)}
                 )

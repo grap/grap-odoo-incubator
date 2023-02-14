@@ -2,11 +2,11 @@ Consider the following use case.
 
 **The PDF Invoice sent by your supplier**
 
-.. figure:: ../static/description/supplier_invoice.png
+.. figure:: ../static/description/initial_supplier_invoice.png
 
 **The Odoo Invoice generated from the Purchase Order**
 
-.. figure:: ../static/description/odoo_invoice.png
+.. figure:: ../static/description/initial_odoo_invoice.png
 
 * Go to "Invoicing > Vendors > Bills"
 
@@ -18,7 +18,6 @@ Consider the following use case.
     * Click on "Import" button
 
     .. figure:: ../static/description/wizard_step_1_pdf_import.png
-
 
 2. Product mapping
 
@@ -41,3 +40,12 @@ Consider the following use case.
     * Finally, click on "Apply Changes"
 
     .. figure:: ../static/description/wizard_step_3_summary.png
+
+**Impact on the PDF**
+
+* The missing lines have been created.
+* The different lines has been updated. (and a description of the change has been added)
+* The extra lines has been disabled. (quantity has been set to 0.)
+* All the lines has been reordered.
+
+.. figure:: ../static/description/final_odoo_invoice_1_lines.png

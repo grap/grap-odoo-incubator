@@ -151,19 +151,21 @@ class WizardInvoice2dataImport(models.TransientModel):
 
     def apply_changes(self):
         self.ensure_one()
-        invoice_vals = {
-            "invoice_line_ids": [x._prepare_invoice_line_vals() for x in self.line_ids]
-        }
+        lines_vals = [x._prepare_invoice_line_vals() for x in self.line_ids]
+
+        sequence = len(lines_vals)
         for line in self.to_delete_invoice_line_ids:
+            sequence += 1
             line_vals = {
-                "quantity": 0,
+                "sequence": sequence,
+                "price_unit": 0,
                 "name": _(
                     "%s\n"
-                    "[PDF analysis] Quantity %s set to 0,"
+                    "[PDF analysis] Unit Price %s set to 0,"
                     " because the line is not present in the PDF."
                 )
                 % (line.name, line.quantity),
             }
-            invoice_vals.append((1, line.id, line_vals))
+            lines_vals.append((1, line.id, line_vals))
 
-        self.invoice_id.write(invoice_vals)
+        self.invoice_id.write({"invoice_line_ids": lines_vals})
