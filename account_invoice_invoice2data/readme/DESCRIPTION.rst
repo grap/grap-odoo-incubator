@@ -28,6 +28,13 @@ The reasons of the development of a specific module are the following :
   wizard of this module is very simple and handles all the use cases of the workflow
   "Update the odoo invoice, based on supplier invoice".
 
++-------+----------+------+
+| Sub   | Headings | Too  |
++=======+==========+======+
+| cell  |          |      |
++-------+----------+------+
+
+
 .. list-table:: **Managed Suppliers**
    * - Supplier Name
      - VAT Number
