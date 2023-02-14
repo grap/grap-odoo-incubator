@@ -208,9 +208,18 @@ class WizardInvoice2dataImportLine(models.TransientModel):
                 },
             )
         else:
+
+            # Update
             vals = {"sequence": self.sequence}
+
             if self.invoice_line_id.price_unit != self.pdf_unit_price:
                 vals.update({"price_unit": self.pdf_unit_price})
             if self.invoice_line_id.quantity != self.pdf_product_qty:
                 vals.update({"quantity": self.pdf_product_qty})
+
+            if self.changes_description:
+                extra_text = ""
+                vals.update(
+                    {"name": "%s\n%s" % (self.invoice_line_id.name, extra_text)}
+                )
             return (1, self.invoice_line_id.id, vals)
