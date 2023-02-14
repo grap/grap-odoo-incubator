@@ -5,7 +5,6 @@
 
 **Supplier To do**
 
-- [ ] Relais Local
 - [ ] Agrosourcing
 - [ ] Vitafrais
 

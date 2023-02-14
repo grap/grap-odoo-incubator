@@ -1,0 +1,51 @@
+issuer: Relais Local
+keywords:
+- FR35823983515
+- "82398351500011"
+
+fields:
+  amount:
+    parser: regex
+    regex: TOTAL TTC\s+   ([\d\s?]+\.\d+)
+    type: float
+  invoice_number:
+    parser: regex
+    regex: Facture N°\s+(FC\d+)
+  # date:
+  #   parser: regex
+  #   regex: DATE\s+          (\d{2}/\d{2}/\d{4})
+  date_format:
+    parser: static
+    value: '%d/%m/%Y'
+
+tables:
+  - start:  DATE\s+   CLIENT\s+   PAGE
+    body: (?P<date>\d{2}/\d{2}/\d{4}).*
+    end: Page
+
+
+# lines:
+#     start: \s+Réf.\s+Désignation.*Total\sHT\sT\sP
+#     end: \s+Siège\ssocial|Total\sBrut\sHT
+#     line: ^(?P<product_code>\w+)
+#       \s+(?P<product_name>.*)\s\s(COL|PCE|KG|KGV)
+#       \s+(\w+)\s+(/)?\s+(\w+)?\s+
+#       \s+(?P<package_number>\d+)
+#       \s+(?P<product_qty>\d+)
+#       .*
+#       \s+(?P<unit_price>\d+\.\d+)
+#       \s+(?P<total_vat_excl>\d+\.\d+)
+
+# tables:
+#   - start: Total Brut HT\s+   Montant Remise\s+   Montant Escompte\s+   Total Net HT\s+   Frais de port\s+    Frais de facturation\s+   Montant TPF HT
+#     end: Total Taxable
+#     body: (?P<_total_brut_vat_excl>\d+[\d|\s]?\.\d+)\s+    (?P<_total_net_vat_excl>[\d\s?]+\.\d+)\s+  (?P<amount_parafiscal_tax_interfel>[\d\s?]+\.\d+)
+
+options:
+  currency: EUR
+  date_formats: '%d/%m/%Y'
+  languages:
+    - fr
+  decimal_separator: '.'
+  replace:
+    - [',', '.']
