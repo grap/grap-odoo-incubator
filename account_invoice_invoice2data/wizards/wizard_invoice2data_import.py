@@ -155,5 +155,19 @@ class WizardInvoice2dataImport(models.TransientModel):
             "invoice_line_ids": [x._prepare_invoice_line_vals() for x in self.line_ids]
         }
         self.invoice_id.write(vals)
-        self.to_delete_invoice_line_ids.unlink()
-        self.invoice_id.message_post(body=str(vals))
+        for line in self.to_delete_invoice_line_ids:
+            vals.append(
+                (
+                    1,
+                    line.id,
+                    {
+                        "quantity": 0,
+                        "name": _(
+                            "%s\n"
+                            "[PDF analysis] Quantity %s set to 0,"
+                            " because the line is not present in the PDF."
+                        )
+                        % (line.name, line.quantity),
+                    },
+                )
+            )

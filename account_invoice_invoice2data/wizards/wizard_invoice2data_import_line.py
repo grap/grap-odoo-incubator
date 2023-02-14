@@ -177,6 +177,7 @@ class WizardInvoice2dataImportLine(models.TransientModel):
     def _prepare_invoice_line_vals(self):
         self.ensure_one()
         if not self.invoice_line_id:
+
             # prepare creation of a new line
             fiscal_position = self.wizard_id.invoice_id.fiscal_position_id
             account = self.env["account.invoice.line"].get_invoice_line_account(
