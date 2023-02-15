@@ -16,16 +16,21 @@ class TestModule(TransactionCase):
     def setUp(self):
         super().setUp()
         # Load Templates
-        local_templates_dir = tools.config["invoice2data_templates_dir"]
-        self.invoice2data_key = tools.config.get("invoice2data_key", False)
-        self.invoice2data_key = self.invoice2data_key and self.invoice2data_key.encode(
-            "utf-8"
+        local_templates_dir = str(
+            Path(os.path.realpath(__file__)).parent.parent / "templates"
         )
+
         self.templates = invoice2data.extract.loader.read_templates(local_templates_dir)
         self.pdf_folder_path = Path(os.path.realpath(__file__)).parent / "invoices"
 
+        self.invoice2data_key = tools.config.get("invoice2data_key", False)
+        if not self.invoice2data_key:
+            self.invoice2data_key = os.environ("INVOICE2DATA_KEY")
+        self.invoice2data_key = self.invoice2data_key and self.invoice2data_key.encode(
+            "utf-8"
+        )
+
     def _get_data_from_pdf(self, invoice_file_name):
-        # import pdb; pdb.set_trace()
         invoice_path = self.pdf_folder_path / invoice_file_name
         invoice_path_encrypted = self.pdf_folder_path / (
             invoice_file_name + ".encrypted"

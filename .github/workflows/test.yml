@@ -40,5 +40,7 @@ jobs:
       - name: Initialize test db
         run: oca_init_test_database
       - name: Run tests
+        env:
+            INVOICE2DATA_KEY: ${{ secrets.INVOICE2DATA_KEY }}
         run: oca_run_tests
       - uses: codecov/codecov-action@v1

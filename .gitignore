@@ -5,8 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-account_invoice_invoice2data_test/tests/invoices/*.pdf
-account_invoice_invoice2data_test/tests/invoices/*.PDF
+account_invoice_invoice2data_templates/tests/invoices/*.pdf
 # Distribution / packaging
 .Python
 env/
