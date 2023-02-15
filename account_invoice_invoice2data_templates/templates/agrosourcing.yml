@@ -37,7 +37,7 @@ fields:
       quantity: float
       price_unit: float
       discount: float
-      # price_subtotal: float
+      price_subtotal: float
 
 options:
   currency: EUR

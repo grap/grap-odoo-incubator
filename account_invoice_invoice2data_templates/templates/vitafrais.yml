@@ -20,17 +20,28 @@ fields:
     parser: regex
     type: date
     regex: Echéance.*\n(\d{2}\/\d{2}\/\d{4})
+  amount_fuel_surcharge:
+    parser: regex
+    type: float
+    regex: Surcharge carburant\s+(\d+\.\d+)
   lines:
     parser: lines
     start: Article\s+Quantité\s+ .*Total HT Taxe
     end: Base taxe
     line: ^(?P<product_code>\d+)
-      \s+(?P<product_name>.*)\s+(?P<quantity>\d+(\.\d+)?)\s+(UN|Kg)\s+(?P<price_unit>\d+\.\d+)\s+((?P<discount>\d+)%)?\s+(?P<net_price_unit>\d+\.\d+)\s+(?P<price_subtotal>\d+\.\d+)\s+(?P<vat_code>\d+\.\d+)
+      \s+(?P<product_name>.*)
+      \s+(?P<quantity>\d+(\.\d+)?)
+      \s?(UN|Kg)
+      \s+(?P<price_unit>\d+\.\d+)
+      \s+((?P<discount>\d+)%)?
+      \s+(?P<net_price_unit>\d+\.\d+)
+      \s+(?P<price_subtotal>\d+\.\d+)
+      \s+(?P<vat_code>\d+\.\d+)
     types:
       quantity: float
       price_unit: float
       discount: float
-      # price_subtotal: float
+      price_subtotal: float
 
 options:
   currency: EUR

@@ -20,8 +20,8 @@ class TestAgrosourcing(TestModule):
             expected_lines=[
                 {
                     "product_code": "000431",
-                    "product_name": "Raisins de Turquie - Sultanine - 12,5 kg",
-                    "quantity": 12.0,
+                    "product_name": "Raisins de Turquie - Sultanine - 12.5 kg",
+                    "quantity": 12.5,
                     "price_unit": 4.24,
                     "discount": 15,
                     "price_subtotal": 45.05,

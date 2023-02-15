@@ -45,5 +45,8 @@ class TestModule(TransactionCase):
 
             self.assertTrue(
                 line_found,
-                "The following data has not been found %s" % str(expected_line),
+                "The following data has not been found %s\n"
+                "===========\n"
+                "%s"
+                "===========\n" % (str(expected_line), str(result)),
             )
