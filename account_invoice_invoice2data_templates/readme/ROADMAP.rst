@@ -5,5 +5,4 @@
 
 **Supplier To do**
 
-- [ ] Agrosourcing
 - [ ] Vitafrais

@@ -1,7 +1,8 @@
 issuer: Relais Local
+
 keywords:
-- FR35823983515
-- "82398351500011"
+  - FR35823983515
+  - "82398351500011"
 
 fields:
   amount:

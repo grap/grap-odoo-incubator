@@ -1,6 +1,7 @@
 issuer: Ekibio
+
 keywords:
-- FR30345052286
+  - FR30345052286
 
 fields:
   amount:

@@ -9,10 +9,10 @@ from .test import TestModule
 class TestRelaisLocal(TestModule):
     def test_relais_local(self):
         self._test_supplier_template(
-            "relais_local",
             "relais-local__2023_01_03__FC230116989.pdf",
             line_qty=13,
             expected_values={
+                "issuer": "Relais Local",
                 "date": datetime(day=3, month=1, year=2023),
                 "invoice_number": "FC230116989",
                 "amount": 336.96,

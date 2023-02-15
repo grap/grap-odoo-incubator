@@ -9,10 +9,10 @@ from .test import TestModule
 class TestEkibio(TestModule):
     def test_ekibio(self):
         self._test_supplier_template(
-            "ekibio",
             "ekibio__2023-02-07__792437.pdf",
             line_qty=6,
             expected_values={
+                "issuer": "Ekibio",
                 "date": datetime(day=7, month=2, year=2023),
                 "invoice_number": "792437",
                 "amount": 671.37,

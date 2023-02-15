@@ -21,7 +21,6 @@ class TestModule(TransactionCase):
 
     def _test_supplier_template(
         self,
-        supplier_name,
         invoice_file_name,
         line_qty,
         expected_values,
@@ -31,9 +30,6 @@ class TestModule(TransactionCase):
         result = invoice2data.main.extract_data(
             str(invoice_path), templates=self.templates
         )
-        # print("=======")
-        # print(result)
-        # print("=======")
         for key, expected_value in expected_values.items():
             self.assertEqual(result[key], expected_value)
 
