@@ -15,6 +15,7 @@ fields:
     regex: FACTURE No\s+\d+\s+du\s+(\d{2}\/\d{2}\/\d{2})
     type: date
   lines:
+    parser: lines
     start: Code et Désignation.*Montant HT\s+T
     end: FACTURE No|Sous-total BL
     line: ^(?P<product_code>\d+)
