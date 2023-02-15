@@ -6,46 +6,63 @@ keywords:
 fields:
   amount:
     parser: regex
-    regex: TOTAL TTC\s+   ([\d\s?]+\.\d+)
     type: float
+    regex: TOTAL TTC\s+
+      ([\d\s?]+\.\d+)
   invoice_number:
     parser: regex
-    regex: Facture N°\s+(FC\d+)
-  # date:
-  #   parser: regex
-  #   regex: DATE\s+          (\d{2}/\d{2}/\d{4})
+    regex: Facture N°
+      (FC\d+)
+  date:
+    parser: regex
+    type: date
+    regex: CLIENT\s+PAGE\n\s+
+      (\d{2}\/\d{2}\/\d{4})
+  date_due:
+    parser: regex
+    type: date
+    regex: ECHEANCE.*\n.*
+      (\d{2}\/\d{2}\/\d{2})
   date_format:
     parser: static
     value: '%d/%m/%Y'
 
-tables:
-  - start:  DATE\s+   CLIENT\s+   PAGE
-    body: (?P<date>\d{2}/\d{2}/\d{4}).*
-    end: Page
+lines:
+    start: REF.*Montant HT Tva
+    end: "IBAN: FR76|Clauses de réserve"
+    line: (?P<product_code>\w+)\s(?P<product_name>.*)\s+(BIO).*(?P<product_qty>\d+)\s+(U|KG)\s+(?P<brut_unit_price>\d+\.\d+)\s+(?P<unit_price>\d+\.\d+)\s+(?P<total_vat_excl>\d+\.\d+)\s+[1|3]
+    # line: (?P<product_code>\w+)\s+(?P<product_name>.*)\s\s+.*(?P<product_qty>\d+)\s+(U|KG)\s+(?P<brut_unit_price>\d+\.\d+)
+
+      # (?P<product_code>\w+)\s+(?P<product_name>.*).*(?P<unit>(U|KG))\s+(?P<brut_unit_price>\d+\.\d+)
+
+# \s+(?P<product_name>.*)\s+BIO.*(?P<product_qty>\d+)\s+(U|KG)
+
+      # ^(?P<product_code>\w+)
+      # \s+(?P<product_name>.*)
+      # \s+.*
+
+      # \s+(\w+)\s+(/)?\s+(\w+)?\s+
+      # \s+(?P<package_number>\d+)
+      # \s+(?P<product_qty>\d+)
+      # .*
+      # \s+(?P<unit_price>\d+\.\d+)
+      # \s+(?P<total_vat_excl>\d+\.\d+)
+
+# (?P<product_code>\w+)\s+(?P<product_name>.*).*(?P<unit>(U|KG))\s+(?P<brut_unit_price>\d+)
+
+# (?P<brut_unit_price>\d+\.\d+)\s+(?P<unit_price>\d+\.\d+)\s+(?P<total_vat_excl>\d+\.\d+)\s+(1|3)
 
 
-# lines:
-#     start: \s+Réf.\s+Désignation.*Total\sHT\sT\sP
-#     end: \s+Siège\ssocial|Total\sBrut\sHT
-#     line: ^(?P<product_code>\w+)
-#       \s+(?P<product_name>.*)\s\s(COL|PCE|KG|KGV)
-#       \s+(\w+)\s+(/)?\s+(\w+)?\s+
-#       \s+(?P<package_number>\d+)
-#       \s+(?P<product_qty>\d+)
-#       .*
-#       \s+(?P<unit_price>\d+\.\d+)
-#       \s+(?P<total_vat_excl>\d+\.\d+)
-
-# tables:
-#   - start: Total Brut HT\s+   Montant Remise\s+   Montant Escompte\s+   Total Net HT\s+   Frais de port\s+    Frais de facturation\s+   Montant TPF HT
-#     end: Total Taxable
-#     body: (?P<_total_brut_vat_excl>\d+[\d|\s]?\.\d+)\s+    (?P<_total_net_vat_excl>[\d\s?]+\.\d+)\s+  (?P<amount_parafiscal_tax_interfel>[\d\s?]+\.\d+)
+# ^(?P<product_code>\w+)\s+(?P<product_name>.*).*(U|KG)\s+(?P<brut_unit_price>\d+\.\d+)\s+(?P<unit_price>\d+\.\d+)\s+(?P<total_vat_excl>\d+\.\d+)\s+[1|3]
 
 options:
   currency: EUR
-  date_formats: '%d/%m/%Y'
+  date_formats:
+    - '%d/%m/%Y'
+    - '%d/%m/%y'
   languages:
     - fr
   decimal_separator: '.'
   replace:
     - [',', '.']
+    - ["\n.*FROMAGERIE DU VAL D'ORMEZE", ""]
