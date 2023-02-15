@@ -24,7 +24,8 @@ fields:
     parser: lines
     start: Article\s+Quantité\s+ .*Total HT Taxe
     end: Base taxe
-    line: ^(?P<product_code>\d+)\s+(?P<product_name>.*)\s+(?P<quantity>\d+(\.\d+)?)\s+(UN|Kg)\s+(?P<price_unit>\d+\.\d+)\s+((?P<discount>\d+)%)?\s+(?P<net_price_unit>\d+\.\d+)\s+(?P<price_subtotal>\d+\.\d+)\s+(?P<vat_code>\d+\.\d+)
+    line: ^(?P<product_code>\d+)
+      \s+(?P<product_name>.*)\s+(?P<quantity>\d+(\.\d+)?)\s+(UN|Kg)\s+(?P<price_unit>\d+\.\d+)\s+((?P<discount>\d+)%)?\s+(?P<net_price_unit>\d+\.\d+)\s+(?P<price_subtotal>\d+\.\d+)\s+(?P<vat_code>\d+\.\d+)
     types:
       quantity: float
       price_unit: float
