@@ -1,0 +1,50 @@
+issuer: Vitafrais
+
+keywords:
+  - "43945915700053"
+  - FR43439459157
+
+fields:
+  amount:
+    parser: regex
+    type: float
+    regex: Date .\s+(\d+\.\d+)
+  invoice_number:
+    parser: regex
+    regex: Facture n .\s+(\d+)
+  date:
+    parser: regex
+    type: date
+    regex: Date .\s+(\d{2}\/\d{2}\/\d{4})
+  date_due:
+    parser: regex
+    type: date
+    regex: Echéance . (\d{2}\/\d{2}\/\d{2})
+  lines:
+    parser: lines
+    start: Code\s+  Désignation.*Mtt HT
+    end: Produit issu
+    line: (?P<product_code>\d+)
+      \s+(?P<product_name>.*)
+      \s+(?P<quantity>\d+(\.\d+)?)
+      \s+(?P<packaging_name>\w+)
+      \s+(?P<price_unit>\d+\.\d+)
+      \s+(?P<discount>\d+)%
+      \s+(?P<net_price_unit>\d+\.\d+)
+      \s+(?P<vat_code>\d)
+      \s+(?P<price_subtotal>\d+\.\d+)
+    types:
+      quantity: float
+      price_unit: float
+      discount: float
+      # price_subtotal: float
+
+options:
+  currency: EUR
+  date_formats:
+    - '%d/%m/%Y'
+  decimal_separator: '.'
+  replace:
+    - [',', '.']
+    - ['°', '']
+    - ['\*', '']
