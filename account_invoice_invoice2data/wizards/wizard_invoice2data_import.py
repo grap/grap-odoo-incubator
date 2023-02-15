@@ -10,7 +10,6 @@ import base64
 import mimetypes
 import os
 import tempfile
-from datetime import datetime
 
 import invoice2data
 
@@ -108,9 +107,7 @@ class WizardInvoice2dataImport(models.TransientModel):
             if invoice_field in result:
                 value = result[invoice_field]
                 if "date" in invoice_field:
-                    value = datetime.strptime(
-                        result[invoice_field], result["date_format"]
-                    ).date()
+                    value = value.date()
                 setattr(self, "pdf_%s" % invoice_field, value)
 
     def map_products(self):

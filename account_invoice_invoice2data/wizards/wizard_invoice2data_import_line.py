@@ -138,7 +138,7 @@ class WizardInvoice2dataImportLine(models.TransientModel):
                     _(
                         "Unimplemented feature : Many invoice lines for the same product '%s'"
                     )
-                    % wizard_line.product_id.complete_name
+                    % wizard_line.product_id.name
                 )
 
             # Case 2: No lines. -> Creation

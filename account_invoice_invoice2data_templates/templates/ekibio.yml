@@ -14,23 +14,24 @@ fields:
     parser: regex
     regex: FACTURE No\s+\d+\s+du\s+(\d{2}\/\d{2}\/\d{2})
     type: date
-  date_format:
-    parser: static
-    value: '%d/%m/%y'
-
-lines:
+  lines:
     start: Code et Désignation.*Montant HT\s+T
     end: FACTURE No|Sous-total BL
     line: ^(?P<product_code>\d+)
       (?P<product_name>.*)
       \s+(?P<certification>\d\d\d)
       \s+(?P<referential>\d\d\d)
-      \s+(?P<package_number>\d+)
-      \s+(?P<product_qty>\d+\.\d+)
+      \s+(?P<package_qty>\d+)
+      \s+(?P<quantity>\d+\.\d+)
       .*
-      \s+(?P<unit_price>\d+\.\d+)
-      \s+(?P<total_vat_excl>\d+\.\d+)
+      \s+(?P<price_unit>\d+\.\d+)
+      \s+(?P<price_subtotal>\d+\.\d+)
       \s+\d+
+
+    types:
+      quantity: float
+      price_unit: float
+      price_subtotal: float
 
 options:
   currency: EUR
