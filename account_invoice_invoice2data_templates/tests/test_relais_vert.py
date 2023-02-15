@@ -9,7 +9,7 @@ from .test import TestModule
 class TestRelaisVert(TestModule):
     def test_relais_vert(self):
         self._test_supplier_template(
-            "relais-vert_2023-02-06__FC11716389.pdf",
+            "relais-vert__2023-02-06__FC11716389.pdf",
             line_qty=6,
             expected_values={
                 "issuer": "Relais Vert",

@@ -35,7 +35,7 @@ class TestModule(TransactionCase):
                 str(invoice_path), templates=self.templates
             )
         elif not invoice_path.exists() and not invoice_path_encrypted.exists():
-            raise "%s file doesn't exist" % invoice_path
+            raise Exception("%s file doesn't exist" % invoice_path)
 
         fernet = Fernet(self.invoice2data_key)
         if invoice_path.exists() and not invoice_path_encrypted.exists():
