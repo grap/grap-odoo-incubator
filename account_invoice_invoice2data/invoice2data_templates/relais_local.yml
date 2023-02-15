@@ -26,11 +26,23 @@ fields:
   date_format:
     parser: static
     value: '%d/%m/%Y'
-
-lines:
+  lines:
+    parser: lines
     start: REF.*Montant HT Tva
     end: "IBAN: FR76|Clauses de réserve"
-    line: (?P<product_code>\w+)\s(?P<product_name>.*)\s+(BIO).*(?P<product_qty>\d+)\s+(U|KG)\s+(?P<brut_unit_price>\d+\.\d+)\s+(?P<unit_price>\d+\.\d+)\s+(?P<total_vat_excl>\d+\.\d+)\s+[1|3]
+    line: ^(?P<product_code>\w+)
+      (?P<product_name>.*)
+      \s+(BIO).*
+      (?P<product_qty>\d+)
+      \s+(U|KG)
+      \s+(?P<brut_unit_price>\d+\.\d+)
+      \s+(?P<unit_price>\d+\.\d+)
+      \s+(?P<total_vat_excl>\d+\.\d+)
+      \s+[1|3]
+    types:
+      product_qty: float
+      unit_price: float
+      total_vat_excl: float
 
 options:
   currency: EUR
