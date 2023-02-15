@@ -28,7 +28,6 @@ fields:
       \s+(?P<price_unit>\d+\.\d+)
       \s+(?P<price_subtotal>\d+\.\d+)
       \s+\d+
-
     types:
       quantity: float
       price_unit: float
@@ -36,7 +35,8 @@ fields:
 
 options:
   currency: EUR
-  date_formats: '%d/%m/%y'
+  date_formats:
+    - '%d/%m/%y'
   decimal_separator: '.'
   replace:
     - [',', '.']

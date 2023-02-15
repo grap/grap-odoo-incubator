@@ -16,6 +16,7 @@ class TestRelaisVert(TestModule):
                 "date": datetime(day=6, month=2, year=2023),
                 "invoice_number": "FC11716389",
                 "amount": 127.66,
+                "amount_parafiscal_tax_interfel": 0.25,
             },
             expected_lines=[
                 {
