@@ -10,6 +10,6 @@
     "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": ["account"],
-    "external_dependencies": {"python": ["invoice2data"]},
+    "external_dependencies": {"python": ["invoice2data", "cryptography"]},
     "installable": True,
 }
