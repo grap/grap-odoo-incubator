@@ -25,7 +25,7 @@ class TestModule(TransactionCase):
 
         self.invoice2data_key = tools.config.get("invoice2data_key", False)
         if not self.invoice2data_key:
-            self.invoice2data_key = os.environ("INVOICE2DATA_KEY")
+            self.invoice2data_key = os.environ["INVOICE2DATA_KEY"]
         self.invoice2data_key = self.invoice2data_key and self.invoice2data_key.encode(
             "utf-8"
         )

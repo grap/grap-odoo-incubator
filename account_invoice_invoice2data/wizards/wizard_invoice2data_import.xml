@@ -33,8 +33,9 @@
                                     <field name="sequence"/>
                                     <field name="pdf_product_code"/>
                                     <field name="pdf_product_name"/>
-                                    <field name="pdf_product_qty"/>
-                                    <field name="pdf_unit_price"/>
+                                    <field name="pdf_quantity"/>
+                                    <field name="pdf_price_unit"/>
+                                    <field name="pdf_discount"/>
                                     <field name="is_product_mapped" invisible="1"/>
                                     <field name="product_id" required="1" attrs="{'readonly': [('is_product_mapped', '=', True)]}" options="{'bg_color': 'red: product_id==False'}"/>
                                 </tree>
@@ -48,8 +49,9 @@
                                         <field name="sequence"/>
                                         <field name="pdf_product_code"/>
                                         <field name="pdf_product_name"/>
-                                        <field name="pdf_product_qty"/>
-                                        <field name="pdf_unit_price"/>
+                                        <field name="pdf_quantity"/>
+                                        <field name="pdf_price_unit"/>
+                                        <field name="pdf_discount"/>
                                         <field name="invoice_line_id"/>
                                         <field name="changes_description"/>
                                     </tree>
@@ -65,8 +67,9 @@
                                     <field name="sequence"/>
                                     <field name="pdf_product_code"/>
                                     <field name="pdf_product_name"/>
-                                    <field name="pdf_product_qty"/>
-                                    <field name="pdf_unit_price"/>
+                                    <field name="pdf_quantity"/>
+                                    <field name="pdf_price_unit"/>
+                                    <field name="pdf_discount"/>
                                     <field name="is_product_mapped" invisible="1"/>
                                     <field name="product_id" required="1" attrs="{'readonly': [('is_product_mapped', '=', True)]}"/>
                                     <field name="invoice_line_id" />

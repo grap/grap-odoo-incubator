@@ -26,9 +26,11 @@ class WizardInvoice2dataImportLine(models.TransientModel):
 
     pdf_product_name = fields.Char(readonly=True)
 
-    pdf_product_qty = fields.Float(readonly=True)
+    pdf_quantity = fields.Float(readonly=True)
 
-    pdf_unit_price = fields.Float(readonly=True)
+    pdf_price_unit = fields.Float(readonly=True)
+
+    pdf_discount = fields.Float(readonly=True)
 
     data = fields.Text(readonly=True)
 
@@ -84,8 +86,9 @@ class WizardInvoice2dataImportLine(models.TransientModel):
                     "product_id": product_id,
                     "pdf_product_code": line_data["product_code"],
                     "pdf_product_name": line_data["product_name"],
-                    "pdf_product_qty": line_data["product_qty"],
-                    "pdf_unit_price": line_data["unit_price"],
+                    "pdf_quantity": line_data["quantity"],
+                    "pdf_price_unit": line_data["price_unit"],
+                    "pdf_discount": line_data.get("discount", 0.0),
                     "data": str(line_data),
                 }
             )
@@ -103,8 +106,9 @@ class WizardInvoice2dataImportLine(models.TransientModel):
                         "product_id": product_id,
                         "pdf_product_code": value["product_code"],
                         "pdf_product_name": value["product_name"],
-                        "pdf_product_qty": 1,
-                        "pdf_unit_price": pdf_data[key],
+                        "pdf_quantity": 1,
+                        "pdf_price_unit": pdf_data[key],
+                        "pdf_discount": 0.0,
                         "data": str(pdf_data[key]),
                     }
                 )
@@ -122,7 +126,8 @@ class WizardInvoice2dataImportLine(models.TransientModel):
                     and line.product_id.id,
                     "product_code": line.pdf_product_code,
                     "product_name": line.pdf_product_name,
-                    "price": line.pdf_unit_price,
+                    "price": line.pdf_price_unit,
+                    "discount": line.pdf_discount,
                 }
             )
             line.is_product_mapped = True
@@ -153,18 +158,25 @@ class WizardInvoice2dataImportLine(models.TransientModel):
 
             # Case 3 : Check if data changed
             changes = []
-            if invoice_lines[0].quantity != wizard_line.pdf_product_qty:
+            if invoice_lines[0].quantity != wizard_line.pdf_quantity:
                 changes.append(
                     _(
                         "Quantity : %s -> %s"
-                        % (invoice_lines[0].quantity, wizard_line.pdf_product_qty)
+                        % (invoice_lines[0].quantity, wizard_line.pdf_quantity)
                     )
                 )
-            if invoice_lines[0].price_unit != wizard_line.pdf_unit_price:
+            if invoice_lines[0].price_unit != wizard_line.pdf_price_unit:
                 changes.append(
                     _(
                         "Unit Price : %s -> %s"
-                        % (invoice_lines[0].price_unit, wizard_line.pdf_unit_price)
+                        % (invoice_lines[0].price_unit, wizard_line.pdf_price_unit)
+                    )
+                )
+            if invoice_lines[0].discount != wizard_line.pdf_discount:
+                changes.append(
+                    _(
+                        "Unit Price : %s -> %s"
+                        % (invoice_lines[0].discount, wizard_line.pdf_discount)
                     )
                 )
             wizard_line.write(
@@ -202,8 +214,9 @@ class WizardInvoice2dataImportLine(models.TransientModel):
                     "name": name,
                     "origin": _("PDF Analysis"),
                     "account_id": account.id,
-                    "quantity": self.pdf_product_qty,
-                    "price_unit": self.pdf_unit_price,
+                    "quantity": self.pdf_quantity,
+                    "price_unit": self.pdf_price_unit,
+                    "discount": self.pdf_discount,
                     "invoice_line_tax_ids": taxes.ids,
                 },
             )
@@ -212,10 +225,14 @@ class WizardInvoice2dataImportLine(models.TransientModel):
             # Update
             vals = {"sequence": self.sequence}
 
-            if self.invoice_line_id.price_unit != self.pdf_unit_price:
-                vals.update({"price_unit": self.pdf_unit_price})
-            if self.invoice_line_id.quantity != self.pdf_product_qty:
-                vals.update({"quantity": self.pdf_product_qty})
+            if self.invoice_line_id.quantity != self.pdf_quantity:
+                vals.update({"quantity": self.pdf_quantity})
+
+            if self.invoice_line_id.price_unit != self.pdf_price_unit:
+                vals.update({"price_unit": self.pdf_price_unit})
+
+            if self.invoice_line_id.discount != self.pdf_discount:
+                vals.update({"discount": self.pdf_discount})
 
             if self.changes_description:
                 extra_text = _("[PDF analysis] %s") % (
