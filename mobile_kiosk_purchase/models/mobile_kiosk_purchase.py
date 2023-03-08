@@ -91,7 +91,7 @@ class MobileKioskPurchase(models.TransientModel):
                         uom_id=product.uom_po_id,
                     )
 
-        # Then, Check package quantity
+        # Then, Check multiplier quantity
         if seller:
             rounded_qty = seller._get_quantity_according_package(
                 product_qty, product.uom_po_id
@@ -101,7 +101,7 @@ class MobileKioskPurchase(models.TransientModel):
                     result,
                     _("Quantity increased"),
                     _(
-                        "The quantity has been rounded due to package"
+                        "The quantity has been rounded due to multiplier"
                         " quantity (from %s to %s)" % (product_qty, rounded_qty)
                     ),
                 )
@@ -193,8 +193,8 @@ class MobileKioskPurchase(models.TransientModel):
         super()._prepare_supplierinfo_data(result, supplierinfo=supplierinfo)
         result.update(
             {
-                "supplierinfo_package_qty": supplierinfo
-                and supplierinfo.package_qty
+                "supplierinfo_multiplier_qty": supplierinfo
+                and supplierinfo.multiplier_qty
                 or 0.0,
             }
         )

@@ -168,7 +168,7 @@ msgstr "La quantité a été augmenté jusqu'à la quantité minimum. (%s -> %s)
 #. module: mobile_kiosk_purchase
 #: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:100
 #, python-format
-msgid "The quantity has been rounded due to package quantity (from %s to %s)"
+msgid "The quantity has been rounded due to multiplier quantity (from %s to %s)"
 msgstr "La quantité a été arrondie a cause du conditionnement. (%s -> %s)"
 
 #. module: mobile_kiosk_purchase
