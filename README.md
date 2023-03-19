@@ -29,7 +29,7 @@ addon | version | maintainers | summary
 [duplication_sale_order](duplication_sale_order/) | 12.0.1.1.2 |  | Duplication Tools for Sale Orders with a given frequency
 [mobile_kiosk_abstract](mobile_kiosk_abstract/) | 12.0.1.1.5 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Abstract Module that provides a framework to develop 'kiosk application' for mobile usage like in 'hr_attendance' Odoo module
 [mobile_kiosk_inventory](mobile_kiosk_inventory/) | 12.0.1.1.5 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Mobile interface to make inventories
-[mobile_kiosk_purchase](mobile_kiosk_purchase/) | 12.0.1.1.3 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Mobile interface to make purchases
+[mobile_kiosk_purchase](mobile_kiosk_purchase/) | 12.0.1.1.4 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Mobile interface to make purchases
 [multi_search_abstract](multi_search_abstract/) | 12.0.1.1.3 |  | Multi Search - Abstract
 [multi_search_partner](multi_search_partner/) | 12.0.1.1.3 |  | Multi Search - Partners
 [multi_search_product](multi_search_product/) | 12.0.1.1.2 |  | Multi Search - Products
@@ -42,7 +42,7 @@ addon | version | maintainers | summary
 [product_print_category](product_print_category/) | 12.0.1.1.8 |  | Automate products print, when data has changed
 [product_simple_pricelist](product_simple_pricelist/) | 12.0.1.1.5 |  | Provides Wizard to manage easily Pricelist By Products
 [product_uom_package](product_uom_package/) | 12.0.1.1.3 |  | Product - Package UoM and Quantity
-[purchase_package_qty](purchase_package_qty/) | 12.0.1.1.2 |  | Purchase - Package Quantity
+[purchase_package_qty](purchase_package_qty/) | 12.0.1.1.3 |  | Purchase - Package Quantity
 [sale_deposit_product_per_company](sale_deposit_product_per_company/) | 12.0.1.1.2 |  | Handle one deposit product (down payment) per company
 [stock_internal_use_of_products](stock_internal_use_of_products/) | 12.0.1.1.4 |  | Declare the use of products for specific uses (eg: gifts,...)
 [stock_inventory_disabled_product](stock_inventory_disabled_product/) | 12.0.1.0.3 |  | Stock - Inventory disabled Products
