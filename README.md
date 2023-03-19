@@ -22,6 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_fiscal_position_tax_included](account_fiscal_position_tax_included/) | 12.0.1.1.3 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Allow to map from tax excluded to tax included
+[account_invoice_attachment_count](account_invoice_attachment_count/) | 12.0.1.0.1 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Account Invoices - Attachment Count
 [base_company_legal_info](base_company_legal_info/) | 12.0.1.1.4 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Adds Legal informations on company model
 [database_synchronization](database_synchronization/) | 12.0.2.2.3 |  | Synchronize many Odoo Databases (datas, ...)
 [duplication_account_invoice](duplication_account_invoice/) | 12.0.1.1.2 |  | Duplication Tools for Invoices with a given frequency
@@ -50,6 +51,7 @@ addon | version | maintainers | summary
 [stock_inventory_valuation_merge](stock_inventory_valuation_merge/) | 12.0.1.1.2 |  | Stock Inventory - Valuation - Merge - Glue Module
 [stock_picking_quick_quantity_done](stock_picking_quick_quantity_done/) | 12.0.1.1.4 |  | Stock Picking Quick Quantity Done
 [web_base_url_force](web_base_url_force/) | 12.0.1.0.3 |  | Force the value of the setting 'web.base.url'
+[web_widget_attachment_count](web_widget_attachment_count/) | 12.0.1.0.1 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Web Widget - Attachment Count
 
 [//]: # (end addons)
 
