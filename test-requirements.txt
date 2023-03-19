@@ -1,0 +1,2 @@
+# Unmerged OCA Contributions
+git+https://github.com/OCA/purchase-workflow@refs/pull/1783/head#subdirectory=setup/product_supplierinfo_qty_multiplier

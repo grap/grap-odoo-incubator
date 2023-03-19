@@ -54,8 +54,8 @@
                     <h3><t t-esc="widget.kiosk_context.purchase_order_name"/> - <t t-esc="widget.kiosk_context.partner_name"/></h3>
                     <h3><t t-esc="widget.kiosk_context.product_name"/></h3>
                     <h4>
-                        <t t-if="widget.kiosk_context.supplierinfo_package_qty">
-                            Pack: <t t-esc="widget.kiosk_context.supplierinfo_package_qty"/>;
+                        <t t-if="widget.kiosk_context.supplierinfo_multiplier_qty">
+                            Pack: <t t-esc="widget.kiosk_context.supplierinfo_multiplier_qty"/>;
                         </t>
                         <t t-if="widget.kiosk_context.supplierinfo_min_qty">
                             Min: <t t-esc="widget.kiosk_context.supplierinfo_min_qty"/>;
