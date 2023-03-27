@@ -42,7 +42,6 @@ addon | version | maintainers | summary
 [product_print_category](product_print_category/) | 12.0.1.1.8 |  | Automate products print, when data has changed
 [product_simple_pricelist](product_simple_pricelist/) | 12.0.1.1.5 |  | Provides Wizard to manage easily Pricelist By Products
 [product_uom_package](product_uom_package/) | 12.0.1.1.3 |  | Product - Package UoM and Quantity
-[purchase_package_qty](purchase_package_qty/) | 12.0.1.1.3 |  | Purchase - Package Quantity
 [sale_deposit_product_per_company](sale_deposit_product_per_company/) | 12.0.1.1.2 |  | Handle one deposit product (down payment) per company
 [stock_internal_use_of_products](stock_internal_use_of_products/) | 12.0.1.1.4 |  | Declare the use of products for specific uses (eg: gifts,...)
 [stock_inventory_disabled_product](stock_inventory_disabled_product/) | 12.0.1.0.3 |  | Stock - Inventory disabled Products
