@@ -93,7 +93,7 @@ class MobileKioskPurchase(models.TransientModel):
 
         # Then, Check multiplier quantity
         if seller:
-            rounded_qty = seller._get_quantity_according_package(
+            rounded_qty = seller._get_quantity_according_multiplier(
                 product_qty, product.uom_po_id
             )
             if rounded_qty != product_qty:
