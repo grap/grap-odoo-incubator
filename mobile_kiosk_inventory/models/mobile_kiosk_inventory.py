@@ -48,14 +48,14 @@ class MobileKioskInventory(models.TransientModel):
         return result
 
     @api.model
-    def select_product(self, inventory_id, product_id):
+    def select_product(self, product_id):
         result = self._prepare_result()
 
-        self._select_product(inventory_id, product_id, result)
+        self._select_product(product_id, result)
         return result
 
     @api.model
-    def scan_barcode(self, partner_id, barcode):
+    def scan_barcode(self, barcode):
         result = self._prepare_result()
         ProductProduct = self.env["product.product"]
 
@@ -67,7 +67,7 @@ class MobileKioskInventory(models.TransientModel):
                 "Barcode not found",
                 _("No product has been found for barcode '%s'" % barcode),
             )
-        self._select_product(partner_id, products[0].id, result)
+        self._select_product(products[0].id, result)
         return result
 
     @api.model
@@ -134,7 +134,7 @@ class MobileKioskInventory(models.TransientModel):
             inventory = inventories[0]
         self._prepare_stock_inventory_data(result, inventory)
 
-    def _select_product(self, inventory_id, product_id, result):
+    def _select_product(self, product_id, result):
         ProductProduct = self.env["product.product"]
 
         products = ProductProduct.search(
