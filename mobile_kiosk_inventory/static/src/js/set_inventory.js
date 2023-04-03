@@ -15,7 +15,7 @@ odoo.define("mobile_kiosk_inventory.set_inventory", function (require) {
         events: {
             "click .button_create_inventory": function () {
                 var self = this;
-                var inventory_name = this.$('#inventory_name').val().trim();
+                var inventory_name = this.$("#inventory_name").val().trim();
                 if (inventory_name.length === 0) {
                     self.do_warn(
                         _t("Incorrect value"),
@@ -24,8 +24,8 @@ odoo.define("mobile_kiosk_inventory.set_inventory", function (require) {
                     );
                 } else {
                     this._rpc({
-                        model: 'mobile.kiosk.inventory',
-                        method: 'create_inventory',
+                        model: "mobile.kiosk.inventory",
+                        method: "create_inventory",
                         args: [inventory_name],
                     })
                         .then(function (result) {
@@ -35,8 +35,8 @@ odoo.define("mobile_kiosk_inventory.set_inventory", function (require) {
 
                             // Go to the quantity page
                             self.do_action({
-                                type: 'ir.actions.client',
-                                name: 'Confirm',
+                                type: "ir.actions.client",
+                                name: "Confirm",
                                 tag: "mobile_kiosk_inventory_action_set_product",
                                 kiosk_context: self.kiosk_context,
                             });
@@ -47,16 +47,6 @@ odoo.define("mobile_kiosk_inventory.set_inventory", function (require) {
                 }
             },
 
-
-            // "click .button_skip_partner": function() {
-            //     // Go to the product page
-            //     this.do_action({
-            //         type: 'ir.actions.client',
-            //         name: 'Select Product',
-            //         tag: "mobile_kiosk_inventory_action_set_product",
-            //         kiosk_context: this.kiosk_context,
-            //     });
-            // },
             "click .button_list_inventories": function () {
                 this.do_action("mobile_kiosk_inventory.action_stock_inventory_kanban", {
                     additional_context: {

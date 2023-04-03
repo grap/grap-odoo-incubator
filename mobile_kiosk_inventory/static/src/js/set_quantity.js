@@ -2,11 +2,11 @@
 // @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 // License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-odoo.define('mobile_kiosk_inventory.set_quantity', function (require) {
+odoo.define("mobile_kiosk_inventory.set_quantity", function (require) {
     "use strict";
 
     var ActionMobileKioskInventory = require("mobile_kiosk_inventory.inventory_action");
-    var core = require('web.core');
+    var core = require("web.core");
     var _t = core._t;
 
     var ActionSetQuantity = ActionMobileKioskInventory.extend({
@@ -34,8 +34,8 @@ odoo.define('mobile_kiosk_inventory.set_quantity', function (require) {
                     );
                 } else {
                     this._rpc({
-                        model: 'mobile.kiosk.inventory',
-                        method: 'add_quantity',
+                        model: "mobile.kiosk.inventory",
+                        method: "add_quantity",
                         args: [
                             self.kiosk_context.inventory_id,
                             self.kiosk_context.product_id,
@@ -47,8 +47,8 @@ odoo.define('mobile_kiosk_inventory.set_quantity', function (require) {
                             if (result.status === "ok") {
                             // Return to the product page
                                 self.do_action({
-                                    type: 'ir.actions.client',
-                                    name: 'Select Product',
+                                    type: "ir.actions.client",
+                                    name: "Select Product",
                                     tag: "mobile_kiosk_inventory_action_set_product",
                                     kiosk_context: self.kiosk_context,
                                 });
@@ -63,7 +63,7 @@ odoo.define('mobile_kiosk_inventory.set_quantity', function (require) {
     });
 
     core.action_registry.add(
-        'mobile_kiosk_inventory_action_set_quantity',
+        "mobile_kiosk_inventory_action_set_quantity",
         ActionSetQuantity,
     );
 
