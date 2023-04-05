@@ -19,12 +19,6 @@ class SynchronizationModule(models.TransientModel):
     def _get_ignored_installed_modules(self):
         return [
             "database_synchronization",
-            # TODO, FIXME
-            "intercompany_trade_account_invoice_supplier_ref_unique",
-            # TODO, FIXME
-            "intercompany_trade_purchase",
-            # TODO, FIXME
-            "mail_bot",
         ]
 
     @api.model
