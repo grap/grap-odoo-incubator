@@ -41,14 +41,14 @@ class TestModule(TransactionCase):
         return (external_xml_id_datas, external_datas)
 
     # Test Section
-    def test_fields_view_get(self):
+    def test_00_fields_view_get(self):
         arch_form_view = self.ResGroups.fields_view_get(view_type="form")["arch"]
         self.assertIn("Readonly Table", arch_form_view)
 
         arch_tree_view = self.ResGroups.fields_view_get(view_type="tree")["arch"]
         self.assertNotIn("Readonly Table", arch_tree_view)
 
-    def test_synchronize_id(self):
+    def test_10_low_level_synchronize_id(self):
         (external_xml_id_datas, external_datas) = self._prepare_synchronization_data(
             self.synchronization_group
         )
@@ -73,7 +73,7 @@ class TestModule(TransactionCase):
                 incorrect_external_datas,
             )
 
-    def test_synchronize_data(self):
+    def test_11_low_level_synchronize_data(self):
         (external_xml_id_datas, external_datas) = self._prepare_synchronization_data(
             self.synchronization_company
         )
