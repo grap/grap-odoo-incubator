@@ -50,9 +50,7 @@ class SynchronizationModule(models.TransientModel):
         external_odoo = self._get_external_odoo()
         external_installed_module_names = [
             x["name"]
-            for x in self._external_search_read(
-                external_odoo,
-                "ir.module.module",
+            for x in external_odoo.env["ir.module.module"].search_read(
                 [("state", "=", "installed")],
                 ["name"],
             )

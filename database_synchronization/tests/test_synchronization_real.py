@@ -17,8 +17,12 @@ class TestSynchronizationReal(TransactionCase):
         self.synchronization_company = self.env.ref(
             "database_synchronization.synchronisation_res_company"
         )
-
-    def _configure_auto_call(self):
+        self.cron_synchronize_module_installed = self.env.ref(
+            "database_synchronization.ir_cron_synchronize_module_installed"
+        )
+        self.cron_synchronize_data = self.env.ref(
+            "database_synchronization.ir_cron_synchronize_data"
+        )
         # Configure settings to auto-call
         self.env.ref(
             "database_synchronization.parameter_database"
@@ -29,11 +33,15 @@ class TestSynchronizationReal(TransactionCase):
         ]
 
     def test_20_high_level_synchronize_id(self):
-        self._configure_auto_call()
         self.synchronization_group.action_synchronize()
         self.synchronization_group.action_full_synchronize()
 
     def test_21_high_level_synchronize_data(self):
-        self._configure_auto_call()
         self.synchronization_company.action_synchronize()
         self.synchronization_company.action_full_synchronize()
+
+    def test_30_ir_cron_synchronize_module_installed(self):
+        self.cron_synchronize_module_installed.method_direct_trigger()
+
+    def test_31_ir_cron_synchronize_data(self):
+        self.cron_synchronize_data.method_direct_trigger()
