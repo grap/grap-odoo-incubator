@@ -114,12 +114,6 @@ class SynchronizationAbstract(models.AbstractModel):
         return external_odoo
 
     @api.model
-    def _external_search_browse(self, external_odoo, model_name, domain):
-        ExternalModel = external_odoo.env[model_name]
-        item_ids = ExternalModel.search(domain)
-        return ExternalModel.browse(item_ids)
-
-    @api.model
     def _external_search_read(self, external_odoo, model_name, domain, field_names):
         return external_odoo.env[model_name].search_read(domain, field_names)
 
