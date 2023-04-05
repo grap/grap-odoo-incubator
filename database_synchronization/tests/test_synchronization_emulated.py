@@ -21,6 +21,9 @@ class TestSynchronizationEmulated(TransactionCase):
         self.synchronization_company = self.env.ref(
             "database_synchronization.synchronisation_res_company"
         )
+        self.synchronization_company.field_ids = [
+            (6, 0, [self.env.ref("base.field_res_company__name").id])
+        ]
 
     def _prepare_synchronization_data(self, synchronization_data):
         # We emulate a request on Master instance

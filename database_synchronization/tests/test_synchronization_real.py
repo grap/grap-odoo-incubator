@@ -14,6 +14,12 @@ class TestSynchronizationReal(TransactionCase):
         self.synchronization_group = self.env.ref(
             "database_synchronization.synchronisation_res_groups"
         )
+        self.synchronization_country = self.env.ref(
+            "database_synchronization.synchronisation_res_country"
+        )
+        self.synchronization_user = self.env.ref(
+            "database_synchronization.synchronisation_res_users"
+        )
         self.synchronization_company = self.env.ref(
             "database_synchronization.synchronisation_res_company"
         )
@@ -37,6 +43,8 @@ class TestSynchronizationReal(TransactionCase):
         self.synchronization_group.action_full_synchronize()
 
     def test_21_high_level_synchronize_data(self):
+        self.synchronization_country.action_synchronize()
+        self.synchronization_user.action_synchronize()
         self.synchronization_company.action_synchronize()
         self.synchronization_company.action_full_synchronize()
 

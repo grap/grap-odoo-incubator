@@ -13,11 +13,27 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model_id" ref="base.model_res_groups"/>
     </record>
 
+    <record id="synchronisation_res_country" model="synchronization.data">
+        <field name="mapping_type">id</field>
+        <field name="synchronization_type">all</field>
+        <field name="model_id" ref="base.model_res_country"/>
+    </record>
+
+    <record id="synchronisation_res_users" model="synchronization.data">
+        <field name="mapping_type">id</field>
+        <field name="synchronization_type">all</field>
+        <field name="model_id" ref="base.model_res_users"/>
+    </record>
+
     <record id="synchronisation_res_company" model="synchronization.data">
         <field name="mapping_type">data</field>
         <field name="synchronization_type">all</field>
         <field name="model_id" ref="base.model_res_company"/>
-        <field name="field_ids" eval="[(4, ref('base.field_res_company__name'))]"/>
+        <field name="field_ids" eval="[
+            (4, ref('base.field_res_company__name')),
+            (4, ref('base.field_res_company__country_id')),
+            (4, ref('base.field_res_company__user_ids')),
+        ]"/>
     </record>
 
 </odoo>
