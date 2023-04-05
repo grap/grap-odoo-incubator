@@ -133,7 +133,10 @@ class SynchronizationData(models.Model):
         # TODO, if active_test, add existing ids to domain
         external_datas = external_model.with_context(
             active_test=(self.synchronization_type == "active")
-        ).search_read(safe_eval(self.domain))
+        ).search_read(
+            domain=safe_eval(self.domain),
+            fields=(self.mapping_type == "id" and ["id", "write_date"] or False),
+        )
 
         # Get external xml ids
         external_xml_id_datas = external_odoo.env["ir.model.data"].search_read(
