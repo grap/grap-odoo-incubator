@@ -33,6 +33,7 @@ class ProductProduct(models.Model):
         string="Variant Pricelist Items",
         comodel_name="product.pricelist.item",
         inverse_name="product_id",
+        copy=True,
     )
 
     def _get_pricelist_item_by_pricelist(self, pricelist):
