@@ -26,6 +26,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <field name="synchronization_type"/>
                 <field name="mapping_qty"/>
                 <field name="active" widget="boolean_toggle"/>
+                <field name="last_synchronization_date"/>
                 <button name="action_synchronize" string="Synchronize"
                     type="object"/>
             </tree>
@@ -61,6 +62,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <field name="mapping_type"/>
                             <field name="synchronization_type"/>
                             <field name="domain"/>
+                            <field name="last_synchronization_date"/>
                         </group>
                     </group>
                     <group string="Synchronization" attrs="{'invisible': [('mapping_type', '=', 'id')]}">
