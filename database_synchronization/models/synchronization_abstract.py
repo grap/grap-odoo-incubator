@@ -91,9 +91,9 @@ class SynchronizationAbstract(models.AbstractModel):
             )
 
         # check if external modules are correctly installed
-        external_incorrect_state_modules = self._external_search_read(
-            external_odoo,
-            "ir.module.module",
+        external_incorrect_state_modules = external_odoo.env[
+            "ir.module.module"
+        ].search_read(
             [("state", "in", ["to upgrade", "to remove", "to install"])],
             ["name", "state"],
         )
@@ -114,20 +114,10 @@ class SynchronizationAbstract(models.AbstractModel):
         return external_odoo
 
     @api.model
-    def _external_search_browse(self, external_odoo, model_name, domain):
-        ExternalModel = external_odoo.env[model_name]
-        item_ids = ExternalModel.search(domain)
-        return ExternalModel.browse(item_ids)
-
-    @api.model
-    def _external_search_read(self, external_odoo, model_name, domain, field_names):
-        return external_odoo.env[model_name].search_read(domain, field_names)
-
-    @api.model
     def cron_synchronize_module_installed(self):
         self.env["synchronization.module"]._synchronize_module_installed()
 
     @api.model
     def cron_synchronize_data(self):
-        synchronizationDatas = self.env["synchronization.data"].search()
+        synchronizationDatas = self.env["synchronization.data"].search([])
         synchronizationDatas.action_synchronize()

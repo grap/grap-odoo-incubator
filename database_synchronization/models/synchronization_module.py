@@ -19,12 +19,6 @@ class SynchronizationModule(models.TransientModel):
     def _get_ignored_installed_modules(self):
         return [
             "database_synchronization",
-            # TODO, FIXME
-            "intercompany_trade_account_invoice_supplier_ref_unique",
-            # TODO, FIXME
-            "intercompany_trade_purchase",
-            # TODO, FIXME
-            "mail_bot",
         ]
 
     @api.model
@@ -50,9 +44,7 @@ class SynchronizationModule(models.TransientModel):
         external_odoo = self._get_external_odoo()
         external_installed_module_names = [
             x["name"]
-            for x in self._external_search_read(
-                external_odoo,
-                "ir.module.module",
+            for x in external_odoo.env["ir.module.module"].search_read(
                 [("state", "=", "installed")],
                 ["name"],
             )

@@ -70,6 +70,8 @@ class SynchronizationData(models.Model):
         comodel_name="ir.model.fields", string="Fields to Synchronize"
     )
 
+    last_synchronization_date = fields.Datetime()
+
     synchronize_readonly = fields.Boolean(string="Synchronize Readonly Fields")
 
     active = fields.Boolean(string="Active", default=True)
@@ -133,7 +135,10 @@ class SynchronizationData(models.Model):
         # TODO, if active_test, add existing ids to domain
         external_datas = external_model.with_context(
             active_test=(self.synchronization_type == "active")
-        ).search_read(safe_eval(self.domain))
+        ).search_read(
+            domain=safe_eval(self.domain),
+            fields=(self.mapping_type == "id" and ["id", "write_date"] or False),
+        )
 
         # Get external xml ids
         external_xml_id_datas = external_odoo.env["ir.model.data"].search_read(
@@ -295,6 +300,7 @@ class SynchronizationData(models.Model):
 
                 # Update mapping last update
                 mapping.write({"write_date": right_now})
+        self.last_synchronization_date = right_now
 
     def _prepare_values(self, external_data):
         SynchronisationMapping = self.env["synchronization.mapping"]
