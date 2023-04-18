@@ -18,8 +18,8 @@ odoo.define("mobile_kiosk_inventory.kanban_view_handler", function (require) {
             }
             if (context.kiosk_action === "mobile_kiosk_inventory_select_inventory") {
                 return self._rpc({
-                    model: 'mobile.kiosk.inventory',
-                    method: 'select_inventory',
+                    model: "mobile.kiosk.inventory",
+                    method: "select_inventory",
                     args: [self.recordData.id],
                 })
                     .then(function (result) {
@@ -28,12 +28,9 @@ odoo.define("mobile_kiosk_inventory.kanban_view_handler", function (require) {
             } else if (
                 context.kiosk_action === "mobile_kiosk_inventory_select_product") {
                 return self._rpc({
-                    model: 'mobile.kiosk.inventory',
-                    method: 'select_product',
-                    args: [
-                        context.kiosk_context.inventory_id,
-                        self.record.id.raw_value,
-                    ],
+                    model: "mobile.kiosk.inventory",
+                    method: "select_product",
+                    args: [self.record.id.raw_value],
                 })
                     .then(function (result) {
                         return result;

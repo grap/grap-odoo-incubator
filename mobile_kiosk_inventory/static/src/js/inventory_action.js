@@ -5,7 +5,7 @@
 odoo.define("mobile_kiosk_inventory.inventory_action", function (require) {
     "use strict";
 
-    var core = require('web.core');
+    var core = require("web.core");
     var ActionMobileKioskAbstract = require("mobile_kiosk_abstract.abstract_action");
     var _t = core._t;
 

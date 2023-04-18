@@ -40,9 +40,9 @@ odoo.define("mobile_kiosk_inventory.set_product", function (require) {
             var self = this;
             this._super.apply(this, arguments);
             this._rpc({
-                model: 'mobile.kiosk.inventory',
-                method: 'scan_barcode',
-                args: [self.kiosk_context.inventory_id, barcode],
+                model: "mobile.kiosk.inventory",
+                method: "scan_barcode",
+                args: [barcode],
             })
                 .then(function (result) {
                     self.kiosk_notify_result(result);
@@ -52,8 +52,8 @@ odoo.define("mobile_kiosk_inventory.set_product", function (require) {
 
                         // Go to the quantity page
                         self.do_action({
-                            type: 'ir.actions.client',
-                            name: 'Confirm',
+                            type: "ir.actions.client",
+                            name: "Confirm",
                             tag: "mobile_kiosk_inventory_action_set_quantity",
                             kiosk_context: self.kiosk_context,
                         });
