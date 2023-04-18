@@ -4,7 +4,7 @@
 
 {
     "name": "Mobile Kiosk Purchase",
-    "version": "12.0.1.1.4",
+    "version": "12.0.1.1.5",
     "author": "GRAP",
     "summary": "Mobile interface to make purchases",
     "category": "Tools",
