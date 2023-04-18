@@ -28,7 +28,7 @@ msgstr "Ligne d'inventaire"
 #. module: stock_inventory_valuation
 #: model:ir.model.fields,help:stock_inventory_valuation.field_stock_inventory_line__price_unit
 msgid "Technical field used to record the product cost at the time of the inventory"
-msgstr "Champs technique, utilisé pour enregistrer le prix de revient du produit lors de l'inventaire"
+msgstr "Champs technique, utilisé pour enregistrer le coût du produit lors de l'inventaire"
 
 #. module: stock_inventory_valuation
 #: model_terms:ir.ui.view,arch_db:stock_inventory_valuation.view_stock_inventory_form
