@@ -24,7 +24,7 @@ addon | version | maintainers | summary
 [account_fiscal_position_tax_included](account_fiscal_position_tax_included/) | 12.0.1.1.3 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Allow to map from tax excluded to tax included
 [account_invoice_attachment_count](account_invoice_attachment_count/) | 12.0.1.0.1 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Account Invoices - Attachment Count
 [base_company_legal_info](base_company_legal_info/) | 12.0.1.1.4 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Adds Legal informations on company model
-[database_synchronization](database_synchronization/) | 12.0.2.2.3 |  | Synchronize many Odoo Databases (datas, ...)
+[database_synchronization](database_synchronization/) | 12.0.2.2.4 |  | Synchronize many Odoo Databases (datas, ...)
 [duplication_account_invoice](duplication_account_invoice/) | 12.0.1.1.2 |  | Duplication Tools for Invoices with a given frequency
 [duplication_sale_order](duplication_sale_order/) | 12.0.1.1.2 |  | Duplication Tools for Sale Orders with a given frequency
 [mobile_kiosk_abstract](mobile_kiosk_abstract/) | 12.0.1.1.6 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Abstract Module that provides a framework to develop 'kiosk application' for mobile usage like in 'hr_attendance' Odoo module
