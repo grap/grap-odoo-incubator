@@ -3,18 +3,16 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "MRP Purchase UX",
-    "summary": "Module to help user when using MRP and Purchase",
+    "name": "MRP Production Purchase Order Link",
+    "summary": "This module adds a smart button in PO and MO to link them.",
     "version": "12.0.1.0.0",
-    "category": "GRAP - Custom",
+    "category": "GRAP - incubator",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
     "depends": [
         "mrp",
-        "purchase",
-        # OCA modules
-        "web_notify",
+        "purchase_stock",
     ],
     "data": [
         "views/view_mrp_production.xml",
