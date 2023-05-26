@@ -14,7 +14,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="domain">[('mrp_production_ids', '=', active_id)]</field>
     </record>
 
-    <record id="view_mrp_production_purchase_ux_production_form" model="ir.ui.view">
+    <record id="view_mrp_production_purchase_order_link_form" model="ir.ui.view">
         <field name="model">mrp.production</field>
         <field name="inherit_id" ref="mrp.mrp_production_form_view" />
         <field name="arch" type="xml">
@@ -22,7 +22,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <field name="purchase_order_qty" invisible="1"/>
                 <button class="oe_stat_button" type="action" icon="fa-list"
                     attrs="{'invisible':[('purchase_order_qty', '=', 0)]}"
-                    name="%(mrp_purchase_ux.action_production_2_purchase_order)d">
+                    name="%(mrp_production_purchase_order_link.action_production_2_purchase_order)d">
                     <field string="Purchase Order" name="purchase_order_qty" widget="statinfo"/>
                 </button>
             </div>
@@ -37,7 +37,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="domain">[('purchase_order_ids', '=', active_id)]</field>
     </record>
 
-    <record id="view_mrp_production_purchase_ux_po_form" model="ir.ui.view">
+    <record id="view_mrp_production_purchase_order_link_po_form" model="ir.ui.view">
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.purchase_order_form" />
         <field name="arch" type="xml">
@@ -45,7 +45,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <field name="mrp_prod_qty" invisible="1"/>
                 <button class="oe_stat_button" type="action" icon="fa-list"
                     attrs="{'invisible':[('mrp_prod_qty', '=', 0)]}"
-                    name="%(mrp_purchase_ux.action_purchase_order_2_production)d">
+                    name="%(mrp_production_purchase_order_link.action_purchase_order_2_production)d">
                     <field string="Manufacturing Orders" name="mrp_prod_qty" widget="statinfo"/>
                 </button>
             </div>
