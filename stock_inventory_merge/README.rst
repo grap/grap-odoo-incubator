@@ -64,6 +64,11 @@ In that case, with this module, the classical process is :
 .. contents::
    :local:
 
+Known issues / Roadmap
+======================
+
+The feature "Merge with 0" doesn't work with tracked products. (lot)
+
 Bug Tracker
 ===========
 
