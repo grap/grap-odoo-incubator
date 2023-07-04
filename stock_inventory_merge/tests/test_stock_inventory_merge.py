@@ -12,6 +12,7 @@ class TestStockInventoryMerge(TransactionCase):
         self.inventory_obj = self.env["stock.inventory"]
         self.line_obj = self.env["stock.inventory.line"]
         self.wizard_obj = self.env["wizard.stock.inventory.merge"]
+        self.StockTrackConfirmation = self.env["stock.track.confirmation"]
         self.inventory_1 = self.env.ref("stock_inventory_merge.inventory_1")
         self.stock_location = self.env.ref("stock.stock_location_stock")
         self.component_location = self.env.ref("stock.stock_location_components")
@@ -20,10 +21,16 @@ class TestStockInventoryMerge(TransactionCase):
         self.inventory_2 = self.env.ref("stock_inventory_merge.inventory_2")
         self.ipad_product = self.env.ref("product.product_product_6")
 
+    def _confirm_inventory(self, inventory):
+        result = inventory.action_validate()
+        if result:
+            lot_wizard = self.StockTrackConfirmation.browse(result["res_id"])
+            lot_wizard.action_confirm()
+
     # Test Section
     def test_01_block_done_inventory(self):
         with self.assertRaises(UserError):
-            self.inventory_1.action_validate()
+            self._confirm_inventory(self.inventory_1)
 
     def test_02_merge_duplicated_lines(self):
         to_merge_line_ids = [self.line_1_1.id, self.line_1_2.id]
@@ -104,7 +111,7 @@ class TestStockInventoryMerge(TransactionCase):
         )
 
         # We confirm an inventory that set all product to 0
-        new_inventory_1.action_validate()
+        self._confirm_inventory(new_inventory_1)
 
         new_inventory_3 = self.inventory_obj.create(
             {
