@@ -21,12 +21,13 @@ class IrAttachment(models.AbstractModel):
     @api.model_create_multi
     def create(self, vals_list):
         res = super().create(vals_list)
-        for attachment in res:
-            for model in self._get_attachment_count_models():
-                item_ids = attachment.filtered(lambda x: x.res_model == model).mapped(
-                    "res_id"
-                )
-                self.env[model].browse(item_ids)._compute_message_attachment_count()
+        res._recompute_attachment_count_for_related_items()
+        return res
+
+    def write(self, vals):
+        res = super().write(vals)
+        if "res_id" in vals:
+            self._recompute_attachment_count_for_related_items()
         return res
 
     @api.multi
@@ -40,6 +41,15 @@ class IrAttachment(models.AbstractModel):
         for model, item_ids in to_update.items():
             self.env[model].browse(item_ids)._compute_message_attachment_count()
         return res
+
+    @api.multi
+    def _recompute_attachment_count_for_related_items(self):
+        for attachment in self:
+            for model in self._get_attachment_count_models():
+                item_ids = attachment.filtered(lambda x: x.res_model == model).mapped(
+                    "res_id"
+                )
+                self.env[model].browse(item_ids)._compute_message_attachment_count()
 
     @api.model
     def _store_attachment_count_value(self, table_name, model_name):
