@@ -30,6 +30,7 @@ addon | version | maintainers | summary
 [mobile_kiosk_abstract](mobile_kiosk_abstract/) | 12.0.1.1.6 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Abstract Module that provides a framework to develop 'kiosk application' for mobile usage like in 'hr_attendance' Odoo module
 [mobile_kiosk_inventory](mobile_kiosk_inventory/) | 12.0.1.1.6 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Mobile interface to make inventories
 [mobile_kiosk_purchase](mobile_kiosk_purchase/) | 12.0.1.1.5 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Mobile interface to make purchases
+[mrp_production_purchase_order_link](mrp_production_purchase_order_link/) | 12.0.1.0.0 |  | This module adds a smart button in PO and MO to link them.
 [multi_search_abstract](multi_search_abstract/) | 12.0.1.1.3 |  | Multi Search - Abstract
 [multi_search_partner](multi_search_partner/) | 12.0.1.1.3 |  | Multi Search - Partners
 [multi_search_product](multi_search_product/) | 12.0.1.1.2 |  | Multi Search - Products
