@@ -5,7 +5,7 @@
 {
     "name": "MRP Production Purchase Order Link",
     "summary": "This module adds a smart button in PO and MO to link them.",
-    "version": "12.0.1.0.0",
+    "version": "12.0.1.0.1",
     "category": "GRAP - incubator",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
