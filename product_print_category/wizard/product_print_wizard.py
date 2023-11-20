@@ -30,6 +30,12 @@ class ProductPrintWizard(models.TransientModel):
         default=True,
     )
 
+    option_print_barcode_digits = fields.Boolean(
+        string="Print barcode digits",
+        help="Print barcode digits if barcode exists",
+        default=False,
+    )
+
     @api.model
     def _default_line_ids(self):
         lines_vals = []
@@ -91,6 +97,7 @@ class ProductPrintWizard(models.TransientModel):
             "line_data": [x.id for x in self.line_ids],
             "option_print_code": self.option_print_code,
             "option_print_barcode": self.option_print_barcode,
+            "option_print_barcode_digits": self.option_print_barcode_digits,
         }
 
     @api.multi
