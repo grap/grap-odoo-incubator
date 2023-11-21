@@ -19,8 +19,8 @@ jobs:
       matrix:
         include:
           - container: ghcr.io/oca/oca-ci/py3.6-odoo12.0:latest
-            makepot: "false"
             name: test with Odoo
+            makepot: "false"
     services:
       postgres:
         image: postgres:9.6
@@ -31,7 +31,7 @@ jobs:
         ports:
           - 5432:5432
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           persist-credentials: false
       - name: Install addons and dependencies

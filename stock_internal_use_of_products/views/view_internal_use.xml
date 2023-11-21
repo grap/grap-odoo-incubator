@@ -85,7 +85,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <notebook>
                         <page string="Products">
                             <field name="line_ids">
-                                <tree string="Lines" editable="bottom" class="stock_internal_use_of_products__view_internal_use_form">
+                                <tree editable="bottom" class="stock_internal_use_of_products__view_internal_use_form">
                                     <field name="product_id"/>
                                     <field name="product_qty"/>
                                     <field name="product_uom_id" groups="uom.group_uom"/>

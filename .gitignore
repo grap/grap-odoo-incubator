@@ -1,3 +1,8 @@
+# <GRAP>
+# Do not share pdf file. (grap-odoo-business-supplier-invoice)
+*.pdf
+# </GRAP>
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
