@@ -9,6 +9,9 @@ class ProductTemplate(models.Model):
     _name = "product.template"
     _inherit = ["product.template", "product.print.category.mixin"]
 
+    # store this field (required for the related fields below)
+    product_variant_id = fields.Many2one(store=True)
+
     print_category_id = fields.Many2one(
         related="product_variant_id.print_category_id", readonly=False
     )
