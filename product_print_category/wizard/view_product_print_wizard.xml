@@ -15,7 +15,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <div class="wizard_options">
                   <h5>🔧 Choose options</h5><br/>
                   <label for="option_print_barcode"/><field name="option_print_barcode" widget="boolean_toggle"/><br/>
+                  <label for="option_print_barcode_digits"/><field name="option_print_barcode_digits" widget="boolean_toggle"/><br/>
                   <label for="option_print_code"/><field name="option_print_code" widget="boolean_toggle"/><br/>
+                  <p class="alert alert-info" role="alert" attrs="{'invisible': ['|', ('option_print_barcode', '=', False), '&amp;', ('option_print_barcode_digits', '=', False), ('option_print_code', '=', False)]}">
+                    For some small labels, codes will be prefered over barcode.
+                  </p>
                 </div>
                 <div class="wizard_instrutions">
                   <br/><h5>🖨️ Choose Products to print</h5>
