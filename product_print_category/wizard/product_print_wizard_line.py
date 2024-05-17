@@ -22,7 +22,6 @@ class ProductPrintWizardLine(models.TransientModel):
         comodel_name="product.print.category",
         string="Print Category",
         required=True,
-        related="product_id.print_category_id",
         readonly=False,
     )
 
