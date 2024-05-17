@@ -68,6 +68,11 @@ class ProductPrintWizard(models.TransientModel):
     @api.multi
     def print_report(self):
         self.ensure_one()
+        # Apply print category changes, if required
+        for line in self.line_ids:
+            if line.product_id.print_category_id != line.print_category_id:
+                line.product_id.print_category_id = line.print_category_id
+
         data = self._prepare_data()
         return self.env.ref("product_print_category.pricetag").report_action(
             self, data=data
