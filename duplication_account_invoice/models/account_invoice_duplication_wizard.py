@@ -135,12 +135,10 @@ class AccountInvoiceDuplicationWizard(models.TransientModel):
                 )
             self.date_line_ids = date_line_ids
 
-    @api.multi
     def duplicate_button(self):
         self._duplicate()
         return True
 
-    @api.multi
     def duplicate_open_button(self):
         invoice_ids = self._duplicate()
         if self.invoice_id.type == "out_invoice":
@@ -154,7 +152,6 @@ class AccountInvoiceDuplicationWizard(models.TransientModel):
         result["domain"] = "[('id', 'in', [" + ",".join(map(str, invoice_ids)) + "])]"
         return result
 
-    @api.multi
     def _duplicate(self):
         self.ensure_one()
         invoice_ids = []

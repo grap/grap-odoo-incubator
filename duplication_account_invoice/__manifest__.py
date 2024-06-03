@@ -5,7 +5,7 @@
 {
     "name": "Account Invoice - Duplication",
     "summary": "Duplication Tools for Invoices with a given frequency",
-    "version": "12.0.1.1.2",
+    "version": "16.0.1.0.0",
     "category": "Account",
     "author": "GRAP, Odoo Community Association (OCA)",
     "website": "https://github.com/grap/grap-odoo-incubator",

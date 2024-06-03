@@ -10,7 +10,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="action_account_invoice_duplication_wizard" model="ir.actions.act_window">
         <field name="name">Duplication Wizard</field>
         <field name="res_model">account.invoice.duplication.wizard</field>
-        <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
         <field name="binding_model_id" ref="account.model_account_invoice"/>
