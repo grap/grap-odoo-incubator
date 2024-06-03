@@ -10,7 +10,6 @@ github_enable_makepot: false
 github_enable_stale_action: false
 github_enforce_dev_status_compatibility: false
 include_wkhtmltopdf: false
-odoo_real_version: 12.0
 odoo_test_flavor: Odoo
 odoo_version: 16.0
 org_name: GRAP
@@ -23,3 +22,6 @@ repo_name: Incubator of Odoo (formely OpenERP) modules before they are shared to
 repo_slug: grap-odoo-incubator
 repo_website: https://github.com/grap/grap-odoo-incubator
 
+convert_readme_fragments_to_markdown: true
+odoo_test_flavor: Odoo
+use_ruff: true
