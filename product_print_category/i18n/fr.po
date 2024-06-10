@@ -193,26 +193,6 @@ msgid "Print Products"
 msgstr "Imprimer les articles"
 
 #. module: product_print_category
-#: model:ir.model.fields,field_description:product_print_category.field_product_print_wizard__option_print_barcode
-msgid "Print barcode"
-msgstr "Imprimer les codes barres"
-
-#. module: product_print_category
-#: model:ir.model.fields,field_description:product_print_category.field_product_print_wizard__option_print_barcode_digits
-msgid "Print barcode digits"
-msgstr "Imprimer les chiffres du code-barre"
-
-#. module: product_print_category
-#: model:ir.model.fields,help:product_print_category.field_product_print_wizard__option_print_barcode_digits
-msgid "Print barcode digits if barcode exists"
-msgstr "Imprime les chiffres du code-barre s'il y en a un"
-
-#. module: product_print_category
-#: model:ir.model.fields,help:product_print_category.field_product_print_wizard__option_print_barcode
-msgid "Print barcode if it exists"
-msgstr "Imprimer les codes barres s'ils existent"
-
-#. module: product_print_category
 #: model_terms:ir.ui.view,arch_db:product_print_category.view_product_print_category_form
 msgid "Print category name"
 msgstr "Nom de la catégorie d'impression"
@@ -227,16 +207,6 @@ msgstr "Options d'impression"
 #: model_terms:ir.ui.view,arch_db:product_print_category.view_product_template_only_form
 msgid "Print options should be configured on Product Variants"
 msgstr ""
-
-#. module: product_print_category
-#: model:ir.model.fields,field_description:product_print_category.field_product_print_wizard__option_print_code
-msgid "Print product code"
-msgstr "Imprimer les codes internes"
-
-#. module: product_print_category
-#: model:ir.model.fields,help:product_print_category.field_product_print_wizard__option_print_code
-msgid "Print product code even if there is a barcode"
-msgstr "Imprimer le code même s'il y a un code-barre"
 
 #. module: product_print_category
 #: model:ir.model,name:product_print_category.model_product_product
@@ -314,11 +284,6 @@ msgstr ""
 #: model:ir.model,name:product_print_category.model_product_print_wizard_line
 msgid "Wizard line for printing products"
 msgstr ""
-
-#. module: product_print_category
-#: model_terms:ir.ui.view,arch_db:product_print_category.view_product_print_wizard_form
-msgid "🔧 Choose options"
-msgstr "🔧 Choisir les options"
 
 #. module: product_print_category
 #: model_terms:ir.ui.view,arch_db:product_print_category.view_product_print_wizard_form

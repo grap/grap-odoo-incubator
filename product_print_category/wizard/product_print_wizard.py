@@ -18,24 +18,6 @@ class ProductPrintWizard(models.TransientModel):
         default=lambda s: s._default_line_ids(),
     )
 
-    option_print_code = fields.Boolean(
-        string="Print product code",
-        help="Print product code even if there is a barcode",
-        default=False,
-    )
-
-    option_print_barcode = fields.Boolean(
-        string="Print barcode",
-        help="Print barcode if it exists",
-        default=True,
-    )
-
-    option_print_barcode_digits = fields.Boolean(
-        string="Print barcode digits",
-        help="Print barcode digits if barcode exists",
-        default=False,
-    )
-
     @api.model
     def _default_line_ids(self):
         lines_vals = []
@@ -86,6 +68,11 @@ class ProductPrintWizard(models.TransientModel):
     @api.multi
     def print_report(self):
         self.ensure_one()
+        # Apply print category changes, if required
+        for line in self.line_ids:
+            if line.product_id.print_category_id != line.print_category_id:
+                line.product_id.print_category_id = line.print_category_id
+
         data = self._prepare_data()
         return self.env.ref("product_print_category.pricetag").report_action(
             self, data=data
@@ -93,12 +80,7 @@ class ProductPrintWizard(models.TransientModel):
 
     @api.multi
     def _prepare_data(self):
-        return {
-            "line_data": [x.id for x in self.line_ids],
-            "option_print_code": self.option_print_code,
-            "option_print_barcode": self.option_print_barcode,
-            "option_print_barcode_digits": self.option_print_barcode_digits,
-        }
+        return {"line_data": [x.id for x in self.line_ids]}
 
     @api.multi
     def _prepare_product_data(self):

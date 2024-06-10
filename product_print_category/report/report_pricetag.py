@@ -14,7 +14,9 @@ class ReportPricetag(models.AbstractModel):
         # mark the selected products as Up To Date if print succeed
         line_obj = self.env["product.print.wizard.line"]
         lines = line_obj.browse([int(x) for x in data["line_data"]])
-        lines.mapped("product_id").write({"to_print": False})
+        lines.mapped("product_id").filtered(lambda x: x.to_print).write(
+            {"to_print": False}
+        )
         return docargs
 
     @api.model
