@@ -8,7 +8,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <template id="assets" inherit_id="point_of_sale.assets">
         <xpath expr="." position="inside">
-            <script type="text/javascript" src="/pos_sector/static/src/js/models.js"/>
+            <script type="text/javascript" src="/pos_odoo_pos_driver/static/src/js/devices.js"/>
         </xpath>
     </template>
 
