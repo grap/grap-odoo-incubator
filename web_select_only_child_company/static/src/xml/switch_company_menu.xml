@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t
+        t-name="web_select_only_child_company.SwitchCompanyItem"
+        t-inherit="web.SwitchCompanyItem"
+        t-inherit-mode="extension"
+        owl="1"
+    >
+        <!-- Click on the checkbox has now the same effect
+            as click on a company name-->
+        <xpath expr="//div[@role='menuitemcheckbox']" position="attributes">
+            <attribute name="t-on-click.stop" />
+            <attribute name="t-on-click">() => this.logIntoCompany(company.id)</attribute>
+        </xpath>
+    </t>
+
+    <t
+        t-name="web_select_only_child_company.MobileSwitchCompanyMenu"
+        t-inherit="web.MobileSwitchCompanyMenu"
+        t-inherit-mode="extension"
+        owl="1"
+    >
+        <!-- Click on the checkbox has now the same effect
+            as click on a company name-->
+        <xpath expr="//div[hasclass('toggle_company')]" position="attributes">
+            <attribute name="t-on-click">() => this.logIntoCompany(company.id)</attribute>
+        </xpath>
+    </t>
+</templates>
