@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Copyright (C) 2019 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+    <record id="company_parent" model="res.company">
+        <field name="name">Parent Company (Demo data Only Child)</field>
+        <field
+            name="user_ids"
+            eval="[
+            (4, ref('base.user_admin')),
+            (4, ref('base.user_demo')),
+        ]"
+        />
+    </record>
+    <record id="company_child" model="res.company">
+        <field name="name">Child Company (Demo data Only Child)</field>
+        <field name="parent_id" ref="company_parent" />
+        <field
+            name="user_ids"
+            eval="[
+            (4, ref('base.user_admin')),
+            (4, ref('base.user_demo')),
+        ]"
+        />
+    </record>
+</odoo>
