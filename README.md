@@ -17,7 +17,11 @@ This repository contains Odoo modules developped by the company GRAP before they
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[web_select_only_child_company](web_select_only_child_company/) | 16.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | When selecting a company, automatically select all the child companies.
 
 [//]: # (end addons)
 
