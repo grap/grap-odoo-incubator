@@ -18,14 +18,15 @@ class ProductTemplate(models.Model):
 
     to_print = fields.Boolean(related="product_variant_id.to_print", readonly=False)
 
+    # Recompute when active is changed, too. If the variants are inactive, the
+    # template's product_variant_id is empty.
+    @api.depends("product_variant_ids", "product_variant_ids.active")
+    def _compute_product_variant_id(self):
+        return super()._compute_product_variant_id()
+
     @api.multi
     def write(self, vals):
         res = super().write(vals)
         if self.env.context.get("update_to_print_category", True):
             self._update_to_print_values(vals)
-        # Recompute product_variant_id to circumvent a bug where
-        # product_variant_ids cannot be accessed normally (empty recordset)
-        # because they are archived at time of computation.
-        if "active" in vals:
-            self._compute_product_variant_id()
         return res
