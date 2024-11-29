@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_change_password_user,access.change.password.user,base.model_change_password_user,group_limited_settings,1,1,1,0
+access_change_password_wizard,access.change.password.wizard,base.model_change_password_wizard,group_limited_settings,1,1,1,0
+access_res_company_group_erp_manager,res_company group_erp_manager,base.model_res_company,group_limited_settings,1,1,1,1
+access_res_users_group_erp_manager,res_users group_erp_manager,base.model_res_users,group_limited_settings,1,1,1,1
+access_ir_module_category_group_user,ir_module_category group_user,base.model_ir_module_category,group_limited_settings,1,0,0,0
