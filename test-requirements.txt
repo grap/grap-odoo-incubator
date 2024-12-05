@@ -1,0 +1,3 @@
+odoo-test-helper
+
+git+https://github.com/OCA/pos@refs/pull/1265/head#subdirectory=setup/pos_category_complete_name
