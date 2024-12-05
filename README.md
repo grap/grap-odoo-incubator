@@ -21,6 +21,9 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[create_recursive_abstract](create_recursive_abstract/) | 16.0.1.0.0 |  | Create recursively parents item.
+[create_recursive_pos_category](create_recursive_pos_category/) | 16.0.1.0.0 |  | Extra GRAP Tools to import product data for Point of sale module
+[create_recursive_product_category](create_recursive_product_category/) | 16.0.1.0.0 |  | Create recursively parents item for the Product Categories model.
 [web_select_only_child_company](web_select_only_child_company/) | 16.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | When selecting a company, automatically select all the child companies.
 
 [//]: # (end addons)
