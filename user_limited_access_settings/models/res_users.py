@@ -1,12 +1,20 @@
 # Copyright 2024 Sylvain LE GAL - GRAP
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, models
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 
 class ResUsers(models.Model):
     _inherit = "res.users"
+
+    role_line_ids = fields.One2many(
+        groups="base.group_erp_manager,user_limited_access_settings.group_limited_settings",
+    )
+
+    role_ids = fields.One2many(
+        groups="base.group_erp_manager,user_limited_access_settings.group_limited_settings",
+    )
 
     @api.constrains("groups_id")
     def _check_escalation(self):
@@ -33,26 +41,3 @@ class ResUsers(models.Model):
                         ),
                     )
                 )
-
-    # def write(self, vals):
-    #     print("write", self.ids, vals)
-    #     if not self.env.user.has_privilege_escalation:
-    #         group_ids = []
-    #         for k, v in vals.items():
-    #             if k.startswith("in_group_") and v:
-    #                 group_ids.append(int(k.split("in_group_")[1]))
-    #         print("group_ids", group_ids)
-    #         for group_id in group_ids:
-    #             if group_id not in self.env.user.groups_id.ids:
-    #                 group = self.env["res.groups"].browse(group_id)
-    #                 raise ValidationError(
-    #                     _(
-    #                         "You can set the group '%(group_name)s'"
-    #                         " to users, because you are not member of this group.",
-    #                         group_name=group.display_name,
-    #                     )
-    #                 )
-
-    #     # Peut être utiliser une contrainte ?
-
-    #     return super().write(vals)

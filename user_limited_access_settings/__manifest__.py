@@ -9,12 +9,21 @@
     "license": "AGPL-3",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
-    "depends": ["base_setup", "auth_signup"],
+    "depends": [
+        # Odoo
+        "base_setup",
+        "auth_signup",
+        # OCA
+        "base_user_role",
+    ],
     "data": [
         "security/res_groups.xml",
         "security/ir_rule.xml",
         "security/ir.model.access.csv",
         "views/menu.xml",
     ],
-    "demo": [],
+    "demo": [
+        "demo/res_partner.xml",
+        "demo/res_users.xml",
+    ],
 }

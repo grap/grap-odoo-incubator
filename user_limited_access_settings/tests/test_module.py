@@ -11,15 +11,11 @@ class TestModule(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.demo_user = cls.env.ref("base.user_demo")
+        cls.demo_user = cls.env.ref("user_limited_access_settings.user_demo")
         cls.limited_group = cls.env.ref(
             "user_limited_access_settings.group_limited_settings"
         )
         cls.random_group = cls.env.ref("base.group_private_addresses")
-        cls.demo_user.groups_id = [
-            Command.link(cls.limited_group.id),
-            Command.unlink(cls.random_group.id),
-        ]
         cls.user_vals = {
             "name": "User 1",
             "login": "login1",
