@@ -15,6 +15,7 @@
         "auth_signup",
         # OCA
         "base_user_role",
+        "res_company_category",
     ],
     "data": [
         "security/res_groups.xml",
