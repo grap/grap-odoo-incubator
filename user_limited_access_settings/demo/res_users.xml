@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2024 Sylvain LE GAL - GRAP
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="user_demo" model="res.users">
+        <field name="partner_id" ref="partner_demo"/>
+        <field name="login">limited</field>
+        <field name="password">limited</field>
+        <field name="signature" type="html"><span>-- <br/>+Mr Limited Access</span></field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="groups_id" eval="[Command.set([
+            ref('user_limited_access_settings.group_limited_settings'),
+            ref('base.group_partner_manager'),
+            ])]"/>
+    </record>
+
+</odoo>
