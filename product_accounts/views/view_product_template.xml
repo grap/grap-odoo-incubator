@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2024 Sylvain LE GAL - GRAP
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="view_product_template_form" model="ir.ui.view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_ok']/.." position="before">
+                <span class="d-inline-block">
+                    <label for="accounts"/>
+                    <field name="accounts" style="margin-right: 5px;"/>
+                </span>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_product_template_tree" model="ir.ui.view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view" />
+        <field name="arch" type="xml">
+            <field name="uom_id" position="after">
+                <field name="accounts" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_product_template_tree_account" model="ir.ui.view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="account.product_template_view_tree" />
+        <field name="arch" type="xml">
+            <field name="list_price" position="after">
+                <field name="accounts" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
