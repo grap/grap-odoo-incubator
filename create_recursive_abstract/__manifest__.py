@@ -10,6 +10,6 @@
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
-    "depends": ["base"],
+    "depends": ["base_import"],
     "installable": True,
 }
