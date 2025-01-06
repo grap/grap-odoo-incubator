@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[create_recursive_abstract](create_recursive_abstract/) | 16.0.1.0.0 |  | Create recursively parents item.
+[create_recursive_abstract](create_recursive_abstract/) | 16.0.2.0.0 |  | Create recursively parents item.
 [create_recursive_pos_category](create_recursive_pos_category/) | 16.0.1.0.0 |  | Extra GRAP Tools to import product data for Point of sale module
 [create_recursive_product_category](create_recursive_product_category/) | 16.0.1.0.0 |  | Create recursively parents item for the Product Categories model.
 [product_accounts](product_accounts/) | 16.0.1.0.0 |  | Compute and display income - expense account at product level
