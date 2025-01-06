@@ -35,22 +35,35 @@ class CreateRecursiveMixin(models.AbstractModel):
         - then, create an item named 'Child' with the parent found as parent_id.
         """
         vals = {}
+        self._create_recursive_alter_vals(vals, name)
+
+        item = self.create(vals)
+        return item.name_get()[0]
+
+    @api.model
+    def _create_recursive_alter_vals(self, vals, name=False):
+        name = name and name or vals.get("name", "")
         if "/" in name:
             splitted_name = name.split("/")
             parent_name = (" / ".join([x.strip() for x in splitted_name[:-1]])).strip()
             item_name = splitted_name[-1:][0].strip()
             parent_id = self._create_recursive_get_or_create_parent_id(parent_name)
-            vals = {"name": item_name, "parent_id": parent_id}
+            vals.update({"name": item_name, "parent_id": parent_id})
         else:
-            vals = {"name": name}
-        item = self.create(vals)
-        return item.name_get()[0]
+            vals.update({"name": name})
 
     @api.model_create_multi
     def create(self, vals_list):
-        for value in vals_list:
-            if "name" in value:
-                value["name"] = value["name"].replace("/", "-").strip()
+        if self.env.context.get("imported_model") == self._name:
+            # Creation from import of model
+            # create parents if doesn't exist
+            for vals in vals_list:
+                self._create_recursive_alter_vals(vals)
+        else:
+            # Regular creation, removing bad "/"
+            for vals in vals_list:
+                if "name" in vals:
+                    vals["name"] = vals["name"].replace("/", "-").strip()
         return super().create(vals_list)
 
     def write(self, vals):

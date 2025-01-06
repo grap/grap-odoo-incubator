@@ -44,3 +44,11 @@ class TestModule(TransactionCase):
         categ = self.model.browse(res[0])
         self.assertEqual(categ.name, "New Category")
         self.assertEqual(categ.parent_id, self.child_item)
+
+    def test_create_via_import(self):
+        categ = self.model.with_context(imported_model=self.model._name).create(
+            {"name": "Parent / Child"}
+        )
+        self.assertEqual(categ.name, "Child")
+        self.assertTrue(categ.parent_id)
+        self.assertEqual(categ.parent_id.name, "Parent")
