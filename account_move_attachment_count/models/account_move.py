@@ -5,6 +5,6 @@
 from odoo import models
 
 
-class AccountInvoice(models.Model):
-    _name = "account.invoice"
-    _inherit = ["attachment.count.mixin", "account.invoice"]
+class AccountMove(models.Model):
+    _name = "account.move"
+    _inherit = ["attachment.count.mixin", "account.move"]

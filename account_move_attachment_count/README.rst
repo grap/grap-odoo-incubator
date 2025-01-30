@@ -17,14 +17,14 @@ Account Invoices - Attachment Count
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
-    :target: https://github.com/grap/grap-odoo-incubator/tree/12.0/account_invoice_attachment_count
+    :target: https://github.com/grap/grap-odoo-incubator/tree/12.0/account_move_attachment_count
     :alt: grap/grap-odoo-incubator
 
 |badge1| |badge2| |badge3|
 
 This module adds "Attached Files" quantity column on account invoices tree view.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/account_invoice_attachment_count/static/description/account_invoice_tree_view.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/account_move_attachment_count/static/description/account_invoice_tree_view.png
 
 **Table of contents**
 
@@ -37,7 +37,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20account_invoice_attachment_count%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20account_move_attachment_count%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -65,6 +65,6 @@ Current maintainer:
 
 |maintainer-legalsylvain| 
 
-This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/12.0/account_invoice_attachment_count>`_ project on GitHub.
+This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/12.0/account_move_attachment_count>`_ project on GitHub.
 
 You are welcome to contribute.

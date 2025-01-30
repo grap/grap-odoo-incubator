@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * account_invoice_attachment_count
+#   * account_move_attachment_count
 #
 msgid ""
 msgstr ""
@@ -15,18 +15,18 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: account_invoice_attachment_count
-#: model_terms:ir.ui.view,arch_db:account_invoice_attachment_count.view_account_invoice_supplier_form
+#. module: account_move_attachment_count
+#: model_terms:ir.ui.view,arch_db:account_move_attachment_count.view_account_invoice_supplier_form
 msgid "A.F."
 msgstr "P.J."
 
-#. module: account_invoice_attachment_count
-#: model:ir.model,name:account_invoice_attachment_count.model_ir_attachment
+#. module: account_move_attachment_count
+#: model:ir.model,name:account_move_attachment_count.model_ir_attachment
 msgid "Attachment"
 msgstr "Pièce jointe"
 
-#. module: account_invoice_attachment_count
-#: model:ir.model,name:account_invoice_attachment_count.model_account_invoice
+#. module: account_move_attachment_count
+#: model:ir.model,name:account_move_attachment_count.model_account_invoice
 msgid "Invoice"
 msgstr "Facture"
 

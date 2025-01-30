@@ -10,5 +10,5 @@ class IrAttachment(models.AbstractModel):
 
     def _get_attachment_count_models(self):
         res = super()._get_attachment_count_models()
-        res.append("account.invoice")
+        res += ["account.move"]
         return res

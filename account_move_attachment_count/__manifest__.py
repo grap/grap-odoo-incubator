@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Account Invoices - Attachment Count",
-    "version": "12.0.1.0.1",
+    "version": "16.0.1.0.0",
     "category": "Tools",
     "license": "AGPL-3",
     "author": "GRAP,Odoo Community Association (OCA)",
@@ -14,7 +14,7 @@
         "web_widget_attachment_count",
     ],
     "data": [
-        "views/view_account_invoice.xml",
+        "views/view_account_move.xml",
     ],
     "pre_init_hook": "_hook_store_attachment_count_value",
     "installable": True,

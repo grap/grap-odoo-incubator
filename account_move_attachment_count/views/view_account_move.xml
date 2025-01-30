@@ -8,10 +8,10 @@
 <odoo>
 
     <record id="view_account_invoice_supplier_form" model="ir.ui.view">
-        <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.invoice_supplier_tree" />
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_in_invoice_bill_tree" />
         <field name="arch" type="xml">
-            <field name="type" position="after">
+            <field name="move_type" position="after">
                 <field name="message_attachment_count" string="A.F."
                     widget="attachment"
                     attrs="{'invisible': [('message_attachment_count', '=', 0)]}"/>
