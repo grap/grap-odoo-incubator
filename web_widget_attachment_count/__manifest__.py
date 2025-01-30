@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Web Widget - Attachment Count",
-    "version": "12.0.1.0.2",
+    "version": "16.0.1.0.0",
     "category": "Tools",
     "license": "AGPL-3",
     "author": "GRAP,Odoo Community Association (OCA)",
@@ -14,6 +14,7 @@
     },
     "depends": [
         "web",
+        "mail",
     ],
     "installable": True,
 }

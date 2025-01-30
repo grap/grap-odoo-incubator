@@ -30,25 +30,23 @@ class IrAttachment(models.AbstractModel):
             self._recompute_attachment_count_for_related_items()
         return res
 
-    @api.multi
     def unlink(self):
         to_update = {}
         for model in self._get_attachment_count_models():
-            to_update[model] = self.filtered(lambda x: x.res_model == model).mapped(
-                "res_id"
-            )
+            to_update[model] = self.filtered(
+                lambda x, model=model: x.res_model == model
+            ).mapped("res_id")
         res = super().unlink()
         for model, item_ids in to_update.items():
             self.env[model].browse(item_ids)._compute_message_attachment_count()
         return res
 
-    @api.multi
     def _recompute_attachment_count_for_related_items(self):
         for attachment in self:
             for model in self._get_attachment_count_models():
-                item_ids = attachment.filtered(lambda x: x.res_model == model).mapped(
-                    "res_id"
-                )
+                item_ids = attachment.filtered(
+                    lambda x, model=model: x.res_model == model
+                ).mapped("res_id")
                 self.env[model].browse(item_ids)._compute_message_attachment_count()
 
     @api.model
