@@ -21,12 +21,14 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[account_move_attachment_count](account_move_attachment_count/) | 16.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Account Invoices - Attachment Count
 [create_recursive_abstract](create_recursive_abstract/) | 16.0.2.0.0 |  | Create recursively parents item.
 [create_recursive_pos_category](create_recursive_pos_category/) | 16.0.1.0.0 |  | Extra GRAP Tools to import product data for Point of sale module
 [create_recursive_product_category](create_recursive_product_category/) | 16.0.1.0.0 |  | Create recursively parents item for the Product Categories model.
 [product_accounts](product_accounts/) | 16.0.1.0.0 |  | Compute and display income - expense account at product level
 [user_limited_access_settings](user_limited_access_settings/) | 16.0.1.0.0 |  | Create a new Administration group with limited access to create only users and companies
 [web_select_only_child_company](web_select_only_child_company/) | 16.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | When selecting a company, automatically select all the child companies.
+[web_widget_attachment_count](web_widget_attachment_count/) | 16.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Web Widget - Attachment Count
 
 [//]: # (end addons)
 
