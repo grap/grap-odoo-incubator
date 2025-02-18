@@ -105,7 +105,6 @@ class TestQuickQuantityDone(TransactionCase):
         self.picking3.action_confirm()
 
     def test_one_quantity_change(self):
-
         # test initial demands
         for line in self.picking.move_ids_without_package:
             if line.product_id == self.product_id_1:
@@ -122,7 +121,6 @@ class TestQuickQuantityDone(TransactionCase):
                 self.assertEqual(line.quantity_done, 0)
 
     def test_all_quantities_done(self):
-
         # test with changing all quantities
         self.picking.quick_quantities_done()
         for line in self.picking.move_ids_without_package:
