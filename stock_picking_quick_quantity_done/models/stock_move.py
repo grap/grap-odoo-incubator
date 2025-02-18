@@ -16,13 +16,11 @@ class StockMove(models.Model):
         " done button should be shown.",
     )
 
-    @api.multi
     def _compute_show_quick_quantity_done(self):
         for move in self:
             if move.quantity_done < move.product_uom_qty:
                 move.show_quick_quantity_done = True
 
-    @api.multi
     def quick_quantity_done(self):
         for move in self:
             initial_demand = move.product_uom_qty

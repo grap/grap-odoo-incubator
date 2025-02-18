@@ -16,7 +16,6 @@ class StockPicking(models.Model):
         " done button should be shown.",
     )
 
-    @api.multi
     def _compute_show_quick_quantities_done(self):
         for picking in self:
             moves = self.mapped("move_lines").filtered(
@@ -26,7 +25,6 @@ class StockPicking(models.Model):
                 if move.show_quick_quantity_done:
                     picking.show_quick_quantities_done = True
 
-    @api.multi
     def quick_quantities_done(self):
         for picking in self:
             moves = picking.mapped("move_lines").filtered(
