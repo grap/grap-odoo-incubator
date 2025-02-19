@@ -2,14 +2,14 @@
 # @author Quentin DUPONT (quentin.dupont@grap.coop)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, models
+from odoo import models
 
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     def action_confirm(self):
-        """After Confirm, force stock.move.line to be full, ready to be
+        """After Confirm, force stock.move to be full, ready to be
         validated"""
         super().action_confirm()
         for picking in self.mapped("picking_ids").filtered(

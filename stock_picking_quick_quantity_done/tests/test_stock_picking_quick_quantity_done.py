@@ -7,7 +7,7 @@ from odoo.tests.common import TransactionCase
 
 class TestQuickQuantityDone(TransactionCase):
     def setUp(self):
-        super(TestQuickQuantityDone, self).setUp()
+        super().setUp()
         partner = self.env["res.partner"].create(
             {
                 "name": "Test",
@@ -26,7 +26,7 @@ class TestQuickQuantityDone(TransactionCase):
                 "picking_type_id": picking_type_out.id,
                 "location_id": stock_location.id,
                 "location_dest_id": customer_location.id,
-                "move_lines": [
+                "move_ids": [
                     (
                         0,
                         0,
@@ -63,7 +63,7 @@ class TestQuickQuantityDone(TransactionCase):
                 "picking_type_id": picking_type_out.id,
                 "location_id": stock_location.id,
                 "location_dest_id": customer_location.id,
-                "move_lines": [
+                "move_ids": [
                     (
                         0,
                         0,

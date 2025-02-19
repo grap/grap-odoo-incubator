@@ -2,15 +2,14 @@
 # @author Quentin DUPONT (quentin.dupont@grap.coop)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, fields, models
-from odoo.exceptions import Warning as UserError
+from odoo import _, fields, models
+from odoo.exceptions import UserError
 
 
 class StockMove(models.Model):
     _inherit = "stock.move"
 
     show_quick_quantity_done = fields.Boolean(
-        default=False,
         compute="_compute_show_quick_quantity_done",
         help="Technical field used to compute whether the quick quantity"
         " done button should be shown.",
@@ -20,6 +19,8 @@ class StockMove(models.Model):
         for move in self:
             if move.quantity_done < move.product_uom_qty:
                 move.show_quick_quantity_done = True
+            else:
+                move.show_quick_quantity_done = False
 
     def quick_quantity_done(self):
         for move in self:

@@ -11,7 +11,7 @@
     "application": False,
     "installable": True,
     "depends": [
-        "sale",
+        "sale_management",
         "stock",
     ],
     "data": [
