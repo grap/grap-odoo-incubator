@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Copyright (C) 2025 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_uom_category_form" model="ir.ui.view">
+        <field name="model">uom.category</field>
+        <field name="inherit_id" ref="uom.product_uom_categ_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='uom_ids']/tree//field[@name='name']" position="before">
+                <field name="is_favorite" widget="boolean_favorite" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Copyright (C) 2023 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_uom_uom_search" model="ir.ui.view">
+        <field name="model">uom.uom</field>
+        <field name="inherit_id" ref="uom.uom_uom_view_search" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <filter
+                    name="filter_is_favorite"
+                    string="Favorites"
+                    domain="[('is_favorite','=',True)]"
+                />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_uom_uom_tree" model="ir.ui.view">
+        <field name="model">uom.uom</field>
+        <field name="inherit_id" ref="uom.product_uom_tree_view" />
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="is_favorite" widget="boolean_favorite" nolabel="1" />
+            </field>
+            <tree position="attributes">
+                <attribute name="decoration-bf">is_favorite == True</attribute>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_uom_uom_form" model="ir.ui.view">
+        <field name="model">uom.uom</field>
+        <field name="inherit_id" ref="uom.product_uom_form_view" />
+        <field name="arch" type="xml">
+            <field name="active" position="after">
+                <field name="is_favorite" widget="boolean_favorite" />
+            </field>
+        </field>
+    </record>
+
+    <record id="uom.product_uom_form_action" model="ir.actions.act_window">
+        <field name="context">{'search_default_filter_is_favorite': 1}</field>
+    </record>
+
+</odoo>
