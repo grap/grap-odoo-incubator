@@ -18,7 +18,7 @@ class StockMove(models.Model):
             else:
                 raise UserError(
                     _(
-                        "We can't quickly set quantity done because there's no "
-                        "initial demand or it's null."
+                        "We can't quickly validate picking because there's a "
+                        "move with a null demand."
                     )
                 )
