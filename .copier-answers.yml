@@ -1,7 +1,9 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: a7bd24b
-_src_path: https://github.com/grap/oca-addons-repo-template-new.git
+_commit: ebd3bb9
+_src_path: https://github.com/grap/oca-addons-repo-template-new
 ci: GitHub
+convert_readme_fragments_to_markdown: false
+enable_checklog_odoo: false
 generate_requirements_txt: true
 github_check_license: true
 github_ci_extra_env: {}
@@ -22,4 +24,6 @@ repo_name: Incubator of Odoo (formely OpenERP) modules before they are shared to
     OCA
 repo_slug: grap-odoo-incubator
 repo_website: https://github.com/grap/grap-odoo-incubator
+use_pyproject_toml: false
+use_ruff: false
 
