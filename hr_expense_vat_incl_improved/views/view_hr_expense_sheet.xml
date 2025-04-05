@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2024 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_hr_expense_sheet_form" model="ir.ui.view">
+        <field name="model">hr.expense.sheet</field>
+        <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='expense_line_ids']/tree/field[@name='tax_ids']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='expense_line_ids']/tree/field[@name='tax_ids']" position="after">
+                    <field name="untaxed_amount" widget="monetary" options="{'currency_field': 'currency_id'}" string="VAT Excl." optional="show"/>
+                    <field name="tax_description" string="Rate" attrs="{'invisible': [('amount_tax', '=', 0)]}" optional="show"/>
+            </xpath>
+            <xpath expr="//field[@name='expense_line_ids']/tree/field[@name='amount_tax']" position="attributes">
+                <attribute name="optional">show</attribute>
+                <attribute name="groups" />
+                <attribute name="string">VAT</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='expense_line_ids']/tree/field[@name='total_amount']" position="attributes">
+                <attribute name="string">VAT Incl.</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
