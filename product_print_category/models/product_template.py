@@ -9,11 +9,20 @@ class ProductTemplate(models.Model):
     _name = "product.template"
     _inherit = ["product.template", "product.print.category.mixin"]
 
+    # store this field (required for the related fields below)
+    product_variant_id = fields.Many2one(store=True)
+
     print_category_id = fields.Many2one(
         related="product_variant_id.print_category_id", readonly=False
     )
 
     to_print = fields.Boolean(related="product_variant_id.to_print", readonly=False)
+
+    # Recompute when active is changed, too. If the variants are inactive, the
+    # template's product_variant_id is empty.
+    @api.depends("product_variant_ids", "product_variant_ids.active")
+    def _compute_product_variant_id(self):
+        return super()._compute_product_variant_id()
 
     @api.multi
     def write(self, vals):
