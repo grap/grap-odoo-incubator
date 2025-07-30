@@ -61,17 +61,15 @@ class TestSalePickingQuickConfirm(TransactionCase):
             }
         )
 
-    def test_001_confirm_sale_and_picking(self):
+    def test_01_confirm_sale_and_picking(self):
         self.assertEqual(len(self.sale_order_1.picking_ids), 0)
         self.assertEqual(self.sale_order_1.action_quick_confirm(), True)
         self.assertEqual(len(self.sale_order_1.picking_ids), 1)
         for picking in self.sale_order_1.picking_ids:
             self.assertEqual(picking.state, "done")
 
-    def test_002_null_value_on_picking(self):
+    def test_02_null_value_on_picking(self):
         self.sale_order_2.action_confirm()
         self.sale_order_2.picking_ids.move_ids_without_package[0].product_uom_qty = 0
         with self.assertRaises(UserError):
-            self.sale_order_2.picking_ids.move_ids_without_package[
-                0
-            ].quick_quantity_done()
+            self.sale_order_2.picking_ids[0].quick_confirm()
