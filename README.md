@@ -25,6 +25,7 @@ addon | version | maintainers | summary
 [create_recursive_abstract](create_recursive_abstract/) | 16.0.2.0.0 |  | Create recursively parents item.
 [create_recursive_pos_category](create_recursive_pos_category/) | 16.0.1.0.0 |  | Extra GRAP Tools to import product data for Point of sale module
 [create_recursive_product_category](create_recursive_product_category/) | 16.0.1.0.0 |  | Create recursively parents item for the Product Categories model.
+[hr_expense_vat_incl_improved](hr_expense_vat_incl_improved/) | 16.0.1.1.0 |  | Improve HR Expense management, regarding VAT.
 [product_accounts](product_accounts/) | 16.0.1.0.0 |  | Compute and display income - expense account at product level
 [product_uom_company_favorite](product_uom_company_favorite/) | 16.0.1.0.1 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Possilibity to set favorite product units of Measure per company
 [sale_picking_quick_confirm](sale_picking_quick_confirm/) | 16.0.1.1.0 | [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Sale Picking Quick Confirm
