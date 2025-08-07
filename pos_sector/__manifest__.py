@@ -19,19 +19,19 @@
         "security/ir.model.access.csv",
         # "views/assets.xml",
         "views/view_pos_sector.xml",
-        # "views/view_product_template.xml",
+        "views/view_product_template.xml",
         "views/view_pos_config.xml",
         "views/menu.xml",
     ],
     "demo": [
-        # "demo/res_groups.xml",
+        "demo/res_groups.xml",
         "demo/pos_sector.xml",
         "demo/pos_config.xml",
-        # "demo/product_product.xml",
+        "demo/product_product.xml",
     ],
     "images": [
         "static/description/pos_config_form.png",
-        # "static/description/product_form.png",
+        "static/description/product_form.png",
     ],
     "installable": True,
 }
