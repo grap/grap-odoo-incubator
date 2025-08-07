@@ -17,7 +17,6 @@
         "security/ir_rule.xml",
         "security/res_groups.xml",
         "security/ir.model.access.csv",
-        # "views/assets.xml",
         "views/view_pos_sector.xml",
         "views/view_product_template.xml",
         "views/view_pos_config.xml",
