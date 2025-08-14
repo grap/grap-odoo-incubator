@@ -15,7 +15,6 @@ class ProductPricelist(models.Model):
     )
 
     # View Section
-    @api.multi
     def button_edit_pricelist_by_product(self):
         self.ensure_one()
         action = self.env.ref(

@@ -5,7 +5,6 @@
 from odoo import _, fields, models
 from odoo.exceptions import UserError
 
-from odoo.addons import decimal_precision as dp
 
 
 class ProductProduct(models.Model):
@@ -19,14 +18,14 @@ class ProductProduct(models.Model):
     pricelist_price = fields.Float(
         string="Pricelist Price",
         compute="_compute_pricelist_price",
-        digits=dp.get_precision("Pricelist Price"),
+        digits="Pricelist Price",
         inverse="_inverse_pricelist_price",
     )
 
     pricelist_price_difference_rate = fields.Float(
         string="Difference (%)",
         compute="_compute_pricelist_price",
-        digits=dp.get_precision("Discount"),
+        digits="Discount",
     )
 
     variant_item_ids = fields.One2many(
