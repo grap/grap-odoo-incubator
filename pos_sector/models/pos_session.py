@@ -11,12 +11,14 @@ class PosSession(models.Model):
     def _loader_params_product_product(self):
         """Overload the loader to add in the domain the filter by sectors."""
         params = super()._loader_params_product_product()
-        params['search_params']['domain'] = AND([
-            params['search_params']['domain'],
+        params["search_params"]["domain"] = AND(
             [
-                '|',
-                ('sector_id', '=', False),
-                ('sector_id', 'in', self.config_id.sector_ids._ids),
+                params["search_params"]["domain"],
+                [
+                    "|",
+                    ("sector_id", "=", False),
+                    ("sector_id", "in", self.config_id.sector_ids._ids),
+                ],
             ]
-        ])
+        )
         return params
