@@ -12,7 +12,7 @@
     "license": "AGPL-3",
     "depends": [
         "product",
-        "sale",
+        "sale_management",
     ],
     "data": [
         "security/res_groups.xml",

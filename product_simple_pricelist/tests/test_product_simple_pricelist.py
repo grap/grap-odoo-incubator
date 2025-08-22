@@ -18,6 +18,12 @@ class TestModule(TransactionCase):
             "product_simple_pricelist.pricelist_editable_based_discount"
         )
         self.corner_desk_product = self.env.ref("product.product_product_5")
+        # for the test we will be sure that currency are the same between
+        # product and pricelist
+        self.simple_pricelist.currency_id = self.corner_desk_product.currency_id
+        self.simple_recursive_pricelist.currency_id = (
+            self.corner_desk_product.currency_id
+        )
 
     # Test Section
     def test_01_add_new_price(self):

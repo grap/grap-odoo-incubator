@@ -6,7 +6,6 @@ from odoo import _, fields, models
 from odoo.exceptions import UserError
 
 
-
 class ProductProduct(models.Model):
     _inherit = "product.product"
 
@@ -55,9 +54,7 @@ class ProductProduct(models.Model):
             if item:
                 product.pricelist_price = item.fixed_price
             else:
-                product.pricelist_price = pricelist._compute_price_rule(
-                    [(product, 1.0, False)]
-                )[product.id][0]
+                product.pricelist_price = pricelist._get_product_price(product, 1.0)
 
             product.pricelist_price_difference_rate = (
                 product.lst_price
