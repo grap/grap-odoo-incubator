@@ -15,7 +15,6 @@ class ProductProduct(models.Model):
     )
 
     pricelist_price = fields.Float(
-        string="Pricelist Price",
         compute="_compute_pricelist_price",
         digits="Pricelist Price",
         inverse="_inverse_pricelist_price",

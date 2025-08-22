@@ -10,7 +10,6 @@ class ProductPricelist(models.Model):
     _inherit = "product.pricelist"
 
     editable_by_product = fields.Boolean(
-        string="Editable By Product",
         help="Check this box if you want to edit this pricelist by product",
     )
 
