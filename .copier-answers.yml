@@ -1,5 +1,5 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: b23859c
+_commit: 1e650e0
 _src_path: https://github.com/grap/oca-addons-repo-template-v16
 additional_ruff_rules: []
 ci: GitHub
