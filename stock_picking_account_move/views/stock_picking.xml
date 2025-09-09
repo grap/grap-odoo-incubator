@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2025 - Today: GRAP (http://www.grap.coop)
+@author: Quentin DUPONT (quentin.dupont@grap.coop)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <!-- STOCK PICKING FORM -->
+    <record id="view_stock_picking_form" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="generate_account_move" string="Generate Account Move"
+                        type="object" class="oe_highlight" groups="account.group_account_manager"
+                        attrs="{'invisible': [('account_move_state', '!=', 'to_do')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="account_move_state" invisible="1"/>
+                <field name="account_move_id" attrs="{'invisible': [('account_move_state', '==', 'no_need')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='quantity_done']" position="after">
+                <field name="price_unit" optional="show"/>
+                <field name="amount" optional="show"/>
+            </xpath>
+            <xpath expr="//group[@name='other_infos']" position="inside">
+                <field name="is_return"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- STOCK PICKING TREE -->
+    <record id="view_stock_picking_tree" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                 <field name="is_return" optional="hide"/>
+                 <field name="account_move_id" optional="hide"/>
+                 <field name="account_move_state" optional="show" widget="badge" decoration-danger="account_move_state=='to_do'" decoration-success="account_move_state=='account_move_generated'" decoration-muted="account_move_state in ('waiting', 'no_need')"/>
+            </xpath>
+            <!-- STOCK PICKING MASS GENERATE -->
+            <xpath expr="//button[@name='action_assign']" position="after">
+                <button name="action_mass_generate_wizard" type="object" string="Generate Account Moves"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- STOCK PICKING SEARCH -->
+    <record id="view_stock_picking_search" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='cancel']" position="after">
+                <separator/>
+                <filter name="account_move_state_waiting" string="Account move To do" domain="[('account_move_state', 'in', ['to_do'])]"/>
+                <filter name="account_move_state_done" string="Account move Generated" domain="[('account_move_state', 'in', ['account_move_generated'])]"/>
+            </xpath>
+            <xpath expr="//filter[@name='picking_type']" position="after">
+                <separator/>
+                <filter name="account_move_id" domain="[]" context="{'group_by': 'account_move_id'}"/>
+
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
