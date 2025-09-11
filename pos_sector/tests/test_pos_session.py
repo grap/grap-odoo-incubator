@@ -139,3 +139,29 @@ class TestPointOfSaleFlow(TestPointOfSaleCommon):
             self.env["product.product"].with_context(**params["context"]).search(domain)
         )
         self.assertIn(product, products)
+
+    def test_get_pos_ui_product_product_by_params(self):
+        sector = self.env["pos.sector"].create(
+            {
+                "name": "Test",
+                "company_id": self.pos_config.company_id.id,
+            }
+        )
+        self.pos_config.open_ui()
+
+        pos_session = self.pos_config.current_session_id
+        products = pos_session.get_pos_ui_product_product_by_params({})
+        product_id = products[0]["id"]
+        product = self.env["product.product"].browse(product_id)
+
+        product.write({"sector_id": sector.id})
+        products = pos_session.get_pos_ui_product_product_by_params({})
+        self.assertNotIn(product_id, [x["id"] for x in products])
+
+        self.pos_config.sector_ids += sector
+        products = pos_session.get_pos_ui_product_product_by_params({})
+        self.assertIn(product_id, [x["id"] for x in products])
+        products = pos_session.get_pos_ui_product_product_by_params(
+            {"domain": [("id", "=", product_id)]}
+        )
+        self.assertIn(product_id, [x["id"] for x in products])

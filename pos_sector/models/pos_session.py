@@ -8,12 +8,10 @@ from odoo.osv.expression import AND
 class PosSession(models.Model):
     _inherit = "pos.session"
 
-    def _loader_params_product_product(self):
-        """Overload the loader to add in the domain the filter by sectors."""
-        params = super()._loader_params_product_product()
-        params["search_params"]["domain"] = AND(
+    def apply_sector_domain(self, domain):
+        return AND(
             [
-                params["search_params"]["domain"],
+                domain,
                 [
                     "|",
                     ("sector_id", "=", False),
@@ -21,4 +19,19 @@ class PosSession(models.Model):
                 ],
             ]
         )
+
+    def _loader_params_product_product(self):
+        """Overload the loader to add in the domain the filter by sectors."""
+        params = super()._loader_params_product_product()
+        params["search_params"]["domain"] = self.apply_sector_domain(
+            params["search_params"]["domain"]
+        )
         return params
+
+    def get_pos_ui_product_product_by_params(self, custom_search_params):
+        if custom_search_params.get("domain"):
+            custom_search_params["domain"] = self.apply_sector_domain(
+                custom_search_params["domain"]
+            )
+
+        return super().get_pos_ui_product_product_by_params(custom_search_params)
