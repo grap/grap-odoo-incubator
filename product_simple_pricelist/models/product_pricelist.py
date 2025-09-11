@@ -19,7 +19,7 @@ class ProductPricelist(models.Model):
         action = self.env.ref(
             "product_simple_pricelist.action_edit_pricelist_by_product"
         )
-        result = action.read()[0]
+        result = action.sudo().read()[0]
         context = safe_eval(result.get("context", "{}"))
         context.update({"pricelist_id": self.id})
         result.update(
