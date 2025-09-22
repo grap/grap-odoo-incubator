@@ -23,7 +23,7 @@ jobs:
             makepot: "false"
     services:
       postgres:
-        image: postgres:12.0
+        image: postgres:12
         env:
           POSTGRES_USER: odoo
           POSTGRES_PASSWORD: odoo
