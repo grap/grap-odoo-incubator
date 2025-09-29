@@ -40,23 +40,24 @@ class PosConfig(models.Model):
             LIMIT %(limit)s
         """
         params = {
-            'company_id': self.company_id.id,
-            'available_categ_ids': (
-                self.iface_available_categ_ids.mapped('id')
-                if self.iface_available_categ_ids else None
+            "company_id": self.company_id.id,
+            "available_categ_ids": (
+                self.iface_available_categ_ids.mapped("id")
+                if self.iface_available_categ_ids
+                else None
             ),
-            'tip_product_id': self.tip_product_id.id if self.tip_product_id else None,
-            'limit': self.limited_products_amount
+            "tip_product_id": self.tip_product_id.id if self.tip_product_id else None,
+            "limit": self.limited_products_amount,
         }
         self.env.cr.execute(query, params)
         product_ids = self.env.cr.fetchall()
-        products = self.env['product.product'].search_read(
+        products = self.env["product.product"].search_read(
             [
-                ('id', 'in', product_ids),
+                ("id", "in", product_ids),
                 "|",
                 ("sector_id", "=", False),
                 ("sector_id", "in", self.sector_ids._ids),
             ],
-            fields=fields
+            fields=fields,
         )
         return products
