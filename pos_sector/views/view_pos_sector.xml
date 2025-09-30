@@ -31,6 +31,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="active" invisible="1"/>
                     <div class="oe_title">
                         <div class="oe_edit_only">
                             <label for="name" string="Name"/>
@@ -38,11 +40,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <h1>
                             <field name="name"/>
                         </h1>
-                    </div>
-                    <div class="oe_button_box" name="button_box">
-                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
-                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
-                        </button>
                     </div>
                     <group>
                         <group>
@@ -58,7 +55,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="name">Sectors</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">pos.sector</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 

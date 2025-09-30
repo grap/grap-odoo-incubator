@@ -22,4 +22,4 @@ class PosSector(models.Model):
 
     # Default section
     def _default_company_id(self):
-        return self.env.user.company_id.id
+        return self.env.company.id
