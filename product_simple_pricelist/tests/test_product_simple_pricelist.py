@@ -2,6 +2,7 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase
 
 
@@ -88,7 +89,6 @@ class TestModule(TransactionCase):
     def test_03_button_edit_pricelist_by_product(self):
         """Call button on pricelist to display the pricelist by product."""
         actions = self.simple_pricelist.button_edit_pricelist_by_product()
-        self.maxDiff = None
         self.assertEqual(
             {
                 k: v
@@ -103,3 +103,20 @@ class TestModule(TransactionCase):
                 "xml_id": "product_simple_pricelist.action_edit_pricelist_by_product",
             },
         )
+
+    def test_04_missing_pricelist_id_compute(self):
+        """Verify the compute without pricelist_id in the context"""
+        product = self.corner_desk_product.with_context(pricelist_id=False)
+        self.assertEqual(product.pricelist_price, 0.0)
+
+    def test_04_missing_pricelist_id_inverse(self):
+        """Inverse method must raise without pricelist_id in the context"""
+        product = self.corner_desk_product.with_context(pricelist_id=False)
+        with self.assertRaises(UserError):
+            product.pricelist_price = 10.0
+
+    def test_04_missing_pricelist_id_delete(self):
+        """delete method must raise without pricelist_id in the context"""
+        product = self.corner_desk_product.with_context(pricelist_id=False)
+        with self.assertRaises(UserError):
+            product.delete_pricelist_price()
