@@ -84,3 +84,22 @@ class TestModule(TransactionCase):
             -50.0,
             "bad computation of the pricelist differente rate",
         )
+
+    def test_03_button_edit_pricelist_by_product(self):
+        """Call button on pricelist to display the pricelist by product."""
+        actions = self.simple_pricelist.button_edit_pricelist_by_product()
+        self.maxDiff = None
+        self.assertEqual(
+            {
+                k: v
+                for k, v in actions.items()
+                if k in ("display_name", "name", "xml_id", "type", "res_model")
+            },
+            {
+                "display_name": "Edit My Simple Pricelist (based on Public Pricelist)",
+                "name": "Edit Pricelist",
+                "res_model": "product.product",
+                "type": "ir.actions.act_window",
+                "xml_id": "product_simple_pricelist.action_edit_pricelist_by_product",
+            },
+        )
