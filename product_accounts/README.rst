@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =============================
 Product - Accounting Settings
 =============================
@@ -13,7 +17,7 @@ Product - Accounting Settings
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
@@ -25,11 +29,14 @@ Product - Accounting Settings
 This module extends the odoo account module, to display explicitely
 accounts configured on products tree view.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_accounts/static/description/product_tree.png
+|image1|
 
 The information is also available on product form view.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_accounts/static/description/product_form.png
+|image2|
+
+.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_accounts/static/description/product_tree.png
+.. |image2| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_accounts/static/description/product_form.png
 
 **Table of contents**
 
@@ -50,12 +57,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/16.0/product_accounts>`_ project on GitHub.
 

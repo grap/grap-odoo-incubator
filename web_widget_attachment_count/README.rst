@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =============================
 Web Widget - Attachment Count
 =============================
@@ -13,7 +17,7 @@ Web Widget - Attachment Count
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
@@ -22,8 +26,8 @@ Web Widget - Attachment Count
 
 |badge1| |badge2| |badge3|
 
-This module extend Odoo Attachment mechanism to add features to
-display attachment quantity in a model.
+This module extend Odoo Attachment mechanism to add features to display
+attachment quantity in a model.
 
 This module doesn't add any feature for itself.
 
@@ -35,8 +39,8 @@ This module doesn't add any feature for itself.
 Known issues / Roadmap
 ======================
 
-Add a widget ``widget="attachment"`` and add extra features in the tree view
-like opening diretctly the attached file.
+Add a widget ``widget="attachment"`` and add extra features in the tree
+view like opening diretctly the attached file.
 
 Bug Tracker
 ===========
@@ -52,17 +56,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL <https://twitter.com/legalsylvain>
+- Sylvain LE GAL
+  <`https://twitter.com/legalsylvain\\> <https://twitter.com/legalsylvain\>>`__
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 .. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
     :target: https://github.com/legalsylvain

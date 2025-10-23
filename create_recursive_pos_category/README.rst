@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ===================================================
 GRAP - Custom Product Import - Point Of Sale Module
 ===================================================
@@ -13,7 +17,7 @@ GRAP - Custom Product Import - Point Of Sale Module
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
@@ -27,15 +31,15 @@ Implement the recursive creation of parent for the model PoS Categories.
 
 In the product view, if a user enter in the PoS category field the name
 **'Chairs / Little'**, it will not create a category with such name.
-Instead, it will look for a category named **'Chairs'** (and create it if it
-doesn't exists), then create a new category named **'Little'** with the category
-**'Chairs'** as parent.
+Instead, it will look for a category named **'Chairs'** (and create it
+if it doesn't exists), then create a new category named **'Little'**
+with the category **'Chairs'** as parent.
 
-If a user create or update the name of a PoS category, any **'/'** char will
-be replaced by the char **'-'**.
+If a user create or update the name of a PoS category, any **'/'** char
+will be replaced by the char **'-'**.
 
-At the installation, all **'/'** in the names of the PoS categories
-will be replaced by **'-'**.
+At the installation, all **'/'** in the names of the PoS categories will
+be replaced by **'-'**.
 
 **Table of contents**
 
@@ -56,17 +60,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL <https://twitter.com/legalsylvain>
+- Sylvain LE GAL
+  <`https://twitter.com/legalsylvain\\> <https://twitter.com/legalsylvain\>>`__
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/16.0/create_recursive_pos_category>`_ project on GitHub.
 
