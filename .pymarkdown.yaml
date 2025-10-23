@@ -1,0 +1,16 @@
+plugins:
+  # MD036: Emphasis possibly used instead of a heading element. (no-emphasis-as-heading,no-emphasis-as-header)
+  # Note: It is totally valid to use bold style.
+  MD036:
+    enabled: false
+
+  # MD041: First line in file should be a top level heading (first-line-heading,first-line-h1)
+  # Note: Disable top level heading check for the first line,
+  # as readme folders contain fragment file.
+  MD041:
+    enabled: false
+
+  # MD045: Images should have alternate text (alt text) (no-alt-text)
+  # Note: It doesn't make sense to require alternate text for all images.
+  MD045:
+    enabled: false
