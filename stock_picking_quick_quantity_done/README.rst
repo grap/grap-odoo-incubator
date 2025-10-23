@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =================================
 Stock Picking Quick Quantity Done
 =================================
@@ -13,7 +17,7 @@ Stock Picking Quick Quantity Done
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
@@ -22,12 +26,15 @@ Stock Picking Quick Quantity Done
 
 |badge1| |badge2| |badge3|
 
-This module allows you to quickly indicate the done quantities in pickings.
-This is useful for activities (such as grocery stores) where product stock
-quantities are not well updated, due to lack of time for example.
-This is the same objective as the legacy function "Force availability".
+This module allows you to quickly indicate the done quantities in
+pickings. This is useful for activities (such as grocery stores) where
+product stock quantities are not well updated, due to lack of time for
+example. This is the same objective as the legacy function "Force
+availability".
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_quick_quantity_done/static/description/picking.jpeg
+|image1|
+
+.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_quick_quantity_done/static/description/picking.jpeg
 
 **Table of contents**
 
@@ -37,9 +44,10 @@ This is the same objective as the legacy function "Force availability".
 Usage
 =====
 
-This module checks if some "quantities done" in the picking are not equals to
-initials demands. If so, "Force availability" button is possible.
-User can also set "quantity done" for each line of the picking.
+This module checks if some "quantities done" in the picking are not
+equals to initials demands. If so, "Force availability" button is
+possible. User can also set "quantity done" for each line of the
+picking.
 
 Bug Tracker
 ===========
@@ -55,17 +63,17 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Quentin DUPONT <quentin.dupont@grap.coop>
+- Quentin DUPONT <quentin.dupont@grap.coop>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/16.0/stock_picking_quick_quantity_done>`_ project on GitHub.
 

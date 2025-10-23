@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ==========================
 Stock Picking Account Move
 ==========================
@@ -13,7 +17,7 @@ Stock Picking Account Move
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
@@ -24,10 +28,10 @@ Stock Picking Account Move
 
 This module permits to create Account Move from Picking Type (Transfer).
 
-This is useful when you want to track the stock of a product and 
-declare the transfer of expenses in the accounts. 
+This is useful when you want to track the stock of a product and declare
+the transfer of expenses in the accounts.
 
-For example: gifts for tastings, using a product originally bought for 
+For example: gifts for tastings, using a product originally bought for
 purchase/resale to clean your store
 
 **Table of contents**
@@ -38,26 +42,32 @@ purchase/resale to clean your store
 Configuration
 =============
 
-Configure your stock picking type with Account Journal and Expense Account.
+Configure your stock picking type with Account Journal and Expense
+Account.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_account_move/static/description/account_type.jpeg
+|account_type|
+
+.. |account_type| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_account_move/static/description/account_type.jpeg
 
 Usage
 =====
 
-* Create a new Transfer (stock picking type) with your new Operation Type
-* Validate it and button GENERATE ACCOUNT MOVE appears
+- Create a new Transfer (stock picking type) with your new Operation
+  Type
+- Validate it and button GENERATE ACCOUNT MOVE appears
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_account_move/static/description/stock_picking_validated.jpeg
+|stock_picking_validated|
 
-* Click on it to generate Account Move on Form View
-* Or click on several pickings to generate Account Move.
+- Click on it to generate Account Move on Form View
+- Or click on several pickings to generate Account Move.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_account_move/static/description/stock_picking_tree.jpeg
+|stock_picking_tree|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_account_move/static/description/stock_picking_tree_generated.jpeg
+|stock_picking_tree_generated|
 
-
+.. |stock_picking_validated| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_account_move/static/description/stock_picking_validated.jpeg
+.. |stock_picking_tree| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_account_move/static/description/stock_picking_tree.jpeg
+.. |stock_picking_tree_generated| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_account_move/static/description/stock_picking_tree_generated.jpeg
 
 Bug Tracker
 ===========
@@ -73,17 +83,17 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Quentin Dupont (quentin.dupont@grap.coop)
+- Quentin Dupont (quentin.dupont@grap.coop)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/16.0/stock_picking_account_move>`_ project on GitHub.
 

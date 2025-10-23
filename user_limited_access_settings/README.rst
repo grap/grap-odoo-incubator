@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ============================
 User Limited Access Settings
 ============================
@@ -13,7 +17,7 @@ User Limited Access Settings
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
@@ -22,14 +26,16 @@ User Limited Access Settings
 
 |badge1| |badge2| |badge3|
 
-This module adds a new basic Administration group named, "Limited Settings".
+This module adds a new basic Administration group named, "Limited
+Settings".
 
-Members of this group can only create users and companies, and see User Roles.
+Members of this group can only create users and companies, and see User
+Roles.
 
 **Note:**
 
-We prevent right escalation, by preventing user to give access to
-groups if he is not member of the group himself.
+We prevent right escalation, by preventing user to give access to groups
+if he is not member of the group himself.
 
 **Table of contents**
 
@@ -50,12 +56,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/16.0/user_limited_access_settings>`_ project on GitHub.
 

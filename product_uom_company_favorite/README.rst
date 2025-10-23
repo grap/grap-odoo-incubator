@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ===============================
 Product UoM - Company Favorites
 ===============================
@@ -13,7 +17,7 @@ Product UoM - Company Favorites
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
@@ -22,24 +26,24 @@ Product UoM - Company Favorites
 
 |badge1| |badge2| |badge3|
 
-This module is usefull in a multi-company context if
-- the companies doesn't have to use all the same units
-- if you apply companies to your products.
+This module is usefull in a multi-company context if - the companies
+doesn't have to use all the same units - if you apply companies to your
+products.
 
 Without that module, when creating products, end user can select units
-that don't make sense for the current company.
-With that module, units manager can set for each company, which units
-will be displayed, reducing configuration error.
+that don't make sense for the current company. With that module, units
+manager can set for each company, which units will be displayed,
+reducing configuration error.
 
-This module also change the default unit of measure.
-If many units are favorite, default unit is False, so it forces the
-user to choose the correct one.
+This module also change the default unit of measure. If many units are
+favorite, default unit is False, so it forces the user to choose the
+correct one.
 
 **Note**
 
-When installing the module for all companies, or when creating a new company,
-we set as favorite units, all the units set for the products of the company
-(or the global products)
+When installing the module for all companies, or when creating a new
+company, we set as favorite units, all the units set for the products of
+the company (or the global products)
 
 **Table of contents**
 
@@ -49,25 +53,26 @@ we set as favorite units, all the units set for the products of the company
 Configuration
 =============
 
-* Select a company you want to configure
+- Select a company you want to configure
+- Go to "Units of Measure"
+- Uncheck units you don't want to use for the current company.
 
-* Go to "Units of Measure"
+|product_uom_tree|
 
-* Uncheck units you don't want to use for the current company.
-
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_uom_company_favorite/static/description/product_uom_tree.png
+.. |product_uom_tree| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_uom_company_favorite/static/description/product_uom_tree.png
 
 Usage
 =====
 
-* Go in "Inventory" > "Master Data" > "Products"
+- Go in "Inventory" > "Master Data" > "Products"
+- Create a new product
 
-* Create a new product
+|product_form_view|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_uom_company_favorite/static/description/product_form_view.png
+End user doesn't have access to the units that are not favorite in the
+current company.
 
-End user doesn't have access to the units
-that are not favorite in the current company.
+.. |product_form_view| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_uom_company_favorite/static/description/product_form_view.png
 
 Bug Tracker
 ===========
@@ -83,17 +88,17 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 .. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
     :target: https://github.com/legalsylvain

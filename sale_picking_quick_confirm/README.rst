@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ==========================
 Sale Picking Quick Confirm
 ==========================
@@ -13,7 +17,7 @@ Sale Picking Quick Confirm
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
@@ -25,9 +29,12 @@ Sale Picking Quick Confirm
 This module adds a button on Sale Order to quickly validate Sale Order
 and its Pickings with full quantity, not checking Availibility.
 
-Use cases : grocery stores where product stock is not updated all the time.
+Use cases : grocery stores where product stock is not updated all the
+time.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/sale_picking_quick_confirm/static/description/sale_order_quick_confirm.jpeg
+|image1|
+
+.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/sale_picking_quick_confirm/static/description/sale_order_quick_confirm.jpeg
 
 **Table of contents**
 
@@ -37,8 +44,9 @@ Use cases : grocery stores where product stock is not updated all the time.
 Usage
 =====
 
-Use cases : grocery stores where product stock is not updated all the time and
-we need to confirm quickly Sales without checking stock availibilty.
+Use cases : grocery stores where product stock is not updated all the
+time and we need to confirm quickly Sales without checking stock
+availibilty.
 
 Create a Sale Order > Click on "Confirme Sale and Picking"
 
@@ -56,17 +64,17 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Quentin DUPONT <quentin.dupont@grap.coop>
+- Quentin DUPONT <quentin.dupont@grap.coop>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 .. |maintainer-quentinDupont| image:: https://github.com/quentinDupont.png?size=40px
     :target: https://github.com/quentinDupont

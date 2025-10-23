@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ========================
 Recursive creation tools
 ========================
@@ -13,7 +17,7 @@ Recursive creation tools
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
@@ -22,8 +26,8 @@ Recursive creation tools
 
 |badge1| |badge2| |badge3|
 
-This module is a technical tools to create recursively parents,
-when creating items, if the name contains one or many **'/'** chars.
+This module is a technical tools to create recursively parents, when
+creating items, if the name contains one or many **'/'** chars.
 
 See implementation in the following modules:
 
@@ -38,16 +42,17 @@ See implementation in the following modules:
 Development
 ===========
 
-This module define a new mixin ``create.recursive.mixin`` that can be used
-on any model that contains the following code.
+This module define a new mixin ``create.recursive.mixin`` that can be
+used on any model that contains the following code.
 
 .. code:: python
 
-    _parent_name = "parent_id"
-    _parent_store = True
-    _rec_name = "complete_name"
+   _parent_name = "parent_id"
+   _parent_store = True
+   _rec_name = "complete_name"
 
-(See example in the ``product.category`` model in the odoo ``product`` module)
+(See example in the ``product.category`` model in the odoo ``product``
+module)
 
 Bug Tracker
 ===========
@@ -63,17 +68,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL <https://twitter.com/legalsylvain>
+- Sylvain LE GAL
+  <`https://twitter.com/legalsylvain\\> <https://twitter.com/legalsylvain\>>`__
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/16.0/create_recursive_abstract>`_ project on GitHub.
 
