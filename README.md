@@ -21,19 +21,19 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[account_move_attachment_count](account_move_attachment_count/) | 16.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Account Invoices - Attachment Count
-[create_recursive_abstract](create_recursive_abstract/) | 16.0.2.0.0 |  | Create recursively parents item.
-[create_recursive_pos_category](create_recursive_pos_category/) | 16.0.1.0.0 |  | Extra GRAP Tools to import product data for Point of sale module
-[create_recursive_product_category](create_recursive_product_category/) | 16.0.1.0.0 |  | Create recursively parents item for the Product Categories model.
-[hr_expense_vat_incl_improved](hr_expense_vat_incl_improved/) | 16.0.1.1.0 |  | Improve HR Expense management, regarding VAT.
-[product_accounts](product_accounts/) | 16.0.1.0.0 |  | Compute and display income - expense account at product level
-[product_uom_company_favorite](product_uom_company_favorite/) | 16.0.1.0.1 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Possilibity to set favorite product units of Measure per company
-[sale_picking_quick_confirm](sale_picking_quick_confirm/) | 16.0.1.1.0 | [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Sale Picking Quick Confirm
-[stock_picking_account_move](stock_picking_account_move/) | 16.0.1.1.0 |  | Stock Picking Account Move
-[stock_picking_quick_quantity_done](stock_picking_quick_quantity_done/) | 16.0.1.0.0 |  | Stock Picking Quick Quantity Done
-[user_limited_access_settings](user_limited_access_settings/) | 16.0.1.0.2 |  | Create a new Administration group with limited access to create only users and companies
-[web_select_only_child_company](web_select_only_child_company/) | 16.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | When selecting a company, automatically select all the child companies.
-[web_widget_attachment_count](web_widget_attachment_count/) | 16.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Web Widget - Attachment Count
+[account_move_attachment_count](account_move_attachment_count/) | 16.0.1.0.1 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Account Invoices - Attachment Count
+[create_recursive_abstract](create_recursive_abstract/) | 16.0.2.0.1 |  | Create recursively parents item.
+[create_recursive_pos_category](create_recursive_pos_category/) | 16.0.1.0.1 |  | Extra GRAP Tools to import product data for Point of sale module
+[create_recursive_product_category](create_recursive_product_category/) | 16.0.1.0.1 |  | Create recursively parents item for the Product Categories model.
+[hr_expense_vat_incl_improved](hr_expense_vat_incl_improved/) | 16.0.1.1.1 |  | Improve HR Expense management, regarding VAT.
+[product_accounts](product_accounts/) | 16.0.1.0.1 |  | Compute and display income - expense account at product level
+[product_uom_company_favorite](product_uom_company_favorite/) | 16.0.1.0.2 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Possilibity to set favorite product units of Measure per company
+[sale_picking_quick_confirm](sale_picking_quick_confirm/) | 16.0.1.1.1 | [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Sale Picking Quick Confirm
+[stock_picking_account_move](stock_picking_account_move/) | 16.0.1.1.1 |  | Stock Picking Account Move
+[stock_picking_quick_quantity_done](stock_picking_quick_quantity_done/) | 16.0.1.0.1 |  | Stock Picking Quick Quantity Done
+[user_limited_access_settings](user_limited_access_settings/) | 16.0.1.0.3 |  | Create a new Administration group with limited access to create only users and companies
+[web_select_only_child_company](web_select_only_child_company/) | 16.0.1.0.1 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | When selecting a company, automatically select all the child companies.
+[web_widget_attachment_count](web_widget_attachment_count/) | 16.0.1.0.1 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Web Widget - Attachment Count
 
 [//]: # (end addons)
 

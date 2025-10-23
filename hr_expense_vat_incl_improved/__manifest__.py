@@ -5,7 +5,7 @@
     "name": "HR Expense - VAT included improved",
     "summary": """Improve HR Expense management,
     regarding VAT.""",
-    "version": "16.0.1.1.0",
+    "version": "16.0.1.1.1",
     "license": "AGPL-3",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",

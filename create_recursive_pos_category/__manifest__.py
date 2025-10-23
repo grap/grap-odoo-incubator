@@ -5,7 +5,7 @@
 {
     "name": "GRAP - Custom Product Import - Point Of Sale Module",
     "summary": "Extra GRAP Tools to import product data for" " Point of sale module",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "category": "Tools",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",

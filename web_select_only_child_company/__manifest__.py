@@ -6,7 +6,7 @@
     "name": "Companies - Only Childs",
     "summary": "When selecting a company,"
     " automatically select all the child companies.",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "category": "Tools",
     "author": "GRAP, Odoo Community Association (OCA)",
     "maintainers": ["legalsylvain"],

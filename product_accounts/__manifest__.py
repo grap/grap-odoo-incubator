@@ -5,7 +5,7 @@
     "name": "Product - Accounting Settings",
     "summary": """Compute and display income - expense account
     at product level""",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "license": "AGPL-3",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",

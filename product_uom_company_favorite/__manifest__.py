@@ -4,7 +4,7 @@
 {
     "name": "Product UoM - Company Favorites",
     "summary": "Possilibity to set favorite product units" " of Measure per company",
-    "version": "16.0.1.0.1",
+    "version": "16.0.1.0.2",
     "category": "Product",
     "author": "GRAP,Odoo Community Association (OCA)",
     "maintainers": ["legalsylvain"],
