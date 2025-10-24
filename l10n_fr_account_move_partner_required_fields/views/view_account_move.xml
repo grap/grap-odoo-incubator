@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2025 - Today: Quentin DUPONT (http://www.grap.coop)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_l10n_fr_required_fields" model="ir.ui.view">
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+
+            <!-- Warn user when invoice is draft and customer is a company with missing informations -->
+            <div role="alert" position="after">
+            	<field name="partner_has_siren" invisible="1"/>
+                <field name="partner_has_address" invisible="1"/>
+                <field name="partner_is_company" invisible="1"/>
+                <div
+                    class="alert alert-danger"
+                    role="alert"
+                    attrs="{'invisible': ['|', '|', ('partner_is_company', '=', False), ('partner_has_siren', '!=', False), ('state', 'not in', ['draft'])]}"
+                >Missing SIREN to confirm invoice.</div>
+                <div
+                    class="alert alert-danger"
+                    role="alert"
+                    attrs="{'invisible': ['|', '|', ('partner_is_company', '=', False), ('partner_has_address', '!=', False), ('state', 'not in', ['draft'])]}"
+                >Missing informations on address to confirm invoice.</div>
+            </div>
+
+        </field>
+    </record>
+
+</odoo>
