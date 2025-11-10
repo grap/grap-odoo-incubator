@@ -13,9 +13,9 @@
     ],
     "data": [
         "security/ir.model.access.csv",
-        "views/stock_picking.xml",
-        "views/stock_picking_type.xml",
-        "views/view_stock_picking_mass_generate_wizard.xml",
+        # "views/stock_picking.xml",
+        # "views/stock_picking_type.xml",
+        "wizards/view_stock_picking_mass_generate_wizard.xml",
     ],
     "installable": True,
 }
