@@ -7,75 +7,75 @@ from odoo.tests.common import TransactionCase
 
 
 class TestStockPickingAccountMove(TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.Picking = self.env["stock.picking"]
-        self.Move = self.env["stock.move"]
-        self.AccountMove = self.env["account.move"]
-        self.location_stock = self.env.ref("stock.stock_location_stock")
-        self.location_customers = self.env.ref("stock.stock_location_customers")
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.Picking = cls.env["stock.picking"]
+        cls.Move = cls.env["stock.move"]
+        cls.location_stock = cls.env.ref("stock.stock_location_stock")
+        cls.location_customers = cls.env.ref("stock.stock_location_customers")
 
         # Create a picking type with journal and account
-        self.account = self.env["account.account"].create(
+        cls.account = cls.env["account.account"].create(
             {
                 "name": "Account Test",
                 "code": "TEST",
                 "account_type": "expense",
-                "company_id": self.env.company.id,
+                "company_id": cls.env.company.id,
             }
         )
-        self.journal = self.env["account.journal"].create(
+        cls.journal = cls.env["account.journal"].create(
             {
                 "name": "Test Journal",
                 "type": "general",
                 "code": "TEST",
-                "company_id": self.env.company.id,
+                "company_id": cls.env.company.id,
             }
         )
 
-        self.picking_type = self.env["stock.picking.type"].create(
+        cls.picking_type = cls.env["stock.picking.type"].create(
             {
                 "name": "Test Picking Type",
                 "code": "internal",
-                "journal_id": self.journal.id,
-                "company_id": self.env.company.id,
+                "journal_id": cls.journal.id,
+                "company_id": cls.env.company.id,
                 "sequence_code": "TST",
-                "account_id": self.account.id,
-                "default_location_src_id": self.location_stock.id,
+                "account_id": cls.account.id,
+                "default_location_src_id": cls.location_stock.id,
             }
         )
 
         # Create a product
-        self.product = self.env["product.product"].create(
+        cls.product = cls.env["product.product"].create(
             {
                 "name": "Test Product",
                 "type": "product",
-                "uom_id": self.env.ref("uom.product_uom_unit").id,
-                "uom_po_id": self.env.ref("uom.product_uom_unit").id,
+                "uom_id": cls.env.ref("uom.product_uom_unit").id,
+                "uom_po_id": cls.env.ref("uom.product_uom_unit").id,
             }
         )
 
         # Create a stock picking
-        self.picking = self.Picking.create(
+        cls.picking = cls.Picking.create(
             {
-                "picking_type_id": self.picking_type.id,
-                "location_id": self.location_stock.id,
-                "location_dest_id": self.location_stock.id,
+                "picking_type_id": cls.picking_type.id,
+                "location_id": cls.location_stock.id,
+                "location_dest_id": cls.location_stock.id,
                 "state": "done",
                 "date_done": fields.Date.from_string("2025-07-14"),
             }
         )
 
         # Create a stock move linked to the picking
-        self.move = self.Move.create(
+        cls.move = cls.Move.create(
             {
                 "name": "Test Move",
-                "product_id": self.product.id,
+                "product_id": cls.product.id,
                 "product_uom_qty": 1,
                 "quantity_done": 10,
-                "location_id": self.location_stock.id,
-                "location_dest_id": self.location_customers.id,
-                "picking_id": self.picking.id,
+                "location_id": cls.location_stock.id,
+                "location_dest_id": cls.location_customers.id,
+                "picking_id": cls.picking.id,
                 "state": "done",
             }
         )
