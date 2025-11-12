@@ -4,40 +4,11 @@
 # @author Quentin DUPONT
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, fields, models
+from odoo import _, models
 
 
 class StockMove(models.Model):
     _inherit = "stock.move"
-
-    # Column Section
-    price_unit = fields.Float(
-        string="Unit Price (Tax Excluded)",
-        digits="Product Price",
-        related="product_id.standard_price",
-    )
-
-    amount = fields.Float(
-        string="Amount (Tax Excluded)",
-        store=True,
-        compute="_compute_amount",
-        digits="Product Price",
-    )
-
-    # Compute section
-    @api.depends("product_qty", "price_unit", "product_id", "product_uom")
-    def _compute_amount(self):
-        for line in self:
-            if not (line.product_id and line.product_uom):
-                continue
-            if line.product_uom != line.product_id.uom_id:
-                uom_to_use = line.product_id.uom_id
-            else:
-                uom_to_use = line.product_uom
-            # Convert the quantity thanks to new or actual  uom
-            line.amount = line.price_unit * line.product_uom._compute_quantity(
-                line.product_qty, uom_to_use
-            )
 
     def _get_expense_entry_key_charge(self):
         """
@@ -68,7 +39,7 @@ class StockMove(models.Model):
 
     def _prepare_account_move_line_charge(self, account_move_vals):
         picking_type = self[0].picking_id.picking_type_id
-        total = sum(self.mapped("amount"))
+        total = sum(self.mapped("total_valuation"))
         tax_code = self[0].product_id.supplier_taxes_id or False
         return {
             "name": _("Expense Transfert (%s)") % (picking_type.name),
@@ -85,7 +56,7 @@ class StockMove(models.Model):
 
     def _prepare_account_move_line_uncharge(self, account_move_vals):
         picking_type = self[0].picking_id.picking_type_id
-        total = sum(self.mapped("amount"))
+        total = sum(self.mapped("total_valuation"))
         tax_code = self[0].product_id.supplier_taxes_id or False
         return {
             "name": _("Expense Transfert (%s)") % (picking_type.name),

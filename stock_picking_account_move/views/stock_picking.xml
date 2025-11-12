@@ -20,10 +20,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <field name="account_move_state" invisible="1"/>
                 <field name="account_move_id" attrs="{'invisible': [('account_move_state', '==', 'no_need')]}"/>
             </xpath>
-            <xpath expr="//field[@name='quantity_done']" position="after">
-                <field name="price_unit" optional="show"/>
-                <field name="amount" optional="show"/>
-            </xpath>
             <xpath expr="//group[@name='other_infos']" position="inside">
                 <field name="is_return"/>
             </xpath>

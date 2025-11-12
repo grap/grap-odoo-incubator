@@ -10,6 +10,8 @@
     "license": "AGPL-3",
     "depends": [
         "stock_account",
+        # GRAP
+        "stock_picking_valuation",
     ],
     "data": [
         "security/ir.model.access.csv",
