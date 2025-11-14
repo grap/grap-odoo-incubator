@@ -25,9 +25,11 @@ class TestStockPickingValuation(TransactionCase):
         cls.picking_type = cls.env["stock.picking.type"].create(
             {
                 "name": "Internal Use Case",
-                "default_location_src_id": cls.env.ref("stock.stock_location_stock").id,
-                "default_location_dest_id": cls.env.ref(
+                "default_location_src_id": cls.env.ref(
                     "stock.stock_location_suppliers"
+                ).id,
+                "default_location_dest_id": cls.env.ref(
+                    "stock.stock_location_stock"
                 ).id,
                 "sequence_code": "TST",
             }

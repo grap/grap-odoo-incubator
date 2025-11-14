@@ -20,9 +20,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <field name="account_move_state" invisible="1"/>
                 <field name="account_move_id" attrs="{'invisible': [('account_move_state', '==', 'no_need')]}"/>
             </xpath>
-            <xpath expr="//group[@name='other_infos']" position="inside">
-                <field name="is_return"/>
-            </xpath>
         </field>
     </record>
 
@@ -32,9 +29,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="stock.vpicktree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='state']" position="after">
-                 <field name="is_return" optional="hide"/>
                  <field name="account_move_id" optional="hide"/>
-                 <field name="account_move_state" optional="show" widget="badge" decoration-danger="account_move_state=='to_do'" decoration-success="account_move_state=='account_move_generated'" decoration-muted="account_move_state in ('waiting', 'no_need')"/>
+                 <field name="account_move_state" optional="show" widget="badge" decoration-danger="account_move_state=='to_do'" decoration-success="account_move_state=='done'" decoration-muted="account_move_state in ('waiting', 'no_need')"/>
             </xpath>
             <!-- STOCK PICKING MASS GENERATE -->
             <xpath expr="//button[@name='action_assign']" position="after">
@@ -51,7 +47,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <xpath expr="//filter[@name='cancel']" position="after">
                 <separator/>
                 <filter name="account_move_state_waiting" string="Account move To do" domain="[('account_move_state', 'in', ['to_do'])]"/>
-                <filter name="account_move_state_done" string="Account move Generated" domain="[('account_move_state', 'in', ['account_move_generated'])]"/>
+                <filter name="account_move_state_done" string="Account move Generated" domain="[('account_move_state', 'in', ['done'])]"/>
             </xpath>
             <xpath expr="//filter[@name='picking_type']" position="after">
                 <separator/>
