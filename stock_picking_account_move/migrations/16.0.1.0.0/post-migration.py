@@ -74,6 +74,10 @@ def _get_stock_picking_type_from_use_case(env, use_case_name, company_id):
 
 @openupgrade.migrate(use_env=True)
 def migrate(env, version):
+    return
+
+
+def _no_migration_migrate(env, version):
     # Create all Stock Picking Type
     _internal_use_cases_to_stock_picking_types(env)
 
