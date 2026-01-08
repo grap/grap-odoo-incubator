@@ -1,0 +1,94 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_fr_account_move_partner_required_fields
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-08 10:02+0000\n"
+"PO-Revision-Date: 2026-01-08 10:02+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_fr_account_move_partner_required_fields
+#: model_terms:ir.ui.view,arch_db:l10n_fr_account_move_partner_required_fields.view_l10n_fr_account_move_res_partner_form
+msgid ""
+"Address (street, zip, city) will be required when invoicing this company."
+msgstr ""
+"L'adresse complète (rue, code postal, ville) sera requis pour facturer cette société."
+
+#. module: l10n_fr_account_move_partner_required_fields
+#. odoo-python
+#: code:addons/l10n_fr_account_move_partner_required_fields/models/account_move.py:0
+#, python-format
+msgid ""
+"In order to invoice the company %(customer_name)s, you need to complete "
+"%(_missing_parts)s."
+msgstr ""
+"Pour facturer la société %(customer_name)s, vous devez remplir "
+"%(_missing_parts)s."
+
+#. module: l10n_fr_account_move_partner_required_fields
+#: model:ir.model,name:l10n_fr_account_move_partner_required_fields.model_account_move
+msgid "Journal Entry"
+msgstr "Pièce comptable"
+
+#. module: l10n_fr_account_move_partner_required_fields
+#: model_terms:ir.ui.view,arch_db:l10n_fr_account_move_partner_required_fields.view_l10n_fr_required_fields
+msgid "Missing SIREN to confirm invoice."
+msgstr "Il manque le SIREN pour valider la facture."
+
+#. module: l10n_fr_account_move_partner_required_fields
+#: model_terms:ir.ui.view,arch_db:l10n_fr_account_move_partner_required_fields.view_l10n_fr_required_fields
+msgid "Missing informations on address to confirm invoice."
+msgstr "Il manque des informations sur l'adresse pour valider la facture."
+
+#. module: l10n_fr_account_move_partner_required_fields
+#: model:ir.model.fields,field_description:l10n_fr_account_move_partner_required_fields.field_account_bank_statement_line__partner_has_address
+#: model:ir.model.fields,field_description:l10n_fr_account_move_partner_required_fields.field_account_move__partner_has_address
+#: model:ir.model.fields,field_description:l10n_fr_account_move_partner_required_fields.field_account_payment__partner_has_address
+msgid "Partner Has Address"
+msgstr ""
+
+#. module: l10n_fr_account_move_partner_required_fields
+#: model:ir.model.fields,field_description:l10n_fr_account_move_partner_required_fields.field_account_bank_statement_line__partner_has_siren
+#: model:ir.model.fields,field_description:l10n_fr_account_move_partner_required_fields.field_account_move__partner_has_siren
+#: model:ir.model.fields,field_description:l10n_fr_account_move_partner_required_fields.field_account_payment__partner_has_siren
+msgid "Partner Has Siren"
+msgstr ""
+
+#. module: l10n_fr_account_move_partner_required_fields
+#: model:ir.model.fields,field_description:l10n_fr_account_move_partner_required_fields.field_account_bank_statement_line__partner_is_company
+#: model:ir.model.fields,field_description:l10n_fr_account_move_partner_required_fields.field_account_move__partner_is_company
+#: model:ir.model.fields,field_description:l10n_fr_account_move_partner_required_fields.field_account_payment__partner_is_company
+msgid "Partner Is Company"
+msgstr ""
+
+#. module: l10n_fr_account_move_partner_required_fields
+#: model_terms:ir.ui.view,arch_db:l10n_fr_account_move_partner_required_fields.view_l10n_fr_account_move_res_partner_simple_form
+msgid "SIREN + NIC"
+msgstr ""
+
+#. module: l10n_fr_account_move_partner_required_fields
+#: model_terms:ir.ui.view,arch_db:l10n_fr_account_move_partner_required_fields.view_l10n_fr_account_move_res_partner_form
+msgid "The SIREN number will be required when invoicing this company."
+msgstr "Le numéro SIREN sera requis pour facturer cette société."
+
+#. module: l10n_fr_account_move_partner_required_fields
+#. odoo-python
+#: code:addons/l10n_fr_account_move_partner_required_fields/models/account_move.py:0
+#, python-format
+msgid "address informations (street, ZIP code, city)"
+msgstr "coordonnées (rue, code postal, ville)"
+
+#. module: l10n_fr_account_move_partner_required_fields
+#. odoo-python
+#: code:addons/l10n_fr_account_move_partner_required_fields/models/account_move.py:0
+#, python-format
+msgid "the SIREN"
+msgstr "le SIREN"
