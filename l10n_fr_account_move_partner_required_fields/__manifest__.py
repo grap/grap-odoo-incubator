@@ -3,7 +3,7 @@
 
 {
     "name": "L10N FR Account Move Partner Required Fields",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.1.0",
     "category": "Custom",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
