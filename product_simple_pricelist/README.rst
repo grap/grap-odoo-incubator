@@ -27,10 +27,11 @@ Product - Simple Pricelist
 |badge1| |badge2| |badge3|
 
 This module extends the functionality of Pricelist Module to provide an
-interface to easily change price per product, creating pricelist item for
-each product.
+interface to easily change price per product, creating pricelist item
+for each product.
 
-It provides for some pricelists, a wizard to edit, in an editable tree view, prices by product.
+It provides for some pricelists, a wizard to edit, in an editable tree
+view, prices by product.
 
 **Table of contents**
 
@@ -42,39 +43,42 @@ Configuration
 
 To use this module, you need to go to Sale / Configuration / Pricelists
 
-* Check the box simple pricelist on your desired pricelist
+- Check the box simple pricelist on your desired pricelist
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_simple_pricelist/static/description/product_pricelist_form.png
+|product_pricelist_form|
 
-* You can optionnaly affect users to the new group "Simple Pricelist - Editor" to let
-  the possibility to user that can not create pricelist, to edit pricelist items for products.
+- You can optionnaly affect users to the new group "Simple Pricelist -
+  Editor" to let the possibility to user that can not create pricelist,
+  to edit pricelist items for products.
+
+.. |product_pricelist_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_simple_pricelist/static/description/product_pricelist_form.png
 
 Usage
 =====
 
 **Via Pricelist**
 
-* Go to "Sales > Products > Pricelists"
+- Go to "Sales > Products > Pricelists"
+- Click then on the edit button, available on the tree or the form view
 
-* Click then on the edit button, available on the tree or the form view
+|product_pricelist_tree|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_simple_pricelist/static/description/product_pricelist_tree.png
+- You can easily change the price for a given product with the buttons
+  in the end of each lines.
 
-* You can easily change the price for a given product with the
-  buttons in the end of each lines.
-
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_simple_pricelist/static/description/product_product_tree.png
-
+|product_product_tree|
 
 **Via Products**
 
-* Go to "Sales > Products > Product Variants"
+- Go to "Sales > Products > Product Variants"
+- Open a product and click on the "Sales" Tab.
+- edit prices per product and simple pricelist:
 
-* Open a product and click on the "Sales" Tab.
+|product_product_form|
 
-* edit prices per product and simple pricelist:
-
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_simple_pricelist/static/description/product_product_form.png
+.. |product_pricelist_tree| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_simple_pricelist/static/description/product_pricelist_tree.png
+.. |product_product_tree| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_simple_pricelist/static/description/product_product_tree.png
+.. |product_product_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/product_simple_pricelist/static/description/product_product_form.png
 
 Bug Tracker
 ===========
@@ -90,17 +94,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL <https://twitter.com/legalsylvain>
+- Sylvain LE GAL
+  <`https://twitter.com/legalsylvain\\> <https://twitter.com/legalsylvain\>>`__
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/16.0/product_simple_pricelist>`_ project on GitHub.
 

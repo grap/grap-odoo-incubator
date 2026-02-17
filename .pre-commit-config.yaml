@@ -100,7 +100,7 @@ repos:
       - id: mixed-line-ending
         args: ["--fix=lf"]
   - repo: https://github.com/acsone/setuptools-odoo
-    rev: 3.1.8
+    rev: 3.3.2
     hooks:
       - id: setuptools-odoo-make-default
       - id: setuptools-odoo-get-requirements
