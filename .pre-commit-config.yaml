@@ -62,21 +62,6 @@ repos:
       - id: oca-checks-po
         args:
           - --disable=po-pretty-format
-  - repo: local
-    hooks:
-      - id: eslint
-        name: eslint
-        entry: eslint
-        args:
-          - --color
-          - --fix
-        verbose: true
-        types: [javascript]
-        language: node
-        additional_dependencies:
-          - "eslint@8.24.0"
-          - "eslint-plugin-jsdoc@"
-          - "globals@"
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
