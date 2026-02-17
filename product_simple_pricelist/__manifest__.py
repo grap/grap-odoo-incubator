@@ -5,7 +5,7 @@
 {
     "name": "Product - Simple Pricelist",
     "summary": "Provides Wizard to manage easily Pricelist By Products",
-    "version": "16.0.1.1.0",
+    "version": "16.0.1.1.1",
     "category": "Product",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
