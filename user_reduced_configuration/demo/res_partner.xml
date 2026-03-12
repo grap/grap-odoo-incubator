@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2024 Sylvain LE GAL - GRAP
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="partner_demo" model="res.partner">
+        <field name="name">Reduced Configuration</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="country_id" ref="base.us"/>
+        <field name="tz">Europe/Brussels</field>
+        <field name="email">reduced@configuration.com</field>
+    </record>
+
+</odoo>

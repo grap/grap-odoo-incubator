@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2024 Sylvain LE GAL - GRAP
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="reduced_configuration_line_chart_template_id" model="reduced.configuration.line">
+        <field name="field_id" ref="account.field_res_config_settings__chart_template_id"/>
+        <field name="group_id" ref="user_reduced_configuration.group_reduced_configuration"/>
+    </record>
+
+</odoo>
