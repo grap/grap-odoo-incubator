@@ -1,2 +1,0 @@
-* Sylvain LE GAL <https://twitter.com/legalsylvain>
-* Jean-Sébastien SUZANNE <js@hashbang.coop>

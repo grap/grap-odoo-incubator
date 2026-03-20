@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =======================
 Point of Sale - Sectors
 =======================
@@ -13,7 +17,7 @@ Point of Sale - Sectors
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
@@ -22,16 +26,16 @@ Point of Sale - Sectors
 
 |badge1| |badge2| |badge3|
 
-This module extends the functionality of point of sale to support product
-sectors restricting products display in the Point of Sale, depending of the
-product sectors.
+This module extends the functionality of point of sale to support
+product sectors restricting products display in the Point of Sale,
+depending of the product sectors.
 
 This module can be interesting if some cashiers have the right to sell
 some products, and not other cashiers.
 
-It can be also usefull if you have distinct point of sale that are saling
-differents products, for exemple if your company has a restaurant part, and a
-shop part, with two point of sale.
+It can be also usefull if you have distinct point of sale that are
+saling differents products, for exemple if your company has a restaurant
+part, and a shop part, with two point of sale.
 
 **Table of contents**
 
@@ -43,29 +47,32 @@ Configuration
 
 To configure this module, you need to:
 
-* Go to Point of Sale / Configuration / Sectors
+- Go to Point of Sale / Configuration / Sectors
+- Create your PoS Sectors
 
-* Create your PoS Sectors
+|image1|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/pos_sector/static/description/pos_sector_tree.png
+- Open your Point Of Sale configurations and set sectors
 
-* Open your Point Of Sale configurations and set sectors
+|image2|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/pos_sector/static/description/pos_config_form.png
+- Finally, edit your products and set a sector
 
-* Finally, edit your products and set a sector
+|image3|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/pos_sector/static/description/product_form.png
+.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/pos_sector/static/description/pos_sector_tree.png
+.. |image2| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/pos_sector/static/description/pos_config_form.png
+.. |image3| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/pos_sector/static/description/product_form.png
 
 Usage
 =====
 
 To use this module, you need to
 
-* open the point of sale
+- open the point of sale
 
-The products displayed will belong to the sectors of the current PoS config.
-(Also the products without sectors will be displayed)
+The products displayed will belong to the sectors of the current PoS
+config. (Also the products without sectors will be displayed)
 
 Bug Tracker
 ===========
@@ -81,18 +88,19 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL <https://twitter.com/legalsylvain>
-* Jean-Sébastien SUZANNE <js@hashbang.coop>
+- Sylvain LE GAL
+  <`https://twitter.com/legalsylvain\\> <https://twitter.com/legalsylvain\>>`__
+- Jean-Sébastien SUZANNE <js@hashbang.coop>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/16.0/pos_sector>`_ project on GitHub.
 
