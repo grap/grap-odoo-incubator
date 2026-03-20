@@ -9,16 +9,8 @@ class PosSession(models.Model):
     _inherit = "pos.session"
 
     def apply_sector_domain(self, domain):
-        return AND(
-            [
-                domain,
-                [
-                    "|",
-                    ("sector_id", "=", False),
-                    ("sector_id", "in", self.config_id.sector_ids.ids),
-                ],
-            ]
-        )
+        new_domain = [("sector_id", "in", self.config_id.sector_ids.ids + [False])]
+        return AND([domain, new_domain])
 
     def _loader_params_product_product(self):
         """Overload the loader to add in the domain the filter by sectors."""

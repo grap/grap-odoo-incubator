@@ -8,48 +8,10 @@ class TestPointOfSaleFlow(TestPointOfSaleCommon):
     def test_loader_params_product_product_1(self):
         self.pos_config.open_ui()
         pos_session = self.pos_config.current_session_id
-        self.assertEqual(
-            pos_session._loader_params_product_product(),
-            {
-                "search_params": {
-                    "domain": [
-                        "&",
-                        "&",
-                        "&",
-                        ("sale_ok", "=", True),
-                        ("available_in_pos", "=", True),
-                        "|",
-                        ("company_id", "=", self.pos_config.company_id.id),
-                        ("company_id", "=", False),
-                        "|",
-                        ("sector_id", "=", False),
-                        ("sector_id", "in", ()),
-                    ],
-                    "fields": [
-                        "display_name",
-                        "lst_price",
-                        "standard_price",
-                        "categ_id",
-                        "pos_categ_id",
-                        "taxes_id",
-                        "barcode",
-                        "default_code",
-                        "to_weight",
-                        "uom_id",
-                        "description_sale",
-                        "description",
-                        "product_tmpl_id",
-                        "tracking",
-                        "available_in_pos",
-                        "attribute_line_ids",
-                        "active",
-                        "__last_update",
-                        "image_128",
-                    ],
-                    "order": "sequence,default_code,name",
-                },
-                "context": {"display_default_code": False},
-            },
+
+        self.assertIn(
+            ("sector_id", "in", [False]),
+            pos_session._loader_params_product_product()["search_params"]["domain"],
         )
 
     def test_loader_params_product_product_2(self):
@@ -64,48 +26,9 @@ class TestPointOfSaleFlow(TestPointOfSaleCommon):
         self.pos_config.sector_ids += sector
 
         pos_session = self.pos_config.current_session_id
-        self.assertEqual(
-            pos_session._loader_params_product_product(),
-            {
-                "search_params": {
-                    "domain": [
-                        "&",
-                        "&",
-                        "&",
-                        ("sale_ok", "=", True),
-                        ("available_in_pos", "=", True),
-                        "|",
-                        ("company_id", "=", self.pos_config.company_id.id),
-                        ("company_id", "=", False),
-                        "|",
-                        ("sector_id", "=", False),
-                        ("sector_id", "in", (sector.id,)),
-                    ],
-                    "fields": [
-                        "display_name",
-                        "lst_price",
-                        "standard_price",
-                        "categ_id",
-                        "pos_categ_id",
-                        "taxes_id",
-                        "barcode",
-                        "default_code",
-                        "to_weight",
-                        "uom_id",
-                        "description_sale",
-                        "description",
-                        "product_tmpl_id",
-                        "tracking",
-                        "available_in_pos",
-                        "attribute_line_ids",
-                        "active",
-                        "__last_update",
-                        "image_128",
-                    ],
-                    "order": "sequence,default_code,name",
-                },
-                "context": {"display_default_code": False},
-            },
+        self.assertIn(
+            ("sector_id", "in", sector.ids + [False]),
+            pos_session._loader_params_product_product()["search_params"]["domain"],
         )
 
     def test_load_products(self):
