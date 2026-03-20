@@ -11,7 +11,7 @@ from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 class TestAccountMovePartnerFields(AccountTestInvoicingCommon):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass()
+        super().setUpClass(chart_template_ref="l10n_fr.l10n_fr_pcg_chart_template")
 
         cls.move_1 = cls.env["account.move"].create(
             {
