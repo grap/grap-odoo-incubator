@@ -29,12 +29,24 @@ class TestAccountMovePartnerFields(AccountTestInvoicingCommon):
                 ],
             }
         )
+        cls.child_agrolait_child = cls.env["res.partner"].create(
+            {
+                "name": "child of Agrolait",
+                "parent_id": cls.partner_agrolait.id,
+            }
+        )
 
-    def test_action_post_partner_required_fields(self):
-        self.move_1.partner_id = self.partner_a
+    def test_partner_is_company_parent(self):
+        self._test_with_partner(self.partner_agrolait)
+
+    def test_partner_individual_child(self):
+        self._test_with_partner(self.child_agrolait_child)
+
+    def _test_with_partner(self, partner):
+        self.move_1.partner_id = partner
 
         # Simulate no data
-        self.partner_a.write(
+        self.move_1.commercial_partner_id.write(
             {
                 "street": False,
                 "zip": False,
@@ -56,7 +68,7 @@ class TestAccountMovePartnerFields(AccountTestInvoicingCommon):
             self.move_1.action_post()
 
         # Fill all needed informations
-        self.partner_a.write(
+        self.move_1.commercial_partner_id.write(
             {
                 "street": "25 PASSAGE DUBAIL",
                 "zip": "75010",

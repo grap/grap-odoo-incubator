@@ -23,6 +23,8 @@ class ProductTemplate(models.Model):
 
     @api.constrains("uom_id")
     def _check_uom(self):
+        # Disable check in test mode to avoid errors
+        # if other modules create / update products with incorrect settings.
         if not tools.config["test_enable"] and self.filtered(
             lambda x: not x.uom_id.is_favorite
         ):
