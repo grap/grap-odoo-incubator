@@ -18,6 +18,7 @@
         "views/view_pos_sector.xml",
         "views/view_product_template.xml",
         "views/view_pos_config.xml",
+        "views/view_res_config_settings.xml",
         "views/menu.xml",
     ],
     "demo": [
