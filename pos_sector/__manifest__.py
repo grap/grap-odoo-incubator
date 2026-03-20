@@ -22,7 +22,6 @@
     ],
     "demo": [
         "demo/pos_sector.xml",
-        "demo/pos_config.xml",
         "demo/product_product.xml",
     ],
     "installable": True,

@@ -10,6 +10,9 @@ class PosConfig(models.Model):
     sector_ids = fields.Many2many(string="Sectors", comodel_name="pos.sector")
 
     def get_limited_products_loading(self, fields):
-        return super(
-            PosConfig, self.with_context(limit_to_pos_sector_ids=self.sector_ids.ids)
-        ).get_limited_products_loading(fields)
+        if self.sector_ids:
+            return super(
+                PosConfig,
+                self.with_context(limit_to_pos_sector_ids=self.sector_ids.ids),
+            ).get_limited_products_loading(fields)
+        return super().get_limited_products_loading(fields)

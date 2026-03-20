@@ -8,10 +8,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="sector_1" model="pos.sector">
         <field name="name">Demo Sector 1</field>
+        <field name="company_id" eval="False" />
     </record>
 
     <record id="sector_2" model="pos.sector">
         <field name="name">Demo Sector 2</field>
+        <field name="company_id" eval="False" />
     </record>
 
 </odoo>
