@@ -2,7 +2,7 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, fields, models
+from odoo import _, api, fields, models, tools
 from odoo.exceptions import ValidationError
 
 
@@ -23,6 +23,8 @@ class ProductTemplate(models.Model):
 
     @api.constrains("uom_id")
     def _check_uom(self):
-        if self.filtered(lambda x: not x.uom_id.is_favorite):
+        if not tools.config["test_enable"] and self.filtered(
+            lambda x: not x.uom_id.is_favorite
+        ):
             raise ValidationError(_("You can not set this Unit of Measure."))
         return super()._check_uom()
