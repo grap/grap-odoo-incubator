@@ -1,5 +1,6 @@
 # @author Quentin DUPONT <quentin.dupont@grap.coop>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+from odoo import Command
 from odoo.exceptions import UserError
 from odoo.tests.common import tagged
 
@@ -17,16 +18,12 @@ class TestAccountMovePartnerFields(AccountTestInvoicingCommon):
                 "move_type": "out_invoice",
                 "date": "1789-07-14",
                 "invoice_date": "2027-05-02",
-                "partner_id": cls.partner_a.id,
                 "currency_id": cls.currency_data["currency"].id,
                 "invoice_line_ids": [
-                    (
-                        0,
-                        0,
+                    Command.create(
                         {
                             "product_id": cls.product_a.id,
                             "price_unit": 1000.0,
-                            "tax_ids": [],
                         },
                     )
                 ],
@@ -34,10 +31,10 @@ class TestAccountMovePartnerFields(AccountTestInvoicingCommon):
         )
 
     def test_action_post_partner_required_fields(self):
-        partner = self.move_1.partner_id
+        self.move_1.partner_id = self.partner_a
 
         # Simulate no data
-        partner.write(
+        self.partner_a.write(
             {
                 "street": False,
                 "zip": False,
@@ -59,7 +56,7 @@ class TestAccountMovePartnerFields(AccountTestInvoicingCommon):
             self.move_1.action_post()
 
         # Fill all needed informations
-        partner.write(
+        self.partner_a.write(
             {
                 "street": "25 PASSAGE DUBAIL",
                 "zip": "75010",
@@ -73,8 +70,5 @@ class TestAccountMovePartnerFields(AccountTestInvoicingCommon):
         self.assertTrue(self.move_1.partner_has_siren, "SIREN should be True")
         self.assertTrue(self.move_1.partner_has_address, "Address should be True")
 
-        # Should succeed
-        try:
-            self.move_1.action_post()
-        except UserError:
-            self.fail("action_post raised UserError even though all fields are filled")
+        # Should not raise any error
+        self.move_1.action_post()
