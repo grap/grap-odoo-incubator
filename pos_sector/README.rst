@@ -50,19 +50,19 @@ To configure this module, you need to:
 - Go to Point of Sale / Configuration / Sectors
 - Create your PoS Sectors
 
-|image1|
+|pos_sector_tree|
 
 - Open your Point Of Sale configurations and set sectors
 
-|image2|
+|pos_config_form|
 
 - Finally, edit your products and set a sector
 
-|image3|
+|product_form|
 
-.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/pos_sector/static/description/pos_sector_tree.png
-.. |image2| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/pos_sector/static/description/pos_config_form.png
-.. |image3| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/pos_sector/static/description/product_form.png
+.. |pos_sector_tree| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/pos_sector/static/description/pos_sector_tree.png
+.. |pos_config_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/pos_sector/static/description/pos_config_form.png
+.. |product_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/pos_sector/static/description/product_form.png
 
 Usage
 =====
