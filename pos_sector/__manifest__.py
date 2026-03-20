@@ -13,7 +13,6 @@
     "depends": ["point_of_sale"],
     "data": [
         "security/ir_rule.xml",
-        "security/res_groups.xml",
         "security/ir.model.access.csv",
         "views/view_pos_sector.xml",
         "views/view_product_template.xml",
@@ -22,7 +21,6 @@
         "views/menu.xml",
     ],
     "demo": [
-        "demo/res_groups.xml",
         "demo/pos_sector.xml",
         "demo/pos_config.xml",
         "demo/product_product.xml",
