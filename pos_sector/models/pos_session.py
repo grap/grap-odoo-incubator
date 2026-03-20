@@ -15,7 +15,7 @@ class PosSession(models.Model):
                 [
                     "|",
                     ("sector_id", "=", False),
-                    ("sector_id", "in", self.config_id.sector_ids._ids),
+                    ("sector_id", "in", self.config_id.sector_ids.ids),
                 ],
             ]
         )

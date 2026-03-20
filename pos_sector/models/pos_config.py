@@ -7,7 +7,6 @@ from odoo import fields, models
 class PosConfig(models.Model):
     _inherit = "pos.config"
 
-    # Columns section
     sector_ids = fields.Many2many(string="Sectors", comodel_name="pos.sector")
 
     def get_limited_products_loading(self, fields):

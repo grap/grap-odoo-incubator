@@ -9,7 +9,6 @@ class PosSector(models.Model):
     _name = "pos.sector"
     _description = "Point of Sale Sectors"
 
-    # Columns section
     name = fields.Char(required=True)
 
     active = fields.Boolean(default=True)
@@ -20,6 +19,5 @@ class PosSector(models.Model):
         default=lambda s: s._default_company_id(),
     )
 
-    # Default section
     def _default_company_id(self):
         return self.env.company.id
