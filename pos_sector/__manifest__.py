@@ -10,9 +10,7 @@
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
-    "depends": [
-        "point_of_sale",
-    ],
+    "depends": ["point_of_sale"],
     "data": [
         "security/ir_rule.xml",
         "security/res_groups.xml",
@@ -27,10 +25,6 @@
         "demo/pos_sector.xml",
         "demo/pos_config.xml",
         "demo/product_product.xml",
-    ],
-    "images": [
-        "static/description/pos_config_form.png",
-        "static/description/product_form.png",
     ],
     "installable": True,
 }
