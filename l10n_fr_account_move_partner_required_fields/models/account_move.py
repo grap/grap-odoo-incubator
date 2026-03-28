@@ -38,7 +38,7 @@ class AccountMove(models.Model):
             # Check SIREN
             move.partner_has_siren = bool(partner.siren)
 
-    def action_post(self):
+    def _post(self, *args, **kwargs):
         # Override posting if it lacks some required informations
         for move in self:
             partner = move.partner_id
@@ -62,4 +62,4 @@ class AccountMove(models.Model):
                     )
                 )
 
-        return super().action_post()
+        return super()._post(*args, **kwargs)
