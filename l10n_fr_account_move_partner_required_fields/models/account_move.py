@@ -16,15 +16,15 @@ class AccountMove(models.Model):
     partner_is_company = fields.Boolean(compute="_compute_partner_has_required_fields")
 
     @api.depends(
-        "partner_id",
-        "partner_id.street",
-        "partner_id.zip",
-        "partner_id.city",
-        "partner_id.siren",
+        "commercial_partner_id",
+        "commercial_partner_id.street",
+        "commercial_partner_id.zip",
+        "commercial_partner_id.city",
+        "commercial_partner_id.siren",
     )
     def _compute_partner_has_required_fields(self):
         for move in self:
-            partner = move.partner_id
+            partner = move.commercial_partner_id
             move.partner_is_company = partner.is_company
 
             # Check address
@@ -41,7 +41,7 @@ class AccountMove(models.Model):
     def action_post(self):
         # Override posting if it lacks some required informations
         for move in self:
-            partner = move.partner_id
+            partner = move.commercial_partner_id
             if not move.partner_is_company:
                 continue
 
