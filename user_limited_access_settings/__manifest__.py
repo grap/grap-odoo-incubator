@@ -5,7 +5,7 @@
     "name": "User Limited Access Settings",
     "summary": """Create a new Administration group with
     limited access to create only users and companies""",
-    "version": "16.0.1.0.4",
+    "version": "16.0.1.0.5",
     "license": "AGPL-3",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
