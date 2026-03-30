@@ -27,6 +27,7 @@ addon | version | maintainers | summary
 [create_recursive_product_category](create_recursive_product_category/) | 16.0.1.0.1 |  | Create recursively parents item for the Product Categories model.
 [hr_expense_vat_incl_improved](hr_expense_vat_incl_improved/) | 16.0.1.1.1 |  | Improve HR Expense management, regarding VAT.
 [l10n_fr_account_move_partner_required_fields](l10n_fr_account_move_partner_required_fields/) | 16.0.1.1.1 |  | L10N FR Account Move Partner Required Fields
+[pos_sector](pos_sector/) | 16.0.1.1.4 |  | Set Sectors to the products and display in given PoS Sessions
 [product_accounts](product_accounts/) | 16.0.1.0.1 |  | Compute and display income - expense account at product level
 [product_simple_pricelist](product_simple_pricelist/) | 16.0.1.1.1 |  | Provides Wizard to manage easily Pricelist By Products
 [product_uom_company_favorite](product_uom_company_favorite/) | 16.0.1.0.3 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> | Possilibity to set favorite product units of Measure per company
