@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2024 Sylvain LE GAL - GRAP
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.menu" id="base.menu_administration">
+        <field name="groups_id"
+            eval="[Command.link(ref('user_reduced_configuration.group_reduced_configuration'))]"/>
+    </record>
+
+    <record model="ir.ui.menu" id="base.menu_translation">
+        <field name="groups_id"
+            eval="[Command.set([ref('base.group_erp_manager')])]"/>
+    </record>
+
+    <record model="ir.ui.menu" id="base.menu_custom">
+        <field name="groups_id"
+            eval="[Command.set([ref('base.group_erp_manager')])]"/>
+    </record>
+
+    <menuitem
+        id="menu_main_user_reduced_configuration"
+        name="Reduced Configuration"
+        parent="base.menu_administration"
+        sequence="1"
+    >
+        <menuitem
+            id="menu_res_reduced_config_settings"
+            name="Configuration"
+            groups="user_reduced_configuration.group_reduced_configuration"
+            action="action_res_reduced_config_settings"
+            sequence="1"
+        />
+        <menuitem
+            id="menu_reduced_configuration_line"
+            action="action_reduced_configuration_line"
+            sequence="10"
+        />
+    </menuitem>
+
+</odoo>

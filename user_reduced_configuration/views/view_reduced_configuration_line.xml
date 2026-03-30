@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="reduced_configuration_line_view_search" model="ir.ui.view">
+        <field name="model">reduced.configuration.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="group_id" />
+            </search>
+        </field>
+    </record>
+
+    <record id="reduced_configuration_line_view_tree" model="ir.ui.view">
+        <field name="model">reduced.configuration.line</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="field_id" />
+                <field name="field_ttype" />
+                <field name="field_help" />
+                <field name="field_modules" />
+                <field name="group_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_reduced_configuration_line" model="ir.actions.act_window">
+        <field name="name">Configuration Lines</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">reduced.configuration.line</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+</odoo>
