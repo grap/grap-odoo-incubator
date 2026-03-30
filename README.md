@@ -33,7 +33,7 @@ addon | version | maintainers | summary
 [sale_picking_quick_confirm](sale_picking_quick_confirm/) | 16.0.1.1.1 | <a href='https://github.com/quentinDupont'><img src='https://github.com/quentinDupont.png' width='32' height='32' style='border-radius:50%;' alt='quentinDupont'/></a> | Sale Picking Quick Confirm
 [stock_picking_account_move](stock_picking_account_move/) | 16.0.1.2.0 |  | Stock Picking Account Move
 [stock_picking_quick_quantity_done](stock_picking_quick_quantity_done/) | 16.0.1.0.1 |  | Stock Picking Quick Quantity Done
-[user_limited_access_settings](user_limited_access_settings/) | 16.0.1.0.3 |  | Create a new Administration group with limited access to create only users and companies
+[user_limited_access_settings](user_limited_access_settings/) | 16.0.1.0.4 |  | Create a new Administration group with limited access to create only users and companies
 [web_select_only_child_company](web_select_only_child_company/) | 16.0.1.0.1 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> | When selecting a company, automatically select all the child companies.
 [web_widget_attachment_count](web_widget_attachment_count/) | 16.0.1.0.1 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> | Web Widget - Attachment Count
 
