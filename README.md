@@ -26,10 +26,10 @@ addon | version | maintainers | summary
 [create_recursive_pos_category](create_recursive_pos_category/) | 16.0.1.0.1 |  | Extra GRAP Tools to import product data for Point of sale module
 [create_recursive_product_category](create_recursive_product_category/) | 16.0.1.0.1 |  | Create recursively parents item for the Product Categories model.
 [hr_expense_vat_incl_improved](hr_expense_vat_incl_improved/) | 16.0.1.1.1 |  | Improve HR Expense management, regarding VAT.
-[l10n_fr_account_move_partner_required_fields](l10n_fr_account_move_partner_required_fields/) | 16.0.1.1.0 |  | L10N FR Account Move Partner Required Fields
+[l10n_fr_account_move_partner_required_fields](l10n_fr_account_move_partner_required_fields/) | 16.0.1.1.1 |  | L10N FR Account Move Partner Required Fields
 [product_accounts](product_accounts/) | 16.0.1.0.1 |  | Compute and display income - expense account at product level
 [product_simple_pricelist](product_simple_pricelist/) | 16.0.1.1.1 |  | Provides Wizard to manage easily Pricelist By Products
-[product_uom_company_favorite](product_uom_company_favorite/) | 16.0.1.0.2 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> | Possilibity to set favorite product units of Measure per company
+[product_uom_company_favorite](product_uom_company_favorite/) | 16.0.1.0.3 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> | Possilibity to set favorite product units of Measure per company
 [sale_picking_quick_confirm](sale_picking_quick_confirm/) | 16.0.1.1.1 | <a href='https://github.com/quentinDupont'><img src='https://github.com/quentinDupont.png' width='32' height='32' style='border-radius:50%;' alt='quentinDupont'/></a> | Sale Picking Quick Confirm
 [stock_picking_account_move](stock_picking_account_move/) | 16.0.1.2.0 |  | Stock Picking Account Move
 [stock_picking_quick_quantity_done](stock_picking_quick_quantity_done/) | 16.0.1.0.1 |  | Stock Picking Quick Quantity Done
