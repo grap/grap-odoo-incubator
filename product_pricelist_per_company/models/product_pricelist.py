@@ -8,7 +8,9 @@ from odoo.exceptions import ValidationError
 class ProductPricelist(models.Model):
     _inherit = "product.pricelist"
 
-    company_id = fields.Many2one(default=lambda x: x._default_company_id())
+    company_id = fields.Many2one(
+        default=lambda x: x._default_company_id(), required=True
+    )
 
     def _default_company_id(self):
         return self.env.company
