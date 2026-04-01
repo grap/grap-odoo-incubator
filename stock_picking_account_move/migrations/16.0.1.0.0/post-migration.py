@@ -12,7 +12,7 @@ _logger = logging.getLogger(__name__)
 
 
 def _create_sequence(env, name, code, prefix, padding, company_id):
-    _logger.info("[stock_internal_use_of_products] create sequence : " + name)
+    _logger.info("[stock_picking_account_move] create sequence : " + name)
     return env["ir.sequence"].create(
         {
             "name": name,
@@ -24,119 +24,195 @@ def _create_sequence(env, name, code, prefix, padding, company_id):
     )
 
 
+def fetchall_dict(cr):
+    columns = [col[0] for col in cr.description]
+    return [dict(zip(columns, row)) for row in cr.fetchall()]  # noqa: B905
+
+
 def _internal_use_cases_to_stock_picking_types(env):
-    use_cases = env["internal.use.case"].search([])
+    ResCompany = env["res.company"]
+    StockLocation = env["stock.location"]
+    env.cr.execute(
+        """
+        SELECT * from internal_use_case;
+        """
+    )
+    use_cases = fetchall_dict(env.cr)
+
+    # columns = [col[0] for col in env.cr.description]
+    # use_cases = [dict(zip(columns, row)) for row in env.cr.fetchall()]  # noqa: B905
     for use_case in use_cases:
-        _company = use_case.company_id
+        _company_id = use_case.get("company_id")
+        _company = ResCompany.browse(_company_id)
+        _use_case_name = use_case.get("name")
         _prefix = str(
             _company.name[0:3].upper()
             + "/"
-            + use_case.name[0:3].upper()
+            + use_case.get("name")[0:3].upper()
             + str(random.randint(0, 99))
             + "/%(year)s/"
         )
         seq = _create_sequence(
             env,
-            str("Sequence for " + use_case.name),
+            str("Sequence for " + _use_case_name),
             "stock.picking.type",
             _prefix,
             5,
-            _company.id,
+            _company_id,
         )
         _logger.info(
-            "[stock_internal_use_of_products] create Picking Type : " + use_case.name
+            "[stock_picking_account_move] create Picking Type : " + _use_case_name
         )
-        if use_case.default_location_dest_id.usage == "internal":
-            _code = "internal"
-        elif use_case.default_location_dest_id.usage == "supplier":
-            _code = "vendors"
-        else:
-            _code = "outgoing"
+        location_src = StockLocation.browse(use_case.get("default_location_src_id"))
+        location_dest = StockLocation.browse(use_case.get("default_location_dest_id"))
         env["stock.picking.type"].create(
             {
-                "name": use_case.name,
+                "name": use_case.get("name"),
                 "sequence_id": seq.id,
-                "code": _code,
-                "default_location_src_id": use_case.default_location_src_id.id,
-                "default_location_dest_id": use_case.default_location_dest_id.id,
-                "journal_id": use_case.journal_id.id,
-                "account_id": use_case.account_id.id,
+                "sequence_code": _prefix,
+                "code": "internal",
+                "default_location_src_id": location_src.id,
+                "default_location_dest_id": location_dest.id,
+                "journal_id": use_case.get("journal_id"),
+                "account_id": use_case.get("account_id"),
             }
         )
-
-
-def _get_stock_picking_type_from_use_case(env, use_case_name, company_id):
-    return env["stock.picking.type"].search(
-        [("name", "=", use_case_name), ("warehouse_id.company_id", "=", company_id)],
-        limit=1,
-    )
 
 
 @openupgrade.migrate(use_env=True)
 def migrate(env, version):
     # Create all Stock Picking Type
+    _logger.info(
+        "[stock_picking_account_move] MIGRATION from stock_internal_use_of_products"
+    )
     _internal_use_cases_to_stock_picking_types(env)
 
-    internal_uses = env["internal.use"].search([])
+    env.cr.execute(
+        """
+        SELECT * from internal_use;
+        """
+    )
+    # columns = [col[0] for col in env.cr.description]
+    # internal_uses =
+    # [dict(zip(columns, row)) for row in env.cr.fetchall()]  # noqa: B905
+    internal_uses = fetchall_dict(env.cr)
+
     for internal_use in internal_uses:
         # Find right new stock.picking.type
-        _use_case = internal_use.internal_use_case_id
-        _picking_type = _get_stock_picking_type_from_use_case(
-            env, _use_case.name, _use_case.company_id.id
+        env.cr.execute(
+            """
+            SELECT
+                spt.*
+            FROM internal_use_case AS iuc
+            JOIN internal_use iu
+                ON iuc.id = iu.internal_use_case_id
+            JOIN stock_picking_type spt
+                ON spt.name->>'en_US' = iuc.name
+            WHERE iu.id = %s
+            LIMIT 1
+            """,
+            (internal_use["id"],),
         )
+        columns = [col[0] for col in env.cr.description]
+        _picking_type = [dict(zip(columns, row)) for row in env.cr.fetchall()]  # noqa: B905
 
         # Create picking
         _picking = env["stock.picking"].create(
             {
-                "location_id": _picking_type.default_location_src_id.id,
-                "location_dest_id": _picking_type.default_location_dest_id.id,
-                "picking_type_id": _picking_type.id,
+                "location_id": _picking_type[0].get("default_location_src_id"),
+                "location_dest_id": _picking_type[0].get("default_location_dest_id"),
+                "picking_type_id": _picking_type[0].get("id"),
             }
         )
 
         # Set basic fields
         _date_done = datetime(
-            internal_use.date_done.year,
-            internal_use.date_done.month,
-            internal_use.date_done.day,
+            internal_use.get("date_done").year,
+            internal_use.get("date_done").month,
+            internal_use.get("date_done").day,
         )
-        _picking.update({"scheduled_date": _date_done})
-        _picking.update({"note": internal_use.description})
+        _picking.write(
+            {
+                "scheduled_date": _date_done,
+                "note": internal_use.get("description"),
+            }
+        )
+        # _picking.update({"scheduled_date": _date_done})
+        # _picking.update({"note": internal_use.get('description')})
 
         # Link internal use stock_move and move_lines to new stock picking
-        _moves = internal_use.stock_move_ids
-        _moves_lines = _moves.mapped("move_line_ids")
-        _picking.update({"move_ids_without_package": [(6, 0, _moves.ids)]})
-        _picking.update({"move_line_ids": [(6, 0, _moves_lines.ids)]})
+        env.cr.execute(
+            """
+            SELECT *
+            FROM stock_move
+            WHERE internal_use_id = %s
+            """,
+            (internal_use["id"],),
+        )
+        # columns = [col[0] for col in env.cr.description]
+        # _moves =
+        # [dict(zip(columns, row)) for row in env.cr.fetchall()]  # noqa: B905
+        _moves = fetchall_dict(env.cr)
+        move_ids = [row["id"] for row in _moves]
+        move_records = env["stock.move"].browse(move_ids)
+        move_line_records = move_records.mapped("move_line_ids")
 
-        _logger.info(
-            "[stock_internal_use_of_products] create Picking : " + _picking.name
+        _picking.update(
+            {
+                "move_ids_without_package": [(6, 0, move_ids)],
+                "move_line_ids": [(6, 0, move_line_records.ids)],
+            }
         )
 
+        _logger.info("[stock_picking_account_move] create Picking : " + _picking.name)
+
         # Handle state, account_move, account_move_state
-        if internal_use.state == "draft":
+        env.cr.execute(
+            """
+            SELECT *
+            FROM internal_use_case
+            WHERE id = %s
+            LIMIT 1
+            """,
+            (internal_use["internal_use_case_id"],),
+        )
+        # columns = [col[0] for col in env.cr.description]
+        # internal_use_case =
+        # [dict(zip(columns, row)) for row in env.cr.fetchall()][0]  # noqa: B905
+        internal_use_case = fetchall_dict(env.cr)
+
+        if internal_use.get("state") == "draft":
             _state = "draft"
-            if internal_use.internal_use_case_id.journal_id:
+            if internal_use_case.get("journal_id"):
                 _account_move_state = "waiting"
             else:
                 _account_move_state = "no_need"
 
-        elif internal_use.state in "confirmed":
+        elif internal_use.get("state") in "confirmed":
             _state = "done"
             _account_move_state = "to_do"
 
-        elif internal_use.state in "done":
+        elif internal_use.get("state") in "done":
             _state = "done"
             # Link account_move
-            if internal_use.account_move_id:
+            if internal_use.get("account_move_id"):
                 _account_move_state = "account_move_generated"
-                _picking.update({"account_move_id": internal_use.account_move_id.id})
+                _picking.update(
+                    {"account_move_id": internal_use.get("account_move_id")}
+                )
             else:
                 _account_move_state = "to_do"
         else:
             _logger.error(
-                "[stock_internal_use_of_products] Internal use has uncoinsistent state"
+                "[stock_picking_account_move] Internal use has uncoinsistent state"
             )
 
-        _picking.update({"account_move_state": _account_move_state})
-        _picking.update({"state": _state})
+        _picking.write(
+            {
+                "account_move_state": _account_move_state,
+                "state": _state,
+            }
+        )
+
+        # _picking.update({"account_move_state": _account_move_state})
+        # _picking.update({"state": _state})
