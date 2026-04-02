@@ -39,8 +39,6 @@ def _internal_use_cases_to_stock_picking_types(env):
     )
     use_cases = fetchall_dict(env.cr)
 
-    # columns = [col[0] for col in env.cr.description]
-    # use_cases = [dict(zip(columns, row)) for row in env.cr.fetchall()]  # noqa: B905
     for use_case in use_cases:
         _company_id = use_case.get("company_id")
         _company = ResCompany.browse(_company_id)
@@ -92,9 +90,6 @@ def migrate(env, version):
         SELECT * from internal_use;
         """
     )
-    # columns = [col[0] for col in env.cr.description]
-    # internal_uses =
-    # [dict(zip(columns, row)) for row in env.cr.fetchall()]  # noqa: B905
     internal_uses = fetchall_dict(env.cr)
 
     for internal_use in internal_uses:
@@ -133,12 +128,10 @@ def migrate(env, version):
         )
         _picking.write(
             {
-                "scheduled_date": _date_done,
+                "date_done": _date_done,
                 "note": internal_use.get("description"),
             }
         )
-        # _picking.update({"scheduled_date": _date_done})
-        # _picking.update({"note": internal_use.get('description')})
 
         # Link internal use stock_move and move_lines to new stock picking
         env.cr.execute(
@@ -149,9 +142,6 @@ def migrate(env, version):
             """,
             (internal_use["id"],),
         )
-        # columns = [col[0] for col in env.cr.description]
-        # _moves =
-        # [dict(zip(columns, row)) for row in env.cr.fetchall()]  # noqa: B905
         _moves = fetchall_dict(env.cr)
         move_ids = [row["id"] for row in _moves]
         move_records = env["stock.move"].browse(move_ids)
@@ -176,10 +166,8 @@ def migrate(env, version):
             """,
             (internal_use["internal_use_case_id"],),
         )
-        # columns = [col[0] for col in env.cr.description]
-        # internal_use_case =
-        # [dict(zip(columns, row)) for row in env.cr.fetchall()][0]  # noqa: B905
-        internal_use_case = fetchall_dict(env.cr)
+
+        internal_use_case = fetchall_dict(env.cr)[0]
 
         if internal_use.get("state") == "draft":
             _state = "draft"
@@ -213,6 +201,3 @@ def migrate(env, version):
                 "state": _state,
             }
         )
-
-        # _picking.update({"account_move_state": _account_move_state})
-        # _picking.update({"state": _state})
