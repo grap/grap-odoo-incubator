@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ============================================
 L10N FR Account Move Partner Required Fields
 ============================================
@@ -51,6 +47,8 @@ Known issues / Roadmap
 ======================
 
 - Have the same module for PoS
+
+CHANGE
 
 Changelog
 =========
