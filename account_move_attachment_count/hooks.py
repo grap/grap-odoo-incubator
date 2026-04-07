@@ -6,5 +6,6 @@ from odoo import SUPERUSER_ID, api
 
 
 def _hook_store_attachment_count_value(cr):
+    # ADDING A CHANGE
     env = api.Environment(cr, SUPERUSER_ID, {})
     env["ir.attachment"]._store_attachment_count_value("account_move", "account.move")
