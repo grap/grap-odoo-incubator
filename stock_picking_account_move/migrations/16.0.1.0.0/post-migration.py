@@ -184,7 +184,7 @@ def migrate(env, version):
             _state = "done"
             # Link account_move
             if internal_use.get("account_move_id"):
-                _account_move_state = "account_move_generated"
+                _account_move_state = "done"
                 _picking.update(
                     {"account_move_id": internal_use.get("account_move_id")}
                 )
