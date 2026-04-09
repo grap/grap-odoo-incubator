@@ -8,6 +8,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="product_sector__1" model="product.product">
         <field name="name">Demo Product on sector 1</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
         <field name="sector_id" ref="sector_1"/>
         <field name="categ_id" ref="product.product_category_all"/>
         <field name="list_price">100</field>
@@ -16,6 +18,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="product_sector__2" model="product.product">
         <field name="name">Demo Product on sector 2</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
         <field name="sector_id" ref="sector_2"/>
         <field name="categ_id" ref="product.product_category_all"/>
         <field name="list_price">200</field>
