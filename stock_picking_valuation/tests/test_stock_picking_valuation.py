@@ -49,7 +49,7 @@ class TestStockPickingValuation(TransactionCase):
                 "product_id": cls.product.id,
                 "location_id": cls.picking.location_id.id,
                 "location_dest_id": cls.picking.location_dest_id.id,
-                "product_uom_qty": 5,
+                "quantity_done": 5,
             }
         )
 
@@ -63,8 +63,10 @@ class TestStockPickingValuation(TransactionCase):
         # Test with different UoM
         self.move.product_uom = self.uom_dozen
         self.assertEqual(self.move.unit_valuation, 120)
-        self.assertEqual(self.move.total_valuation, 5 * 120)
-        self.assertEqual(self.move.picking_id.total_valuation, 5 * 120)
+        self.assertEqual(self.move.total_valuation, self.move.quantity_done * 120)
+        self.assertEqual(
+            self.move.picking_id.total_valuation, self.move.quantity_done * 120
+        )
 
     def test_direction(self):
         # correct direction

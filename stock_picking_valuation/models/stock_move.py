@@ -44,7 +44,7 @@ class StockMove(models.Model):
                 )
             move.unit_valuation = product_cost
 
-    @api.depends("product_id", "product_uom", "product_uom_qty")
+    @api.depends("product_id", "product_uom", "quantity_done", "unit_valuation")
     def _compute_total_valuation(self):
         for move in self:
-            move.total_valuation = move.unit_valuation * move.product_uom_qty
+            move.total_valuation = move.unit_valuation * move.quantity_done
