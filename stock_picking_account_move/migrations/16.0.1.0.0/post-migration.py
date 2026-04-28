@@ -66,6 +66,7 @@ def _internal_use_cases_to_stock_picking_types(env):
         env["stock.picking.type"].create(
             {
                 "name": use_case.get("name"),
+                "company_id": _company.id,
                 "sequence_id": seq.id,
                 "sequence_code": _prefix,
                 "code": "internal",
