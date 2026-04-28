@@ -7,15 +7,16 @@
 # Copyright 2026-Today: GRAP (https://www.grap.coop)
 # Copyright Quentin DUPONT
 
+from odoo import SUPERUSER_ID, api, registry
 from odoo.exceptions import UserError
-from odoo.tests import tagged
+from odoo.tests import get_db_name, tagged
 
+from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.base.tests.common import DISABLED_MAIL_CONTEXT
-from odoo.addons.sale.tests.common import TestSaleCommon
 
 
 @tagged("post_install", "-at_install")
-class TestAccountMoveReversalStock(TestSaleCommon):
+class TestAccountMoveReversalStock(AccountTestInvoicingCommon):
     @classmethod
     def _update_product_qty(cls, product):
         product_qty = cls.env["stock.change.product.qty"].create(
@@ -47,28 +48,6 @@ class TestAccountMoveReversalStock(TestSaleCommon):
                             "price_unit": cls.prod_order.list_price,
                         },
                     ),
-                    (
-                        0,
-                        0,
-                        {
-                            "name": cls.prod_del.name,
-                            "product_id": cls.prod_del.id,
-                            "product_uom_qty": 20,
-                            "product_uom": cls.prod_del.uom_id.id,
-                            "price_unit": cls.prod_del.list_price,
-                        },
-                    ),
-                    (
-                        0,
-                        0,
-                        {
-                            "name": cls.serv_order.name,
-                            "product_id": cls.serv_order.id,
-                            "product_uom_qty": 20,
-                            "product_uom": cls.serv_order.uom_id.id,
-                            "price_unit": cls.serv_order.list_price,
-                        },
-                    ),
                 ],
                 "pricelist_id": cls.env.ref("product.list0").id,
                 "picking_policy": "direct",
@@ -88,16 +67,16 @@ class TestAccountMoveReversalStock(TestSaleCommon):
 
     @classmethod
     def setUpClass(cls, chart_template_ref=None):
+        with registry(get_db_name()).cursor() as cr:
+            env = api.Environment(cr, SUPERUSER_ID, {})
+            if not env.ref("l10n_generic_coa.configurable_chart_template", False):
+                # Fallback for executing tests in any existing CoA
+                coa = env["account.chart.template"].search([("visible", "=", True)])[:1]
+                chart_template_ref = coa.get_external_id()[coa.id]
         super().setUpClass(chart_template_ref=chart_template_ref)
         cls.env = cls.env(context=dict(cls.env.context, **DISABLED_MAIL_CONTEXT))
-        for _, i in cls.company_data.items():
-            if "type" in i and i.type == "product":
-                cls._update_product_qty(i)
-        cls.prod_order = cls.company_data["product_order_no"]
-        cls.prod_order.invoice_policy = "delivery"
-        cls.prod_del = cls.company_data["product_delivery_no"]
-        cls.prod_del.invoice_policy = "delivery"
-        cls.serv_order = cls.company_data["product_service_order"]
+        cls.prod_order = cls.env.ref("sale.product_product_4e")
+        cls._update_product_qty(cls.prod_order)
         cls.so = cls._create_sale_order_and_confirm()
 
     def test_01_invoice_refund_modify(self):
