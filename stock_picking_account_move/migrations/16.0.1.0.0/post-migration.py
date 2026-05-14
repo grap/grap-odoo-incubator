@@ -3,7 +3,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
-import random
 from datetime import datetime
 
 from openupgradelib import openupgrade
@@ -34,22 +33,20 @@ def _internal_use_cases_to_stock_picking_types(env):
     StockLocation = env["stock.location"]
     env.cr.execute(
         """
-        SELECT * from internal_use_case;
+        SELECT * from internal_use_case iuc;
         """
     )
     use_cases = fetchall_dict(env.cr)
 
-    for use_case in use_cases:
+    for _i, use_case in enumerate(use_cases, start=1):
         _company_id = use_case.get("company_id")
         _company = ResCompany.browse(_company_id)
         _use_case_name = use_case.get("name")
-        _prefix = str(
-            _company.name[0:3].upper()
-            + "/"
-            + use_case.get("name")[0:3].upper()
-            + str(random.randint(0, 99))
-            + "/%(year)s/"
-        )
+        if "code" in _company._fields:
+            _base_prefix = _company.code
+        else:
+            _base_prefix = _company.name[0:3].upper()
+        _prefix = str(_base_prefix + "/UI/" + str(use_case.get("id"))) + "/"
         seq = _create_sequence(
             env,
             str("Sequence for " + _use_case_name),
@@ -59,7 +56,8 @@ def _internal_use_cases_to_stock_picking_types(env):
             _company_id,
         )
         _logger.info(
-            "[stock_picking_account_move] create Picking Type : " + _use_case_name
+            f"[stock_picking_account_move] {_i}/{len(use_cases)}"
+            f" create Picking Type : {_use_case_name}"
         )
         location_src = StockLocation.browse(use_case.get("default_location_src_id"))
         location_dest = StockLocation.browse(use_case.get("default_location_dest_id"))
@@ -93,7 +91,7 @@ def migrate(env, version):
     )
     internal_uses = fetchall_dict(env.cr)
 
-    for internal_use in internal_uses:
+    for _i, internal_use in enumerate(internal_uses, start=1):
         # Find right new stock.picking.type
         env.cr.execute(
             """
@@ -110,28 +108,16 @@ def migrate(env, version):
             (internal_use["id"],),
         )
         columns = [col[0] for col in env.cr.description]
-        _picking_type = [dict(zip(columns, row)) for row in env.cr.fetchall()]  # noqa: B905
+        _picking_type_data = [dict(zip(columns, row)) for row in env.cr.fetchall()]  # noqa: B905
 
-        # Create picking
-        _picking = env["stock.picking"].create(
-            {
-                "location_id": _picking_type[0].get("default_location_src_id"),
-                "location_dest_id": _picking_type[0].get("default_location_dest_id"),
-                "picking_type_id": _picking_type[0].get("id"),
-            }
+        _picking_type = env["stock.picking.type"].browse(
+            _picking_type_data[0].get("id")
         )
 
-        # Set basic fields
         _date_done = datetime(
             internal_use.get("date_done").year,
             internal_use.get("date_done").month,
             internal_use.get("date_done").day,
-        )
-        _picking.write(
-            {
-                "date_done": _date_done,
-                "note": internal_use.get("description"),
-            }
         )
 
         # Link internal use stock_move and move_lines to new stock picking
@@ -147,15 +133,6 @@ def migrate(env, version):
         move_ids = [row["id"] for row in _moves]
         move_records = env["stock.move"].browse(move_ids)
         move_line_records = move_records.mapped("move_line_ids")
-
-        _picking.update(
-            {
-                "move_ids_without_package": [(6, 0, move_ids)],
-                "move_line_ids": [(6, 0, move_line_records.ids)],
-            }
-        )
-
-        _logger.info("[stock_picking_account_move] create Picking : " + _picking.name)
 
         # Handle state, account_move, account_move_state
         env.cr.execute(
@@ -186,9 +163,6 @@ def migrate(env, version):
             # Link account_move
             if internal_use.get("account_move_id"):
                 _account_move_state = "done"
-                _picking.update(
-                    {"account_move_id": internal_use.get("account_move_id")}
-                )
             else:
                 _account_move_state = "to_do"
         else:
@@ -196,9 +170,29 @@ def migrate(env, version):
                 "[stock_picking_account_move] Internal use has uncoinsistent state"
             )
 
-        _picking.write(
+        # Create picking
+        _picking = env["stock.picking"].create(
             {
+                "location_id": _picking_type_data[0].get("default_location_src_id"),
+                "location_dest_id": _picking_type_data[0].get(
+                    "default_location_dest_id"
+                ),
+                "picking_type_id": _picking_type_data[0].get("id"),
+                "date_done": _date_done,
+                "create_date": internal_use.get("create_date"),
+                "create_uid": internal_use.get("create_uid"),
+                "write_date": internal_use.get("write_date"),
+                "write_uid": internal_use.get("write_uid"),
+                "note": internal_use.get("description"),
+                "move_ids_without_package": [(6, 0, move_ids)],
+                "move_line_ids": [(6, 0, move_line_records.ids)],
                 "account_move_state": _account_move_state,
                 "state": _state,
+                "account_move_id": internal_use.get("account_move_id"),
             }
+        )
+
+        _logger.info(
+            f"[stock_picking_account_move] {_i}/{len(internal_uses)}"
+            f" create Picking : {_picking.name}"
         )
