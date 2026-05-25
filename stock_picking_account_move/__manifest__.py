@@ -10,12 +10,14 @@
     "license": "AGPL-3",
     "depends": [
         "stock_account",
+        # GRAP
+        "stock_picking_valuation",
     ],
     "data": [
         "security/ir.model.access.csv",
         "views/stock_picking.xml",
         "views/stock_picking_type.xml",
-        "views/view_stock_picking_mass_generate_wizard.xml",
+        "wizards/view_stock_picking_mass_generate_wizard.xml",
     ],
     "installable": True,
 }
