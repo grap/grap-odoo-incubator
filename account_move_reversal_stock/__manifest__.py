@@ -5,7 +5,7 @@
 {
     "name": "Account Move Reversal Stock",
     "summary": "Facilitates the link between customer and inventory management.",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.1.0",
     "category": "Account",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",

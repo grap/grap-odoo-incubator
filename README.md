@@ -22,6 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_move_attachment_count](account_move_attachment_count/) | 16.0.1.0.2 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> | Account Invoices - Attachment Count
+[account_move_reversal_stock](account_move_reversal_stock/) | 16.0.1.1.0 |  | Facilitates the link between customer and inventory management.
 [create_recursive_abstract](create_recursive_abstract/) | 16.0.2.0.2 |  | Create recursively parents item.
 [create_recursive_pos_category](create_recursive_pos_category/) | 16.0.1.0.2 |  | Extra GRAP Tools to import product data for Point of sale module
 [create_recursive_product_category](create_recursive_product_category/) | 16.0.1.0.2 |  | Create recursively parents item for the Product Categories model.
