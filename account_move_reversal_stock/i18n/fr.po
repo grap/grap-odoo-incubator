@@ -1,0 +1,63 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * account_move_reversal_stock
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-27 12:12+0000\n"
+"PO-Revision-Date: 2026-04-27 12:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_move_reversal_stock
+#: model_terms:ir.ui.view,arch_db:account_move_reversal_stock.view_account_move
+msgid ""
+"Adjust stock with <b>Reverse Stock Picking</b> button. It will create a <b>Return</b> Stock Picking\n"
+"                    <b>\n"
+"                        <span attrs=\"{'invisible': [('move_type', '=', 'out_invoice')]}\">\n"
+"                            with theses new quantities.\n"
+"                        </span>\n"
+"                        <span attrs=\"{'invisible': [('move_type', '=', 'out_refund')]}\">\n"
+"                            with quantity differentials.\n"
+"                        </span>\n"
+"                    </b>"
+msgstr ""
+"Ajuster les stocks avec le bouton <b>Retourner les Mouvements de Stock</b>. Cela créera un <b>Retour</b> de mouvement de stock\n"
+"                    <b>\n"
+"                        <span attrs=\"{'invisible': [('move_type', '=', 'out_invoice')]}\">\n"
+"                            avec ces nouvelles quantités.\n"
+"                        </span>\n"
+"                        <span attrs=\"{'invisible': [('move_type', '=', 'out_refund')]}\">\n"
+"                            avec le différentiel de quantités.\n"
+"                        </span>\n"
+"                    </b>"
+
+#. module: account_move_reversal_stock
+#: model:ir.model,name:account_move_reversal_stock.model_account_move
+msgid "Journal Entry"
+msgstr "Pièce comptable"
+
+#. module: account_move_reversal_stock
+#. odoo-python
+#: code:addons/account_move_reversal_stock/models/account_move.py:0
+#, python-format
+msgid "New Return Picking: %(name)s"
+msgstr "Nouveau retour de stock avec le document %(name)s"
+
+#. module: account_move_reversal_stock
+#: model_terms:ir.ui.view,arch_db:account_move_reversal_stock.view_account_move
+msgid "Reverse Stock Picking"
+msgstr "Retourner les Mouvements de Stock"
+
+#. module: account_move_reversal_stock
+#: model:ir.model.fields,field_description:account_move_reversal_stock.field_account_bank_statement_line__stock_picking_could_be_returned
+#: model:ir.model.fields,field_description:account_move_reversal_stock.field_account_move__stock_picking_could_be_returned
+#: model:ir.model.fields,field_description:account_move_reversal_stock.field_account_payment__stock_picking_could_be_returned
+msgid "Stock Picking Could Be Returned"
+msgstr "Les mouvements de stocks peuvent être ajustés"

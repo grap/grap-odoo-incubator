@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2026 - Today: GRAP (https://www.grap.coop)
+  @author: Quentin DUPONT
+  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+
+<odoo>
+
+    <record id="view_account_move" model="ir.ui.view">
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//button[@name='button_set_checked']" position="after">
+                <field name="stock_picking_could_be_returned" invisible="1"/>
+                <button data-hotkey="r" type="object" name="reverse_stock_picking" string="Reverse Stock Picking" attrs="{'invisible': [('stock_picking_could_be_returned', '=', False)]}"/>
+            </xpath>
+
+            <div role="alert" position="after">
+                <div class="alert alert-warning mb-0" role="alert" attrs="{'invisible': [('stock_picking_could_be_returned', '=', False)]}">
+                    Adjust stock with <b>Reverse Stock Picking</b> button. It will create a <b>Return</b> Stock Picking
+                    <b>
+                        <span attrs="{'invisible': [('move_type', '=', 'out_invoice')]}">
+                            with theses new quantities.
+                        </span>
+                        <span attrs="{'invisible': [('move_type', '=', 'out_refund')]}">
+                            with quantity differentials.
+                        </span>
+                    </b>
+                </div>
+            </div>
+
+        </field>
+    </record>
+
+</odoo>
