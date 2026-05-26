@@ -55,16 +55,21 @@ class CreateRecursiveMixin(models.AbstractModel):
     @api.model_create_multi
     def create(self, vals_list):
         if self.env.context.get("imported_model") == self._name:
+            result = self
             # Creation from import of model
             # create parents if doesn't exist
+            # Note: we explicitely break the create_multi
+            # because other it generates duplicates
             for vals in vals_list:
                 self._create_recursive_alter_vals(vals)
+                result |= super().create(vals)
+            return result
         else:
             # Regular creation, removing bad "/"
             for vals in vals_list:
                 if "name" in vals:
                     vals["name"] = vals["name"].replace("/", "-").strip()
-        return super().create(vals_list)
+            return super().create(vals_list)
 
     def write(self, vals):
         if "name" in vals:
