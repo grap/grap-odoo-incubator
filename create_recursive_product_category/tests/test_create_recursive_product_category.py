@@ -28,11 +28,9 @@ class TestModule(TransactionCase):
         new_categories = self.ProductCategory.search(
             [("id", "not in", self.initial_category_ids)], order="id"
         )
-        if len(new_categories) != category_count:
-            _logger.error("Unexpected quantity of categories created")
-            _logger.error(
-                "\n\n - " + "\n - ".join(new_categories.mapped("complete_name")) + "\n"
-            )
+        _logger.info(
+            "\n\n - " + "\n - ".join(new_categories.mapped("complete_name")) + "\n"
+        )
         self.assertEqual(len(new_categories), category_count)
 
     def _import_file(self, model_name, file_name):
@@ -101,16 +99,6 @@ class TestModule(TransactionCase):
             "product.category", "AC_1_parent_category_1_child_category.csv"
         )
         self._test_new_categories(2)
-        # EXPECTED RESULT
-        #
-        # - Root Category
-        # - Root Category / Child Category
-
-        # CURRENT RESULT
-        #
-        # - Root Category
-        # - Root Category
-        # - Root Category / Child Category
 
     def test_30_import_product_BA_5_root_categories(self):
         items, _res = self._import_file("product.template", "BA_5_root_categories.csv")

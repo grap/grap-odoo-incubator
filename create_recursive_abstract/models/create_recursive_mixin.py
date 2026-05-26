@@ -59,7 +59,7 @@ class CreateRecursiveMixin(models.AbstractModel):
             # Creation from import of model
             # create parents if doesn't exist
             # Note: we explicitely break the create_multi
-            # because other it generates duplicates
+            # because otherwise it generates duplicates
             for vals in vals_list:
                 self._create_recursive_alter_vals(vals)
                 result |= super().create(vals)
