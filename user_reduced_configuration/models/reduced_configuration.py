@@ -35,7 +35,7 @@ class ResReducedConfigSettings(models.Model):
             configuration.field_qty = len(configuration.field_ids)
 
     def _domain_field_id(self):
-        return [
+        domain = [
             (
                 "name",
                 "not in",
@@ -49,6 +49,11 @@ class ResReducedConfigSettings(models.Model):
                     "write_date",
                 ],
             ),
-            ("name", "not ilike", "module_"),
             ("model", "=", "res.config.settings"),
         ]
+        fields = (
+            self.env["ir.model.fields"]
+            .search(domain)
+            .filtered(lambda x: not x.name.startswith("module_"))
+        )
+        return [("id", "in", fields.ids)]
