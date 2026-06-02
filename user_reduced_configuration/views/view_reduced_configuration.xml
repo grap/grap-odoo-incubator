@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_reduced_configuration_search" model="ir.ui.view">
+        <field name="model">reduced.configuration</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="group_id" />
+            </search>
+        </field>
+    </record>
+
+    <record id="view_reduced_configuration_tree" model="ir.ui.view">
+        <field name="model">reduced.configuration</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="field_qty" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_reduced_configuration_form" model="ir.ui.view">
+        <field name="model">reduced.configuration</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name" />
+                    <field name="group_id" />
+                    <field name="field_qty" />
+                </group>
+                <group>
+                    <field name="field_ids" nolabel="1" colspan="2">
+                        <tree editable="bottom">
+                            <field name="field_description" readonly="1"/>
+                            <field name="name" readonly="1"/>
+                            <field name="help" readonly="1"/>
+                            <field name="modules" readonly="1"/>
+                            <field name="ttype" readonly="1"/>
+                            <field name="relation" readonly="1"/>
+                        </tree>
+                    </field>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_reduced_configuration" model="ir.actions.act_window">
+        <field name="name">Reduced Configurations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">reduced.configuration</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
