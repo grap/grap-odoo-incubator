@@ -1,0 +1,2 @@
+Glue Module to add pos_cash_move_reason in
+pos_account_bank_statement_line view

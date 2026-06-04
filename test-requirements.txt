@@ -1,3 +1,7 @@
 odoo-test-helper
 
 git+https://github.com/OCA/pos@refs/pull/1265/head#subdirectory=setup/pos_category_complete_name
+
+# for pos_account_bank_statement_line_cash_move_reason
+git+https://github.com/OCA/pos@refs/pull/1531/head#subdirectory=setup/pos_cash_move_reason
+git+https://github.com/OCA/pos@refs/pull/1565/head#subdirectory=setup/pos_account_bank_statement_line

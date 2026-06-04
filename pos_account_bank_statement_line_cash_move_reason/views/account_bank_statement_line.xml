@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- TREE VIEW -->
+    <record id="pos_account_bank_statement_line_cash_move_reason_tree" model="ir.ui.view">
+        <field name="name">pos.account.bank.statement.line.cash.move.reason.tree</field>
+        <field name="model">account.bank.statement.line</field>
+        <field name="inherit_id" ref="pos_account_bank_statement_line.pos_account_bank_statement_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="payment_ref" position="after">
+                <field name="pos_move_reason" />
+            </field>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEW -->
+    <record id="pos_account_bank_statement_line_cash_move_reason_search" model="ir.ui.view">
+        <field name="name">pos.account.bank.statement.line.cash.move.reason.search</field>
+        <field name="model">account.bank.statement.line</field>
+        <field name="inherit_id" ref="account_statement_base.account_bank_statement_line_search"/>
+        <field name="arch" type="xml">
+            <!-- text search -->
+            <field name="journal_id" position="after">
+                <field name="pos_move_reason" />
+            </field>
+            <!-- groupby -->
+            <filter name="transaction_type_groupby" position="after">
+                <filter name="move_reason_groupby" string="Move reason" context="{'group_by': 'pos_move_reason'}"/>
+            </filter>
+        </field>
+    </record>
+
+</odoo>
