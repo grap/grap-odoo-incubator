@@ -18,7 +18,8 @@ class ResUsers(models.Model):
 
     @api.constrains("groups_id")
     def _check_escalation(self):
-        if self.env.user._is_admin():
+        # ignore constrains for sudo() call
+        if self.env.is_admin():
             return
         missing_groups = self.env["res.groups"]
         allowed_groups = (
@@ -31,13 +32,13 @@ class ResUsers(models.Model):
             if group not in allowed_groups:
                 missing_groups |= group
 
-            if missing_groups:
-                raise ValidationError(
-                    _(
-                        "You can set the group '%(group_names)s'"
-                        " to users, because you are not member of those groups.",
-                        group_names=" , ".join(
-                            [x.display_name for x in missing_groups]
-                        ),
-                    )
+        if missing_groups:
+            raise ValidationError(
+                _(
+                    "The user '%(username)s' lack some rights to"
+                    " do this action. \n"
+                    "Here are the groups needed :\n- %(group_names)s",
+                    username=str(self.env.user.name),
+                    group_names="\n- ".join([x.display_name for x in missing_groups]),
                 )
+            )
