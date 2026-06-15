@@ -37,7 +37,7 @@ addon | version | maintainers | summary
 [stock_picking_account_move](stock_picking_account_move/) | 16.0.1.2.1 |  | Stock Picking Account Move
 [stock_picking_quick_quantity_done](stock_picking_quick_quantity_done/) | 16.0.1.0.2 |  | Stock Picking Quick Quantity Done
 [stock_picking_valuation](stock_picking_valuation/) | 16.0.1.1.1 |  | Stock Picking Valuation
-[user_limited_access_settings](user_limited_access_settings/) | 16.0.1.0.5 |  | Create a new Administration group with limited access to create only users and companies
+[user_limited_access_settings](user_limited_access_settings/) | 16.0.1.0.6 |  | Create a new Administration group with limited access to create only users and companies
 [user_reduced_configuration](user_reduced_configuration/) | 16.0.1.0.4 |  | Allow user to have limited access to configuration elements
 [user_reduced_configuration_account](user_reduced_configuration_account/) | 16.0.1.0.1 |  | Glue module to allow users to have limited access to configuration elements, when account is installed.
 [user_reduced_configuration_pos](user_reduced_configuration_pos/) | 16.0.1.0.1 |  | Glue module to allow users to have limited access to configuration elements, when point of sale is installed.
