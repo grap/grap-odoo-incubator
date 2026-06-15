@@ -23,9 +23,9 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_move_attachment_count](account_move_attachment_count/) | 16.0.1.0.2 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> | Account Invoices - Attachment Count
 [account_move_reversal_stock](account_move_reversal_stock/) | 16.0.1.1.0 |  | Facilitates the link between customer and inventory management.
-[create_recursive_abstract](create_recursive_abstract/) | 16.0.2.0.2 |  | Create recursively parents item.
+[create_recursive_abstract](create_recursive_abstract/) | 16.0.2.0.3 |  | Create recursively parents item.
 [create_recursive_pos_category](create_recursive_pos_category/) | 16.0.1.0.2 |  | Extra GRAP Tools to import product data for Point of sale module
-[create_recursive_product_category](create_recursive_product_category/) | 16.0.1.0.2 |  | Create recursively parents item for the Product Categories model.
+[create_recursive_product_category](create_recursive_product_category/) | 16.0.1.0.3 |  | Create recursively parents item for the Product Categories model.
 [hr_expense_vat_incl_improved](hr_expense_vat_incl_improved/) | 16.0.1.1.2 |  | Improve HR Expense management, regarding VAT.
 [l10n_fr_account_move_partner_required_fields](l10n_fr_account_move_partner_required_fields/) | 16.0.1.1.3 |  | L10N FR Account Move Partner Required Fields
 [pos_account_bank_statement_line_cash_move_reason](pos_account_bank_statement_line_cash_move_reason/) | 16.0.1.1.0 |  | PoS Account Bank Statement Line - Cash Move Reason

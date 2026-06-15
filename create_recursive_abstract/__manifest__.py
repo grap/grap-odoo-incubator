@@ -5,7 +5,7 @@
 {
     "name": "Recursive creation tools",
     "summary": "Create recursively parents item.",
-    "version": "16.0.2.0.2",
+    "version": "16.0.2.0.3",
     "category": "Tools",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-incubator",
