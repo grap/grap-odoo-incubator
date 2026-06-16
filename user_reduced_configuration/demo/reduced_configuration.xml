@@ -4,9 +4,11 @@
 
 <odoo>
 
-    <record id="reduced_configuration_line_user_default_rights" model="reduced.configuration.line">
-        <field name="field_id" ref="base_setup.field_res_config_settings__user_default_rights"/>
+    <record id="reduced_configuration_user_default_rights" model="reduced.configuration">
         <field name="group_id" ref="user_reduced_configuration.group_reduced_configuration"/>
+        <field name="field_ids" eval="[
+            ref('base_setup.field_res_config_settings__user_default_rights'),
+        ]"/>
     </record>
 
 </odoo>

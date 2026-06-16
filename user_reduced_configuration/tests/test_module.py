@@ -19,8 +19,8 @@ class TestModule(TransactionCase):
         )
         cls.reduced_config = cls.ReducedConfig.create({})
         cls.ConfigParameter = cls.env["ir.config_parameter"]
-        cls.configuration_line_1 = cls.env.ref(
-            "user_reduced_configuration.reduced_configuration_line_user_default_rights"
+        cls.configuration_1 = cls.env.ref(
+            "user_reduced_configuration.reduced_configuration_user_default_rights"
         )
 
     def _get_value(self):
@@ -28,7 +28,7 @@ class TestModule(TransactionCase):
 
     def test_write_ko(self):
         initial_value = self._get_value()
-        self.configuration_line_1.unlink()
+        self.configuration_1.unlink()
         self.reduced_config.user_default_rights = not initial_value
         self.reduced_config.execute()
         self.assertEqual(self._get_value(), initial_value)

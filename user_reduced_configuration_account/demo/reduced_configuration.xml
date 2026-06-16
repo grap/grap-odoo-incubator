@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2024 Sylvain LE GAL - GRAP
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="user_reduced_configuration.reduced_configuration_user_default_rights" model="reduced.configuration">
+        <field name="field_ids" eval="[
+            Command.link(ref('base_setup.field_res_config_settings__user_default_rights')),
+        ]"/>
+    </record>
+
+</odoo>

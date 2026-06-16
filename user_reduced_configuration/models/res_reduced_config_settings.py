@@ -18,7 +18,7 @@ class ResReducedConfigSettings(models.TransientModel):
 
     def _get_allowed_fields(self):
         return self.env.user.mapped(
-            "groups_id.reduced_configuration_line_ids.field_id.name"
+            "groups_id.reduced_configuration_ids.field_ids.name"
         )
 
     def execute(self):
