@@ -12,7 +12,7 @@ class SaleAdvancePaymentInv(models.TransientModel):
     def _default_product_id(self):
         product_id = self.env.user.company_id.deposit_product_id
         if not product_id.id:
-            return super(SaleAdvancePaymentInv, self)._default_product_id()
+            return super()._default_product_id()
         else:
             action = self.env.ref(
                 "sale." "action_view_sale_advance_payment_inv"
