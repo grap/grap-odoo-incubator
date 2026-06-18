@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2026 - Today: GRAP (http://www.grap.coop)
+@author Sylvain LE GAL
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_sale_advance_payment_inv_form" model="ir.ui.view">
+        <field name="model">sale.advance.payment.inv</field>
+        <field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
+        <field name="arch" type="xml">
+            <!-- Make the field visible and readonly-->
+            <field name="product_id" position="attributes">
+                <attribute name="string">Down Payment Product</attribute>
+                <attribute name="readonly">1</attribute>
+                <attribute name="invisible">0</attribute>
+                <attribute name="force_save">1</attribute>
+                <attribute name="widget">selection</attribute>
+            </field>
+            <field name="product_id" position="before">
+                <div colspan="2"
+                    class="alert alert-danger"
+                    role="alert"
+                    attrs="{'invisible': [('product_message', '=', False)]}"
+                ><field name="product_message"/></div>
+            </field>
+        </field>
+    </record>
+
+</odoo>
