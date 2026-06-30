@@ -36,6 +36,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="total_amount" position="attributes">
                 <attribute name="attrs">{'readonly': ['|', ('sheet_is_editable', '=', False), ('product_has_cost', '=', True)]}</attribute>
             </field>
+            <!-- Force save is needed with new readonly state otherwise it doesn't save value -->
+            <field name="total_amount" position="attributes">
+                <attribute name="force_save">1</attribute>
+            </field>
+
 
             <!-- Make total_amount_company label always hidden if currency are the sames -->
             <xpath expr="//label[@for='total_amount_company']" position="attributes">
