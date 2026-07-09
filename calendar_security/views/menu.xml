@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Copyright (C) 2026 - Today: GRAP (http://www.grap.coop)
+@author Sylvain LE GAL
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="calendar.mail_menu_calendar" model="ir.ui.menu">
+        <field
+            name="groups_id"
+            eval="[
+                (3, ref('base.group_user')),
+                (4, ref('calendar_security.group_calendar')),
+            ]"
+        />
+    </record>
+
+</odoo>
