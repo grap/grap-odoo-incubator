@@ -33,6 +33,7 @@ addon | version | maintainers | summary
 [product_accounts](product_accounts/) | 16.0.1.0.2 |  | Compute and display income - expense account at product level
 [product_simple_pricelist](product_simple_pricelist/) | 16.0.1.1.2 |  | Provides Wizard to manage easily Pricelist By Products
 [product_uom_company_favorite](product_uom_company_favorite/) | 16.0.1.0.4 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> | Possilibity to set favorite product units of Measure per company
+[sale_down_payment_product_per_company](sale_down_payment_product_per_company/) | 16.0.1.0.0 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> <a href='https://github.com/quentinDupont'><img src='https://github.com/quentinDupont.png' width='32' height='32' style='border-radius:50%;' alt='quentinDupont'/></a> | Handle Down Payment products per company and tax
 [sale_picking_quick_confirm](sale_picking_quick_confirm/) | 16.0.1.1.2 | <a href='https://github.com/quentinDupont'><img src='https://github.com/quentinDupont.png' width='32' height='32' style='border-radius:50%;' alt='quentinDupont'/></a> | Sale Picking Quick Confirm
 [stock_picking_account_move](stock_picking_account_move/) | 16.0.1.2.1 |  | Stock Picking Account Move
 [stock_picking_quick_quantity_done](stock_picking_quick_quantity_done/) | 16.0.1.0.2 |  | Stock Picking Quick Quantity Done
