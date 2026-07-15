@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2026 - Today: GRAP (http://www.grap.coop)
+@author Sylvain LE GAL
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="base.main_company" model="res.company">
+        <field name="down_payment_product_ids" eval="[
+            Command.link(ref('sale_down_payment_product_per_company.product_down_payment_vat_0')),
+            Command.link(ref('sale_down_payment_product_per_company.product_down_payment_vat_10')),
+            Command.link(ref('sale_down_payment_product_per_company.product_down_payment_vat_20')),
+        ]"/>
+    </record>
+
+</odoo>

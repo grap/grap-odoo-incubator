@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2026 - Today: GRAP (http://www.grap.coop)
+@author Sylvain LE GAL
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="vat_10" model="account.tax">
+        <field name="name">VAT 10%</field>
+        <field name="type_tax_use">sale</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="amount">10</field>
+    </record>
+
+    <record id="vat_20" model="account.tax">
+        <field name="type_tax_use">sale</field>
+        <field name="name">VAT 20%</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="amount">20</field>
+    </record>
+
+</odoo>
