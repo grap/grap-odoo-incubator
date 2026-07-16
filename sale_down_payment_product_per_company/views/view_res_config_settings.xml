@@ -8,28 +8,27 @@
         <field name="model">res.config.settings</field>
         <field
                 name="inherit_id"
-                ref="account.res_config_settings_view_form"
+                ref="sale.res_config_settings_view_form"
             />
         <field name="arch" type="xml">
 
-            <div data-key="account" position="inside">
-                <h2 groups="recurring_consignment.group_consignment_manager">Down Payments</h2>
-                <div class="row mt16 o_settings_container" id="sale_down_payment_product_per_company">
+            <xpath expr="//div[@id='down_payments']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
 
-                    <div class="col-12 col-lg-6 o_setting_box">
-                        <div class="o_setting_right_pane mt16">
-                            <label for="down_payment_product_ids"/>
-                            <span class="fa fa-lg fa-building-o" role="img" title="Values set here are company-specific." groups="base.group_multi_company"/>
-                            <div>
-                                <field name="down_payment_product_ids"/>
-                            </div>
-                            <div class="text-muted">Products used for payment advances in sale module. Create a product per company and tax.</div>
+            <xpath expr="//div[@id='down_payments']" position="after">
+                <div class="col-12 col-lg-6 o_setting_box" id="down_payments">
+                    <div class="o_setting_left_pane"/>
+                    <div class="o_setting_right_pane">
+                        <label for="down_payment_product_ids"/>
+                        <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." groups="base.group_multi_company"/>
+                        <div class="text-muted">
+                            Products used for payment advances in sale module. Create a product per company and tax.
                         </div>
+                        <field name="down_payment_product_ids" context="{'default_detailed_type': 'service'}" widget="many2many_tags"/>
                     </div>
-
                 </div>
-            </div>
-
+            </xpath>
         </field>
     </record>
 

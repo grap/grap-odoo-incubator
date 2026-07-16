@@ -11,7 +11,8 @@ class ResCompany(models.Model):
     down_payment_product_ids = fields.Many2many(
         string="Down Payment Products",
         comodel_name="product.product",
+        check_company=True,
         help="Products used for payment advances in sale module."
         " Create a product per company and tax.",
-        domain="['&', ('company_id', '=', id), ('type', '=', 'service')]",
+        domain="[('type', '=', 'service')]",
     )
