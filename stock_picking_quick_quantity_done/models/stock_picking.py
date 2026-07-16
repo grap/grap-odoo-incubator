@@ -18,7 +18,7 @@ class StockPicking(models.Model):
     def _compute_show_quick_quantities_done(self):
         for picking in self:
             moves = picking.mapped("move_ids").filtered(
-                lambda move: move.state not in ("draft", "cancel", "done")
+                lambda move: move.state not in ("cancel", "done")
             )
             picking.show_quick_quantities_done = any(
                 moves.mapped("show_quick_quantity_done")
@@ -26,6 +26,6 @@ class StockPicking(models.Model):
 
     def quick_quantities_done(self):
         moves = self.mapped("move_ids").filtered(
-            lambda move: move.state not in ("draft", "cancel", "done")
+            lambda move: move.state not in ("cancel", "done")
         )
         moves.quick_quantity_done()
