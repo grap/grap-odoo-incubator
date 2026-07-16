@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 =================================
 Stock Picking Quick Quantity Done
 =================================
@@ -32,10 +28,6 @@ product stock quantities are not well updated, due to lack of time for
 example. This is the same objective as the legacy function "Force
 availability".
 
-|image1|
-
-.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_quick_quantity_done/static/description/picking.jpeg
-
 **Table of contents**
 
 .. contents::
@@ -45,9 +37,13 @@ Usage
 =====
 
 This module checks if some "quantities done" in the picking are not
-equals to initials demands. If so, "Force availability" button is
+equals to initials demands. If so, "Apply Demanded Quantities" button is
 possible. User can also set "quantity done" for each line of the
 picking.
+
+|stock_picking_form|
+
+.. |stock_picking_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_quick_quantity_done/static/description/stock_picking_form.png
 
 Bug Tracker
 ===========

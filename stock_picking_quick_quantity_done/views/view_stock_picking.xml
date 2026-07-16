@@ -13,14 +13,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <button name="button_validate" position="before">
                 <field name="show_quick_quantities_done" invisible="1"/>
                 <button name="quick_quantities_done"
-                    string="Force Availability"
+                    help="Quickly set quantities done with initial demands"
+                    string="Apply Demanded Quantities"
                     type="object" class="btn-primary"
                     attrs="{'invisible': [('show_quick_quantities_done', '=', False)]}"/>
-            </button>
-            <button name="action_assign" position="attributes">
-                <attribute name="attrs">{'invisible': [
-                    ('show_quick_quantities_done', '=', False)
-                ]}</attribute>
             </button>
             <xpath expr="//button[@name='button_validate'][2]" position="attributes">
                 <attribute name="class">oe_highlight</attribute>
@@ -28,7 +24,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="product_uom" position="after">
                 <field name="show_quick_quantity_done" invisible="1"/>
                 <button name="quick_quantity_done"
-                    help="Quickly set quantity done with initial demand"
+                    help="set quantity done with initial demand"
                     type="object"
                     class="oe_stat_button" icon="fa-arrow-up"
                     attrs="{'invisible': [('show_quick_quantity_done', '=', False)]}">
