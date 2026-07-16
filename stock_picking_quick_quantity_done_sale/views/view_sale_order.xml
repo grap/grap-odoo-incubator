@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2025 - Today: GRAP (http://www.grap.coop)
+@author Quentin DUPONT (https://twitter.com/pondupont)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_sale_order_form" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <button name="action_confirm" position="after">
+                <button name="action_quick_confirm_sale_and_picking"
+                    string="Confirm Sale and Picking"
+                    type="object" class="btn-primary"
+                    confirm="This will confirm the sale order and validate the related picking(s) with the quantity defined in the current sale order"
+                    attrs="{'invisible': [('state', 'in', ['cancel', 'sale', 'done'])]}"/>
+            </button>
+        </field>
+    </record>
+
+    <record id="model_sale_order_action_quotation_sent" model="ir.actions.server">
+        <field name="name">Mass Confirm Sales and Pickings</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">action = records.action_mass_quick_confirm_sale_and_picking()</field>
+    </record>
+
+</odoo>

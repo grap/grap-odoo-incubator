@@ -1,10 +1,6 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
-==========================
-Sale Picking Quick Confirm
-==========================
+============================
+Sale - Picking Quick Confirm
+============================
 
 .. 
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -21,7 +17,7 @@ Sale Picking Quick Confirm
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
-    :target: https://github.com/grap/grap-odoo-incubator/tree/16.0/sale_picking_quick_confirm
+    :target: https://github.com/grap/grap-odoo-incubator/tree/16.0/stock_picking_quick_quantity_done_sale
     :alt: grap/grap-odoo-incubator
 
 |badge1| |badge2| |badge3|
@@ -32,9 +28,8 @@ and its Pickings with full quantity, not checking Availibility.
 Use cases : grocery stores where product stock is not updated all the
 time.
 
-|image1|
-
-.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/sale_picking_quick_confirm/static/description/sale_order_quick_confirm.jpeg
+Also when confirming a sale order, the field quantity_done of the
+related stock moves are set to the demanded quantity, by default.
 
 **Table of contents**
 
@@ -44,11 +39,12 @@ time.
 Usage
 =====
 
-Use cases : grocery stores where product stock is not updated all the
-time and we need to confirm quickly Sales without checking stock
-availibilty.
+- Create a Sale Order
+- Click on "Confirme Sale and Picking"
 
-Create a Sale Order > Click on "Confirme Sale and Picking"
+|sale_order_quick_confirm|
+
+.. |sale_order_quick_confirm| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/stock_picking_quick_quantity_done_sale/static/description/sale_order_quick_confirm.jpeg
 
 Bug Tracker
 ===========
@@ -56,7 +52,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20sale_picking_quick_confirm%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20stock_picking_quick_quantity_done_sale%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -84,6 +80,6 @@ Current maintainer:
 
 |maintainer-quentinDupont| 
 
-This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/16.0/sale_picking_quick_confirm>`_ project on GitHub.
+This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/16.0/stock_picking_quick_quantity_done_sale>`_ project on GitHub.
 
 You are welcome to contribute.
