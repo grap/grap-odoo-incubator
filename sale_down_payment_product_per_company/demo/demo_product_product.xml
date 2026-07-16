@@ -8,6 +8,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="product_down_payment_vat_0" model="product.product">
         <field name="name">Down Payment 0%</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
         <field name="company_id" ref="base.main_company" />
         <field name="type">service</field>
         <field name="taxes_id" eval="[
@@ -17,6 +19,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="product_down_payment_vat_10" model="product.product">
         <field name="name">Down Payment 10%</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
         <field name="company_id" ref="base.main_company" />
         <field name="type">service</field>
         <field name="taxes_id" eval="[
@@ -26,6 +30,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="product_down_payment_vat_20" model="product.product">
         <field name="name">Down Payment 20%</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
         <field name="company_id" ref="base.main_company" />
         <field name="type">service</field>
         <field name="taxes_id" eval="[
