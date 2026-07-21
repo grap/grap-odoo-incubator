@@ -2,31 +2,29 @@
 <odoo>
 
     <!-- TREE VIEW -->
-    <record id="pos_account_bank_statement_line_cash_move_reason_tree" model="ir.ui.view">
-        <field name="name">pos.account.bank.statement.line.cash.move.reason.tree</field>
+    <record id="view_account_bank_statement_line_tree" model="ir.ui.view">
         <field name="model">account.bank.statement.line</field>
         <field name="inherit_id" ref="pos_account_bank_statement_line.pos_account_bank_statement_line_tree"/>
         <field name="arch" type="xml">
             <field name="payment_ref" position="after">
-                <field name="pos_move_reason" />
+                <field name="pos_move_reason_id" />
             </field>
         </field>
     </record>
 
     <!-- SEARCH VIEW -->
-    <record id="pos_account_bank_statement_line_cash_move_reason_search" model="ir.ui.view">
-        <field name="name">pos.account.bank.statement.line.cash.move.reason.search</field>
+    <record id="view_account_bank_statement_line_search" model="ir.ui.view">
         <field name="model">account.bank.statement.line</field>
         <field name="inherit_id" ref="pos_account_bank_statement_line.pos_account_bank_statement_line_search"/>
         <field name="arch" type="xml">
             <!-- text search -->
             <field name="amount" position="after">
-                <field name="pos_move_reason" />
+                <field name="pos_move_reason_id" />
             </field>
 
             <!-- groupby -->
             <filter name="journal_id_groupby" position="after">
-                <filter name="move_reason_groupby" string="Move reason" context="{'group_by': 'pos_move_reason'}"/>
+                <filter name="move_reason_groupby" string="Move reason" context="{'group_by': 'pos_move_reason_id'}"/>
             </filter>
         </field>
     </record>
