@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ======================================
 Sale Down Payment Products per Company
 ======================================
@@ -26,8 +22,8 @@ Sale Down Payment Products per Company
 
 |badge1| |badge2| |badge3|
 
-This module extends the functionality of sale module to handle one
-product per company for deposit (down paiement)
+This module extends the functionality of sale module to handle many
+products per company for down payments (one per VAT).
 
 **Table of contents**
 
@@ -37,8 +33,37 @@ product per company for deposit (down paiement)
 Configuration
 =============
 
-- Go to Configuration / Company / Sale configuration
-- Choose a service product with default_invoice_policy = order
+- Go to "Sale > Configuration > Settings"
+- Search for the "Invoicing" Section
+- Select one or many products for the down payments and for the company.
+  (one per VAT amount)
+
+|configuration|
+
+.. |configuration| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/sale_down_payment_product_per_company/static/description/configuration.png
+
+Usage
+=====
+
+- Create a new order and select many products with many vat.
+
+|sale_order|
+
+- during the down payment process, the down payment product with the
+  higher VAT will be selected.
+
+|wizard|
+
+(If no product exists with the higher VAT, the error will be displayed)
+
+|wizard_error|
+
+Note: This module disable the possibility to create down payment on the
+fly for accountant, with vat and account defined, if no product exists.
+
+.. |sale_order| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/sale_down_payment_product_per_company/static/description/sale_order.png
+.. |wizard| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/sale_down_payment_product_per_company/static/description/wizard.png
+.. |wizard_error| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/sale_down_payment_product_per_company/static/description/wizard_error.png
 
 Bug Tracker
 ===========
@@ -63,6 +88,7 @@ Contributors
 
 - Quentin DUPONT
   <`https://twitter.com/pondupont\\> <https://twitter.com/pondupont\>>`__
+- Sylvain LE GAL
 
 Maintainers
 -----------

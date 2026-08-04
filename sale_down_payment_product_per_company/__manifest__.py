@@ -14,6 +14,7 @@
     "depends": ["sale"],
     "data": [
         "wizards/view_sale_advance_payment_inv.xml",
+        "views/view_res_config_settings.xml",
     ],
     "demo": [
         "demo/demo_account_tax.xml",

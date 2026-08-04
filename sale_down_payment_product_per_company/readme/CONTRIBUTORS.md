@@ -1,1 +1,2 @@
 - Quentin DUPONT \<https://twitter.com/pondupont\>
+- Sylvain LE GAL

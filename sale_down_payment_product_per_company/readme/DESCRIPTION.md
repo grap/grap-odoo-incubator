@@ -1,2 +1,2 @@
-This module extends the functionality of sale module to handle one
-product per company for deposit (down paiement)
+This module extends the functionality of sale module to handle many
+products per company for down payments (one per VAT).
