@@ -5,7 +5,7 @@
 {
     "name": "Sale Down Payment Products per Company",
     "summary": "Handle Down Payment products per company and tax",
-    "version": "16.0.1.0.0",
+    "version": "16.0.2.0.0",
     "category": "Sale",
     "author": "GRAP, Odoo Community Association (OCA)",
     "maintainers": ["legalsylvain", "quentinDupont"],
