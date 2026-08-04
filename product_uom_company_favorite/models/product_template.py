@@ -9,16 +9,32 @@ from odoo.exceptions import ValidationError
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    uom_id = fields.Many2one(default=lambda x: x._get_default_uom_id())
+    uom_id = fields.Many2one(default=lambda x: x._default_uom_id())
+    uom_po_id = fields.Many2one(default=lambda x: x._default_uom_po_id())
 
-    def _get_default_uom_id(self):
+    def _default_uom_id(self):
         """Overwrite the original function that returns 'Units'
         In our case, if there are many favorites, force user to decide.
         Otherwise, set the unique favorite unit of measure as the default one.
+        (Except in install mode, to avoid errors and conflict with demo data)
         """
+        if self.env.context.get("install_mode"):
+            return self._get_default_uom_id()
+
         favorite_uoms = self.env["uom.uom"].search([("is_favorite", "=", True)])
         if len(favorite_uoms) == 1:
             return favorite_uoms[0].id
+
+        return False
+
+    def _default_uom_po_id(self):
+        if self.env.context.get("install_mode"):
+            return self._get_default_uom_po_id()
+
+        favorite_uoms = self.env["uom.uom"].search([("is_favorite", "=", True)])
+        if len(favorite_uoms) == 1:
+            return favorite_uoms[0].id
+
         return False
 
     @api.constrains("uom_id")
