@@ -1,0 +1,49 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_picking_quick_quantity_done_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-16 15:19+0000\n"
+"PO-Revision-Date: 2026-07-16 15:19+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_picking_quick_quantity_done_sale
+#. odoo-python
+#: code:addons/stock_picking_quick_quantity_done_sale/models/sale_order.py:0
+#, python-format
+msgid ""
+"Are you sure you want to confirm the %(order_qty)s orders and the related "
+"deliveries ?"
+msgstr ""
+"êtes vous sûr de vouloir confirmer les %(order_qty)s ventes et les livraisons associées ?"
+
+#. module: stock_picking_quick_quantity_done_sale
+#: model_terms:ir.ui.view,arch_db:stock_picking_quick_quantity_done_sale.view_sale_order_form
+msgid "Confirm Sale and Picking"
+msgstr "Confirmer la vente et la livraison"
+
+#. module: stock_picking_quick_quantity_done_sale
+#: model:ir.actions.server,name:stock_picking_quick_quantity_done_sale.model_sale_order_action_quotation_sent
+msgid "Mass Confirm Sales and Pickings"
+msgstr "Confirmation des ventes et livraisons en masse"
+
+#. module: stock_picking_quick_quantity_done_sale
+#: model:ir.model,name:stock_picking_quick_quantity_done_sale.model_sale_order
+msgid "Sales Order"
+msgstr "Commande client"
+
+#. module: stock_picking_quick_quantity_done_sale
+#: model_terms:ir.ui.view,arch_db:stock_picking_quick_quantity_done_sale.view_sale_order_form
+msgid ""
+"This will confirm the sale order and validate the related picking(s) with "
+"the quantity defined in the current sale order"
+msgstr ""
+"Cela va confirmer la vente et le(s) livraison(s) avec les quantités définie dans la vente en cours"

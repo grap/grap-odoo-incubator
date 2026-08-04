@@ -4,4 +4,5 @@ and its Pickings with full quantity, not checking Availibility.
 Use cases : grocery stores where product stock is not updated all the
 time.
 
-![](../static/description/sale_order_quick_confirm.jpeg)
+Also when confirming a sale order, the field quantity_done of the related stock moves
+are set to the demanded quantity, by default.
