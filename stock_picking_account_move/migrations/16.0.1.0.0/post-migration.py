@@ -179,6 +179,7 @@ def migrate(env, version):
                 ),
                 "picking_type_id": _picking_type_data[0].get("id"),
                 "date_done": _date_done,
+                "scheduled_date": _date_done,
                 "create_date": internal_use.get("create_date"),
                 "create_uid": internal_use.get("create_uid"),
                 "write_date": internal_use.get("write_date"),
