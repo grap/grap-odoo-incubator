@@ -29,7 +29,6 @@ class AccountMove(models.Model):
             else:
                 for invoice_line in move.invoice_line_ids:
                     sale_line = invoice_line.sale_line_ids[:1]
-                    # import pdb; pdb.set_trace()
                     if sale_line.qty_delivered != sale_line.qty_invoiced:
                         move.stock_picking_could_be_adjusted = True
                         break
