@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * account_move_reversal_stock
+# 	* account_move_reversal_stock
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-27 12:12+0000\n"
-"PO-Revision-Date: 2026-04-27 12:12+0000\n"
+"POT-Creation-Date: 2026-09-28 15:41+0000\n"
+"PO-Revision-Date: 2026-09-28 15:41+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,26 +17,18 @@ msgstr ""
 
 #. module: account_move_reversal_stock
 #: model_terms:ir.ui.view,arch_db:account_move_reversal_stock.view_account_move
+msgid "Adjust Stock Picking"
+msgstr "Ajuster les Mouvements de Stock"
+
+#. module: account_move_reversal_stock
+#: model_terms:ir.ui.view,arch_db:account_move_reversal_stock.view_account_move
 msgid ""
-"Adjust stock with <b>Reverse Stock Picking</b> button. It will create a <b>Return</b> Stock Picking\n"
-"                    <b>\n"
-"                        <span attrs=\"{'invisible': [('move_type', '=', 'out_invoice')]}\">\n"
-"                            with theses new quantities.\n"
-"                        </span>\n"
-"                        <span attrs=\"{'invisible': [('move_type', '=', 'out_refund')]}\">\n"
-"                            with quantity differentials.\n"
-"                        </span>\n"
-"                    </b>"
+"Adjust stock with <b>Adjust Stock Picking</b> button. It will create Stock "
+"Picking and or Return Stock Picking according to quantity differentials."
 msgstr ""
-"Ajuster les stocks avec le bouton <b>Retourner les Mouvements de Stock</b>. Cela créera un <b>Retour</b> de mouvement de stock\n"
-"                    <b>\n"
-"                        <span attrs=\"{'invisible': [('move_type', '=', 'out_invoice')]}\">\n"
-"                            avec ces nouvelles quantités.\n"
-"                        </span>\n"
-"                        <span attrs=\"{'invisible': [('move_type', '=', 'out_refund')]}\">\n"
-"                            avec le différentiel de quantités.\n"
-"                        </span>\n"
-"                    </b>"
+"Ajuster le stock avec le bouton <b>Ajuster les Mouvements de Stock</b>. Cela "
+"créera un Bon de Livrason et/ou un Retour de Bon de livraison selon les "
+"différences de quantité facturées."
 
 #. module: account_move_reversal_stock
 #: model:ir.model,name:account_move_reversal_stock.model_account_move
@@ -45,19 +37,34 @@ msgstr "Pièce comptable"
 
 #. module: account_move_reversal_stock
 #. odoo-python
+#: code:addons/account_move_reversal_stock/models/account_move-MARCHE-AVANT-SIMPLIF.py:0
+#: code:addons/account_move_reversal_stock/models/account_move-MARCHE-SIMPLIFIESAUFRETOUR.py:0
 #: code:addons/account_move_reversal_stock/models/account_move.py:0
+#: code:addons/account_move_reversal_stock/models/account_move_24sept_marche_mais_pas_bon_suivi_des_move.py:0
+#: code:addons/account_move_reversal_stock/models/account_move_bk_14sept_focntionne.py:0
+#, python-format
+msgid "New Picking: %(name)s"
+msgstr "Nouvel ajustement de stock avec le document %(name)s"
+
+#. module: account_move_reversal_stock
+#. odoo-python
+#: code:addons/account_move_reversal_stock/models/account_move_bk.py:0
 #, python-format
 msgid "New Return Picking: %(name)s"
 msgstr "Nouveau retour de stock avec le document %(name)s"
 
 #. module: account_move_reversal_stock
-#: model_terms:ir.ui.view,arch_db:account_move_reversal_stock.view_account_move
-msgid "Reverse Stock Picking"
-msgstr "Retourner les Mouvements de Stock"
+#: model:ir.model.fields,field_description:account_move_reversal_stock.field_account_bank_statement_line__stock_picking_could_be_adjusted
+#: model:ir.model.fields,field_description:account_move_reversal_stock.field_account_move__stock_picking_could_be_adjusted
+#: model:ir.model.fields,field_description:account_move_reversal_stock.field_account_payment__stock_picking_could_be_adjusted
+msgid "Stock Picking Could Be Adjusted"
+msgstr "Les mouvements de stocks peuvent être ajustés"
 
 #. module: account_move_reversal_stock
-#: model:ir.model.fields,field_description:account_move_reversal_stock.field_account_bank_statement_line__stock_picking_could_be_returned
-#: model:ir.model.fields,field_description:account_move_reversal_stock.field_account_move__stock_picking_could_be_returned
-#: model:ir.model.fields,field_description:account_move_reversal_stock.field_account_payment__stock_picking_could_be_returned
-msgid "Stock Picking Could Be Returned"
-msgstr "Les mouvements de stocks peuvent être ajustés"
+#: model_terms:ir.ui.view,arch_db:account_move_reversal_stock.view_account_move
+msgid ""
+"This will generate Stock Picking Returns if you invoice for less than the "
+"quantity specified in the Sale Order, and Pickings if you invoice for more."
+msgstr ""
+"Cela génerera un Retour de Bon de Livraison si vous facturez moins que la quantité "
+"spécifié dans le Bon de Commande, et un Bon de Livraison si vous facturez plus."
