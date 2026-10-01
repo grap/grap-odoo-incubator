@@ -179,7 +179,6 @@ def migrate(env, version):
                 ),
                 "picking_type_id": _picking_type_data[0].get("id"),
                 "date_done": _date_done,
-                "scheduled_date": _date_done,
                 "create_date": internal_use.get("create_date"),
                 "create_uid": internal_use.get("create_uid"),
                 "write_date": internal_use.get("write_date"),
@@ -196,4 +195,15 @@ def migrate(env, version):
         _logger.info(
             f"[stock_picking_account_move] {_i}/{len(internal_uses)}"
             f" create Picking : {_picking.name}"
+        )
+
+        # Scheduled Date can't be set at creation of Done Pickings
+        # So we set it after Picking creation
+        # see https://github.com/odoo/odoo/blob/16.0/addons/stock/models/stock_picking.py#L795
+        env.cr.execute(
+            """
+            UPDATE stock_picking
+                SET scheduled_date = date_done
+                WHERE scheduled_date IS NULL;
+            """,
         )
