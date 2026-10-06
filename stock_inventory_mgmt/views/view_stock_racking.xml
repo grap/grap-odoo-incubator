@@ -1,0 +1,83 @@
+<odoo>
+
+    <record id="action_stock_racking_2_product_product" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('racking_ids', '=', active_id)]</field>
+    </record>
+
+    <record id="stock_racking_tree" model="ir.ui.view">
+        <field name="model">stock.racking</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="type == 'view'">
+                <field name="complete_name" />
+                <field name="type" invisible="1"/>
+                <field name="color" widget="color_picker"/>
+                <field name="product_qty" attrs="{'invisible': [('type', '=', 'view')]}"/>
+                <field name="location_id" groups="stock.group_stock_multi_locations"/>
+                <field name="company_id" groups="base.group_multi_company" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="stock_racking_form" model="ir.ui.view">
+        <field name="model">stock.racking</field>
+        <field name="arch" type="xml">
+            <form >
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            class="oe_stat_button"
+                            type="action"
+                            icon="fa-list"
+                            name="%(action_stock_racking_2_product_product)d"
+                            attrs="{'invisible': [('type', '=', 'view')]}"
+                        >
+                            <div class="o_field_widget o_stat_info">
+                              <span class="o_stat_value"><field
+                                        name="product_qty"
+                                        widget="statinfo"
+                                        nolabel="1"
+                                    /></span>
+                              <span class="o_stat_text">Products</span>
+                            </div>
+                        </button>
+                    </div>
+                    <label for="name" class="oe_edit_only" />
+                    <h1>
+                        <field name="name" placeholder="e.g. 'Shelf A'"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="type" />
+                            <field name="parent_id" />
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                        <group>
+                            <field
+                                name="location_id"
+                                options="{'no_create': True}"
+                                groups="stock.group_stock_multi_locations"
+                                attrs="{'readonly': [('parent_id', '!=', False)]}"
+                                force_save="1"
+                            />
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook />
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_stock_racking" model="ir.actions.act_window">
+        <field name="name">Rackings</field>
+        <field name="res_model">stock.racking</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem action="action_stock_racking" id="menu_action_stock_racking" parent="stock.menu_stock_warehouse_mgmt" sequence="40"/>
+
+</odoo>

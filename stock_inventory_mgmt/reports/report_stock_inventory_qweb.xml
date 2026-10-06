@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_stock_inventory_qweb">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+			            <div class="oe_structure"/>
+			            <h2 class="mt-4">Stock Inventory</h2>
+                        <table class="table table-sm">
+	                        <thead>
+	                            <tr>
+	                                <th><strong>Inventory</strong></th>
+	                                <th><strong>Date</strong></th>
+	                                <th><strong>Valuation</strong></th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            <tr>
+	                                <td><span t-field="o.name"/></td>
+	                                <td><span t-field="o.date"/></td>
+						            <td><span t-field="o.valuation"/></td>
+	                            </tr>
+	                        </tbody>
+                        </table>
+
+                        <t t-set="locations" t-value="o.line_ids.mapped('location_id')"/>
+			            <table class="table table-sm o_main_table table-borderless mt-4">
+                			<thead style="display: table-row-group">
+                                <tr>
+                                    <th groups="stock.group_stock_multi_locations"><strong>Location</strong></th>
+                                    <th><strong>Product</strong></th>
+                                    <th groups="stock.group_production_lot"><strong>Production Lot</strong></th>
+                                    <th groups="stock.group_tracking_lot"><strong>Package</strong></th>
+                                    <th class="text-right"><strong>Quantity</strong></th>
+                                    <th groups="uom.group_uom" class="text-right"><strong>UoM</strong></th>
+									<th class="text-right"><strong>Unit Price</strong></th>
+									<th class="text-right"><strong>Valuation</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="locations" t-as="location">
+                                    <tr groups="stock.group_stock_multi_locations">
+                                        <td colspan="2"><strong t-esc="location.display_name"/></td>
+                                        <td groups="stock.group_production_lot"></td>
+                                        <td groups="stock.group_tracking_lot"></td>
+                                        <td colspan="3"></td>
+                                    </tr>
+                                    <tr t-foreach="o.line_ids.filtered(lambda line: line.location_id.id == location.id)" t-as="line">
+                                        <td groups="stock.group_stock_multi_locations"></td>
+                                        <td><span t-field="line.product_id"/></td>
+                                        <td groups="stock.group_production_lot"><span t-field="line.prod_lot_id"/></td>
+                                        <td groups="stock.group_tracking_lot"><span t-field="line.package_id"/></td>
+                                        <td class="text-right"><span t-field="line.product_qty"/></td>
+                                        <td class="text-right" groups="uom.group_uom"><span t-field="line.product_uom_id" /></td>
+							            <td class="text-right"><span t-field="line.price_unit"/></td>
+							            <td class="text-right"><span t-field="line.valuation"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+             </t>
+         </t>
+    </template>
+</odoo>

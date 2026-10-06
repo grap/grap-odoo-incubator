@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2026 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="racking_1" model="stock.racking">
+        <field name="name">Walkaway A</field>
+        <field name="type">view</field>
+        <field name="location_id" ref="stock.stock_location_stock" />
+    </record>
+
+    <record id="racking_1_1" model="stock.racking">
+        <field name="name">Left Shelf</field>
+        <field name="parent_id" ref="racking_1" />
+    </record>
+
+    <record id="racking_1_2" model="stock.racking">
+        <field name="name">Right Shelf</field>
+        <field name="parent_id" ref="racking_1" />
+    </record>
+
+    <record id="racking_1_3" model="stock.racking">
+        <field name="name">Cold Storage Bank</field>
+        <field name="parent_id" ref="racking_1" />
+    </record>
+
+</odoo>

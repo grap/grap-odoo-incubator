@@ -1,0 +1,982 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_inventory_mgmt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-15 23:11+0000\n"
+"PO-Revision-Date: 2026-10-15 23:11+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#: code:addons/stock_inventory_mgmt/models/stock_racking.py:0
+#, python-format
+msgid "%s (copy)"
+msgstr "%s (copie)"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_stock_inventory_kanban
+msgid "<i class=\"fa fa-clock-o\" role=\"img\" aria-label=\"Date\" title=\"Date\"/>"
+msgstr "<i class=\"fa fa-clock-o\" role=\"img\" aria-label=\"Date\" title=\"Date\"/>"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.stock_racking_form
+msgid "<span class=\"o_stat_text\">Products</span>"
+msgstr "<span class=\"o_stat_text\">Produits</span>"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_racking__type
+msgid ""
+"A racking of the view type is a virtual racking that can be used as the "
+"parent of another rackings to create a hierarchical structure."
+msgstr ""
+"Un rayonnage de type 'vue' est un rayonnage virtuel, qui peut être utilisé"
+" comme parent d'autres rayonnages, afin de créer une structure hiérarchique."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__message_needaction
+msgid "Action Needed"
+msgstr "Nécessite une action"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__activity_ids
+msgid "Activities"
+msgstr "Activités"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Activité exception décoration"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__activity_state
+msgid "Activity State"
+msgstr "Status de l'activité"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Icône de type d'activité"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid "All products"
+msgstr "Tous les articles"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid ""
+"Are you sure you want to confirm ? This will aply new quantities for all "
+"the inventoried lines."
+msgstr ""
+"Êtes vous sûr·e de vouloir confirmer ? Cela va appliquer les nouvelles quantités pour toutes"
+" les lignes inventoriées."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__message_attachment_count
+msgid "Attachment Count"
+msgstr "Nombre de pièces jointes"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_wizard_stock_inventory_merge_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields.selection,name:stock_inventory_mgmt.selection__stock_inventory__state__cancel
+msgid "Cancelled"
+msgstr "Annulé"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__child_ids
+msgid "Child Rackings"
+msgstr "Rayonnages enfant"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__color
+msgid "Color Index"
+msgstr "Index de couleur"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__company_id
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__company_id
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__company_id
+msgid "Company"
+msgstr "Société"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/wizards/wizard_stock_inventory_merge.py:0
+#, python-format
+msgid "Complete Inventory of %(date_string)s"
+msgstr "Inventaire complet du %(date_string)s"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__complete_name
+msgid "Complete Name"
+msgstr "Nom complet"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory_line__product_uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
+msgstr ""
+"Il est possible de convertir deux unités de mesures si elles appartiennent à"
+" la même catégorie. Cette conversion utilise les rapports définis pour ces "
+"unités."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__move_ids
+msgid "Created Moves"
+msgstr "Mouvements créés"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__create_uid
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__create_uid
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__create_uid
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_wizard_stock_inventory_merge__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__create_date
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__create_date
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__create_date
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_wizard_stock_inventory_merge__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__currency_id
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__currency_id
+msgid "Currency"
+msgstr "Devise"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__display_name
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__display_name
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__display_name
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_wizard_stock_inventory_merge__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields.selection,name:stock_inventory_mgmt.selection__stock_inventory__state__draft
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_search
+msgid "Draft"
+msgstr "En brouillon"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid "Duplicates"
+msgstr "Doublons"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__duplicates_qty
+msgid "Duplicates Quantity"
+msgstr "Nombre de doublons"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory_line__product_tracking
+msgid "Ensure the traceability of a storable product in your warehouse."
+msgstr "Assure la tracabilité d'un article stockable dans votre entrepôt."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__message_follower_ids
+msgid "Followers"
+msgstr "Abonnés"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Abonnés (Partenaires)"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Icône Font Awesome par ex. fa-tasks"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid "From"
+msgstr "De"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_search
+msgid "Group By"
+msgstr "Regrouper par"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__has_message
+msgid "Has Message"
+msgstr "A un message"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__id
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__id
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__id
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_wizard_stock_inventory_merge__id
+msgid "ID"
+msgstr "ID"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory_line.py:0
+#, python-format
+msgid "INV: %(inventory_name)s"
+msgstr "INV: %(inventory_name)s"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__activity_exception_icon
+msgid "Icon"
+msgstr "Icône"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icône pour indiquer une activité d'exception."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si coché, de nouveaux messages demandent votre attention."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si coché, certains messages ont une erreur de livraison."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__date
+msgid ""
+"If the inventory adjustment is not validated, date at which the theoritical quantities have been checked.\n"
+"If the inventory adjustment is validated, date at which the inventory adjustment has been validated."
+msgstr ""
+"Si l'inventaire n'est pas validé, date à laquelle les quantités théoriques ont été vérifiées. \n"
+"Si l'inventaire est validé, date à laquelle l'inventaire a été validé. "
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__filter
+msgid ""
+"If you do an entire inventory, you can choose 'All Products' and it will "
+"prefill the inventory with the current stock. If you only do some products "
+"(e.g. Cycle Counting) you can choose 'Manual Selection of Products' and the "
+"system won't propose anything."
+msgstr ""
+"Si vous réalisez un inventaire intégral, vous pouvez choisir \"Tous les "
+"articles\", ce qui pré-remplira votre inventaire avec les stocks actuels. Si"
+" vous n'inventoriez que quelques articles (par ex. inventaire tournant), "
+"vous pouvez choisir \"Sélection manuelle d'articles\" : ainsi, le système ne"
+" pré-remplira rien. Vous pouvez également laisser le système pré-remplir "
+"l'inventaire pour un seul article, un lot, etc."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields.selection,name:stock_inventory_mgmt.selection__stock_inventory__state__in_progress
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_search
+msgid "In Progress"
+msgstr "En cours"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__exhausted
+msgid "Include Exhausted Products"
+msgstr "Inclure les produits épuisés"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid "Incorrect Lot Inventory Lines."
+msgstr "Ligne d'inventaire avec lot incorrect."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__location_id
+msgid "Inventoried Location"
+msgstr "Emplacement inventorié"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__partner_id
+msgid "Inventoried Owner"
+msgstr "Propriétaire inventorié"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__supplier_id
+msgid "Inventoried Supplier"
+msgstr "Fournisseur inventorié"
+
+#. module: stock_inventory_mgmt
+#: model:ir.actions.act_window,name:stock_inventory_mgmt.action_inventory_form
+#: model:ir.ui.menu,name:stock_inventory_mgmt.menu_action_inventory_form
+msgid "Inventories"
+msgstr "Inventaires"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_search
+msgid "Inventories Date"
+msgstr "Date d'inventaires"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model,name:stock_inventory_mgmt.model_stock_inventory
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__inventory_id
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_move__inventory_id
+msgid "Inventory"
+msgstr "Inventaire"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid "Stock Moves"
+msgstr "Mouvement de stock"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__date
+msgid "Inventory Date"
+msgstr "date d'inventaire"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid "Inventory Details"
+msgstr "Détails de l'inventaire"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model,name:stock_inventory_mgmt.model_stock_inventory_line
+msgid "Inventory Line"
+msgstr "Ligne d'inventaire"
+
+#. module: stock_inventory_mgmt
+#: model:ir.actions.act_window,name:stock_inventory_mgmt.action_inventory_line_tree
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__line_ids
+msgid "Inventory Lines"
+msgstr "Lignes d'inventaire"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__inventory_location_id
+msgid "Inventory Location"
+msgstr "Emplacement d'inventaire"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_wizard_stock_inventory_merge__name
+msgid "Inventory Name"
+msgstr "Nom de l'inventaire"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__filter
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid "Inventory of"
+msgstr "Inventaire de"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__message_is_follower
+msgid "Is Follower"
+msgstr "Est un abonné"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_move__is_inventory
+msgid "Is Inventory"
+msgstr "Est un inventaire"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory____last_update
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line____last_update
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking____last_update
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_wizard_stock_inventory_merge____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__write_uid
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__write_uid
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__write_uid
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_wizard_stock_inventory_merge__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__write_date
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__write_date
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__write_date
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_wizard_stock_inventory_merge__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_racking__company_id
+msgid "Let this field empty if this location is shared between companies"
+msgstr "Laissez ce champ vide si cet emplacement est partagé par plusieurs sociétés"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_tree
+msgid "Lines"
+msgstr "Lignes"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__line_qty
+msgid "Lines Quantity"
+msgstr "Nombre de lignes"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid "List view of lines"
+msgstr "Lignes en vue Liste"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__location_id
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__location_id
+msgid "Location"
+msgstr "Emplacement"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__prod_lot_id
+msgid "Lot/Serial Number"
+msgstr "Lot/numéro de série"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Pièce jointe principale"
+
+#. module: stock_inventory_mgmt
+#: model:ir.actions.act_window,name:stock_inventory_mgmt.action_stock_inventory_merge
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_wizard_stock_inventory_merge_form
+msgid "Merge Inventories"
+msgstr "Fusionner les inventaires"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields.selection,name:stock_inventory_mgmt.selection__stock_inventory__state__merged
+msgid "Merged"
+msgstr "Fusionné"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__merged_inventory_line_id
+msgid "Merged Inventory Line"
+msgstr "Ligne d'inventaire fusionné"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__merged_inventory_id
+msgid "Merged into"
+msgstr "Fusionné dans"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/wizards/wizard_stock_inventory_merge.py:0
+#, python-format
+msgid "Merging is not allowed for Full inventories."
+msgstr "Fusionner des inventaires complets n'est pas possible."
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/wizards/wizard_stock_inventory_merge.py:0
+#, python-format
+msgid "Merging is only allowed on 'In Progress' inventories."
+msgstr "Il n'est possible de fusionner que des inventaires en cours."
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/wizards/wizard_stock_inventory_merge.py:0
+#, python-format
+msgid ""
+"Merging is only allowed on inventories that doesn't contains negative values.\n"
+"\n"
+"- %(inventory_names)s"
+msgstr "Il n'est pas possible de fusionner des inventaires qui contiennent des lignes avec des valeurs négatives.\n"
+"\n"
+"- %(inventory_names)s"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/wizards/wizard_stock_inventory_merge.py:0
+#, python-format
+msgid "Merging is only allowed on inventories with the same location."
+msgstr "Il n'est possible de fusionner que des inventaires du même emplacement de stock."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__message_has_error
+msgid "Message Delivery error"
+msgstr "Erreur d'envoi du message"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__message_ids
+msgid "Messages"
+msgstr "Messages"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Échéance de mon activité"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Date limite de l'activité à venir"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__activity_summary
+msgid "Next Activity Summary"
+msgstr "Résumé de l'activité suivante"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__activity_type_id
+msgid "Next Activity Type"
+msgstr "Type d'activités à venir"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields.selection,name:stock_inventory_mgmt.selection__stock_racking__type__normal
+msgid "Normal"
+msgstr "Normal"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_search
+msgid "Not Finished"
+msgstr "Non finalisé"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Nombre d'actions"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__message_has_error_counter
+msgid "Number of errors"
+msgstr "Nombre d'erreurs"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Nombre de messages nécessitant une action"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Nombre de messages avec des erreurs d'envoi"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid "One owner"
+msgstr "Un propriétaire"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid "One product category"
+msgstr "Une catégorie d'articles"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid "One racking"
+msgstr "Un rayonnage"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid "One supplier"
+msgstr "Un fournisseur"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__partner_id
+msgid "Owner"
+msgstr "Propriétaire"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__package_id
+msgid "Pack"
+msgstr "Colis"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__parent_id
+msgid "Parent"
+msgstr "Parent"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields.selection,name:stock_inventory_mgmt.selection__stock_inventory__state__pending_merge
+msgid "Pending Merge"
+msgstr "Fusion en cours"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/wizards/wizard_stock_inventory_merge.py:0
+#, python-format
+msgid "Please select at least two or more inventories to merge"
+msgstr "Veuillez sélectionner au moins 2 inventaires à fusionner"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model,name:stock_inventory_mgmt.model_product_template
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__product_id
+msgid "Product"
+msgstr "Produit"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__product_active
+msgid "Product Active"
+msgstr "Produit actif"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__category_id
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__product_category_id
+msgid "Product Category"
+msgstr "Catégorie de produit"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__product_qty
+msgid "Product Quantity"
+msgstr "Quantité de produit"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__product_uom_id
+msgid "Product Unit of Measure"
+msgstr "Unité de mesure du produit"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model,name:stock_inventory_mgmt.model_product_product
+msgid "Product Variant"
+msgstr "Variante de produit"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid "Product: %(product_name)s - Quantity: %(product_qty)s"
+msgstr "Produit : %(product_name)s - Quantité : %(product_qty)s"
+
+#. module: stock_inventory_mgmt
+#: model:ir.actions.act_window,name:stock_inventory_mgmt.action_stock_racking_2_product_product
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__product_ids
+msgid "Products"
+msgstr "Produits"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_product_template__racking_ids
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__racking_id
+msgid "Racking"
+msgstr "Rayonnage"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_racking__type
+msgid "Racking Type"
+msgstr "Type de rayonnage"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.constraint,message:stock_inventory_mgmt.constraint_stock_racking_complete_name_uniq
+msgid "Racking complete name already exists!"
+msgstr "Le nom complet de ce rayonnage existe déjà !"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_racking.py:0
+#, python-format
+msgid "Racking should have the same location has its parent racking."
+msgstr "Le rayonnage doit avoir le même emplacement que son rayonnage parent."
+
+#. module: stock_inventory_mgmt
+#: model:ir.actions.act_window,name:stock_inventory_mgmt.action_stock_racking
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_product_product__racking_ids
+#: model:ir.ui.menu,name:stock_inventory_mgmt.menu_action_stock_racking
+msgid "Rackings"
+msgstr "Rayonnages"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__product_qty
+msgid "Real Quantity"
+msgstr "Quantité réelle"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__activity_user_id
+msgid "Responsible User"
+msgstr "Responsable"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid "Select products manually"
+msgstr "Sélectionner les produits manuellement"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__source_inventory_ids
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__source_inventory_ids
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid "Source Inventories"
+msgstr "Inventaire sources"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__source_inventory_qty
+msgid "Source Inventories Quantity"
+msgstr "Nombre d'inventaire sources"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__source_inventory_line_ids
+msgid "Source Inventory Lines"
+msgstr "Lignes d'inventaire source"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__partner_id
+msgid "Specify Owner to focus your inventory on a particular owner."
+msgstr "Spécifiez le propriétaire afin de filtrer votre inventaire sur ce critère"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__category_id
+msgid ""
+"Specify Product Category to focus your inventory on a particular Category."
+msgstr "Indiquez une catégorie de produits pour axer votre inventaire sur une "
+"catégorie spécifique."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__racking_id
+msgid ""
+"Specify Racking to focus your inventory on a particular racking of your "
+"stock location."
+msgstr "Indiquez une rayonnage pour axer votre inventaire sur une "
+"rayonnage spécifique."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__supplier_id
+msgid "Specify Suplier to focus your inventory on a particular supplier."
+msgstr "Indiquez une fournisseur de produits pour axer votre inventaire sur les produits de ce fournisseur."
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid "Start Inventory"
+msgstr "Démarrer un inventaire"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_search
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__state
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__state
+msgid "State"
+msgstr "État"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Statut basé sur les activités\n"
+"En retard : la date d'échéance est déjà dépassée\n"
+"Aujourd'hui : la date d'activité est aujourd'hui\n"
+"Planifiée : activités futures"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model,name:stock_inventory_mgmt.model_wizard_stock_inventory_merge
+msgid "Stock Inventory Merge Wizard"
+msgstr "Assistant de fusion d'inventaire"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model,name:stock_inventory_mgmt.model_stock_move
+msgid "Stock Move"
+msgstr "Mouvement de stock"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model,name:stock_inventory_mgmt.model_stock_racking
+msgid "Stock Racking"
+msgstr "Rayonnage de stock"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory_line__price_unit
+msgid ""
+"Technical field used to record the product cost at the time of the inventory"
+msgstr "Champs technique utilisé pour stocker le coût de revient du produit au moment de l'inventaire"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__theoretical_qty
+msgid "Theoretical Quantity"
+msgstr "Quantité théorique"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid ""
+"This will cancel this inventory. This action is not reversible. Are you sure"
+" ?"
+msgstr "Cela annulera l'inventaire. Cette action est irréversible. Etes vous sûr ?"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid "To"
+msgstr "Vers"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.stock_inventory_line_tree2
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_tree
+msgid "Total Valuation"
+msgstr "Valeur totale"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__product_tracking
+msgid "Tracking"
+msgstr "Suivi"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Type d'activité d'exception enregistrée."
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__price_unit
+msgid "Unit Price"
+msgstr "Prix unitaire"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid "Unit of Measure"
+msgstr "Unité de mesure"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.stock_inventory_line_tree2
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid "UoM"
+msgstr "UdM"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__product_uom_category_id
+msgid "UoM Category"
+msgstr "Catégorie d'UdM"
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_form
+msgid "Validate Inventory"
+msgstr "Valider l'inventaire"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields.selection,name:stock_inventory_mgmt.selection__stock_inventory__state__done
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_inventory_search
+msgid "Validated"
+msgstr "Validé"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__valuation
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory_line__valuation
+msgid "Valuation"
+msgstr "Valeur"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields.selection,name:stock_inventory_mgmt.selection__stock_racking__type__view
+msgid "View"
+msgstr "Vue"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,field_description:stock_inventory_mgmt.field_stock_inventory__website_message_ids
+msgid "Website Messages"
+msgstr "Messages du site web"
+
+#. module: stock_inventory_mgmt
+#: model:ir.model.fields,help:stock_inventory_mgmt.field_stock_inventory__website_message_ids
+msgid "Website communication history"
+msgstr "Historique de communication du site web"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid ""
+"You can not put in progress state the inventory %(inventory_name)s because there are other full inventories in progress for the same stock location '%(location_name)s'.\n"
+"\n"
+"- %(inventories_names)s"
+msgstr ""
+"Vous ne pouvez pas démarrer l'inventaire %(inventory_name)s car il y a d'autres inventaires complets en cours, pour le même emplacement de stock '%(location_name)s'.\n"
+"\n"
+"- %(inventories_names)s"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid ""
+"You can not validate inventories with the following lines because there are inventoried in other pending inventories:\n"
+"\n"
+"- %(duplicate_list)s"
+msgstr "Vous ne pouvez pas valider les inventaires, car les lignes suivantes sont inventoriées dans d'autres inventaires en cours:\n"
+"\n"
+"- %(duplicate_list)s"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory_line.py:0
+#, python-format
+msgid ""
+"You can only inventory storable products.\n"
+"\n"
+"%(product_name)s -> %(product_type)s"
+msgstr ""
+" Vous pouvez seulement inventorier des produits stockables.\n"
+"\n"
+"%(product_name)s -> %(product_type)s"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid "You can only delete draft, canceled or merge inventories."
+msgstr "Vous ne pouvez supprimer que des inventaire en brouillon, annulé ou résultant d'une fusion."
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid ""
+"You cannot set a negative product quantity in an inventory line:\n"
+"\n"
+"- %(product_list)s"
+msgstr ""
+" Vous ne pouvez pas mettre de quantité négative dans une ligne d'inventaire:\n"
+"\n"
+"- %(product_list)s"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#: code:addons/stock_inventory_mgmt/models/stock_racking.py:0
+#, python-format
+msgid "You must define a warehouse for the company: %s."
+msgstr "Vous devez définir un entrepôt pour la société: %s."
+
+#. module: stock_inventory_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.stock_racking_form
+msgid "e.g. 'Shelf A'"
+msgstr "Ex: 'Etagère A'"
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid "You can not validate inventories with duplicated lines."
+msgstr "Vous ne pouvez pas valider des inventaires avec des lignes dupliquées."
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid "You can only validate inventories without any lines."
+msgstr "Vous ne pouvez pas valider des inventaires sans lignes."
+
+#. module: stock_inventory_mgmt
+#. odoo-python
+#: code:addons/stock_inventory_mgmt/models/stock_inventory.py:0
+#, python-format
+msgid "You can only validate pending inventories."
+msgstr "Vous pouvez seulement des inventaires qui sont en cours."

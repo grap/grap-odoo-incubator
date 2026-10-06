@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2026 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="inventory_partial" model="stock.inventory">
+        <field name="name">Demo Inventory of a Selection of products</field>
+        <field name="filter">partial</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="location_id" ref="stock.stock_location_stock" />
+    </record>
+
+    <record id="inventory_category" model="stock.inventory">
+        <field name="name">Demo Inventory of a category</field>
+        <field name="filter">category</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="location_id" ref="stock.stock_location_stock" />
+        <field name="category_id" ref="product.product_category_1" />
+    </record>
+
+    <record id="inventory_racking" model="stock.inventory">
+        <field name="name">Demo Inventory of a racking</field>
+        <field name="filter">racking</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="location_id" ref="stock.stock_location_stock" />
+        <field name="racking_id" ref="stock_inventory_mgmt.racking_1_1" />
+    </record>
+
+    <record id="inventory_supplier" model="stock.inventory">
+        <field name="name">Demo Inventory of a supplier</field>
+        <field name="filter">supplier</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="location_id" ref="stock.stock_location_stock" />
+        <field name="supplier_id" ref="base.res_partner_1" />
+    </record>
+
+    <record id="inventory_owner" model="stock.inventory">
+        <field name="name">Demo Inventory of an owner</field>
+        <field name="filter">owner</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="location_id" ref="stock.stock_location_stock" />
+        <field name="partner_id" ref="base.res_partner_2" />
+    </record>
+
+</odoo>
