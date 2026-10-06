@@ -1,6 +1,7 @@
 # Copyright (C) 2026 - Today: GRAP (http://www.grap.coop)
 # @author Sylvain LE GAL
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+# Notes: Some files comes from Odoo CE V12. Copyright: Odoo SA (see headers)
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
     "name": "Stock Inventory",
@@ -8,14 +9,16 @@
     " previous odoo versions. (12.0, etc.)",
     "version": "16.0.1.0.0",
     "category": "Usability",
-    "license": "AGPL-3",
+    "license": "LGPL-3",
     "author": "GRAP",
     "maintainers": ["legalsylvain"],
     "website": "https://github.com/grap/grap-odoo-incubator",
     "depends": ["stock"],
     "data": [
-        # "security/res_groups.xml",
-        # "views/menu.xml",
+        "security/ir.model.access.csv",
+        "security/ir_rule.xml",
+        "views/view_stock_inventory_line.xml",
+        "views/view_stock_inventory.xml",
     ],
     "installable": True,
 }
