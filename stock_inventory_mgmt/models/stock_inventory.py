@@ -25,13 +25,13 @@ class Inventory(models.Model):
             )
 
     name = fields.Char(
-        "Inventory Reference",
+        string="Inventory Reference",
         readonly=True,
         required=True,
         states={"draft": [("readonly", False)]},
     )
     date = fields.Datetime(
-        "Inventory Date",
+        string="Inventory Date",
         readonly=True,
         required=True,
         default=fields.Datetime.now,
@@ -41,18 +41,18 @@ class Inventory(models.Model):
         " date at which the inventory adjustment has been validated.",
     )
     line_ids = fields.One2many(
-        "stock.inventory.line",
-        "inventory_id",
-        string="Inventories",
+        string="Inventory Lines",
+        comodel_name="stock.inventory.line",
+        inverse_name="inventory_id",
         copy=True,
         readonly=False,
         states={"done": [("readonly", True)]},
     )
     move_ids = fields.One2many(
-        "stock.move",
-        "inventory_id",
         string="Created Moves",
-        states={"done": [("readonly", True)]},
+        comodel_name="stock.move",
+        inverse_name="inventory_id",
+        readonly=True,
     )
     state = fields.Selection(
         string="Status",
@@ -68,19 +68,17 @@ class Inventory(models.Model):
         default="draft",
     )
     company_id = fields.Many2one(
-        "res.company",
-        "Company",
+        string="Company",
+        comodel_name="res.company",
         readonly=True,
         index=True,
         required=True,
         states={"draft": [("readonly", False)]},
-        default=lambda self: self.env["res.company"]._company_default_get(
-            "stock.inventory"
-        ),
+        default=lambda self: self.env.company,
     )
     location_id = fields.Many2one(
-        "stock.location",
-        "Inventoried Location",
+        string="Inventoried Location",
+        comodel_name="stock.location",
         readonly=True,
         required=True,
         states={"draft": [("readonly", False)]},
@@ -88,28 +86,28 @@ class Inventory(models.Model):
     )
     product_id = fields.Many2one(
         "product.product",
-        "Inventoried Product",
+        string="Inventoried Product",
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="Specify Product to focus your inventory on a particular Product.",
     )
     package_id = fields.Many2one(
-        "stock.quant.package",
-        "Inventoried Pack",
+        string="Inventoried Pack",
+        comodel_name="stock.quant.package",
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="Specify Pack to focus your inventory on a particular Pack.",
     )
     partner_id = fields.Many2one(
-        "res.partner",
-        "Inventoried Owner",
+        string="Inventoried Owner",
+        comodel_name="res.partner",
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="Specify Owner to focus your inventory on a particular Owner.",
     )
     lot_id = fields.Many2one(
-        "stock.production.lot",
-        "Inventoried Lot/Serial Number",
+        string="Inventoried Lot/Serial Number",
+        comodel_name="stock.lot",
         copy=False,
         readonly=True,
         states={"draft": [("readonly", False)]},
@@ -130,29 +128,30 @@ class Inventory(models.Model):
     )
     total_qty = fields.Float("Total Quantity", compute="_compute_total_qty")
     category_id = fields.Many2one(
-        "product.category",
-        "Product Category",
+        string="Product Category",
+        comodel_name="product.category",
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="Specify Product Category to focus your inventory"
         " on a particular Category.",
     )
     exhausted = fields.Boolean(
-        "Include Exhausted Products",
+        string="Include Exhausted Products",
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
 
-    @api.one
     @api.depends("product_id", "line_ids.product_qty")
     def _compute_total_qty(self):
         """For single product inventory, total quantity of the counted"""
-        if self.product_id:
-            self.total_qty = sum(self.mapped("line_ids").mapped("product_qty"))
-        else:
-            self.total_qty = 0
+        for inventory in self:
+            if inventory.product_id:
+                inventory.total_qty = sum(
+                    inventory.mapped("line_ids").mapped("product_qty")
+                )
+            else:
+                inventory.total_qty = 0
 
-    @api.multi
     def unlink(self):
         for inventory in self:
             if inventory.state == "done":
@@ -213,7 +212,6 @@ class Inventory(models.Model):
         if self.location_id.company_id:
             self.company_id = self.location_id.company_id
 
-    @api.one
     @api.constrains("filter", "product_id", "lot_id", "partner_id", "package_id")
     def _check_filter_product(self):
         if (
@@ -246,39 +244,6 @@ class Inventory(models.Model):
         return True
 
     def action_validate(self):
-        inventory_lines = self.line_ids.filtered(
-            lambda line: line.product_id.tracking in ["lot", "serial"]
-            and not line.prod_lot_id
-            and line.theoretical_qty != line.product_qty
-        )
-        lines = self.line_ids.filtered(
-            lambda line: float_compare(
-                line.product_qty, 1, precision_rounding=line.product_uom_id.rounding
-            )
-            > 0
-            and line.product_id.tracking == "serial"
-            and line.prod_lot_id
-        )
-        if inventory_lines and not lines:
-            wiz_lines = [
-                (0, 0, {"product_id": product.id, "tracking": product.tracking})
-                for product in inventory_lines.mapped("product_id")
-            ]
-            wiz = self.env["stock.track.confirmation"].create(
-                {"inventory_id": self.id, "tracking_line_ids": wiz_lines}
-            )
-            return {
-                "name": _("Tracked Products in Inventory Adjustment"),
-                "type": "ir.actions.act_window",
-                "view_mode": "form",
-                "res_model": "stock.track.confirmation",
-                "target": "new",
-                "res_id": wiz.id,
-            }
-        else:
-            self._action_done()
-
-    def _action_done(self):
         negative = next(
             (
                 line
@@ -296,35 +261,35 @@ class Inventory(models.Model):
                     quantity=negative.product_qty,
                 )
             )
-        self.action_check()
-        self.write({"state": "done", "date": fields.Datetime.now()})
-        self.post_inventory()
-        return True
 
-    def post_inventory(self):
-        # The inventory is posted as a single step which means quants
-        # cannot be moved from an internal location to another using an inventory
-        # as they will be moved to inventory loss, and other quants will be created
-        # to the encoded quant location. This is a normal behavior
-        # as quants cannot be reuse from inventory location
-        # (users can still manually move the products before/after
-        # the inventory if they want).
-        self.mapped("move_ids").filtered(
-            lambda move: move.state != "done"
-        )._action_done()
-        return True
-
-    def action_check(self):
-        """Checks the inventory and computes the stock move to do"""
-        # tde todo: clean after _generate_moves
-        for inventory in self.filtered(lambda x: x.state not in ("done", "cancel")):
-            # first remove the existing stock moves linked to this inventory
-            inventory.with_context(prefetch_fields=False).mapped("move_ids").unlink()
-            inventory.line_ids._generate_moves()
+        inventory_lines = self.line_ids.filtered(
+            lambda line: line.product_id.tracking in ["lot", "serial"]
+            and not line.prod_lot_id
+            and line.theoretical_qty != line.product_qty
+        )
+        lines = self.line_ids.filtered(
+            lambda line: float_compare(
+                line.product_qty, 1, precision_rounding=line.product_uom_id.rounding
+            )
+            > 0
+            and line.product_id.tracking == "serial"
+            and line.prod_lot_id
+        )
+        if inventory_lines and not lines:
+            # Adapt call of stock.track.confirmation to V16
+            raise NotImplementedError()
+        else:
+            for inventory in self.filtered(lambda x: x.state not in ("done", "cancel")):
+                inventory.line_ids._generate_moves()
+                inventory.mapped("move_ids")._action_done()
+                inventory.write({"state": "done", "date": fields.Datetime.now()})
+            return True
 
     def action_cancel_draft(self):
+        # TODO
         self.mapped("move_ids")._action_cancel()
         self.write({"line_ids": [(5,)], "state": "draft"})
+        raise NotImplementedError()
 
     def action_start(self):
         for inventory in self.filtered(lambda x: x.state not in ("done", "cancel")):
@@ -342,7 +307,9 @@ class Inventory(models.Model):
         return True
 
     def action_inventory_line_tree(self):
-        action = self.env.ref("stock.action_inventory_line_tree").read()[0]
+        action = self.env.ref("stock_inventory_mgmt.action_inventory_line_tree").read()[
+            0
+        ]
         action["context"] = {
             "default_location_id": self.location_id.id,
             "default_product_id": self.product_id.id,
