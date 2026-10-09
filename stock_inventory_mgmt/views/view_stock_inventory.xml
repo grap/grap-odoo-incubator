@@ -93,7 +93,8 @@
                     <group>
                         <field name="location_id" domain="[('usage','not in', ['supplier','production'])]" groups="stock.group_stock_multi_locations"/>
                         <field name="location_id" invisible="1"/>
-                        <field name="filter" string="Inventory of" widget='radio' attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="filter" string="Inventory of" widget='radio' attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                        <field name="filter" string="Inventory of" attrs="{'invisible': [('state', '=', 'draft')]}"/>
                     </group>
                     <group>
                         <field name="date"/>

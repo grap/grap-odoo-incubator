@@ -119,6 +119,8 @@ class Inventory(models.Model):
         selection="_selection_filter",
         required=True,
         default="none",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
         help="If you do an entire inventory, you can choose 'All Products'"
         " and it will prefill the inventory with the current stock."
         " If you only do some products"
