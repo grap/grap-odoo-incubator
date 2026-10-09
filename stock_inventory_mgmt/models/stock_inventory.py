@@ -325,7 +325,7 @@ class Inventory(models.Model):
         locations = self.env["stock.location"].search(
             [("id", "child_of", [self.location_id.id])]
         )
-        domain = " sq.location_id in %s AND sq.quantity != 0 AND pp.active"
+        domain = " sq.location_id in %s AND sq.quantity != 0"
         args = (tuple(locations.ids),)
 
         vals = []

@@ -41,6 +41,8 @@ class StockInventoryLine(models.Model):
     )
     product_tracking = fields.Selection(related="product_id.tracking", readonly=True)
 
+    product_active = fields.Boolean(compute="_compute_product_active", store=True)
+
     # Inventory line fields
     partner_id = fields.Many2one(string="Owner", comodel_name="res.partner")
     product_uom_id = fields.Many2one(
@@ -127,6 +129,11 @@ class StockInventoryLine(models.Model):
         ):  # TDE FIXME: last part added because crash
             self._compute_theoretical_qty()
             self.product_qty = self.theoretical_qty
+
+    @api.depends("product_id")
+    def _compute_product_active(self):
+        for line in self:
+            line.product_active = line.product_id.active
 
     @api.model_create_multi
     def create(self, vals_list):

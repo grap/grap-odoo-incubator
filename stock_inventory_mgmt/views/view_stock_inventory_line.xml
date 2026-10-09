@@ -17,8 +17,15 @@
     <record id="stock_inventory_line_tree2" model="ir.ui.view">
         <field name="model">stock.inventory.line</field>
         <field name="arch" type="xml">
-            <tree editable="top" decoration-info="product_qty != theoretical_qty" decoration-danger="theoretical_qty &lt; 0">
+            <tree editable="top"
+                decoration-it="product_active == False"
+                decoration-bf="product_qty != theoretical_qty"
+                decoration-danger="product_qty &lt; 0"
+                decoration-warning="product_qty &lt; theoretical_qty"
+                decoration-info="product_qty &gt; theoretical_qty"
+            >
                 <field name="product_tracking" invisible="1"/>
+                <field name="product_active" invisible="1"/>
                 <field name="product_id"  domain="[('type','=','product')]"/>
                 <field name="location_id" domain="[('id', 'child_of', inventory_location_id)]" groups="stock.group_stock_multi_locations"
                     optional="show"/>
