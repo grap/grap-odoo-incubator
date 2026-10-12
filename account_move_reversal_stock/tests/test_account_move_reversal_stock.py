@@ -8,7 +8,6 @@
 # Copyright Quentin DUPONT
 
 from odoo import SUPERUSER_ID, api, registry
-from odoo.exceptions import UserError
 from odoo.tests import get_db_name, tagged
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
@@ -66,6 +65,14 @@ class TestAccountMoveReversalStock(AccountTestInvoicingCommon):
         return so
 
     @classmethod
+    def _check_no_diff_qty_delivered_invoiced(cls, account_move):
+        for invoice_line in account_move.invoice_line_ids:
+            sale_line = invoice_line.sale_line_ids[:1]
+            if sale_line.qty_delivered != sale_line.qty_invoiced:
+                return False
+        return True
+
+    @classmethod
     def setUpClass(cls, chart_template_ref=None):
         with registry(get_db_name()).cursor() as cr:
             env = api.Environment(cr, SUPERUSER_ID, {})
@@ -102,19 +109,19 @@ class TestAccountMoveReversalStock(AccountTestInvoicingCommon):
         )
 
         # Test new_invoice
-        self.assertEqual(new_invoice.stock_picking_could_be_returned, False)
-
-        # Reverse will raise Error as there is no quantity differentials
-        with self.assertRaises(UserError):
-            new_invoice.reverse_stock_picking()
+        self.assertEqual(new_invoice.stock_picking_could_be_adjusted, False)
 
         # Change quantity and retest
         new_invoice.invoice_line_ids.write({"quantity": 40})
         new_invoice.action_post()
-        self.assertEqual(new_invoice.stock_picking_could_be_returned, True)
+        self.assertEqual(new_invoice.stock_picking_could_be_adjusted, True)
         self.assertEqual(new_invoice.picking_count, 1)
-        new_invoice.reverse_stock_picking()
+        new_invoice.adjust_stock_picking()
         self.assertEqual(new_invoice.picking_count, 2)
+
+        # Check quantities in Sale Order
+        no_diff = self._check_no_diff_qty_delivered_invoiced(new_invoice)
+        self.assertEqual(no_diff, True)
 
     def test_02_invoice_refund_cancel(self):
         # Create and validate invoice
@@ -139,7 +146,11 @@ class TestAccountMoveReversalStock(AccountTestInvoicingCommon):
         )
 
         # Test new_invoice
-        self.assertEqual(new_invoice.stock_picking_could_be_returned, True)
+        self.assertEqual(new_invoice.stock_picking_could_be_adjusted, True)
         self.assertEqual(new_invoice.picking_count, 1)
-        new_invoice.reverse_stock_picking()
+        new_invoice.adjust_stock_picking()
         self.assertEqual(new_invoice.picking_count, 2)
+
+        # Check quantities in Sale Order
+        no_diff = self._check_no_diff_qty_delivered_invoiced(new_invoice)
+        self.assertEqual(no_diff, True)
