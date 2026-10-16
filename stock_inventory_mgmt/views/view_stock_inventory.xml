@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Part of Odoo CE V12. LGPL. -->
+<odoo>
+
+    <record id="view_inventory_search" model="ir.ui.view">
+        <field name="model">stock.inventory</field>
+        <field name="arch" type="xml">
+            <search >
+                <field name="name"/>
+                <field name="date"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <filter string="Not Finished" name="filter_not_finished" domain="[('state', 'in', ['draft', 'in_progress', 'pending_merge'])]"/>
+                <filter string="Draft" name="filter_draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="In Progress" name="filter_in_progress" domain="[('state', '=', 'in_progress')]"/>
+                <filter string="Validated" name="filter_done" domain="[('state', '=', 'done')]"/>
+                <group string="Group By">
+                    <filter string="State" name="group_by_state" context="{'group_by':'state'}"/>
+                    <filter string="Inventories Date" name="group_by_date" context="{'group_by':'date'}"/>
+                </group>
+            </search>
+
+        </field>
+    </record>
+
+    <record id="view_inventory_tree" model="ir.ui.view">
+        <field name="model">stock.inventory</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" decoration-it="state =='cancel'">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="filter" optional="show"/>
+                <field name="line_qty" optional="show" string="Lines"/>
+                <field name="valuation" sum="Total Valuation" widget="monetary" attrs="{'invisible': [('state', 'in', ['draft', 'cancel'])]}" optional="show"/>
+                <field name="state" widget="badge"  decoration-info="state == 'draft'"  decoration-primary="state in ('in_progress', 'pending_merge')" decoration-success="state in ('done', 'merged')"  decoration-muted="state == 'cancel'"/>
+                <field name="currency_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_stock_inventory_kanban" model="ir.ui.view">
+        <field name="model">stock.inventory</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_record_top">
+                                <div class="o_kanban_record_headings">
+                                    <strong class="o_kanban_record_title"><span><t t-esc="record.name.value"/></span></strong>
+                                </div>
+                                <field name="state" widget="label_selection" options="{'classes': {'draft': 'info', 'in_progress': 'default', 'done': 'success', 'cancel': 'muted'}}"/>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                <div class="oe_kanban_bottom_left">
+                                    <i class="fa fa-clock-o" role="img" aria-label="Date" title="Date"/> <t t-esc="record.date.value"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_inventory_form" model="ir.ui.view">
+        <field name="model">stock.inventory</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_start" states="draft" string="Start Inventory" type="object" class="oe_highlight" groups="stock.group_stock_user"/>
+                    <button name="action_merge_duplicated_lines" type="object" string="Merge Duplicates" attrs="{'invisible': [('duplicates_qty', '=', 0)]}" class="oe_highlight"/>
+                    <button name="action_validate" states="in_progress" string="Validate Inventory" type="object" class="oe_highlight" groups="stock.group_stock_manager" confirm="Are you sure you want to confirm ? This will aply new quantities for all the inventoried lines."/>
+                    <button name="action_cancel" states="in_progress" string="Cancel" type="object" confirm="This will cancel this inventory. This action is not reversible. Are you sure ?"/>
+                    <button name="action_cancel" states="draft" string="Cancel" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_progress"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_inventory_line_tree"
+                            class="oe_stat_button"
+                            icon="fa-list"
+                            type="object"
+                            help="List view of lines"
+                            states="in_progress,done">
+                            <field string="Lines" name="line_qty" widget="statinfo"/>
+                        </button>
+                      <button name="action_view_duplicates"
+                            class="oe_inline oe_stat_button"
+                            icon="fa-copy"
+                            type="object"
+                            attrs="{'invisible': [('duplicates_qty', '=', 0)]}">
+                          <field string="Duplicates" name="duplicates_qty" widget="statinfo"/>
+                      </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name" /></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                            <field name="company_id"  invisible="1"/>
+                            <field name="location_id" domain="[('usage','not in', ['supplier','production'])]" groups="stock.group_stock_multi_locations"/>
+                            <field name="location_id" invisible="1"/>
+                            <field name="filter" string="Inventory of" widget='radio' attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                            <field name="filter" string="Inventory of" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="category_id" attrs="{'invisible': [('filter', '!=', 'category')], 'required': [('filter', '=', 'category')]}" options="{'no_create': True}"/>
+                            <field name="racking_id" attrs="{'invisible': [('filter', '!=', 'racking')], 'required': [('filter', '=', 'racking')]}" options="{'no_create': True}"/>
+                            <field name="partner_id" attrs="{'invisible': [('filter', '!=', 'owner')], 'required': [('filter', '=', 'owner')]}" groups="stock.group_tracking_owner"/>
+                            <field name="partner_id" invisible="1"/>
+                            <field name="supplier_id" attrs="{'invisible': [('filter', '!=', 'supplier')], 'required': [('filter', '=', 'supplier')]}" />
+                            <field name="supplier_id" invisible="1"/>
+                            <field name="exhausted" attrs="{'readonly': [('filter', 'in', ('owner','partial'))]}" force_save="1"/>
+                            <field name="merged_inventory_id" attrs="{'invisible': [('merged_inventory_id', '=', False)]}"/>
+                        </group>
+                    </group>
+                    <notebook attrs="{'invisible':[('state','=','draft')]}">
+                        <page string="Inventory Details" >
+                            <field name="line_ids" string="Inventory Details" context="{'default_location_id': location_id, 'default_partner_id': partner_id}" mode="tree,kanban">
+                                <tree editable="bottom"
+                                    decoration-it="product_active == False"
+                                    decoration-bf="product_qty != theoretical_qty"
+                                    decoration-danger="product_qty &lt; 0"
+                                    decoration-warning="product_qty &lt; theoretical_qty"
+                                    decoration-info="product_qty &gt; theoretical_qty"
+                                >
+                                    <field name="product_tracking" invisible="1"/>
+                                    <field name="product_active" invisible="1"/>
+                                    <field name="product_id" domain="[('type','=','product')]" force_save="1"/>
+                                    <field name="source_inventory_ids" attrs="{'column_invisible': [('parent.source_inventory_qty', '=', 0)]}" optional="show" widget="many2many_tags"/>
+                                    <field name="product_category_id" optional="hide"/>
+                                    <field name="price_unit" widget="monetary" optional="hide"/>
+                                    <field name="product_uom_category_id" invisible="1" />
+                                    <field name="location_id" domain="[('id', 'child_of', parent.location_id)]" groups="stock.group_stock_multi_locations" optional="show"/>
+                                    <field name="prod_lot_id" domain="[('product_id', '=', product_id)]" attrs="{'readonly': [('product_tracking', '=', 'none')]}" context="{'default_product_id': product_id}" groups="stock.group_production_lot" optional="show"/>
+                                    <field name="package_id" domain="['|', ('location_id','=', False), ('location_id', '=', location_id)]" groups="stock.group_tracking_lot" optional="show"/>
+                                    <field name="partner_id" groups="stock.group_tracking_owner" optional="show"/>
+                                    <field name="theoretical_qty" readonly="1"/>
+                                    <field name="product_qty" />
+                                    <field name="product_uom_id" string="UoM" groups="uom.group_uom" domain="[('category_id', '=', product_uom_category_id)]" optional="show"/>
+                                    <field name="valuation" sum="Total Valuation" widget="monetary" optional="show" attrs="{'invisible': [('product_qty', '=', 0)]}"/>
+                                    <field name="variation_qty" optional="show" attrs="{'invisible': [('variation_qty', '=', 0)]}"/>
+                                    <field name="variation_valuation" optional="show" widget="monetary" attrs="{'invisible': [('variation_valuation', '=', 0)]}"/>
+                                    <field name="state" invisible="1"/>
+                                    <field name="location_id" invisible="1"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </tree>
+                                <kanban class="o_kanban_mobile">
+                                    <field name="product_tracking" invisible="1"/>
+                                    <field name="product_id"  domain="[('type','=','product')]"/>
+                                    <field name="location_id" domain="[('id', 'child_of', parent.location_id)]" groups="stock.group_stock_multi_locations"/>
+                                    <field name="prod_lot_id" domain="[('product_id', '=', product_id)]" attrs="{'readonly': [('product_tracking', '=', 'none')]}" context="{'default_product_id': product_id}"  groups="stock.group_production_lot"/>
+                                    <field name="package_id" domain="['|', ('location_id','=', False), ('location_id', '=', location_id)]"/>
+                                    <field name="partner_id"/>
+                                    <field name="theoretical_qty" readonly="1"/>
+                                    <field name="product_qty" />
+                                    <field name="product_uom_id" groups="uom.group_uom" string="UoM"/>
+                                    <field name="state" invisible="1"/>
+                                    <field name="location_id" invisible="1"/>
+
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div t-attf-class="oe_kanban_global_click_edit
+                                                               #{record.product_qty.raw_value!=record.theoretical_qty.raw_value ? 'oe_kanban_color_6' : ''}
+                                                               #{record.theoretical_qty.raw_value&lt;0 ? 'oe_kanban_color_2' : ''}">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <strong>
+                                                            <field name='product_id'/>
+                                                        </strong>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 text-muted">
+                                                        <span><t t-esc='record.location_id.string'/>: <t t-esc='record.location_id.value'/></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 text-muted">
+                                                        <span><t t-esc='record.theoretical_qty.string'/>: <t t-esc='record.theoretical_qty.value'/></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 text-muted">
+                                                        <span><t t-esc='record.product_qty.string'/>: <t t-esc='record.product_qty.value'/></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                        <page string="Stock Moves" attrs="{'invisible': [('state', '!=', 'done')]}">
+                            <field name="move_ids">
+                                <tree decoration-muted="scrapped == True">
+                                    <field name="product_id"/>
+                                    <field name="picking_id" invisible="1" />
+                                    <field name="create_date" invisible="1" />
+                                    <field name="date_deadline" invisible="1" />
+                                    <field name="scrapped" invisible="1"/>
+                                    <field name="state" invisible="1"/>
+                                    <field name="location_id" string="From"/>
+                                    <field name="location_dest_id" string="To"/>
+                                    <field name="quantity_done"/>
+                                    <field name="product_uom" options="{'no_open': True, 'no_create': True}" string="Unit of Measure" groups="uom.group_uom"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Source Inventories" attrs="{'invisible': [('source_inventory_qty', '=', 0)]}">
+                            <field name="source_inventory_ids">
+                                <tree>
+                                    <field name="date"/>
+                                    <field name="name"/>
+                                    <field name="filter" optional="show"/>
+                                    <field name="valuation" sum="Total Valuation" widget="monetary" attrs="{'invisible': [('state', 'in', ['draft', 'cancel'])]}" optional="show"/>
+                                    <field name="state" widget="badge"  decoration-info="state == 'draft'" decoration-primary="state in ('in_progress', 'pending_merge')"  decoration-success="state in ('done', 'merged')"  decoration-muted="state == 'cancel'"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </tree>
+                            </field>
+                            <field name="source_inventory_qty" invisible="1" />
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_inventory_form" model="ir.actions.act_window">
+        <field name="name">Inventories</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.inventory</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{"search_default_filter_not_finished": 1}</field>
+    </record>
+
+    <menuitem action="action_inventory_form" id="menu_action_inventory_form" parent="stock.menu_stock_warehouse_mgmt" sequence="30"/>
+</odoo>
