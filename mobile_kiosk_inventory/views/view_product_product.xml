@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 Copyright (C) 2020-Today GRAP (http://www.grap.coop)
-@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author: Sylvain LE GAL
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
 <odoo>
 
     <record id="view_product_product_kanban" model="ir.ui.view">
-        <field name="name">Product Kanban</field>
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_kanban_view"/>
         <field name="mode">primary</field>
         <field name="arch" type="xml">
             <xpath expr="//kanban" position="attributes">
-                <attribute name="class">mobile_kiosk_mode</attribute>
+                <attribute name="action">mk_inventory_product_product_select</attribute>
+                <attribute name="type">object</attribute>
+                <attribute name="create">0</attribute>
             </xpath>
         </field>
     </record>
@@ -24,7 +25,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="res_model">product.product</field>
         <field name="view_mode">kanban</field>
         <field name="view_id" ref="view_product_product_kanban"/>
-        <field name="target">main</field>
+        <field name="domain">[('detailed_type', '=', 'product')]</field>
+        <field name="target">fullscreen</field>
     </record>
 
 </odoo>

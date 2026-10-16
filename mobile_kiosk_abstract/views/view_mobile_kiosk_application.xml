@@ -27,7 +27,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_module_vignette">
-                            <img t-attf-src="#{record.icon.value}" class="oe_module_icon" alt="record.icon.value"/>
+                            <img t-attf-src="#{record.icon.value}" class="oe_module_icon" t-att-alt="record.name"/>
                             <div class="oe_module_desc" t-att-title="record.name.value">
                                 <h4 class="o_kanban_record_title">
                                     <field name="name"/>

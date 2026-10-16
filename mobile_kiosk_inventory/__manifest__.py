@@ -12,19 +12,22 @@
     "license": "AGPL-3",
     "maintainers": ["legalsylvain"],
     "depends": [
-        "stock",
         "mobile_kiosk_abstract",
+        "stock_inventory_mgmt",
     ],
     "data": [
-        "views/templates.xml",
         "views/view_stock_inventory.xml",
+        "views/view_product_product.xml",
+        "security/ir.model.access.csv",
         "data/mobile_kiosk_application.xml",
     ],
-    "qweb": [
-        "static/src/xml/mobile_kiosk_inventory.xml",
-    ],
-    "demo": [
-        "demo/res_groups.xml",
-    ],
+    "assets": {
+        "web.assets_backend": [
+            "mobile_kiosk_inventory/static/src/InventoryAction/**/*",
+            "mobile_kiosk_inventory/static/src/SetInventory/**/*",
+            "mobile_kiosk_inventory/static/src/SetProduct/**/*",
+            "mobile_kiosk_inventory/static/src/SetQuantity/**/*",
+        ],
+    },
     "installable": True,
 }

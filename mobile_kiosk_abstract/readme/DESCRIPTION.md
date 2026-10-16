@@ -8,4 +8,4 @@ mode.
 
 Visually, it adds a new main menu named "Mobile Apps".
 
-![](../static/description/main_menu.png)
+![main_menu](../static/description/main_menu.png)

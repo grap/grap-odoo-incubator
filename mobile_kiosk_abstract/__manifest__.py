@@ -13,20 +13,19 @@
     "website": "https://github.com/grap/grap-odoo-incubator",
     "license": "AGPL-3",
     "maintainers": ["legalsylvain"],
-    "depends": [
-        "stock",
-    ],
+    "depends": ["stock"],
     "data": [
         "security/ir.model.access.csv",
         "views/menu.xml",
-        "views/templates.xml",
-        "views/view_product_product.xml",
-        "views/view_res_partner.xml",
         "views/view_mobile_kiosk_application.xml",
     ],
-    "qweb": [
-        "static/src/xml/mobile_kiosk_abstract.xml",
-    ],
+    "assets": {
+        "web.assets_backend": [
+            "mobile_kiosk_abstract/static/src/AbstractAction/**/*",
+            "mobile_kiosk_abstract/static/src/PadWidget/**/*",
+            "mobile_kiosk_abstract/static/src/scss/**/*",
+        ],
+    },
     "demo": [
         "demo/res_partner.xml",
         "demo/product_product.xml",

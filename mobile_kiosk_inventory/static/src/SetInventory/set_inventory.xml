@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+
+    <t t-name="MobileAppInventorySetInventory" t-extend="MobileAppAbstract.GenericWidget">
+        <t t-jquery=".place-holder" t-operation="append">
+            <div class="row o_mobile_kiosk_abstract_row">
+                <div class="mb0">
+                    <input id="inventory_name" placeholder="Inventory Name" class="mb8"/>
+                    <br />
+                    <button class="btn btn-primary button_create_inventory">
+                        <div class="mb8 mt8">Create new inventory</div>
+                    </button>
+                </div>
+                <div class="mb0">
+                    <hr />
+                    <h2><i>or</i></h2>
+                    <hr />
+                </div>
+                <div class="mb0">
+                    <button class="btn btn-primary button_list_inventories">
+                        <div class="mb8 mt8">Select existing Inventory</div>
+                    </button>
+                </div>
+            </div>
+        </t>
+    </t>
+
+</template>

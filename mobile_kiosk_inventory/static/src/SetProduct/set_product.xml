@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+
+    <t t-name="MobileAppInventorySetProduct" t-extend="MobileAppAbstract.GenericWidget">
+        <t t-jquery=".place-holder" t-operation="append">
+            <div class="row o_mobile_kiosk_abstract_row">
+                <div class="mb0">
+                    <h2><t t-esc="widget.mk_context.mk_inventory_inventory_name"/></h2>
+                    <h3 class="secondary_information"><t t-esc="widget.mk_context.mk_inventory_inventory_date"/></h3>
+                    <hr />
+                </div>
+            </div>
+            <div class="row o_mobile_kiosk_abstract_row">
+                <div class="mb0">
+                    <button class="button_scan_product btn">
+                        <img class="img img-fluid d-block mx-auto" src="/mobile_kiosk_abstract/static/src/img/barcode.png"/>
+                        <div class="mt8">Scan a Barcode</div>
+                    </button>
+                </div>
+                <div class="mb0">
+                    <hr />
+                    <h2><i>or</i></h2>
+                    <hr />
+                </div>
+                <div class="mb0">
+                    <button class="button_list_products btn btn-primary">
+                        <div class="mb8 mt8">Select Product</div>
+                    </button>
+                </div>
+            </div>
+        </t>
+    </t>
+
+</template>

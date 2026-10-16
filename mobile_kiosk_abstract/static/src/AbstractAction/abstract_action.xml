@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+
+    <t t-name="MobileAppAbstract.GenericWidget">
+        <div class="o_mobile_kiosk_abstract_container o_home_menu_background">
+            <div class="o_mobile_kiosk_abstract_mode">
+                <div class="row mt8" style="--gutter-x: 0px">
+                    <div class="col-2">
+                        <t t-if="widget._mk_button_home_page_display">
+                            <button class="btn btn-primary button_home_page">
+                                <i class="fa fa-home" aria-label="Home" title="Home"/>
+                            </button>
+                        </t>
+                    </div>
+                    <div class="col-8">
+                        <h1 class="mt8"><t t-esc="widget._mk_title()"/></h1>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-primary button_exit">
+                            <i class="fa fa-times-circle" aria-label="Exit" title="Exit"/>
+                        </button>
+                    </div>
+                    <hr />
+                </div>
+                <t t-if="widget.mk_should_go_back">
+                    <div class="alert alert-danger">
+                        You loose the context of your action by refreshing the page, please go the home page.
+                    </div>
+                    <button class="btn btn-primary button_home_page">
+                        <div class="mb16 mt16">Go to Home Page</div>
+                    </button>
+                </t>
+                <t t-else="">
+                    <div class="place-holder"/>
+                </t>
+            </div>
+        </div>
+    </t>
+
+<!--
+ href="web#action=" -->
+</template>

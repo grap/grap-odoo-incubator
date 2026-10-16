@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * mobile_kiosk_inventory
+# 	* mobile_kiosk_inventory
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-07 17:07+0000\n"
-"PO-Revision-Date: 2020-11-07 17:07+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2026-10-20 10:09+0000\n"
+"PO-Revision-Date: 2026-10-20 10:09+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,15 +16,29 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: mobile_kiosk_inventory
-#. openerp-web
-#: code:addons/mobile_kiosk_inventory/static/src/xml/mobile_kiosk_inventory.xml:63
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
+msgid "'%(product_qty)s' is not a correct value for a quantity."
+msgstr "'%(product_qty)s' n'est pas une quantité correcte."
+
+#. module: mobile_kiosk_inventory
+#. odoo-javascript
+#: code:addons/mobile_kiosk_inventory/static/src/SetQuantity/set_quantity.xml:0
 #, python-format
 msgid "Add quantity"
 msgstr "Ajouter une quantité"
 
 #. module: mobile_kiosk_inventory
-#. openerp-web
-#: code:addons/mobile_kiosk_inventory/static/src/xml/mobile_kiosk_inventory.xml:19
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
+msgid "Barcode not found"
+msgstr "Code barre non trouvé"
+
+#. module: mobile_kiosk_inventory
+#. odoo-javascript
+#: code:addons/mobile_kiosk_inventory/static/src/SetInventory/set_inventory.xml:0
 #, python-format
 msgid "Create new inventory"
 msgstr "Créer un nouvel inventaire"
@@ -45,17 +59,23 @@ msgid "Display Name"
 msgstr "Nom affiché"
 
 #. module: mobile_kiosk_inventory
-#: model:ir.model.fields,field_description:mobile_kiosk_inventory.field_mobile_kiosk_inventory__id
-msgid "ID"
-msgstr ""
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
+msgid "Missing Inventory Name"
+msgstr "Nom d'inventaire non renseigné"
 
 #. module: mobile_kiosk_inventory
-#. openerp-web
-#: code:addons/mobile_kiosk_inventory/static/src/js/set_inventory.js:24
-#: code:addons/mobile_kiosk_inventory/static/src/js/set_quantity.js:34
+#: model:ir.model.fields,field_description:mobile_kiosk_inventory.field_mobile_kiosk_inventory__id
+msgid "ID"
+msgstr "ID"
+
+#. module: mobile_kiosk_inventory
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #, python-format
-msgid "Incorrect value"
-msgstr "Valeur incorrecte"
+msgid "Incorrect Quantity"
+msgstr "Quantité incorrecte"
 
 #. module: mobile_kiosk_inventory
 #: model:ir.actions.act_window,name:mobile_kiosk_inventory.action_stock_inventory_kanban
@@ -63,26 +83,48 @@ msgid "Inventories"
 msgstr "Inventaires"
 
 #. module: mobile_kiosk_inventory
-#. openerp-web
-#: code:addons/mobile_kiosk_inventory/static/src/js/inventory_action.js:15
-#: model:mobile.kiosk.application,name:mobile_kiosk_inventory.mobile_kiosk_application_inventory
+#. odoo-javascript
+#: code:addons/mobile_kiosk_inventory/static/src/InventoryAction/inventory_action.js:0
+#: model:ir.model,name:mobile_kiosk_inventory.model_stock_inventory
+#: model:mobile.kiosk.application,name:mobile_kiosk_inventory.application_inventory
 #, python-format
 msgid "Inventory"
 msgstr "Inventaire"
 
 #. module: mobile_kiosk_inventory
-#. openerp-web
-#: code:addons/mobile_kiosk_inventory/static/src/xml/mobile_kiosk_inventory.xml:16
+#. odoo-javascript
+#: code:addons/mobile_kiosk_inventory/static/src/SetInventory/set_inventory.xml:0
 #, python-format
 msgid "Inventory Name"
 msgstr "Nom de l'inventaire"
 
 #. module: mobile_kiosk_inventory
-#. openerp-web
-#: code:addons/mobile_kiosk_inventory/static/src/js/inventory_action.js:17
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #, python-format
-msgid "Inventory your Stock"
-msgstr "Inventorier votre stock"
+msgid "Inventory in a bad state"
+msgstr "Inventaire dans un état incorrect"
+
+#. module: mobile_kiosk_inventory
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
+msgid "Inventory name is required."
+msgstr "Nom de l'inventaire requis."
+
+#. module: mobile_kiosk_inventory
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
+msgid "Inventory not found"
+msgstr "Iventaire non trouvé"
+
+#. module: mobile_kiosk_inventory
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
+msgid "Inventory: %(inventory_name)s"
+msgstr "Inventaire: %(inventory_name)s"
 
 #. module: mobile_kiosk_inventory
 #: model:ir.model.fields,field_description:mobile_kiosk_inventory.field_mobile_kiosk_inventory____last_update
@@ -100,91 +142,137 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: mobile_kiosk_inventory
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
+msgid "Missing Quantity"
+msgstr "Quantité non renseignée"
+
+#. module: mobile_kiosk_inventory
 #: model:ir.model,name:mobile_kiosk_inventory.model_mobile_kiosk_inventory
 msgid "Mobile Kiosk Inventory Proxy"
 msgstr "Proxy d'application d'inventaire mobile"
 
 #. module: mobile_kiosk_inventory
-#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:24
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #, python-format
-msgid "No internal locations has been found."
-msgstr "Aucun emplacement de stock interne trouvé."
+msgid "New Inventory Line"
+msgstr "Nouvelle ligne d'inventaire"
 
 #. module: mobile_kiosk_inventory
-#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:66
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #, python-format
-msgid "No product has been found for barcode '%s'"
-msgstr "Aucun article trouvé pour le code barre '%s'"
+msgid "New Inventory created"
+msgstr "Nouvel inventaire créé"
 
 #. module: mobile_kiosk_inventory
-#. openerp-web
-#: code:addons/mobile_kiosk_inventory/static/src/js/set_inventory.js:25
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #, python-format
-msgid "Please enter a inventory name."
-msgstr "Veuillez saisir un nom d'inventaire."
+msgid "No inventory has been found for id #%(inventory_id)s."
+msgstr "Aucun inventaire trouvé pour l'ID #%(inventory_id)s."
 
 #. module: mobile_kiosk_inventory
-#. openerp-web
-#: code:addons/mobile_kiosk_inventory/static/src/js/set_quantity.js:35
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #, python-format
-msgid "Please enter a valid quantity."
-msgstr "Veuillez entrer une quantité valide."
+msgid "No product has been found for barcode '%(barcode)s'."
+msgstr "Aucun produit trouvé pour le code barre #%(barcode)s."
 
 #. module: mobile_kiosk_inventory
-#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:92
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
+msgid "No product has been found for id #%(product_id)s"
+msgstr "Aucun produit trouvé pour l'ID #%(product_id)s."
+
+#. module: mobile_kiosk_inventory
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
+msgid ""
+"Product %(product_name)s: quantity inventoried changed from %(old_quantity)s"
+" to %(new_quantity)s"
+msgstr "Produit %(product_name)s: La quantité inventoriée est passée de %(old_quantity)s"
+" à %(new_quantity)s."
+
+#. module: mobile_kiosk_inventory
+#: model:ir.model,name:mobile_kiosk_inventory.model_product_product
+msgid "Product Variant"
+msgstr "Variante de produit"
+
+#. module: mobile_kiosk_inventory
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
+msgid "Product not found"
+msgstr "Produit non trouvé"
+
+#. module: mobile_kiosk_inventory
+#: model:ir.actions.act_window,name:mobile_kiosk_inventory.action_product_product_kanban
+msgid "Products"
+msgstr "Produits"
+
+#. module: mobile_kiosk_inventory
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #, python-format
 msgid "Quantity Changed"
 msgstr "Quantité modifiée"
 
 #. module: mobile_kiosk_inventory
-#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:93
+#: model:mobile.kiosk.application,summary:mobile_kiosk_inventory.application_inventory
+msgid "Scan Products Barcodes to make Inventories."
+msgstr "Scanner des codes barre de produits pour réaliser des inventaires."
+
+#. module: mobile_kiosk_inventory
+#. odoo-javascript
+#: code:addons/mobile_kiosk_inventory/static/src/SetProduct/set_product.xml:0
 #, python-format
-msgid "Quantity inventoried changed from %s to %s"
-msgstr "La quantité inventoriée est passé de %s à %s"
+msgid "Scan a Barcode"
+msgstr "Scanner un code barre"
 
 #. module: mobile_kiosk_inventory
-#: model:mobile.kiosk.application,summary:mobile_kiosk_inventory.mobile_kiosk_application_inventory
-msgid "Scan Products Barcodes to create Inventories"
-msgstr "Scaner des codes barres d'articles pour créer un inventaires"
-
-#. module: mobile_kiosk_inventory
-#. openerp-web
-#: code:addons/mobile_kiosk_inventory/static/src/xml/mobile_kiosk_inventory.xml:38
-#, python-format
-msgid "Scan a Product"
-msgstr "Scanner un article"
-
-#. module: mobile_kiosk_inventory
-#. openerp-web
-#: code:addons/mobile_kiosk_inventory/static/src/xml/mobile_kiosk_inventory.xml:9
-#, python-format
-msgid "Select Inventory"
-msgstr "Sélectionner un inventaire"
-
-#. module: mobile_kiosk_inventory
-#. openerp-web
-#: code:addons/mobile_kiosk_inventory/static/src/xml/mobile_kiosk_inventory.xml:45
+#. odoo-javascript
+#: code:addons/mobile_kiosk_inventory/static/src/SetProduct/set_product.xml:0
 #, python-format
 msgid "Select Product"
-msgstr "Sélectionner un article"
+msgstr "Sélectionner un produit"
 
 #. module: mobile_kiosk_inventory
-#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:136
+#. odoo-javascript
+#: code:addons/mobile_kiosk_inventory/static/src/SetInventory/set_inventory.xml:0
 #, python-format
-msgid "The product has been dropped, or disabled."
-msgstr "Le produit a été supprimé, ou archivé."
+msgid "Select existing Inventory"
+msgstr "Sélectionner un inventaire existant"
 
 #. module: mobile_kiosk_inventory
-#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:118
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #, python-format
-msgid "The selected inventory has been dropped, or confirmed."
-msgstr "L'inventaire a été supprimé, ou confirmé."
+msgid "The inventory %(inventory_name)s is not in a 'In progress' state."
+msgstr "L'inventaire %(inventory_name)s n'est pas dans l'état 'En cours'."
 
 #. module: mobile_kiosk_inventory
-#. openerp-web
-#: code:addons/mobile_kiosk_inventory/static/src/xml/mobile_kiosk_inventory.xml:13
-#: code:addons/mobile_kiosk_inventory/static/src/xml/mobile_kiosk_inventory.xml:41
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
+msgid "The inventory '%(inventory_name)s' has now %(line_qty)s line(s)."
+msgstr "L'inventaire '%(inventory_name)s' a désormais %(line_qty)s ligne(s)."
+
+#. module: mobile_kiosk_inventory
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
+msgid "Unable to create inventory"
+msgstr "Impossible de créer un inventaire"
+
+#. module: mobile_kiosk_inventory
+#. odoo-javascript
+#: code:addons/mobile_kiosk_inventory/static/src/SetInventory/set_inventory.xml:0
+#: code:addons/mobile_kiosk_inventory/static/src/SetProduct/set_product.xml:0
 #, python-format
 msgid "or"
 msgstr "ou"
-

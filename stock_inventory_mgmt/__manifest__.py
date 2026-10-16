@@ -19,6 +19,7 @@
         "product_compute_template_field_from_variant_helper",
         "report_xlsx_helper",
     ],
+    "excludes": ["stock_inventory"],
     "data": [
         "security/ir.model.access.csv",
         "security/ir_rule.xml",

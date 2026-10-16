@@ -36,11 +36,11 @@ Usage
 - Click on "Mobile Apps" Menu.
 - Launch the "Inventory" application.
 
-|image1|
+|application_launch|
 
 - Select an existing inventory or create a new one.
 
-|image2|
+|inventory_create_or_select|
 
 To create a new inventory, enter a name, and click on "Create new
 Inventory"
@@ -48,11 +48,11 @@ Inventory"
 To select an existing inventory, click on the according button, then
 select a pending inventory in the list :
 
-|image3|
+|inventory_select_existing_inventory|
 
 - The next page allows you to choose a product.
 
-|image4|
+|product_scan_or_select|
 
 If you use a mobile with a barcode scanner, you can scan a barcode, to
 select the product.
@@ -60,10 +60,12 @@ select the product.
 Otherwise, you can manually select a product, if it doesn't have a
 barcode set.
 
+|product_select_product_manually|
+
 - The next page allows you to set a quantity. Tip a quantity, then click
   on the button "Add quantity"
 
-|image5|
+|product_set_quantity|
 
 Note
 ----
@@ -71,14 +73,15 @@ Note
 If you scan twice the same product, a message will be displayed to
 inform the user that the quantities has been summed.
 
-|image6|
+|product_set_quantity_duplicate|
 
-.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/application_launch.png
-.. |image2| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/inventory_create_or_select.png
-.. |image3| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/inventory_select_existing_inventory.png
-.. |image4| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/product_scan_or_select.png
-.. |image5| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/product_set_quantity.png
-.. |image6| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/product_set_quantity_duplicate.png
+.. |application_launch| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/application_launch.png
+.. |inventory_create_or_select| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/inventory_create_or_select.png
+.. |inventory_select_existing_inventory| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/inventory_select_existing_inventory.png
+.. |product_scan_or_select| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/product_scan_or_select.png
+.. |product_select_product_manually| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/product_select_product_manually.png
+.. |product_set_quantity| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/product_set_quantity.png
+.. |product_set_quantity_duplicate| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/product_set_quantity_duplicate.png
 
 Known issues / Roadmap
 ======================

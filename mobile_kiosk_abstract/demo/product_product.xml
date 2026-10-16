@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 Copyright (C) 2020-Today GRAP (http://www.grap.coop)
-@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author: Sylvain LE GAL
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
 <odoo>
 
-    <record id="mobile_kiosk_product_1" model="product.product">
+    <record id="product_1" model="product.product">
         <field name="name">1637 - tobacco (40 gr) (Mobile App)</field>
         <field name="type">product</field>
         <field name="barcode">3701078243449</field>
@@ -15,7 +15,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="lst_price">12.50</field>
     </record>
 
-    <record id="mobile_kiosk_product_2" model="product.product">
+    <record id="product_2" model="product.product">
         <field name="name">OCB - Eco Slim Filters (x150) (Mobile App)</field>
         <field name="type">product</field>
         <field name="barcode">3057068106783</field>
