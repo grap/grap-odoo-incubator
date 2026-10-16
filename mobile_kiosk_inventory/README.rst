@@ -13,17 +13,17 @@ Mobile Kiosk Inventory
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
-    :target: https://github.com/grap/grap-odoo-incubator/tree/12.0/mobile_kiosk_inventory
+    :target: https://github.com/grap/grap-odoo-incubator/tree/16.0/mobile_kiosk_inventory
     :alt: grap/grap-odoo-incubator
 
 |badge1| |badge2| |badge3|
 
-This module adds a new mobile interface to makes inventories in Odoo with a mobile that
-has a barcode scanner integrated.
+This module adds a new mobile interface to makes inventories in Odoo
+with a mobile that has a barcode scanner integrated.
 
 **Table of contents**
 
@@ -33,51 +33,60 @@ has a barcode scanner integrated.
 Usage
 =====
 
-* Click on "Mobile Apps" Menu.
+- Click on "Mobile Apps" Menu.
+- Launch the "Inventory" application.
 
-* Launch the "Inventory" application.
+|image1|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_inventory/static/description/application_launch.png
+- Select an existing inventory or create a new one.
 
-* Select an existing inventory or create a new one.
+|image2|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_inventory/static/description/inventory_create_or_select.png
+To create a new inventory, enter a name, and click on "Create new
+Inventory"
 
-To create a new inventory, enter a name, and click on "Create new Inventory"
+To select an existing inventory, click on the according button, then
+select a pending inventory in the list :
 
-To select an existing inventory, click on the according button, then select a pending
-inventory in the list :
+|image3|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_inventory/static/description/inventory_select_existing_inventory.png
+- The next page allows you to choose a product.
 
-* The next page allows you to choose a product.
+|image4|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_inventory/static/description/product_scan_or_select.png
+If you use a mobile with a barcode scanner, you can scan a barcode, to
+select the product.
 
-If you use a mobile with a barcode scanner, you can scan a barcode, to select
-the product.
+Otherwise, you can manually select a product, if it doesn't have a
+barcode set.
 
-Otherwise, you can manually select a product, if it doesn't have a barcode set.
+- The next page allows you to set a quantity. Tip a quantity, then click
+  on the button "Add quantity"
 
-* The next page allows you to set a quantity. Tip a quantity, then click on the button
-  "Add quantity"
-
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_inventory/static/description/product_set_quantity.png
+|image5|
 
 Note
-~~~~
+----
 
-If you scan twice the same product, a message will be displayed to inform the user
-that the quantities has been summed.
+If you scan twice the same product, a message will be displayed to
+inform the user that the quantities has been summed.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_inventory/static/description/product_set_quantity_duplicate.png
+|image6|
+
+.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/application_launch.png
+.. |image2| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/inventory_create_or_select.png
+.. |image3| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/inventory_select_existing_inventory.png
+.. |image4| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/product_scan_or_select.png
+.. |image5| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/product_set_quantity.png
+.. |image6| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_inventory/static/description/product_set_quantity_duplicate.png
 
 Known issues / Roadmap
 ======================
 
-* This module has been developped in a simple context. (A single locations, no lots, etc...)
-  Some extra screen could be added to select locations, product lots, ...
-  depending on if the user belong to some groups like "Multi-location group", ...
+- This module has been developped in a simple context. (A single
+  locations, no lots, etc...) Some extra screen could be added to select
+  locations, product lots, ... depending on if the user belong to some
+  groups like "Multi-location group", ...
 
 Bug Tracker
 ===========
@@ -85,7 +94,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20mobile_kiosk_inventory%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20mobile_kiosk_inventory%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -93,18 +102,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Other credits
-~~~~~~~~~~~~~
+-------------
 
-* Application icon (``mobile_kiosk_stock.png``) comes from
+- Application icon (``mobile_kiosk_stock.png``) comes from
   https://www.flaticon.com/authors/photo3idea-studio
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 .. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
     :target: https://github.com/legalsylvain
@@ -114,6 +123,6 @@ Current maintainer:
 
 |maintainer-legalsylvain| 
 
-This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/12.0/mobile_kiosk_inventory>`_ project on GitHub.
+This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/16.0/mobile_kiosk_inventory>`_ project on GitHub.
 
 You are welcome to contribute.
