@@ -213,7 +213,7 @@ class Inventory(models.Model):
 
     def _default_location_id(self):
         warehouse = self.env["stock.warehouse"].search(
-            [("company_id", "=", self.env.company_id.id)], limit=1
+            [("company_id", "=", self.env.company.id)], limit=1
         )
         if warehouse:
             return warehouse.lot_stock_id.id

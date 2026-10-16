@@ -32,9 +32,9 @@ mode.
 
 Visually, it adds a new main menu named "Mobile Apps".
 
-|image1|
+|main_menu|
 
-.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_abstract/static/description/main_menu.png
+.. |main_menu| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_abstract/static/description/main_menu.png
 
 **Table of contents**
 
@@ -50,9 +50,9 @@ Development
 - it provides a new widget named "pad_widget", used to enter a numeric
   value.
 
-|image1|
+|pad_widget|
 
-.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_abstract/static/description/pad_widget.png
+.. |pad_widget| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_abstract/static/description/pad_widget.png
 
 Known issues / Roadmap
 ======================
@@ -61,9 +61,9 @@ Known issues / Roadmap
   the context, and so has to do again the current action. It is due to a
   current Odoo limitation in the web framework.
 
-|image1|
+|context_lost_message|
 
-.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_abstract/static/description/context_lost_message.png
+.. |context_lost_message| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_abstract/static/description/context_lost_message.png
 
 Bug Tracker
 ===========

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+
+    <t t-name="MobileAppAbstract.PadWidget">
+        <div class="row">
+            <div class="">
+                <div class="row o_mobile_kiosk_abstract_row" >
+                    <div class="mb16">
+                        <input id="quantity" disabled="true"/>
+                    </div>
+                </div>
+                <div class="row o_mobile_kiosk_abstract_row">
+                    <t
+                        t-foreach="['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', ['C', 'btn-warning']]"
+                        t-as="btn_name">
+                        <div class="col-4 mb8">
+                            <a t-attf-class="btn btn-block d-flex btn-lg kiosk-button-pad {{btn_name[1]? btn_name[1] : 'btn-secondary'}}"
+                                t-att-data-value-id="btn_name[0]? btn_name[0] : btn_name">
+                                <t t-esc="btn_name[0]"/>
+                            </a>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</template>

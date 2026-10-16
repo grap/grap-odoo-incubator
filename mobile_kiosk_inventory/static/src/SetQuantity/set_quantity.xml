@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+
+    <t t-name="MobileAppInventorySetQuantity" t-extend="MobileAppAbstract.GenericWidget">
+        <t t-jquery=".place-holder" t-operation="append">
+            <div class="row o_mobile_kiosk_abstract_row">
+                <div class="mb0">
+                    <h3><t t-esc="widget.mk_context.mk_inventory_inventory_name"/></h3>
+                    <h4>(<t t-esc="widget.mk_context.mk_inventory_inventory_date"/>)</h4>
+                    <h3><t t-esc="widget.mk_context.mk_inventory_product_name"/></h3>
+                    <hr />
+                </div>
+                <div class="placeholder-padwidget mb0"/>
+                <div class="mb0">
+                    <button class="btn btn-primary button_add_quantity">
+                        <div class="mb8 mt8">Add quantity</div>
+                    </button>
+                </div>
+            </div>
+        </t>
+    </t>
+
+</template>

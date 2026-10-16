@@ -10,11 +10,11 @@ odoo.define("mobile_kiosk_inventory.inventory_action", function (require) {
     var _t = core._t;
 
     var ActionMobileKioskInventory = ActionMobileKioskAbstract.extend({
+        _mk_title: function () {
+            return _t("Inventory");
+        },
 
-        _kiosk_home_page_tag: "mobile_kiosk_inventory_action_set_inventory",
-        _kiosk_home_page_name: _t("Inventory"),
-
-        _kiosk_title: _t("Inventory your Stock"),
+        _mk_home_page_tag: "mobile_kiosk_inventory_action_set_inventory",
 
     });
 

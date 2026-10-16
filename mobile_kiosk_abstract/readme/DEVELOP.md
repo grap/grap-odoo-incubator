@@ -4,4 +4,4 @@
 - it provides a new widget named "pad_widget", used to enter a numeric
   value.
 
-![](../static/description/pad_widget.png)
+![pad_widget](../static/description/pad_widget.png)
