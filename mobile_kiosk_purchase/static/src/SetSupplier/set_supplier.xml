@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+
+    <t t-name="MobileAppPurchaseSetSupplier" t-extend="MobileAppAbstract.GenericWidget">
+        <t t-jquery=".place-holder" t-operation="append">
+            <div class="row o_mobile_kiosk_abstract_row">
+                <div class="mb0">
+                    <button class="button_list_partners btn btn-primary">
+                        <div class="mb8 mt8">Select Supplier</div>
+                    </button>
+                </div>
+            </div>
+        </t>
+    </t>
+
+</template>

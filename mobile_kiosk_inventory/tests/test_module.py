@@ -2,44 +2,18 @@
 # @author: Sylvain LE GAL
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo.tests.common import TransactionCase, tagged
+from odoo.tests.common import tagged
+
+from odoo.addons.mobile_kiosk_abstract.tests.test_abstract import TestAbstract
 
 
 @tagged("post_install", "-at_install")
-class TestModule(TransactionCase):
+class TestModule(TestAbstract):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-
         cls.MobileKioskInventory = cls.env["mobile.kiosk.inventory"]
         cls.StockInventory = cls.env["stock.inventory"]
-        cls.ProductProduct = cls.env["product.product"]
-        cls.product_1 = cls.env.ref("mobile_kiosk_abstract.product_1")
-        cls.random_product = cls.env.ref("product.product_product_5")
-
-    def _assert_notification(self, result, expected_level):
-        self.assertIn(
-            expected_level,
-            [x.get("type") for x in result.get("notifications", [])],
-            result,
-        )
-
-    def _get_context(self, result):
-        self.assertIn("action", result.keys(), result)
-        self.assertNotEqual(result.get("action"), False, result)
-        self.assertIn("context", result["action"].keys(), result)
-        return result["action"]["context"]
-
-    def _get_context_value(self, result, context_key):
-        context = self._get_context(result)
-        self.assertIn(context_key, context, result)
-        return context[context_key]
-
-    def _get_context_value_from_action(self, action, context_key):
-        self.assertIn("context", action.keys(), action)
-        context = action["context"]
-        self.assertIn(context_key, context, action)
-        return context[context_key]
 
     def test_full_workflow_mobile_kiosk_inventory(self):
         inventory_name = "Test Inventory"
@@ -64,6 +38,14 @@ class TestModule(TransactionCase):
             "Select an inventory should return the existing one.",
         )
 
+        # [API::mk_inventory_product_product_select] Select an existing Product
+        result = self.random_product.mk_inventory_product_product_select()
+        self.assertEqual(
+            self._get_context_value_from_action(result, "mk_inventory_product_name"),
+            self.random_product.name,
+            "Select an Product should return the existing one.",
+        )
+
         # [API::scan_barcode] incorrect barcode
         result = self.MobileKioskInventory.with_context(
             **inventory_context
@@ -73,20 +55,12 @@ class TestModule(TransactionCase):
         # [API::scan_barcode] Correct barcode
         result = self.MobileKioskInventory.with_context(
             **inventory_context
-        ).scan_barcode("3701078243449")
+        ).scan_barcode(self.product_1.barcode)
         product_context = self._get_context(result)
         self.assertEqual(
             self._get_context_value(result, "mk_inventory_product_name"),
             self.product_1.name,
             "Scan a product should return its name.",
-        )
-
-        # [API::mk_inventory_product_product_select] Select an existing Product
-        result = self.random_product.mk_inventory_product_product_select()
-        self.assertEqual(
-            self._get_context_value_from_action(result, "mk_inventory_product_name"),
-            self.random_product.name,
-            "Select an Product should return the existing one.",
         )
 
         # [API::add_quantity]

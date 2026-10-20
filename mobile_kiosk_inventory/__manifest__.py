@@ -16,10 +16,10 @@
         "stock_inventory_mgmt",
     ],
     "data": [
-        "views/view_stock_inventory.xml",
-        "views/view_product_product.xml",
         "security/ir.model.access.csv",
         "data/mobile_kiosk_application.xml",
+        "views/view_stock_inventory.xml",
+        "views/view_product_product.xml",
     ],
     "assets": {
         "web.assets_backend": [

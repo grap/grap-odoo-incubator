@@ -1,6 +1,8 @@
 # Copyright (C) 2020 - Today: GRAP (http://www.grap.coop)
-# @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# @author: Sylvain LE GAL
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
+from math import ceil
 
 from odoo import _, api, models
 
@@ -10,55 +12,91 @@ class MobileKioskPurchase(models.TransientModel):
     _inherit = "mobile.kiosk.abstract"
     _description = "Mobile Kiosk Purchase Proxy"
 
+    # ################################
+    # Public API
+    # ################################
     @api.model
-    def select_partner(self, partner_id):
-        """Create a purchase order, or select the last purchase order
-        of a given partner"""
-        result = self._prepare_result()
+    def scan_barcode(self, barcode, partner_id):
+        result = self._result_prepare()
 
-        # Get a Purchase Order, or create a new one
-        self._select_purchase_order(partner_id, result)
+        # Search for product
+        product = self.env["product.product"].search(
+            [("barcode", "=", barcode)], limit=1
+        )
 
-        return result
-
-    @api.model
-    def select_product(self, partner_id, product_id):
-        result = self._prepare_result()
-        ProductProduct = self.env["product.product"]
-        product = ProductProduct.browse([product_id])[0]
-        self._select_product(partner_id, product, result)
-        return result
-
-    @api.model
-    def scan_barcode(self, partner_id, barcode):
-        result = self._prepare_result()
-        ProductProduct = self.env["product.product"]
-
-        # Get product or raise an error
-        products = ProductProduct.search([("barcode", "=", barcode)])
-        if not products:
-            return self._add_result_error(
+        # raise an error if no product was found
+        if not product:
+            return self._result_add_notification(
                 result,
-                "Barcode not found",
-                _("No product has been found for barcode '%s'" % barcode),
+                level="danger",
+                title=_("Barcode not found"),
+                message=_(
+                    "No product has been found for barcode '%(barcode)s'.",
+                    barcode=barcode,
+                ),
             )
-        product = products[0]
-        self._select_product(partner_id, product, result)
+
+        result["action"] = self._hook_after_product_product_selection(
+            product, partner_id
+        )
         return result
 
     @api.model
-    def add_quantity(self, purchase_order_id, product_id, product_qty):
-        result = self._prepare_result()
-        ProductProduct = self.env["product.product"]
-        PurchaseOrder = self.env["purchase.order"]
-        PurchaseOrderLine = self.env["purchase.order.line"]
-        ProductSupplierinfo = self.env["product.supplierinfo"]
+    def add_quantity(self, partner_id, product_id, product_qty):
+        result = self._result_prepare()
 
-        order = PurchaseOrder.browse(purchase_order_id)
-        product = ProductProduct.browse(product_id)
+        # Search for partner
+        partner = self.env["res.partner"].browse(partner_id)
+
+        # raise an error if no partner was found
+        if not partner or not partner.active:
+            return self._result_add_notification(
+                result,
+                level="danger",
+                title=_("Supplier not found"),
+                message=_(
+                    "No active supplier has been found for ID #%(partner_id)s.",
+                    partner_id=partner_id,
+                ),
+            )
+
+        # Search for product
+        product = self.env["product.product"].browse(product_id)
+
+        # raise an error if no product was found
+        if not product or not product.active:
+            return self._result_add_notification(
+                result,
+                level="danger",
+                title=_("Product not found"),
+                message=_(
+                    "No active product has been found for ID #%(product_id)s.",
+                    product_id=product_id,
+                ),
+            )
+
+        if product_qty is None:
+            return self._result_add_notification(
+                result,
+                level="danger",
+                title=_("Missing Quantity"),
+            )
+
+        if not (isinstance(product_qty, int) or isinstance(product_qty, float)):
+            return self._result_add_notification(
+                result,
+                level="danger",
+                title=_("Incorrect Quantity"),
+                message=_(
+                    "'%(product_qty)s' is not a correct value for a quantity.",
+                    product_qty=product_qty,
+                ),
+            )
+
+        order = self._get_purchase_order(partner_id, force_create=True)
 
         seller = product._select_seller(
-            partner_id=order.partner_id,
+            partner_id=partner,
             quantity=product_qty,
             date=order.date_order and order.date_order.date(),
             uom_id=product.uom_po_id,
@@ -66,26 +104,28 @@ class MobileKioskPurchase(models.TransientModel):
 
         # First, Check minimum quantity
         if not seller:
-            supplierinfos = ProductSupplierinfo.search(
+            supplierinfos = self.env["product.supplierinfo"].search(
                 [
-                    ("name", "=", order.partner_id.id),
+                    ("partner_id", "=", partner.id),
                     ("product_tmpl_id", "=", product.product_tmpl_id.id),
                 ]
             )
             if supplierinfos:
                 min_qty = min(supplierinfos.mapped("min_qty"))
                 if min_qty > product_qty:
-                    self._add_result_notify(
+                    self._result_add_notification(
                         result,
-                        _("Quantity increased"),
-                        _(
+                        title=_("Quantity increased"),
+                        message=_(
                             "The quantity has been increased to the minimum"
-                            " quantity (from %s to %s)" % (product_qty, min_qty)
+                            " quantity (from %(product_qty)s to %(min_qty)s).",
+                            product_qty=product_qty,
+                            min_qty=min_qty,
                         ),
                     )
                     product_qty = min_qty
                     seller = product._select_seller(
-                        partner_id=order.partner_id,
+                        partner_id=partner,
                         quantity=product_qty,
                         date=order.date_order and order.date_order.date(),
                         uom_id=product.uom_po_id,
@@ -93,108 +133,138 @@ class MobileKioskPurchase(models.TransientModel):
 
         # Then, Check multiplier quantity
         if seller:
-            rounded_qty = seller._get_quantity_according_multiplier(
-                product_qty, product.uom_po_id
-            )
-            if rounded_qty != product_qty:
-                self._add_result_notify(
+            if seller.multiplier_qty and product_qty % seller.multiplier_qty:
+                rounded_qty = (
+                    ceil(product_qty / seller.multiplier_qty) * seller.multiplier_qty
+                )
+                self._result_add_notification(
                     result,
-                    _("Quantity increased"),
-                    _(
+                    title=_("Quantity rounded"),
+                    message=_(
                         "The quantity has been rounded due to multiplier"
-                        " quantity (from %s to %s)" % (product_qty, rounded_qty)
+                        " quantity (from %(product_qty)s to %(rounded_qty)s).",
+                        product_qty=product_qty,
+                        rounded_qty=rounded_qty,
                     ),
                 )
                 product_qty = rounded_qty
 
-        vals = {
-            "order_id": order.id,
-            "product_id": product.id,
-            "product_qty": product_qty,
-            "name": "OVERWRITTEN VALUE BY ONCHANGE",
-            "date_planned": order.date_planned or order.date_order,
-            "product_uom": product.uom_po_id.id,
-            "price_unit": 0.0,
-        }
+        self.env["purchase.order.line"].create(
+            {
+                "order_id": order.id,
+                "product_id": product.id,
+                "product_qty": product_qty,
+            }
+        )
 
-        line = PurchaseOrderLine.create(vals)
-        line.onchange_product_id()
-        line.product_qty = product_qty
+        result["action"] = self._hook_after_res_partner_selection(order.partner_id)
         return result
 
+    # ################################
+    # Private Function
+    # ################################
     @api.model
-    def _select_purchase_order(self, partner_id, result):
-        PurchaseOrder = self.env["purchase.order"]
-
-        orders = PurchaseOrder.search(
+    def _get_purchase_order(self, partner_id, force_create=False):
+        order = self.env["purchase.order"].search(
             [
                 ("partner_id", "=", partner_id),
-                ("state", "in", self._get_purchase_order_loadable_state()),
+                ("state", "in", ["draft", "sent"]),
             ],
             order="date_order desc",
+            limit=1,
         )
-        if not orders:
-            order = PurchaseOrder.create(
+        if order:
+            return order
+        if not force_create:
+            return False
+
+        return self.env["purchase.order"].create(
+            {
+                "partner_id": partner_id,
+                "origin": _("Mobile Application"),
+            }
+        )
+
+    @api.model
+    def _hook_after_res_partner_selection(self, partner):
+        context = {}
+        self._prepare_supplier_context(context, partner)
+
+        return {
+            "type": "ir.actions.client",
+            "name": _("Purchase"),
+            "tag": "mobile_kiosk_purchase_action_set_product",
+            "target": "fullscreen",
+            "context": context,
+        }
+
+    @api.model
+    def _hook_after_product_product_selection(self, product, partner_id):
+        partner = self.env["res.partner"].browse(partner_id)
+
+        context = {}
+        if partner:
+            self._prepare_supplier_context(context, partner)
+            self._prepare_product_context(context, partner, product)
+
+        return {
+            "type": "ir.actions.client",
+            "name": _("Purchase"),
+            "tag": "mobile_kiosk_purchase_action_set_quantity",
+            "target": "fullscreen",
+            "context": context,
+        }
+
+    @api.model
+    def _prepare_supplier_context(self, current_context, partner):
+        current_context.update(
+            {
+                "mk_purchase_supplier_id": partner.id,
+                "mk_purchase_supplier_name": partner.name,
+            }
+        )
+
+        order = self._get_purchase_order(partner.id)
+        if order:
+            description = _(
+                "%(line_qty)s lines -"
+                " %(amount_untaxed)s € Vat Excl -"
+                " %(amount_total)s € Vat Incl",
+                line_qty=len(order.order_line),
+                amount_untaxed=order.amount_untaxed,
+                amount_total=order.amount_total,
+            )
+            current_context.update(
                 {
-                    "partner_id": partner_id,
-                    "origin": _("From mobile app purchase"),
+                    "mk_purchase_order_id": order.id,
+                    "mk_purchase_order_name": order.name,
+                    "mk_purchase_order_description": description,
                 }
             )
-            self._add_result_notify(
-                result,
-                _("Purchase Order created"),
-                _("A new Purchase Order %s has been created" % (order.name)),
-            )
         else:
-            order = orders[0]
-        self._prepare_purchase_order_data(result, order)
-
-    def _select_product(self, partner_id, product, result):
-        self._prepare_product_data(result, product)
-
-        # if not partner_id is defined, we get the first one
-        if not partner_id:
-            if not product.seller_ids:
-                self._add_result_error(
-                    result,
-                    "Product without Supplier",
-                    _("The selected product doesn't have any supplier defined"),
-                )
-                return
-            else:
-                partner_id = product.seller_ids[0].name.id
-                result["partner_name"] = product.seller_ids[0].name.name
-                self._select_purchase_order(partner_id, result)
-
-        # Get Supplierinfo
-        supplierinfos = product.seller_ids.filtered(
-            lambda r: r.name.id == partner_id
-            and (not r.product_id or r.product_id.id == product.id)
-        ).sorted(key=lambda r: r.min_qty)
-        self._prepare_supplierinfo_data(
-            result, supplierinfos and supplierinfos[0] or False
-        )
+            current_context.update(
+                {
+                    "mk_purchase_order_id": False,
+                    "mk_purchase_order_name": _("Order to be created"),
+                    "mk_purchase_order_description": False,
+                }
+            )
 
     @api.model
-    def _prepare_purchase_order_data(self, result, purchase_order):
-        result.update(
+    def _prepare_product_context(self, current_context, partner, product):
+        current_context.update(
             {
-                "purchase_order_id": purchase_order.id,
-                "purchase_order_name": purchase_order.name,
+                "mk_purchase_product_id": product.id,
+                "mk_purchase_product_name": product.name,
+                "mk_purchase_supplierinfo_multiplier_qty": False,
             }
         )
 
-    @api.model
-    def _get_purchase_order_loadable_state(self):
-        return ["draft", "sent"]
+        seller = product._select_seller(partner_id=partner)
 
-    @api.model
-    def _prepare_supplierinfo_data(self, result, supplierinfo=False):
-        super()._prepare_supplierinfo_data(result, supplierinfo=supplierinfo)
-        result.update(
-            {
-                "supplierinfo_multiplier_qty": supplierinfo
-                and supplierinfo.multiplier_qty
-                or 0.0,
-            }
-        )
+        if seller:
+            current_context.update(
+                {
+                    "mk_purchase_supplierinfo_multiplier_qty": seller.multiplier_qty,
+                }
+            )

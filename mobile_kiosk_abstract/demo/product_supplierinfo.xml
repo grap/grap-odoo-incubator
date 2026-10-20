@@ -9,14 +9,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="supplierinfo_product_1" model="product.supplierinfo">
         <field name="product_tmpl_id" model="product.template" eval="obj().env.ref('mobile_kiosk_abstract.product_1').product_tmpl_id.id"/>
-        <field name="partner_id" ref="partner_supplier"/>
+        <field name="partner_id" ref="supplier"/>
         <field name="min_qty">10</field>
         <field name="price">6.90</field>
     </record>
 
     <record id="supplierinfo_product_2" model="product.supplierinfo">
         <field name="product_tmpl_id" model="product.template" eval="obj().env.ref('mobile_kiosk_abstract.product_2').product_tmpl_id.id"/>
-        <field name="partner_id" ref="partner_supplier"/>
+        <field name="partner_id" ref="supplier"/>
         <field name="min_qty">10</field>
         <field name="price">0.90</field>
     </record>

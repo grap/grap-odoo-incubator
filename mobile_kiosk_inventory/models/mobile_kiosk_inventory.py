@@ -184,9 +184,9 @@ class MobileKioskInventory(models.TransientModel):
     # ################################
     @api.model
     def _hook_after_stock_inventory_selection(self, inventory):
-        result = {
+        return {
             "type": "ir.actions.client",
-            "name": "Inventory - Select a product",
+            "name": _("Inventory"),
             "tag": "mobile_kiosk_inventory_action_set_product",
             "target": "fullscreen",
             "context": {
@@ -195,7 +195,6 @@ class MobileKioskInventory(models.TransientModel):
                 "mk_inventory_inventory_date": inventory.date,
             },
         }
-        return result
 
     @api.model
     def _hook_after_product_product_selection(self, product):
@@ -209,14 +208,13 @@ class MobileKioskInventory(models.TransientModel):
             "mk_inventory_inventory_date",
         ]:
             context[key] = self.env.context.get(key, False)
-        result = {
+        return {
             "type": "ir.actions.client",
-            "name": "Inventory - Put a Quantity",
+            "name": _("Inventory"),
             "tag": "mobile_kiosk_inventory_action_set_quantity",
             "target": "fullscreen",
             "context": context,
         }
-        return result
 
     @api.model
     def _hook_after_quantity_selection(self, inventory):

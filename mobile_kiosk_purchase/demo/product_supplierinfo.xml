@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2020-Today GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<odoo>
+
+    <record id="mobile_kiosk_abstract.supplierinfo_product_1" model="product.supplierinfo">
+        <field name="multiplier_qty">10</field>
+    </record>
+
+</odoo>

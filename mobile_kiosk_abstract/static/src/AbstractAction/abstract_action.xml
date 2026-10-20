@@ -14,6 +14,8 @@
                     </div>
                     <div class="col-8">
                         <h1 class="mt8"><t t-esc="widget._mk_title()"/></h1>
+<!--                         for debug Purpose -->
+<!--                             <t t-esc="JSON.stringify(widget.mk_context)" /> -->
                     </div>
                     <div class="col-2">
                         <button class="btn btn-primary button_exit">

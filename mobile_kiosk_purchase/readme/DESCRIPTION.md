@@ -1,2 +1,2 @@
-This module adds a new mobile interface to makes inventories in Odoo
+This module adds a new mobile interface to makes purchases in Odoo
 with a mobile that has a barcode scanner integrated.

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 10:09+0000\n"
-"PO-Revision-Date: 2026-10-20 10:09+0000\n"
+"POT-Creation-Date: 2026-10-22 10:42+0000\n"
+"PO-Revision-Date: 2026-10-22 10:42+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -59,13 +59,6 @@ msgid "Display Name"
 msgstr "Nom affiché"
 
 #. module: mobile_kiosk_inventory
-#. odoo-python
-#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
-#, python-format
-msgid "Missing Inventory Name"
-msgstr "Nom d'inventaire non renseigné"
-
-#. module: mobile_kiosk_inventory
 #: model:ir.model.fields,field_description:mobile_kiosk_inventory.field_mobile_kiosk_inventory__id
 msgid "ID"
 msgstr "ID"
@@ -84,6 +77,9 @@ msgstr "Inventaires"
 
 #. module: mobile_kiosk_inventory
 #. odoo-javascript
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #: code:addons/mobile_kiosk_inventory/static/src/InventoryAction/inventory_action.js:0
 #: model:ir.model,name:mobile_kiosk_inventory.model_stock_inventory
 #: model:mobile.kiosk.application,name:mobile_kiosk_inventory.application_inventory
@@ -145,6 +141,13 @@ msgstr "Dernière mise à jour le"
 #. odoo-python
 #: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #, python-format
+msgid "Missing Inventory Name"
+msgstr "Nom d'inventaire non renseigné"
+
+#. module: mobile_kiosk_inventory
+#. odoo-python
+#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
+#, python-format
 msgid "Missing Quantity"
 msgstr "Quantité non renseignée"
 
@@ -185,8 +188,8 @@ msgstr "Aucun produit trouvé pour le code barre #%(barcode)s."
 #. odoo-python
 #: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #, python-format
-msgid "No product has been found for id #%(product_id)s"
-msgstr "Aucun produit trouvé pour l'ID #%(product_id)s."
+msgid "No product has been found for id #%(product_id)s."
+msgstr "Aucun produit trouvé pour l'identifiant #%(product_id)s."
 
 #. module: mobile_kiosk_inventory
 #. odoo-python
@@ -194,8 +197,9 @@ msgstr "Aucun produit trouvé pour l'ID #%(product_id)s."
 #, python-format
 msgid ""
 "Product %(product_name)s: quantity inventoried changed from %(old_quantity)s"
-" to %(new_quantity)s"
-msgstr "Produit %(product_name)s: La quantité inventoriée est passée de %(old_quantity)s"
+" to %(new_quantity)s."
+msgstr ""
+"Produit %(product_name)s: La quantité inventoriée a changé de %(old_quantity)s"
 " à %(new_quantity)s."
 
 #. module: mobile_kiosk_inventory

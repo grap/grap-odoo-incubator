@@ -1,2 +1,3 @@
 from . import mobile_kiosk_purchase
-from . import product_supplierinfo
+from . import res_partner
+from . import product_product

@@ -35,7 +35,7 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
             "click .button_home_page": function () {
                 this.do_action({
                     type: 'ir.actions.client',
-                    name: this._mk_title,
+                    name: this._mk_title(),
                     tag: this._mk_home_page_tag,
                     target: "fullscreen",
                 });
@@ -73,8 +73,7 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
         },
 
         _mk_do_action: function (action_name) {
-            var context = this.mk_context;
-            this.do_action(action_name, {clear_breadcrumbs: true, additional_context: context});
+            this.do_action(action_name, {clear_breadcrumbs: true, additional_context: this.mk_context});
         },
 
         _mk_toggleBarcode: function (active) {
@@ -106,7 +105,12 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
             });
 
             // Recover and store context of the original action
-            this.mk_context = action.context || {};
+            this.mk_context =  {};
+            Object.keys(action.context).forEach(function (key) {
+                if (key.startsWith("mk_")){
+                    self.mk_context[key] = action.context[key];
+                }
+            });
 
             // Check if the context if valid. If not, the interface will propose
             // to go to the home page

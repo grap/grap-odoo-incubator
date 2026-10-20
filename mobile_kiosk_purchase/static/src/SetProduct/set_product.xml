@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+
+    <t t-name="MobileAppPurchaseSetProduct" t-extend="MobileAppAbstract.GenericWidget">
+        <t t-jquery=".place-holder" t-operation="append">
+            <div class="row o_mobile_kiosk_abstract_row">
+                <div class="mb0">
+                    <h2><t t-esc="widget.mk_context.mk_purchase_supplier_name" /></h2>
+                    <h3 class="secondary_information"><t t-esc="widget.mk_context.mk_purchase_order_name" />
+                        <t t-if="widget.mk_context.mk_purchase_order_description"> - <t t-esc="widget.mk_context.mk_purchase_order_description" /></t>
+                    </h3>
+                    <hr />
+                </div>
+            </div>
+            <div class="row o_mobile_kiosk_abstract_row">
+                <div class="mb0">
+                    <button class="btn button_scan_product">
+                        <img class="img img-fluid d-block mx-auto" src="/mobile_kiosk_abstract/static/src/img/barcode.png"/>
+                        <div class="mt8">Scan a Barcode</div>
+                    </button>
+                </div>
+                <div class="mb0">
+                    <hr />
+                    <h2><i>or</i></h2>
+                    <hr />
+                </div>
+                <div class="mb0">
+                    <button class="btn btn-primary button_list_products">
+                        <div class="mb8 mt8">Select Product</div>
+                    </button>
+                </div>
+            </div>
+        </t>
+    </t>
+
+</template>

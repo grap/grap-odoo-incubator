@@ -22,8 +22,8 @@ Mobile Kiosk Purchase
 
 |badge1| |badge2| |badge3|
 
-This module adds a new mobile interface to makes inventories in Odoo
-with a mobile that has a barcode scanner integrated.
+This module adds a new mobile interface to makes purchases in Odoo with
+a mobile that has a barcode scanner integrated.
 
 **Table of contents**
 
@@ -36,45 +36,37 @@ Usage
 - Click on "Mobile Apps" Menu.
 - Launch the "Purchase" application.
 
-|image1|
+|application_launch|
 
-- The next page proposes to the user to select a supplier, or to buy for
-  any supplier.
+- The next page proposes to the user to select a supplier.
 
-|image2|
+|purchase_order_first_page|
 
 - Click on Select a supplier and click then on the supplier you want.
 
-|image3|
+|supplier_select|
 
 - The next page allows you to choose a product.
 
-|image4|
+|product_scan_or_select|
 
 If you use a mobile with a barcode scanner, you can scan a barcode, to
 select the product.
 
 Otherwise, you can manually select a product, if it doesn't have a
-barcode set.
+barcode set. Only product related to the selected supplier will be
+displayed.
 
 - The next page allows you to set a quantity. Tip a quantity, then click
   on the button "Add quantity"
 
-|image5|
+|product_set_quantity|
 
-Note
-----
-
-you can also, at the first page, click on "Buy for any supplier". That
-case, each time you set a quantity for a product, it will add new
-purchase order line on a existing purchase order related to the main
-supplier. If the purchase order doesn't exist, it will be created.
-
-.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/application_launch.png
-.. |image2| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/purchase_order_first_page.png
-.. |image3| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/supplier_select.png
-.. |image4| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/product_scan_or_select.png
-.. |image5| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/product_set_quantity.png
+.. |application_launch| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/application_launch.png
+.. |purchase_order_first_page| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/purchase_order_first_page.png
+.. |supplier_select| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/supplier_select.png
+.. |product_scan_or_select| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/product_scan_or_select.png
+.. |product_set_quantity| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/product_set_quantity.png
 
 Bug Tracker
 ===========
