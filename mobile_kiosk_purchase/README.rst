@@ -13,17 +13,17 @@ Mobile Kiosk Purchase
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--incubator-lightgray.png?logo=github
-    :target: https://github.com/grap/grap-odoo-incubator/tree/12.0/mobile_kiosk_purchase
+    :target: https://github.com/grap/grap-odoo-incubator/tree/16.0/mobile_kiosk_purchase
     :alt: grap/grap-odoo-incubator
 
 |badge1| |badge2| |badge3|
 
-This module adds a new mobile interface to makes inventories in Odoo with a mobile that
-has a barcode scanner integrated.
+This module adds a new mobile interface to makes inventories in Odoo
+with a mobile that has a barcode scanner integrated.
 
 **Table of contents**
 
@@ -33,41 +33,48 @@ has a barcode scanner integrated.
 Usage
 =====
 
-* Click on "Mobile Apps" Menu.
+- Click on "Mobile Apps" Menu.
+- Launch the "Purchase" application.
 
-* Launch the "Purchase" application.
+|image1|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_purchase/static/description/application_launch.png
+- The next page proposes to the user to select a supplier, or to buy for
+  any supplier.
 
-* The next page proposes to the user to select a supplier, or to buy for any supplier.
+|image2|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_purchase/static/description/purchase_order_first_page.png
+- Click on Select a supplier and click then on the supplier you want.
 
-* Click on Select a supplier and click then on the supplier you want.
+|image3|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_purchase/static/description/supplier_select.png
+- The next page allows you to choose a product.
 
-* The next page allows you to choose a product.
+|image4|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_purchase/static/description/product_scan_or_select.png
+If you use a mobile with a barcode scanner, you can scan a barcode, to
+select the product.
 
-If you use a mobile with a barcode scanner, you can scan a barcode, to select
-the product.
+Otherwise, you can manually select a product, if it doesn't have a
+barcode set.
 
-Otherwise, you can manually select a product, if it doesn't have a barcode set.
+- The next page allows you to set a quantity. Tip a quantity, then click
+  on the button "Add quantity"
 
-* The next page allows you to set a quantity. Tip a quantity, then click on the button
-  "Add quantity"
-
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/12.0/mobile_kiosk_purchase/static/description/product_set_quantity.png
+|image5|
 
 Note
-~~~~
+----
 
-you can also, at the first page, click on "Buy for any supplier".
-That case, each time you set a quantity for a product, it will add new purchase order line
-on a existing purchase order related to the main supplier. If the purchase order doesn't exist,
-it will be created.
+you can also, at the first page, click on "Buy for any supplier". That
+case, each time you set a quantity for a product, it will add new
+purchase order line on a existing purchase order related to the main
+supplier. If the purchase order doesn't exist, it will be created.
+
+.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/application_launch.png
+.. |image2| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/purchase_order_first_page.png
+.. |image3| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/supplier_select.png
+.. |image4| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/product_scan_or_select.png
+.. |image5| image:: https://raw.githubusercontent.com/grap/grap-odoo-incubator/16.0/mobile_kiosk_purchase/static/description/product_set_quantity.png
 
 Bug Tracker
 ===========
@@ -75,7 +82,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-incubator/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20mobile_kiosk_purchase%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-incubator/issues/new?body=module:%20mobile_kiosk_purchase%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -83,19 +90,19 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Other credits
-~~~~~~~~~~~~~
+-------------
 
-* Application icon (``mobile_kiosk_purchase.png``) comes from
-  https://www.iconfinder.com/iconsets/ecommerce-free
-  Copyright : Goran Babic (https://www.iconfinder.com/Bres)
+- Application icon (``mobile_kiosk_purchase.png``) comes from
+  https://www.iconfinder.com/iconsets/ecommerce-free Copyright : Goran
+  Babic (https://www.iconfinder.com/Bres)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 .. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
     :target: https://github.com/legalsylvain
@@ -105,6 +112,6 @@ Current maintainer:
 
 |maintainer-legalsylvain| 
 
-This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/12.0/mobile_kiosk_purchase>`_ project on GitHub.
+This module is part of the `grap/grap-odoo-incubator <https://github.com/grap/grap-odoo-incubator/tree/16.0/mobile_kiosk_purchase>`_ project on GitHub.
 
 You are welcome to contribute.
