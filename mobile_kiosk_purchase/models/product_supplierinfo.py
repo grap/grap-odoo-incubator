@@ -11,7 +11,6 @@ from odoo import api, models
 class ProductSupplierinfo(models.Model):
     _inherit = "product.supplierinfo"
 
-    @api.multi
     def _get_quantity_according_multiplier(self, product_qty, uom):
         self.ensure_one()
         # For the time being, Odoo is limited and doesn't
