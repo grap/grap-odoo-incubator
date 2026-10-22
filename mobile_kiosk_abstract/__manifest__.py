@@ -4,7 +4,7 @@
 
 {
     "name": "Mobile Kiosk Abstract",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "author": "GRAP",
     "summary": "Abstract Module that provides a framework to develop"
     " 'kiosk application' for mobile usage like in 'hr_attendance'"
