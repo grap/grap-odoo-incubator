@@ -25,7 +25,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="res_model">product.product</field>
         <field name="view_mode">kanban</field>
         <field name="view_id" ref="view_product_product_kanban"/>
-        <field name="domain">[('detailed_type', '=', 'product'), ('main_seller_id', '=', context.get('mk_purchase_supplier_id', False))]</field>
+        <field name="domain">[('detailed_type', '=', 'product')]</field>
         <field name="target">fullscreen</field>
     </record>
 
