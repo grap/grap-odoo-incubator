@@ -7,11 +7,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 <odoo>
 
-    <record id="partner_customer" model="res.partner">
-        <field name="name">My Customer (Mobile App)</field>
-    </record>
-
-    <record id="partner_supplier" model="res.partner">
+    <record id="supplier" model="res.partner">
         <field name="name">My Supplier (Mobile App)</field>
     </record>
 

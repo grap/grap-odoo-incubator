@@ -1,0 +1,232 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mobile_kiosk_purchase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-20 22:28+0000\n"
+"PO-Revision-Date: 2026-10-20 22:28+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid ""
+"%(line_qty)s lines - %(amount_untaxed)s € Vat Excl - %(amount_total)s € Vat "
+"Incl"
+msgstr ""
+"%(line_qty)s lignes - %(amount_untaxed)s € HT - %(amount_total)s € TTC"
+
+#. module: mobile_kiosk_purchase
+#. odoo-javascript
+#: code:addons/mobile_kiosk_purchase/static/src/SetQuantity/set_quantity.xml:0
+#, python-format
+msgid "Add quantity"
+msgstr "Ajouter quantité"
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid "Barcode not found"
+msgstr "Code barre non trouvé"
+
+#. module: mobile_kiosk_purchase
+#: model:ir.model,name:mobile_kiosk_purchase.model_res_partner
+msgid "Contact"
+msgstr "Contact"
+
+#. module: mobile_kiosk_purchase
+#: model:ir.model.fields,field_description:mobile_kiosk_purchase.field_mobile_kiosk_purchase__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: mobile_kiosk_purchase
+#: model:ir.model.fields,field_description:mobile_kiosk_purchase.field_mobile_kiosk_purchase__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: mobile_kiosk_purchase
+#: model:ir.model.fields,field_description:mobile_kiosk_purchase.field_mobile_kiosk_purchase__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: mobile_kiosk_purchase
+#: model:ir.model.fields,field_description:mobile_kiosk_purchase.field_mobile_kiosk_purchase__id
+msgid "ID"
+msgstr "ID"
+
+#. module: mobile_kiosk_purchase
+#: model:ir.model.fields,field_description:mobile_kiosk_purchase.field_mobile_kiosk_purchase____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: mobile_kiosk_purchase
+#: model:ir.model.fields,field_description:mobile_kiosk_purchase.field_mobile_kiosk_purchase__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: mobile_kiosk_purchase
+#: model:ir.model.fields,field_description:mobile_kiosk_purchase.field_mobile_kiosk_purchase__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid "Mobile Application"
+msgstr "Application mobile"
+
+#. module: mobile_kiosk_purchase
+#: model:ir.model,name:mobile_kiosk_purchase.model_mobile_kiosk_purchase
+msgid "Mobile Kiosk Purchase Proxy"
+msgstr "Proxy d'application d'achat mobile"
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid "No active product has been found for ID #%(product_id)s."
+msgstr "Aucun produit actif n'a été trouvé pour l'ID #%(product_id)s."
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid "No active supplier has been found for ID #%(partner_id)s."
+msgstr "Aucun fournisseur actif n'a été trouvé pour l'ID #%(partner_id)s."
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid "No product has been found for barcode '%(barcode)s'."
+msgstr "Aucun produit n'a été trouvé pour le code barre '%(barcode)s'."
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid "Order to be created"
+msgstr "Commande à créer"
+
+#. module: mobile_kiosk_purchase
+#. odoo-javascript
+#: code:addons/mobile_kiosk_purchase/static/src/SetQuantity/set_quantity.xml:0
+#, python-format
+msgid "Pack:"
+msgstr "Conditionnement :"
+
+#. module: mobile_kiosk_purchase
+#: model:ir.model,name:mobile_kiosk_purchase.model_product_product
+msgid "Product Variant"
+msgstr "Variante de produit"
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid "Product not found"
+msgstr "Produit non trouvé"
+
+#. module: mobile_kiosk_purchase
+#. odoo-javascript
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#: code:addons/mobile_kiosk_purchase/static/src/PurchaseAction/purchase_action.js:0
+#: model:mobile.kiosk.application,name:mobile_kiosk_purchase.application_purchase
+#, python-format
+msgid "Purchase"
+msgstr "Achat"
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid "Quantity increased"
+msgstr "Quantité augmentée"
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid "Quantity rounded"
+msgstr "Quantité arrondie"
+
+#. module: mobile_kiosk_purchase
+#: model:mobile.kiosk.application,summary:mobile_kiosk_purchase.application_purchase
+msgid "Scan Products Barcodes to create Purchase Orders."
+msgstr "Scanner des codes barre de produits pour créer des bon de commandes."
+
+#. module: mobile_kiosk_purchase
+#. odoo-javascript
+#: code:addons/mobile_kiosk_purchase/static/src/SetProduct/set_product.xml:0
+#, python-format
+msgid "Scan a Barcode"
+msgstr "Scanner un code barre"
+
+#. module: mobile_kiosk_purchase
+#. odoo-javascript
+#: code:addons/mobile_kiosk_purchase/static/src/SetProduct/set_product.xml:0
+#, python-format
+msgid "Select Product"
+msgstr "Sélectionner un article"
+
+#. module: mobile_kiosk_purchase
+#. odoo-javascript
+#: code:addons/mobile_kiosk_purchase/static/src/SetSupplier/set_supplier.xml:0
+#, python-format
+msgid "Select Supplier"
+msgstr "Sélectionner un fournisseur"
+
+#. module: mobile_kiosk_purchase
+#: model:ir.actions.act_window,name:mobile_kiosk_purchase.action_product_product_kanban
+msgid "Supplier Products"
+msgstr "Produits du fournisseur"
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid "Supplier not found"
+msgstr "Fournisseur non trouvé"
+
+#. module: mobile_kiosk_purchase
+#: model:ir.actions.act_window,name:mobile_kiosk_purchase.action_res_partner_kanban
+msgid "Suppliers"
+msgstr "Fournisseurs"
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid ""
+"The quantity has been increased to the minimum quantity (from "
+"%(product_qty)s to %(min_qty)s)."
+msgstr "La quantité a été augmentée jusqu'à la quantité minimum. (de %(product_qty)s à %(min_qty)s)"
+
+#. module: mobile_kiosk_purchase
+#. odoo-python
+#: code:addons/mobile_kiosk_purchase/models/mobile_kiosk_purchase.py:0
+#, python-format
+msgid ""
+"The quantity has been rounded due to multiplier quantity (from "
+"%(product_qty)s to %(rounded_qty)s)."
+msgstr "La quantité a été arrondie a cause du conditionnement. (de %(product_qty)s à %(rounded_qty)s)."
+
+#. module: mobile_kiosk_purchase
+#. odoo-javascript
+#: code:addons/mobile_kiosk_purchase/static/src/SetProduct/set_product.xml:0
+#, python-format
+msgid "or"
+msgstr "ou"

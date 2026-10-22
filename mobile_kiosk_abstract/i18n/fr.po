@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 10:08+0000\n"
-"PO-Revision-Date: 2026-10-20 10:08+0000\n"
+"POT-Creation-Date: 2026-10-22 10:44+0000\n"
+"PO-Revision-Date: 2026-10-22 10:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,14 +16,21 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: mobile_kiosk_abstract
-#: model:product.template,name:mobile_kiosk_abstract.mobile_kiosk_product_1_product_template
+#: model:product.template,name:mobile_kiosk_abstract.product_1_product_template
 msgid "1637 - tobacco (40 gr) (Mobile App)"
-msgstr "1637 - Tabac (40 gr) (Application Mobile )"
+msgstr ""
 
 #. module: mobile_kiosk_abstract
 #: model:ir.model.fields,field_description:mobile_kiosk_abstract.field_mobile_kiosk_application__action_tag
 msgid "Action Tag"
 msgstr "Tag de l'action"
+
+#. module: mobile_kiosk_abstract
+#. odoo-javascript
+#: code:addons/mobile_kiosk_abstract/static/src/AbstractAction/abstract_action.js:0
+#, python-format
+msgid "Application"
+msgstr "Application"
 
 #. module: mobile_kiosk_abstract
 #. odoo-javascript
@@ -63,7 +70,7 @@ msgstr "Sortir"
 #: code:addons/mobile_kiosk_abstract/static/src/AbstractAction/abstract_action.xml:0
 #, python-format
 msgid "Go to Home Page"
-msgstr "Aller à la page d'accueil"
+msgstr "Retourner à la page d'accueil"
 
 #. module: mobile_kiosk_abstract
 #. odoo-javascript
@@ -131,9 +138,9 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: mobile_kiosk_abstract
-#: model:product.template,name:mobile_kiosk_abstract.mobile_kiosk_product_2_product_template
+#: model:product.template,name:mobile_kiosk_abstract.product_2_product_template
 msgid "OCB - Eco Slim Filters (x150) (Mobile App)"
-msgstr "OCB - Filtre Eco Slim (x150) (Application Mobile)"
+msgstr "OCB - Filtre Eco Slim (x150) (Application mobile)"
 
 #. module: mobile_kiosk_abstract
 #. odoo-javascript
@@ -155,5 +162,5 @@ msgid ""
 "You loose the context of your action by refreshing the page, please go the "
 "home page."
 msgstr ""
-"Vous avez perdu le contexte de votre action en rafraichissant la page, "
-"veuillez revenir à la page d'accueil."
+"Vous avez perdu le contexte de votre action en rafraichissant la page,"
+" veuillez retourner sur la page d'accueil de l'application."

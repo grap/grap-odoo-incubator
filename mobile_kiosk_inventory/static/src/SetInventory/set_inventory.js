@@ -7,7 +7,6 @@ odoo.define("mobile_kiosk_inventory.set_inventory", function (require) {
 
     var ActionMobileKioskInventory = require("mobile_kiosk_inventory.inventory_action");
     var core = require("web.core");
-    var _t = core._t;
 
     var ActionSetInventory = ActionMobileKioskInventory.extend({
         template: "MobileAppInventorySetInventory",
