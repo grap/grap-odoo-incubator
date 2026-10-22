@@ -19,10 +19,16 @@ If you use a mobile with a barcode scanner, you can scan a barcode, to
 select the product.
 
 Otherwise, you can manually select a product, if it doesn't have a
-barcode set. Only product related to the selected
-  supplier will be displayed.
+barcode set.
+
+![product_select](../static/description/product_select.png)
 
 - The next page allows you to set a quantity. Tip a quantity, then click
   on the button "Add quantity"
 
 ![product_set_quantity](../static/description/product_set_quantity.png)
+
+Note that quantity will be changed, if it doesn't match with product
+configuration. (Minimum Quantity / Multiplier Quantity / etc.)
+
+![quantity_rounded](../static/description/quantity_rounded.png)

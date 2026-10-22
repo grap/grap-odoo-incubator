@@ -15,9 +15,8 @@
         # Odoo
         "purchase",
         # OCA
-        "product_supplierinfo_qty_multiplier",
-        "product_main_seller",
         "partner_manual_rank",
+        "product_supplierinfo_qty_multiplier",
         # GRAP
         "mobile_kiosk_abstract",
     ],
