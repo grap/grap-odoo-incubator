@@ -16,6 +16,8 @@
         # OCA
         "stock_picking_invoice_link",
         "web_notify",
+        # GRAP
+        "stock_picking_quick_quantity_done",
     ],
     "data": [
         "views/view_account_move.xml",
