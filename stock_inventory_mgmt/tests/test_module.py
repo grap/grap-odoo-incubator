@@ -30,9 +30,11 @@ class TestModule(TransactionCase):
         for line in inventories.mapped("line_ids"):
             line.product_qty = line.theoretical_qty
 
-    def _create_wizard_merge_inventories(self, inventories=False):
+    def _create_wizard_merge_inventories(self, inventories=False, target_filter="none"):
         inventories = inventories or self.demo_inventories
-        wizard = self.MergeWizard.with_context(active_ids=inventories.ids).create({})
+        wizard = self.MergeWizard.with_context(active_ids=inventories.ids).create(
+            {"target_filter": target_filter, "name": "Demo"}
+        )
         return wizard
 
     def test_01_change_qty_and_confirm(self):
