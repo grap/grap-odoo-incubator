@@ -31,7 +31,10 @@ odoo.define("mobile_kiosk_inventory.set_product", function (require) {
             this._mk_call_rpc({
                 model: "mobile.kiosk.inventory",
                 method: "scan_barcode",
-                args: [barcode],
+                args: [
+                    self.mk_context.mk_inventory_inventory_id,
+                    barcode,
+                ],
             }).then( function (){
                 self._mk_toggleBarcode(true);
             });
