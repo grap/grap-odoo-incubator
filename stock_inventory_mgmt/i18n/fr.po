@@ -831,9 +831,9 @@ msgid ""
 "created at the end of the fiscal period, and mandatory in an accounting "
 "point of view"
 msgstr ""
-"Choisissez <b><u>'Inventaire complet'</u></b> si vous voulez créer un inventaire complet basé sur les inventaires sélectionner.\n"
-"                            <br/>La quantité de tous les produits qui n'ont pas été inventoriées <b>sera réinitialisé à 0</b>.\n"
-"                            <br/>Cette option <b>doit</b> être sélectionner pour l'inventaire créé à la fin de la période comptable et qui est obligatoire d'un point de vue comptable."
+"Choisissez <b>'<u>Inventaire complet</u>'</b> si vous voulez créer un inventaire complet basé sur les inventaires sélectionnés.\n"
+"                            <br/>La quantité de tous les produits qui n'ont pas été inventoriés <b>sera réinitialisée à 0</b>.\n"
+"                            <br/>Cette option <b>doit</b> être sélectionnée pour l'inventaire créé à la fin de la période comptable et qui est obligatoire d'un point de vue comptable."
 
 #. module: stock_inventory_mgmt
 #: model_terms:ir.ui.view,arch_db:stock_inventory_mgmt.view_wizard_stock_inventory_merge_form
@@ -841,8 +841,8 @@ msgid ""
 "Select <b>'<u>Partial</u>'</b> to merge various little inventories, for "
 "example, as part of a periodic inventory"
 msgstr ""
-"Choisissez <b><u>'Partiel'</u></b> pour fusionner plusieurs petits inventaires, par exemple, dans le cadre"
-" d'inventaire cyclique."
+"Choisissez <b>'<u>Partiel</u>'</b> pour fusionner plusieurs petits inventaires, par exemple, dans le cadre"
+" d'inventaire tournant en cours d'exercice."
 
 #. module: stock_inventory_mgmt
 #. odoo-python
