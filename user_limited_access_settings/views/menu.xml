@@ -19,4 +19,15 @@
             eval="[Command.set([ref('base.group_erp_manager')])]"/>
     </record>
 
+    <menuitem
+        id="menu_main_user_limited_access_settings"
+        name="Limited Settings"
+        parent="base.menu_administration"
+        sequence="10"
+    >
+        <menuitem id="menu_email_templates"
+            action="mail.action_email_template_tree_all"
+            sequence="10"/>
+    </menuitem>
+
 </odoo>
