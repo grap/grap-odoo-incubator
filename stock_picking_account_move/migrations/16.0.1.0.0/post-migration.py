@@ -189,6 +189,7 @@ def migrate(env, version):
                 "account_move_state": _account_move_state,
                 "state": _state,
                 "account_move_id": internal_use.get("account_move_id"),
+                "total_valuation": internal_use.get("amount"),
             }
         )
 
