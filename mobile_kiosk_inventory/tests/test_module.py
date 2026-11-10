@@ -49,13 +49,13 @@ class TestModule(TestAbstract):
         # [API::scan_barcode] incorrect barcode
         result = self.MobileKioskInventory.with_context(
             **inventory_context
-        ).scan_barcode("BAD BARCODE")
+        ).scan_barcode(inventory_id, "BAD BARCODE")
         self._assert_notification(result, "danger")
 
         # [API::scan_barcode] Correct barcode
         result = self.MobileKioskInventory.with_context(
             **inventory_context
-        ).scan_barcode(self.product_1.barcode)
+        ).scan_barcode(inventory_id, self.product_1.barcode)
         product_context = self._get_context(result)
         self.assertEqual(
             self._get_context_value(result, "mk_inventory_product_name"),
