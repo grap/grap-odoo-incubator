@@ -42,7 +42,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="filter">owner</field>
         <field name="company_id" ref="base.main_company" />
         <field name="location_id" ref="stock.stock_location_stock" />
-        <field name="partner_id" ref="base.res_partner_2" />
+        <field name="owner_id" ref="base.res_partner_2" />
     </record>
 
 </odoo>

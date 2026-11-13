@@ -105,7 +105,7 @@ class Inventory(models.Model):
         default=lambda x: x._default_location_id(),
         check_company=True,
     )
-    partner_id = fields.Many2one(
+    owner_id = fields.Many2one(
         string="Inventoried Owner",
         comodel_name="res.partner",
         readonly=True,
@@ -295,14 +295,12 @@ class Inventory(models.Model):
 
     @api.onchange("filter")
     def _onchange_filter(self):
-        if self.filter != "owner":
-            self.partner_id = False
         if self.filter != "category":
             self.category_id = False
         if self.filter != "racking":
             self.racking_id = False
         if self.filter != "owner":
-            self.partner_id = False
+            self.owner_id = False
         if self.filter != "supplier":
             self.supplier_id = False
 
@@ -453,7 +451,7 @@ class Inventory(models.Model):
         action_data = action.read()[0]
         action_data["context"] = {
             "default_location_id": self.location_id.id,
-            "default_partner_id": self.partner_id.id,
+            "default_owner_id": self.owner_id.id,
             "default_inventory_id": self.id,
         }
         return action_data
@@ -480,9 +478,9 @@ class Inventory(models.Model):
         products_to_filter = self.env["product.product"]
 
         # case 1: Filter on One owner only
-        if self.partner_id:
+        if self.owner_id:
             domain += " AND sq.owner_id = %s"
-            args += (self.partner_id.id,)
+            args += (self.owner_id.id,)
 
         # case 2: Filter on One product category
         if self.category_id:
@@ -529,7 +527,7 @@ class Inventory(models.Model):
                 sq.location_id as location_id,
                 sq.lot_id as prod_lot_id,
                 sq.package_id as package_id,
-                sq.owner_id as partner_id
+                sq.owner_id as owner_id
             FROM stock_quant sq
             LEFT JOIN product_product pp
                 ON pp.id = sq.product_id
