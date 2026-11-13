@@ -1,0 +1,67 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_picking_valuation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-20 13:55+0000\n"
+"PO-Revision-Date: 2026-10-20 13:55+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_picking_valuation
+#: model:ir.model.fields.selection,name:stock_picking_valuation.selection__stock_picking__direction_type__correct
+msgid "Correct Direction"
+msgstr "Direction correcte"
+
+#. module: stock_picking_valuation
+#: model:ir.model.fields,field_description:stock_picking_valuation.field_stock_picking__direction_type
+msgid "Direction Type"
+msgstr "Type de direction"
+
+#. module: stock_picking_valuation
+#: model:ir.model.fields,help:stock_picking_valuation.field_stock_picking__direction_type
+msgid ""
+"If checked, mention that the picking has the opposition direction, relative "
+"to the direction of the picking type."
+msgstr ""
+"Si coché, cela signifie que le transfert va dans la direction opposée, relativement "
+"à la direction du type de transfert"
+
+#. module: stock_picking_valuation
+#: model:ir.model.fields.selection,name:stock_picking_valuation.selection__stock_picking__direction_type__opposite
+msgid "Opposite Direction"
+msgstr "Direction opposée"
+
+#. module: stock_picking_valuation
+#: model:ir.model,name:stock_picking_valuation.model_stock_move
+msgid "Stock Move"
+msgstr "Mouvement de stock"
+
+#. module: stock_picking_valuation
+#: model:ir.model.fields,field_description:stock_picking_valuation.field_stock_move__total_valuation
+#: model:ir.model.fields,field_description:stock_picking_valuation.field_stock_picking__total_valuation
+#: model_terms:ir.ui.view,arch_db:stock_picking_valuation.view_stock_picking_form
+msgid "Total Valuation"
+msgstr "Valeur totale"
+
+#. module: stock_picking_valuation
+#: model:ir.model,name:stock_picking_valuation.model_stock_picking
+msgid "Transfer"
+msgstr "Transfert"
+
+#. module: stock_picking_valuation
+#: model:ir.model.fields.selection,name:stock_picking_valuation.selection__stock_picking__direction_type__undefined
+msgid "Undefined Direction"
+msgstr "Direction indéfinie"
+
+#. module: stock_picking_valuation
+#: model:ir.model.fields,field_description:stock_picking_valuation.field_stock_move__unit_valuation
+msgid "Unit Valuation"
+msgstr "Valeur unitaire"
