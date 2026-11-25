@@ -54,7 +54,7 @@ class MobileKioskInventory(models.TransientModel):
         return result
 
     @api.model
-    def scan_barcode(self, barcode):
+    def scan_barcode(self, inventory_id, barcode):
         result = self._result_prepare()
 
         # Search por product
@@ -74,7 +74,13 @@ class MobileKioskInventory(models.TransientModel):
                 ),
             )
 
-        result["action"] = self._hook_after_product_product_selection(product)
+        inventory = self.env["stock.inventory"].browse(inventory_id)
+
+        result["action"] = self.with_context(
+            mk_inventory_inventory_id=inventory.id,
+            mk_inventory_inventory_name=inventory.name,
+            mk_inventory_inventory_date=inventory.date,
+        )._hook_after_product_product_selection(product)
         return result
 
     @api.model

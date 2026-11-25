@@ -117,6 +117,7 @@ odoo.define('mobile_kiosk_abstract.abstract_action', function (require) {
             this.mk_should_go_back = false;
             this._mk_required_fields.forEach(function (required_key) {
                 if (!self.mk_context[required_key]) {
+                    console.error("missing fields in context: ", required_key)
                     self.mk_should_go_back = true;
                 }
             });
