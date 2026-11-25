@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ============================
 User Limited Access Settings
 ============================
@@ -29,12 +25,13 @@ User Limited Access Settings
 This module adds a new basic Administration group named, "Limited
 Settings".
 
-Members of this group can only create :
+Members of this group can only create / configure :
 
 - Users (``res.users``)
 - Companies (``res.company``)
 - Sequences (``ir.sequence`` and ``ir.sequence.date.range``)
 - Banks (``res.bank``)
+- Mail templates (``mail.template``)
 
 And see :
 

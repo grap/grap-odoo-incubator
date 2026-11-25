@@ -21,6 +21,12 @@ msgid "Contact"
 msgstr ""
 
 #. module: user_limited_access_settings
+#: model:ir.ui.menu,name:user_limited_access_settings.menu_email_templates
+msgid "Email Templates"
+msgstr "Modèles d'e-mail"
+
+#. module: user_limited_access_settings
+#: model:ir.ui.menu,name:user_limited_access_settings.menu_main_user_limited_access_settings
 #: model:res.groups,name:user_limited_access_settings.group_limited_settings
 msgid "Limited Settings"
 msgstr "Paramétrage limité"
