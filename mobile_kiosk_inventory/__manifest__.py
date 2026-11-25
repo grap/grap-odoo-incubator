@@ -4,7 +4,7 @@
 
 {
     "name": "Mobile Kiosk Inventory",
-    "version": "16.0.1.0.1",
+    "version": "16.0.1.0.2",
     "author": "GRAP",
     "summary": "Mobile interface to make inventories",
     "category": "Tools",
