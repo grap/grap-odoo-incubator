@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 
-from odoo import _, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -11,19 +11,34 @@ class WizardStockInventoryMerge(models.TransientModel):
     _name = "wizard.stock.inventory.merge"
     _description = "Stock Inventory Merge Wizard"
 
-    name = fields.Char(
-        string="Inventory Name", required=True, default=lambda x: x._default_name()
+    target_filter = fields.Selection(
+        string="Target Inventory Type",
+        selection=[("partial", "Partial"), ("none", "Complete Inventory")],
+        required=True,
     )
 
-    def _default_name(self):
+    name = fields.Char(
+        string="Inventory Name",
+        required=True,
+        compute="_compute_name",
+        readonly=False,
+        store=True,
+    )
+
+    @api.depends("target_filter")
+    def _compute_name(self):
         lang = self.env["res.lang"].search(
             [("code", "=", self.env.user.lang or "en_US")]
         )
         date_format = lang and lang.date_format or "%m/%d/%Y"
-        return _(
-            "Complete Inventory of %(date_string)s",
-            date_string=fields.Datetime.now().strftime(date_format),
-        )
+
+        for wizard in self.filtered(lambda x: x.target_filter == "none"):
+            wizard.name = _(
+                "Complete Inventory of %(date_string)s",
+                date_string=fields.Datetime.now().strftime(date_format),
+            )
+        for wizard in self.filtered(lambda x: x.target_filter != "none"):
+            wizard.name = False
 
     def action_merge(self):
         self.ensure_one()
@@ -60,6 +75,15 @@ class WizardStockInventoryMerge(models.TransientModel):
         if inventories.filtered(lambda x: x.filter == "none"):
             raise UserError(_("Merging is not allowed for Full inventories."))
 
+        # Check valid type (filter)
+        if inventories.filtered(lambda x: x.source_inventory_qty != 0):
+            raise UserError(
+                _(
+                    "You can not merge inventories that comes from previous"
+                    " merged inventories."
+                )
+            )
+
         # Check coherent locations
         if len(inventories.mapped("location_id")) > 1:
             raise UserError(
@@ -67,14 +91,42 @@ class WizardStockInventoryMerge(models.TransientModel):
             )
 
         # Create new Inventory and fill with it
-        new_inventory = StockInventory.create(
-            {
-                "name": self.name,
-                "location_id": inventories[0].location_id.id,
-                "filter": "none",
-                "exhausted": True,
-            }
-        )
+        vals = {
+            "name": self.name,
+            "location_id": inventories[0].location_id.id,
+            "filter": self.target_filter,
+            "exhausted": self.target_filter == "none",
+        }
+
+        distinct_filters = list(set(inventories.mapped("filter")))
+        if (
+            self.target_filter != "none"
+            and len(distinct_filters) == 1
+            and distinct_filters != ["partial"]
+        ):
+            vals["filter"] = distinct_filters[0]
+            if (
+                distinct_filters == ["owner"]
+                and len(inventories.mapped("owner_id")) == 1
+            ):
+                vals["owner_id"] = inventories[0].owner_id.id
+            elif (
+                distinct_filters == ["supplier"]
+                and len(inventories.mapped("supplier_id")) == 1
+            ):
+                vals["supplier_id"] = inventories[0].supplier_id.id
+            elif (
+                distinct_filters == ["category"]
+                and len(inventories.mapped("category_id")) == 1
+            ):
+                vals["category_id"] = inventories[0].category_id.id
+            elif (
+                distinct_filters == ["racking"]
+                and len(inventories.mapped("racking_id")) == 1
+            ):
+                vals["racking_id"] = inventories[0].racking_id.id
+
+        new_inventory = StockInventory.create(vals)
         new_inventory.action_start()
 
         # Populate a dictionary of all the empty lines
@@ -99,9 +151,9 @@ class WizardStockInventoryMerge(models.TransientModel):
         inventories.write({"state": "pending_merge"})
 
         # Return the action focused on the created inventory
-        action_data = self.env.ref("stock_inventory_mgmt.action_inventory_form").read()[
-            0
-        ]
+        action_data = (
+            self.env.ref("stock_inventory_mgmt.action_inventory_form").sudo().read()[0]
+        )
         view = self.env.ref("stock_inventory_mgmt.view_inventory_form")
         action_data["views"] = [(view.id, "form")]
         action_data["res_id"] = new_inventory.id

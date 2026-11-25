@@ -72,7 +72,7 @@
                 <header>
                     <button name="action_start" states="draft" string="Start Inventory" type="object" class="oe_highlight" groups="stock.group_stock_user"/>
                     <button name="action_merge_duplicated_lines" type="object" string="Merge Duplicates" attrs="{'invisible': [('duplicates_qty', '=', 0)]}" class="oe_highlight"/>
-                    <button name="action_validate" states="in_progress" string="Validate Inventory" type="object" class="oe_highlight" groups="stock.group_stock_manager" confirm="Are you sure you want to confirm ? This will aply new quantities for all the inventoried lines."/>
+                    <button name="action_validate" states="in_progress" string="Validate Inventory" type="object" class="oe_highlight" groups="stock.group_stock_user" confirm="Are you sure you want to confirm ? This will aply new quantities for all the inventoried lines."/>
                     <button name="action_cancel" states="in_progress" string="Cancel" type="object" confirm="This will cancel this inventory. This action is not reversible. Are you sure ?"/>
                     <button name="action_cancel" states="draft" string="Cancel" type="object"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,in_progress"/>
@@ -111,23 +111,23 @@
                             <field name="date"/>
                             <field name="category_id" attrs="{'invisible': [('filter', '!=', 'category')], 'required': [('filter', '=', 'category')]}" options="{'no_create': True}"/>
                             <field name="racking_id" attrs="{'invisible': [('filter', '!=', 'racking')], 'required': [('filter', '=', 'racking')]}" options="{'no_create': True}"/>
-                            <field name="partner_id" attrs="{'invisible': [('filter', '!=', 'owner')], 'required': [('filter', '=', 'owner')]}" groups="stock.group_tracking_owner"/>
-                            <field name="partner_id" invisible="1"/>
+                            <field name="owner_id" attrs="{'invisible': [('filter', '!=', 'owner')], 'required': [('filter', '=', 'owner')]}" groups="stock.group_tracking_owner"/>
+                            <field name="owner_id" invisible="1"/>
                             <field name="supplier_id" attrs="{'invisible': [('filter', '!=', 'supplier')], 'required': [('filter', '=', 'supplier')]}" />
                             <field name="supplier_id" invisible="1"/>
-                            <field name="exhausted" attrs="{'readonly': [('filter', 'in', ('owner','partial'))]}" force_save="1"/>
+                            <field name="exhausted" attrs="{'readonly': ['|', ('state', '!=', 'draft'), ('filter', 'in', ('owner','partial'))]}" force_save="1"/>
                             <field name="merged_inventory_id" attrs="{'invisible': [('merged_inventory_id', '=', False)]}"/>
                         </group>
                     </group>
                     <notebook attrs="{'invisible':[('state','=','draft')]}">
                         <page string="Inventory Details" >
-                            <field name="line_ids" string="Inventory Details" context="{'default_location_id': location_id, 'default_partner_id': partner_id}" mode="tree,kanban">
+                            <field name="line_ids" string="Inventory Details" context="{'default_location_id': location_id, 'default_owner_id': owner_id}" mode="tree,kanban">
                                 <tree editable="bottom"
                                     decoration-it="product_active == False"
-                                    decoration-bf="product_qty != theoretical_qty"
-                                    decoration-danger="product_qty &lt; 0"
+                                    decoration-bf="product_qty != theoretical_qty and product_qty != 0"
                                     decoration-warning="product_qty &lt; theoretical_qty"
                                     decoration-info="product_qty &gt; theoretical_qty"
+                                    decoration-danger="product_qty &lt; 0"
                                 >
                                     <field name="product_tracking" invisible="1"/>
                                     <field name="product_active" invisible="1"/>
@@ -139,13 +139,13 @@
                                     <field name="location_id" domain="[('id', 'child_of', parent.location_id)]" groups="stock.group_stock_multi_locations" optional="show"/>
                                     <field name="prod_lot_id" domain="[('product_id', '=', product_id)]" attrs="{'readonly': [('product_tracking', '=', 'none')]}" context="{'default_product_id': product_id}" groups="stock.group_production_lot" optional="show"/>
                                     <field name="package_id" domain="['|', ('location_id','=', False), ('location_id', '=', location_id)]" groups="stock.group_tracking_lot" optional="show"/>
-                                    <field name="partner_id" groups="stock.group_tracking_owner" optional="show"/>
+                                    <field name="owner_id" groups="stock.group_tracking_owner" optional="show"/>
                                     <field name="theoretical_qty" readonly="1"/>
                                     <field name="product_qty" />
                                     <field name="product_uom_id" string="UoM" groups="uom.group_uom" domain="[('category_id', '=', product_uom_category_id)]" optional="show"/>
                                     <field name="valuation" sum="Total Valuation" widget="monetary" optional="show" attrs="{'invisible': [('product_qty', '=', 0)]}"/>
                                     <field name="variation_qty" optional="show" attrs="{'invisible': [('variation_qty', '=', 0)]}"/>
-                                    <field name="variation_valuation" optional="show" widget="monetary" attrs="{'invisible': [('variation_valuation', '=', 0)]}"/>
+                                    <field name="variation_valuation" optional="show" widget="monetary" attrs="{'invisible': [('variation_valuation', '=', 0)]}" sum="Total Variation"/>
                                     <field name="state" invisible="1"/>
                                     <field name="location_id" invisible="1"/>
                                     <field name="currency_id" invisible="1"/>
@@ -156,7 +156,7 @@
                                     <field name="location_id" domain="[('id', 'child_of', parent.location_id)]" groups="stock.group_stock_multi_locations"/>
                                     <field name="prod_lot_id" domain="[('product_id', '=', product_id)]" attrs="{'readonly': [('product_tracking', '=', 'none')]}" context="{'default_product_id': product_id}"  groups="stock.group_production_lot"/>
                                     <field name="package_id" domain="['|', ('location_id','=', False), ('location_id', '=', location_id)]"/>
-                                    <field name="partner_id"/>
+                                    <field name="owner_id"/>
                                     <field name="theoretical_qty" readonly="1"/>
                                     <field name="product_qty" />
                                     <field name="product_uom_id" groups="uom.group_uom" string="UoM"/>

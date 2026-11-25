@@ -13,7 +13,7 @@ class StockInventoryLine(models.Model):
     _KEY_FIELDS = [
         "product_id",
         "location_id",
-        "partner_id",
+        "owner_id",
         "package_id",
         "prod_lot_id",
     ]
@@ -79,7 +79,7 @@ class StockInventoryLine(models.Model):
     )
 
     # Inventory line fields
-    partner_id = fields.Many2one(
+    owner_id = fields.Many2one(
         string="Owner",
         comodel_name="res.partner",
         readonly=True,
@@ -205,7 +205,7 @@ class StockInventoryLine(models.Model):
         "product_uom_id",
         "company_id",
         "prod_lot_id",
-        "partner_id",
+        "owner_id",
     )
     def _compute_theoretical_qty(self):
         for line in self:
@@ -216,7 +216,7 @@ class StockInventoryLine(models.Model):
                     location=line.location_id.ids
                 )._compute_quantities_dict(
                     line.prod_lot_id.id,
-                    line.partner_id.id,
+                    line.owner_id.id,
                     line.package_id.id,
                 )[line.product_id.id]["qty_available"]
 
@@ -247,7 +247,7 @@ class StockInventoryLine(models.Model):
         "location_id",
         "product_uom_id",
         "prod_lot_id",
-        "partner_id",
+        "owner_id",
         "package_id",
     )
     def _onchange_quantity_context(self):
@@ -325,7 +325,7 @@ class StockInventoryLine(models.Model):
             "company_id": self.inventory_id.company_id.id,
             "inventory_id": self.inventory_id.id,
             "state": "confirmed",
-            "restrict_partner_id": self.partner_id.id,
+            "restrict_partner_id": self.owner_id.id,
             "location_id": location_id,
             "location_dest_id": location_dest_id,
             "move_line_ids": [
@@ -340,7 +340,7 @@ class StockInventoryLine(models.Model):
                         "result_package_id": (not out) and self.package_id.id or False,
                         "location_id": location_id,
                         "location_dest_id": location_dest_id,
-                        "owner_id": self.partner_id.id,
+                        "owner_id": self.owner_id.id,
                     }
                 )
             ],
