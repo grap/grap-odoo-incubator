@@ -97,7 +97,7 @@ msgstr "Secteurs PdV"
 #. module: pos_sector
 #: model:ir.model,name:pos_sector.model_pos_config
 msgid "Point of Sale Configuration"
-msgstr "Paramétrage du point de vente"
+msgstr "Configuration du point de vente"
 
 #. module: pos_sector
 #: model:ir.model,name:pos_sector.model_pos_sector
@@ -107,7 +107,7 @@ msgstr "Secteurs de Point de vente"
 #. module: pos_sector
 #: model:ir.model,name:pos_sector.model_pos_session
 msgid "Point of Sale Session"
-msgstr "Session de Point de vente"
+msgstr "Session du point de vente"
 
 #. module: pos_sector
 #: model:ir.model,name:pos_sector.model_product_template
@@ -122,12 +122,13 @@ msgstr "Variante de produit"
 #. module: pos_sector
 #: model_terms:ir.ui.view,arch_db:pos_sector.view_product_template_form
 msgid "Sector"
-msgstr "Secteur"
+msgstr "Secteur d'activité"
 
 #. module: pos_sector
 #: model:ir.actions.act_window,name:pos_sector.action_pos_sector
 #: model:ir.model.fields,field_description:pos_sector.field_pos_config__sector_ids
 #: model:ir.model.fields,field_description:pos_sector.field_res_config_settings__pos_sector_ids
+#: model:ir.model.fields,field_description:pos_sector.field_res_reduced_config_settings__pos_sector_ids
 #: model:ir.ui.menu,name:pos_sector.menu_pos_sector
 msgid "Sectors"
-msgstr "Secteurs"
+msgstr "Secteurs d'activité"

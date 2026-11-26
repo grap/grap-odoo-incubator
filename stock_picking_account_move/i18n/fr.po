@@ -10,20 +10,21 @@ msgstr ""
 "PO-Revision-Date: 2025-03-20 13:22+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
 #. module: stock_picking_account_move
-#: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking__account_move_state
-msgid "Account Move Status"
-msgstr "Statut de l'écriture comptable"
-
-#. module: stock_picking_account_move
 #: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking__account_move_id
 msgid "Account Move"
 msgstr "Écriture comptable"
+
+#. module: stock_picking_account_move
+#: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking__account_move_state
+msgid "Account Move Status"
+msgstr "Statut de l'écriture comptable"
 
 #. module: stock_picking_account_move
 #: model_terms:ir.ui.view,arch_db:stock_picking_account_move.view_stock_picking_search
@@ -41,11 +42,6 @@ msgid "Accounting Settings"
 msgstr "Paramètres Comptables"
 
 #. module: stock_picking_account_move
-#: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_move__amount
-msgid "Amount (Tax Excluded)"
-msgstr "Montant (Tax exclue)"
-
-#. module: stock_picking_account_move
 #: model_terms:ir.ui.view,arch_db:stock_picking_account_move.view_stock_picking_mass_generate_wizard_form
 msgid "Apply"
 msgstr "Appliquer"
@@ -58,12 +54,12 @@ msgstr "Annuler"
 #. module: stock_picking_account_move
 #: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking_mass_generate_wizard__create_uid
 msgid "Created by"
-msgstr "Crée par"
+msgstr "Créé par"
 
 #. module: stock_picking_account_move
 #: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking_mass_generate_wizard__create_date
 msgid "Created on"
-msgstr "Crée le"
+msgstr "Créé le"
 
 #. module: stock_picking_account_move
 #: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking_mass_generate_wizard__display_name
@@ -73,15 +69,13 @@ msgstr "Nom affiché"
 #. module: stock_picking_account_move
 #: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking_type__account_id
 msgid "Expense Account"
-msgstr "Compte de dépenses"
+msgstr "Compte de charge"
 
 #. module: stock_picking_account_move
 #. odoo-python
-#: code:addons/stock_picking_account_move/models/stock_move.py:0
-#: code:addons/stock_picking_account_move/models/stock_move.py:0
 #: code:addons/stock_picking_account_move/models/stock_picking.py:0
 #, python-format
-msgid "Expense Transfert (%s)"
+msgid "Expense Transfert (%(picking_type_name)s)"
 msgstr ""
 
 #. module: stock_picking_account_move
@@ -106,23 +100,14 @@ msgid "Generate Account Moves"
 msgstr "Générer les écritures comptables"
 
 #. module: stock_picking_account_move
-#: model:ir.model.fields.selection,name:stock_picking_account_move.selection__stock_picking__account_move_state__account_move_generated
+#: model:ir.model.fields.selection,name:stock_picking_account_move.selection__stock_picking__account_move_state__done
 msgid "Generated"
 msgstr "Générée"
 
 #. module: stock_picking_account_move
 #: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking_mass_generate_wizard__id
 msgid "ID"
-msgstr ""
-
-#. module: stock_picking_account_move
-#: model:ir.model.fields,help:stock_picking_account_move.field_stock_move__price_unit
-msgid ""
-"In Standard Price & AVCO: value of the product (automatically computed in AVCO).\n"
-"        In FIFO: value of the next unit that will leave the stock (automatically computed).\n"
-"        Used to value the product when the purchase cost is not known (e.g. inventory adjustment).\n"
-"        Used to compute margins on sale orders."
-msgstr ""
+msgstr "ID"
 
 #. module: stock_picking_account_move
 #. odoo-python
@@ -138,7 +123,7 @@ msgstr ""
 #. module: stock_picking_account_move
 #: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking_type__journal_id
 msgid "Journal"
-msgstr ""
+msgstr "Journal"
 
 #. module: stock_picking_account_move
 #: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking_mass_generate_wizard____last_update
@@ -148,12 +133,12 @@ msgstr "Dernière modification le"
 #. module: stock_picking_account_move
 #: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking_mass_generate_wizard__write_uid
 msgid "Last Updated by"
-msgstr "Dernière modification par"
+msgstr "Dernière mise à jour par"
 
 #. module: stock_picking_account_move
 #: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking_mass_generate_wizard__write_date
 msgid "Last Updated on"
-msgstr "Dernière mis à jour le"
+msgstr "Dernière mise à jour le"
 
 #. module: stock_picking_account_move
 #. odoo-python
@@ -170,7 +155,8 @@ msgstr "Non concerné"
 #. module: stock_picking_account_move
 #: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_picking_mass_generate_wizard__pickings_to_do_qty
 msgid "Number of pickings for which an Account Move would be generated"
-msgstr "Nombre de transferts pour lesquelles on devra générer une Écriture Comptable"
+msgstr ""
+"Nombre de transferts pour lesquelles on devra générer une Écriture Comptable"
 
 #. module: stock_picking_account_move
 #: model:ir.model,name:stock_picking_account_move.model_stock_picking_type
@@ -178,14 +164,10 @@ msgid "Picking Type"
 msgstr "Type de transfert"
 
 #. module: stock_picking_account_move
-#: model:ir.model,name:stock_picking_account_move.model_product_product
-msgid "Product Variant"
-msgstr "Variante de produit"
-
-#. module: stock_picking_account_move
 #: model:ir.model.fields,help:stock_picking_account_move.field_stock_picking_type__journal_id
 msgid "Set the Accounting Journal used to generate Accounting Entries"
-msgstr "Définir le journal comptable utilisé pour générer les écritures comptables"
+msgstr ""
+"Définir le journal comptable utilisé pour générer les écritures comptables"
 
 #. module: stock_picking_account_move
 #: model:ir.model,name:stock_picking_account_move.model_stock_move
@@ -198,16 +180,6 @@ msgid "Stock Pickings ready to generate Account Moves"
 msgstr "Transferts prêts à générer leurs Écritures comptables"
 
 #. module: stock_picking_account_move
-#. odoo-python
-#: code:addons/stock_picking_account_move/models/product_product.py:0
-#, python-format
-msgid ""
-"The product %s has not account expense defined. Please define one and try "
-"again"
-msgstr ""
-"Ce product %s n'a pas de compte de dépenses défini. Définissez un et recommencer"
-
-#. module: stock_picking_account_move
 #: model:ir.model.fields.selection,name:stock_picking_account_move.selection__stock_picking__account_move_state__to_do
 msgid "To Do"
 msgstr "À faire"
@@ -218,9 +190,21 @@ msgid "Transfer"
 msgstr "Transfert"
 
 #. module: stock_picking_account_move
-#: model:ir.model.fields,field_description:stock_picking_account_move.field_stock_move__price_unit
-msgid "Unit Price (Tax Excluded)"
-msgstr "Prix unitaire"
+#. odoo-python
+#: code:addons/stock_picking_account_move/models/stock_picking.py:0
+#, fuzzy, python-format
+msgid "Unable to generate account move for not done stock pickings."
+msgstr ""
+"Assistant pour générer en masse les écritures comptables pour les tranferts."
+
+#. module: stock_picking_account_move
+#. odoo-python
+#: code:addons/stock_picking_account_move/models/stock_picking.py:0
+#, python-format
+msgid ""
+"Unable to generate an expense entry for the picking %(picking_name)s. Unable"
+" to define the direction."
+msgstr ""
 
 #. module: stock_picking_account_move
 #: model:ir.model.fields.selection,name:stock_picking_account_move.selection__stock_picking__account_move_state__waiting
@@ -230,4 +214,5 @@ msgstr "En attente"
 #. module: stock_picking_account_move
 #: model:ir.model,name:stock_picking_account_move.model_stock_picking_mass_generate_wizard
 msgid "Wizard to mass generate account moves from stock pickings"
-msgstr "Assistant pour générer en masse les écritures comptables pour les tranferts."
+msgstr ""
+"Assistant pour générer en masse les écritures comptables pour les tranferts."

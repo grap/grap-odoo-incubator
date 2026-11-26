@@ -10,6 +10,7 @@ msgstr ""
 "PO-Revision-Date: 2026-10-22 10:42+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -34,7 +35,7 @@ msgstr "Ajouter une quantité"
 #: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #, python-format
 msgid "Barcode not found"
-msgstr "Code barre non trouvé"
+msgstr "Code-barres introuvable"
 
 #. module: mobile_kiosk_inventory
 #. odoo-javascript
@@ -78,7 +79,6 @@ msgstr "Inventaires"
 #. module: mobile_kiosk_inventory
 #. odoo-javascript
 #. odoo-python
-#: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #: code:addons/mobile_kiosk_inventory/models/mobile_kiosk_inventory.py:0
 #: code:addons/mobile_kiosk_inventory/static/src/InventoryAction/inventory_action.js:0
 #: model:ir.model,name:mobile_kiosk_inventory.model_stock_inventory
@@ -199,8 +199,8 @@ msgid ""
 "Product %(product_name)s: quantity inventoried changed from %(old_quantity)s"
 " to %(new_quantity)s."
 msgstr ""
-"Produit %(product_name)s: La quantité inventoriée a changé de %(old_quantity)s"
-" à %(new_quantity)s."
+"Produit %(product_name)s: La quantité inventoriée a changé de "
+"%(old_quantity)s à %(new_quantity)s."
 
 #. module: mobile_kiosk_inventory
 #: model:ir.model,name:mobile_kiosk_inventory.model_product_product
