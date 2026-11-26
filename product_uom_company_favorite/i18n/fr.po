@@ -10,6 +10,7 @@ msgstr ""
 "PO-Revision-Date: 2025-02-24 15:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -28,14 +29,24 @@ msgstr ""
 "Unité de mesure par défaut utilisée pour toutes les opérations de stock"
 
 #. module: product_uom_company_favorite
+#: model:ir.model.fields,help:product_uom_company_favorite.field_product_product__uom_po_id
+#: model:ir.model.fields,help:product_uom_company_favorite.field_product_template__uom_po_id
+msgid ""
+"Default unit of measure used for purchase orders. It must be in the same "
+"category as the default unit of measure."
+msgstr ""
+"Unité de mesure par défaut utilisée pour les bons de commande. Elle doit "
+"être dans la même catégorie que l'unité de mesure par défaut."
+
+#. module: product_uom_company_favorite
 #: model:ir.model.fields,field_description:product_uom_company_favorite.field_uom_uom__is_favorite
 msgid "Favorite"
-msgstr "Favorite"
+msgstr "Favori"
 
 #. module: product_uom_company_favorite
 #: model_terms:ir.ui.view,arch_db:product_uom_company_favorite.view_uom_uom_search
 msgid "Favorites"
-msgstr "Favorites"
+msgstr "Favoris"
 
 #. module: product_uom_company_favorite
 #: model:ir.model.fields,help:product_uom_company_favorite.field_uom_uom__is_favorite
@@ -43,9 +54,9 @@ msgid ""
 "If this field is unchecked, the uom will be hidden when searching uom in a "
 "drop-down list like in the product form view."
 msgstr ""
-"Si cette case est décochée, l'unité de mesure sera cachée lors de la recherche"
-" d'unité de mesure dans une liste déroulante, comme dans la vue formulaire "
-"du produit."
+"Si cette case est décochée, l'unité de mesure sera cachée lors de la "
+"recherche d'unité de mesure dans une liste déroulante, comme dans la vue "
+"formulaire du produit."
 
 #. module: product_uom_company_favorite
 #: model:ir.model,name:product_uom_company_favorite.model_product_template
@@ -56,6 +67,12 @@ msgstr "Produit"
 #: model:ir.model,name:product_uom_company_favorite.model_uom_uom
 msgid "Product Unit of Measure"
 msgstr "Unité de mesure du produit"
+
+#. module: product_uom_company_favorite
+#: model:ir.model.fields,field_description:product_uom_company_favorite.field_product_product__uom_po_id
+#: model:ir.model.fields,field_description:product_uom_company_favorite.field_product_template__uom_po_id
+msgid "Purchase UoM"
+msgstr "UdM achat"
 
 #. module: product_uom_company_favorite
 #: model:ir.model.fields,field_description:product_uom_company_favorite.field_product_product__uom_id

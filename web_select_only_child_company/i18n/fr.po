@@ -1,0 +1,18 @@
+#
+msgid ""
+msgstr ""
+
+#. module: web_select_only_child_company
+#: model:ir.model.fields,field_description:web_select_only_child_company.field_res_company__all_child_ids
+msgid "All Child"
+msgstr ""
+
+#. module: web_select_only_child_company
+#: model:ir.model,name:web_select_only_child_company.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: web_select_only_child_company
+#: model:ir.model,name:web_select_only_child_company.model_ir_http
+msgid "HTTP Routing"
+msgstr "Routage HTTP"

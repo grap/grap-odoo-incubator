@@ -19,7 +19,7 @@ msgstr ""
 #. module: user_reduced_configuration_pos
 #: model:ir.model,name:user_reduced_configuration_pos.model_res_config_settings
 msgid "Config Settings"
-msgstr "Paramétrage"
+msgstr "Paramètres de configuration"
 
 #. module: user_reduced_configuration_pos
 #: model:ir.model,name:user_reduced_configuration_pos.model_pos_config

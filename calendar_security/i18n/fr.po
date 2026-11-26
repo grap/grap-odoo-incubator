@@ -17,6 +17,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: calendar_security
-#: model:res.groups,name:calendar_security.group_discuss
+#: model:res.groups,name:calendar_security.group_calendar
 msgid "See Calendar Menu"
 msgstr "Voir le menu Calendrier"

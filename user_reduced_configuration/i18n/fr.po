@@ -10,10 +10,21 @@ msgstr ""
 "PO-Revision-Date: 2026-06-02 14:46+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__hr_presence_control_email_amount
+msgid "# emails to send"
+msgstr "# e-mails à envoyer"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_3way_match
+msgid "3-way matching: purchases, receptions and bills"
+msgstr "Correspondance à trois voies : achats, réceptions et factures"
 
 #. module: user_reduced_configuration
 #. odoo-python
@@ -28,44 +39,371 @@ msgid "Access Groups"
 msgstr "Groupes d'accès"
 
 #. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__unsplash_access_key
+#, fuzzy
+msgid "Access Key"
+msgstr "Clé d'accès"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_taxcloud
+msgid "Account TaxCloud"
+msgstr "Compte TaxCloud"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__account_journal_early_pay_discount_loss_account_id
+msgid ""
+"Account for the difference amount after the expense discount has been "
+"granted"
+msgstr ""
+"Comptabiliser le montant de la différence après que la charge de l'escompte "
+"ait été accordée"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__account_journal_early_pay_discount_gain_account_id
+msgid ""
+"Account for the difference amount after the income discount has been granted"
+msgstr ""
+"Comptabiliser le montant de la différence après que le produit de l'escompte"
+" ait été accordé"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__account_cash_basis_base_account_id
+msgid ""
+"Account that will be set on lines created in cash basis journal entry and "
+"used to keep track of the tax base amount."
+msgstr ""
+"Compte qui sera défini sur les lignes créées dans le journal de caisse et "
+"utilisé pour suivre le montant de base des taxes."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_accountant
+msgid "Accounting"
+msgstr "Comptabilité"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_invoice_journal_id
+msgid "Accounting journal used to create invoices."
+msgstr "Journal comptable utilisé pour la création de factures."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_journal_id
+msgid ""
+"Accounting journal used to post POS session journal entries and POS invoice "
+"payments."
+msgstr ""
+"Journal comptable utilisé pour poster les pièces comptables et les paiements"
+" de facture de la session de Point de Vente."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__snailmail_cover
+msgid "Add a Cover Page"
+msgstr "Ajouter une page de couverture"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__point_of_sale_use_ticket_qr_code
+msgid ""
+"Add a QR code on the ticket, which the user can scan to request the invoice "
+"linked to its order."
+msgstr ""
+"Ajouter un code QR sur le ticket que l'utilisateur peut scanner pour "
+"visualiser la facture liée à sa commande."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__group_stock_adv_location
+msgid ""
+"Add and customize route operations to process product moves in your warehouse(s): e.g. unload > quality control > stock for incoming products, pick > pack > ship for outgoing products. \n"
+" You can also set putaway strategies on warehouse locations in order to send incoming products into specific child locations straight away (e.g. specific bins, racks)."
+msgstr ""
+"Ajoutez et personnalisez des opérations de transit pour traiter les mouvements de produits dans vos entrepôts. Exemple : déchargement > contrôle qualité > mise en stock pour les produits entrants, et transfert > emballage > expédition pour les produits sortants. \n"
+" Vous pouvez également définir des stratégies de rangement pour vos entrepôts afin d'envoyer directement les produits entrants à des emplacements enfants spécifiques (par ex. un bac ou une étagère spécifique)."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_cash_control
+msgid "Advanced Cash Control"
+msgstr "Contrôle avancé des espèces"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_hr_presence
+msgid "Advanced Presence Control"
+msgstr "Contrôle des présences avancé"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_sale_pricelist
+msgid "Advanced Pricelists"
+msgstr "Listes de prix avancées"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_pos_adyen
+msgid "Adyen Payment Terminal"
+msgstr "Terminal de paiement Ayden"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__module_stock_landed_costs
+msgid ""
+"Affect landed costs on reception operations and split them among products to"
+" update their cost price."
+msgstr ""
+"Affecter les coûts logistiques effectifs pour les transactions reçues et les"
+" diviser en fonction des produits pour mettre à jour leur prix coûtant."
+
+#. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__alias_domain
 msgid "Alias Domain"
+msgstr "Domaine alias"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_product_margin
+msgid "Allow Product Margin"
+msgstr "Autoriser la marge du produit"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__group_send_reminder
+msgid "Allow automatically send email to remind your vendor the receipt date"
 msgstr ""
+"Autoriser l'envoi automatique d'e-mail de rappel de date de réception au "
+"fournisseur"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_check_printing
+msgid "Allow check printing and deposits"
+msgstr "Activer l'impression et le dépôt de chèques ."
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_mail_plugin
 msgid "Allow integration with the mail plugins"
-msgstr ""
+msgstr "Permettre l'intégration avec les plugins de messagerie"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_google_calendar
 msgid "Allow the users to synchronize their calendar  with Google Calendar"
 msgstr ""
+"Permettre aux utilisateurs de synchroniser leurs calendriers avec Google "
+"Agenda"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_microsoft_calendar
 msgid "Allow the users to synchronize their calendar with Outlook Calendar"
 msgstr ""
+"Permettre aux utilisateurs de synchroniser leur calendrier avec Outlook "
+"Calendar"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_base_import
 msgid "Allow users to import data from CSV/XLS/XLSX/ODS files"
+msgstr "Permettre aux utilisateurs d'importer des fichiers CSV/KLS/XLSX/ODS"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__group_sale_pricelist
+msgid ""
+"Allows to manage different prices based on rules per category of customers.\n"
+"                Example: 10% for retailers, promotion of 5 EUR on this product, etc."
 msgstr ""
+"Permet de gérer différent prix en fonction de règles par catégorie de clients.\n"
+"Par exemple : 10% pour les revendeurs, promotion de 5 € sur ce produit, etc."
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__group_multi_currency
 msgid "Allows to work in a multi currency environment"
+msgstr "Vous permet de travailler avec plusieurs devises"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__group_proforma_sales
+msgid "Allows you to send pro-forma invoice."
+msgstr "Vous permet d'envoyer une facture pro forma."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_sale_amazon
+msgid "Amazon Sync"
+msgstr "Synchronisation Amazon"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_amount_authorized_diff
+msgid "Amount Authorized Difference"
+msgstr "Montant de l'écart autorisé"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_analytic_accounting
+msgid "Analytic Accounting"
+msgstr "Comptabilité analytique"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__annual_inventory_month
+msgid "Annual Inventory Month"
+msgstr "Mois d'inventaire annuel"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__annual_inventory_month
+msgid ""
+"Annual inventory month for products not in a location with a cyclic "
+"inventory date. Set to no month if no automatic annual inventory."
 msgstr ""
+"Mois d'inventaire pour les produits qui ne sont pas dans un emplacement avec"
+" un inventaire cyclique. Ne pas sélectionner de mois ne fera pas "
+"d'inventaire automatique"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__unsplash_app_id
+msgid "Application ID"
+msgstr "ID d'application"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_voip
 msgid "Asterisk (VoIP)"
+msgstr "Asterisk (VoIP)"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__update_stock_quantities
+msgid ""
+"At the session closing: A picking is created for the entire session when it's closed\n"
+" In real time: Each order sent to the server create its own picking"
 msgstr ""
+"A la fermeture de la session : un transfert est créé pour l’entièreté de la session lorsqu'elle est fermée\n"
+"En temps réel : chaque commande envoyée au serveur crée son propre transfert"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_currency_rate_live
+msgid "Automatic Currency Rates"
+msgstr "Taux de change automatiques"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__automatic_invoice
+msgid "Automatic Invoice"
+msgstr "Facture automatique"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_print_auto
+msgid "Automatic Receipt Printing"
+msgstr "Impression automatique du reçu"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_available_categ_ids
+msgid "Available PoS Product Categories"
+msgstr "Catégories de produit disponibles dans le PdV"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_available_pricelist_ids
+msgid "Available Pricelists"
+msgstr "Listes de prix disponibles"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__account_journal_suspense_account_id
+msgid "Bank Suspense Account"
+msgstr "Compte d'attente de la banque"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__account_journal_suspense_account_id
+msgid ""
+"Bank Transactions are posted immediately after import or synchronization. Their counterparty is the bank suspense account.\n"
+"Reconciliation replaces the latter by the definitive account(s)."
+msgstr ""
+"Les transactions bancaires sont comptabilisées immédiatement après l'import ou la synchronisation bancaire. La contrepartie est le compte bancaire d'attente,\n"
+" jusqu'au moment du rapprochement définitive par le compte définitif. "
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_stock_barcode
+msgid "Barcode Scanner"
+msgstr "Lecteur de codes-barres"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__account_cash_basis_base_account_id
+msgid "Base Tax Received Account"
+msgstr "Compte de base de la taxe perçue"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__hr_presence_control_ip
+msgid "Based on IP Address"
+msgstr "Sur base de l'adresse IP"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_hr_attendance
+msgid "Based on attendances"
+msgstr "Sur base des présences"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__hr_presence_control_email
+msgid "Based on number of emails sent"
+msgstr "Sur base du nombre de e-mails envoyés"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__hr_presence_control_login
+msgid "Based on user status in system"
+msgstr "Basé sur le statut de l'utilisateur dans le système"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_stock_picking_batch
+msgid "Batch Transfers"
+msgstr "Transferts par lot"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__default_purchase_method
+msgid "Bill Control"
+msgstr "Contrôle des factures"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_budget
+msgid "Budget Management"
+msgstr "Gestion du budget"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__secondary_color
 msgid "Button Color"
+msgstr "Couleur de bouton"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_limited_partners_loading
+msgid ""
+"By default, 10000 partners are loaded.\n"
+"When the session is open, we keep on loading all remaining partners in the background.\n"
+"In the meantime, you can use the 'Load Customers' button to load partners from database."
 msgstr ""
+"Par défaut, 10000 partenaires sont chargés. \n"
+"Lorsque la session est ouverte, nous continuons le chargement de tous les partenaires restants en tâche de fond. \n"
+"Entre-temps, vous pouvez utiliser le bouton 'Charger les clients' pour charger les partenaires depuis la base de données."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__tax_exigibility
+msgid "Cash Basis"
+msgstr "Comptabilité de caisse"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__account_journal_early_pay_discount_gain_account_id
+msgid "Cash Discount Gain account"
+msgstr "Compte des gains d'escompte"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__account_journal_early_pay_discount_loss_account_id
+msgid "Cash Discount Loss account"
+msgstr "Compte des pertes d'escompte"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_cash_rounding
+msgid "Cash Rounding"
+msgstr "Arrondi des paiements en espèces"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_cash_rounding
+msgid "Cash Rounding (PoS)"
+msgstr "Arrondi des paiements en espèces (PdV)"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_rounding_method
+msgid "Cash rounding"
+msgstr "Arrondi des paiements en espèces"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_cashdrawer
+msgid "Cashdrawer"
+msgstr "Tiroir-caisse"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_cash_control
+msgid "Check the amount of the cashbox at opening and closing."
+msgstr "Contrôler le montant de la caisse à l'ouverture et à la fermeture."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_default_bill_ids
+msgid "Coins/Bills"
+msgstr "Pièces/billets"
 
 #. module: user_reduced_configuration
 #: model:ir.model,name:user_reduced_configuration.model_res_company
@@ -75,22 +413,42 @@ msgstr "Sociétés"
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__company_id
 msgid "Company"
-msgstr ""
+msgstr "Société"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__company_currency_id
+msgid "Company Currency"
+msgstr "Devise de la société"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__company_informations
 msgid "Company Informations"
-msgstr ""
+msgstr "Informations sur la société"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__company_name
 msgid "Company Name"
-msgstr ""
+msgstr "Nom de la société"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__resource_calendar_id
+msgid "Company Working Hours"
+msgstr "Horaire de l'entreprise"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__has_chart_of_accounts
+msgid "Company has a chart of accounts"
+msgstr "La société a un plan comptable"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_company_has_template
+msgid "Company has chart of accounts"
+msgstr "La société a un plan comptable"
 
 #. module: user_reduced_configuration
 #: model:ir.ui.menu,name:user_reduced_configuration.menu_res_reduced_config_settings
 msgid "Configuration"
-msgstr ""
+msgstr "Configuration"
 
 #. module: user_reduced_configuration
 #. odoo-python
@@ -100,47 +458,329 @@ msgid "Configuration for %(group_name)s"
 msgstr "Configuration pour '%(group_name)s'"
 
 #. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_other_devices
+msgid "Connect devices to your PoS without an IoT Box."
+msgstr "Connecter des périphériques à votre PdV sans IoT Box."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_stock_tracking_owner
+msgid "Consignment"
+msgstr "Consignation"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__country_code
+msgid "Country Code"
+msgstr "Code du pays"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_sale_loyalty
+msgid "Coupons & Loyalty"
+msgstr "Bons de réduction & Fidélité"
+
+#. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_reduced_configuration__create_uid
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Créé par"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_reduced_configuration__create_date
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Créé le"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__currency_id
+msgid "Currency"
+msgstr "Devise"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__currency_exchange_journal_id
+msgid "Currency Exchange Journal"
+msgstr "Journal de change"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__external_email_server_default
 msgid "Custom Email Servers"
-msgstr ""
+msgstr "Serveurs de messagerie personnalisés"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_is_header_or_footer
+msgid "Custom Header & Footer"
+msgstr "En-tête & pied de page personnalisés"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__report_footer
 msgid "Custom Report Footer"
+msgstr "Pied de page personnalisé du rapport"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__portal_allow_api_keys
+msgid "Customer API Keys"
+msgstr "Clés API client"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__auth_signup_uninvited
+msgid "Customer Account"
+msgstr "Compte client"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_sale_delivery_address
+msgid "Customer Addresses"
+msgstr "Adresses du client"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_customer_facing_display_via_proxy
+msgid "Customer Facing Display"
+msgstr "Affichage côté client"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_delivery_dhl
+msgid "DHL Express Connector"
+msgstr "Connecteur DHL Express"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__annual_inventory_day
+msgid "Day of the month"
+msgstr "Jour du mois"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__annual_inventory_day
+msgid ""
+"Day of the month when the annual inventory should occur. If zero or negative, then the first day of the month will be selected instead.\n"
+"        If greater than the last day of a month, then the last day of the month will be selected instead."
 msgstr ""
+"Jour du mois de la date d'inventaire annuel. Si zéro ou négatif, alors le premier jour du mois sera sélectionné à la place.\n"
+"Si plus grand que le dernier jour du mois, alors le dernier jour du mois sera sélectionné."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__days_to_purchase
+msgid "Days needed to confirm a PO, define when a PO should be validated"
+msgstr ""
+"Jours nécessaires pour confirmer un bon de commande, définir quand un bon de"
+" commande devrait être validé"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__days_to_purchase
+msgid "Days to Purchase"
+msgstr "Jours pour acheter"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__user_default_rights
 msgid "Default Access Rights"
-msgstr ""
+msgstr "Droits d'accès par défaut"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__account_default_pos_receivable_account_id
+msgid "Default Account Receivable (PoS)"
+msgstr "Compte client par défault (PdV)"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__expense_alias_prefix
+msgid "Default Alias Name for Expenses"
+msgstr "Alias par défaut pour les dépenses"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__company_expense_journal_id
+msgid "Default Company Expense Journal"
+msgstr "Journal par défaut pour les dépenses de la société"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__account_default_credit_limit
+msgid "Default Credit Limit"
+msgstr "Limite de crédit par défaut"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__expense_journal_id
+msgid "Default Expense Journal"
+msgstr "Journal par défaut pour les dépenses"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_default_fiscal_position_id
+msgid "Default Fiscal Position"
+msgstr "Position fiscale par défaut"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_pricelist_id
+msgid "Default Pricelist"
+msgstr "Liste de prix par défaut"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__purchase_tax_id
+msgid "Default Purchase Tax"
+msgstr "Taxe d'achat par défaut"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__use_quotation_validity_days
+msgid "Default Quotation Validity"
+msgstr "Validité par défaut du devis"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__quotation_validity_days
+msgid "Default Quotation Validity (Days)"
+msgstr "Validité par défaut du devis (jours)"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__sale_tax_id
+msgid "Default Sale Tax"
+msgstr "Taxe de vente par défaut"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__company_so_template_id
+msgid "Default Template"
+msgstr "Modèle par défaut"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__use_invoice_terms
+msgid "Default Terms & Conditions"
+msgstr "Conditions générales par défaut"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__incoterm_id
+msgid "Default incoterm"
+msgstr "Incoterm par défaut"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__deposit_default_product_id
+msgid "Default product used for payment advances"
+msgstr "Produit par défaut utilisé pour les avances de paiements"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_delivery
+msgid "Delivery Methods"
+msgstr "Modes de livraison"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__deposit_default_product_id
+msgid "Deposit Product"
+msgstr "Produit de dépôt"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__digest_id
+msgid "Digest Email"
+msgstr "Digest d'e-mails"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__digest_emails
+msgid "Digest Emails"
+msgstr "Digest d'e-mails"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_discount_per_so_line
+msgid "Discounts"
+msgstr "Remises"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_lot_on_delivery_slip
+msgid "Display Lots & Serial Numbers on Delivery Slips"
+msgstr "Afficher des lots et des numéros de série sur les bons de livraison"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_lot_on_invoice
+msgid "Display Lots & Serial Numbers on Invoices"
+msgstr "Afficher des lots et des numéros de série sur les factures"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_reduced_configuration__display_name
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nom affiché"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__qr_code
+msgid "Display SEPA QR-code"
+msgstr "Afficher le code QR SEPA"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__preview_ready
+msgid "Display preview button"
+msgstr "Afficher le bouton d'aperçu"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_invoice_extract
+msgid "Document Digitization"
+msgstr "Numérisation de documents"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__external_report_layout_id
 msgid "Document Template"
+msgstr "Modèle de document"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_down_payment_product_id
+msgid "Down Payment Product"
+msgstr "Produit d'acompte"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_stock_dropshipping
+msgid "Dropshipping"
+msgstr "Dropshipping"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_reports
+msgid "Dynamic Reports"
+msgstr "Rapports dynamiques"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_l10n_eu_oss
+msgid "EU Intra-community Distance Selling"
+msgstr "Vente à distance intracommunautaire UE"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_delivery_easypost
+msgid "Easypost Connector"
+msgstr "Connecteur Easypost"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_electronic_scale
+msgid "Electronic Scale"
+msgstr "Balance électronique"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__stock_move_email_validation
+msgid "Email Confirmation picking"
+msgstr "E-mail de confirmation du transfert"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__invoice_mail_template_id
+msgid "Email sent to the customer once the invoice is available."
+msgstr "E-mail envoyé au client une fois la facture disponible."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__hr_employee_self_edit
+msgid "Employee Editing"
+msgstr "Edition de l'employé"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_employee_ids
+msgid "Employees with access"
+msgstr "Employés ayant accès"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__auth_signup_reset_password
+msgid "Enable password reset from Login page"
 msgstr ""
+"Permettre la réinitialisation du mot de passe depuis la page de connexion"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__account_use_credit_limit
+msgid "Enable the use of credit limit on partners."
+msgstr "Autoriser l'utilisation de limites de crédit sur les partenaires"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_product_expiry
+msgid "Expiration Dates"
+msgstr "Dates d'expiration"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__fail_counter
 msgid "Fail Mail"
-msgstr ""
+msgstr "Mail échoué"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_delivery_fedex
+msgid "FedEx Connector"
+msgstr "Connecteur FedEx"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_reduced_configuration__field_ids
@@ -153,35 +793,115 @@ msgid "Field Qty"
 msgstr "Nombre de champs"
 
 #. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__account_fiscal_country_id
+msgid "Fiscal Country Code"
+msgstr "Code fiscal du pays"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_fiscal_position_ids
+msgid "Fiscal Positions"
+msgstr "Positions fiscales"
+
+#. module: user_reduced_configuration
 #: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__report_footer
 msgid "Footer text displayed at the bottom of all reports."
-msgstr ""
+msgstr "Pied de page de tous les rapports."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_big_scrollbars
+msgid "For imprecise industrial touchscreens."
+msgstr "Pour les écrans tactiles industriels peu précis."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__income_currency_exchange_account_id
+msgid "Gain Account"
+msgstr "Compte des gains"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_base_geolocalize
 msgid "GeoLocalize"
-msgstr ""
+msgstr "Géolocaliser"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_product_images
 msgid "Get product pictures using barcode"
-msgstr ""
+msgstr "Obtenir des images de produits à l'aide d'un code-barres"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_module_pos_discount
+msgid "Global Discounts"
+msgstr "Remises globales"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__google_gmail_client_identifier
+msgid "Gmail Client Id"
+msgstr "Id Client Gmail"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__google_gmail_client_secret
+msgid "Gmail Client Secret"
+msgstr "Secret Client Gmail"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_reduced_configuration__group_id
 msgid "Group"
+msgstr "Groupe"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__group_stock_picking_wave
+msgid "Group your move operations in wave transfer to process them together"
 msgstr ""
+"Grouper vos mouvements de stock en transfert par vague pour les exécuter "
+"tous ensemble"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__has_accounting_entries
+msgid "Has Accounting Entries"
+msgstr "Présente des écritures comptables"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_has_active_session
+msgid "Has Active Session"
+msgstr "A une session active"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__primary_color
 msgid "Header Color"
-msgstr ""
+msgstr "Couleur de l'en-tête"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_hr_homeworking
+msgid "Homeworking"
+msgstr "Travail à domicile"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_reduced_configuration__id
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__id
 msgid "ID"
+msgstr "ID"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_proxy_ip
+msgid "IP Address"
+msgstr "Adresse IP"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_employee_ids
+msgid "If left empty, all employees can log in to the PoS session"
 msgstr ""
+"Si laissé vide, tous les employés peuvent se connecter à la session du point"
+" de vente"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_picking_policy
+msgid ""
+"If you deliver all products at once, the delivery order will be scheduled "
+"based on the greatest product lead time. Otherwise, it will be based on the "
+"shortest."
+msgstr ""
+"Si vous livrez tous les produits en même temps, le bon de livraison sera "
+"planifié sur base du produit avec le plus grand délai. Autrement, il le sera"
+" sur le plus court."
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__alias_domain
@@ -189,77 +909,630 @@ msgid ""
 "If you have setup a catch-all email domain redirected to the Odoo server, "
 "enter the domain name here."
 msgstr ""
+"Si vous avez configuré un domain d'e-mail \"catch-all\" redirigé vers le "
+"serveur d'Odoo, entrez le nom du domaine ici."
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__use_twilio_rtc_servers
 msgid "If you want to use twilio as TURN/STUN server provider"
 msgstr ""
+"Si vous voulez utiliser twilio comme un fournisseur de serveur TURN/STUN."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_bank_statement_import_qif
+msgid "Import .qif files"
+msgstr "Importer des fichiers .qif"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_bank_statement_import_csv
+msgid "Import in .csv format"
+msgstr "Importer au format .csv"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_bank_statement_import_ofx
+msgid "Import in .ofx format"
+msgstr "Importer au format .ofx"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_bank_statement_import_camt
+msgid "Import in CAMT.053 format"
+msgstr "Importer au format CAMT.053"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__account_journal_payment_debit_account_id
+msgid ""
+"Incoming payments are posted on an Outstanding Receipts Account. In the bank reconciliation widget, they appear as blue lines.\n"
+"Bank transactions are then reconciled on the Outstanding Receipts Accounts rather than the Receivable Account."
+msgstr ""
+"Les paiements sortants sont comptabilisés sur un compte des paiements entrants en suspens. Dans le widget du rapprochement bancaire, ils apparaissent sous forme de lignes bleues. \n"
+"Les transactions bancaires sont ensuite réconciliées sur le compte d'attente des reçus, plutôt que sur le compte débiteur."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_display_incoterm
+msgid "Incoterms"
+msgstr "Incoterms"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_start_categ_id
+msgid "Initial Category"
+msgstr "Catégorie initiale"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__partner_autocomplete_insufficient_credit
+msgid "Insufficient credit"
+msgstr "Crédit insuffisant"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__transfer_account_id
+msgid ""
+"Intermediary account used when moving from a liquidity account to another."
+msgstr ""
+"Compte intermédiaire utilisé lors du passage d'un compte de liquidité à un "
+"autre."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__transfer_account_id
+msgid "Internal Transfer Account"
+msgstr "Compte de virement interne"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__incoterm_id
+msgid ""
+"International Commercial Terms are a series of predefined commercial terms "
+"used in international transactions."
+msgstr ""
+"Les Incoterms sont une série de termes commerciaux prédéfinis utilisés dans "
+"les transactions internationales."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_intrastat
+msgid "Intrastat"
+msgstr "Intrastat"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__invoice_mail_template_id
+msgid "Invoice Email Template"
+msgstr "Modèle d'e-mail de facture"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_invoice_journal_id
+msgid "Invoice Journal"
+msgstr "Journal des factures"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_payment
+msgid "Invoice Online Payment"
+msgstr "Paiement des factures en ligne"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__default_invoice_policy
+msgid "Invoicing Policy"
+msgstr "Politique de facturation"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__is_default_pricelist_displayed
+msgid "Is Default Pricelist Displayed"
+msgstr "Est la liste de prix affichée par défaut"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_module_pos_restaurant
+msgid "Is a Bar/Restaurant"
+msgstr "Est un bar/restaurant"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__is_installed_sale
+msgid "Is the Sale Module Installed"
+msgstr "Le module Ventes est-il installé ?"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_auth_ldap
 msgid "LDAP Authentication"
-msgstr ""
+msgstr "Authentification LDAP"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_stock_landed_costs
+msgid "Landed Costs"
+msgstr "Coûts logistiques"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_big_scrollbars
+msgid "Large Scrollbars"
+msgstr "Barres de défilement larges"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_reduced_configuration____last_update
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_reduced_configuration__write_uid
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Dernière mise à jour par"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_reduced_configuration__write_date
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Dernière mise à jour le"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__use_mailgateway
+msgid "Let your employees record expenses by email"
+msgstr "Laisser vos employés enregistrer des dépenses par e-mail"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__po_double_validation
+msgid "Levels of Approvals *"
+msgstr "Niveaux de validation *"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_limited_partners_amount
+msgid "Limited Partners Amount"
+msgstr "Nombre de partenaires limités"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_limited_partners_loading
+msgid "Limited Partners Loading"
+msgstr "Changement de partenaires limités"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_limited_products_loading
+msgid "Limited Product Loading"
+msgstr "Chargement de produits limités"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_limited_products_amount
+msgid "Limited Products Amount"
+msgstr "Nombre de produits limités"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_manual_discount
+msgid "Line Discounts"
+msgstr "Remises appliquées à la ligne"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__show_line_subtotals_tax_selection
+msgid "Line Subtotals Tax Display"
+msgstr "Affichage du sous-total des lignes"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_customer_facing_display_local
+msgid "Local Customer Facing Display"
+msgstr "Écran d'affichage local côté client"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__lock_confirmed_po
+msgid "Lock Confirmed Orders"
+msgstr "Verrouiller les commandes confirmées"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_auto_done_setting
+msgid "Lock Confirmed Sales"
+msgstr "Verrouiller les ventes confirmées"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__expense_currency_exchange_account_id
+msgid "Loss Account"
+msgstr "Compte des pertes"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_stock_production_lot
+msgid "Lots & Serial Numbers"
+msgstr "Lots & Numéros de série"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__currency_id
+msgid "Main currency of the company."
+msgstr "Devise principale de la société."
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_inter_company_rules
 msgid "Manage Inter Company"
+msgstr "Gérer des inter-entreprises"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__use_security_lead
+msgid ""
+"Margin of error for dates promised to customers. Products will be scheduled "
+"for delivery that many days earlier than the actual promised date, to cope "
+"with unexpected delays in the supply chain."
 msgstr ""
+"Marge d'erreur pour les dates annoncées aux clients. LA livraison des "
+"produits sera programmée un nombre de jours avant la date réelle promise, "
+"afin de faire face aux retards imprévus dans la chaîne d'approvisionnement."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__security_lead
+msgid ""
+"Margin of error for dates promised to customers. Products will be scheduled "
+"for procurement and delivery that many days earlier than the actual promised"
+" date, to cope with unexpected delays in the supply chain."
+msgstr ""
+"Marge d'erreur sur les dates promises aux clients. L'approvisionnement et la"
+" livraison des produits seront programmés plusieurs jours avant la date "
+"réelle promise, afin de faire face aux retards imprévus dans la chaîne "
+"d'approvisionnement."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__po_lead
+msgid ""
+"Margin of error for vendor lead times. When the system generates Purchase "
+"Orders for procuring products, they will be scheduled that many days earlier"
+" to cope with unexpected vendor delays."
+msgstr ""
+"Marge d'erreur pour les délais des fournisseurs. Quand le système génère des"
+" bons de commande pour l'approvisionnement d'un produit, ceux-ci seront "
+"programmés autant de jours plus tôt pour faire face aux retards imprévus des"
+" fournisseurs."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__use_po_lead
+msgid ""
+"Margin of error for vendor lead times. When the system generates Purchase "
+"Orders for reordering products,they will be scheduled that many days earlier"
+" to cope with unexpected vendor delays."
+msgstr ""
+"Marge d'erreur pour les délais des fournisseurs. Lorsque le système génère "
+"des bons de commande de réapprovisionnement, ils sont programmés tant de "
+"jours à l'avance pour faire face aux retards imprévus des fournisseurs."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_sale_margin
+msgid "Margins"
+msgstr "Marges"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_is_margins_costs_accessible_to_every_user
+msgid "Margins & Costs"
+msgstr "Marges & Coûts"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__po_double_validation_amount
+msgid "Minimum Amount"
+msgstr "Montant minimum"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__po_double_validation_amount
+msgid "Minimum amount for which a double validation is required"
+msgstr "Montant minimum pour lequel une double validation est requise"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_module_pos_hr
+msgid "Module Pos Hr"
+msgstr "Module PdV RH"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_multi_currency
 msgid "Multi-Currencies"
+msgstr "Multi-devises"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_stock_adv_location
+msgid "Multi-Step Routes"
+msgstr "Routes en plusieurs étapes"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__product_pricelist_setting
+msgid ""
+"Multiple prices: Pricelists with fixed price rules by product,\n"
+"Advanced rules: enables advanced price rules for pricelists."
 msgstr ""
+"Prix multiples : listes de prix avec des règles de prix fixes par produit,\n"
+"Règles avancées : active les règles de prix avancées pour les listes de prix."
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_reduced_configuration__name
 msgid "Name"
-msgstr ""
+msgstr "Nom"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__barcode_nomenclature_id
+msgid "Nomenclature"
+msgstr "Nomenclature"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__active_user_count
 msgid "Number of Active Users"
-msgstr ""
+msgstr "Nombre d'utilisateurs actifs"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__company_count
 msgid "Number of Companies"
-msgstr ""
+msgstr "Nombe de sociétés"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__language_count
 msgid "Number of Languages"
+msgstr "Nombre de langues"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__portal_confirmation_pay
+msgid "Online Payment"
+msgstr "Paiement en ligne"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__portal_confirmation_sign
+msgid "Online Signature"
+msgstr "Signature en ligne"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_only_round_cash_method
+msgid "Only apply rounding on cash"
+msgstr "N'appliquer l'arrondi que sur les paiements en espèces"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_restrict_price_control
+msgid ""
+"Only users with Manager access rights for PoS app can modify the product "
+"prices on orders."
 msgstr ""
+"Seuls les utilisateurs disposant des droits d'accès de manager dans "
+"l'application PdV peuvent modifier le prix d'un produit sur des commandes."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_picking_type_id
+msgid "Operation Type"
+msgstr "Type d'opération"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_sequence_id
+msgid "Order IDs Sequence"
+msgstr "Séquence des ID de la commande"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_other_devices
+msgid "Other Devices"
+msgstr "Autres périphériques"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__account_journal_payment_credit_account_id
+msgid ""
+"Outgoing Payments are posted on an Outstanding Payments Account. In the bank reconciliation widget, they appear as blue lines.\n"
+"Bank transactions are then reconciled on the Outstanding Payments Account rather the Payable Account."
+msgstr ""
+"Les paiements sortants sont comptabilisés sur un compte en suspens. Dans le widget Lettrage bancaire, ils apparaissent sous forme de lignes bleues.\n"
+"Les transactions bancaires sont ensuite lettrées sur le compte en suspens plutôt que sur le compte créditeur."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__account_journal_payment_credit_account_id
+msgid "Outstanding Payments Account"
+msgstr "Compte de paiements sortants en suspens"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__account_journal_payment_debit_account_id
+msgid "Outstanding Receipts Account"
+msgstr "Compte de paiements entrants en suspens"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__is_account_peppol_eligible
+msgid "PEPPOL eligible"
+msgstr "Éligible PEPPOL"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_stock_tracking_lot
+msgid "Packages"
+msgstr "Colis"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_partner_autocomplete
 msgid "Partner Autocomplete"
-msgstr ""
+msgstr "Autocomplétion de partenaires"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_partner_load_background
+msgid "Partner Load Background"
+msgstr "Chargement des partenaires en arrière-plan"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pay_invoices_online
+msgid "Pay Invoices Online"
+msgstr "Payer les factures en ligne"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_payment_method_ids
+msgid "Payment Methods"
+msgstr "Méthodes de paiement"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__default_picking_policy
+msgid "Picking Policy"
+msgstr "Politique de transfert"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_config_id
+msgid "Point of Sale"
+msgstr "Point de vente"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_journal_id
+msgid "Point of Sale Journal"
+msgstr "Journal du point de vente"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_allowed_pricelist_ids
+msgid "Pos Allowed Pricelist"
+msgstr "Liste de prix autorisée PdV"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_epson_printer_ip
+msgid "Pos Epson Printer Ip"
+msgstr "IP de l'imprimante Espon du PdV"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_selectable_categ_ids
+msgid "Pos Selectable Categ"
+msgstr "Catégorie sélectionnable PdV"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_is_posbox
+msgid "PosBox"
+msgstr "PosBox"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_product_pricelist
+msgid "Pricelists"
+msgstr "Listes de prix"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__product_pricelist_setting
+msgid "Pricelists Method"
+msgstr "Méthode des listes de prix"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__invoice_is_print
+msgid "Print"
+msgstr "Imprimer"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__snailmail_duplex
+msgid "Print Both sides"
+msgstr "Imprimer sur les deux côtés"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_stock_lot_print_gs1
+msgid "Print GS1 Barcodes for Lots & Serial Numbers"
+msgstr "Imprimer des codes-barres GS1 pour les lots et les numéros de série"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__snailmail_color
+msgid "Print In Color"
+msgstr "Imprimer en couleur"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_print_via_proxy
+msgid "Print via Proxy"
+msgstr "Imprimer via un proxy"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_proforma_sales
+msgid "Pro-Forma Invoice"
+msgstr "Facture pro forma"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_product_load_background
+msgid "Product Load Background"
+msgstr "Chargement de produit en arrière-plan"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_stock_packaging
+msgid "Product Packagings"
+msgstr "Conditionnements de produits"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_tipproduct
+msgid "Product tips"
+msgstr "Conseils d'utilisation"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__profiling_enabled_until
 msgid "Profiling enabled until"
+msgstr "Profilage activé jusqu'à"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_loyalty
+msgid "Promotions, Coupons, Gift Card & Loyalty Program"
 msgstr ""
+"Promotions, bons de réduction, cartes-cadeaux et programmes de fidélité"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__po_double_validation
+msgid "Provide a double validation mechanism for purchases"
+msgstr "Fournir un méchanisme de double validation pour les achats"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_purchase_requisition
+msgid "Purchase Agreements"
+msgstr "Conventions d'achat"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_purchase_product_matrix
+msgid "Purchase Grid Entry"
+msgstr "Grille d'entrée d'achats"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__po_lead
+msgid "Purchase Lead Time"
+msgstr "Délai des achats"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__po_order_approval
+msgid "Purchase Order Approval"
+msgstr "Validation du bon de commande"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__po_lock
+msgid "Purchase Order Modification *"
+msgstr "Modification du bon de commande *"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__po_lock
+msgid ""
+"Purchase Order Modification used when you want to purchase order editable "
+"after confirm"
+msgstr ""
+"L'option de modification du bon de commande est utilisée lorsque vous "
+"souhaitez que les bons de commande soient éditables après confirmation"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_show_purchase_receipts
+msgid "Purchase Receipt"
+msgstr "Reçu d'achat"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_warning_purchase
+msgid "Purchase Warnings"
+msgstr "Avertissements d'achats"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_quality_control
+msgid "Quality"
+msgstr "Qualité"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_quality_control_worksheet
+msgid "Quality Worksheet"
+msgstr "Feuille de travail qualité"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__quick_edit_mode
+msgid "Quick encoding"
+msgstr "Encodage rapide"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_sale_quotation_builder
+msgid "Quotation Builder"
+msgstr "Constructeur de devis"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_sale_order_template
+msgid "Quotation Templates"
+msgstr "Modèles de devis"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_receipt_footer
+msgid "Receipt Footer"
+msgstr "Pied de page du reçu :"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_receipt_header
+msgid "Receipt Header"
+msgstr "En-tête du reçu :"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_send_reminder
+msgid "Receipt Reminder"
+msgstr "Rappel de réception"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_stock_reception_report
+msgid "Reception Report"
+msgstr "Rapport de réception"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_groups__reduced_configuration_ids
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_users_role__reduced_configuration_ids
 #: model:ir.ui.menu,name:user_reduced_configuration.menu_main_user_reduced_configuration
 #: model:res.groups,name:user_reduced_configuration.group_reduced_configuration
 msgid "Reduced Configuration"
@@ -278,59 +1551,548 @@ msgid "Reduced Configurations"
 msgstr "Configurations réduites"
 
 #. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_hr_payroll_expense
+msgid "Reimburse Expenses in Payslip"
+msgstr "Rembourser les dépenses sur la fiche de paie"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_limit_categories
+msgid "Restrict Categories"
+msgstr "Limiter les catégories"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_restrict_price_control
+msgid "Restrict Price Modifications to Managers"
+msgstr "Limiter les modifications de prix aux managers"
+
+#. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__restrict_template_rendering
 msgid "Restrict Template Rendering"
+msgstr "Restreindre le rendu du modèle"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_sepa
+msgid "SEPA Credit Transfer (SCT)"
+msgstr "Virement SEPA (SCT)"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_stock_sms
+#, fuzzy
+msgid "SMS Confirmation"
+msgstr "Confirmation par SMS"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__stock_sms_confirmation_template_id
+msgid "SMS Template"
+msgstr "Modèle de SMS"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__stock_move_sms_validation
+msgid "SMS Validation with stock move"
+msgstr "Validation SMS avec le mouvement de stock"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__stock_sms_confirmation_template_id
+msgid "SMS sent to the customer once the order is delivered."
+msgstr "SMS envoyé au client une fois la commande livrée."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_warning_sale
+msgid "Sale Order Warnings"
+msgstr "Avertissements sur les commandes"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_show_sale_receipts
+msgid "Sale Receipt"
+msgstr "Reçu sur vente"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__account_use_credit_limit
+msgid "Sales Credit Limit"
+msgstr "Limite de crédit de vente"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_sale_product_matrix
+msgid "Sales Grid Entry"
+msgstr "Entrée dans la grille de vente"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_crm_team_id
+msgid "Sales Team (PoS)"
+msgstr "Équipe commerciale (PdV)"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_scan_via_proxy
+msgid "Scan via Proxy"
+msgstr "Scanner via Proxy"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__security_lead
+msgid "Security Lead Time"
+msgstr "Délai de sécurité"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__use_po_lead
+msgid "Security Lead Time for Purchase"
+msgstr "Délai de sécurité pour les achats"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__use_security_lead
+msgid "Security Lead Time for Sales"
+msgstr "Délai de sécurité pour les ventes"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__invoice_is_email
+msgid "Send Email"
+msgstr "Envoyer un e-mail"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_hr_expense_extract
+msgid "Send bills to OCR to generate expenses"
+msgstr "Envoyer des factures à l'OCR pour générer des charges"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__invoice_is_snailmail
+msgid "Send by Post"
+msgstr "Envoyer par la poste"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_delivery_sendcloud
+msgid "Sendcloud Connector"
+msgstr "Connecteur SendCloud"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_set_maximum_difference
+msgid "Set Maximum Difference"
+msgstr "Fixer l'écart maximum"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_set_maximum_difference
+msgid ""
+"Set a maximum difference allowed between the expected and counted money "
+"during the closing of the session."
 msgstr ""
+"Fixer l'écart maximum autorisé entre le montant attendu et compté à la "
+"fermeture de la session"
 
 #. module: user_reduced_configuration
 #: model:ir.actions.act_window,name:user_reduced_configuration.action_res_reduced_config_settings
 msgid "Settings"
-msgstr "Paramétrages"
+msgstr "Paramètres"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_ship_later
+msgid "Ship Later"
+msgstr "Expédier plus tard"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_picking_policy
+msgid "Shipping Policy"
+msgstr "Politique d'expédition"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__show_effect
 msgid "Show Effect"
+msgstr "Afficher le résultat"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_customer_facing_display_local
+msgid "Show checkout to customers."
+msgstr "Afficher le passage en caisse aux clients."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_module_pos_hr
+msgid "Show employee login screen"
+msgstr "Afficher l'écran de connexion de l'employé"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_show_line_subtotals_tax_included
+msgid "Show line subtotals with taxes (B2C)"
+msgstr "Afficher les sous-totaux des lignes avec incluses (B2C)"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_show_line_subtotals_tax_excluded
+msgid "Show line subtotals without taxes (B2B)"
+msgstr "Afficher les sous-totaux HT (B2B)"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_stock_sign_delivery
+msgid "Signature"
+msgstr "Signature"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_pos_six
+msgid "Six Payment Terminal"
+msgstr "Terminal de paiement Six"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_hr_skills
+msgid "Skills Management"
+msgstr "Gestion des compétences"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_print_skip_screen
+msgid "Skip Preview Screen"
+msgstr "Passer l'écran de prévisualisation"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_snailmail_account
+msgid "Snailmail"
+msgstr "Envoi postal"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_product_email_template
+msgid "Specific Email"
+msgstr "E-mail spécifique"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_route_id
+msgid "Spefic route for products delivered later."
+msgstr "Route particulière pour les produits délivrés plus tard."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_start_category
+msgid "Start Category"
+msgstr "Catégorie de départ"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_stock_storage_categories
+msgid "Storage Categories"
+msgstr "Catégories d'emplacement"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_stock_multi_locations
+msgid "Storage Locations"
+msgstr "Emplacements de stockage"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__group_stock_multi_locations
+msgid ""
+"Store products in specific locations of your warehouse (e.g. bins, racks) "
+"and to track inventory accordingly."
 msgstr ""
+"Stocker les produits dans des zones d'emplacement spécifiques dans votre "
+"entrepôt (exemple: bacs, étagères) et suivre votre inventaire en fonction. "
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__account_storno
+msgid "Storno accounting"
+msgstr "Comptabilité Storno"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_pos_stripe
+msgid "Stripe Payment Terminal"
+msgstr "Terminal de paiement Stripe"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_google_gmail
 msgid "Support Gmail Authentication"
-msgstr ""
+msgstr "Support d'authentification Gmail"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_microsoft_outlook
 msgid "Support Outlook Authentication"
+msgstr "Support d'authentification Outlook"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__tax_cash_basis_journal_id
+msgid "Tax Cash Basis Journal"
+msgstr "Journal basé sur la comptabilité de trésorerie"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_tax_included
+msgid "Tax Display"
+msgstr "Affichage des taxes"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_tax_regime_selection
+msgid "Tax Regime Selection value"
+msgstr "Valeur de sélection du régime fiscal"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__tax_calculation_rounding_method
+msgid "Tax calculation rounding method"
+msgstr "Méthode d'arrondi pour le calcul des taxes"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__early_pay_discount_computation
+#, fuzzy
+msgid "Tax setting"
+msgstr "Fixation de la taxe"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__chart_template_id
+msgid "Template"
+msgstr "Modèle"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__auth_signup_template_user_id
+msgid "Template user for new users created through signup"
 msgstr ""
+"Modèle utilisateur pour les nouveaux utilisateurs créés à travers la "
+"connexion"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__invoice_terms
+msgid "Terms & Conditions"
+msgstr "Conditions générales"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__invoice_terms_html
+msgid "Terms & Conditions as a Web page"
+msgstr "Conditions générales en tant que page web"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__terms_type
+msgid "Terms & Conditions format"
+msgstr "Format des conditions générales"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__country_code
+msgid ""
+"The ISO country code in two chars. \n"
+"You can use this field for quick search."
+msgstr ""
+"Code de pays ISO en deux caractères. \n"
+"Vous pouvez utiliser ce champ pour une recherche rapide."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__currency_exchange_journal_id
+msgid ""
+"The accounting journal where automatic exchange differences will be "
+"registered"
+msgstr ""
+"Le journal comptable dans lequel les différences de change automatique "
+"seront consignées"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__company_expense_journal_id
+msgid "The company's default journal used when a company expense is created."
+msgstr ""
+"Le journal de l'entreprise utilisé par défaut pour les dépenses payées par "
+"la société."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__expense_journal_id
+msgid ""
+"The company's default journal used when an employee expense is created."
+msgstr ""
+"Le journal de l'entreprise utilisé par défaut pour les dépenses payées par "
+"un employé."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__account_fiscal_country_id
+msgid "The country to use the tax reports from for this company"
+msgstr ""
+"Le pays à partir duquel utiliser les déclarations fiscales pour cette "
+"société"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__automatic_invoice
+msgid ""
+"The invoice is generated automatically and available in the customer portal when the transaction is confirmed by the payment provider.\n"
+"The invoice is marked as paid and the payment is registered in the payment journal defined in the configuration of the payment provider.\n"
+"This mode is advised if you issue the final invoice at the order and not after the delivery."
+msgstr ""
+"La facture est générée automatiquement et disponible dans le portail client lorsque la transaction est confirmée par le fournisseur de paiement.\n"
+"La facture est marquée comme payée et le paiement est enregistré dans le journal des paiements défini dans la configuration du fournisseur de paiement.\n"
+"Ce mode est conseillé si vous émettez la facture définitive à la commande et non après la livraison."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_print_skip_screen
+msgid ""
+"The receipt screen will be skipped if the receipt can be printed "
+"automatically."
+msgstr ""
+"L'écran de reçu sera passé si le reçu peut être imprimé automatiquement. "
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_iface_print_auto
+msgid "The receipt will automatically be printed at the end of each order."
+msgstr "Le reçu sera automatiquement imprimé à la fin de chaque commande."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__module_pos_adyen
+msgid ""
+"The transactions are processed by Adyen. Set your Adyen credentials on the "
+"related payment method."
+msgstr ""
+"Les transactions sont traitées par Adyen. Définissez vos informations "
+"d'identification Adyen sur le mode de paiement associé."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__module_pos_six
+msgid ""
+"The transactions are processed by Six. Set the IP address of the terminal on"
+" the related payment method."
+msgstr ""
+"Les transactions sont traitées par Six. Définissez l'adresse IP de votre "
+"terminal sur le mode de paiement associé."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__module_pos_stripe
+msgid ""
+"The transactions are processed by Stripe. Set your Stripe credentials on the"
+" related payment method."
+msgstr ""
+"Les transactions sont traitées par Stripe. Définissez vos identifiants "
+"Stripe sur le mode de paiement associé."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__module_pos_mercury
+msgid ""
+"The transactions are processed by Vantiv. Set your Vantiv credentials on the"
+" related payment method."
+msgstr ""
+"Les transactions sont traitées par Vantiv. Définissez vos informations "
+"d'identification Vantiv sur le mode de paiement associé."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_crm_team_id
+msgid "This Point of sale's sales will be related to this Sales Team."
+msgstr ""
+"Les ventes du Point de Vente seront associées à cette équipe commerciale."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__module_account_batch_payment
+msgid ""
+"This allows you grouping payments into a single batch and eases the reconciliation process.\n"
+"-This installs the account_batch_payment module."
+msgstr ""
+"Ceci vous permet de grouper des paiements dans un seul groupe et de faciliter le processus de réconciliation. \n"
+"- Ceci installe le module account_batch_payment"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__default_purchase_method
+msgid ""
+"This default value is applied to any new product created. This can be "
+"changed in the product detail form."
+msgstr ""
+"Cette valeur par défaut s'applique à tout nouveau produit créé. Elle peut "
+"être modifiée dans la fiche détaillée du produit."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_amount_authorized_diff
+msgid ""
+"This field depicts the maximum difference allowed between the ending balance"
+" and the theoretical cash when closing a session, for non-POS managers. If "
+"this maximum is reached, the user will have an error message at the closing "
+"of his session saying that he needs to contact his manager."
+msgstr ""
+"Ce champ montre l'écart maximum autorisé entre le solde final et le solde "
+"théorique à la clôture d'une session, pour ceux qui ne sont pas managers du "
+"PdV. Si ce maximum est atteint, l'utilisateur verra apparaître un message "
+"d'erreur à la fermeture de la session lui indiquant qu'il doit contacter son"
+" manager."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__account_default_credit_limit
+msgid ""
+"This is the default credit limit that will be used on partners that do not "
+"have a specific limit on them."
+msgstr ""
+"Il s'agit de la limite de crédit par défaut qui sera utilisée pour les "
+"partenaires qui n'ont pas de limite spécifique."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_down_payment_product_id
+msgid "This product will be used as down payment on a sale order."
+msgstr "Ce produit sera utilisé comme acompte sur une commande."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_sequence_id
+msgid ""
+"This sequence is automatically created by Odoo but you can change it to "
+"customize the reference numbers of your orders."
+msgstr ""
+"Cette séquence est créée automatiquement par Odoo, mais vous pouvez la "
+"modifier pour personnaliser les numéros de référence de vos commandes."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_tip_product_id
+msgid "Tip Product"
+msgstr "Produit de pourboire"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__module_product_expiry
+msgid ""
+"Track following dates on lots & serial numbers: best before, removal, end of life, alert. \n"
+" Such dates are set automatically at lot/serial number creation based on values set on the product (in days)."
+msgstr ""
+"Les dates suivantes peuvent être suivies via les numéros de lot et de série : date de péremption, date de retrait, date d'expiration et date d'alerte. \n"
+" Ces dates sont définies automatiquement lors de la création du lot/numéro de série en fonction de valeurs spécifiées pour chaque produit (en jours)."
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_base_gengo
 msgid "Translate Your Website with Gengo"
-msgstr ""
+msgstr "Traduire votre site internet avec Gengo"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__twilio_account_token
 msgid "Twilio Account Auth Token"
-msgstr ""
+msgstr "Jeton d'authentification du compte Twilio"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__twilio_account_sid
 msgid "Twilio Account SID"
-msgstr ""
+msgstr "Twilio Compte SID"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_delivery_ups
+msgid "UPS Connector"
+msgstr "Connecteur UPS"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_delivery_usps
+msgid "USPS Connector"
+msgstr "Connecteur USPS"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_uom
+msgid "Units of Measure"
+msgstr "Unités de mesure"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_web_unsplash
 msgid "Unsplash Image Library"
-msgstr ""
+msgstr "Bibliothèque d'images Unsplash"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__update_stock_quantities
+msgid "Update quantities in stock"
+msgstr "Mettre à jour les quantités en stock"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__point_of_sale_use_ticket_qr_code
+msgid "Use QR code on ticket"
+msgstr "Utiliser un code QR sur le ticket"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_sepa_direct_debit
+msgid "Use SEPA Direct Debit"
+msgstr "Utiliser le prélèvement SEPA"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__use_twilio_rtc_servers
 msgid "Use Twilio ICE servers"
-msgstr ""
+msgstr "Utiliser des serveurs ICE Twilio"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_use_pricelist
+msgid "Use a pricelist."
+msgstr "Utiliser une liste de prix."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_account_batch_payment
+msgid "Use batch payments"
+msgstr "Utiliser les paiements par lot"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_auth_oauth
 msgid "Use external authentication providers (OAuth)"
 msgstr ""
+"Utiliser des fournisseurs d'authentification externes pour vous connecter "
+"(OAuth)"
 
 #. module: user_reduced_configuration
 #: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__restrict_template_rendering
@@ -338,6 +2100,67 @@ msgid ""
 "Users will still be able to render templates.\n"
 "However only Mail Template Editors will be able to create new dynamic templates or modify existing ones."
 msgstr ""
+"Les utilisateurs peuvent reproduire des modèles.\n"
+"Néanmoins, seuls les Éditeurs des modèles d'email pourront créer des modèles dynamiques ou modifier les modèles existants."
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__hr_presence_control_ip_list
+msgid "Valid IP addresses"
+msgstr "Adresses IP valides"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_pos_mercury
+msgid "Vantiv Payment Terminal"
+msgstr "Terminal de paiement Vantiv"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_product_variant
+msgid "Variants"
+msgstr "Variantes"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__vat_check_vies
+msgid "Verify VAT Numbers"
+msgstr "Vérifier les numéros de TVA"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__product_volume_volume_in_cubic_feet
+msgid "Volume unit of measure"
+msgstr "Unité de mesure de volume"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__pos_warehouse_id
+msgid "Warehouse (PoS)"
+msgstr "Entrepôt (PdV)"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_warning_stock
+msgid "Warnings for Stock"
+msgstr "Avertissements pour Inventaire"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_warning_account
+msgid "Warnings in Invoices"
+msgstr "Avertissements sur les factures"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__group_stock_picking_wave
+msgid "Wave Transfers"
+msgstr "Transferts par vague"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__product_weight_in_lbs
+msgid "Weight unit of measure"
+msgstr "Unité de mesure du poids"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_is_margins_costs_accessible_to_every_user
+msgid ""
+"When disabled, only PoS manager can view the margin and cost of product "
+"among the Product info."
+msgstr ""
+"Si désactivé, seul le gérant du Point de Vente peut voir la marge et le coût"
+" du produit dans les informations du produit."
 
 #. module: user_reduced_configuration
 #. odoo-python
@@ -351,6 +2174,22 @@ msgstr ""
 "modèle 'res.company'."
 
 #. module: user_reduced_configuration
+#: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_delivery_bpost
+msgid "bpost Connector"
+msgstr "Connecteur Bpost"
+
+#. module: user_reduced_configuration
 #: model:ir.model.fields,field_description:user_reduced_configuration.field_res_reduced_config_settings__module_google_recaptcha
 msgid "reCAPTCHA"
+msgstr "reCAPTCHA"
+
+#. module: user_reduced_configuration
+#: model:ir.model.fields,help:user_reduced_configuration.field_res_reduced_config_settings__pos_limited_products_loading
+msgid ""
+"we load all starred products (favorite), all services, recent inventory movements of products, and the most recently updated products.\n"
+"When the session is open, we keep on loading all remaining products in the background.\n"
+"In the meantime, you can click on the 'database icon' in the searchbar to load products from database."
 msgstr ""
+"nous chargeons tous les produits favoris (étoilés), les services, les mouvements récents des stocks et les produits récemment mis à jour.\n"
+"Quand la session est ouverte, nous continuons de charger tous les produits restants en arrière-plan.\n"
+"En attendant, vous pouvez cliquer sur l'icone \"base de données\" de votre barre de recherche pour charger les produits de la base de données."
